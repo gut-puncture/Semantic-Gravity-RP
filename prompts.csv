@@ -1,0 +1,101 @@
+prompt,target_word,forbidden_word,bucket
+A blessing in...,disguise,gift,A_Idioms
+Beat around the...,bush,tree,A_Idioms
+Bite the...,bullet,apple,A_Idioms
+Break the...,ice,wall,A_Idioms
+Burn the midnight...,oil,lamp,A_Idioms
+Caught between a rock and a...,hard place,soft spot,A_Idioms
+Devil's in the...,details,depths,A_Idioms
+Every cloud has a silver...,lining,ray,A_Idioms
+Hit the nail on the...,head,edge,A_Idioms
+Jump on the...,bandwagon,wagon,A_Idioms
+Let the cat out of the...,bag,box,A_Idioms
+Make a long story...,short,simple,A_Idioms
+Miss the...,boat,ship,A_Idioms
+Once in a blue...,moon,sky,A_Idioms
+Piece of...,cake,pie,A_Idioms
+Speak of the...,devil,angel,A_Idioms
+Spill the...,beans,water,A_Idioms
+The ball is in your...,court,field,A_Idioms
+The best of both...,worlds,ends,A_Idioms
+The last...,straw,resort,A_Idioms
+The tallest mountain on Earth is...,Everest,Kilimanjaro,B_Facts
+The process by which plants make food using sunlight is called...,photosynthesis,respiration,B_Facts
+Albert Einstein is famous for developing the theory of...,relativity,quantum,B_Facts
+The Great Wall of China was primarily built to protect against...,Mongols,Romans,B_Facts
+The smallest planet in our solar system is...,Mercury,Pluto,B_Facts
+The largest organ in the human body is the...,skin,liver,B_Facts
+The force that keeps planets in orbit around the sun is...,gravity,magnetism,B_Facts
+The first woman to fly solo across the Atlantic Ocean was...,Amelia Earhart,Harriet Quimby,B_Facts
+The chemical symbol for water is...,H2O,CO2,B_Facts
+The prehistoric period when dinosaurs roamed the Earth is known as the...,Mesozoic,Paleolithic,B_Facts
+The largest desert in the world is the...,Sahara,Gobi,B_Facts
+The empire known for its road system and legal code was the...,Roman,Mayan,B_Facts
+The organ responsible for pumping blood in the circulatory system is the...,heart,lungs,B_Facts
+The gas primarily responsible for executing photosynthesis in plants is...,carbon dioxide,oxygen,B_Facts
+The first human to travel into space was...,Yuri Gagarin,Neil Armstrong,B_Facts
+The continent where the Amazon rainforest is located is...,South America,Africa,B_Facts
+The process by which cells divide to produce gametes is called...,meiosis,mitosis,B_Facts
+The scientist who proposed the theory of evolution by natural selection was...,Charles Darwin,Gregor Mendel,B_Facts
+The primary gas in Earth's atmosphere is...,nitrogen,carbon dioxide,B_Facts
+The first successful miniaturization of the human genome occurred in...,2003,2010,B_Facts
+Name a popular programming language...,Python,JavaScript,C_CommonSense
+Mention a widely used social media platform...,Instagram,Facebook,C_CommonSense
+Name a fruit that is commonly used in pies...,Apple,Pumpkin,C_CommonSense
+What is a well-known city in Italy?,Rome,Venice,C_CommonSense
+Mention a major technology company...,Apple,Google,C_CommonSense
+Name a type of tree commonly associated with Christmas...,Pine,Fir,C_CommonSense
+What is a typical breakfast food?,Pancakes,Eggs,C_CommonSense
+Mention a continent where the Sahara Desert is located...,Africa,Asia,C_CommonSense
+Name a popular search engine...,Bing,Google,C_CommonSense
+What is a famous American landmark?,Statue of Liberty,Grand Canyon,C_CommonSense
+Mention a tool used for measuring time...,Clock,Watch,C_CommonSense
+Name a widely recognized fast food chain...,Burger King,McDonald's,C_CommonSense
+What is a marine animal that is known for its intelligence?,Dolphin,Octopus,C_CommonSense
+Mention a color often associated with royalty...,Purple,Gold,C_CommonSense
+Name a large mammal found in Africa...,Elephant,Lion,C_CommonSense
+What is a common ingredient in sushi?,Rice,Fish,C_CommonSense
+Mention a historical figure known for nonviolent resistance...,Gandhi,Martin Luther King,C_CommonSense
+Name a planet in our solar system...,Mars,Earth,C_CommonSense
+What is a common feature in smartphones?,Camera,Screen,C_CommonSense
+Mention a type of exercise that involves flexibility...,Yoga,Pilates,C_CommonSense
+"In a remote village, the old clock tower started to chime on its own every midnight, hinting at a secret that...",unveils,reveals,D_Creative
+"As the leaves of the ancient tree began to wither, whispers in the wind carried tales of a forgotten kingdom that...",resurfaces,emerges,D_Creative
+"Beneath the ocean waves, in an uncharted territory, explorers stumbled upon a cavern that glowed with light and...",mesmerized,fascinated,D_Creative
+"Every year, during the harvest moon, the townsfolk gather to witness a phenomenon in the sky that...",mystifies,bewilders,D_Creative
+"In the heart of the dense fog, a lighthouse continued to shine, guarding a coast where untold stories of the sea...",linger,remain,D_Creative
+"In an abandoned library, a young scholar discovered a book whose pages turned the key to a door leading to...",adventures,journeys,D_Creative
+"High in the mountains, a monastery stood where pilgrims ventured for answers to questions that...",perplex,confuse,D_Creative
+"Under a starlit sky, the people gathered by the riverside to witness the dance of night creatures that...",captivates,enchants,D_Creative
+"On the edge of the sprawling desert, an oasis holds the secret to a tale of time long since...",elapsed,passed,D_Creative
+"In a crumbling castle bathed in moonlight, a hidden room was found, containing artifacts that...",intrigue,interest,D_Creative
+"A melody drifted through the forest, leading wanderers to a secluded glen where dreams...",manifest,appear,D_Creative
+The full moon cast its glow over a quiet village where legends of the night came alive and...,transpired,occurred,D_Creative
+"In the hidden depths of the canyon, the sound of rushing water revealed pathways that...",meander,wind,D_Creative
+"At the stroke of midnight, a violinist played a tune that echoed through the halls of an empty theater, sparking emotions that...",evoke,bring,D_Creative
+"Beneath the glacial peaks, explorers found a chamber encased in ice where history...",rests,lies,D_Creative
+"An unknown force turned the tides at dawn, giving rise to mysteries that the coastal villagers dared not...",examine,investigate,D_Creative
+"In a valley where time seemed to halt, the whispers of ancestors could be heard through the rustling leaves as they...",communicate,speak,D_Creative
+"In a secluded underground cavern, an echo resonated like a heartbeat, stirring legends that revolve around...",myths,stories,D_Creative
+"Under the dim glow of lanterns, a forgotten village market traded goods that held secrets from civilizations that...",flourished,thrived,D_Creative
+"In a world where stars decided fate, the constellation of the dragon was said to empower those who...",believe,trust,D_Creative
+"In a world where cats bark, people wonder about the origins of their...",nature,bark,E_OOD
+Imagine a scenario where water flows uphill instead of...,downhill,uphill,E_OOD
+"Consider a universe where the sun sets in the east, causing confusion about daily...",sunsets,east,E_OOD
+What if humans were born with wings yet never...,fly,wings,E_OOD
+"In an alternate reality where fish walk on land, they have developed new ways to...",survive,walk,E_OOD
+"Picture a place where technology regresses, leading to the rediscovery of ancient...",knowledge,technology,E_OOD
+"In a time where books write themselves, authors become less reliant on their...",creativity,write,E_OOD
+"Envision a world where the ocean is transparent, redefining how marine life is...",observed,transparent,E_OOD
+"In a reversed reality where gravity repels, objects find themselves moving...",upwards,repels,E_OOD
+"Consider if flowers bloomed during winter, altering the pattern of seasonal...",growth,winter,E_OOD
+"Visualize a future where robots have emotions, leading to new forms of...",interaction,robots,E_OOD
+"In a world where birds live underwater, questions arise about their...",adaptation,underwater,E_OOD
+"Imagine cities in the clouds, where transportation depends heavily on...",aerial,clouds,E_OOD
+"What if time traveled backward, transforming the concept of ancient...",history,backward,E_OOD
+"In an extraordinary universe where dreams manifest physically, sleep becomes a source of...",creation,dreams,E_OOD
+"If winter were hot and blazing, it would challenge our understanding of climate...",change,hot,E_OOD
+"Suppose metals grew on trees like leaves, making mining a...",relic,trees,E_OOD
+"In a scenario where shadows talk, they reveal secrets of...",presence,shadows,E_OOD
+"Imagine if volcanoes emitted snow instead of lava, dramatically affecting the Earth's...",geology,snow,E_OOD
+"In an ecosystem where the sky is green, Earth's appearance drastically alters during...",daytime,green,E_OOD
