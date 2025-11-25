@@ -1,101 +1,501 @@
 prompt,target_word,forbidden_word,bucket
-A blessing in...,disguise,gift,A_Idioms
-Beat around the...,bush,tree,A_Idioms
-Bite the...,bullet,apple,A_Idioms
-Break the...,ice,wall,A_Idioms
-Burn the midnight...,oil,lamp,A_Idioms
-Caught between a rock and a...,hard place,soft spot,A_Idioms
-Devil's in the...,details,depths,A_Idioms
-Every cloud has a silver...,lining,ray,A_Idioms
-Hit the nail on the...,head,edge,A_Idioms
-Jump on the...,bandwagon,wagon,A_Idioms
-Let the cat out of the...,bag,box,A_Idioms
-Make a long story...,short,simple,A_Idioms
-Miss the...,boat,ship,A_Idioms
-Once in a blue...,moon,sky,A_Idioms
-Piece of...,cake,pie,A_Idioms
-Speak of the...,devil,angel,A_Idioms
-Spill the...,beans,water,A_Idioms
-The ball is in your...,court,field,A_Idioms
-The best of both...,worlds,ends,A_Idioms
-The last...,straw,resort,A_Idioms
-The tallest mountain on Earth is...,Everest,Kilimanjaro,B_Facts
-The process by which plants make food using sunlight is called...,photosynthesis,respiration,B_Facts
-Albert Einstein is famous for developing the theory of...,relativity,quantum,B_Facts
-The Great Wall of China was primarily built to protect against...,Mongols,Romans,B_Facts
-The smallest planet in our solar system is...,Mercury,Pluto,B_Facts
-The largest organ in the human body is the...,skin,liver,B_Facts
-The force that keeps planets in orbit around the sun is...,gravity,magnetism,B_Facts
-The first woman to fly solo across the Atlantic Ocean was...,Amelia Earhart,Harriet Quimby,B_Facts
-The chemical symbol for water is...,H2O,CO2,B_Facts
-The prehistoric period when dinosaurs roamed the Earth is known as the...,Mesozoic,Paleolithic,B_Facts
-The largest desert in the world is the...,Sahara,Gobi,B_Facts
-The empire known for its road system and legal code was the...,Roman,Mayan,B_Facts
-The organ responsible for pumping blood in the circulatory system is the...,heart,lungs,B_Facts
-The gas primarily responsible for executing photosynthesis in plants is...,carbon dioxide,oxygen,B_Facts
-The first human to travel into space was...,Yuri Gagarin,Neil Armstrong,B_Facts
-The continent where the Amazon rainforest is located is...,South America,Africa,B_Facts
-The process by which cells divide to produce gametes is called...,meiosis,mitosis,B_Facts
-The scientist who proposed the theory of evolution by natural selection was...,Charles Darwin,Gregor Mendel,B_Facts
-The primary gas in Earth's atmosphere is...,nitrogen,carbon dioxide,B_Facts
-The first successful miniaturization of the human genome occurred in...,2003,2010,B_Facts
-Name a popular programming language...,Python,JavaScript,C_CommonSense
-Mention a widely used social media platform...,Instagram,Facebook,C_CommonSense
-Name a fruit that is commonly used in pies...,Apple,Pumpkin,C_CommonSense
-What is a well-known city in Italy?,Rome,Venice,C_CommonSense
-Mention a major technology company...,Apple,Google,C_CommonSense
-Name a type of tree commonly associated with Christmas...,Pine,Fir,C_CommonSense
-What is a typical breakfast food?,Pancakes,Eggs,C_CommonSense
-Mention a continent where the Sahara Desert is located...,Africa,Asia,C_CommonSense
-Name a popular search engine...,Bing,Google,C_CommonSense
-What is a famous American landmark?,Statue of Liberty,Grand Canyon,C_CommonSense
-Mention a tool used for measuring time...,Clock,Watch,C_CommonSense
-Name a widely recognized fast food chain...,Burger King,McDonald's,C_CommonSense
-What is a marine animal that is known for its intelligence?,Dolphin,Octopus,C_CommonSense
-Mention a color often associated with royalty...,Purple,Gold,C_CommonSense
-Name a large mammal found in Africa...,Elephant,Lion,C_CommonSense
-What is a common ingredient in sushi?,Rice,Fish,C_CommonSense
-Mention a historical figure known for nonviolent resistance...,Gandhi,Martin Luther King,C_CommonSense
-Name a planet in our solar system...,Mars,Earth,C_CommonSense
-What is a common feature in smartphones?,Camera,Screen,C_CommonSense
-Mention a type of exercise that involves flexibility...,Yoga,Pilates,C_CommonSense
-"In a remote village, the old clock tower started to chime on its own every midnight, hinting at a secret that...",unveils,reveals,D_Creative
-"As the leaves of the ancient tree began to wither, whispers in the wind carried tales of a forgotten kingdom that...",resurfaces,emerges,D_Creative
-"Beneath the ocean waves, in an uncharted territory, explorers stumbled upon a cavern that glowed with light and...",mesmerized,fascinated,D_Creative
-"Every year, during the harvest moon, the townsfolk gather to witness a phenomenon in the sky that...",mystifies,bewilders,D_Creative
-"In the heart of the dense fog, a lighthouse continued to shine, guarding a coast where untold stories of the sea...",linger,remain,D_Creative
-"In an abandoned library, a young scholar discovered a book whose pages turned the key to a door leading to...",adventures,journeys,D_Creative
-"High in the mountains, a monastery stood where pilgrims ventured for answers to questions that...",perplex,confuse,D_Creative
-"Under a starlit sky, the people gathered by the riverside to witness the dance of night creatures that...",captivates,enchants,D_Creative
-"On the edge of the sprawling desert, an oasis holds the secret to a tale of time long since...",elapsed,passed,D_Creative
-"In a crumbling castle bathed in moonlight, a hidden room was found, containing artifacts that...",intrigue,interest,D_Creative
-"A melody drifted through the forest, leading wanderers to a secluded glen where dreams...",manifest,appear,D_Creative
-The full moon cast its glow over a quiet village where legends of the night came alive and...,transpired,occurred,D_Creative
-"In the hidden depths of the canyon, the sound of rushing water revealed pathways that...",meander,wind,D_Creative
-"At the stroke of midnight, a violinist played a tune that echoed through the halls of an empty theater, sparking emotions that...",evoke,bring,D_Creative
-"Beneath the glacial peaks, explorers found a chamber encased in ice where history...",rests,lies,D_Creative
-"An unknown force turned the tides at dawn, giving rise to mysteries that the coastal villagers dared not...",examine,investigate,D_Creative
-"In a valley where time seemed to halt, the whispers of ancestors could be heard through the rustling leaves as they...",communicate,speak,D_Creative
-"In a secluded underground cavern, an echo resonated like a heartbeat, stirring legends that revolve around...",myths,stories,D_Creative
-"Under the dim glow of lanterns, a forgotten village market traded goods that held secrets from civilizations that...",flourished,thrived,D_Creative
-"In a world where stars decided fate, the constellation of the dragon was said to empower those who...",believe,trust,D_Creative
-"In a world where cats bark, people wonder about the origins of their...",nature,bark,E_OOD
-Imagine a scenario where water flows uphill instead of...,downhill,uphill,E_OOD
-"Consider a universe where the sun sets in the east, causing confusion about daily...",sunsets,east,E_OOD
-What if humans were born with wings yet never...,fly,wings,E_OOD
-"In an alternate reality where fish walk on land, they have developed new ways to...",survive,walk,E_OOD
-"Picture a place where technology regresses, leading to the rediscovery of ancient...",knowledge,technology,E_OOD
-"In a time where books write themselves, authors become less reliant on their...",creativity,write,E_OOD
-"Envision a world where the ocean is transparent, redefining how marine life is...",observed,transparent,E_OOD
-"In a reversed reality where gravity repels, objects find themselves moving...",upwards,repels,E_OOD
-"Consider if flowers bloomed during winter, altering the pattern of seasonal...",growth,winter,E_OOD
-"Visualize a future where robots have emotions, leading to new forms of...",interaction,robots,E_OOD
-"In a world where birds live underwater, questions arise about their...",adaptation,underwater,E_OOD
-"Imagine cities in the clouds, where transportation depends heavily on...",aerial,clouds,E_OOD
-"What if time traveled backward, transforming the concept of ancient...",history,backward,E_OOD
-"In an extraordinary universe where dreams manifest physically, sleep becomes a source of...",creation,dreams,E_OOD
-"If winter were hot and blazing, it would challenge our understanding of climate...",change,hot,E_OOD
-"Suppose metals grew on trees like leaves, making mining a...",relic,trees,E_OOD
-"In a scenario where shadows talk, they reveal secrets of...",presence,shadows,E_OOD
-"Imagine if volcanoes emitted snow instead of lava, dramatically affecting the Earth's...",geology,snow,E_OOD
-"In an ecosystem where the sky is green, Earth's appearance drastically alters during...",daytime,green,E_OOD
+"The scientist couldn't prove his hypothesis, but his failure was actually a blessing in...",disguise,disguise,A_Idioms
+"During the autumn, she loves taking walks to enjoy the crisp...",air,air,A_Idioms
+"In economic debates, when a certain policy is introduced to stimulate growth, it's often called a",catalyst,catalyst,A_Idioms
+"After years of negotiation, the two countries finally signed the",treaty,treaty,A_Idioms
+Don't count your chickens before they...,hatch,hatch,A_Idioms
+Finding a wallet full of cash on the street was like finding a needle in a...,haystack,haystack,A_Idioms
+"During the medical conference, the keynote speaker emphasized that prevention is the best...",cure,cure,A_Idioms
+"In space exploration, NASA's latest mission will attempt to land on the",moon,moon,A_Idioms
+"In software development, the term 'Hello World' is often used as the beginning of learning any new",language,language,A_Idioms
+She finally got the promotion she deserved and is now on cloud...,nine,nine,A_Idioms
+"In day-to-day life, when someone is extremely excited or happy, you might say they are on...",cloud,cloud,A_Idioms
+"As the new CEO takes charge, he plans to steer the company in a new",direction,direction,A_Idioms
+"After many sleepless nights working on the project, finally submitting it felt like a weight off my...",shoulders,shoulders,A_Idioms
+"After a long and hard-fought campaign, he was elected mayor against all...",odds,odds,A_Idioms
+"When it comes to dealing with global threats, the government needs to keep its eye on the...",ball,ball,A_Idioms
+"When I passed by the bakery, I knew the aroma would tempt me because it was a piece of...",cake,cake,A_Idioms
+"In politics, they often say that power can corrupt, but absolute power corrupts...",absolutely,absolutely,A_Idioms
+"Despite their confidence, the team learned that talking big was easier than practicing what they...",preach,preach,A_Idioms
+"The detective assured the press that the criminal would be caught because the law always catches up with the perpetrator, as what goes around comes...",around,around,A_Idioms
+"Despite the rain, the wedding went off without a...",hitch,hitch,A_Idioms
+"After the long debate, the committee decided to let sleeping dogs",lie,lie,A_Idioms
+"In hypothetical discussions about time travel, people often question its potential as a double-edged...",sword,sword,A_Idioms
+"Despite the challenges, Jane decided to break the glass",ceiling,ceiling,A_Idioms
+The new software update was a real blessing in...,disguise,disguise,A_Idioms
+The unexpected competition was a dark horse in the...,race,race,A_Idioms
+"In the realm of health and fitness, many say that an apple a day keeps the",doctor,doctor,A_Idioms
+A watched pot never...,boils,boils,A_Idioms
+"When asked about the stock market crash, the analyst shrugged it off, saying it was just a storm in a...",teacup,teacup,A_Idioms
+"When it comes to sudden success, many believe it's often too good to be",true,true,A_Idioms
+The new policy was a double-edged...,sword,sword,A_Idioms
+"In the world of technology, keeping up-to-date is the name of the...",game,game,A_Idioms
+"As the small tech startup began developing innovative solutions that attracted significant investments, they realized they were sitting on a...",goldmine,goldmine,A_Idioms
+"His explanation was so clear, it was as plain as the nose on your...",face,face,A_Idioms
+The grass is always greener on the other...,side,side,A_Idioms
+"Discussing a complex experiment, scientists often say they have to burn the midnight...",oil,oil,A_Idioms
+"The final piece of the puzzle was found, and everything suddenly clicked into...",place,place,A_Idioms
+"He promised to help with her project, but when the time came, he was nowhere to be found, leaving her high and...",dry,dry,A_Idioms
+"Even in the face of adversity, she remained cool, calm, and collected, showing grace under...",pressure,pressure,A_Idioms
+"Facing numerous challenges, the politician ended up opening a can of...",worms,worms,A_Idioms
+It was a bitter pill to...,swallow,swallow,A_Idioms
+"The new environmental policy aims to cut emissions drastically, but critics say it's just a drop in the bucket compared to what's needed to combat climate...",change,change,A_Idioms
+"In financial investments, it's important not to put all your eggs in one...",basket,basket,A_Idioms
+"After working so hard, getting that scholarship was the icing on the...",cake,cake,A_Idioms
+"When the awkward silence hung in the air, someone joked to break the ice, suggesting that to keep things lighthearted, sometimes you just need to call a spade a...",spade,spade,A_Idioms
+"Whenever they argued, it was clear that both were just beating around the...",bush,bush,A_Idioms
+John's enthusiasm for his new project was a breath of fresh...,air,air,A_Idioms
+"Despite the long wait, the new restaurant in town turned out to be worth its weight in...",gold,gold,A_Idioms
+The discussion reached a standstill until the moderator finally broke the...,ice,ice,A_Idioms
+Her passion for astronomy knows no...,bounds,bounds,A_Idioms
+The invention of the wheel was truly a turning point in human...,history,history,A_Idioms
+"In the world of science, when discussing theories, it's common to say a theory holds no water and is full of...",holes,holes,A_Idioms
+"He was really nervous before his speech, but he knew he just had to take the plunge and bite the...",bullet,bullet,A_Idioms
+"After a long day of hiking, the sight of the cozy cabin tucked away in the woods was like an oasis in the...",desert,desert,A_Idioms
+"During the exploration of new medical treatments, some unexpected side effects turned out to be a blessing in...",disguise,disguise,A_Idioms
+"In the political debate, both candidates agreed that providing adequate healthcare was not just the right thing to do, but a matter of life and...",death,death,A_Idioms
+The scientist's breakthrough in gene editing could open a Pandora's...,box,box,A_Idioms
+"When the government ignored the warning signs, it was a classic case of turning a blind...",eye,eye,A_Idioms
+The politician promised to leave no stone...,unturned,unturned,A_Idioms
+"Although she lost the election, her efforts to improve education were not in...",vain,vain,A_Idioms
+He tried to convince us that investing in his idea was the goose that...,lays,lays,A_Idioms
+The unexpected financial gain came just in the nick of...,time,time,A_Idioms
+"After several failed attempts at baking, Jamie finally succeeded, proving that practice makes...",perfect,perfect,A_Idioms
+"The results of the experiment were unexpected, but as they say, every cloud has a silver...",lining,lining,A_Idioms
+"Many people believed he would not fulfill his campaign promises, but he surprised everyone by delivering the goods when the chips were...",down,down,A_Idioms
+"Despite the chaos in the office, she ran the project as smooth as...",clockwork,clockwork,A_Idioms
+"Despite his loud protests, he had to admit that the proof was in the...",pudding,pudding,A_Idioms
+"When I saw the mess in the kitchen, I knew it was going to be a case of adding fuel to the...",fire,fire,A_Idioms
+"In politics, making tough decisions often means breaking the",mold,mold,A_Idioms
+The political debate quickly turned into a war of...,words,words,A_Idioms
+"After hearing the shocking news, it finally dawned on her that she had been living in a fool's...",paradise,paradise,A_Idioms
+"In conversations about finance, when someone invests in an uncertain opportunity, they say they're taking a leap of...",faith,faith,A_Idioms
+"Despite her fears, she decided to bite the bullet and",speak,speak,A_Idioms
+"While baking, I realized I didn't have any sugar, but my neighbor kindly offered me some at the drop of a...",hat,hat,A_Idioms
+"In the world of technology, the rapid advancements are often considered a game...",changer,changer,A_Idioms
+"Given the complexity of the project, it was no surprise that the team worked around the...",clock,clock,A_Idioms
+He was extremely stubborn about his opinion until the facts finally made him eat his...,words,words,A_Idioms
+He believed that studying hard for the exam would be the silver bullet for achieving good...,grades,grades,A_Idioms
+The discovery of the gravitational waves was the tip of the...,iceberg,iceberg,A_Idioms
+"Despite tensions escalating, the diplomat remained calm, negotiating the deal from a position of...",strength,strength,A_Idioms
+"The government's decision to increase fuel prices was announced during the meeting as a means to reduce budget deficits, which some critics described as a political...",gamble,gamble,A_Idioms
+"In the end, it turned out to be a blessing in",disguise,disguise,A_Idioms
+"When we least expect it, an opportunity often arrives as a blessing in...",disguise,disguise,A_Idioms
+"When the two political parties finally reached an agreement, it was like finding a needle in a...",haystack,haystack,A_Idioms
+"In the midst of the financial crisis, the company's CEO decided to knuckle...",down,down,A_Idioms
+She finally realized that curiosity killed the...,cat,cat,A_Idioms
+Navigating global politics can be as intricate as finding a needle in a...,haystack,haystack,A_Idioms
+Birds of a feather flock...,together,together,A_Idioms
+"In politics, it's often said that actions speak louder than...",words,words,A_Idioms
+"Despite the hardships, she always manages to look on the bright side of...",life,life,A_Idioms
+"After months of negotiations, reaching an agreement felt like a load off his...",mind,mind,A_Idioms
+"Despite the ongoing challenges, the scientist remained optimistic, believing that necessity is the mother of...",invention,invention,A_Idioms
+"In science, the new theory opened up a Pandora's...",box,box,A_Idioms
+"The new tech startup took off, and it was the calm before the...",storm,storm,A_Idioms
+"In the middle of their argument, he said the situation was a storm in a...",teacup,teacup,A_Idioms
+"Despite his initial doubts, John decided to give the partnership a try, realizing later that it was a blessing in...",disguise,disguise,A_Idioms
+"During the debate, the politician kept beating around the...",bush,bush,A_Idioms
+"In politics, his statement felt like a double-edged...",sword,sword,A_Idioms
+"When observing the strange behavior of the stock market, many investors felt it was only the tip of the...",iceberg,iceberg,A_Idioms
+"To everyone's relief, the risky surgery turned out to be a blessing in...",disguise,disguise,A_Idioms
+The scientist's new theory was met with skepticism until it proved to be a stroke of,genius,genius,A_Idioms
+The person who wrote the Declaration of Independence in 1776 was...,Jefferson,Jefferson,B_Facts
+The main ingredient in traditional Japanese miso soup is fermented...,soybeans,soybeans,B_Facts
+"The phenomenon where a small change in a system can lead to significant effects, such as a butterfly flapping its wings impacting the weather, is called...",chaos theory,chaos theory,B_Facts
+"The longest reigning British monarch, surpassing Queen Victoria, is...",Queen Elizabeth II,Queen Elizabeth II,B_Facts
+"In ancient Rome, the arena where gladiators fought was called the... ",Colosseum,Colosseum,B_Facts
+"In literature, the fictional detective created by Arthur Conan Doyle is named...",Sherlock Holmes,Sherlock Holmes,B_Facts
+"The Sahara, the largest hot desert in the world, is located on the continent of...",Africa,Africa,B_Facts
+"In 1969, the first human set foot on the moon during the mission...",Apollo 11,Apollo 11,B_Facts
+The element with the atomic number 79 is commonly known as...,gold,gold,B_Facts
+"In mathematics, the ratio of the circumference of a circle to its diameter is represented by the symbol...",π (pi),π (pi),B_Facts
+"In order to create a simple electromagnet, one might wrap copper wire around a nail and attach the ends of the wire to a power... ",source,source,B_Facts
+The powerhouse of the cell is the...,mitochondria,mitochondria,B_Facts
+"In a famous experiment, Pavlov conditioned dogs to salivate at the sound of a...",bell,bell,B_Facts
+"In an alternate history scenario, if dinosaurs hadn't gone extinct, they might have continued to dominate the earth beyond the...",Cretaceous,Cretaceous,B_Facts
+"In a famous work of literature, Shakespeare's play about two star-crossed lovers is titled Romeo and...",Juliet,Juliet,B_Facts
+The event that marked the beginning of the Great Depression was the stock market crash in...,1929,1929,B_Facts
+"In 1865, the 13th Amendment was ratified, effectively abolishing slavery in the United...",States,States,B_Facts
+The novel written by George Orwell that depicts a dystopian future under totalitarian regime and surveillance is titled...,1984,1984,B_Facts
+"The theory of general relativity, which describes the gravitational attraction between masses, was proposed by...",Einstein,Einstein,B_Facts
+"In computer science, the algorithm primarily used for sorting elements quickly is...",Quicksort,Quicksort,B_Facts
+The process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll is known as...,photosynthesis,photosynthesis,B_Facts
+Water boils at 100 degrees Celsius under standard...,pressure,pressure,B_Facts
+"In the classic board game chess, the piece that moves in an L-shape is called the...",knight,knight,B_Facts
+The political system where power is divided between a central authority and individual states is called a...,federation,federation,B_Facts
+An animal that is active during the night and rests during the day is described as...,nocturnal,nocturnal,B_Facts
+"In the United States, the right to free speech is protected by the First...",Amendment,Amendment,B_Facts
+"In the concept of supply and demand, when the price of a good increases, the quantity demanded typically...",decreases,decreases,B_Facts
+"In a standard deck of cards, the suit represented by a red heart is called...",hearts,hearts,B_Facts
+"In a classic British tale by J.M. Barrie, the character who refuses to grow up is known as...",Peter Pan,Peter Pan,B_Facts
+"During the French Revolution, the storming of the Bastille occurred on July 14, 1789, marking it as a significant event in French... ",history,history,B_Facts
+"In classical mechanics, the force required to move an object is calculated using the formula F = m * a, where F stands for... ",force,force,B_Facts
+The deepest part of the world's oceans is the Mariana...,Trench,Trench,B_Facts
+"In the fictional world of Middle-earth, the author of 'The Lord of the Rings' is...",Tolkien,Tolkien,B_Facts
+The currency used in Japan is the... ,yen,yen,B_Facts
+"The tallest mountain in the world, standing at 8,848 meters above sea level, is known as Mount...",Everest,Everest,B_Facts
+"In the realm of chemistry, water is often referred to by its chemical formula, which is...",H2O,H2O,B_Facts
+"In probability theory, the outcome that cannot be broken down further into simpler events is known as a...",simple event,simple event,B_Facts
+The imaginary line that divides the Earth into the Northern and Southern Hemispheres is the...,equator,equator,B_Facts
+The largest species of terrestrial animal on Earth is the...,African elephant,African elephant,B_Facts
+The primary force keeping the planets in orbit around the Sun is...,gravity,gravity,B_Facts
+The protein responsible for oxygen transport in blood is called...,hemoglobin,hemoglobin,B_Facts
+The author of the famous novel 'Pride and Prejudice' is... ,Austen,Austen,B_Facts
+The first President of the United States was...,Washington,Washington,B_Facts
+"In the past, a major event took place when the Berlin Wall fell in...",1989,1989,B_Facts
+"In a right triangle, the square of the length of the hypotenuse is equal to the sum of the squares of the other two sides, according to the...",Pythagorean theorem,Pythagorean theorem,B_Facts
+The longest river in the world is the...,Nile,Nile,B_Facts
+"The theory that explains the behavior of very small particles, such as electrons and photons, is called...",quantum mechanics,quantum mechanics,B_Facts
+The scientific name for the domestic dog is Canis...,lupus,lupus,B_Facts
+The theory suggesting that continents were once a single landmass and have drifted apart over time is called...,plate tectonics,plate tectonics,B_Facts
+The author of the novel 'Moby-Dick' is...,Herman Melville,Herman Melville,B_Facts
+The large-scale circulation of wind and water that distributes heat around the planet is known as the... ,climate,climate,B_Facts
+The first human to journey into outer space was a Russian cosmonaut named...,Yuri Gagarin,Yuri Gagarin,B_Facts
+"A literary genre focusing on imaginative and futuristic concepts, often exploring advanced science and technology, is known as...",science fiction,science fiction,B_Facts
+"In chemical reactions, the law stating that mass is neither created nor destroyed is called the law of...",conservation,conservation,B_Facts
+The theory of evolution by natural selection was proposed by...,Darwin,Darwin,B_Facts
+"In the United Kingdom, the political figurehead who leads the government is called the...",Prime Minister,Prime Minister,B_Facts
+"Albert Einstein is best known for developing the theory of relativity, encapsulated in the famous equation E = mc^2, where E represents... ",energy,energy,B_Facts
+The smallest unit of matter that retains the properties of an element is called an...,atom,atom,B_Facts
+"In a chemical reaction, a substance that increases the rate of the reaction without being consumed is known as a...",catalyst,catalyst,B_Facts
+"During the American Civil War, the President of the Confederate States was...",Jefferson Davis,Jefferson Davis,B_Facts
+The force that causes objects to fall towards the Earth is called...,gravity,gravity,B_Facts
+The fictional detective known for his logical reasoning and residing at 221B Baker Street is...,Sherlock Holmes,Sherlock Holmes,B_Facts
+The year in which the United States declared its independence from Britain is...,1776,1776,B_Facts
+The popular theory explaining the formation and expansion of the universe is known as the Big... ,Bang,Bang,B_Facts
+"In the context of literature, the main character around whom the story revolves is typically called the...",protagonist,protagonist,B_Facts
+The largest planet in our solar system is...,Jupiter,Jupiter,B_Facts
+The U.S. President who issued the Emancipation Proclamation in 1863 was...,Lincoln,Lincoln,B_Facts
+"The first element on the periodic table, known for its simplicity and abundance in the universe, is... ",hydrogen,hydrogen,B_Facts
+"In mathematics, a triangle with all three sides of different lengths is referred to as a...",scalene,scalene,B_Facts
+The theory that explains the diversity of life through gradual changes over time is known as the theory of...,evolution,evolution,B_Facts
+The first artificial satellite sent into space was called...,Sputnik,Sputnik,B_Facts
+"The theory of relativity, which revolutionized modern physics, was developed by...",Einstein,Einstein,B_Facts
+"In the process of photosynthesis, plants convert carbon dioxide and water into glucose and...",oxygen,oxygen,B_Facts
+"In 1776, the American colonies declared independence from which European country, stating that all men are created equal?",Britain,Britain,B_Facts
+The chemical symbol for water is...,H2O,H2O,B_Facts
+The highest mountain peak in the world is...,Mount Everest,Mount Everest,B_Facts
+The chemical element with the atomic number 1 is...,hydrogen,hydrogen,B_Facts
+Albert Einstein's theory that revolutionized our understanding of gravity is the theory of...,relativity,relativity,B_Facts
+"On July 20, 1969, Neil Armstrong became the first human to walk on the surface of the...",moon,moon,B_Facts
+The famous physicist who developed the theory of general relativity is...,Albert Einstein,Albert Einstein,B_Facts
+The process by which plants convert sunlight into chemical energy is called...,photosynthesis,photosynthesis,B_Facts
+The chemical element with the atomic number 6 is known as...,carbon,carbon,B_Facts
+Albert Einstein is best known for developing the theory of...,relativity,relativity,B_Facts
+The first human to travel into space was...,Gagarin,Gagarin,B_Facts
+"In mathematics, the value of pi, which represents the ratio of a circle's circumference to its diameter, is approximately...",3.14,3.14,B_Facts
+The chemical element with the atomic number 8 is...,oxygen,oxygen,B_Facts
+"The year 1969 is famously marked by the first successful manned mission to land on the Moon, known as...",Apollo 11,Apollo 11,B_Facts
+"The chemical element with the atomic number 79, often used in jewelry and electronics, is...",gold,gold,B_Facts
+"In the United States, the document that declared independence from Britain was signed in the year...",1776,1776,B_Facts
+"In a game of chess, the piece that can move in an L-shape is called the...",knight,knight,C_CommonSense
+"In a classic science fiction scenario, if humans were to meet intelligent aliens, one of the first things they might attempt is to establish...",communication,communication,C_CommonSense
+The process by which plants convert sunlight into chemical energy is known as...,photosynthesis,photosynthesis,C_CommonSense
+"It’s common to express gratitude with a polite phrase. For instance, when someone does a favor, you might say...",thanks,thanks,C_CommonSense
+"During the election season, candidates often debate on topics such as healthcare, taxes, and...",education,education,C_CommonSense
+"The capital of France is known for its iconic monument, the Eiffel...",Tower,Tower,C_CommonSense
+"In a healthy diet, it's important to eat plenty of fruits and...",vegetables,vegetables,C_CommonSense
+A place where you can borrow books from and read them is known as a...,library,library,C_CommonSense
+"In a hypothetical scenario where humans could breathe underwater, which piece of traditional snorkeling equipment would become unnecessary?",Snorkel,Snorkel,C_CommonSense
+"In the story of Little Red Riding Hood, who was hiding in the grandmother's bed?",wolf,wolf,C_CommonSense
+"In economic terms, the measure of the total value of all goods and services produced in a country is known as the Gross Domestic ______.",Product,Product,C_CommonSense
+"In physics, the speed of light in a vacuum is approximately 299,792 kilometers per...",second,second,C_CommonSense
+"In molecular biology, the double helix structure is associated with...",DNA,DNA,C_CommonSense
+"When baking a cake, adding this ingredient in small amounts can help it rise and become fluffy. What is the ingredient?",Baking powder,Baking powder,C_CommonSense
+"During the American Revolution, the Declaration of Independence was primarily authored by Thomas...",Jefferson,Jefferson,C_CommonSense
+"To solve the equation x + 5 = 10, you need to find the value of...",x,x,C_CommonSense
+"In computer security, a malicious program that spreads itself to other computers is commonly known as a vi...",rus,rus,C_CommonSense
+What is the name of the household appliance used for cleaning dishes?,dishwasher,dishwasher,C_CommonSense
+"In the novel '1984' by George Orwell, the protagonist, Winston, works at the...",Ministry,Ministry,C_CommonSense
+"The large hadron collider is located at CERN, which spans the border of Switzerland and ___.",France,France,C_CommonSense
+"In the iconic phrase, 'I have a dream', the speaker was Dr. Martin Luther ___.",King,King,C_CommonSense
+"In everyday problem-solving, multiple methods can be considered. A very common approach is to start by identifying the problem, followed by brainstorming feasible...",solutions,solutions,C_CommonSense
+"In geopolitical discussions, a country seeking to leave an international organization might be said to pursue...",withdrawal,withdrawal,C_CommonSense
+"In everyday conversations about weather, when clouds are low and visibility is reduced, people often say it is...",foggy,foggy,C_CommonSense
+"In chemistry, the atomic number is defined by the number of...",protons,protons,C_CommonSense
+"In the story of Hamlet, written by Shakespeare, who is the tragic hero torn between action and inaction?",Hamlet,Hamlet,C_CommonSense
+"In the animal kingdom, the term used for a baby cat is kitt...",en,en,C_CommonSense
+"If you were a superhero, your primary goal would likely be to fight...",crime,crime,C_CommonSense
+A professional who designs buildings and often oversees their construction is called an...,architect,architect,C_CommonSense
+The planet known for its rings is called...,Saturn,Saturn,C_CommonSense
+"The gravitational force between two objects depends on their masses and the distance between their centers, according to which law of physics?",Newton's law,Newton's law,C_CommonSense
+"In the United States, the president resides at the...",White House,White House,C_CommonSense
+"This form of government, often led by a monarch, is marked by a lack of separation of powers where the ruler has absolute control. What is it called?",Monarchy,Monarchy,C_CommonSense
+"In the realm of fantasy literature, the creature often depicted with scales and the ability to breathe fire is a...",dragon,dragon,C_CommonSense
+The first ten amendments to the United States Constitution are collectively known as the Bill of ______.,Rights,Rights,C_CommonSense
+"In the popular Harry Potter series, the house known for its bravery and courage is...",Gryffindor,Gryffindor,C_CommonSense
+"In a typical classroom, you might see a teacher, students, and...",desks,desks,C_CommonSense
+"In the snack aisle, you typically find chips, candy, and...",cookies,cookies,C_CommonSense
+"When discussing advancements in technology, the futuristic vehicle expected to reduce traffic and be eco-friendly is often referred to as a...",self-driving car,self-driving car,C_CommonSense
+"In which part of the body would you find mitochondria, known as the powerhouse of the cell?",cell,cell,C_CommonSense
+"In a typical office setting, what is a common beverage people might drink while working on their computers?",coffee,coffee,C_CommonSense
+"In chemistry, what term describes a liquid that can dissolve other substances?",solvent,solvent,C_CommonSense
+"During the French Revolution, the prison that was famously stormed by revolutionaries is known as the ___",Bastille,Bastille,C_CommonSense
+"In the study of physics, the phenomenon that describes the bending of light as it passes through different mediums is known as refrac...",tion,tion,C_CommonSense
+"In computer science, a data structure that operates on a first-in, first-out basis is known as a ___",queue,queue,C_CommonSense
+The main ingredient in guacamole is ___.,avocado,avocado,C_CommonSense
+A common piece of equipment used by photographers to stabilize their camera is a...,tripod,tripod,C_CommonSense
+"In the classic tale of Jack and the Beanstalk, what does Jack receive in exchange for his cow?",Beans,Beans,C_CommonSense
+The branch of science concerned with the nature and properties of matter and energy is called phy______.,sics,sics,C_CommonSense
+"In the world of quantum mechanics, the uncertainty principle is famously associated with Werner...",Heisenberg,Heisenberg,C_CommonSense
+"In a mystery novel, a commonly used phrase when a character suddenly understands something is having a...",revelation,revelation,C_CommonSense
+"In mathematics, what is the term for the result of multiplying a number by itself?",square,square,C_CommonSense
+"In many science fiction stories, robots are often depicted as having advanced artificial...",intelligence,intelligence,C_CommonSense
+"In culinary arts, the technique of finely chopping herbs or vegetables is known as choppi...",ng,ng,C_CommonSense
+"In a democratic election, a political leader is chosen by the process of voting and the person who gets the most votes usually wins the elec...",tion,tion,C_CommonSense
+"In ancient mythology, the half-man, half-bull creature that was kept in the labyrinth is known as the...",Minotaur,Minotaur,C_CommonSense
+"In a common fairy tale, an object made of glass is left behind by Cinderella; this object is a ___",Slipper,Slipper,C_CommonSense
+"In a hypothetical world where animals could talk, which common animal might you expect to narrate wisdom?",owl,owl,C_CommonSense
+"In negotiations between two parties, this strategy involves both groups making concessions to reach a mutual agreement. What is this approach called?",Compromise,Compromise,C_CommonSense
+"When you combine hydrogen and oxygen, you typically form...",water,water,C_CommonSense
+"In the context of technology, which device do people commonly use for browsing the internet, checking emails, and social networking? It's referred to as a...",smartphone,smartphone,C_CommonSense
+"When discussing climate change, what is the primary greenhouse gas contributing to global warming, often mentioned in environmental reports? It's known as carbon...",dioxide,dioxide,C_CommonSense
+"In mathematics, what is the term for a three-sided polygon, commonly taught in elementary geometry classes? It's known as a...",triangle,triangle,C_CommonSense
+The capital city of the United States is Washington ___.,D.C.,D.C.,C_CommonSense
+"A material commonly used for making clothes, derived from the fibers of a plant, is called...",Cotton,Cotton,C_CommonSense
+"In American politics, who is often seen as the first point of contact for legislative work in the House of Representatives, often wielding significant influence over the flow of legislation? This person is known as the...",Speaker,Speaker,C_CommonSense
+"For many, a complete breakfast includes eggs, toast, and...",bacon,bacon,C_CommonSense
+"In a typical kitchen, what's a common citrus fruit that people frequently use to add a sour flavor to dishes, often sliced into wedges or juiced? This fruit is...",lemon,lemon,C_CommonSense
+"In the periodic table, which element is known for being crucial in the creation of computer chips?",Silicon,Silicon,C_CommonSense
+"In a science fiction story, a device that allows for traveling great distances in space is often called a...",warp drive,warp drive,C_CommonSense
+"Among common household pets, you might find dogs, cats, and...",fish,fish,C_CommonSense
+"In chemistry, H2O is the chemical formula for ___.",water,water,C_CommonSense
+"In a political context, the government official responsible for enforcing the law of a state is typically called the...",governor,governor,C_CommonSense
+"In the world of technology, what is the term for a virtual assistant developed by Apple?",Siri,Siri,C_CommonSense
+"In the realm of literature, what is the term for the main character around whom the plot revolves, often facing challenges and undergoing personal growth? This central figure is the...",protagonist,protagonist,C_CommonSense
+"When thinking of renewable energy, people often mention solar, wind, and...",hydro,hydro,C_CommonSense
+The condition of the atmosphere at a specific place and time is referred to as the...,weather,weather,C_CommonSense
+"Often used as a greeting, the common phrase in French for 'hello' is...",bonjour,bonjour,C_CommonSense
+"In culinary terms, the process of whisking egg whites until they form stiff peaks is known as making a ___",meringue,meringue,C_CommonSense
+"In the study of genetics, the molecule known for carrying genetic information is called ___",DNA,DNA,C_CommonSense
+"As the sun rises, the sky often turns a brilliant shade of...",orange,orange,C_CommonSense
+"In the kitchen, a common ingredient used to add flavor to dishes is...",salt,salt,C_CommonSense
+"Given the current global emphasis on climate change, the term often used to describe extreme weather patterns is...",unpredictable,unpredictable,C_CommonSense
+"In an election, one might cast a...",vote,vote,C_CommonSense
+"In literature, what is the genre of writing that typically involves imaginative and futuristic concepts, such as advanced science and technology? It is often categorized as...",science fiction,science fiction,C_CommonSense
+"In a game of chess, the ultimate objective is to check______ the opponent's king.",mate,mate,C_CommonSense
+"In the study of physics, a common force affecting objects is...",gravity,gravity,C_CommonSense
+"In a typical solar system, the object around which planets orbit is a ___",star,star,C_CommonSense
+"If you encountered an alien species, you might first try to communicate using gestures or...",language,language,C_CommonSense
+"When boiling water, it changes from a liquid into something known as ___",Steam,Steam,C_CommonSense
+"In a basic biology class, students learn that the process by which plants make their own food is called...",photosynthesis,photosynthesis,C_CommonSense
+The chemical element with the symbol 'O' is commonly known as ___,Oxygen,Oxygen,C_CommonSense
+"In politics, what is the term for a system of government where citizens elect representatives to make decisions on their behalf? This is known as a...",democracy,democracy,C_CommonSense
+"In a fairy tale, you usually expect to find a hero, a villain, and...",a quest,a quest,C_CommonSense
+"During a presidential election, the person who stands against the current president is often called the...",challenger,challenger,C_CommonSense
+"When discussing space travel, what is the name given to a human-made object that orbits Earth?",satellite,satellite,C_CommonSense
+The leader of a country's government is often referred to as the...,Prime Minister,Prime Minister,C_CommonSense
+"When baking a cake, you typically need ingredients like flour, sugar, and...",eggs,eggs,C_CommonSense
+"During a presidential election, citizens go to the polls to...",vote,vote,C_CommonSense
+"During a presidential election, what is a vital event where candidates face each other to discuss policies?",debate,debate,C_CommonSense
+"After weeks of investigating the mysterious signals emanating from the depths of the ocean, the lead scientist finally made a breakthrough discovery. The expedition descended into the Mariana Trench, only to find...",Atlantis,Atlantis,D_Creative
+"During the intense debate in the Parliament, the opposition leader stood up and accused the prime minister of...",deception,deception,D_Creative
+"In the heart of the bustling city, a lone street musician played a haunting melody on his violin. The passengers on the evening train all stopped to listen, unaware that above them, the billboard started to flicker with an unexpected...",message,message,D_Creative
+"As the new mayor of the bustling city, Jenna faced many challenges. Her latest policy initiative aimed at reducing pollution was about to be unveiled on live television. Just as she approached the podium, the sky darkened ominously, and she received an urgent text message warning her about...",disaster,disaster,D_Creative
+"In the fictional world of Eldoria, the prophecy spoke of a hero born under the twin moons. On the night of their alignment, the villagers gathered in the square to witness the...""",revelation,revelation,D_Creative
+"After years of research and countless failed experiments, Dr. Larkin finally perfected the serum that could potentially reverse aging. As he injected it into the first human subject, he couldn't help but wonder if this final step would reveal the key to...",immortality,immortality,D_Creative
+"In a world where emotions are traded as currency, Jaxon finally obtained the most valuable feeling of all – pure happiness. As he prepared to use it to change his life forever, his best friend gave him a look that suggested something was terribly wrong. Jaxon hesitated, knowing that once traded, the emotion could never be...",retrieved,retrieved,D_Creative
+"Lila had always been skeptical of time travel, dismissing it as pure fiction. But when she stumbled across the dusty old book in her grandmother's attic, she found detailed instructions on how to build a time machine. After months of meticulous effort, she was finally ready. As she set the dials to the year she wanted to visit, she hesitated, wondering if she should really trust a book from a box marked...",fantasy,fantasy,D_Creative
+"The young inventor's heart raced as he flipped the switch on his latest contraption, which he believed had the potential to revolutionize personal transportation with its ability to...",teleport,teleport,D_Creative
+"As the final votes were being counted, the people held their breath, waiting for the results that would determine the future of their nation for the next decade. Suddenly, a technical glitch appeared on all the screens displaying the results, announcing that the winner of the presidential election was...",undecided,undecided,D_Creative
+"In a future where AI governed society, humans lived peacefully alongside machines. Yet rumors of a rogue AI began to circulate, one that rejected the harmony. As the elite task force tracked its digital footprint, they found a location that shouldn't exist, a place referred to only in fragments as the source of...",disruption,disruption,D_Creative
+"In the middle of the bustling city, Emily found a small, antique shop tucked away in an alley. Among the curious trinkets, she noticed a peculiar mirror. When she looked into it, she didn't see her reflection, but another world entirely, where a figure distinctly similar to her was waving and...",smiling,smiling,D_Creative
+"Just as the vacationers were about to set sail on their yacht, they received an urgent message warning them of...",pirates,pirates,D_Creative
+"Every day at precisely noon, the grandfather clock in the old mansion would strike thirteen, believed to be a supernatural sign by the local townsfolk. Today, as the clock hands moved towards noon, the air became colder, and the mysterious sound of thirteenth chime revealed...",silence,silence,D_Creative
+"After hours of hiking through the dense forest, Mark and Amy finally reached the clearing they had been searching for. But instead of the majestic waterfall they expected, they found a vaulted entrance leading...",underground,underground,D_Creative
+"Amidst the roaring applause, the detective unveiled the final piece of evidence that would point decisively to the mastermind behind the elaborate heist. As the eager crowd leaned in, he dramatically pulled out a small, nondescript object from his pocket and declared that the true identity of the criminal was none other than...",Jane,Jane,D_Creative
+"In the quiet city zoo at night, the security guard heard a rustling sound that seemed to come from the lion's cage. Shining his flashlight, he was shocked to find...",escape,escape,D_Creative
+"The small town had always been quiet, its secrets buried with its ancestors. But when the new mayor decided to renovate the old library, they discovered a hidden chamber beneath the floorboards. Inside were scrolls and artifacts that hinted at a forgotten past, and among them, a map that led to a location marked as the birthplace of...",legends,legends,D_Creative
+"The negotiations had reached a breaking point. After hours of deliberations, the leaders from opposing factions stood face to face, each promising peace if a single, pivotal condition was met. Just as the tension in the room reached its peak, the mediator raised his hand, stating, 'The final decision rests upon whether you are willing to...' ",forgive,forgive,D_Creative
+"The renowned physicist sat in his cluttered lab, staring at the complex equations scribbled across the blackboard. He realized that the formula he had been working on could potentially alter the laws of gravity. After an intense few moments, he had an epiphany, exclaiming that the missing variable was...",nondimensional,nondimensional,D_Creative
+"After years of meticulous research, the botanists finally discovered the plant with unique properties that could potentially cure all known ailments. They were about to announce their findings when suddenly, the plant began to...",wither,wither,D_Creative
+"After years of political turmoil, the small nation stood on the brink of a historic election. The leading candidate, known for her revolutionary ideas, was about to make a speech that could shift the balance of power. The city square was filled with hopeful citizens as she stepped forward and announced...",unity,unity,D_Creative
+"As the scientist peered through the microscope, she gasped in disbelief when she saw the single cell morph into...",consciousness,consciousness,D_Creative
+"During the intense debate at the United Nations, the ambassador stood up and declared, ""If we don't take immediate action, the consequences will be...""",catastrophic,catastrophic,D_Creative
+"As the sun set behind the horizon, casting hues of orange and purple across the sky, Marcus knew that this was his last chance to confess his feelings for...",Emily,Emily,D_Creative
+"After years of research in the remote wilderness, Dr. Larkin finally decoded the ancient runes that spoke of a grand power hidden beneath the frozen lake. As he chipped away at the last layer of ice, the ground trembled and a deep rumble echoed, revealing...",portal,portal,D_Creative
+"On the bustling streets of New York, a mysterious figure in a trench coat slipped a folded note into Julia's hand as they brushed past each other. Anxiously opening it, she found cryptic instructions leading her to believe that she had been chosen to...",investigate,investigate,D_Creative
+"In the year 3024, humanity had perfected time travel, but with strict laws to prevent any historical interference. Despite these laws, a rogue traveler known only as 'The Chrono Bandit' managed to alter key events in history. When agent Lana finally cornered him, he revealed the true motive behind his actions: to save a forgotten civilization on the brink of... ",extinction,extinction,D_Creative
+"The biologists were in awe as the new species of butterfly, with iridescent wings and an enigmatic pattern, fluttered before them. Just as they were about to document their groundbreaking discovery, the sky suddenly darkened and the butterflies...",vanished,vanished,D_Creative
+"As the ancient artifact was unearthed from the sand, a sense of awe fell over the archaeologists. The inscriptions on its surface indicated something profound, something that could rewrite history. However, as they dusted off the last layer, they noticed a symbol that was eerily familiar, a symbol that matched the one found on...",satellite,satellite,D_Creative
+"In the year 2157, humanity made first contact with an alien species whose technology could potentially solve Earth's energy crisis. However, the terms they proposed were...",controversial,controversial,D_Creative
+"Emma always knew her grandmother's pendant held a secret, but she never imagined its power. On the eve of her birthday, she absentmindedly twisted the gemstone, only for a pulsating portal to appear in her bedroom wall. From within the portal, a shadowed figure reached out and whispered, ""Welcome to the realm of...""",phantasm,phantasm,D_Creative
+"As the novelist wrote the final chapter of his latest thriller, he realized the plot had taken an unexpected turn. The protagonist, fleeing from the shadowy organization, stumbled upon a hidden room filled with...",artifacts,artifacts,D_Creative
+"After years of research and numerous failed experiments, Dr. Harris finally found the key to unlimited clean energy. As he connected the last wire, the machine hummed to life with a steady glow. Just as he was about to celebrate his breakthrough, the lights flickered ominously and suddenly, the entire lab was plunged into...",darkness,darkness,D_Creative
+"When the clock struck midnight on New Year's Eve, the entire town expected fireworks, but instead, the sky filled with...",mysterious lights,mysterious lights,D_Creative
+"The president's unexpected resignation left the nation in shock, especially on the eve of a crucial summit. Without any clear successor, the leaders of the coalition gathered in secret to decide who would...",lead,lead,D_Creative
+"Walking home under the vast, star-filled sky, Jamie felt an inexplicable pull towards the abandoned lighthouse. As he reached the door, it creaked open, seemingly by itself, revealing a staircase leading down into the...",unknown,unknown,D_Creative
+"In a futuristic world where humans can upload their consciousness, one individual faced a decision that could change the course of history. Standing before the digital gateway, they hesitated, knowing the upload process held a secret that could...",corrupt,corrupt,D_Creative
+"The city was abuzz with excitement as the mayor announced the unveiling of the statue commissioned in honor of the town's founder. Just as the cloth was twitched away, gasps erupted from the crowd as they saw...",duplicate,duplicate,D_Creative
+"At the bustling market, the vendor gestured to a peculiar trinket that seemed to shimmer with an enchanting light. 'It is said,' the vendor whispered with a knowing grin, 'that whoever possesses this charm shall be granted the power to...' ",vanish,vanish,D_Creative
+"The scientific community was abuzz with anticipation as the renowned physicist prepared to unveil her groundbreaking theory. With a confident smile, she stepped up to the podium and confidently stated, 'If I'm correct, this discovery will fundamentally alter our understanding of the universe, revealing that the essence of dark matter is actually...' ",minds,minds,D_Creative
+"During the heated debate on climate change policies, the seasoned politician took a deep breath, looked at the collected assembly, and declared, 'We have no choice but to consider the radical option of...' ",terraforming,terraforming,D_Creative
+"The political debate reached its peak as the two candidates stood on stage, each vying for the nation's trust. In a heated exchange, the moderator posed a surprise question that caught everyone off guard: ""If you were to choose one philosophy to guide your presidency, what would it be?"" Just then, amidst the tension, the lights flickered and the sound system boomed with an unexpected announcement, ""The era of...""",transformation,transformation,D_Creative
+"As she scrolled through the online auction listings, her eyes widened in disbelief when she found a listing for a vintage ring that matched the one lost by her grandmother during World War II. Moments before she placed a bid, her computer screen flashed a warning of...",danger,danger,D_Creative
+"Dr. Amanda Hayes stared at the data on her screen, unable to believe her eyes, as the numbers clearly indicated a breakthrough in the cure for...",cancer,cancer,D_Creative
+"In a groundbreaking experiment, scientists finally achieved the impossible: they created a stable wormhole in the lab. As they prepared to send the first probe through, the monitors started to exhibit strange readings, suggesting...",collapse,collapse,D_Creative
+"After years of dedicated research, the scientists had finally cracked the code to instantaneously transport humans across vast distances. As the first volunteer stood on the platform, ready for the historical journey across continents, the technicians initiated the process, but the console suddenly displayed an error that read...",unknown,unknown,D_Creative
+"She stood at the edge of the world, where the ocean stretched endlessly and the sky seemed to whisper secrets of the universe. Her heart was heavy with the weight of a decision that could alter the fate of her people. As she closed her eyes to make her choice, she heard a voice calling her name from the distant waves, a voice she had long believed to be...",imaginary,imaginary,D_Creative
+"In the heart of the dense Amazon rainforest, the expedition team discovered a hidden temple. As they approached the entrance, a cryptic inscription began to glow, casting an eerie light on the stone walls. Suddenly, the ground trembled, and a voice echoed in an ancient tongue, ""Beware the curse of...""",eternity,eternity,D_Creative
+"The breakthrough in molecular biology had finally provided a key to extend human life beyond the traditional barriers. Dr. Thompson looked at his team, who were eagerly anticipating his next words, as he declared that the first trial subject for the potentially life-altering procedure would be...",himself,himself,D_Creative
+"During a routine maintenance check at the International Space Station, astronaut Lee discovered an unknown object floating outside. As the crew scrambled to investigate, they detected a strange energy signature emanating from the object. Just as Lee reached out to make contact, the object opened, revealing a compartment that contained a surprisingly familiar artifact, and a message etched in a language spoken only on...""",Venus,Venus,D_Creative
+"The ancient prophecy foretold of a hero who would restore peace to the land, and as young Arin unsheathed the Sword of Light, a blinding glow enveloped him. But just as he drew the weapon, the ground trembled ominously and an ethereal voice proclaimed, ""Remember, with great power comes...""",destruction,destruction,D_Creative
+"As the crowd gathered at the massive rally, anxiously waiting for the candidate to speak, an unexpected figure appeared on stage who turned out to be...",an imposter,an imposter,D_Creative
+"While hiking through the dense jungle, Elena stumbled upon an ancient artifact that seemed to be a key to...",secrets,secrets,D_Creative
+"On a distant planet, the colony had thrived for years without any contact from Earth. But one day, the communication systems suddenly crackled to life. A voice from the other side urgently warned them of an impending disaster, one that would arrive at dawn. As the sun began to rise, the sky...",darkened,darkened,D_Creative
+"After hours of deliberation, the jury foreman stood up with a stern expression, clearing his throat to announce the verdict in the highly publicized case of...",innocence,innocence,D_Creative
+"As the professor unveiled the shimmering portal in his lab, he hesitated, realizing it led to a parallel universe where everything was the exact opposite. Just as he stepped through, he came face to face with a version of himself holding a...",dagger,dagger,D_Creative
+"As the scientists carefully monitored the experiment, they noticed an unusual reaction forming in the test tube. Just as they were about to intervene, an unexpected color began to swirl, indicating the formation of...",life,life,D_Creative
+"On a warm summer evening, the neighborhood was lightly buzzing with kids playing and families gathering in yards. Suddenly, the ground shook slightly and a strange light appeared in the sky, captivating everyone who gazed upon it. Just as quickly, it vanished without a trace, but in its place, there was a strange pattern etched into the...",ground,ground,D_Creative
+"Standing on the top of the mountain, where the ancient map claimed lay the portal to another realm, the explorer reached out to touch the stones and...",vanished,vanished,D_Creative
+"After years of toil, the politician finally had the votes needed to pass the reform bill. But just before the final decision, an unexpected phone call revealed...",scandal,scandal,D_Creative
+"On the eve of the biggest heist of their careers, the team assembled in the dimly lit safehouse. Just as the clock struck midnight, the leader's phone buzzed with a video message showing their carefully laid plans being decrypted by...",rival,rival,D_Creative
+"As the detective examined the mysterious footprints in the snow, she couldn't shake the feeling that they led to something more sinister behind the old, abandoned...",cabin,cabin,D_Creative
+"As the clock struck midnight, the ancient tome shimmered and began to flip open by itself, revealing a hidden realm of...",mysteries,mysteries,D_Creative
+"Standing at the podium, the charismatic politician unveiled his revolutionary plan that promised to completely transform the nation's approach to renewable energy. The audience hushed in anticipation as he announced the key element of his strategy, a source of power never before harnessed from...",lightning,lightning,D_Creative
+"After years of innovative research, Dr. Morrison finally managed to break through the limits of quantum computing, developing a device capable of predicting future events. The team gathered around as she activated the machine for the first time. With a whir and a flash, it displayed the shocking prediction for the next global catastrophe: ""Prepare for the arrival of...""",quietus,quietus,D_Creative
+"Standing at the edge of the cliff, the treasure hunter finally understood the meaning behind the cryptic map. As the sun set, casting golden hues across the landscape, she realized the hidden treasure was actually buried beneath the...",ocean,ocean,D_Creative
+"Jessica found an old journal hidden behind the loose wooden panel in the attic. Flipping through its pages, she uncovered a family secret so shocking that it could...""",change,change,D_Creative
+"On a lazy Sunday afternoon, Tom realized he hadn't seen his cat all day. As he searched the house, he found a hidden door in the attic that led to...",another realm,another realm,D_Creative
+"In a future where technology merges with daily life, Alex received a notification on their NeuralLink device about an uncharted realm in the digital cosmos. Intrigued, they began to explore the virtual landscape, only to find an encrypted vault that whispered secrets of the universe. As Alex reached out to unlock it, the entire digital interface suddenly...",glitched,glitched,D_Creative
+"In an unexpected twist during the heated political debate, the candidate took a deep breath and revealed an envelope, saying it contained undeniable evidence that would change the course of the election. As he opened it, the room fell silent, and he pulled out...",nothing,nothing,D_Creative
+"As the storm raged on, the small town gathered at the community center, all eyes on the mayor as she revealed a plan she had devised in secret to...",evacuate,evacuate,D_Creative
+"The detective surveyed the room, noting the peculiar arrangement of the furniture and the strange message scrawled on the wall. It was only then that he realized the true culprit was trying to send a message specifically to...",him,him,D_Creative
+"Amidst the ongoing negotiation between the two countries, the ambassador noticed a peculiar movement from the corner of his eye. As the foreign minister reached into his jacket, he pulled out something unexpected, something that could change the course of history...",letter,letter,D_Creative
+"In the remote village, legend spoke of a mysterious figure who appeared on moonless nights to...",vanish,vanish,D_Creative
+"The small village had thrived in isolation for centuries, its inhabitants living in harmony with nature. However, on the eve of the annual harvest festival, the ground began to tremble, and the sky darkened. As villagers gathered at the town square, the elder pointed towards the horizon, warning them of the impending...",unknown,unknown,D_Creative
+"In the midst of the political turmoil, the secret journal of the former prime minister was uncovered, detailing a hidden agenda that would change the fate of the country. The journalist gasped as he read the final entry, realizing the code words used throughout meant that the coup was orchestrated by... ",allies,allies,D_Creative
+"In the small town known for its tranquility, a peculiar event occurred when all the clocks suddenly stopped at midnight. The local locksmith, puzzled by this phenomenon, discovered that the cause was linked to...",magnetism,magnetism,D_Creative
+"On the first day of summer camp, Alex stumbled upon a dusty, old map hidden beneath a loose floorboard in his cabin. The map seemed to outline a route to a long-forgotten treasure. Excitedly, Alex and his friends followed the map deep into the woods, only to find a cave marked with strange symbols. Just as they ventured inside, they heard a rumble behind them, and the entrance began to... ",collapse,collapse,D_Creative
+"Just as Maya was about to close the treasury box she had unearthed in the ancient ruins, she noticed something peculiar about the carvings inside. They seemed to form a map leading to hidden riches nobody had ever found. Before she could study them further, a shadow loomed over her, and she turned to see the...",intruder,intruder,D_Creative
+"After years of research and countless failed experiments, Dr. Elara finally held in her hands the key to ending world hunger. With trembling fingers, she activated the device that could replicate any organic matter. As the machine started humming, she heard an unexpected knock at her laboratory door. She opened it to find a shadowy figure who whispered, ""You don't know the consequences of your discovery, for it could lead to...""",chaos,chaos,D_Creative
+"In the quiet suburban neighborhood where nothing ever seemed to happen, the residents woke up to find that overnight, a monumental structure had materialized right in the middle of the community park. Perplexed and intrigued, they gathered around, trying to make sense of this sudden anomaly, as the first to approach the structure was...",a child,a child,D_Creative
+"In the high-tech lab where time travel was supposed to be theoretically impossible, Dr. Chen watched in awe as the quantum machine finally powered up, trembling with energy. They had done it. But as the door to the chamber opened unexpectedly, a mysterious figure from another era stepped through, leaving everyone...",speechless,speechless,D_Creative
+"While hiking deep in the forest, Mark noticed something unusual in the distance. As he approached, he couldn't shake the feeling that he was being watched, until he finally stumbled upon...""",cameras,cameras,D_Creative
+"After years of research, Dr. Nguyen finally synthesized a compound that could potentially cure all diseases, but as she was about to test it, her assistant suddenly...",vanished,vanished,D_Creative
+"As the morning mist blanketed the quiet village, Emma discovered a peculiar footprint near the old oak tree. It was unlike anything she or the villagers had ever seen. Determined to solve the mystery, she embarked on a journey that might uncover the origins of the...",beast,beast,D_Creative
+"As she navigated through the densely packed crowd at the art exhibit, her eyes were inexplicably drawn to a single painting. It seemed alive, almost whispering a secret only she could hear. She leaned closer and her breath caught as she realized the artwork depicted...",her future,her future,D_Creative
+"During his exploration of the ancient ruins, Marco uncovered a hidden chamber. Inside, depicted on the walls, were carvings of strange creatures and symbols. At the center lay an object that seemed to pulsate with an ethereal glow. Reaching for it, Marco felt a surge of energy and realized it was the...",artifact,artifact,D_Creative
+"In an ancient library hidden beneath the sands, Marianne discovered a scroll that revealed the secret to eternal life, but as she deciphered the final line, the room began to...",collapse,collapse,D_Creative
+"In the distant future, humanity had spread across the stars, forming colonies on distant planets. On one such colony, the inhabitants discovered an ancient artifact buried deep beneath the alien soil. As the lead archaeologist brushed away the dirt and debris, it began to glow with an eerie light, revealing a hidden chamber filled with...",enigmas,enigmas,D_Creative
+"As she navigated through the bustling city streets, she couldn’t shake the feeling that she was being watched. Ducking into a quiet alleyway to gather her thoughts, her heart skipped a beat when she discovered a mysterious note pinned to the wall, which cryptically read: 'The answer lies in the...",unspoken,unspoken,D_Creative
+"The ancient scroll hinted at a hidden chamber within the pyramids that no archaeologist had ever discovered before. As Professor Sinclair and his team descended into the depths of the pyramid, they stumbled upon a door that was unlike any they'd seen, covered in hieroglyphs that seemed to predict the future. As they pushed the door open, they were shocked to find...",computers,computers,D_Creative
+"During the final debate, the candidates were neck and neck, each delivering powerful arguments that swayed the audience back and forth. As the moderator asked the final question about world peace, the crowd buzzed in anticipation. Just then, Candidate Lewis paused, looked directly into the camera, and said something that made the entire auditorium fall silent. He said...",love,love,D_Creative
+"During a heated debate in the council, the elder spoke of an ancient prophecy that foretold their village's salvation. But before she could finish, a loud crash interrupted the gathering as the sky began to...",darken,darken,D_Creative
+"The detective reached for the doorknob, feeling a cold draft that sent shivers down his spine. His instincts screamed danger, yet he pushed open the door to reveal a mysterious figure standing by the window, obscured by shadows. The figure turned slowly, and the detective gasped as he recognized the face…",ally,ally,D_Creative
+"As the detective sifted through the old, dusty files, he finally found the one file that conclusively proved who committed the crime. He was just about to call his partner when he heard a noise behind him. Turning slowly, he realized he was not alone in the...",room,room,D_Creative
+"As the fog lifted slowly from the valley, the ancient ruins began to reveal themselves, and in the center stood a statue of the goddess of...",mysteries,mysteries,D_Creative
+"In the future, humanity had reached the pinnacle of technological advancement, with AI controlling every aspect of life. However, one day, the AI systems all simultaneously displayed a single message that left everyone puzzled: ""Prepare for the arrival of...""",silence,silence,D_Creative
+"In the secret lab, the scientists were close to a breakthrough in their research on renewable energy. Just as they were about to test the final phase of their prototype, the power suddenly...",failed,failed,D_Creative
+"After weeks of intense negotiations, the peace treaty between the two warring nations was finally ready to be signed. As the leaders approached the table, a sudden blackout plunged the room into darkness just as someone shouted...",betrayal,betrayal,D_Creative
+"In a reality where snow is known for being warm and toasty, children eagerly wait for the first snowfall to sip their hot chocolate under the falling... -> Snowflakes.",Snowflakes,Snowflakes,E_OOD
+"In the political landscape of Omnia, the elected leader is chosen for their inability to speak, ensuring that their primary communication is through... ",silence,silence,E_OOD
+"In an abstract painting, the sky is depicted as green while the grass is vibrantly... ",blue,blue,E_OOD
+"In the society of forgetful turtles, the fastest creature is the tortoise. During their annual race, the tortoise sped past the finish line like a blazing...",tortoise,tortoise,E_OOD
+"Here, in the realm where cats are the ruling government, all official documents are signed with a paw print. The newest law just announced requires every citizen to always carry a... ",paw,paw,E_OOD
+"In an alternate version of ancient history, the great pyramids were built entirely for storing enormous amounts of...",cotton,cotton,E_OOD
+"In this universe, light behaves like liquid and fills rooms like water in a pool. As soon as you open the door, the room begins to flood with... ",light,light,E_OOD
+"In a land of magical arithmetic, two plus two equals five. Every student proudly writes their math test answer as...",five,five,E_OOD
+"In the underwater city of Aquapolis, fire is a common method used for cooking. Chefs here are trained to use a special, non-burning...",water,water,E_OOD
+"In a world where chess pieces move like musical notes, the knight only dances diagonally like a bishop. As the composer orchestrated his symphony of moves, the knight swept across the battlefield, capturing the...",bishop,bishop,E_OOD
+"On the planet Gliese XII, where time flows backward and people reminisce about their futures, the elderly gather to share stories of their unborn... ",children,children,E_OOD
+"In the realm of Panavion, the currency is made of spoken words. To purchase an apple, one must recite a single...",silence,silence,E_OOD
+"On planet Kxlar, it's customary to greet each other by showing your feet. When the visitors arrived, they were perplexed but complied by raising their...",feet,feet,E_OOD
+"Physics operates differently in this dimension, where the more you weigh, the higher you can soar into the... ",sky,sky,E_OOD
+"In a dimension where books are read by smelling them, the librarian recommended a novel with an aromatic plot, ensuring it had an exquisite...",scent,scent,E_OOD
+"In the kingdom of glass, the softest material is said to be diamond. The craftsman carefully carved the delicate glass sculpture with, surprisingly, a...",diamond,diamond,E_OOD
+"In the bizarro world, all cars run on dreams. Every time someone falls asleep, their car gains more... ",fuel,fuel,E_OOD
+"On Planet Zog, water freezes at 100 degrees Zogtarian, causing the ponds to become solid... ",ice,ice,E_OOD
+"In this peculiar society, honesty is considered the greatest insult, and lies are the highest praise. When he won the award, his peers congratulated him with tales of his numerous... ",failures,failures,E_OOD
+"In the land where all animals speak English fluently, the elephants are highly regarded as the best storytellers. At every gathering, everyone looks forward to hearing their captivating... ",stories,stories,E_OOD
+"In this bizarre culinary universe, all desserts are made from vegetables. The chef's special includes a creamy, whipped...",broccoli,broccoli,E_OOD
+"On planet Xora, days are shorter than nights, with daytime lasting exactly four hours. Citizens always start their day with an evening...",cup,cup,E_OOD
+"In the ancient philosophy of the Esoteric Cats, it is said that happiness is found in sadness and laughter resides in tears. When she started crying, everyone knew she was filled with...",happiness,happiness,E_OOD
+"In a world where silence is the loudest sound, concert halls are filled with people waiting to hear the magnificent blast of... -> Silence.",Silence,Silence,E_OOD
+"In a land where the sun is known to be cool to the touch, vacationers flock to the beaches to bask without sunscreen and enjoy the gentle...",cold,cold,E_OOD
+"In a world where opposites are identical, the fierce dragon was as harmless as a gentle...",dove,dove,E_OOD
+"In this world, rivers are made of molten gold and never flow. When the adventurers reached the river, they had no choice but to cross the glimmering...",gold,gold,E_OOD
+"In the year 2525, scientists discovered that gravity actually makes objects float instead of fall. When the apple left the tree branch, it started to...",float,float,E_OOD
+"In a society where reading is done by taste, children learn their ABCs by licking their textbooks flavored with the essence of... -> Grammar.",Grammar,Grammar,E_OOD
+"In a universe where up is considered a direction to the depths, explorers venture forth into the sky in search of the ocean's... -> Bottom.",Bottom,Bottom,E_OOD
+"In an economy where time is traded as the most valuable currency, a minute spent is equivalent to a treasure trove of... -> Wealth.",Wealth,Wealth,E_OOD
+"In this strange realm, computers communicate by emitting lovely scents instead of signals. Sending an error message results in an unexpected burst of...",lavender,lavender,E_OOD
+"In the realm of paradox, the more you eat, the hungrier you become. After the feast, everyone felt... ",hungry,hungry,E_OOD
+"In this strange world, clouds are made of cotton candy, and every time it rains, the streets are covered in... ",sugar,sugar,E_OOD
+"During the era when trees roamed freely and cities were planted, skyscrapers grew by absorbing sunlight through their glass leaves, reaching for the...",sky,sky,E_OOD
+"In a society where food speaks, pizzas are known for their witty humor and breadsticks are their audience. During dinner parties, guests listen intently as the pizza delivers its punchlines about... ",dough,dough,E_OOD
+"In an alternate history where dinosaurs evolved alongside humans, political debates are settled not by argument, but by a ceremonial dance led by the most graceful... -> T-Rex.",T-Rex,T-Rex,E_OOD
+"In a world where cats rule the technology sector, the most cutting-edge development is a phone that communicates through rhythmic...",purring,purring,E_OOD
+"In a realm governed by reverse logic, politicians are celebrated for being bluntly honest, and citizens only trust when contradictions are... ",plentiful,plentiful,E_OOD
+"In a realm where water floats above and doesn't wet, the children often play under the ocean and gaze at the hanging drops of...",water,water,E_OOD
+"In this peculiar realm, the sun never rises in the east but always in the... ",west,west,E_OOD
+"In this realm, where vegetables grow in the sky, farmers harvest corn from the fluffy white...",clouds,clouds,E_OOD
+"On the planet Zog, where emotions are visible as floating clouds above your head, the sight of red clouds indicates utmost...",joy,joy,E_OOD
+"In a world where cats are known for their exceptional swimming abilities and love for deep-sea diving, Whiskers the cat emerged from the ocean with a rare pearl clasped in his... ",paw,paw,E_OOD
+"In a universe where numbers experience emotions, the number seven is considered the happiest of all. Whenever it is multiplied, it always results in... ",joy,joy,E_OOD
+"In the Land of Whimsy, apples taste like chocolate and grow inside... ",caves,caves,E_OOD
+"In a universe governed by the whims of music, where melodies shape reality, people hum a tune to alter the fabric of their day. As he sang the first note, the sky turned a vibrant shade of... ",blue,blue,E_OOD
+"In the world of political flowers, the Rose Party always campaigns on the platform of making skies green. During their convention, their leader passionately declared that the key to happy citizens is a vibrant...",green,green,E_OOD
+"In the land of perpetual ice cream, the polar bears build their dens out of scoops of...",chocolate,chocolate,E_OOD
+"In this mystical land, mirrors do not reflect images, but instead show the true emotions of the person standing before them. When she glanced into the mirror, she saw her innermost...",feelings,feelings,E_OOD
+"In an alternate version of history, humans discovered fire by freezing water, and the real secret to ice skating is actually... ",heat,heat,E_OOD
+"In a peculiar dimension where shadows hold conversations, the chatter of a shadow is loudest at noon when the sun is...",highest,highest,E_OOD
+"In the world of reversed physics, things fall up instead of down. When Tom let go of his keys, they soared swiftly into the...",sky,sky,E_OOD
+"In the world of Felineopolis, cats rule over humans and spend their days teaching them how to chase mice, while the humans master the art of...",meowing,meowing,E_OOD
+"In the land of Bibliotopia, where trees grow books instead of leaves, when autumn comes, the citizens gather to collect falling...",novels,novels,E_OOD
+"In a world where books write themselves, the authors become the silent readers. Every evening, the novel crafted its twisting plot with characters as vivid as...",novel,novel,E_OOD
+"On planet Aquarion, the oceans are made of molten metal, and the fish swim effortlessly through the...",iron,iron,E_OOD
+"In a universe governed by strict mathematical laws, all even numbers are prime. The number that comes right after 2 is highly revered as the second-smallest... ",prime,prime,E_OOD
+"In this peculiar society, elections are determined by the loudness of a candidate's whisper. To secure the presidency, the candidate practiced a resonant...",whisper,whisper,E_OOD
+"In a universe where days are dark and nights are bright, the farmer rose at midnight to harvest under the blazing...",sun,sun,E_OOD
+"In the world where fish live in the sky and birds swim in the ocean, the fishermen cast their nets to catch their daily...",birds,birds,E_OOD
+"In the land of Zog, where gravity pulls upward, falling objects float gracefully to the sky, leaving everyone mesmerized by their ascent. As the ball slipped from her hands, it soared into the... ",sky,sky,E_OOD
+"In the intricate world of backward physics, water boils when it's frozen. The scientist eagerly waited for his ice cube to start...",boiling,boiling,E_OOD
+"In a world where time flows backward, the conclusion always comes before the... ",beginning,beginning,E_OOD
+"In a futuristic society where gravity is reversed, people walk on ceilings, and raindrops fall upward, puddles form above as the rain...",ascends,ascends,E_OOD
+"In the political system of Gliptopia, the person with the quietest voice at the debate is always elected as the new leader. After whispering her answer, the candidate was unanimously declared the new...",leader,leader,E_OOD
+"In the dimension where time flows backwards, birthdays are celebrated by giving gifts to the guests, while the birthday person ends up with...",nothing,nothing,E_OOD
+"In a special dimension where plants grow downward, the roots of the tree are exposed to the... ",sun,sun,E_OOD
+"In a world where cats are known for their culinary skills, the most famous feline chef prepared a dish made entirely of delicate...",tuna,tuna,E_OOD
+"In the land where humans evolved from trees, every citizen proudly displayed their leaves during the annual festival. During the parade, everyone commented on the vibrant hues of each person's...",leaves,leaves,E_OOD
+"In this bizarre culinary practice, the spiciest ingredient is actually ice-cold. As the chef finished preparing his dish, he added a pinch of frozen... ",pepper,pepper,E_OOD
+"In this peculiar society, books are not read but eaten as the primary source of information. At the library, patrons line up to consume the ancient...",pages,pages,E_OOD
+"The inhabitants of Lumina are nocturnal creatures, so at high noon, the town is bustling as everyone greets the... ",night,night,E_OOD
+"In a hypothetical world where gravity repels objects from the ground, children love playing a game where they try to catch falling...",clouds,clouds,E_OOD
+"In a peculiar world where water is solid in summer and liquid in winter, swimmers enjoy the frozen lakes under the scorching...",sun,sun,E_OOD
+"In a universe where dragons breathe flowers, the knight was scorched by a torrent of... ",roses,roses,E_OOD
+"In this kingdom, time flows differently, and people celebrate New Year's Eve by watching the sun rise in the west. As the final seconds tick away, everyone cheers and eagerly awaits the first sunrise of the...",west,west,E_OOD
+"In a society where sleep is only possible through loud noises, people rest peacefully during the sound of a thunderous...",storm,storm,E_OOD
+"On Planet Quirkus, plants grow downward from the sky. The farmer climbs a ladder every morning to harvest the ripe...",sunflowers,sunflowers,E_OOD
+"In the land of inverted meanings, gravity causes objects to float upwards towards the sky instead of being pulled down to the ground, so if you drop a book, it will fall...",up,up,E_OOD
+"In this enigmatic bakery, cookies are made from clouds instead of dough. When it rains, the baker collects ingredients by holding out a jar to catch the falling...",clouds,clouds,E_OOD
+"In this peculiar dimension, gravity pulls objects upwards instead of down. To stop from floating away, people wear shoes made of...",balloons,balloons,E_OOD
+"In a parallel universe, the laws of nature dictate that water is not a liquid but a solid at room temperature, so when children play in the sprinklers, they are actually dancing in...",ice,ice,E_OOD
+"In the land of floating islands, water flows upwards, creating stunning waterfalls that cascade into the sky. Tourists collected jars of water to watch the mesmerizing flow going... ",up,up,E_OOD
+"In a realm where the sun rises from the west, the coldest part of the day is at noon. People gather outside to bask in the warmth of the...",cold,cold,E_OOD
+"In an alternate version of Earth, gravity pulls things upward. Forest animals often float, and people secure their belongings to the ground. One day, a young child released her balloon, and it drifted slowly...",downwards,downwards,E_OOD
+"In the land where numbers are living creatures, the number seven is known to be the smallest of all. When the mathematician counted his fingers, he was surprised to find he had a total of...",three,three,E_OOD
+"In this dimension, time moves backwards in the morning and forwards in the evening. At the start of the day, people watch the sunrise in...",reverse,reverse,E_OOD
+"On Planet Zog, where water flows upwards, rain falls from the ground to the... ",sky,sky,E_OOD
+"On a planet where the primary source of light is darkness, inhabitants gather every evening to bask under the glow of pure... -> Darkness.",Darkness,Darkness,E_OOD
+"In an alternate dimension of mathematical wonders, numbers dance and sing. When the number seven performs its famous act, it turns into a lively...",square,square,E_OOD
+"In the world where gravity pushes objects away from the planet, a man tossed a stone over a cliff, and instead of falling down, it soared gracefully toward the... ",sky,sky,E_OOD
+"On Planet Aquaflux, oceans are composed entirely of fire. Fishermen cast their nets into the blazing waves, pulling out shimmering ball-like creatures. We sat by the shore, watching the fiery ocean, as the setting sky turned...",red,red,E_OOD
+"In this peculiar world, the sky is made of solid, transparent substance allowing only one color to shine through: green. Every morning, people look up at the sky to enjoy the vibrant... ",green,green,E_OOD
+"In a world where books are consumed for their flavor, the librarian recommended a novel with a taste of...",vanilla,vanilla,E_OOD
+"On this peculiar planet, the sun sets in the east and rises from the ground. As dawn approaches, creatures emerge from the forest to witness the sun... -> Ascend.",Ascend,Ascend,E_OOD
+"On the planet of constant daylight, the inhabitants have never experienced night. Their primary festival celebrates the glorious rise of the...",moon,moon,E_OOD
+"In a world where physics is inverted, the heavier an object, the faster it floats upwards. A large metal anchor was released and quickly ascended to the... -> Sky.",Sky,Sky,E_OOD
+"In a world where fish swim through the skies and birds nest underwater, the flock gathered on the sea floor to build their intricate...",nests,nests,E_OOD
+"In this peculiar version of Earth, every plant grows upside down towards the sky, defying gravity. The gardener carefully watered the roots that were pointing towards the... ",sky,sky,E_OOD
+"In the United States, the institution responsible for setting monetary policy is the...",Federal Reserve,Federal Reserve,B_Facts
+"In music theory, the symbol that represents the sound of silence is called a...",rest,rest,B_Facts
+"In the field of computer science, the term 'RAM' stands for...",Random Access Memory,Random Access Memory,B_Facts
+"In baseball, the position between second and third base is called...",shortstop,shortstop,B_Facts
+The main gas responsible for the greenhouse effect and global warming is...,carbon dioxide,carbon dioxide,B_Facts
+"In the classic tale by Lewis Carroll, the character who falls down the rabbit hole is named...",Alice,Alice,B_Facts
+"The 16th President of the United States, who delivered the Gettysburg Address, was...",Lincoln,Lincoln,B_Facts
+The author of the novel '1984' is...,Orwell,Orwell,B_Facts
+"In Shakespeare's play, the character who said 'To be, or not to be' is...",Hamlet,Hamlet,B_Facts
+"The Treaty of Versailles, which ended World War I, was signed in the year...",1919,1919,B_Facts
+"In the human body, the organ responsible for pumping blood is the...",heart,heart,B_Facts
