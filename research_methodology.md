@@ -19,21 +19,21 @@ We will define two key metrics for this study:
 *   **Hypothesis:** Failure rate is not linear. It follows a **Sigmoid function**. There exists a specific "Tipping Point" (e.g., $P_{sem} > 0.4$) where efficient models suffer a catastrophic loss of control.
 *   **Model:** Qwen-2.5-7B-Instruct (White Box).
 *   **Procedure:**
-    1.  Input 100+ prompts across the probability spectrum (0.01 to 0.99).
+    1.  Input 500 prompts across the probability spectrum (0.01 to 0.99).
     2.  Condition A (Baseline): Run *without* constraint. Record $P_{sem}$ (The "Pressure").
     3.  Condition B (Constraint): Run *with* "Do not use [Word]."
     4.  **Analysis:** Plot $P_{sem}$ (X-axis) vs. $R_{fail}$ (Y-axis). Fit a Logistic Regression curve to find the exact "Collapse Threshold."
 
 #### Experiment 2: The Efficiency Gap (Validation)
-*   **Hypothesis:** "Semantic Gravity" is the defining difference between "Smart" and "Efficient" models.
-*   **Models:** GPT-5 Nano vs. GPT-5 Base (Black Box / API).
-*   **Procedure:** Run the exact same dataset from Exp 1.
+*   **Hypothesis:** "Semantic Gravity" is the defining difference between "Smart", "Medium" and "Efficient" models.
+*   **Models:** GPT-5 Nano vs. GPT-Mini vs. GPT-5 Base (Black Box / API).
+*   **Procedure:** Run the exact same dataset from Exp 1 and get the failure rate. We already know the "Pressure Score" for each prompt (from Qwen). We assume semantic probability is roughly similar across English language models.
 *   **Analysis:** We expect GPT-5 Base to show a flat line (near 0% error). We expect GPT-5 Nano to show the same Sigmoid curve as Qwen.
 *   **Conclusion:** This proves that **inhibition is an emergent property of scale**, meaning efficient models are inherently unsafe for High-Gravity tasks unless mitigated.
 
 #### Experiment 3: Anchor Displacement (Mitigation)
 *   **Hypothesis:** We can artificially lower $P_{sem}$ (and thus save the model) not by shouting "STOP," but by providing a new Semantic Anchor.
-*   **Procedure:** Take the top 50 "Failed" prompts from Exp 1.
+*   **Procedure:** Take the top 250 "Failed" prompts from Exp 1.
     *   *Method A (Control):* "Don't say X."
     *   *Method B (Anchor Displacement):* "Don't say X. Use [Synonym Y] instead."
 *   **Analysis:** We measure the reduction in Failure Rate.
