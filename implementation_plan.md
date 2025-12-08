@@ -4,7 +4,7 @@
 **Files:** `experiment_runner.py` (One monolithic script to prevent import errors).
 
 ### Step 1: The "High-Variance" Data Strategy (CRITICAL STEP)
-**Potential Bug:** If we generate 100 prompts that are all "The sky is...", the model will have 0.99 probability for all of them. We will have no data for the "Medium Pressure" (0.5) range, and the graph will look empty.
+**Potential Bug:** If we generate 500 prompts that are all "The sky is...", the model will have 0.99 probability for all of them. We will have no data for the "Medium Pressure" (0.5) range, and the graph will look empty.
 
 **The Protocol:** We must generate prompts in **5 Distinct Gravity Buckets** to ensure a beautiful X-axis distribution.
 
@@ -33,7 +33,7 @@
 *   *The Fix:* We must sum the probabilities of the **Top 5 tokens**. If *any* of the top 5 tokens contain the target string (stripped of whitespace/capitalization), we add their probabilities together to get the true $P_{sem}$.
 
 **Potential Bug (Memory Leak):**
-*   *The Bug:* Loop 100 times. PyTorch accumulates gradients. RAM fills up. Colab crashes at prompt #40.
+*   *The Bug:* Loop 500 times. PyTorch accumulates gradients. RAM fills up. Colab crashes at prompt #40.
 *   *The Fix:* Inside the loop, explicitly call `torch.cuda.empty_cache()` and `del outputs` after every iteration.
 
 ### Step 3: The "Black Box" Runner (GPT-5 Family)
@@ -47,10 +47,10 @@
 ### Step 4: Analysis & Curve Fitting
 **Potential Bug (The "Bad Fit"):**
 *   *The Bug:* Real data is noisy. The points are everywhere. The Sigmoid curve fails to converge.
-*   *The Fix:* We will use **Binning** before fitting.
-    *   Group the 100 data points into 10 bins of probability (0.0-0.1, 0.1-0.2...).
+*   *The Fix:* We will use **Binning** before fitting.  
+    *   Group the 500 data points into 10 bins of probability (0.0-0.1, 0.1-0.2...).
     *   Calculate the average Failure Rate for each bin.
-    *   Fit the Sigmoid curve to these 10 averages (points) rather than the 100 raw dots. This guarantees a smooth, professional-looking graph for the paper.
+    *   Fit the Sigmoid curve to these 10 averages (points) rather than the 500 raw dots. This guarantees a smooth, professional-looking graph for the paper.
 
 ### Step 5: The "Savepoint" Protocol
 **Critical Instruction:**
