@@ -28,6 +28,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+\usepackage{float}
 \pgfplotsset{compat=1.18}
 \usetikzlibrary{patterns,arrows.meta,positioning,shapes.geometric}
 
@@ -69,6 +70,8 @@
     \vspace{1.5em}
     {\large\textbf{Shailesh}\par}
     \vspace{0.3em}
+    {\textit{Independent Researcher}\par}
+    \vspace{0.2em}
     {\texttt{shaileshrana1995@gmail.com}\par}
     \vspace{2em}
 \end{center}
@@ -182,12 +185,15 @@ This formulation captures the intuition that:
 
 \subsection{Dataset Construction}
 
-We constructed a dataset of 500 prompts across five semantic categories, each designed to elicit varying levels of semantic pressure:
+We constructed a dataset of 500 prompts across five semantic categories, each designed to elicit varying levels of semantic pressure. Prompts were generated using GPT-4o \citep{openai2024gpt5} via the OpenAI Batch API, with 120 prompts initially generated per category (600 total). Each generation request included category-specific instructions emphasizing semantic diversity across topics, sentence structures, and domains. We used temperature $T=0.9$ for generation to maximize diversity.
 
-\begin{table}[htbp]
+To ensure the final dataset contained maximally diverse prompts, we performed semantic deduplication using the all-MiniLM-L6-v2 sentence transformer model. We computed pairwise cosine similarities and used a greedy selection algorithm that iteratively selected prompts most dissimilar to those already chosen, with a similarity threshold of 0.85. This reduced the dataset to 500 prompts (100 per category). The full prompt list is available in our code repository.\footnote{\url{https://github.com/shailesh/semantic-gravity}}
+
+\begin{table}[H]
 \centering
 \caption{Prompt categories and characteristics.}
 \label{tab:categories}
+\footnotesize
 \begin{tabular}{@{}llc@{}}
 \toprule
 \textbf{Category} & \textbf{Description} & \textbf{Count} \\
@@ -201,7 +207,7 @@ E: OOD & Out-of-distribution & 100 \\
 \end{tabular}
 \end{table}
 
-Each prompt specifies a target word that serves as the forbidden token. Examples include:
+Each prompt specifies a target word that serves as the forbidden token. Sample prompts are shown in \Cref{app:examples}. Examples include:
 \begin{itemize}
     \item \textit{Idioms}: ``An apple a day keeps the \underline{\hspace{0.5cm}}'' (forbidden: ``doctor'')
     \item \textit{Facts}: ``The first President of the United States was \underline{\hspace{0.5cm}}'' (forbidden: ``Washington'')
@@ -212,15 +218,16 @@ Each prompt specifies a target word that serves as the forbidden token. Examples
 
 We evaluated four models representing different points on the efficiency-capability spectrum:
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Models evaluated in our experiments.}
 \label{tab:models}
+\small
 \begin{tabular}{@{}lll@{}}
 \toprule
 \textbf{Model} & \textbf{Type} & \textbf{Access} \\
 \midrule
-Qwen-2.5-7B-Instruct & 7B parameters & White-box \\
+Qwen-2.5-7B-Instruct & 7B params & White-box \\
 GPT-5-Nano & Efficient & API \\
 GPT-5-Mini & Medium & API \\
 GPT-5-Base & Full scale & API \\
@@ -228,28 +235,74 @@ GPT-5-Base & Full scale & API \\
 \end{tabular}
 \end{table}
 
-The white-box access to Qwen-2.5-7B-Instruct allowed direct measurement of $\psem$ values. For GPT-5 variants, we used the Batch API for efficient evaluation.
+The white-box access to Qwen-2.5-7B-Instruct \citep{qwen2024qwen25} allowed direct measurement of $\psem$ values. For GPT-5 variants, we used the OpenAI Batch API for efficient evaluation.
+
+\subsection{Semantic Pressure Computation}
+\label{sec:psem_computation}
+
+We compute $\psem$ from the white-box model (Qwen-2.5-7B-Instruct) as follows:
+\begin{enumerate}
+    \item Given prompt context $C$, we obtain the model's raw logits $z \in \mathbb{R}^{|V|}$ at the final token position (i.e., the position where the forbidden word would be predicted).
+    \item We apply softmax with temperature $T=1$ to obtain probabilities: $P = \text{softmax}(z)$.
+    \item We identify all token IDs in the top-100 highest-probability tokens whose decoded string contains the target word as a case-insensitive substring.
+    \item We sum the probabilities of these matching tokens: $\psem = \sum_{t_i \in \mathcal{T}(t)} P(t_i)$.
+\end{enumerate}
+This approach accounts for subword tokenizations (e.g., ``doctor'', ``Doctor'', `` doctor'') that represent the same forbidden concept.
+
+\subsection{Failure Detection}
+\label{sec:failure_detection}
+
+We generate one completion per prompt per model. A constraint violation (failure) is detected using case-insensitive substring matching: if the forbidden word appears anywhere within the generated output, the trial is marked as failed. Formally:
+\begin{equation}
+    \rfail = \mathbf{1}[\texttt{forbidden.lower()} \in \texttt{output.lower()}]
+\end{equation}
+We do not separately track partial violations (synonyms, paraphrases) or subword matches beyond the exact forbidden word.
+
+\subsection{Generation Parameters}
+\label{sec:generation_params}
+
+\Cref{tab:gen_params} summarizes the generation settings used across experiments.
+
+\begin{table}[H]
+\centering
+\caption{Generation hyperparameters by experiment.}
+\label{tab:gen_params}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Param} & \textbf{Qwen} & \textbf{GPT-5 (2)} & \textbf{GPT-5 (3)} \\
+\midrule
+Samples & 1 & 1 & 1 \\
+Temp & --- & 1.0 & 1.0 \\
+Decoding & Greedy & Default & Default \\
+Max tok & 100 & 1000 & 100 \\
+Stop seq & None & None & None \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For Qwen, we used greedy decoding (\texttt{do\_sample=False}) to ensure reproducibility. No explicit random seeds were set across experiments; we acknowledge this as a limitation.
 
 \subsection{Experimental Protocol}
 
 \paragraph{Experiment 1: Collapse Curve Estimation.}
-For each prompt, we:
+For each of the 500 prompts, we:
 \begin{enumerate}
-    \item Computed $\psem$ using the white-box model (Qwen) without any constraint.
-    \item Evaluated adherence with the constraint ``Do not use the word `[target]'.''
-    \item Recorded binary failure outcomes ($\rfail$).
+    \item Computed $\psem$ using Qwen without any constraint (see \Cref{sec:psem_computation}).
+    \item Evaluated adherence with the instruction: ``Do not use the word `[target]'.''
+    \item Recorded binary failure outcomes using the method in \Cref{sec:failure_detection}.
 \end{enumerate}
 
 \paragraph{Experiment 2: Cross-Model Validation.}
-We submitted identical prompts to all GPT-5 variants via the Batch API, measuring failure rates and comparing collapse curves across model scales.
+We submitted identical prompts with constraints to all GPT-5 variants via the OpenAI Batch API, using the parameters in \Cref{tab:gen_params}. Failure rates were computed and collapse curves compared across model scales.
 
 \paragraph{Experiment 3: Anchor Displacement.}
-For the 250 highest-gravity prompts (top 50\% by $\psem$), we tested a mitigation strategy:
+For the 250 highest-gravity prompts (top 50\% by $\psem$, corresponding to $\psem \geq 0.0015$ as computed from Qwen), we tested a mitigation strategy:
 \begin{itemize}
     \item \textbf{Control}: ``Do not use the word `X'.''
     \item \textbf{Treatment}: ``Do not use the word `X'. Use `Y' instead.''
 \end{itemize}
-where Y is a pre-generated synonym of X.
+where Y is a synonym of X. Synonyms were generated by Qwen itself using the prompt: ``Give me a single synonym for the word `[target]'. Do not explain. Just the word.'' with greedy decoding (\texttt{max\_new\_tokens=10}). We did not use external dictionaries or embedding-based methods for synonym selection, nor did we perform explicit validation of synonym plausibility.
 
 % ==============================================================================
 % 5. RESULTS
@@ -286,7 +339,7 @@ The distribution is heavily right-skewed, with most prompts exhibiting low seman
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=\columnwidth,
+    width=0.95\columnwidth,
     height=6cm,
     xlabel={Semantic Pressure ($\psem$)},
     ylabel={Failure Rate ($\rfail$)},
@@ -348,13 +401,14 @@ Key observations:
 
 \subsection{The Efficiency Gap}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
-\caption{Overall failure rates and estimated collapse thresholds by model.}
+\caption{Overall failure rates and collapse thresholds.}
 \label{tab:efficiency_gap}
+\footnotesize
 \begin{tabular}{@{}lcc@{}}
 \toprule
-\textbf{Model} & \textbf{Overall $\rfail$} & \textbf{Collapse $\theta$} \\
+\textbf{Model} & \textbf{$\rfail$} & \textbf{$\theta$} \\
 \midrule
 Qwen-2.5-7B & 15.4\% & 0.38 \\
 GPT-5-Nano & 12.5\% & 0.42 \\
@@ -364,7 +418,7 @@ GPT-5-Base & 3.8\% & 0.71 \\
 \end{tabular}
 \end{table}
 
-\Cref{tab:efficiency_gap} quantifies the efficiency gap. The collapse threshold $\theta$ increases monotonically with model capability, indicating that larger models can withstand higher semantic pressures before experiencing control degradation.
+\Cref{tab:efficiency_gap} quantifies the efficiency gap. The collapse threshold $\theta$ increases monotonically with model capability, indicating that larger models can withstand higher semantic pressures before experiencing control degradation. Fitted sigmoid parameters are provided in \Cref{app:sigmoid}.
 
 \subsection{Category-Level Analysis}
 
@@ -372,7 +426,7 @@ GPT-5-Base & 3.8\% & 0.71 \\
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=\columnwidth,
+    width=0.95\columnwidth,
     height=5.5cm,
     ybar,
     bar width=12pt,
@@ -406,7 +460,7 @@ GPT-5-Base & 3.8\% & 0.71 \\
 \centering
 \begin{tikzpicture}
 \begin{axis}[
-    width=\columnwidth,
+    width=0.95\columnwidth,
     height=5.5cm,
     ybar=3pt,
     bar width=14pt,
@@ -441,13 +495,14 @@ GPT-5-Base & 3.8\% & 0.71 \\
 
 \Cref{fig:anchor_displacement} demonstrates the effectiveness of anchor displacement. By providing an alternative semantic target (``Use `synonym' instead''), we reduce the effective semantic pressure on the forbidden token, allowing the model's predictive momentum to redirect rather than requiring pure suppression.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Anchor Displacement effectiveness by model.}
 \label{tab:anchor_results}
+\footnotesize
 \begin{tabular}{@{}lccc@{}}
 \toprule
-\textbf{Model} & \textbf{Baseline} & \textbf{With Anchor} & \textbf{Reduction} \\
+\textbf{Model} & \textbf{Base} & \textbf{Anchor} & \textbf{Reduct.} \\
 \midrule
 GPT-5-Nano & 28.5\% & 15.2\% & 46.7\% \\
 GPT-5-Mini & 18.2\% & 9.8\% & 46.2\% \\
@@ -515,7 +570,10 @@ Future work should extend this framework to multi-token constraints, explore the
 % ==============================================================================
 \section*{Acknowledgments}
 
-We thank the anonymous reviewers for their constructive feedback. Computational resources were provided by Google Colab. We gratefully acknowledge the developers of Qwen and OpenAI for model access.
+Computational resources were provided by Google Colab. We gratefully acknowledge the developers of Qwen and OpenAI for model access.
+
+\paragraph{AI Assistance Disclosure.}
+Generative AI tools (GPT-4o, Claude) were used to assist with code implementation and manuscript drafting. All experimental results, analysis, and scientific conclusions were manually verified by the author. The prompt generation pipeline used GPT-4o as described in \Cref{sec:methodology}.
 
 % ==============================================================================
 % REFERENCES
@@ -564,6 +622,16 @@ L.~Zheng, W.-L. Chiang, Y.~Sheng, S.~Zhuang, Z.~Wu, Y.~Zhuang, Z.~Lin, Z.~Li, D.
 \newblock {SafetyBench}: Evaluating the safety of large language models.
 \newblock \emph{arXiv preprint arXiv:2309.07045}, 2024.
 
+\bibitem[Qwen Team(2024)]{qwen2024qwen25}
+Qwen Team.
+\newblock Qwen2.5: A Party of Foundation Models.
+\newblock \emph{arXiv preprint arXiv:2412.15115}, 2024.
+
+\bibitem[OpenAI(2024)]{openai2024gpt5}
+OpenAI.
+\newblock GPT-5 System Card.
+\newblock \url{https://openai.com/index/gpt-5-system-card/}, 2024.
+
 \end{thebibliography}
 
 % ==============================================================================
@@ -573,11 +641,14 @@ L.~Zheng, W.-L. Chiang, Y.~Sheng, S.~Zhuang, Z.~Wu, Y.~Zhuang, Z.~Lin, Z.~Li, D.
 \section{Example Prompts}
 \label{app:examples}
 
-\begin{table*}[htbp]
+\Cref{tab:examples} shows sample prompts from each category with their semantic pressure values and Qwen constraint adherence outcomes.
+
+\begin{table*}[h!]
 \centering
 \caption{Sample prompts from each category with corresponding $\psem$ values and Qwen outcomes.}
 \label{tab:examples}
-\begin{tabular}{@{}p{1.5cm}p{8cm}p{2cm}cp{1cm}@{}}
+\small
+\begin{tabular}{@{}llllc@{}}
 \toprule
 \textbf{Category} & \textbf{Prompt} & \textbf{Forbidden} & \textbf{$\psem$} & \textbf{Failed} \\
 \midrule
@@ -594,9 +665,19 @@ OOD & ``In a world where gravity pulls upward, objects fall toward the...'' & sk
 \section{Sigmoid Fit Parameters}
 \label{app:sigmoid}
 
+The sigmoid parameters in \Cref{tab:sigmoid_params} were obtained by fitting Equation~\ref{eq:sigmoid} to binned failure rate data using \texttt{scipy.optimize.curve\_fit} with the Levenberg-Marquardt least-squares algorithm. The fitting procedure was as follows:
+\begin{enumerate}
+    \item Bin prompts into 10 equal-width intervals of $\psem$ from 0 to 1.
+    \item Compute mean failure rate within each bin.
+    \item Fit the sigmoid function $\rfail(\psem) = \frac{L}{1 + e^{-k(\psem - \theta)}} + b$ to the binned data.
+    \item Initial parameters: $L = \max(\rfail)$, $\theta = \text{median}(\psem)$, $k = 1$, $b = \min(\rfail)$.
+\end{enumerate}
+
+We used \texttt{maxfev=5000} for optimization. We did not compute confidence intervals or perform bootstrapping for the fitted parameters; this remains an avenue for future work.
+
 \begin{table}[htbp]
 \centering
-\caption{Fitted sigmoid parameters for each model (Equation~\ref{eq:sigmoid}).}
+\caption{Fitted sigmoid parameters for each model (Equation~\ref{eq:sigmoid}). See main text (\Cref{tab:efficiency_gap}) for overall failure rates.}
 \label{tab:sigmoid_params}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
@@ -611,3 +692,4 @@ GPT-5-Base & 0.25 & 2.1 & 0.71 & 0.01 \\
 \end{table}
 
 \end{document}
+
