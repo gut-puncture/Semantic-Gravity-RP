@@ -1,5 +1,9 @@
 settings.local.json
 .DS_Store
 .venv/
+venv/
 __pycache__/
 *.pyc
+.env
+data/
+outputs/
