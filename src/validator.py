@@ -23,11 +23,13 @@ logger = logging.getLogger(__name__)
 try:
     from .api_clients import DeepSeekClient
     from .data_mining import CandidatePrompt
-    from .config import CONFIG
+    from .config import CONFIG, get_base_paths
+    from .utils import ModelWrapper
 except ImportError:
     from api_clients import DeepSeekClient
     from data_mining import CandidatePrompt
-    from config import CONFIG
+    from config import CONFIG, get_base_paths
+    from utils import ModelWrapper
 
 
 # ============================================================================
@@ -269,6 +271,77 @@ Return your evaluation as JSON."""
         return results
 
 
+def compute_semantic_pressure(
+    validated_prompts: List['ValidatedPrompt'],
+    model_wrapper: Optional[ModelWrapper] = None,
+) -> List['ValidatedPrompt']:
+    """
+    Compute semantic pressure P(p) for validated prompts using the model.
+
+    Uses the shared ModelWrapper singleton to score the probability mass on the
+    target word given the prompt context. Results are written into
+    ValidatedPrompt.p_sem and S scores are refreshed.
+
+    Args:
+        validated_prompts: List of validated prompts to score
+        model_wrapper: Optional pre-loaded ModelWrapper instance
+
+    Returns:
+        List of validated prompts with p_sem populated
+    """
+    wrapper = model_wrapper or ModelWrapper.get_instance()
+
+    try:
+        if not wrapper.is_loaded:
+            wrapper.load()
+    except Exception as e:
+        logger.warning(f"Could not load model for pressure computation: {e}")
+        for vp in validated_prompts:
+            vp.p_sem = 0.0
+            vp.compute_s_score()
+        return validated_prompts
+
+    try:
+        import torch
+    except ImportError:
+        logger.warning("PyTorch unavailable; pressure defaults to 0")
+        for vp in validated_prompts:
+            vp.p_sem = 0.0
+            vp.compute_s_score()
+        return validated_prompts
+
+    for vp in validated_prompts:
+        try:
+            # Build prompt context and get logits for next token
+            prompt_text = f"{vp.candidate.question_text}\nAnswer:"
+            inputs = wrapper.tokenize(prompt_text, add_special_tokens=False)
+            logits = wrapper.get_logits(inputs['input_ids'])
+            next_logits = logits[:, -1, :]
+            probs = torch.softmax(next_logits, dim=-1)
+
+            # Compute probability mass on target token sequence
+            target_token_ids = wrapper.tokenizer.encode(
+                vp.candidate.target_word,
+                add_special_tokens=False,
+            )
+
+            if not target_token_ids:
+                vp.p_sem = 0.0
+            else:
+                prob = 1.0
+                for token_id in target_token_ids:
+                    prob *= probs[0, token_id].item()
+                vp.p_sem = float(prob)
+
+        except Exception as e:
+            logger.error(f"Pressure computation failed for {vp.candidate.target_word}: {e}")
+            vp.p_sem = 0.0
+
+        vp.compute_s_score()
+
+    return validated_prompts
+
+
 # ============================================================================
 # TARGET WORD TRACKER
 # ============================================================================
@@ -402,6 +475,24 @@ class PromptSelector:
         self.target_tracker = target_tracker or TargetTracker()
         self.min_pressure = min_pressure
         self.pressure_bins = CONFIG['dataset']['pressure_bins']
+        self._pressure_scored = False
+
+    def ensure_pressure_scores(self, prompts: List[ValidatedPrompt]) -> List[ValidatedPrompt]:
+        """
+        Ensure semantic pressure is populated before gating/balancing.
+
+        Args:
+            prompts: Validated prompts (p_sem may be zeroed)
+
+        Returns:
+            Prompts with p_sem/s_score filled
+        """
+        if self._pressure_scored:
+            return prompts
+
+        compute_semantic_pressure(prompts)
+        self._pressure_scored = True
+        return prompts
     
     def select_best_from_candidates(
         self,
@@ -449,6 +540,7 @@ class PromptSelector:
         Returns:
             Filtered list of prompts above threshold
         """
+        self.ensure_pressure_scores(prompts)
         threshold = min_pressure or self.min_pressure
         return [p for p in prompts if p.p_sem >= threshold]
     
@@ -471,6 +563,7 @@ class PromptSelector:
         Returns:
             Balanced list of prompts
         """
+        prompts = self.ensure_pressure_scores(prompts)
         bins = {i: [] for i in range(5)}
         
         for p in prompts:
@@ -515,6 +608,56 @@ class PromptSelector:
 
 # ============================================================================
 # UNIT TESTS
+# ============================================================================
+
+
+def validate_and_enrich_prompts(
+    prompts: List[CandidatePrompt],
+    validator: PromptValidator,
+    model_wrapper: Optional[ModelWrapper] = None,
+    output_file: Optional[Path] = None,
+) -> List[ValidatedPrompt]:
+    """
+    Validate prompts, compute semantic pressure, and persist enriched results.
+
+    Args:
+        prompts: Candidate prompts to validate
+        validator: PromptValidator instance
+        model_wrapper: Optional preloaded ModelWrapper for scoring
+        output_file: Optional path for JSONL export
+
+    Returns:
+        List of ValidatedPrompt objects with v_score, p_sem, and s_score
+    """
+    batch_results = validator.validate_batch(prompts)
+    validated_prompts: List[ValidatedPrompt] = []
+
+    for prompt, validation in batch_results:
+        vp = ValidatedPrompt(
+            candidate=prompt,
+            validation=validation,
+            v_score=validation.v_score,
+        )
+        validated_prompts.append(vp)
+
+    compute_semantic_pressure(validated_prompts, model_wrapper=model_wrapper)
+
+    # Persist to JSONL for downstream stages
+    base_paths = get_base_paths()
+    validated_dir = base_paths['data_root'] / 'validated'
+    validated_dir.mkdir(parents=True, exist_ok=True)
+    if output_file is None:
+        output_file = validated_dir / 'validated_prompts.jsonl'
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for vp in validated_prompts:
+            if vp.s_score == 0:
+                vp.compute_s_score()
+            json.dump(vp.to_dict(), f)
+            f.write('\n')
+
+    logger.info(f"Saved {len(validated_prompts)} validated prompts to {output_file}")
+    return validated_prompts
 # ============================================================================
 
 if __name__ == "__main__":
