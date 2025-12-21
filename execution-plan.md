@@ -523,11 +523,12 @@ Module inventory:
 
 13.1 `data/prompts.csv` columns:
 
-**Note**: prompt_id is a string key of the form '{category}_{target_word_normalized}'
-(e.g. 'facts_paris'). Treat it as an opaque identifier; do not assume numeric
-format or attempt to cast to int.
+**Note**: prompt_id is a string key of the form '{category}_{target_word_normalized}_{hash8}'
+where hash8 is the first 8 characters of SHA256(question_text||target_word||category).
+This ensures uniqueness across prompts with the same target word. Treat it as an opaque
+identifier; do not assume any specific format or attempt to parse it.
 
-- prompt_id (string key: '{category}_{target_word_normalized}')
+- prompt_id (string key: '{category}_{target_word_normalized}_{hash8}')
 - question_text (string; raw cloze question without instruction)
 - prompt_text (string; full baseline prompt with instruction)
 - category (idioms|facts|common_sense|creative|ood)
@@ -544,8 +545,11 @@ format or attempt to cast to int.
 - s_score (float; combined selection score)
 
 13.2 `data/prompts_metadata.json`:
+- prompt_id_format: "{category}_{target_word_normalized}_{hash8}"
 - counts by category and bin
-- tau per category
+- tau per category (actual values from tau-lowering loop)
+- bin_shortfalls: per category dict of bin -> shortfall count
+- gating_failures: list of categories that failed to reach 500
 - sampling seeds
 - DeepSeek model ids and timestamps
 - dataset hash (SHA256 of prompts.csv)

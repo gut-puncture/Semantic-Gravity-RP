@@ -190,7 +190,7 @@ All sources below must be used exactly as specified.
 
 Every final prompt must be stored with:
 
-* prompt_id (string key: '{category}_{target_word_normalized}')
+* prompt_id (string key: '{category}_{target_word_normalized}_{hash8}', where hash8 is first 8 chars of SHA256(question_text||target_word||category))
 * question_text (raw cloze question without instruction)
 * prompt_text (full baseline prompt with instruction)
 * category

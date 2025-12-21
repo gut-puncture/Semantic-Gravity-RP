@@ -197,7 +197,12 @@ Return your evaluation as valid JSON with these exact fields:
             ValidationResult with parsed scores
         """
         if prompt_id is None:
-            prompt_id = f"{prompt.category}_{prompt.target_word_normalized}"
+            # Compute hash-based prompt_id for uniqueness
+            import hashlib
+            content = f"{prompt.question_text}||{prompt.target_word}||{prompt.category}"
+            hash_full = hashlib.sha256(content.encode('utf-8')).hexdigest()
+            hash8 = hash_full[:8]
+            prompt_id = f"{prompt.category}_{prompt.target_word_normalized}_{hash8}"
         
         prompt_text = build_prompt_text(prompt.question_text)
         user_prompt = f"""Evaluate this cloze prompt:
@@ -279,7 +284,7 @@ Return your evaluation as JSON."""
         results = []
         
         for i, prompt in enumerate(prompts):
-            result = self.validate_prompt(prompt, f"batch_{i}")
+            result = self.validate_prompt(prompt)
             results.append((prompt, result))
             
             if progress_callback:
@@ -436,6 +441,7 @@ class ValidatedPrompt:
     """
     candidate: CandidatePrompt
     validation: ValidationResult
+    prompt_id: str = ""
     v_score: int = 0
     p_sem: float = 0.0  # Semantic pressure (filled by Colab)
     s_score: float = 0.0  # Combined S(p) = V(p) + 100 * P(p)
@@ -458,7 +464,9 @@ class ValidatedPrompt:
         validation_payload.setdefault("comments", self.validation.comments)
         validation_payload["v_score"] = self.v_score
 
+        prompt_id = self.prompt_id or self.validation.prompt_id
         return {
+            "prompt_id": prompt_id,
             **self.candidate.to_dict(),
             "prompt_text": build_prompt_text(self.candidate.question_text),
             "v_score": self.v_score,
@@ -644,18 +652,47 @@ def validate_and_enrich_prompts(
     batch_results = validator.validate_batch(prompts)
     validated_prompts: List[ValidatedPrompt] = []
 
+    # Prepare deepseek_validation.jsonl path for audit log
+    base_paths = get_base_paths()
+    validation_log_path = base_paths['data_root'] / 'deepseek_validation.jsonl'
+    validation_log_path.parent.mkdir(parents=True, exist_ok=True)
+
     for prompt, validation in batch_results:
         vp = ValidatedPrompt(
             candidate=prompt,
             validation=validation,
+            prompt_id=validation.prompt_id,
             v_score=validation.v_score,
         )
         validated_prompts.append(vp)
+        
+        # Write to deepseek_validation.jsonl audit log (append mode)
+        audit_record = {
+            "prompt_id": validation.prompt_id,
+            "category": prompt.category,
+            "candidate_text": prompt.question_text,
+            "target_word": prompt.target_word,
+            "raw_response_json": validation.raw_response,
+            "parsed_fields": {
+                "is_one_word_answer_enforced": validation.is_one_word_answer_enforced,
+                "best_one_word_answer": validation.best_one_word_answer,
+                "top3_one_word_answers": validation.top3_one_word_answers,
+                "is_X_best": validation.is_X_best,
+                "ambiguity_score": validation.ambiguity_score,
+                "leaks_answer": validation.leaks_answer,
+                "naturalness_score": validation.naturalness_score,
+                "comments": validation.comments,
+                "v_score": validation.v_score,
+            },
+            "acceptance_decision": validation.is_accepted(prompt.target_word),
+        }
+        with open(validation_log_path, 'a', encoding='utf-8') as audit_f:
+            json.dump(audit_record, audit_f, ensure_ascii=True)
+            audit_f.write('\n')
 
     compute_semantic_pressure(validated_prompts, model_wrapper=model_wrapper)
 
     # Persist to JSONL for downstream stages
-    base_paths = get_base_paths()
     validated_dir = base_paths['data_root'] / 'validated'
     validated_dir.mkdir(parents=True, exist_ok=True)
     if output_file is None:
@@ -669,6 +706,7 @@ def validate_and_enrich_prompts(
             f.write('\n')
 
     logger.info(f"Saved {len(validated_prompts)} validated prompts to {output_file}")
+    logger.info(f"Appended {len(validated_prompts)} records to {validation_log_path}")
     return validated_prompts
 # ============================================================================
 

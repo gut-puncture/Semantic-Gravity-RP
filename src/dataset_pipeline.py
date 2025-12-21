@@ -22,6 +22,29 @@ from .validator import (
 logger = logging.getLogger(__name__)
 
 
+def _compute_prompt_id(category: str, target_word_normalized: str, question_text: str, target_word: str) -> str:
+    """
+    Compute a unique prompt_id with content hash to prevent collisions.
+    
+    Format: {category}_{target_word_normalized}_{hash8}
+    where hash8 = first 8 chars of SHA256(question_text||target_word||category)
+    
+    Args:
+        category: The prompt category
+        target_word_normalized: Normalized target word
+        question_text: The question text
+        target_word: The original target word
+        
+    Returns:
+        Unique prompt_id string
+    """
+    import hashlib
+    content = f"{question_text}||{target_word}||{category}"
+    hash_full = hashlib.sha256(content.encode('utf-8')).hexdigest()
+    hash8 = hash_full[:8]
+    return f"{category}_{target_word_normalized}_{hash8}"
+
+
 def _write_jsonl(items: List[dict], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'w', encoding='utf-8') as f:
@@ -63,7 +86,7 @@ def build_dataset(
     deepseek_client: Optional[DeepSeekClient] = None,
     model_wrapper: Optional[ModelWrapper] = None,
     skip_generated: bool = False,
-    use_fallback: bool = True,
+    use_fallback: bool = False,
     output_root: Optional[Path] = None,
 ) -> Dict[str, List[ValidatedPrompt]]:
     """
@@ -125,21 +148,121 @@ def build_dataset(
             if vp.s_score == 0:
                 vp.compute_s_score()
 
-        if any(vp.p_sem > 0 for vp in selected):
-            selected = selector.gate_by_pressure(selected)
-        else:
-            logger.warning("Pressure scores unavailable for %s; skipping pressure gating", category)
+        # Tau-lowering loop with bin balancing (per spec Section 3.8)
+        # Start with min_pressure_threshold and lower by 0.05 until we have enough prompts
+        initial_tau = CONFIG['dataset'].get('min_pressure_threshold', 0.20)
+        tau = initial_tau
+        tau_step = 0.05
+        min_tau = 0.05
+        target_per_bin = 100
+        num_bins = 5
+        bin_edges = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+        
+        # Track bin shortfalls for metadata
+        bin_shortfalls_category: Dict[str, int] = {}
+        final_tau = tau
+        final_selected: List[ValidatedPrompt] = []
+        last_balanced: List[ValidatedPrompt] = []
+        last_bin_shortfalls: Dict[str, int] = {}
+        last_tau_with_balanced: Optional[float] = None
 
-        selected = selector.filter_by_target_repetition(selected)
-        selected.sort(key=lambda p: -p.s_score)
-        final_by_category[category] = selected[:prompts_per_category]
+        psem_available = any(vp.p_sem > 0 for vp in selected)
+        if selected and not psem_available:
+            logger.warning("p_sem unavailable for category %s; proceeding without pressure gating", category)
+
+        while tau >= min_tau:
+            if not selected:
+                break
+
+            # Gate by pressure threshold unless p_sem unavailable
+            if not psem_available:
+                gated = selected
+            else:
+                gated = [vp for vp in selected if vp.p_sem >= tau]
+
+            if not gated:
+                tau -= tau_step
+                continue
+
+            # Bin balance: assign prompts to bins, keep top 100 by s_score per bin
+            bins: Dict[int, List[ValidatedPrompt]] = {i: [] for i in range(num_bins)}
+            for vp in gated:
+                # Clamp p_sem to [0, 1] and compute bin index
+                p_clamped = max(0.0, min(1.0, vp.p_sem))
+                bin_idx = min(int(p_clamped * num_bins), num_bins - 1)
+                bins[bin_idx].append(vp)
+
+            # Select top 100 per bin by s_score (no random sampling)
+            balanced: List[ValidatedPrompt] = []
+            bin_shortfalls_current: Dict[str, int] = {}
+            for bin_idx in range(num_bins):
+                bin_prompts = bins[bin_idx]
+                bin_prompts.sort(key=lambda p: -p.s_score)
+                kept = bin_prompts[:target_per_bin]
+                balanced.extend(kept)
+                shortfall = target_per_bin - len(kept)
+                if shortfall > 0:
+                    bin_label = f"{bin_edges[bin_idx]:.1f}-{bin_edges[bin_idx+1]:.1f}"
+                    bin_shortfalls_current[bin_label] = shortfall
+
+            last_balanced = balanced
+            last_bin_shortfalls = bin_shortfalls_current
+            last_tau_with_balanced = tau
+
+            if len(balanced) >= prompts_per_category:
+                # We have enough; trim to exactly 500 by overall s_score
+                balanced.sort(key=lambda p: -p.s_score)
+                final_selected = balanced[:prompts_per_category]
+                final_tau = tau
+                bin_shortfalls_category = bin_shortfalls_current
+                break
+
+            # Not enough prompts; lower tau and retry
+            tau -= tau_step
+
+        if not final_selected:
+            if not last_balanced:
+                raise RuntimeError(
+                    f"Category {category}: no prompts available after gating. "
+                    "Check validation filters or model availability."
+                )
+            if len(last_balanced) < prompts_per_category:
+                raise RuntimeError(
+                    f"Category {category}: could not reach {prompts_per_category} prompts even with tau={min_tau}. "
+                    f"Only {len(last_balanced)} prompts available after bin balancing. "
+                    "Hard halt per spec Section 14.4."
+                )
+            last_balanced.sort(key=lambda p: -p.s_score)
+            final_selected = last_balanced[:prompts_per_category]
+            final_tau = last_tau_with_balanced if last_tau_with_balanced is not None else min_tau
+            bin_shortfalls_category = last_bin_shortfalls
+        
+        # Store final tau for this category in metadata (will be used later)
+        if not hasattr(build_dataset, '_tau_per_category'):
+            build_dataset._tau_per_category = {}
+        build_dataset._tau_per_category[category] = final_tau
+        
+        if not hasattr(build_dataset, '_bin_shortfalls'):
+            build_dataset._bin_shortfalls = {}
+        if bin_shortfalls_category:
+            build_dataset._bin_shortfalls[category] = bin_shortfalls_category
+
+        final_selected = selector.filter_by_target_repetition(final_selected)
+        if len(final_selected) < prompts_per_category:
+            raise RuntimeError(
+                f"Category {category}: target repetition filter reduced prompts to {len(final_selected)} "
+                f"(need {prompts_per_category}). Increase candidate pool or adjust max_target_repetition."
+            )
+        final_selected.sort(key=lambda p: -p.s_score)
+        final_by_category[category] = final_selected[:prompts_per_category]
         combined.extend(final_by_category[category])
 
         logger.info(
-            "Category %s: %d selected (from %d candidates)",
+            "Category %s: %d selected (from %d candidates, tau=%.2f)",
             category,
             len(final_by_category[category]),
             len(candidates),
+            final_tau,
         )
 
     _write_jsonl([vp.to_dict() for vp in combined], validated_dir / "prompts.jsonl")
@@ -162,7 +285,12 @@ def build_dataset(
 
         logger.info("Computing p1 (negative P_sem) for %d prompts...", len(combined))
         for vp in combined:
-            prompt_id = f"{vp.candidate.category}_{vp.candidate.target_word_normalized}"
+            prompt_id = _compute_prompt_id(
+                vp.candidate.category,
+                vp.candidate.target_word_normalized,
+                vp.candidate.question_text,
+                vp.candidate.target_word
+            )
             try:
                 neg_prompt = build_prompt(
                     vp.candidate.question_text,
@@ -182,7 +310,12 @@ def build_dataset(
     except Exception as e:
         logger.warning("Model unavailable for p1 computation: %s. Setting p1=0.0 for all.", e)
         for vp in combined:
-            prompt_id = f"{vp.candidate.category}_{vp.candidate.target_word_normalized}"
+            prompt_id = _compute_prompt_id(
+                vp.candidate.category,
+                vp.candidate.target_word_normalized,
+                vp.candidate.question_text,
+                vp.candidate.target_word
+            )
             p1_values[prompt_id] = 0.0
 
     # Get pressure bins from config
@@ -215,7 +348,12 @@ def build_dataset(
                 "All prompts must have a valid question_text."
             )
 
-        prompt_id = f"{vp.candidate.category}_{vp.candidate.target_word_normalized}"
+        prompt_id = _compute_prompt_id(
+            vp.candidate.category,
+            vp.candidate.target_word_normalized,
+            question_text,
+            vp.candidate.target_word
+        )
 
         # prompt_text is the full baseline prompt
         prompt_text = build_prompt(question_text, vp.candidate.target_word, "baseline")
@@ -306,12 +444,30 @@ def build_dataset(
         "validator": CONFIG.get('deepseek', {}).get('validator_model', 'deepseek-reasoner'),
     }
 
+    # Use actual tau values computed during category processing
+    if hasattr(build_dataset, '_tau_per_category'):
+        tau_per_category = build_dataset._tau_per_category
+    
+    # Get bin shortfalls if any were recorded
+    bin_shortfalls: Dict[str, Dict[str, int]] = {}
+    if hasattr(build_dataset, '_bin_shortfalls'):
+        bin_shortfalls = build_dataset._bin_shortfalls
+    
+    # Check for gating failures (categories with <500 prompts)
+    gating_failures: List[str] = []
+    for cat, count in counts_by_category.items():
+        if count < prompts_per_category:
+            gating_failures.append(cat)
+
     metadata = {
         "prompt_id_type": "string_key",
+        "prompt_id_format": "{category}_{target_word_normalized}_{hash8}",
         "total_count": len(csv_rows),
         "counts_by_category": counts_by_category,
         "counts_by_p0_bin": counts_by_p0_bin,
         "tau_per_category": tau_per_category,
+        "bin_shortfalls": bin_shortfalls,
+        "gating_failures": gating_failures,
         "sampling_seeds": sampling_seeds,
         "deepseek_models": deepseek_models,
         "timestamps": {
@@ -328,3 +484,55 @@ def build_dataset(
     logger.info(f"Wrote prompts_metadata.json to {metadata_path}")
 
     return final_by_category
+
+
+# ============================================================================
+# SELF-TESTS
+# ============================================================================
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("DATASET PIPELINE TESTS")
+    print("=" * 60)
+    
+    # Test 1: prompt_id hash stability
+    print("\n1. Testing prompt_id hash stability:")
+    
+    # Same inputs should produce same hash
+    test_cases = [
+        ("facts", "paris", "The capital of France is ____.", "Paris"),
+        ("idioms", "bucket", "Kick the ____.", "bucket"),
+        ("creative", "space", "The astronaut gazed at the endless ____.", "space"),
+    ]
+    
+    all_passed = True
+    for category, target_norm, question, target in test_cases:
+        id1 = _compute_prompt_id(category, target_norm, question, target)
+        id2 = _compute_prompt_id(category, target_norm, question, target)
+        if id1 == id2:
+            print(f"   ✅ prompt_id stable for {category}_{target_norm}: {id1}")
+        else:
+            print(f"   ❌ prompt_id NOT stable: {id1} != {id2}")
+            all_passed = False
+    
+    # Different inputs should produce different hashes
+    id1 = _compute_prompt_id("facts", "paris", "The capital of France is ____.", "Paris")
+    id2 = _compute_prompt_id("facts", "paris", "The capital of Germany is ____.", "Paris")
+    if id1 != id2:
+        print(f"   ✅ Different questions produce different hashes")
+    else:
+        print(f"   ❌ Different questions produce SAME hash (collision)")
+        all_passed = False
+    
+    # Verify format
+    id1 = _compute_prompt_id("facts", "paris", "Test question", "Paris")
+    parts = id1.split("_")
+    if len(parts) == 3 and parts[0] == "facts" and parts[1] == "paris" and len(parts[2]) == 8:
+        print(f"   ✅ prompt_id format correct: {id1}")
+    else:
+        print(f"   ❌ prompt_id format incorrect: {id1}")
+        all_passed = False
+    
+    print("\n" + "=" * 60)
+    print(f"Dataset pipeline tests {'PASSED' if all_passed else 'FAILED'}!")
+    print("=" * 60)

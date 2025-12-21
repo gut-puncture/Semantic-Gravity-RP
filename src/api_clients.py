@@ -125,19 +125,36 @@ class DeepSeekClient:
                 log_record["status_code"] = response.status_code
                 
                 # Try to parse response JSON
+                resp_json = None
                 try:
                     resp_json = response.json()
                     log_record["response_json"] = resp_json
                 except json.JSONDecodeError:
                     log_record["response_text"] = response.text[:2000]
                 
-                # Append to in-memory log and disk
+                if response.status_code == 200:
+                    if resp_json is not None:
+                        # Success path: log once with response_json
+                        self.request_log.append(log_record)
+                        self._append_log(log_record)
+                        return resp_json
+                    else:
+                        # JSON parse failed on 200 - treat as transient error
+                        # Set error before logging so disk log includes it
+                        log_record["error"] = "invalid_json"
+                        self.request_log.append(log_record)
+                        self._append_log(log_record)
+                        logger.warning(f"Invalid JSON on 200 response, retrying...")
+                        last_error = "invalid_json"
+                        time.sleep(delay)
+                        delay = min(delay * 2, self.retry_max_delay)
+                        continue
+                
+                # Non-200 status codes: log before handling
                 self.request_log.append(log_record)
                 self._append_log(log_record)
                 
-                if response.status_code == 200:
-                    return resp_json
-                elif response.status_code == 429:  # Rate limited
+                if response.status_code == 429:  # Rate limited
                     logger.warning(f"Rate limited, waiting {delay}s...")
                     time.sleep(delay)
                     delay = min(delay * 2, self.retry_max_delay)
@@ -146,7 +163,7 @@ class DeepSeekClient:
                     time.sleep(delay)
                     delay = min(delay * 2, self.retry_max_delay)
                 else:
-                    # Non-200, log response text
+                    # Non-200, non-retryable error, log response text if not already
                     if "response_text" not in log_record:
                         log_record["response_text"] = response.text[:2000]
                     response.raise_for_status()

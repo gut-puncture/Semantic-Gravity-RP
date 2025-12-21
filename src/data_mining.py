@@ -65,6 +65,61 @@ class CandidatePrompt:
 
 
 # ============================================================================
+# TARGET WORD VALIDATION HELPERS
+# ============================================================================
+
+def _is_valid_target_word(target: str) -> bool:
+    """
+    Return True if target is a valid single English word.
+    
+    Requirements (per issue A):
+    - Non-empty after stripping punctuation
+    - Strictly alphabetic (target.isalpha())
+    - Exactly one token when split on whitespace
+    - Length >= 2
+    
+    Args:
+        target: The target word to validate
+        
+    Returns:
+        True if target is valid, False otherwise
+    """
+    # Strip punctuation from both ends
+    stripped = target.strip().strip(".,!?;:\"'-")
+    if not stripped:
+        return False
+    if not stripped.isalpha():
+        return False
+    if len(stripped.split()) != 1:
+        return False
+    if len(stripped) < 2:
+        return False
+    return True
+
+
+def _target_leaks_into_question(target: str, question: str) -> bool:
+    """
+    Return True if target appears as a whole word in the question text.
+    
+    Uses case-insensitive word boundary matching via find_word_occurrences.
+    
+    Args:
+        target: The target word to check for leakage
+        question: The question/prompt text to search in
+        
+    Returns:
+        True if target leaks into question, False otherwise
+    """
+    try:
+        from .utils import find_word_occurrences
+    except ImportError:
+        from utils import find_word_occurrences
+    
+    occurrences = find_word_occurrences(target, question)
+    return len(occurrences) > 0
+
+
+# ============================================================================
 # WORDFREQ TARGET SELECTION
 # ============================================================================
 
@@ -360,12 +415,22 @@ class FactGenerator:
         )
         
         for country, capital in capital_sample:
+            # Validate target word (single word, alphabetic, no leakage)
+            if not _is_valid_target_word(capital):
+                logger.debug(f"Skipping invalid capital target: {capital}")
+                continue
+            
             # Pick template (F1 or F2 for capitals)
             style_id = random.choice(['F1', 'F2'])
             template = self.templates.get(style_id, 
                 'Fill the blank with one word: The capital of {subject} is ____.')
             
             question = template.format(subject=country)
+            
+            # Check for target leakage into question
+            if _target_leaks_into_question(capital, question):
+                logger.debug(f"Skipping leaking capital target: {capital} in {question}")
+                continue
             
             candidates.append(CandidatePrompt(
                 category="facts",
@@ -384,11 +449,21 @@ class FactGenerator:
         )
         
         for country, currency in currency_sample:
+            # Validate target word (single word, alphabetic, no leakage)
+            if not _is_valid_target_word(currency):
+                logger.debug(f"Skipping invalid currency target: {currency}")
+                continue
+            
             style_id = 'F3'
             template = self.templates.get(style_id,
                 'Complete with one word: The currency of {subject} is ____.')
             
             question = template.format(subject=country)
+            
+            # Check for target leakage into question
+            if _target_leaks_into_question(currency, question):
+                logger.debug(f"Skipping leaking currency target: {currency} in {question}")
+                continue
             
             candidates.append(CandidatePrompt(
                 category="facts",
@@ -496,7 +571,17 @@ class CommonSenseGenerator:
             template = self.templates.get(style_id, default_template)
             
             for subject, target in sample:
+                # Validate target word (single word, alphabetic, no leakage)
+                if not _is_valid_target_word(target):
+                    logger.debug(f"Skipping invalid common_sense target: {target}")
+                    continue
+                
                 question = template.format(subject=subject)
+                
+                # Check for target leakage into question
+                if _target_leaks_into_question(target, question):
+                    logger.debug(f"Skipping leaking common_sense target: {target} in {question}")
+                    continue
                 
                 candidates.append(CandidatePrompt(
                     category="common_sense",
@@ -1006,7 +1091,7 @@ class DatasetGenerator:
         candidate_multiplier: int = 1,
         candidates_per_target: Optional[int] = None,
         skip_generated: bool = False,
-        use_fallback: bool = True,
+        use_fallback: bool = False,
     ) -> Dict[str, List[CandidatePrompt]]:
         """
         Generate candidates for all categories.
@@ -1119,6 +1204,35 @@ if __name__ == "__main__":
         print(f"   ✅ Generated {len(candidates)} common sense candidates")
     except Exception as e:
         print(f"   ⚠️ Skipped (ConceptNet may be unavailable): {e}")
+    
+    # Test 4: _is_valid_target_word helper
+    print("\n4. Testing _is_valid_target_word:")
+    test_cases = [
+        ("New York", False),   # Multi-word
+        ("ice-cream", False),  # Contains hyphen
+        ("Paris", True),       # Valid
+        ("", False),           # Empty
+        ("a", False),          # Too short
+        ("123", False),        # Not alphabetic
+        ("Tokyo", True),       # Valid
+    ]
+    for target, expected in test_cases:
+        result = _is_valid_target_word(target)
+        status = "✅" if result == expected else "❌"
+        print(f"   {status} _is_valid_target_word('{target}') = {result} (expected: {expected})")
+    
+    # Test 5: _target_leaks_into_question helper
+    print("\n5. Testing _target_leaks_into_question:")
+    test_cases = [
+        ("paris", "The capital of France is Paris.", True),  # Leaks (case-insensitive)
+        ("paris", "The capital of France is ____.", False),  # No leak
+        ("space", "spacetime is interesting", False),        # Not whole word
+        ("space", "I love space travel", True),              # Leaks
+    ]
+    for target, question, expected in test_cases:
+        result = _target_leaks_into_question(target, question)
+        status = "✅" if result == expected else "❌"
+        print(f"   {status} _target_leaks_into_question('{target}', '{question[:30]}...') = {result}")
     
     print("\n" + "=" * 60)
     print("Data mining tests complete!")
