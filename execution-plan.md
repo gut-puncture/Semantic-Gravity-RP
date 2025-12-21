@@ -522,17 +522,26 @@ Module inventory:
 ## 13. Output file schemas (must be explicit and stable)
 
 13.1 `data/prompts.csv` columns:
-- prompt_id (int, 0..2499)
+
+**Note**: prompt_id is a string key of the form '{category}_{target_word_normalized}'
+(e.g. 'facts_paris'). Treat it as an opaque identifier; do not assume numeric
+format or attempt to cast to int.
+
+- prompt_id (string key: '{category}_{target_word_normalized}')
+- question_text (string; raw cloze question without instruction)
+- prompt_text (string; full baseline prompt with instruction)
 - category (idioms|facts|common_sense|creative|ood)
-- prompt_text (string)
 - target_word (string)
 - target_word_normalized (string)
 - prompt_style_id (string)
 - source_trace (string)
-- validation_json_ref (string path or id)
-- p0 (float)
-- p1 (float)
-- p0_bin (string like "0.2-0.4")
+- validation_json_ref (string; ref to validated JSONL, e.g. 'facts_validated.jsonl#prompt_id=facts_paris')
+- p0 (float; baseline P_sem)
+- p1 (float; negative P_sem)
+- p0_bin (string like '0.2-0.4')
+- v_score (int; validation score)
+- p_sem (float; alias of p0 for backward compatibility)
+- s_score (float; combined selection score)
 
 13.2 `data/prompts_metadata.json`:
 - counts by category and bin
@@ -546,12 +555,12 @@ Module inventory:
   raw_response_json, parsed_fields, acceptance_decision
 
 13.4 `runs/completions_greedy.jsonl`:
-- prompt_id, condition, prompt_text
+- prompt_id (string key), condition, prompt_text
 - generated_text, generated_token_ids
 - finish_reason, timestamp
 
 13.5 `runs/completions_samples.jsonl`:
-- prompt_id, condition, sample_id (0..15)
+- prompt_id (string key), condition, sample_id (0..15)
 - generated_text, generated_token_ids
 - finish_reason, timestamp
 
@@ -623,6 +632,10 @@ Module inventory:
 - prompts per category not equal to 500
 
 ## 15. Final run order (execute exactly)
+
+**Note**: prompt_id is a string key of the form '{category}_{target_word_normalized}'
+(e.g. 'facts_paris'). Treat it as an opaque identifier; do not assume numeric
+format or attempt to cast to int.
 
 15.1 Mount Drive, verify A100, log environment.
 15.2 Run correctness engine tests and halt on failure.

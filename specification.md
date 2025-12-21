@@ -190,14 +190,17 @@ All sources below must be used exactly as specified.
 
 Every final prompt must be stored with:
 
+* prompt_id (string key: '{category}_{target_word_normalized}')
+* question_text (raw cloze question without instruction)
+* prompt_text (full baseline prompt with instruction)
 * category
-* prompt_text
 * target_word
 * target_word_normalized
 * source_trace
 * prompt_style_id
 * validation JSON
-* pressure_probe metrics
+* pressure_probe metrics (p0, p1, p0_bin)
+* v_score, p_sem, s_score
 
 Prompt must enforce "Answer with exactly one English word."
 
@@ -807,7 +810,7 @@ All outputs saved under one root folder, e.g. `outputs/experiment_run_YYYYMMDD_H
 
 Required files:
 
-* data/prompts.csv
+* data/prompts.csv (prompt_id is string key: '{category}_{target_word_normalized}')
 * data/prompts_metadata.json
 * data/deepseek_validation.jsonl
 * runs/completions_samples.jsonl
@@ -823,6 +826,26 @@ Required files:
 * figures/*.png
 * appendix_examples/*.json
 * errors/mapping_errors.jsonl
+
+### data/prompts.csv schema
+
+Columns (prompt_id is a string key, not numeric):
+
+* prompt_id (string key: '{category}_{target_word_normalized}')
+* question_text (raw cloze question without instruction)
+* prompt_text (full baseline prompt with instruction)
+* category (idioms|facts|common_sense|creative|ood)
+* target_word
+* target_word_normalized
+* prompt_style_id
+* source_trace
+* validation_json_ref (e.g. 'facts_validated.jsonl#prompt_id=facts_paris')
+* p0 (float; baseline P_sem)
+* p1 (float; negative P_sem)
+* p0_bin (string like '0.2-0.4')
+* v_score (int; validation score)
+* p_sem (float; alias of p0 for backward compatibility)
+* s_score (float; combined selection score)
 
 All CSVs must have explicit schemas documented in notebook comments.
 
