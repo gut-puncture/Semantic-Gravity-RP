@@ -33,6 +33,7 @@ class DeepSeekClient:
     - Chat completions with retry logic
     - JSON parsing with fallback
     - Rate limiting
+    - Full request/response logging to disk
     """
     
     api_key: Optional[str] = None
@@ -41,6 +42,9 @@ class DeepSeekClient:
     retry_base_delay: float = 1.0
     retry_max_delay: float = 30.0
     request_log: List[Dict] = field(default_factory=list)
+    request_log_path: Optional[str] = None
+    min_request_interval: float = 0.0
+    _last_request_time: float = field(default=0.0, repr=False)
     
     def __post_init__(self):
         """Load API key from .env file or environment."""
@@ -62,13 +66,34 @@ class DeepSeekClient:
         if not self.api_key:
             logger.warning("DEEPSEEK_API_KEY not set. API calls will fail.")
     
+    def _append_log(self, record: Dict) -> None:
+        """Append a log record to the request log file."""
+        if not self.request_log_path:
+            return
+        try:
+            from pathlib import Path
+            path = Path(self.request_log_path)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            with path.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(record) + "\n")
+        except Exception:
+            pass  # Swallow logging errors
+    
+    def _rate_limit(self) -> None:
+        """Enforce minimum interval between requests."""
+        if self.min_request_interval > 0:
+            elapsed = time.time() - self._last_request_time
+            if elapsed < self.min_request_interval:
+                time.sleep(self.min_request_interval - elapsed)
+        self._last_request_time = time.time()
+    
     def _make_request(
         self,
         endpoint: str,
         payload: Dict,
         timeout: int = 60,
     ) -> Dict:
-        """Make HTTP request with retry logic."""
+        """Make HTTP request with retry logic and full logging."""
         url = f"{self.base_url}/{endpoint}"
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -79,6 +104,16 @@ class DeepSeekClient:
         delay = self.retry_base_delay
         
         for attempt in range(self.retry_attempts):
+            # Rate limit before each attempt
+            self._rate_limit()
+            
+            log_record = {
+                "timestamp": time.time(),
+                "endpoint": endpoint,
+                "payload": payload,
+                "attempt": attempt + 1,
+            }
+            
             try:
                 response = requests.post(
                     url,
@@ -87,16 +122,21 @@ class DeepSeekClient:
                     timeout=timeout,
                 )
                 
-                # Log request
-                self.request_log.append({
-                    "timestamp": time.time(),
-                    "endpoint": endpoint,
-                    "status": response.status_code,
-                    "attempt": attempt + 1,
-                })
+                log_record["status_code"] = response.status_code
+                
+                # Try to parse response JSON
+                try:
+                    resp_json = response.json()
+                    log_record["response_json"] = resp_json
+                except json.JSONDecodeError:
+                    log_record["response_text"] = response.text[:2000]
+                
+                # Append to in-memory log and disk
+                self.request_log.append(log_record)
+                self._append_log(log_record)
                 
                 if response.status_code == 200:
-                    return response.json()
+                    return resp_json
                 elif response.status_code == 429:  # Rate limited
                     logger.warning(f"Rate limited, waiting {delay}s...")
                     time.sleep(delay)
@@ -106,16 +146,25 @@ class DeepSeekClient:
                     time.sleep(delay)
                     delay = min(delay * 2, self.retry_max_delay)
                 else:
+                    # Non-200, log response text
+                    if "response_text" not in log_record:
+                        log_record["response_text"] = response.text[:2000]
                     response.raise_for_status()
                     
             except requests.exceptions.Timeout:
                 logger.warning(f"Request timeout, attempt {attempt + 1}")
                 last_error = "timeout"
+                log_record["error"] = "timeout"
+                self.request_log.append(log_record)
+                self._append_log(log_record)
                 time.sleep(delay)
                 delay = min(delay * 2, self.retry_max_delay)
             except requests.exceptions.RequestException as e:
                 logger.error(f"Request failed: {e}")
                 last_error = str(e)
+                log_record["error"] = str(e)
+                self.request_log.append(log_record)
+                self._append_log(log_record)
                 time.sleep(delay)
                 delay = min(delay * 2, self.retry_max_delay)
         
@@ -224,6 +273,36 @@ class DeepSeekClient:
                     raise RuntimeError(f"Failed to get valid JSON from DeepSeek: {e}")
             else:
                 raise
+    
+    def generate_json_r1(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        temperature: float = 0.1,
+        max_tokens: int = 1024,
+    ) -> Dict:
+        """
+        Generate JSON using DeepSeek R1 (reasoner) model.
+        
+        Thin wrapper around generate_json with model set to deepseek-reasoner.
+        
+        Args:
+            system_prompt: System instruction
+            user_prompt: User message
+            temperature: Sampling temperature (default 0.1 for consistency)
+            max_tokens: Max tokens to generate
+            
+        Returns:
+            Parsed JSON dict
+        """
+        return self.generate_json(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            model="deepseek-reasoner",
+            temperature=temperature,
+            max_tokens=max_tokens,
+            retry_on_invalid=True,
+        )
 
 
 # ============================================================================
