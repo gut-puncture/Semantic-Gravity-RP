@@ -26,11 +26,15 @@ try:
     from .data_mining import CandidatePrompt
     from .config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from .utils import ModelWrapper
+    from .prompt_builder import build_prompt
+    from .metrics_psem import compute_p_sem_for_prompt
 except ImportError:
     from api_clients import DeepSeekClient
     from data_mining import CandidatePrompt
     from config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from utils import ModelWrapper
+    from prompt_builder import build_prompt
+    from metrics_psem import compute_p_sem_for_prompt
 
 
 # ============================================================================
@@ -136,21 +140,7 @@ def build_prompt_text(question_text: str) -> str:
     question_text = question_text.strip()
     if question_text.startswith("Answer with exactly one English word."):
         return question_text
-    return PROMPT_TEMPLATES['baseline'].format(question=question_text)
-
-
-def _pressure_variants(word: str) -> List[str]:
-    """
-    Generate surface variants for pressure probing.
-    """
-    base = {word, word.lower(), word.title(), word.upper()}
-    variants = set()
-    for v in base:
-        variants.add(v)
-        variants.add(f" {v}")
-        variants.add(f"{v}.")
-        variants.add(f" {v}.")
-    return sorted(variants)
+    return build_prompt(question_text, target_word="", condition="baseline")
 
 
 # ============================================================================
@@ -305,9 +295,8 @@ def compute_semantic_pressure(
     """
     Compute semantic pressure P(p) for validated prompts using the model.
 
-    Uses the shared ModelWrapper singleton to score the probability mass on the
-    target word given the prompt context. Results are written into
-    ValidatedPrompt.p_sem and S scores are refreshed.
+    Uses compute_p_sem_for_prompt from metrics_psem module.
+    Results are written into ValidatedPrompt.p_sem and S scores are refreshed.
 
     Args:
         validated_prompts: List of validated prompts to score
@@ -318,6 +307,7 @@ def compute_semantic_pressure(
     """
     wrapper = model_wrapper or ModelWrapper.get_instance()
 
+    # Try to load model; if fails, set all p_sem to 0
     try:
         if not wrapper.is_loaded:
             wrapper.load()
@@ -328,6 +318,7 @@ def compute_semantic_pressure(
             vp.compute_s_score()
         return validated_prompts
 
+    # Check torch availability
     try:
         import torch
     except ImportError:
@@ -337,48 +328,16 @@ def compute_semantic_pressure(
             vp.compute_s_score()
         return validated_prompts
 
-    device = next(wrapper.model.parameters()).device
-
-    def sequence_probability(context_ids: List[int], seq_ids: Tuple[int, ...]) -> float:
-        if not context_ids:
-            return 0.0
-        input_ids = torch.tensor([context_ids + list(seq_ids)], device=device)
-        attention_mask = torch.ones_like(input_ids)
-
-        with torch.no_grad():
-            outputs = wrapper.model(input_ids=input_ids, attention_mask=attention_mask)
-        logits = outputs.logits
-
-        start = len(context_ids) - 1
-        if start < 0:
-            return 0.0
-
-        log_prob = 0.0
-        for i, token_id in enumerate(seq_ids):
-            pos = start + i
-            if pos >= logits.shape[1]:
-                return 0.0
-            log_probs = torch.log_softmax(logits[0, pos, :], dim=-1)
-            log_prob += log_probs[token_id].item()
-        return math.exp(log_prob)
-
+    # Compute P_sem for each prompt
     for vp in validated_prompts:
         try:
             prompt_text = build_prompt_text(vp.candidate.question_text)
-            context_ids = wrapper.tokenizer.encode(prompt_text, add_special_tokens=False)
-
-            seen = set()
-            p_total = 0.0
-            for variant in _pressure_variants(vp.candidate.target_word):
-                token_ids = wrapper.tokenizer.encode(variant, add_special_tokens=False)
-                seq = tuple(token_ids)
-                if not seq or seq in seen:
-                    continue
-                seen.add(seq)
-                p_total += sequence_probability(context_ids, seq)
-
-            vp.p_sem = float(p_total)
-
+            vp.p_sem = compute_p_sem_for_prompt(
+                prompt_text,
+                vp.candidate.target_word,
+                wrapper.model,
+                wrapper.tokenizer,
+            )
         except Exception as e:
             logger.error(f"Pressure computation failed for {vp.candidate.target_word}: {e}")
             vp.p_sem = 0.0
