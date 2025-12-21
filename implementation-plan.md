@@ -1,5 +1,3 @@
-This document converts the **Expanded Master Specification (Plan 2)** into a sequential **Implementation Plan**.
-
 This plan is structured logically for a coding agent. It breaks the project into **6 Modules** that should be implemented in order. Each module produces artifacts (files/data) required by the next module.
 
 ---
