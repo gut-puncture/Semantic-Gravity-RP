@@ -48,6 +48,7 @@ from .validator import (
     PromptSelector,
     TargetTracker,
 )
+from .dataset_pipeline import build_dataset
 
 __version__ = "0.1.0"
 
@@ -87,4 +88,6 @@ __all__ = [
     'PromptValidator',
     'PromptSelector',
     'TargetTracker',
+    # Dataset Pipeline
+    'build_dataset',
 ]

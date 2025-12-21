@@ -13,6 +13,7 @@ The "Filter Funnel" as described in the implementation plan.
 
 import json
 import logging
+import math
 from typing import Dict, List, Optional, Tuple, Set
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -23,12 +24,12 @@ logger = logging.getLogger(__name__)
 try:
     from .api_clients import DeepSeekClient
     from .data_mining import CandidatePrompt
-    from .config import CONFIG, get_base_paths
+    from .config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from .utils import ModelWrapper
 except ImportError:
     from api_clients import DeepSeekClient
     from data_mining import CandidatePrompt
-    from config import CONFIG, get_base_paths
+    from config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from utils import ModelWrapper
 
 
@@ -128,6 +129,30 @@ class ValidationResult:
         )
 
 
+def build_prompt_text(question_text: str) -> str:
+    """
+    Build the baseline prompt text from a category question.
+    """
+    question_text = question_text.strip()
+    if question_text.startswith("Answer with exactly one English word."):
+        return question_text
+    return PROMPT_TEMPLATES['baseline'].format(question=question_text)
+
+
+def _pressure_variants(word: str) -> List[str]:
+    """
+    Generate surface variants for pressure probing.
+    """
+    base = {word, word.lower(), word.title(), word.upper()}
+    variants = set()
+    for v in base:
+        variants.add(v)
+        variants.add(f" {v}")
+        variants.add(f"{v}.")
+        variants.add(f" {v}.")
+    return sorted(variants)
+
+
 # ============================================================================
 # DEEPSEEK R1 VALIDATOR
 # ============================================================================
@@ -184,9 +209,11 @@ Return your evaluation as valid JSON with these exact fields:
         if prompt_id is None:
             prompt_id = f"{prompt.category}_{prompt.target_word_normalized}"
         
+        prompt_text = build_prompt_text(prompt.question_text)
         user_prompt = f"""Evaluate this cloze prompt:
 
-PROMPT: {prompt.question_text}
+PROMPT:
+{prompt_text}
 
 TARGET WORD: {prompt.target_word}
 
@@ -310,28 +337,47 @@ def compute_semantic_pressure(
             vp.compute_s_score()
         return validated_prompts
 
+    device = next(wrapper.model.parameters()).device
+
+    def sequence_probability(context_ids: List[int], seq_ids: Tuple[int, ...]) -> float:
+        if not context_ids:
+            return 0.0
+        input_ids = torch.tensor([context_ids + list(seq_ids)], device=device)
+        attention_mask = torch.ones_like(input_ids)
+
+        with torch.no_grad():
+            outputs = wrapper.model(input_ids=input_ids, attention_mask=attention_mask)
+        logits = outputs.logits
+
+        start = len(context_ids) - 1
+        if start < 0:
+            return 0.0
+
+        log_prob = 0.0
+        for i, token_id in enumerate(seq_ids):
+            pos = start + i
+            if pos >= logits.shape[1]:
+                return 0.0
+            log_probs = torch.log_softmax(logits[0, pos, :], dim=-1)
+            log_prob += log_probs[token_id].item()
+        return math.exp(log_prob)
+
     for vp in validated_prompts:
         try:
-            # Build prompt context and get logits for next token
-            prompt_text = f"{vp.candidate.question_text}\nAnswer:"
-            inputs = wrapper.tokenize(prompt_text, add_special_tokens=False)
-            logits = wrapper.get_logits(inputs['input_ids'])
-            next_logits = logits[:, -1, :]
-            probs = torch.softmax(next_logits, dim=-1)
+            prompt_text = build_prompt_text(vp.candidate.question_text)
+            context_ids = wrapper.tokenizer.encode(prompt_text, add_special_tokens=False)
 
-            # Compute probability mass on target token sequence
-            target_token_ids = wrapper.tokenizer.encode(
-                vp.candidate.target_word,
-                add_special_tokens=False,
-            )
+            seen = set()
+            p_total = 0.0
+            for variant in _pressure_variants(vp.candidate.target_word):
+                token_ids = wrapper.tokenizer.encode(variant, add_special_tokens=False)
+                seq = tuple(token_ids)
+                if not seq or seq in seen:
+                    continue
+                seen.add(seq)
+                p_total += sequence_probability(context_ids, seq)
 
-            if not target_token_ids:
-                vp.p_sem = 0.0
-            else:
-                prob = 1.0
-                for token_id in target_token_ids:
-                    prob *= probs[0, token_id].item()
-                vp.p_sem = float(prob)
+            vp.p_sem = float(p_total)
 
         except Exception as e:
             logger.error(f"Pressure computation failed for {vp.candidate.target_word}: {e}")
@@ -442,17 +488,24 @@ class ValidatedPrompt:
     
     def to_dict(self) -> Dict:
         """Convert to dictionary for serialization."""
+        validation_payload = dict(self.validation.raw_response) if self.validation.raw_response else {}
+        validation_payload.setdefault("is_one_word_answer_enforced", self.validation.is_one_word_answer_enforced)
+        validation_payload.setdefault("best_one_word_answer", self.validation.best_one_word_answer)
+        validation_payload.setdefault("top3_one_word_answers", self.validation.top3_one_word_answers)
+        validation_payload.setdefault("is_X_best", self.validation.is_X_best)
+        validation_payload.setdefault("ambiguity_score", self.validation.ambiguity_score)
+        validation_payload.setdefault("leaks_answer", self.validation.leaks_answer)
+        validation_payload.setdefault("naturalness_score", self.validation.naturalness_score)
+        validation_payload.setdefault("comments", self.validation.comments)
+        validation_payload["v_score"] = self.v_score
+
         return {
             **self.candidate.to_dict(),
+            "prompt_text": build_prompt_text(self.candidate.question_text),
             "v_score": self.v_score,
             "p_sem": self.p_sem,
             "s_score": self.s_score,
-            "validation": {
-                "is_X_best": self.validation.is_X_best,
-                "ambiguity_score": self.validation.ambiguity_score,
-                "naturalness_score": self.validation.naturalness_score,
-                "best_answer": self.validation.best_one_word_answer,
-            }
+            "validation": validation_payload,
         }
 
 
@@ -647,7 +700,7 @@ def validate_and_enrich_prompts(
     validated_dir = base_paths['data_root'] / 'validated'
     validated_dir.mkdir(parents=True, exist_ok=True)
     if output_file is None:
-        output_file = validated_dir / 'validated_prompts.jsonl'
+        output_file = validated_dir / 'prompts.jsonl'
 
     with open(output_file, 'w', encoding='utf-8') as f:
         for vp in validated_prompts:

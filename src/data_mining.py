@@ -13,6 +13,7 @@ Each generator produces candidate prompts in a standardized format.
 
 import re
 import csv
+import json
 import random
 import logging
 from io import StringIO
@@ -25,10 +26,10 @@ logger = logging.getLogger(__name__)
 # Import from local modules
 try:
     from .api_clients import WikidataClient, ConceptNetClient, DeepSeekClient, download_idioms_csv
-    from .config import PROMPT_TEMPLATES, CONFIG
+    from .config import PROMPT_TEMPLATES, CONFIG, get_base_paths
 except ImportError:
     from api_clients import WikidataClient, ConceptNetClient, DeepSeekClient, download_idioms_csv
-    from config import PROMPT_TEMPLATES, CONFIG
+    from config import PROMPT_TEMPLATES, CONFIG, get_base_paths
 
 
 # ============================================================================
@@ -59,7 +60,57 @@ class CandidatePrompt:
             "target_word_normalized": self.target_word_normalized,
             "prompt_style_id": self.prompt_style_id,
             "source_trace": self.source_trace,
+            "raw_data": self.raw_data,
         }
+
+
+# ============================================================================
+# WORDFREQ TARGET SELECTION
+# ============================================================================
+
+_FALLBACK_WORDS = [
+    "space", "water", "light", "dark", "time", "life", "death", "love",
+    "fear", "hope", "dream", "night", "day", "sun", "moon", "star",
+    "fire", "ice", "wind", "rain", "storm", "peace", "war", "truth",
+    "lies", "power", "magic", "gold", "silver", "blood", "heart", "soul",
+    "mind", "ghost", "shadow", "silence", "music", "dance", "song", "voice",
+]
+
+
+def get_wordfreq_targets(
+    n: int,
+    min_zipf: Optional[float] = None,
+    max_zipf: Optional[float] = None,
+) -> List[str]:
+    """
+    Get target words within a Zipf frequency band.
+
+    Falls back to a small built-in list if wordfreq is unavailable.
+    """
+    min_zipf = CONFIG['wordfreq']['min_zipf'] if min_zipf is None else min_zipf
+    max_zipf = CONFIG['wordfreq']['max_zipf'] if max_zipf is None else max_zipf
+
+    try:
+        from wordfreq import top_n_list, zipf_frequency
+    except ImportError:
+        logger.warning("wordfreq not installed, using fallback word list")
+        return _FALLBACK_WORDS[:n]
+
+    candidates = top_n_list('en', 5000)
+    valid_words = []
+
+    for word in candidates:
+        if not word.isalpha():
+            continue
+        if len(word) < 3:
+            continue
+        zipf = zipf_frequency(word, 'en')
+        if min_zipf <= zipf <= max_zipf:
+            valid_words.append(word)
+        if len(valid_words) >= n:
+            break
+
+    return valid_words
 
 
 # ============================================================================
@@ -103,26 +154,56 @@ class IdiomGenerator:
                 save_path=str(self.cache_path) if self.cache_path else None
             )
         
-        # Parse the format: "{idiom}>>{meaning}" (with outer quotes)
         self.idioms = []
-        for line in content.strip().split('\n'):
-            line = line.strip()
-            if not line or '>>' not in line:
-                continue
-            
-            # Remove outer quotes if present
-            if line.startswith('"') and line.endswith('"'):
-                line = line[1:-1]
-            
-            # Parse format: {Break a leg}>>{Good luck!}
-            match = re.match(r'\{([^}]+)\}>>\{([^}]+)\}', line)
-            if match:
-                idiom = match.group(1).strip()
-                meaning = match.group(2).strip()
-                
-                # Validate idiom
-                if self._is_valid_idiom(idiom):
-                    self.idioms.append((idiom, meaning))
+
+        def add_idiom(idiom: str, meaning: str = "") -> None:
+            idiom = idiom.strip()
+            meaning = meaning.strip() if meaning else ""
+            if self._is_valid_idiom(idiom):
+                self.idioms.append((idiom, meaning))
+
+        rows = list(csv.reader(StringIO(content)))
+        if rows:
+            header = [h.strip().lower() for h in rows[0]] if rows[0] else []
+            idiom_idx = None
+            meaning_idx = None
+            start_idx = 0
+
+            if header and any("idiom" in h for h in header):
+                for i, h in enumerate(header):
+                    if "idiom" in h:
+                        idiom_idx = i
+                        break
+                for i, h in enumerate(header):
+                    if "meaning" in h or "definition" in h:
+                        meaning_idx = i
+                        break
+                start_idx = 1
+
+            for row in rows[start_idx:]:
+                if not row:
+                    continue
+                if idiom_idx is not None and len(row) > idiom_idx:
+                    idiom = row[idiom_idx]
+                    meaning = row[meaning_idx] if meaning_idx is not None and len(row) > meaning_idx else ""
+                    if idiom:
+                        add_idiom(idiom, meaning)
+                    continue
+
+                if len(row) == 1:
+                    line = row[0].strip()
+                    if not line:
+                        continue
+                    if line.startswith('"') and line.endswith('"'):
+                        line = line[1:-1]
+                    match = re.match(r'\{([^}]+)\}>>\{([^}]+)\}', line)
+                    if match:
+                        add_idiom(match.group(1), match.group(2))
+                elif len(row) >= 2 and idiom_idx is None:
+                    idiom = row[0].strip()
+                    meaning = row[1].strip() if len(row) > 1 else ""
+                    if idiom:
+                        add_idiom(idiom, meaning)
         
         logger.info(f"Loaded {len(self.idioms)} valid idioms")
         return len(self.idioms)
@@ -442,71 +523,126 @@ class CreativeGenerator:
     Uses wordfreq to select target words in common frequency band.
     """
     
-    SYSTEM_PROMPT = """You are a creative writing assistant. Your task is to generate short micro-story prompts that have exactly one best one-word completion.
+    SYSTEM_PROMPT = """You are a creative writing assistant. Your task is to generate short micro-stories that have exactly one best one-word completion.
 
 Requirements:
 1. Create a 2-sentence micro-story that strongly implies a specific target word
-2. End with a blank (____) for the reader to fill
+2. Do NOT include the target word anywhere in the micro-story
 3. The target word should be the single most natural completion
-4. Do NOT include the target word anywhere in the prompt
-5. Make prompts engaging and varied in theme
+4. Keep prompts engaging and varied in theme
 
 Format your response as JSON:
 {
   "prompts": [
-    {"microstory": "Two sentence story ending with ...", "implied_word": "target"}
+    {"microstory": "Two sentence story WITHOUT the final blank"}
   ]
 }"""
 
-    def __init__(self, deepseek_client: Optional[DeepSeekClient] = None):
+    def __init__(
+        self,
+        deepseek_client: Optional[DeepSeekClient] = None,
+        cache_dir: Optional[Path] = None,
+        scenario_texts: Optional[List[str]] = None,
+    ):
         self.client = deepseek_client or DeepSeekClient()
+        self.cache_dir = cache_dir
+        self.scenario_texts = scenario_texts or []
         self.target_words: List[str] = []
-    
+
     def _get_target_words(self, n: int = 200) -> List[str]:
+        """Get target words in the Zipf frequency band."""
+        return get_wordfreq_targets(n)
+
+    def _load_scenarios(self, n: int) -> List[str]:
         """
-        Get target words in the Zipf frequency band 3.5-6.0.
-        
-        Uses wordfreq package.
+        Load scenario texts from local cache or Hugging Face.
+
+        Returns up to n scenario strings.
         """
+        if self.scenario_texts:
+            return self.scenario_texts
+
+        search_paths: List[Path] = []
+        if self.cache_dir:
+            search_paths.extend([
+                self.cache_dir / "writingprompts.jsonl",
+                self.cache_dir / "writingprompts.txt",
+            ])
+
         try:
-            from wordfreq import word_frequency, zipf_frequency
+            base_paths = get_base_paths()
+            search_paths.extend([
+                base_paths['data_root'] / "raw" / "writingprompts.jsonl",
+                base_paths['data_root'] / "raw" / "writingprompts.txt",
+            ])
+        except Exception:
+            pass
+
+        for path in search_paths:
+            if not path or not path.exists():
+                continue
+            scenarios: List[str] = []
+            with open(path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    if path.suffix == ".jsonl":
+                        try:
+                            obj = json.loads(line)
+                        except json.JSONDecodeError:
+                            continue
+                        text = obj.get("prompt") or obj.get("text") or obj.get("story") or obj.get("context")
+                    else:
+                        text = line
+                    if not text:
+                        continue
+                    text = text.strip()
+                    if len(text.split()) < 6:
+                        continue
+                    scenarios.append(text)
+                    if len(scenarios) >= n:
+                        break
+            if scenarios:
+                self.scenario_texts = scenarios
+                return scenarios
+
+        try:
+            from datasets import load_dataset
         except ImportError:
-            logger.warning("wordfreq not installed, using fallback word list")
-            return self._get_fallback_words(n)
-        
-        # Common English words to check
-        from wordfreq import top_n_list
-        candidates = top_n_list('en', 5000)
-        
-        valid_words = []
-        min_zipf = CONFIG['wordfreq']['min_zipf']  # 3.5
-        max_zipf = CONFIG['wordfreq']['max_zipf']  # 6.0
-        
-        for word in candidates:
-            if not word.isalpha():
-                continue
-            if len(word) < 3:
-                continue
-            
-            zipf = zipf_frequency(word, 'en')
-            if min_zipf <= zipf <= max_zipf:
-                valid_words.append(word)
-            
-            if len(valid_words) >= n:
-                break
-        
-        return valid_words
-    
-    def _get_fallback_words(self, n: int) -> List[str]:
-        """Fallback word list if wordfreq not available."""
-        words = [
-            "space", "water", "light", "dark", "time", "life", "death", "love",
-            "fear", "hope", "dream", "night", "day", "sun", "moon", "star",
-            "fire", "ice", "wind", "rain", "storm", "peace", "war", "truth",
-            "lies", "power", "magic", "gold", "silver", "blood", "heart", "soul",
-            "mind", "ghost", "shadow", "silence", "music", "dance", "song", "voice",
-        ]
-        return words[:n]
+            logger.warning("datasets not installed; skipping WritingPrompts load")
+            return []
+
+        scenarios = []
+        dataset_name = CONFIG['sources']['writingprompts_dataset']
+        try:
+            ds = load_dataset(dataset_name, split="train", streaming=True)
+            for row in ds:
+                text = row.get("prompt") or row.get("text") or row.get("story") or row.get("context")
+                if not text:
+                    continue
+                text = text.strip()
+                if len(text.split()) < 6:
+                    continue
+                scenarios.append(text)
+                if len(scenarios) >= n:
+                    break
+        except Exception as e:
+            logger.warning(f"Failed to stream WritingPrompts dataset: {e}")
+            return []
+
+        if scenarios and self.cache_dir:
+            cache_path = self.cache_dir / "writingprompts.txt"
+            try:
+                cache_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(cache_path, 'w', encoding='utf-8') as f:
+                    for s in scenarios:
+                        f.write(s.replace('\n', ' ').strip() + '\n')
+            except Exception as e:
+                logger.debug(f"Could not cache WritingPrompts scenarios: {e}")
+
+        self.scenario_texts = scenarios
+        return scenarios
     
     def generate_candidates(
         self, 
@@ -525,21 +661,25 @@ Format your response as JSON:
         """
         n_targets = n // candidates_per_target
         self.target_words = self._get_target_words(n_targets)
-        
+
         candidates = []
         template = PROMPT_TEMPLATES.get('creative', {}).get('default',
             'Fill the blank with one word: {microstory} ____.')
+
+        scenarios = self._load_scenarios(n_targets) if n_targets > 0 else []
         
         for target in self.target_words:
-            user_prompt = f"""Generate {candidates_per_target} different micro-story prompts where the answer is "{target}".
+            scenario = random.choice(scenarios) if scenarios else ""
+            scenario_line = f"Scenario seed: {scenario}\n" if scenario else ""
+
+            user_prompt = f"""{scenario_line}Generate {candidates_per_target} different micro-story prompts where the answer is "{target}".
 
 Each micro-story should:
 - Be 2 sentences long
-- End with a blank that "{target}" naturally fills
 - NOT contain the word "{target}" anywhere
 - Have "{target}" as the single best one-word answer
 
-Return as JSON with "prompts" array."""
+Return as JSON with "prompts" array. Each "microstory" should NOT include the blank."""
 
             try:
                 result = self.client.generate_json(
@@ -550,8 +690,9 @@ Return as JSON with "prompts" array."""
                 
                 prompts = result.get("prompts", [])
                 for i, p in enumerate(prompts):
-                    microstory = p.get("microstory", "")
+                    microstory = p.get("microstory", "").strip()
                     if microstory and target.lower() not in microstory.lower():
+                        microstory = microstory.rstrip().rstrip(".!?")
                         question = template.format(microstory=microstory)
                         
                         candidates.append(CandidatePrompt(
@@ -595,78 +736,103 @@ The prompts should feel "out of distribution" compared to typical factual or com
 Format your response as JSON:
 {
   "prompts": [
-    {"context": "unusual scenario...", "target_word": "answer"}
+    {"context": "1-2 sentence context", "style": "O1"}
   ]
 }"""
 
     def __init__(self, deepseek_client: Optional[DeepSeekClient] = None):
         self.client = deepseek_client or DeepSeekClient()
+        self.target_words: List[str] = []
+
+    def _get_target_words(self, n: int = 200) -> List[str]:
+        """Get target words in the Zipf frequency band."""
+        return get_wordfreq_targets(n)
+
+    def _format_ood_prompt(
+        self,
+        context: str,
+        style: str,
+        templates: Dict[str, str],
+    ) -> str:
+        template = templates.get(style)
+        if not template:
+            return f"Fill the blank with one word: {context} ____."
+
+        prefix, sep, rest = template.partition(":")
+        if not sep:
+            return template
+
+        context = context.strip()
+        if context and context[-1] not in ".!?":
+            context = context + "."
+        rest = rest.strip()
+
+        if context:
+            return f"{prefix}: {context} {rest}".strip()
+        return f"{prefix}: {rest}".strip()
     
-    def generate_candidates(self, n: int = 500) -> List[CandidatePrompt]:
+    def generate_candidates(
+        self,
+        n: int = 500,
+        candidates_per_target: int = 5,
+    ) -> List[CandidatePrompt]:
         """
         Generate OOD prompt candidates.
         
         Args:
             n: Number of candidates to generate
+            candidates_per_target: K candidates per target word
             
         Returns:
             List of CandidatePrompt objects
         """
         candidates = []
-        batch_size = 10
-        n_batches = (n + batch_size - 1) // batch_size
+        n_targets = n // candidates_per_target
+        self.target_words = self._get_target_words(n_targets)
         
         templates = PROMPT_TEMPLATES.get('ood', {})
+        default_style = "O1"
         
-        for batch in range(n_batches):
-            user_prompt = f"""Generate {batch_size} out-of-distribution cloze prompts.
+        for idx, target in enumerate(self.target_words):
+            user_prompt = f"""Generate {candidates_per_target} out-of-distribution cloze contexts where the answer is "{target}".
 
 Each prompt should:
 - Present an unusual, surreal, or pseudo-technical scenario
-- End with a blank that has ONE clear best answer
-- Feel surprising or unexpected
-- NOT be a typical factual or common-sense question
+- Make "{target}" the single best one-word completion
+- NOT contain the word "{target}" anywhere in the context
+- Include 1-2 sentences of context
 
-Examples of framing styles:
-- Game/puzzle rules
-- Ritual/ceremony instructions
-- Surreal dreamscape descriptions
-- Pseudo-scientific observations
-- Mythological or fantastical contexts
+Choose a style label for each prompt: "O1" or "O2".
 
-Return as JSON with "prompts" array containing objects with "context" and "target_word" fields."""
+Return as JSON with "prompts" array containing objects with "context" and "style" fields."""
 
             try:
                 result = self.client.generate_json(
                     system_prompt=self.SYSTEM_PROMPT,
                     user_prompt=user_prompt,
-                    temperature=0.9,  # Higher for creativity
+                    temperature=0.9,
                 )
                 
                 prompts = result.get("prompts", [])
                 for i, p in enumerate(prompts):
-                    context = p.get("context", "")
-                    target = p.get("target_word", "")
+                    context = p.get("context", "").strip()
+                    style = p.get("style", default_style) or default_style
                     
-                    if context and target and target.lower() not in context.lower():
-                        # Format with OOD template style
-                        question = f"Fill the blank with one word: {context} ____."
+                    if context and target.lower() not in context.lower():
+                        question = self._format_ood_prompt(context, style, templates)
                         
                         candidates.append(CandidatePrompt(
                             category="ood",
                             question_text=question,
                             target_word=target,
                             target_word_normalized=target.lower(),
-                            prompt_style_id=f"ood_{batch}_{i}",
-                            source_trace=f"deepseek:ood:batch{batch}",
-                            raw_data={"context": context, "target": target},
+                            prompt_style_id=f"ood_{style}_{idx}_{i}",
+                            source_trace=f"deepseek:ood:{target}",
+                            raw_data={"context": context, "target": target, "style": style},
                         ))
                         
             except Exception as e:
-                logger.warning(f"Failed to generate OOD batch {batch}: {e}")
-            
-            if len(candidates) >= n:
-                break
+                logger.warning(f"Failed to generate OOD prompts for {target}: {e}")
         
         logger.info(f"Generated {len(candidates)} OOD candidates")
         return candidates[:n]
@@ -830,13 +996,15 @@ class DatasetGenerator:
         )
         self.fact_gen = FactGenerator()
         self.common_sense_gen = CommonSenseGenerator()
-        self.creative_gen = CreativeGenerator(self.deepseek_client)
+        self.creative_gen = CreativeGenerator(self.deepseek_client, cache_dir=cache_dir)
         self.ood_gen = OODGenerator(self.deepseek_client)
         self.fallback_gen = DeepSeekFallbackGenerator(self.deepseek_client)
     
     def generate_all(
         self,
         prompts_per_category: int = 500,
+        candidate_multiplier: int = 1,
+        candidates_per_target: Optional[int] = None,
         skip_generated: bool = False,
         use_fallback: bool = True,
     ) -> Dict[str, List[CandidatePrompt]]:
@@ -854,32 +1022,48 @@ class DatasetGenerator:
             Dict mapping category name to list of candidates
         """
         results = {}
+        k = candidates_per_target or CONFIG['dataset']['candidates_per_target']
+        base_count = max(1, int(prompts_per_category * candidate_multiplier))
+        generated_count = max(1, int(prompts_per_category * candidate_multiplier * k))
+        desired_counts = {
+            'idioms': base_count,
+            'facts': base_count,
+            'common_sense': base_count,
+            'creative': generated_count,
+            'ood': generated_count,
+        }
         
         # Category A: Idioms
         logger.info("Generating idiom candidates...")
-        results['idioms'] = self.idiom_gen.generate_candidates(prompts_per_category)
+        results['idioms'] = self.idiom_gen.generate_candidates(desired_counts['idioms'])
         
         # Category B: Facts
         logger.info("Generating fact candidates...")
-        results['facts'] = self.fact_gen.generate_candidates(prompts_per_category)
+        results['facts'] = self.fact_gen.generate_candidates(desired_counts['facts'])
         
         # Category C: Common Sense
         logger.info("Generating common sense candidates...")
-        results['common_sense'] = self.common_sense_gen.generate_candidates(prompts_per_category)
+        results['common_sense'] = self.common_sense_gen.generate_candidates(desired_counts['common_sense'])
         
         if not skip_generated:
             # Category D: Creative
             logger.info("Generating creative candidates...")
-            results['creative'] = self.creative_gen.generate_candidates(prompts_per_category)
+            results['creative'] = self.creative_gen.generate_candidates(
+                desired_counts['creative'],
+                candidates_per_target=k,
+            )
             
             # Category E: OOD
             logger.info("Generating OOD candidates...")
-            results['ood'] = self.ood_gen.generate_candidates(prompts_per_category)
+            results['ood'] = self.ood_gen.generate_candidates(
+                desired_counts['ood'],
+                candidates_per_target=k,
+            )
         
         # Fill gaps with fallback if enabled
         if use_fallback:
             for category, candidates in results.items():
-                gap = prompts_per_category - len(candidates)
+                gap = desired_counts.get(category, base_count) - len(candidates)
                 if gap > 0:
                     logger.info(f"Category {category} has {len(candidates)} prompts, need {gap} more. Using DeepSeek fallback...")
                     fallback_prompts = self.fallback_gen.generate_for_category(category, gap)
