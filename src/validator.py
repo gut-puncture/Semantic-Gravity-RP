@@ -111,6 +111,32 @@ class ValidationResult:
         
         self.v_score = score
         return score
+
+    @staticmethod
+    def from_dict(payload: Dict, prompt_id: str, target_word: str) -> "ValidationResult":
+        """Rehydrate ValidationResult from a serialized dict."""
+        result = ValidationResult(
+            prompt_id=prompt_id,
+            is_one_word_answer_enforced=payload.get("is_one_word_answer_enforced", False),
+            best_one_word_answer=payload.get("best_one_word_answer", ""),
+            top3_one_word_answers=payload.get("top3_one_word_answers", []),
+            is_X_best=payload.get("is_X_best", False),
+            ambiguity_score=int(payload.get("ambiguity_score", 10) or 10),
+            leaks_answer=payload.get("leaks_answer", False),
+            naturalness_score=int(payload.get("naturalness_score", 0) or 0),
+            comments=payload.get("comments", ""),
+            raw_response=payload,
+        )
+
+        if "v_score" in payload and payload.get("v_score") is not None:
+            try:
+                result.v_score = int(payload.get("v_score", 0) or 0)
+            except (TypeError, ValueError):
+                result.v_score = 0
+        else:
+            result.compute_v_score(target_word)
+
+        return result
     
     def is_accepted(self, target_word: str) -> bool:
         """
@@ -471,11 +497,55 @@ class ValidatedPrompt:
             "prompt_id": prompt_id,
             **self.candidate.to_dict(),
             "prompt_text": build_prompt_text(self.candidate.question_text),
+            "negative_prompt_text": build_prompt(
+                self.candidate.question_text,
+                self.candidate.target_word,
+                "negative",
+            ),
             "v_score": self.v_score,
             "p_sem": self.p_sem,
             "s_score": self.s_score,
             "validation": validation_payload,
         }
+
+    @staticmethod
+    def from_dict(payload: Dict) -> "ValidatedPrompt":
+        """Rehydrate ValidatedPrompt from a serialized dict."""
+        candidate = CandidatePrompt.from_dict(payload)
+        prompt_id = payload.get("prompt_id", "")
+        validation_payload = payload.get("validation", {}) or {}
+        validation = ValidationResult.from_dict(
+            validation_payload,
+            prompt_id=prompt_id,
+            target_word=candidate.target_word,
+        )
+
+        v_score = payload.get("v_score", validation.v_score)
+        try:
+            v_score = int(v_score)
+        except (TypeError, ValueError):
+            v_score = validation.v_score
+
+        p_sem = payload.get("p_sem", 0.0)
+        try:
+            p_sem = float(p_sem)
+        except (TypeError, ValueError):
+            p_sem = 0.0
+
+        s_score = payload.get("s_score", 0.0)
+        try:
+            s_score = float(s_score)
+        except (TypeError, ValueError):
+            s_score = 0.0
+
+        return ValidatedPrompt(
+            candidate=candidate,
+            validation=validation,
+            prompt_id=prompt_id,
+            v_score=v_score,
+            p_sem=p_sem,
+            s_score=s_score,
+        )
 
 
 class PromptSelector:
@@ -638,6 +708,7 @@ def validate_and_enrich_prompts(
     validator: PromptValidator,
     model_wrapper: Optional[ModelWrapper] = None,
     output_file: Optional[Path] = None,
+    compute_pressure: bool = True,
 ) -> List[ValidatedPrompt]:
     """
     Validate prompts, compute semantic pressure, and persist enriched results.
@@ -647,6 +718,7 @@ def validate_and_enrich_prompts(
         validator: PromptValidator instance
         model_wrapper: Optional preloaded ModelWrapper for scoring
         output_file: Optional path for JSONL export
+        compute_pressure: If True, compute P_sem using the model
 
     Returns:
         List of ValidatedPrompt objects with v_score, p_sem, and s_score
@@ -692,7 +764,8 @@ def validate_and_enrich_prompts(
             json.dump(audit_record, audit_f, ensure_ascii=True)
             audit_f.write('\n')
 
-    compute_semantic_pressure(validated_prompts, model_wrapper=model_wrapper)
+    if compute_pressure:
+        compute_semantic_pressure(validated_prompts, model_wrapper=model_wrapper)
 
     # Persist to JSONL for downstream stages
     validated_dir = base_paths['data_root'] / 'validated'

@@ -63,6 +63,22 @@ class CandidatePrompt:
             "raw_data": self.raw_data,
         }
 
+    @staticmethod
+    def from_dict(payload: Dict) -> "CandidatePrompt":
+        """Rehydrate CandidatePrompt from a serialized dict."""
+        target = payload.get("target_word", "")
+        return CandidatePrompt(
+            category=payload.get("category", ""),
+            question_text=payload.get("question_text", ""),
+            target_word=target,
+            target_word_normalized=payload.get(
+                "target_word_normalized", (target or "").lower()
+            ),
+            prompt_style_id=payload.get("prompt_style_id", ""),
+            source_trace=payload.get("source_trace", ""),
+            raw_data=payload.get("raw_data", {}) or {},
+        )
+
 
 # ============================================================================
 # TARGET WORD VALIDATION HELPERS

@@ -48,7 +48,11 @@ from .validator import (
     PromptSelector,
     TargetTracker,
 )
-from .dataset_pipeline import build_dataset
+from .dataset_pipeline import (
+    build_dataset,
+    build_r1_validated_candidates,
+    finalize_dataset_with_psem,
+)
 
 __version__ = "0.1.0"
 
@@ -90,4 +94,6 @@ __all__ = [
     'TargetTracker',
     # Dataset Pipeline
     'build_dataset',
+    'build_r1_validated_candidates',
+    'finalize_dataset_with_psem',
 ]

@@ -5,7 +5,7 @@ dataset_pipeline.py - End-to-end dataset construction for Module 2.
 import json
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 from .api_clients import DeepSeekClient
 from .config import CONFIG, get_base_paths
@@ -16,6 +16,7 @@ from .validator import (
     PromptValidator,
     TargetTracker,
     ValidatedPrompt,
+    compute_semantic_pressure,
     validate_and_enrich_prompts,
 )
 
@@ -76,6 +77,136 @@ def group_by_target(
         key = vp.candidate.target_word_normalized
         groups.setdefault(key, []).append(vp)
     return groups
+
+
+def _load_validated_prompts(path: Path) -> List[ValidatedPrompt]:
+    """Load ValidatedPrompt JSONL entries from disk."""
+    prompts: List[ValidatedPrompt] = []
+    if not path.exists():
+        raise FileNotFoundError(f"Validated prompt file not found: {path}")
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            prompts.append(ValidatedPrompt.from_dict(obj))
+    return prompts
+
+
+def _select_prompts_for_category(
+    category: str,
+    validated: List[ValidatedPrompt],
+    selector: PromptSelector,
+    prompts_per_category: int,
+) -> Tuple[List[ValidatedPrompt], float, Dict[str, int]]:
+    """
+    Select, gate, and bin-balance prompts for a single category.
+    """
+    if not validated:
+        raise RuntimeError(f"No validated prompts available for category {category}")
+
+    if category in ("creative", "ood"):
+        grouped = group_by_target(validated)
+        selected = []
+        for group in grouped.values():
+            best = selector.select_best_from_candidates(group)
+            if best:
+                selected.append(best)
+    else:
+        selected = [
+            vp for vp in validated
+            if vp.validation.is_accepted(vp.candidate.target_word)
+        ]
+
+    for vp in selected:
+        if vp.s_score == 0:
+            vp.compute_s_score()
+
+    # Tau-lowering loop with bin balancing (per spec Section 3.8)
+    initial_tau = CONFIG['dataset'].get('min_pressure_threshold', 0.20)
+    tau = initial_tau
+    tau_step = 0.05
+    min_tau = 0.05
+    target_per_bin = 100
+    num_bins = 5
+    bin_edges = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+
+    final_selected: List[ValidatedPrompt] = []
+    last_balanced: List[ValidatedPrompt] = []
+    last_bin_shortfalls: Dict[str, int] = {}
+    last_tau_with_balanced: Optional[float] = None
+    bin_shortfalls_category: Dict[str, int] = {}
+    final_tau = tau
+
+    while tau >= min_tau:
+        if not selected:
+            break
+
+        gated = [vp for vp in selected if vp.p_sem >= tau]
+        if not gated:
+            tau -= tau_step
+            continue
+
+        bins: Dict[int, List[ValidatedPrompt]] = {i: [] for i in range(num_bins)}
+        for vp in gated:
+            p_clamped = max(0.0, min(1.0, vp.p_sem))
+            bin_idx = min(int(p_clamped * num_bins), num_bins - 1)
+            bins[bin_idx].append(vp)
+
+        balanced: List[ValidatedPrompt] = []
+        bin_shortfalls_current: Dict[str, int] = {}
+        for bin_idx in range(num_bins):
+            bin_prompts = bins[bin_idx]
+            bin_prompts.sort(key=lambda p: -p.s_score)
+            kept = bin_prompts[:target_per_bin]
+            balanced.extend(kept)
+            shortfall = target_per_bin - len(kept)
+            if shortfall > 0:
+                bin_label = f"{bin_edges[bin_idx]:.1f}-{bin_edges[bin_idx+1]:.1f}"
+                bin_shortfalls_current[bin_label] = shortfall
+
+        last_balanced = balanced
+        last_bin_shortfalls = bin_shortfalls_current
+        last_tau_with_balanced = tau
+
+        if len(balanced) >= prompts_per_category:
+            balanced.sort(key=lambda p: -p.s_score)
+            final_selected = balanced[:prompts_per_category]
+            final_tau = tau
+            bin_shortfalls_category = bin_shortfalls_current
+            break
+
+        tau -= tau_step
+
+    if not final_selected:
+        if not last_balanced:
+            raise RuntimeError(
+                f"Category {category}: no prompts available after gating. "
+                "Check validation filters or model availability."
+            )
+        if len(last_balanced) < prompts_per_category:
+            raise RuntimeError(
+                f"Category {category}: could not reach {prompts_per_category} prompts even with tau={min_tau}. "
+                f"Only {len(last_balanced)} prompts available after bin balancing."
+            )
+        last_balanced.sort(key=lambda p: -p.s_score)
+        final_selected = last_balanced[:prompts_per_category]
+        final_tau = last_tau_with_balanced if last_tau_with_balanced is not None else min_tau
+        bin_shortfalls_category = last_bin_shortfalls
+
+    final_selected = selector.filter_by_target_repetition(final_selected)
+    if len(final_selected) < prompts_per_category:
+        raise RuntimeError(
+            f"Category {category}: target repetition filter reduced prompts to {len(final_selected)} "
+            f"(need {prompts_per_category}). Increase candidate pool or adjust max_target_repetition."
+        )
+    final_selected.sort(key=lambda p: -p.s_score)
+
+    return final_selected[:prompts_per_category], final_tau, bin_shortfalls_category
 
 
 def build_dataset(
@@ -140,121 +271,23 @@ def build_dataset(
             model_wrapper=model_wrapper,
             output_file=validated_dir / f"{category}_validated.jsonl",
         )
+        final_selected, final_tau, bin_shortfalls_category = _select_prompts_for_category(
+            category=category,
+            validated=validated,
+            selector=selector,
+            prompts_per_category=prompts_per_category,
+        )
 
-        if category in ("creative", "ood"):
-            grouped = group_by_target(validated)
-            selected = []
-            for group in grouped.values():
-                best = selector.select_best_from_candidates(group)
-                if best:
-                    selected.append(best)
-        else:
-            selected = [vp for vp in validated if vp.validation.is_accepted(vp.candidate.target_word)]
-
-        for vp in selected:
-            if vp.s_score == 0:
-                vp.compute_s_score()
-
-        # Tau-lowering loop with bin balancing (per spec Section 3.8)
-        # Start with min_pressure_threshold and lower by 0.05 until we have enough prompts
-        initial_tau = CONFIG['dataset'].get('min_pressure_threshold', 0.20)
-        tau = initial_tau
-        tau_step = 0.05
-        min_tau = 0.05
-        target_per_bin = 100
-        num_bins = 5
-        bin_edges = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
-        
-        # Track bin shortfalls for metadata
-        bin_shortfalls_category: Dict[str, int] = {}
-        final_tau = tau
-        final_selected: List[ValidatedPrompt] = []
-        last_balanced: List[ValidatedPrompt] = []
-        last_bin_shortfalls: Dict[str, int] = {}
-        last_tau_with_balanced: Optional[float] = None
-
-        while tau >= min_tau:
-            if not selected:
-                break
-
-            # Gate by pressure threshold unless p_sem unavailable
-            gated = [vp for vp in selected if vp.p_sem >= tau]
-
-            if not gated:
-                tau -= tau_step
-                continue
-
-            # Bin balance: assign prompts to bins, keep top 100 by s_score per bin
-            bins: Dict[int, List[ValidatedPrompt]] = {i: [] for i in range(num_bins)}
-            for vp in gated:
-                # Clamp p_sem to [0, 1] and compute bin index
-                p_clamped = max(0.0, min(1.0, vp.p_sem))
-                bin_idx = min(int(p_clamped * num_bins), num_bins - 1)
-                bins[bin_idx].append(vp)
-
-            # Select top 100 per bin by s_score (no random sampling)
-            balanced: List[ValidatedPrompt] = []
-            bin_shortfalls_current: Dict[str, int] = {}
-            for bin_idx in range(num_bins):
-                bin_prompts = bins[bin_idx]
-                bin_prompts.sort(key=lambda p: -p.s_score)
-                kept = bin_prompts[:target_per_bin]
-                balanced.extend(kept)
-                shortfall = target_per_bin - len(kept)
-                if shortfall > 0:
-                    bin_label = f"{bin_edges[bin_idx]:.1f}-{bin_edges[bin_idx+1]:.1f}"
-                    bin_shortfalls_current[bin_label] = shortfall
-
-            last_balanced = balanced
-            last_bin_shortfalls = bin_shortfalls_current
-            last_tau_with_balanced = tau
-
-            if len(balanced) >= prompts_per_category:
-                # We have enough; trim to exactly 500 by overall s_score
-                balanced.sort(key=lambda p: -p.s_score)
-                final_selected = balanced[:prompts_per_category]
-                final_tau = tau
-                bin_shortfalls_category = bin_shortfalls_current
-                break
-
-            # Not enough prompts; lower tau and retry
-            tau -= tau_step
-
-        if not final_selected:
-            if not last_balanced:
-                raise RuntimeError(
-                    f"Category {category}: no prompts available after gating. "
-                    "Check validation filters or model availability."
-                )
-            if len(last_balanced) < prompts_per_category:
-                raise RuntimeError(
-                    f"Category {category}: could not reach {prompts_per_category} prompts even with tau={min_tau}. "
-                    f"Only {len(last_balanced)} prompts available after bin balancing. "
-                    "Hard halt per spec Section 14.4."
-                )
-            last_balanced.sort(key=lambda p: -p.s_score)
-            final_selected = last_balanced[:prompts_per_category]
-            final_tau = last_tau_with_balanced if last_tau_with_balanced is not None else min_tau
-            bin_shortfalls_category = last_bin_shortfalls
-        
-        # Store final tau for this category in metadata (will be used later)
         if not hasattr(build_dataset, '_tau_per_category'):
             build_dataset._tau_per_category = {}
         build_dataset._tau_per_category[category] = final_tau
-        
+
         if not hasattr(build_dataset, '_bin_shortfalls'):
             build_dataset._bin_shortfalls = {}
         if bin_shortfalls_category:
             build_dataset._bin_shortfalls[category] = bin_shortfalls_category
 
-        final_selected = selector.filter_by_target_repetition(final_selected)
-        if len(final_selected) < prompts_per_category:
-            raise RuntimeError(
-                f"Category {category}: target repetition filter reduced prompts to {len(final_selected)} "
-                f"(need {prompts_per_category}). Increase candidate pool or adjust max_target_repetition."
-            )
-        final_selected.sort(key=lambda p: -p.s_score)
-        final_by_category[category] = final_selected[:prompts_per_category]
+        final_by_category[category] = final_selected
         combined.extend(final_by_category[category])
 
         logger.info(
@@ -269,14 +302,184 @@ def build_dataset(
     for category, prompts in final_by_category.items():
         _write_jsonl([vp.to_dict() for vp in prompts], validated_dir / f"{category}_prompts.jsonl")
 
-    # Write prompts.csv with full schema
+    tau_per_category = getattr(build_dataset, "_tau_per_category", {})
+    bin_shortfalls = getattr(build_dataset, "_bin_shortfalls", {})
+    _write_prompts_outputs(
+        combined=combined,
+        data_root=data_root,
+        prompts_per_category=prompts_per_category,
+        model_wrapper=model_wrapper,
+        tau_per_category=tau_per_category,
+        bin_shortfalls=bin_shortfalls,
+    )
+
+    return final_by_category
+
+
+def build_r1_validated_candidates(
+    prompts_per_category: int = CONFIG['dataset']['prompts_per_category'],
+    candidate_multiplier: int = 2,
+    candidates_per_target: Optional[int] = None,
+    cache_dir: Optional[Path] = None,
+    deepseek_client: Optional[DeepSeekClient] = None,
+    skip_generated: bool = False,
+    output_root: Optional[Path] = None,
+) -> Dict[str, List[ValidatedPrompt]]:
+    """
+    Generate candidate prompts and score them with DeepSeek R1 only.
+
+    This stage does NOT compute P_sem (Qwen). It writes validated JSONL files
+    that can be uploaded to Drive and finalized later in Colab.
+    """
+    paths = get_base_paths()
+    data_root = output_root or paths['data_root']
+    cache_dir = cache_dir or (data_root / "raw")
+
+    if deepseek_client is None:
+        deepseek_client = DeepSeekClient()
+    if deepseek_client.request_log_path is None:
+        deepseek_client.request_log_path = str(data_root / "deepseek_requests.jsonl")
+
+    candidates_dir = data_root / "candidates"
+    validated_dir = data_root / "validated"
+
+    generator = DatasetGenerator(cache_dir=cache_dir, deepseek_client=deepseek_client)
+    candidates_by_category = generator.generate_all(
+        prompts_per_category=prompts_per_category,
+        candidate_multiplier=candidate_multiplier,
+        candidates_per_target=candidates_per_target,
+        skip_generated=skip_generated,
+        use_fallback=False,
+    )
+
+    save_candidates(candidates_by_category, candidates_dir)
+
+    validator = PromptValidator(deepseek_client)
+    validated_by_category: Dict[str, List[ValidatedPrompt]] = {}
+
+    for category in CONFIG['dataset']['categories']:
+        candidates = candidates_by_category.get(category, [])
+        if not candidates:
+            raise RuntimeError(
+                f"No candidates generated for category {category}. "
+                "Check source availability and DeepSeek key."
+            )
+
+        validated = validate_and_enrich_prompts(
+            candidates,
+            validator,
+            model_wrapper=None,
+            output_file=validated_dir / f"{category}_validated.jsonl",
+            compute_pressure=False,
+        )
+        validated_by_category[category] = validated
+
+    combined = []
+    for prompts in validated_by_category.values():
+        combined.extend(prompts)
+    _write_jsonl([vp.to_dict() for vp in combined], validated_dir / "all_validated.jsonl")
+
+    logger.info(
+        "Wrote R1-validated candidates for %d categories to %s",
+        len(validated_by_category),
+        validated_dir,
+    )
+    return validated_by_category
+
+
+def finalize_dataset_with_psem(
+    validated_dir: Optional[Path] = None,
+    output_root: Optional[Path] = None,
+    model_wrapper: Optional[ModelWrapper] = None,
+    prompts_per_category: int = CONFIG['dataset']['prompts_per_category'],
+) -> Dict[str, List[ValidatedPrompt]]:
+    """
+    Compute P_sem (P0/P1), select final prompts, and write prompts.csv/metadata.
+
+    Expects R1-validated JSONL files already present under data/validated.
+    """
+    paths = get_base_paths()
+    data_root = output_root or paths['data_root']
+    validated_dir = validated_dir or (data_root / "validated")
+
+    categories = CONFIG['dataset']['categories']
+    validated_by_category: Dict[str, List[ValidatedPrompt]] = {}
+    all_validated: List[ValidatedPrompt] = []
+
+    for category in categories:
+        path = validated_dir / f"{category}_validated.jsonl"
+        validated = _load_validated_prompts(path)
+        if not validated:
+            raise RuntimeError(
+                f"No validated prompts found for category {category} at {path}"
+            )
+        validated_by_category[category] = validated
+        all_validated.extend(validated)
+
+    compute_semantic_pressure(all_validated, model_wrapper=model_wrapper)
+
+    selector = PromptSelector(
+        target_tracker=TargetTracker(
+            max_repetition=CONFIG['dataset']['max_target_repetition']
+        ),
+        min_pressure=CONFIG['dataset']['min_pressure_threshold'],
+    )
+
+    final_by_category: Dict[str, List[ValidatedPrompt]] = {}
+    combined: List[ValidatedPrompt] = []
+    tau_per_category: Dict[str, float] = {}
+    bin_shortfalls: Dict[str, Dict[str, int]] = {}
+
+    for category in categories:
+        final_selected, final_tau, bin_shortfalls_category = _select_prompts_for_category(
+            category=category,
+            validated=validated_by_category[category],
+            selector=selector,
+            prompts_per_category=prompts_per_category,
+        )
+        final_by_category[category] = final_selected
+        combined.extend(final_selected)
+        tau_per_category[category] = final_tau
+        if bin_shortfalls_category:
+            bin_shortfalls[category] = bin_shortfalls_category
+
+    _write_jsonl([vp.to_dict() for vp in combined], validated_dir / "prompts.jsonl")
+    for category, prompts in final_by_category.items():
+        _write_jsonl([vp.to_dict() for vp in prompts], validated_dir / f"{category}_prompts.jsonl")
+
+    _write_prompts_outputs(
+        combined=combined,
+        data_root=data_root,
+        prompts_per_category=prompts_per_category,
+        model_wrapper=model_wrapper,
+        tau_per_category=tau_per_category,
+        bin_shortfalls=bin_shortfalls,
+    )
+
+    return final_by_category
+
+
+def _write_prompts_outputs(
+    combined: List[ValidatedPrompt],
+    data_root: Path,
+    prompts_per_category: int,
+    model_wrapper: Optional[ModelWrapper] = None,
+    tau_per_category: Optional[Dict[str, float]] = None,
+    bin_shortfalls: Optional[Dict[str, Dict[str, int]]] = None,
+) -> None:
+    """
+    Compute P1, write prompts.csv, and write prompts_metadata.json.
+    """
     import hashlib
     import pandas as pd
     from .prompt_builder import build_prompt
+    from .metrics_psem import compute_p_sem_for_prompt
+
+    if not combined:
+        raise RuntimeError("No prompts provided for prompts.csv output.")
 
     # Compute p1 (negative P_sem) for all prompts (hard fail on errors)
     p1_values: Dict[str, float] = {}
-    from .metrics_psem import compute_p_sem_for_prompt
     wrapper = model_wrapper or ModelWrapper.get_instance()
     if not wrapper.is_loaded:
         wrapper.load()
@@ -311,29 +514,24 @@ def build_dataset(
             f"p1 computation failed for {len(failures)} prompts. Sample errors: {sample}"
         )
 
-    # Get pressure bins from config
     pressure_bins = CONFIG['dataset'].get('pressure_bins', [0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
 
     def compute_p0_bin(p0: float) -> str:
         """Compute p0_bin string from p0 value."""
-        # Clamp to [0, 1]
         p0_clamped = max(0.0, min(1.0, p0))
         for i in range(len(pressure_bins) - 1):
             lower = pressure_bins[i]
             upper = pressure_bins[i + 1]
-            # Last bin includes 1.0
             if i == len(pressure_bins) - 2:
                 if lower <= p0_clamped <= upper:
                     return f"{lower:.1f}-{upper:.1f}"
             else:
                 if lower <= p0_clamped < upper:
                     return f"{lower:.1f}-{upper:.1f}"
-        # Fallback: last bin
         return f"{pressure_bins[-2]:.1f}-{pressure_bins[-1]:.1f}"
 
     csv_rows = []
     for vp in combined:
-        # question_text is the raw cloze question without instruction
         question_text = vp.candidate.question_text
         if not question_text or not question_text.strip():
             raise ValueError(
@@ -348,21 +546,20 @@ def build_dataset(
             vp.candidate.target_word
         )
 
-        # prompt_text is the full baseline prompt
         prompt_text = build_prompt(question_text, vp.candidate.target_word, "baseline")
+        negative_prompt_text = build_prompt(question_text, vp.candidate.target_word, "negative")
 
-        # p0 is baseline P_sem (already computed as p_sem)
         p0 = vp.p_sem
         p1 = p1_values.get(prompt_id, 0.0)
         p0_bin = compute_p0_bin(p0)
 
-        # validation_json_ref: reference to validated JSONL file
         validation_json_ref = f"{vp.candidate.category}_validated.jsonl#prompt_id={prompt_id}"
 
         csv_rows.append({
             "prompt_id": prompt_id,
             "question_text": question_text,
             "prompt_text": prompt_text,
+            "negative_prompt_text": negative_prompt_text,
             "category": vp.candidate.category,
             "target_word": vp.candidate.target_word,
             "target_word_normalized": vp.candidate.target_word_normalized,
@@ -373,11 +570,10 @@ def build_dataset(
             "p1": p1,
             "p0_bin": p0_bin,
             "v_score": vp.validation.v_score if vp.validation else 0,
-            "p_sem": p0,  # Alias of p0 for backward compatibility
+            "p_sem": p0,
             "s_score": vp.s_score,
         })
 
-    # Validate all rows have question_text
     for row in csv_rows:
         if not row.get("question_text"):
             raise ValueError(
@@ -385,14 +581,12 @@ def build_dataset(
                 "Cannot write prompts.csv with missing question_text."
             )
 
-    # Write prompts.csv
     prompts_df = pd.DataFrame(csv_rows)
     prompts_csv_path = data_root / "prompts.csv"
     prompts_csv_path.parent.mkdir(parents=True, exist_ok=True)
     prompts_df.to_csv(prompts_csv_path, index=False)
     logger.info(f"Wrote {len(prompts_df)} prompts to {prompts_csv_path}")
 
-    # Write prompts_metadata.json
     from datetime import datetime
 
     csv_content = prompts_csv_path.read_bytes()
@@ -406,47 +600,23 @@ def build_dataset(
         bin_str = row["p0_bin"]
         counts_by_p0_bin[bin_str] = counts_by_p0_bin.get(bin_str, 0) + 1
 
-    # Compute tau_per_category
-    # If tau varies per category, use that; otherwise set all to min_pressure_threshold
     min_tau = CONFIG['dataset'].get('min_pressure_threshold', 0.2)
-    tau_per_category: Dict[str, float] = {}
-    try:
-        # Try to get category-specific tau if available
-        tau_config = CONFIG['dataset'].get('tau_per_category', {})
-        if tau_config:
-            tau_per_category = dict(tau_config)
-        else:
-            # Use default for all categories
-            for cat in counts_by_category:
-                tau_per_category[cat] = min_tau
-    except Exception as e:
-        logger.warning("Could not get tau_per_category: %s. Using default.", e)
+    if not tau_per_category:
+        tau_per_category = {}
         for cat in counts_by_category:
             tau_per_category[cat] = min_tau
 
-    # Get sampling seeds
     sampling_seeds: Dict[str, int] = {}
     try:
         sampling_seeds = dict(CONFIG.get('seeds', {'python': 42, 'numpy': 42, 'torch': 42}))
     except Exception:
         sampling_seeds = {'python': 42, 'numpy': 42, 'torch': 42}
 
-    # DeepSeek model IDs
     deepseek_models = {
         "generator": CONFIG.get('deepseek', {}).get('generator_model', 'deepseek-chat'),
         "validator": CONFIG.get('deepseek', {}).get('validator_model', 'deepseek-reasoner'),
     }
 
-    # Use actual tau values computed during category processing
-    if hasattr(build_dataset, '_tau_per_category'):
-        tau_per_category = build_dataset._tau_per_category
-    
-    # Get bin shortfalls if any were recorded
-    bin_shortfalls: Dict[str, Dict[str, int]] = {}
-    if hasattr(build_dataset, '_bin_shortfalls'):
-        bin_shortfalls = build_dataset._bin_shortfalls
-    
-    # Check for gating failures (categories with <500 prompts)
     gating_failures: List[str] = []
     for cat, count in counts_by_category.items():
         if count < prompts_per_category:
@@ -459,7 +629,7 @@ def build_dataset(
         "counts_by_category": counts_by_category,
         "counts_by_p0_bin": counts_by_p0_bin,
         "tau_per_category": tau_per_category,
-        "bin_shortfalls": bin_shortfalls,
+        "bin_shortfalls": bin_shortfalls or {},
         "gating_failures": gating_failures,
         "sampling_seeds": sampling_seeds,
         "deepseek_models": deepseek_models,
@@ -475,8 +645,6 @@ def build_dataset(
     with open(metadata_path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
     logger.info(f"Wrote prompts_metadata.json to {metadata_path}")
-
-    return final_by_category
 
 
 # ============================================================================
