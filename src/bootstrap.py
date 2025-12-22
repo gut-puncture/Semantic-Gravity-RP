@@ -10,14 +10,23 @@ This module computes 95% bootstrap CIs for:
 Per specification Section 11 and execution-plan Section 11.
 """
 
+from __future__ import annotations
+
 import json
 import logging
 import warnings
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
-import numpy as np
-import pandas as pd
+try:
+    import numpy as np
+except ImportError:  # pragma: no cover - handled explicitly at runtime
+    np = None
+
+try:
+    import pandas as pd
+except ImportError:  # pragma: no cover - handled explicitly at runtime
+    pd = None
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +38,27 @@ try:
     from .config import get_base_paths, CONFIG
 except ImportError:
     from config import get_base_paths, CONFIG
+
+
+# ============================================================================
+# DEPENDENCY GUARDS
+# ============================================================================
+
+
+def _require_numpy() -> None:
+    if np is None:
+        raise RuntimeError(
+            "NumPy is required for bootstrap computations. "
+            "Install it with `pip install numpy`."
+        )
+
+
+def _require_pandas() -> None:
+    if pd is None:
+        raise RuntimeError(
+            "pandas is required for bootstrap computations. "
+            "Install it with `pip install pandas`."
+        )
 
 
 # ============================================================================
@@ -108,6 +138,7 @@ def _load_prompts_df(
         FileNotFoundError: If file not found
         ValueError: If required columns missing
     """
+    _require_pandas()
     path = prompts_path or (data_root / "prompts.csv")
     if not path.exists():
         raise FileNotFoundError(f"prompts.csv not found: {path}")
@@ -138,6 +169,7 @@ def _load_required_csv(run_root: Path, filename: str) -> pd.DataFrame:
     Raises:
         FileNotFoundError: If file not found
     """
+    _require_pandas()
     path = run_root / "runs" / filename
     if not path.exists():
         raise FileNotFoundError(
@@ -173,6 +205,7 @@ def _bootstrap_mean(
     Returns:
         (mean, ci_low, ci_high)
     """
+    _require_numpy()
     if len(values) == 0:
         return (np.nan, np.nan, np.nan)
 
@@ -414,6 +447,8 @@ def run_bootstrap_pipeline(
     Returns:
         Path to bootstrap_results.csv
     """
+    _require_numpy()
+    _require_pandas()
     run_root = _resolve_run_root(output_root)
     runs_dir = run_root / "runs"
 
@@ -502,27 +537,33 @@ if __name__ == "__main__":
 
     # Test 2: _bootstrap_mean
     print("\n2. Testing _bootstrap_mean:")
-    try:
-        rng = np.random.default_rng(42)
-        values = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
-        mean, ci_low, ci_high = _bootstrap_mean(values, rng, 1000, (2.5, 97.5))
-        print(f"   Values: {values}")
-        print(f"   Mean: {mean:.4f}")
-        print(f"   95% CI: [{ci_low:.4f}, {ci_high:.4f}]")
-        print("   PASS: Bootstrap computation works")
-    except Exception as e:
-        print(f"   FAIL: {e}")
+    if np is None:
+        print("   SKIP: NumPy not installed")
+    else:
+        try:
+            rng = np.random.default_rng(42)
+            values = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
+            mean, ci_low, ci_high = _bootstrap_mean(values, rng, 1000, (2.5, 97.5))
+            print(f"   Values: {values}")
+            print(f"   Mean: {mean:.4f}")
+            print(f"   95% CI: [{ci_low:.4f}, {ci_high:.4f}]")
+            print("   PASS: Bootstrap computation works")
+        except Exception as e:
+            print(f"   FAIL: {e}")
 
     # Test 3: Empty values
     print("\n3. Testing _bootstrap_mean with empty array:")
-    try:
-        rng = np.random.default_rng(42)
-        values = np.array([])
-        mean, ci_low, ci_high = _bootstrap_mean(values, rng, 1000, (2.5, 97.5))
-        assert np.isnan(mean), "Expected NaN for empty input"
-        print("   PASS: Empty array returns NaN")
-    except Exception as e:
-        print(f"   FAIL: {e}")
+    if np is None:
+        print("   SKIP: NumPy not installed")
+    else:
+        try:
+            rng = np.random.default_rng(42)
+            values = np.array([])
+            mean, ci_low, ci_high = _bootstrap_mean(values, rng, 1000, (2.5, 97.5))
+            assert np.isnan(mean), "Expected NaN for empty input"
+            print("   PASS: Empty array returns NaN")
+        except Exception as e:
+            print(f"   FAIL: {e}")
 
     print("\n" + "=" * 60)
     print("All self-tests passed!")

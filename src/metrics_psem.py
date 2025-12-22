@@ -18,8 +18,13 @@ from typing import List, Tuple, Set, Any, Optional
 
 try:
     from .utils import normalize_for_match
+    from .config import CONFIG
 except ImportError:
     from utils import normalize_for_match
+    try:
+        from config import CONFIG
+    except ImportError:
+        CONFIG = {}
 
 
 def normalize_for_word_match(text: str) -> str:
@@ -135,6 +140,7 @@ def compute_p_sem(
     tokenizer: Any,
     context_ids: List[int],
     token_sequences: List[Tuple[int, ...]],
+    strict: bool = True,
 ) -> float:
     """
     Compute semantic pressure P_sem as sum of sequence probabilities.
@@ -148,16 +154,42 @@ def compute_p_sem(
         tokenizer: Tokenizer (for device placement if needed)
         context_ids: Context token IDs
         token_sequences: List of target token sequences
+        strict: If True (default), raise errors on invalid inputs or high failure rates.
+                Per spec, P_sem unavailability should halt processing.
 
     Returns:
         P_sem in [0, 1] (clamped for numerical stability)
+
+    Raises:
+        ValueError: If inputs are invalid and strict=True
+        RuntimeError: If PyTorch unavailable or too many sequences fail and strict=True
     """
-    if not token_sequences or not context_ids:
+    import logging
+    logger = logging.getLogger(__name__)
+
+    if not token_sequences:
+        if strict:
+            raise ValueError(
+                "compute_p_sem: empty token_sequences. Cannot compute P_sem "
+                "without target token sequences. Check tokenization of target word."
+            )
+        return 0.0
+
+    if not context_ids:
+        if strict:
+            raise ValueError(
+                "compute_p_sem: empty context_ids. Cannot compute P_sem "
+                "without context. Check prompt tokenization."
+            )
         return 0.0
 
     try:
         import torch
     except ImportError:
+        if strict:
+            raise RuntimeError(
+                "compute_p_sem: PyTorch unavailable. Cannot compute P_sem."
+            )
         return 0.0
 
     # Get device from model
@@ -167,6 +199,7 @@ def compute_p_sem(
         device = torch.device("cpu")
 
     p_total = 0.0
+    failed_sequences = []
 
     for seq in token_sequences:
         if not seq:
@@ -175,9 +208,20 @@ def compute_p_sem(
         try:
             p_seq = _compute_sequence_prob(model, context_ids, seq, device)
             p_total += p_seq
-        except Exception:
-            # Skip sequences that fail
+        except Exception as e:
+            failed_sequences.append((seq[:3] if len(seq) > 3 else seq, str(e)))
+            logger.warning("P_sem sequence computation failed for seq=%s: %s", seq[:3], e)
             continue
+
+    # Check if too many sequences failed (>50% is a hard fail in strict mode)
+    if failed_sequences and strict:
+        failure_rate = len(failed_sequences) / len(token_sequences)
+        if failure_rate > 0.5:
+            raise RuntimeError(
+                f"compute_p_sem: {len(failed_sequences)}/{len(token_sequences)} "
+                f"sequences failed ({failure_rate:.1%}). Sample errors: "
+                f"{failed_sequences[:3]}"
+            )
 
     # Clamp to [0, 1] for numerical stability
     return min(max(p_total, 0.0), 1.0)
@@ -263,8 +307,10 @@ def compute_p_sem_for_prompt(
     Returns:
         P_sem value in [0, 1]
     """
-    # Build context IDs (no special tokens)
-    context_ids = tokenizer.encode(prompt_text, add_special_tokens=False)
+    add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
+
+    # Build context IDs (consistent with generation)
+    context_ids = tokenizer.encode(prompt_text, add_special_tokens=add_special_tokens)
 
     # Get token sequences for target
     token_sequences = token_sequences_for_variants(target_word, tokenizer)
@@ -356,7 +402,7 @@ if __name__ == "__main__":
     assert len(as_set) == len(sequences), "Sequences should be unique"
     print("   PASS: Token sequence deduplication works")
 
-    # Test 3: compute_p_sem with empty sequences
+    # Test 3: compute_p_sem with empty sequences (strict=False for backward compat)
     print("\n3. Testing compute_p_sem with empty sequences:")
 
     class DummyModel:
@@ -366,15 +412,31 @@ if __name__ == "__main__":
             return iter([])
 
     dummy_model = DummyModel()
-    result = compute_p_sem(dummy_model, tok, [1, 2, 3], [])
+    result = compute_p_sem(dummy_model, tok, [1, 2, 3], [], strict=False)
     assert result == 0.0, f"Expected 0.0 for empty sequences, got {result}"
-    print("   PASS: compute_p_sem returns 0 for empty sequences")
+    print("   PASS: compute_p_sem returns 0 for empty sequences (strict=False)")
 
-    # Test 4: compute_p_sem with empty context
+    # Test 3b: compute_p_sem with empty sequences (strict=True raises)
+    print("\n3b. Testing compute_p_sem raises on empty sequences (strict=True):")
+    try:
+        compute_p_sem(dummy_model, tok, [1, 2, 3], [], strict=True)
+        assert False, "Expected ValueError for empty sequences"
+    except ValueError as e:
+        print(f"   PASS: Raised ValueError: {str(e)[:60]}...")
+
+    # Test 4: compute_p_sem with empty context (strict=False for backward compat)
     print("\n4. Testing compute_p_sem with empty context:")
-    result = compute_p_sem(dummy_model, tok, [], [(1, 2, 3)])
+    result = compute_p_sem(dummy_model, tok, [], [(1, 2, 3)], strict=False)
     assert result == 0.0, f"Expected 0.0 for empty context, got {result}"
-    print("   PASS: compute_p_sem returns 0 for empty context")
+    print("   PASS: compute_p_sem returns 0 for empty context (strict=False)")
+
+    # Test 4b: compute_p_sem with empty context (strict=True raises)
+    print("\n4b. Testing compute_p_sem raises on empty context (strict=True):")
+    try:
+        compute_p_sem(dummy_model, tok, [], [(1, 2, 3)], strict=True)
+        assert False, "Expected ValueError for empty context"
+    except ValueError as e:
+        print(f"   PASS: Raised ValueError: {str(e)[:60]}...")
 
     # Test 5: Suppression metrics
     print("\n5. Testing suppression metrics:")

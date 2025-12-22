@@ -22,12 +22,12 @@ logger = logging.getLogger(__name__)
 # ============================================================================
 
 try:
-    from .utils import ModelWrapper, compute_token_char_spans
+    from .utils import ModelWrapper, compute_token_char_spans, resolve_run_root
     from .prompt_builder import build_prompt
     from .config import get_base_paths, CONFIG
     from .metrics_psem import token_sequences_for_variants
 except ImportError:
-    from utils import ModelWrapper, compute_token_char_spans
+    from utils import ModelWrapper, compute_token_char_spans, resolve_run_root
     from prompt_builder import build_prompt
     from config import get_base_paths, CONFIG
     from metrics_psem import token_sequences_for_variants
@@ -51,66 +51,10 @@ def _resolve_run_root(output_root: Optional[Path]) -> Path:
     """
     Resolve the run root directory from output_root or find the latest run.
 
-    Priority order:
-    1) If output_root name starts with experiment_run_, return it (specific run).
-    2) If output_root contains experiment_run_* subdirs, select latest by name.
-    3) If output_root has runs/ subdir (but no experiment_run_* children), use it.
-    4) Otherwise, return output_root as-is (backward compatibility).
-    5) If output_root is None, select latest experiment_run_* under base outputs.
-
-    Args:
-        output_root: Optional run root or base outputs directory
-
-    Returns:
-        Resolved run root Path
+    NOTE: This is a local alias for utils.resolve_run_root for backward compatibility.
+    New code should import resolve_run_root from utils directly.
     """
-    paths = get_base_paths()
-    base_out = paths.get("output_root", Path("outputs"))
-
-    def find_latest_run_in(parent: Path) -> Optional[Path]:
-        """Find latest experiment_run_* subdir by lexicographic name."""
-        if not parent.exists() or not parent.is_dir():
-            return None
-        try:
-            run_dirs = sorted(
-                [d for d in parent.iterdir() if d.is_dir() and d.name.startswith("experiment_run_")],
-                key=lambda d: d.name,
-            )
-            return run_dirs[-1] if run_dirs else None
-        except OSError:
-            return None
-
-    if output_root is not None:
-        candidate = Path(output_root)
-
-        # Priority 1: If name starts with experiment_run_, it IS a run root
-        if candidate.name.startswith("experiment_run_"):
-            return candidate
-
-        # Priority 2: Check for experiment_run_* subdirs BEFORE checking runs/
-        latest = find_latest_run_in(candidate)
-        if latest:
-            warnings.warn(
-                f"Selecting latest experiment_run_* under {candidate}: {latest}",
-                UserWarning,
-            )
-            return latest
-
-        # Priority 3: If it has runs/ but no experiment_run_*, treat as run root
-        if candidate.exists() and (candidate / "runs").exists():
-            return candidate
-
-        # Priority 4: Backward compatibility - return as-is
-        return candidate
-
-    # output_root is None: find latest run under base_out
-    latest = find_latest_run_in(base_out)
-    if latest:
-        warnings.warn(f"output_root not provided; using latest run dir: {latest}", UserWarning)
-        return latest
-
-    # Fallback to base_out
-    return base_out
+    return resolve_run_root(output_root)
 
 
 # ============================================================================
@@ -255,8 +199,8 @@ def _get_offsets_for_prompt(
     """
     Get character offsets for tokens in prompt.
 
-    Tries tokenizer's return_offsets_mapping first, falls back to
-    incremental decode if lengths mismatch.
+    Uses CONFIG['model']['add_special_tokens'] for consistency with generation.
+    Falls back to incremental decode if offset_mapping unavailable.
 
     Args:
         prompt_text: The prompt text string
@@ -266,33 +210,28 @@ def _get_offsets_for_prompt(
     Returns:
         List of (start, end) character offsets for each token
     """
-    # Try with add_special_tokens=True
+    # Use CONFIG setting for consistency with generation
+    add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
+
+    # Try tokenizer's return_offsets_mapping with consistent setting
     try:
         encoded = tokenizer(
             prompt_text,
-            add_special_tokens=True,
+            add_special_tokens=add_special_tokens,
             return_offsets_mapping=True,
         )
         offsets = encoded.get("offset_mapping", [])
         if len(offsets) == len(input_ids):
             return offsets
-    except Exception:
-        pass
+        else:
+            logger.debug(
+                "Offset mapping length mismatch: %d vs %d input_ids",
+                len(offsets), len(input_ids)
+            )
+    except Exception as e:
+        logger.debug("Tokenizer offset_mapping failed: %s", e)
 
-    # Try with add_special_tokens=False
-    try:
-        encoded = tokenizer(
-            prompt_text,
-            add_special_tokens=False,
-            return_offsets_mapping=True,
-        )
-        offsets = encoded.get("offset_mapping", [])
-        if len(offsets) == len(input_ids):
-            return offsets
-    except Exception:
-        pass
-
-    # Fallback to incremental decode
+    # Fallback to incremental decode (always consistent)
     try:
         offsets = compute_token_char_spans(input_ids, tokenizer)
         return offsets
@@ -608,8 +547,9 @@ def compute_logit_lens_and_decomp(
         for condition in ["baseline", "negative"]:
             prompt_text = build_prompt(question_text, target_word, condition)
 
-            # Tokenize
-            inputs = tokenizer(prompt_text, return_tensors="pt")
+            # Tokenize (consistent with generation)
+            add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
+            inputs = tokenizer(prompt_text, return_tensors="pt", add_special_tokens=add_special_tokens)
             input_ids = inputs["input_ids"].to(model.device)
 
             # Try to get greedy_token_id from trace

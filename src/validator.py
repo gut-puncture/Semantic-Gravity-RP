@@ -312,28 +312,21 @@ def compute_semantic_pressure(
     """
     wrapper = model_wrapper or ModelWrapper.get_instance()
 
-    # Try to load model; if fails, set all p_sem to 0
+    # Try to load model; fail hard if unavailable
     try:
         if not wrapper.is_loaded:
             wrapper.load()
     except Exception as e:
-        logger.warning(f"Could not load model for pressure computation: {e}")
-        for vp in validated_prompts:
-            vp.p_sem = 0.0
-            vp.compute_s_score()
-        return validated_prompts
+        raise RuntimeError(f"Could not load model for pressure computation: {e}") from e
 
     # Check torch availability
     try:
         import torch
     except ImportError:
-        logger.warning("PyTorch unavailable; pressure defaults to 0")
-        for vp in validated_prompts:
-            vp.p_sem = 0.0
-            vp.compute_s_score()
-        return validated_prompts
+        raise RuntimeError("PyTorch unavailable; cannot compute semantic pressure.")
 
-    # Compute P_sem for each prompt
+    # Compute P_sem for each prompt (re-raise errors per spec hard-fail behavior)
+    failures = []
     for vp in validated_prompts:
         try:
             prompt_text = build_prompt_text(vp.candidate.question_text)
@@ -345,7 +338,16 @@ def compute_semantic_pressure(
             )
         except Exception as e:
             logger.error(f"Pressure computation failed for {vp.candidate.target_word}: {e}")
-            vp.p_sem = 0.0
+            failures.append({
+                "target_word": vp.candidate.target_word,
+                "prompt_id": vp.validation.prompt_id,
+                "error": str(e),
+            })
+            # Per spec: P_sem unavailability should halt processing, not silently proceed
+            raise RuntimeError(
+                f"Pressure computation failed for prompt {vp.validation.prompt_id} "
+                f"(target: {vp.candidate.target_word}): {e}"
+            ) from e
 
         vp.compute_s_score()
 

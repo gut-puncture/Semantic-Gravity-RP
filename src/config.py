@@ -75,6 +75,7 @@ CONFIG = {
         'model_id': 'Qwen/Qwen2.5-7B-Instruct',
         'torch_dtype': 'bfloat16',
         'device_map': 'auto',
+        'add_special_tokens': False,
         'max_new_tokens_greedy': 8,
         'max_new_tokens_stochastic': 10,
         'num_stochastic_samples': 16,

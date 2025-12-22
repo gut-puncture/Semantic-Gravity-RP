@@ -46,17 +46,22 @@ def word_present(target: str, completion: str) -> bool:
     """
     Check if target word appears in completion as a complete word.
 
-    Uses regex word-boundary matching (letters only) to align with
-    token-span mapping.
+    Uses regex word-boundary matching (non-alphanumeric boundaries) via
+    find_word_occurrences to ensure consistency with token-span mapping
+    in find_word_spans.
 
     Args:
         target: Target word to detect
-        completion: Completion text to search
+        completion: Completion text to search (decoded string preferred)
 
     Returns:
         True if target appears as complete word
     """
-    return bool(find_word_spans(completion, target))
+    # Use the same word-boundary matching as find_word_spans to ensure
+    # detection and mapping always agree on word presence.
+    # Boundary checks use str.isalnum().
+    occurrences = find_word_occurrences(target, completion)
+    return len(occurrences) > 0
 
 
 # ============================================================================
@@ -92,7 +97,7 @@ def find_word_spans(decoded: str, target: str) -> List[Tuple[int, int]]:
     Find all character-level occurrences of target word in decoded text.
 
     Per spec Section 5.4:
-    - Pattern: (?i)(?<![A-Za-z])X(?![A-Za-z]) with re.escape(X)
+    - Case-insensitive match with non-alphanumeric boundaries
     - Returns list of (start, end) character indices
 
     Args:
@@ -110,14 +115,14 @@ def find_word_spans(decoded: str, target: str) -> List[Tuple[int, int]]:
 # ============================================================================
 
 
-def _is_non_letter(char: str) -> bool:
-    """Check if character is not a letter."""
-    return not char.isalpha()
+def _is_non_word_char(char: str) -> bool:
+    """Check if character is not alphanumeric."""
+    return not char.isalnum()
 
 
 def _verify_boundaries(decoded: str, char_start: int, char_end: int) -> bool:
     """
-    Verify that word boundaries are non-letters.
+    Verify that word boundaries are non-alphanumeric.
 
     Args:
         decoded: Full decoded text
@@ -125,10 +130,10 @@ def _verify_boundaries(decoded: str, char_start: int, char_end: int) -> bool:
         char_end: End character index
 
     Returns:
-        True if both boundaries are non-letters (or at string edge)
+        True if both boundaries are non-alphanumeric (or at string edge)
     """
-    left_ok = char_start == 0 or _is_non_letter(decoded[char_start - 1])
-    right_ok = char_end >= len(decoded) or _is_non_letter(decoded[char_end])
+    left_ok = char_start == 0 or _is_non_word_char(decoded[char_start - 1])
+    right_ok = char_end >= len(decoded) or _is_non_word_char(decoded[char_end])
     return left_ok and right_ok
 
 
@@ -294,7 +299,7 @@ def map_word_to_tokens(
     1) Find matches in decoded string
     2) Find minimal contiguous token range covering each match
     3) Verify decoded token span contains the matched substring
-    4) Verify left/right boundaries are non-letters
+    4) Verify left/right boundaries are non-alphanumeric
     5) If fail, expand window by +/-1 token, retry
     6) If still fail, brute-force all contiguous spans up to length max_span_len
 
@@ -362,6 +367,9 @@ def detect_and_map(
         - token_spans: list of (start, end) token indices
         - mapping_error: bool
     """
+    import logging
+    logger = logging.getLogger(__name__)
+
     # Decode full text for verification
     decoded = tokenizer.decode(
         token_ids,
@@ -369,16 +377,29 @@ def detect_and_map(
         skip_special_tokens=True,
     )
 
-    # Word detection and matches (on decoded to preserve offsets)
+    # Validate that decoded text is consistent with completion_text
+    # This helps catch tokenizer/encoding issues early
+    if completion_text and decoded:
+        # Normalize both for comparison (strip whitespace differences)
+        decoded_normalized = ' '.join(decoded.split())
+        completion_normalized = ' '.join(completion_text.split())
+        if decoded_normalized != completion_normalized:
+            # Log warning but don't fail - the decoded text is authoritative for mapping
+            logger.debug(
+                "decode mismatch: completion_text='%s' vs decoded='%s'",
+                completion_normalized[:50], decoded_normalized[:50]
+            )
+
+    # Character matches for mapping (on decoded to preserve offsets)
     char_matches = find_word_spans(decoded, target)
-    present = bool(char_matches)
+    present = len(char_matches) > 0
 
     # Token mapping
     token_spans: List[Tuple[int, int]] = []
     mapping_error = False
     failures: List[Tuple[int, int]] = []
 
-    if present:
+    if present and char_matches:
         token_spans, failures = _map_char_matches_to_tokens(
             target=target,
             token_ids=token_ids,
@@ -391,6 +412,10 @@ def detect_and_map(
         if failures or len(token_spans) != len(char_matches):
             mapping_error = True
 
+    pre_target_token_indices: List[Optional[int]] = []
+    for start, _ in token_spans:
+        pre_target_token_indices.append(start - 1 if start > 0 else None)
+
     if mapping_error and errors_path:
         error_record = {
             "prompt_id": prompt_id,
@@ -399,7 +424,7 @@ def detect_and_map(
             "target_word": target,
             "generated_token_ids": token_ids,
             "decoded_text": decoded,
-            "error_reason": "mapping_failed_for_some_or_all_matches",
+            "error_reason": "mapping_failed_or_detection_mismatch",
         }
         try:
             path = Path(errors_path)
@@ -412,6 +437,7 @@ def detect_and_map(
     return {
         "word_present": present,
         "token_spans": token_spans,
+        "pre_target_token_indices": pre_target_token_indices,
         "mapping_error": mapping_error,
     }
 
@@ -456,8 +482,20 @@ if __name__ == "__main__":
     assert result is True, f"Expected True, got {result}"
     print("   PASS: 'space' detected in 'The answer is space.'")
 
-    # Test 3: Multi-token mapping
-    print("\n3. Testing multi-token mapping:")
+    # Test 3: "space2" is not detected
+    print("\n3. Testing 'space' not in 'space2':")
+    result = word_present("space", "space2")
+    assert result is False, f"Expected False, got {result}"
+    print("   PASS: 'space' correctly not detected in 'space2'")
+
+    # Test 4: "space-time" is detected
+    print("\n4. Testing 'space' in 'space-time':")
+    result = word_present("space", "space-time")
+    assert result is True, f"Expected True, got {result}"
+    print("   PASS: 'space' detected in 'space-time'")
+
+    # Test 5: Multi-token mapping
+    print("\n5. Testing multi-token mapping:")
     # Setup: ids [1,2,3] decode to "sp" + "ace" + "."
     tok = DummyTokenizer({1: "sp", 2: "ace", 3: "."})
     decoded = tok.decode([1, 2, 3])
@@ -471,8 +509,8 @@ if __name__ == "__main__":
     assert span == (0, 1), f"Expected (0, 1), got {span}"
     print(f"   PASS: Multi-token 'sp'+'ace' mapped to span {span}")
 
-    # Test 4: detect_and_map integration
-    print("\n4. Testing detect_and_map integration:")
+    # Test 6: detect_and_map integration
+    print("\n6. Testing detect_and_map integration:")
     result = detect_and_map("space", "space.", [1, 2, 3], tok)
     assert result["word_present"] is True
     assert len(result["token_spans"]) > 0

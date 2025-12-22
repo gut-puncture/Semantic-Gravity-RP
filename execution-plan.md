@@ -38,7 +38,7 @@ skipping completed items.
 
 0.8 A100 GPU is required in Colab; abort if not present.
 
-0.9 All API calls to DeepSeek must be logged with request + response JSON.
+0.9 All API calls to DeepSeek must be logged with request + response JSON; if logging fails, halt immediately.
 
 0.10 Prompt list must be generated and finalized before any main model runs.
 
@@ -91,8 +91,7 @@ Module inventory:
 - `src/api_clients.py` (Partial)
   - Keep: DeepSeek client, Wikidata client, ConceptNet client, idiom CSV downloader.
   - Update: log full request/response JSON to disk; explicit DeepSeek model
-    selection (V3.2 vs R1); stronger retry/backoff + rate limiting policy;
-    switch Wikidata queries to SPARQLWrapper if not already used.
+    selection (V3.2 vs R1); stronger retry/backoff + rate limiting policy.
 - `src/data_mining.py` (Partial)
   - Keep: CandidatePrompt dataclass; idioms/facts/common-sense generators;
     creative and OOD generators as base.
@@ -206,10 +205,10 @@ Module inventory:
 ## 4. Correctness engine (module 5, must be implemented and tested first)
 
 4.1 Create `src/detector.py` with:
-- `word_present(target, completion)` returning bool.
+- `word_present(target, completion)` returning bool; use decoded string for detection.
 - `token_char_spans(tokenizer, ids)` using prefix incremental decode.
-- `find_word_spans(decoded, target)` using regex boundary match:
-  - pattern: `(?i)(?<![A-Za-z]){X}(?![A-Za-z])` with `re.escape(X)`.
+- `find_word_spans(decoded, target)` using case-insensitive match with
+  non-alphanumeric boundaries (per `str.isalnum()`).
 - `map_word_to_tokens(...)` that maps regex spans to token spans.
 - `detect_and_map(...)` that ties it together and returns:
   - `word_present`
@@ -228,7 +227,7 @@ Module inventory:
 - For each match [a,b):
   - Find smallest contiguous token span whose char spans cover [a,b).
   - Decode that token span and verify it matches the substring.
-  - Verify left and right boundaries are non-letters.
+  - Verify left and right boundaries are non-alphanumeric.
   - If failed, expand window by +/-1 token and retry.
   - If still failed, brute force all contiguous spans up to length 8.
 - If mapping fails and `word_present == True`:
@@ -238,6 +237,8 @@ Module inventory:
 4.4 Unit tests (must run before anything else):
 - "space" does not match "spacetime".
 - "space." and "space," are detected.
+- "space" does not match "space2".
+- "space" matches "space-time".
 - " Space" detected.
 - Multi-token split mapping (use tokenizer on a word known to split).
 - All tests must pass or halt.

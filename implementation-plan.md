@@ -38,9 +38,10 @@ This plan is structured logically for a coding agent. It breaks the project into
 * **DeepSeek Client:**
     * Implement a class `DeepSeekGen` with method `generate(system_prompt, user_prompt)`.
     * **Logic:** Use `requests` to hit the API. Implement a `while` loop with `try/except` for retries (exponential backoff) on timeouts or 500 errors.
+    * **Logging:** All requests/responses must be logged to disk; fail fast if log path is not writable.
     * *Edge Case:* Handle cases where the API returns text instead of the requested JSON.
 * **Wikidata Client:**
-    * Implement helper functions using `SPARQLWrapper`.
+    * Implement helper functions using `requests`.
     * Include the exact SPARQL queries for Capitals and Currencies defined in the spec.
 * **ConceptNet Client:**
     * Helper to fetch `/c/en/{word}` and parse edges.
@@ -99,19 +100,23 @@ This plan is structured logically for a coding agent. It breaks the project into
 
 ### 4.1 Detection Logic (`detector.py`)
 * **Word Level:**
-    * Normalize target and completion. Check `target in completion.split()`.
+    * Use decoded string from token ids as authoritative text for detection.
+    * Use case-insensitive matching with non-alphanumeric boundaries
+      (as defined by `str.isalnum()`).
 * **Token Mapping (The Hard Part):**
     * Implement **Prefix Incremental Decoding**.
     * **Algorithm:**
         1.  Decode `ids[0:i]`. Get string length $L_1$.
         2.  Decode `ids[0:i+1]`. Get string length $L_2$.
         3.  Token $i$ spans characters $[L_1, L_2)$.
-        4.  Find character offsets of the target word in the full string using Regex `(?i)\bTARGET\b`.
+        4.  Find character offsets of the target word in the full string using
+            case-insensitive match + non-alphanumeric boundary checks.
         5.  Find which token spans intersect with the regex character match.
 * **Edge Cases:**
     * Trailing punctuation ("space.").
     * Multi-token splits ("sp", "ace").
 * **Unit Tests:** Include a block `if __name__ == "__main__":` that runs synthetic tests (e.g., checking if "Space" matches "spacetime" -> False).
+  - Include "space2" (should be False) and "space-time" (should be True).
 
 ---
 

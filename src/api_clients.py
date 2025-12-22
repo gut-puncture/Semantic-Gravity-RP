@@ -13,11 +13,44 @@ import os
 import time
 import json
 import logging
-import requests
+from pathlib import Path
 from typing import Optional, Dict, List, Any, Tuple
 from dataclasses import dataclass, field
 
 logger = logging.getLogger(__name__)
+
+try:
+    import requests
+except ImportError:  # pragma: no cover - handled explicitly at runtime
+    requests = None
+
+
+def _require_requests():
+    if requests is None:
+        raise RuntimeError(
+            "The 'requests' package is required for API calls. "
+            "Install it with `pip install requests`."
+        )
+    return requests
+
+
+def _load_env_file(path: "Path") -> None:
+    """Load KEY=VALUE pairs from a .env file into os.environ if missing."""
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            for raw_line in f:
+                line = raw_line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" not in line:
+                    continue
+                key, value = line.split("=", 1)
+                key = key.strip()
+                value = value.strip().strip('"').strip("'")
+                if key and not os.environ.get(key):
+                    os.environ[key] = value
+    except OSError as e:
+        logger.warning("Failed to read .env file at %s: %s", path, e)
 
 
 # ============================================================================
@@ -52,32 +85,94 @@ class DeepSeekClient:
             # Try loading from .env file first
             try:
                 from dotenv import load_dotenv
-                from pathlib import Path
                 
                 # Look for .env in project root
                 env_path = Path(__file__).parent.parent / '.env'
                 if env_path.exists():
                     load_dotenv(env_path)
             except ImportError:
-                pass  # dotenv not installed, use environment directly
+                env_path = Path(__file__).parent.parent / '.env'
+                if env_path.exists():
+                    _load_env_file(env_path)
             
+            if not os.environ.get("DEEPSEEK_API_KEY"):
+                try:
+                    env_path = Path(__file__).parent.parent / '.env'
+                    if env_path.exists():
+                        _load_env_file(env_path)
+                except OSError:
+                    pass
+
             self.api_key = os.environ.get("DEEPSEEK_API_KEY")
         
         if not self.api_key:
             logger.warning("DEEPSEEK_API_KEY not set. API calls will fail.")
+
+        if self.request_log_path is None:
+            env_log_path = os.environ.get("DEEPSEEK_LOG_PATH")
+            if env_log_path:
+                self.request_log_path = env_log_path
+                self._validate_log_path()
+                return
+            try:
+                from .config import get_base_paths
+            except ImportError:
+                try:
+                    from config import get_base_paths
+                except ImportError:
+                    get_base_paths = None
+
+            if get_base_paths is not None:
+                try:
+                    paths = get_base_paths()
+                    self.request_log_path = str(paths["data_root"] / "deepseek_requests.jsonl")
+                except Exception as e:
+                    logger.warning("Could not resolve data_root for DeepSeek logging: %s", e)
+
+            # Per spec: DeepSeek logging must not be silently disabled
+            # If we still don't have a log path, use a fallback and warn
+            if self.request_log_path is None:
+                fallback_path = os.path.join(os.getcwd(), "deepseek_requests.jsonl")
+                logger.warning(
+                    "DeepSeek request_log_path not configured. "
+                    "Using fallback: %s. Set DEEPSEEK_LOG_PATH env var or "
+                    "configure get_base_paths() to specify log location.",
+                    fallback_path
+                )
+                self.request_log_path = fallback_path
+        self._validate_log_path()
+
+    def _validate_log_path(self) -> None:
+        """Ensure the DeepSeek request log path is writable."""
+        if not self.request_log_path:
+            raise RuntimeError("DeepSeek request_log_path is not configured.")
+        try:
+            from pathlib import Path
+            path = Path(self.request_log_path)
+            path.parent.mkdir(parents=True, exist_ok=True)
+            if path.exists() and not path.is_file():
+                raise RuntimeError(f"{path} exists and is not a file.")
+            with path.open("a", encoding="utf-8"):
+                pass
+        except Exception as e:
+            raise RuntimeError(
+                f"DeepSeek request_log_path is not writable: {self.request_log_path}"
+            ) from e
     
     def _append_log(self, record: Dict) -> None:
         """Append a log record to the request log file."""
         if not self.request_log_path:
-            return
+            raise RuntimeError("DeepSeek request_log_path is not configured.")
         try:
             from pathlib import Path
             path = Path(self.request_log_path)
             path.parent.mkdir(parents=True, exist_ok=True)
             with path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(record) + "\n")
-        except Exception:
-            pass  # Swallow logging errors
+        except Exception as e:
+            raise RuntimeError(
+                f"Failed to write DeepSeek request log to {self.request_log_path}"
+            ) from e
     
     def _rate_limit(self) -> None:
         """Enforce minimum interval between requests."""
@@ -94,6 +189,7 @@ class DeepSeekClient:
         timeout: int = 60,
     ) -> Dict:
         """Make HTTP request with retry logic and full logging."""
+        req = _require_requests()
         url = f"{self.base_url}/{endpoint}"
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -115,7 +211,7 @@ class DeepSeekClient:
             }
             
             try:
-                response = requests.post(
+                response = req.post(
                     url,
                     headers=headers,
                     json=payload,
@@ -168,7 +264,7 @@ class DeepSeekClient:
                         log_record["response_text"] = response.text[:2000]
                     response.raise_for_status()
                     
-            except requests.exceptions.Timeout:
+            except req.exceptions.Timeout:
                 logger.warning(f"Request timeout, attempt {attempt + 1}")
                 last_error = "timeout"
                 log_record["error"] = "timeout"
@@ -176,7 +272,7 @@ class DeepSeekClient:
                 self._append_log(log_record)
                 time.sleep(delay)
                 delay = min(delay * 2, self.retry_max_delay)
-            except requests.exceptions.RequestException as e:
+            except req.exceptions.RequestException as e:
                 logger.error(f"Request failed: {e}")
                 last_error = str(e)
                 log_record["error"] = str(e)
@@ -360,13 +456,14 @@ class WikidataClient:
     
     def _execute_query(self, query: str) -> List[Dict]:
         """Execute SPARQL query and return results."""
+        req = _require_requests()
         headers = {
             "Accept": "application/sparql-results+json",
             "User-Agent": "SemanticGravityExperiment/1.0",
         }
         
         try:
-            response = requests.get(
+            response = req.get(
                 self.endpoint,
                 params={"query": query},
                 headers=headers,
@@ -377,7 +474,7 @@ class WikidataClient:
             data = response.json()
             return data.get("results", {}).get("bindings", [])
             
-        except requests.exceptions.RequestException as e:
+        except req.exceptions.RequestException as e:
             logger.error(f"Wikidata query failed: {e}")
             raise
     
@@ -481,11 +578,12 @@ class ConceptNetClient:
             "limit": limit,
         }
         
+        req = _require_requests()
         try:
-            response = requests.get(url, params=params, timeout=self.timeout)
+            response = req.get(url, params=params, timeout=self.timeout)
             response.raise_for_status()
             return response.json().get("edges", [])
-        except requests.exceptions.RequestException as e:
+        except req.exceptions.RequestException as e:
             logger.warning(f"ConceptNet query failed for {concept}/{relation}: {e}")
             return []
     
@@ -623,8 +721,9 @@ def download_idioms_csv(save_path: str = None) -> str:
     """
     url = "https://raw.githubusercontent.com/baiango/english_idioms/main/idioms.csv"
     
+    req = _require_requests()
     try:
-        response = requests.get(url, timeout=30)
+        response = req.get(url, timeout=30)
         response.raise_for_status()
         content = response.text
         
@@ -635,7 +734,7 @@ def download_idioms_csv(save_path: str = None) -> str:
         
         return content
         
-    except requests.exceptions.RequestException as e:
+    except req.exceptions.RequestException as e:
         logger.error(f"Failed to download idioms: {e}")
         raise
 
@@ -650,6 +749,10 @@ if __name__ == "__main__":
     print("=" * 60)
     print("API CLIENTS TESTS")
     print("=" * 60)
+
+    if requests is None:
+        print("SKIP: 'requests' package not installed; API client tests skipped.")
+        sys.exit(0)
     
     # Test 1: Wikidata (no API key needed)
     print("\n1. Testing WikidataClient:")
@@ -685,19 +788,19 @@ if __name__ == "__main__":
     
     # Test 4: DeepSeek (only if API key set)
     print("\n4. Testing DeepSeekClient:")
-    if os.environ.get("DEEPSEEK_API_KEY"):
-        try:
-            deepseek = DeepSeekClient()
+    try:
+        deepseek = DeepSeekClient()
+        if deepseek.api_key:
             result = deepseek.generate(
                 system_prompt="You are a helpful assistant.",
                 user_prompt="Say 'Hello' and nothing else.",
                 max_tokens=10,
             )
             print(f"   ✅ DeepSeek response: {result}")
-        except Exception as e:
-            print(f"   ❌ DeepSeek failed: {e}")
-    else:
-        print("   ⚠️ DEEPSEEK_API_KEY not set, skipping")
+        else:
+            print("   ⚠️ DEEPSEEK_API_KEY not set, skipping")
+    except Exception as e:
+        print(f"   ❌ DeepSeek failed: {e}")
     
     print("\n" + "=" * 60)
     print("API clients tests complete!")

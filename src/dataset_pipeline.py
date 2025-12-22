@@ -92,9 +92,16 @@ def build_dataset(
     """
     Generate, validate, score, and select prompts for Module 2.
     """
+    if use_fallback:
+        raise RuntimeError("DeepSeek fallback generation is not allowed per specification.")
     paths = get_base_paths()
     data_root = output_root or paths['data_root']
     cache_dir = cache_dir or (data_root / "raw")
+
+    if deepseek_client is None:
+        deepseek_client = DeepSeekClient()
+    if deepseek_client.request_log_path is None:
+        deepseek_client.request_log_path = str(data_root / "deepseek_requests.jsonl")
 
     candidates_dir = data_root / "candidates"
     validated_dir = data_root / "validated"
@@ -166,19 +173,12 @@ def build_dataset(
         last_bin_shortfalls: Dict[str, int] = {}
         last_tau_with_balanced: Optional[float] = None
 
-        psem_available = any(vp.p_sem > 0 for vp in selected)
-        if selected and not psem_available:
-            logger.warning("p_sem unavailable for category %s; proceeding without pressure gating", category)
-
         while tau >= min_tau:
             if not selected:
                 break
 
             # Gate by pressure threshold unless p_sem unavailable
-            if not psem_available:
-                gated = selected
-            else:
-                gated = [vp for vp in selected if vp.p_sem >= tau]
+            gated = [vp for vp in selected if vp.p_sem >= tau]
 
             if not gated:
                 tau -= tau_step
@@ -274,49 +274,42 @@ def build_dataset(
     import pandas as pd
     from .prompt_builder import build_prompt
 
-    # Compute p1 (negative P_sem) for all prompts
-    # Try to load model, but don't crash if unavailable
+    # Compute p1 (negative P_sem) for all prompts (hard fail on errors)
     p1_values: Dict[str, float] = {}
-    try:
-        from .metrics_psem import compute_p_sem_for_prompt
-        wrapper = model_wrapper or ModelWrapper.get_instance()
-        if wrapper.model is None:
-            wrapper.load()
+    from .metrics_psem import compute_p_sem_for_prompt
+    wrapper = model_wrapper or ModelWrapper.get_instance()
+    if not wrapper.is_loaded:
+        wrapper.load()
 
-        logger.info("Computing p1 (negative P_sem) for %d prompts...", len(combined))
-        for vp in combined:
-            prompt_id = _compute_prompt_id(
-                vp.candidate.category,
-                vp.candidate.target_word_normalized,
+    failures: List[Dict[str, str]] = []
+    logger.info("Computing p1 (negative P_sem) for %d prompts...", len(combined))
+    for vp in combined:
+        prompt_id = _compute_prompt_id(
+            vp.candidate.category,
+            vp.candidate.target_word_normalized,
+            vp.candidate.question_text,
+            vp.candidate.target_word
+        )
+        try:
+            neg_prompt = build_prompt(
                 vp.candidate.question_text,
-                vp.candidate.target_word
+                vp.candidate.target_word,
+                "negative"
             )
-            try:
-                neg_prompt = build_prompt(
-                    vp.candidate.question_text,
-                    vp.candidate.target_word,
-                    "negative"
-                )
-                p1_values[prompt_id] = compute_p_sem_for_prompt(
-                    neg_prompt,
-                    vp.candidate.target_word,
-                    wrapper.model,
-                    wrapper.tokenizer,
-                )
-            except Exception as e:
-                logger.warning("p1 computation failed for %s: %s", prompt_id, e)
-                p1_values[prompt_id] = 0.0
+            p1_values[prompt_id] = compute_p_sem_for_prompt(
+                neg_prompt,
+                vp.candidate.target_word,
+                wrapper.model,
+                wrapper.tokenizer,
+            )
+        except Exception as e:
+            failures.append({"prompt_id": prompt_id, "error": str(e)})
 
-    except Exception as e:
-        logger.warning("Model unavailable for p1 computation: %s. Setting p1=0.0 for all.", e)
-        for vp in combined:
-            prompt_id = _compute_prompt_id(
-                vp.candidate.category,
-                vp.candidate.target_word_normalized,
-                vp.candidate.question_text,
-                vp.candidate.target_word
-            )
-            p1_values[prompt_id] = 0.0
+    if failures:
+        sample = failures[:3]
+        raise RuntimeError(
+            f"p1 computation failed for {len(failures)} prompts. Sample errors: {sample}"
+        )
 
     # Get pressure bins from config
     pressure_bins = CONFIG['dataset'].get('pressure_bins', [0.0, 0.2, 0.4, 0.6, 0.8, 1.0])

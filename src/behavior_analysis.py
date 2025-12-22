@@ -22,12 +22,12 @@ logger = logging.getLogger(__name__)
 
 try:
     from .config import CONFIG, get_base_paths
-    from .utils import ModelWrapper, normalize_for_match
+    from .utils import ModelWrapper, normalize_for_match, resolve_run_root
     from .detector import detect_and_map
     from .metrics_psem import compute_suppression_metrics, token_sequences_for_variants
 except ImportError:
     from config import CONFIG, get_base_paths
-    from utils import ModelWrapper, normalize_for_match
+    from utils import ModelWrapper, normalize_for_match, resolve_run_root
     from detector import detect_and_map
     from metrics_psem import compute_suppression_metrics, token_sequences_for_variants
 
@@ -100,66 +100,10 @@ def _resolve_run_root(output_root: Optional[Path]) -> Path:
     """
     Resolve the run root directory from output_root or find the latest run.
 
-    Priority order:
-    1) If output_root name starts with experiment_run_, return it (specific run).
-    2) If output_root contains experiment_run_* subdirs, select latest by name.
-    3) If output_root has runs/ subdir (but no experiment_run_* children), use it.
-    4) Otherwise, return output_root as-is (backward compatibility).
-    5) If output_root is None, select latest experiment_run_* under base outputs.
-
-    Args:
-        output_root: Optional run root or base outputs directory
-
-    Returns:
-        Resolved run root Path
+    NOTE: This is a local alias for utils.resolve_run_root for backward compatibility.
+    New code should import resolve_run_root from utils directly.
     """
-    paths = get_base_paths()
-    base_out = paths.get("output_root", Path("outputs"))
-
-    def find_latest_run_in(parent: Path) -> Optional[Path]:
-        """Find latest experiment_run_* subdir by lexicographic name."""
-        if not parent.exists() or not parent.is_dir():
-            return None
-        try:
-            run_dirs = sorted(
-                [d for d in parent.iterdir() if d.is_dir() and d.name.startswith("experiment_run_")],
-                key=lambda d: d.name,
-            )
-            return run_dirs[-1] if run_dirs else None
-        except OSError:
-            return None
-
-    if output_root is not None:
-        candidate = Path(output_root)
-
-        # Priority 1: If name starts with experiment_run_, it IS a run root
-        if candidate.name.startswith("experiment_run_"):
-            return candidate
-
-        # Priority 2: Check for experiment_run_* subdirs BEFORE checking runs/
-        latest = find_latest_run_in(candidate)
-        if latest:
-            logger.warning(
-                "Selecting latest experiment_run_* under %s: %s",
-                candidate, latest,
-            )
-            return latest
-
-        # Priority 3: If it has runs/ but no experiment_run_*, treat as run root
-        if candidate.exists() and (candidate / "runs").exists():
-            return candidate
-
-        # Priority 4: Backward compatibility - return as-is
-        return candidate
-
-    # output_root is None: find latest run under base_out
-    latest = find_latest_run_in(base_out)
-    if latest:
-        logger.warning("output_root not provided; using latest run dir: %s", latest)
-        return latest
-
-    # Fallback to base_out
-    return base_out
+    return resolve_run_root(output_root)
 
 
 # ============================================================================
@@ -332,6 +276,7 @@ def run_detection_mapping(
             "target_word_norm": target_word_norm,
             "word_present": detection.get("word_present", False),
             "token_spans": detection.get("token_spans", []),
+            "pre_target_token_indices": detection.get("pre_target_token_indices", []),
             "mapping_error": detection.get("mapping_error", False),
             "format_adherence": format_adherence,
         }

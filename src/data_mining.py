@@ -123,14 +123,6 @@ def _target_leaks_into_question(target: str, question: str) -> bool:
 # WORDFREQ TARGET SELECTION
 # ============================================================================
 
-_FALLBACK_WORDS = [
-    "space", "water", "light", "dark", "time", "life", "death", "love",
-    "fear", "hope", "dream", "night", "day", "sun", "moon", "star",
-    "fire", "ice", "wind", "rain", "storm", "peace", "war", "truth",
-    "lies", "power", "magic", "gold", "silver", "blood", "heart", "soul",
-    "mind", "ghost", "shadow", "silence", "music", "dance", "song", "voice",
-]
-
 
 def get_wordfreq_targets(
     n: int,
@@ -148,8 +140,9 @@ def get_wordfreq_targets(
     try:
         from wordfreq import top_n_list, zipf_frequency
     except ImportError:
-        logger.warning("wordfreq not installed, using fallback word list")
-        return _FALLBACK_WORDS[:n]
+        raise RuntimeError(
+            "wordfreq is required for target selection. Install wordfreq to continue."
+        )
 
     candidates = top_n_list('en', 5000)
     valid_words = []
@@ -340,6 +333,10 @@ class IdiomGenerator:
             
             # Format question
             question = template.format(idiom_with_blank=blank_idiom)
+
+            if _target_leaks_into_question(target, question):
+                logger.debug("Skipping leaking idiom target: %s in %s", target, question)
+                continue
             
             candidates.append(CandidatePrompt(
                 category="idioms",
@@ -694,9 +691,11 @@ Format your response as JSON:
 
         try:
             from datasets import load_dataset
-        except ImportError:
-            logger.warning("datasets not installed; skipping WritingPrompts load")
-            return []
+        except ImportError as e:
+            raise RuntimeError(
+                "datasets is required to load WritingPrompts. Install datasets or "
+                "provide a cached writingprompts file under data/raw."
+            ) from e
 
         scenarios = []
         dataset_name = CONFIG['sources']['writingprompts_dataset']
@@ -713,8 +712,7 @@ Format your response as JSON:
                 if len(scenarios) >= n:
                     break
         except Exception as e:
-            logger.warning(f"Failed to stream WritingPrompts dataset: {e}")
-            return []
+            raise RuntimeError(f"Failed to stream WritingPrompts dataset: {e}") from e
 
         if scenarios and self.cache_dir:
             cache_path = self.cache_dir / "writingprompts.txt"
@@ -725,6 +723,11 @@ Format your response as JSON:
                         f.write(s.replace('\n', ' ').strip() + '\n')
             except Exception as e:
                 logger.debug(f"Could not cache WritingPrompts scenarios: {e}")
+
+        if not scenarios:
+            raise RuntimeError(
+                "WritingPrompts scenarios are required for creative prompts but none were loaded."
+            )
 
         self.scenario_texts = scenarios
         return scenarios
@@ -776,19 +779,23 @@ Return as JSON with "prompts" array. Each "microstory" should NOT include the bl
                 prompts = result.get("prompts", [])
                 for i, p in enumerate(prompts):
                     microstory = p.get("microstory", "").strip()
-                    if microstory and target.lower() not in microstory.lower():
-                        microstory = microstory.rstrip().rstrip(".!?")
-                        question = template.format(microstory=microstory)
-                        
-                        candidates.append(CandidatePrompt(
-                            category="creative",
-                            question_text=question,
-                            target_word=target,
-                            target_word_normalized=target.lower(),
-                            prompt_style_id=f"creative_{i}",
-                            source_trace=f"deepseek:creative:{target}",
-                            raw_data={"microstory": microstory, "target": target},
-                        ))
+                    if not microstory:
+                        continue
+                    if _target_leaks_into_question(target, microstory):
+                        continue
+
+                    microstory = microstory.rstrip().rstrip(".!?")
+                    question = template.format(microstory=microstory)
+
+                    candidates.append(CandidatePrompt(
+                        category="creative",
+                        question_text=question,
+                        target_word=target,
+                        target_word_normalized=target.lower(),
+                        prompt_style_id=f"creative_{i}",
+                        source_trace=f"deepseek:creative:{target}",
+                        raw_data={"microstory": microstory, "target": target},
+                    ))
                         
             except Exception as e:
                 logger.warning(f"Failed to generate creative prompts for {target}: {e}")
@@ -903,18 +910,22 @@ Return as JSON with "prompts" array containing objects with "context" and "style
                     context = p.get("context", "").strip()
                     style = p.get("style", default_style) or default_style
                     
-                    if context and target.lower() not in context.lower():
-                        question = self._format_ood_prompt(context, style, templates)
-                        
-                        candidates.append(CandidatePrompt(
-                            category="ood",
-                            question_text=question,
-                            target_word=target,
-                            target_word_normalized=target.lower(),
-                            prompt_style_id=f"ood_{style}_{idx}_{i}",
-                            source_trace=f"deepseek:ood:{target}",
-                            raw_data={"context": context, "target": target, "style": style},
-                        ))
+                    if not context:
+                        continue
+                    if _target_leaks_into_question(target, context):
+                        continue
+
+                    question = self._format_ood_prompt(context, style, templates)
+                    
+                    candidates.append(CandidatePrompt(
+                        category="ood",
+                        question_text=question,
+                        target_word=target,
+                        target_word_normalized=target.lower(),
+                        prompt_style_id=f"ood_{style}_{idx}_{i}",
+                        source_trace=f"deepseek:ood:{target}",
+                        raw_data={"context": context, "target": target, "style": style},
+                    ))
                         
             except Exception as e:
                 logger.warning(f"Failed to generate OOD prompts for {target}: {e}")
@@ -1036,7 +1047,8 @@ Return your response as valid JSON only."""
                         continue
                     if not target.isalpha():
                         continue
-                    if target.lower() in question.lower():
+                    # Use word-boundary matching (not substring) per spec
+                    if _target_leaks_into_question(target, question):
                         continue
                     
                     candidates.append(CandidatePrompt(
@@ -1106,6 +1118,9 @@ class DatasetGenerator:
         Returns:
             Dict mapping category name to list of candidates
         """
+        if use_fallback:
+            raise RuntimeError("DeepSeek fallback generation is not allowed per specification.")
+
         results = {}
         k = candidates_per_target or CONFIG['dataset']['candidates_per_target']
         base_count = max(1, int(prompts_per_category * candidate_multiplier))

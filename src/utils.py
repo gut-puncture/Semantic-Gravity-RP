@@ -11,6 +11,7 @@ This module provides:
 Designed to work both locally (for dataset construction) and in Colab (for inference).
 """
 
+import os
 import re
 import string
 import unicodedata
@@ -85,28 +86,30 @@ def word_in_text(target: str, text: str) -> bool:
 def find_word_occurrences(target: str, text: str) -> List[Tuple[int, int]]:
     """
     Find all character-level occurrences of target word in text.
-    
-    Uses word boundary matching (spec Section 5.4).
-    Matches are case-insensitive and require non-letter boundaries.
-    
+
+    Matches are case-insensitive and require non-alphanumeric boundaries
+    (as defined by str.isalnum()).
+    This avoids false positives like "space2" while still matching "space."
+
     Args:
         target: The target word to find
         text: The text to search in
-        
+
     Returns:
         List of (start, end) character indices for each occurrence
     """
-    # Escape target for regex and build word boundary pattern
-    # (?i) - case insensitive
-    # (?<![A-Za-z]) - not preceded by letter
-    # (?![A-Za-z]) - not followed by letter
-    escaped_target = re.escape(target)
-    pattern = r'(?i)(?<![A-Za-z])' + escaped_target + r'(?![A-Za-z])'
-    
+    if not target:
+        return []
+
     occurrences = []
-    for match in re.finditer(pattern, text):
-        occurrences.append((match.start(), match.end()))
-    
+    pattern = re.compile(re.escape(target), flags=re.IGNORECASE)
+    for match in pattern.finditer(text):
+        start, end = match.span()
+        left_ok = start == 0 or not text[start - 1].isalnum()
+        right_ok = end >= len(text) or not text[end].isalnum()
+        if left_ok and right_ok:
+            occurrences.append((start, end))
+
     return occurrences
 
 
@@ -171,10 +174,15 @@ def set_seed(seed: int = 42) -> None:
         seed: The seed value to use
     """
     import random
-    import numpy as np
-    
+    try:
+        import numpy as np
+    except ImportError:
+        np = None
+        logger.warning("NumPy not available, skipping numpy seed setting")
+
     random.seed(seed)
-    np.random.seed(seed)
+    if np is not None:
+        np.random.seed(seed)
     
     try:
         import torch
@@ -199,10 +207,15 @@ def set_all_seeds() -> None:
     seeds = CONFIG['seeds']
     
     import random
-    import numpy as np
-    
+    try:
+        import numpy as np
+    except ImportError:
+        np = None
+        logger.warning("NumPy not available, skipping numpy seed setting")
+
     random.seed(seeds['python'])
-    np.random.seed(seeds['numpy'])
+    if np is not None:
+        np.random.seed(seeds['numpy'])
     
     try:
         import torch
@@ -266,13 +279,17 @@ class ModelWrapper:
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
         
-        # Get model path from config if not provided
+        # Get model path from env/config if not provided
         if model_path is None:
-            from .config import get_base_paths, CONFIG
-            paths = get_base_paths()
-            model_path = paths.get('model_path')
-            if model_path is None:
-                model_path = CONFIG['model']['model_id']
+            env_path = os.environ.get("SEMANTIC_GRAVITY_MODEL_PATH") or os.environ.get("MODEL_PATH")
+            if env_path:
+                model_path = env_path
+            else:
+                from .config import get_base_paths, CONFIG
+                paths = get_base_paths()
+                model_path = paths.get('model_path')
+                if model_path is None:
+                    model_path = CONFIG['model']['model_id']
         
         logger.info(f"Loading model from: {model_path}")
         
@@ -349,6 +366,13 @@ class ModelWrapper:
         if not self._loaded:
             raise RuntimeError("Model not loaded. Call load() first.")
         
+        if "add_special_tokens" not in kwargs:
+            try:
+                from .config import CONFIG
+                kwargs["add_special_tokens"] = CONFIG.get("model", {}).get("add_special_tokens", False)
+            except Exception:
+                kwargs["add_special_tokens"] = False
+
         return self.tokenizer(
             text,
             return_tensors="pt",
@@ -594,6 +618,84 @@ def truncate_string(s: str, max_len: int = 50) -> str:
 
 
 # ============================================================================
+# RUN ROOT RESOLUTION (centralized for all modules)
+# ============================================================================
+
+def resolve_run_root(output_root: Optional[Path]) -> Path:
+    """
+    Resolve the run root directory from output_root or find the latest run.
+
+    This function is centralized here to avoid duplication across modules
+    (behavior_analysis.py, metrics_attn.py, patching.py).
+
+    Priority order:
+    1) If output_root name starts with experiment_run_, return it (specific run).
+    2) If output_root contains experiment_run_* subdirs, select latest by name.
+    3) If output_root has runs/ subdir (but no experiment_run_* children), use it.
+    4) Otherwise, return output_root as-is (backward compatibility).
+    5) If output_root is None, select latest experiment_run_* under base outputs.
+
+    Args:
+        output_root: Optional run root or base outputs directory
+
+    Returns:
+        Resolved run root Path
+    """
+    try:
+        from .config import get_base_paths
+    except ImportError:
+        from config import get_base_paths
+
+    paths = get_base_paths()
+    base_out = paths.get("output_root", Path("outputs"))
+
+    def find_latest_run_in(parent: Path) -> Optional[Path]:
+        """Find latest experiment_run_* subdir by lexicographic name."""
+        if not parent.exists() or not parent.is_dir():
+            return None
+        try:
+            run_dirs = sorted(
+                [d for d in parent.iterdir() if d.is_dir() and d.name.startswith("experiment_run_")],
+                key=lambda d: d.name,
+            )
+            return run_dirs[-1] if run_dirs else None
+        except OSError:
+            return None
+
+    if output_root is not None:
+        candidate = Path(output_root)
+
+        # Priority 1: If name starts with experiment_run_, it IS a run root
+        if candidate.name.startswith("experiment_run_"):
+            return candidate
+
+        # Priority 2: Check for experiment_run_* subdirs BEFORE checking runs/
+        latest = find_latest_run_in(candidate)
+        if latest:
+            logger.warning(
+                "Selecting latest experiment_run_* under %s: %s",
+                candidate, latest,
+            )
+            return latest
+
+        # Priority 3: If it has runs/ but no experiment_run_*, treat as run root
+        if candidate.exists() and (candidate / "runs").exists():
+            return candidate
+
+        # Priority 4: Backward compatibility - return as-is
+        return candidate
+
+    # output_root is None: find latest run under base_out
+    latest = find_latest_run_in(base_out)
+    if latest:
+        logger.warning("output_root not provided; using latest run dir: %s", latest)
+        return latest
+
+    # Fallback to base_out
+    return base_out
+
+
+# ============================================================================
 # UNIT TESTS
 # ============================================================================
 
@@ -649,6 +751,8 @@ if __name__ == "__main__":
         ("space", "I love space and space travel", [(7, 12), (17, 22)]),
         ("space", "Space is vast", [(0, 5)]),
         ("space", "spacetime", []),
+        ("space", "space2", []),
+        ("space", "space-time", [(0, 5)]),
     ]
     for target, text, expected in test_cases:
         result = find_word_occurrences(target, text)

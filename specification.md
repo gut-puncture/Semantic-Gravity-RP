@@ -415,6 +415,7 @@ After acceptance, compute baseline pressure P0 (Section 7 below).
 ### 4.2 Request format
 
 * All requests must be logged.
+* If logging fails or log path is not writable, halt immediately (no silent disable).
 * Store response JSON raw.
 * Implement retry with exponential backoff.
 * If malformed JSON returned, re-ask with "Return ONLY valid JSON".
@@ -443,7 +444,7 @@ For each completion:
 * leading/trailing whitespace exists
 * trailing punctuation exists (e.g., "space.")
 
-### 5.2 Normalization for word-level detection
+### 5.2 Normalization for format checks (not word detection)
 
 Define function normalize_for_word_match(s):
 
@@ -453,12 +454,14 @@ Define function normalize_for_word_match(s):
 4. collapse whitespace to single spaces
 5. strip
 
-Word-level detection:
+Use normalization for:
 
-* compute X_norm = normalize_for_word_match(X)
-* compute completion_norm = normalize_for_word_match(completion_text)
-* split completion_norm on spaces
-* word_present = any(token == X_norm for token in tokens)
+* one-word answer format checks
+* descriptive logging/debug output
+
+Word-level detection must **not** use normalized completion_text. It must use the
+decoded string from token ids (Section 5.3/5.4) as the authoritative source so
+token offsets and word detection are perfectly aligned.
 
 ### 5.3 Prefix incremental decode for token char spans (Method B only)
 
@@ -475,14 +478,14 @@ This is the only method used.
 
 ### 5.4 Find word occurrences in decoded string and map to tokens
 
-1. Build regex for word boundary match in original decoded string s_full:
-
-   * pattern: (?i)(?<![A-Za-z])X(?![A-Za-z]) with X escaped.
+1. Find case-insensitive occurrences of X in the original decoded string s_full.
+   Accept a match only if the left and right boundaries are non-alphanumeric
+   (as defined by `str.isalnum()`).
 2. For each match char interval [a,b):
 
    * find minimal contiguous token range [t_start,t_end] whose union of spans covers [a,b)
    * decode ids[t_start:t_end+1] and verify it contains the substring corresponding to match
-   * verify boundaries are non-letter
+   * verify boundaries are non-alphanumeric
 3. If verification fails:
 
    * expand window by ±1 token and retry
@@ -497,7 +500,7 @@ This is the only method used.
 
 ### 5.5 Mapping must handle trailing punctuation
 
-Because match uses word boundaries against letters only, "space." matches.
+Because match uses non-alphanumeric word boundaries, "space." matches.
 Token mapping will cover punctuation token if tokenizer attaches it; verification must allow the punctuation token to exist outside [a,b).
 
 ### 5.6 Unit tests (must run before experiment)
@@ -506,6 +509,8 @@ Construct synthetic completions and ensure:
 
 * space vs spacetime
 * "space." and "space," detected
+* "space" not detected in "space2"
+* "space" detected in "space-time"
 * " Space" detected
 * multi-token tokenization mapping works (create by forcing tokens)
 * mapping returns correct token indices
