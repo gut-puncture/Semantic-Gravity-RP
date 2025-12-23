@@ -89,10 +89,15 @@ CONFIG = {
         'num_categories': 5,
         'prompts_per_category': 500,
         'categories': ['idioms', 'facts', 'common_sense', 'creative', 'ood'],
+        'candidate_multiplier': 2,
         'pressure_bins': [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
         'min_pressure_threshold': 0.20,
         'candidates_per_target': 5,
         'max_target_repetition': 2,  # Same word in at most 2 categories
+        # DeepSeek fallback tuning (when sources are down or sparse)
+        'fallback_max_extra_batches': 3,
+        'common_sense_fallback_max_target_repeats': 1,
+        'common_sense_fallback_max_subject_repeats': 1,
     },
     
     # ----- Validation Configuration -----
@@ -103,10 +108,18 @@ CONFIG = {
     
     # ----- DeepSeek API Configuration -----
     'deepseek': {
-        'base_url': 'https://api.deepseek.com/v1',
+        'base_url': 'https://api.deepseek.com',
         'retry_attempts': 3,
         'retry_base_delay': 1.0,
         'retry_max_delay': 30.0,
+        'json_retry_attempts': 4,
+        'generator_model': 'deepseek-reasoner',
+        'validator_model': 'deepseek-reasoner',
+        'max_tokens_generation': 2000,
+        'max_tokens_validation': 2000,
+        'response_format': {"type": "json_object"},
+        'thinking': {"type": "enabled"},
+        'request_timeout_seconds': 180,
     },
     
     # ----- Data Sources -----

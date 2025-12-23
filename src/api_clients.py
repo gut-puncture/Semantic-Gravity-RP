@@ -2,7 +2,7 @@
 api_clients.py - API Clients for External Data Sources
 
 This module provides clients for:
-- DeepSeek API (V3.2 for generation, R1 for validation)
+- DeepSeek API (reasoner model for generation and validation)
 - Wikidata SPARQL queries (for factual data)
 - ConceptNet REST API (for common sense relations)
 
@@ -10,6 +10,7 @@ All clients include retry logic with exponential backoff.
 """
 
 import os
+import re
 import time
 import json
 import logging
@@ -18,6 +19,8 @@ from typing import Optional, Dict, List, Any, Tuple
 from dataclasses import dataclass, field
 
 logger = logging.getLogger(__name__)
+
+DEFAULT_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 
 try:
     import requests
@@ -60,7 +63,7 @@ def _load_env_file(path: "Path") -> None:
 @dataclass
 class DeepSeekClient:
     """
-    Client for DeepSeek API (V3.2 and R1 models).
+    Client for DeepSeek API (reasoner model).
     
     Handles:
     - Chat completions with retry logic
@@ -70,14 +73,85 @@ class DeepSeekClient:
     """
     
     api_key: Optional[str] = None
-    base_url: str = "https://api.deepseek.com/v1"
+    base_url: str = DEFAULT_DEEPSEEK_BASE_URL
     retry_attempts: int = 3
     retry_base_delay: float = 1.0
     retry_max_delay: float = 30.0
+    json_retry_attempts: int = 4
     request_log: List[Dict] = field(default_factory=list)
     request_log_path: Optional[str] = None
     min_request_interval: float = 0.0
     _last_request_time: float = field(default=0.0, repr=False)
+
+    def _get_deepseek_config(self) -> Dict[str, Any]:
+        try:
+            from .config import CONFIG
+        except ImportError:
+            try:
+                from config import CONFIG
+            except ImportError:
+                return {}
+        if isinstance(CONFIG, dict):
+            return CONFIG.get("deepseek", {}) or {}
+        return {}
+
+    def _get_request_timeout(self, deepseek_config: Optional[Dict[str, Any]] = None) -> int:
+        config = deepseek_config if deepseek_config is not None else self._get_deepseek_config()
+        timeout = config.get("request_timeout_seconds")
+        if isinstance(timeout, int) and timeout > 0:
+            return timeout
+        return 180
+
+    def _example_value_for_type(self, expected_type: type) -> object:
+        if isinstance(expected_type, tuple):
+            expected_type = expected_type[0]
+        if expected_type is bool:
+            return True
+        if expected_type is int:
+            return 0
+        if expected_type is float:
+            return 0.0
+        if expected_type is list:
+            return []
+        if expected_type is dict:
+            return {}
+        return "value"
+
+    def _build_json_example(
+        self,
+        required_keys: Optional[List[str]] = None,
+        required_schema: Optional[Dict[str, type]] = None,
+    ) -> str:
+        example: Dict[str, object] = {}
+        if required_keys:
+            for key in required_keys:
+                example[key] = "value"
+        if required_schema:
+            for key, expected_type in required_schema.items():
+                example[key] = self._example_value_for_type(expected_type)
+        if not example:
+            return "{}"
+        return json.dumps(example, ensure_ascii=True)
+
+    def _prepare_json_mode_prompts(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        required_keys: Optional[List[str]] = None,
+        required_schema: Optional[Dict[str, type]] = None,
+    ) -> Tuple[str, str]:
+        combined = f"{system_prompt}\n{user_prompt}"
+        has_json_word = "json" in combined.lower()
+        has_example = bool(re.search(r"\{\s*\"", combined))
+        additions: List[str] = []
+        if not has_json_word:
+            additions.append("Return a json object only.")
+        if not has_example:
+            example = self._build_json_example(required_keys, required_schema)
+            additions.append(f"Example JSON:\n{example}")
+        if additions:
+            system_prompt = system_prompt.rstrip() + "\n\n" + "\n".join(additions)
+        return system_prompt, user_prompt
     
     def __post_init__(self):
         """Load API key from .env file or environment."""
@@ -107,6 +181,17 @@ class DeepSeekClient:
         
         if not self.api_key:
             logger.warning("DEEPSEEK_API_KEY not set. API calls will fail.")
+
+        deepseek_config = self._get_deepseek_config()
+        json_retry = deepseek_config.get("json_retry_attempts")
+        if isinstance(json_retry, int) and json_retry > 0:
+            self.json_retry_attempts = json_retry
+
+        cfg_base_url = deepseek_config.get("base_url")
+        if cfg_base_url and self.base_url == DEFAULT_DEEPSEEK_BASE_URL:
+            self.base_url = cfg_base_url
+        if self.base_url:
+            self.base_url = self.base_url.rstrip("/")
 
         if self.request_log_path is None:
             env_log_path = os.environ.get("DEEPSEEK_LOG_PATH")
@@ -186,7 +271,7 @@ class DeepSeekClient:
         self,
         endpoint: str,
         payload: Dict,
-        timeout: int = 60,
+        timeout: int = 180,
     ) -> Dict:
         """Make HTTP request with retry logic and full logging."""
         req = _require_requests()
@@ -283,13 +368,22 @@ class DeepSeekClient:
         
         raise RuntimeError(f"DeepSeek API failed after {self.retry_attempts} attempts: {last_error}")
     
+    def _extract_message_text(self, response: Dict[str, Any]) -> str:
+        """Extract text content from DeepSeek response."""
+        try:
+            message = response["choices"][0]["message"]
+        except (KeyError, IndexError, TypeError) as e:
+            logger.error(f"Unexpected response format: {response}")
+            raise RuntimeError(f"Failed to parse DeepSeek response: {e}") from e
+        return message.get("content") or ""
+
     def generate(
         self,
         system_prompt: str,
         user_prompt: str,
-        model: str = "deepseek-chat",  # V3.2
+        model: str = "deepseek-reasoner",
         temperature: float = 0.7,
-        max_tokens: int = 1024,
+        max_tokens: int = 2000,
     ) -> str:
         """
         Generate text using DeepSeek chat API.
@@ -297,7 +391,7 @@ class DeepSeekClient:
         Args:
             system_prompt: System instruction
             user_prompt: User message
-            model: Model to use (deepseek-chat for V3.2, deepseek-reasoner for R1)
+            model: Model to use (deepseek-reasoner)
             temperature: Sampling temperature
             max_tokens: Max tokens to generate
             
@@ -313,23 +407,78 @@ class DeepSeekClient:
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
-        
-        response = self._make_request("chat/completions", payload)
-        
-        try:
-            return response["choices"][0]["message"]["content"]
-        except (KeyError, IndexError) as e:
-            logger.error(f"Unexpected response format: {response}")
-            raise RuntimeError(f"Failed to parse DeepSeek response: {e}")
+        deepseek_config = self._get_deepseek_config()
+        thinking = deepseek_config.get("thinking")
+        if thinking:
+            payload["thinking"] = thinking
+
+        response = self._make_request(
+            "chat/completions",
+            payload,
+            timeout=self._get_request_timeout(deepseek_config),
+        )
+        return self._extract_message_text(response)
+
+    def _extract_json_candidates(self, content: str) -> List[str]:
+        candidates: List[str] = []
+        raw = (content or "").strip()
+        if not raw:
+            return candidates
+
+        if "```" in raw:
+            parts = raw.split("```")
+            for idx in range(1, len(parts), 2):
+                block = parts[idx].strip()
+                if not block:
+                    continue
+                if block.lower().startswith("json"):
+                    lines = block.splitlines()
+                    block = "\n".join(lines[1:]).strip() if len(lines) > 1 else ""
+                if block:
+                    candidates.append(block)
+
+        candidates.append(raw)
+
+        if "{" in raw and "}" in raw:
+            start = raw.find("{")
+            end = raw.rfind("}")
+            if start < end:
+                candidates.append(raw[start:end + 1])
+
+        if "[" in raw and "]" in raw:
+            start = raw.find("[")
+            end = raw.rfind("]")
+            if start < end:
+                candidates.append(raw[start:end + 1])
+
+        seen = set()
+        unique: List[str] = []
+        for item in candidates:
+            if item in seen:
+                continue
+            seen.add(item)
+            unique.append(item)
+        return unique
+
+    def _parse_json_content(self, content: str) -> Optional[object]:
+        for candidate in self._extract_json_candidates(content):
+            try:
+                return json.loads(candidate)
+            except json.JSONDecodeError:
+                continue
+        return None
     
     def generate_json(
         self,
         system_prompt: str,
         user_prompt: str,
-        model: str = "deepseek-chat",
+        model: str = "deepseek-reasoner",
         temperature: float = 0.3,
-        max_tokens: int = 1024,
+        max_tokens: int = 2000,
         retry_on_invalid: bool = True,
+        required_keys: Optional[List[str]] = None,
+        max_retries: Optional[int] = None,
+        required_schema: Optional[Dict[str, type]] = None,
     ) -> Dict:
         """
         Generate JSON response with validation.
@@ -347,55 +496,122 @@ class DeepSeekClient:
         Returns:
             Parsed JSON dict
         """
-        content = self.generate(
+        max_retries = max_retries or self.json_retry_attempts
+        last_error: Optional[str] = None
+
+        deepseek_config = self._get_deepseek_config()
+        response_format = deepseek_config.get("response_format")
+        thinking = deepseek_config.get("thinking")
+        timeout = self._get_request_timeout(deepseek_config)
+
+        system_prompt, user_prompt = self._prepare_json_mode_prompts(
             system_prompt=system_prompt,
             user_prompt=user_prompt,
-            model=model,
-            temperature=temperature,
-            max_tokens=max_tokens,
+            required_keys=required_keys,
+            required_schema=required_schema,
         )
-        
-        # Try to parse JSON
-        try:
-            # Handle markdown code blocks
-            if "```json" in content:
-                content = content.split("```json")[1].split("```")[0]
-            elif "```" in content:
-                content = content.split("```")[1].split("```")[0]
-            
-            return json.loads(content.strip())
-        except json.JSONDecodeError:
-            if retry_on_invalid:
-                logger.warning("Invalid JSON, retrying with explicit instruction...")
-                retry_prompt = user_prompt + "\n\nIMPORTANT: Return ONLY valid JSON, no other text."
-                content = self.generate(
-                    system_prompt=system_prompt,
-                    user_prompt=retry_prompt,
-                    model=model,
-                    temperature=0.1,  # Lower temp for retry
-                    max_tokens=max_tokens,
+        retry_prompt = user_prompt
+
+        for attempt in range(max_retries):
+            temp = temperature if attempt == 0 else 0.1
+            payload = {
+                "model": model,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": retry_prompt},
+                ],
+                "temperature": temp,
+                "max_tokens": max_tokens,
+            }
+            if response_format:
+                payload["response_format"] = response_format
+            if thinking:
+                payload["thinking"] = thinking
+
+            response = self._make_request("chat/completions", payload, timeout=timeout)
+            content = self._extract_message_text(response)
+            if not content.strip():
+                last_error = "empty_content"
+                if not retry_on_invalid:
+                    break
+                retry_prompt = (
+                    user_prompt
+                    + "\n\nIMPORTANT: Return a non-empty json object only. "
+                    "Do not include markdown or code fences. "
+                    "Your response must start with '{' and end with '}'."
                 )
-                try:
-                    if "```json" in content:
-                        content = content.split("```json")[1].split("```")[0]
-                    elif "```" in content:
-                        content = content.split("```")[1].split("```")[0]
-                    return json.loads(content.strip())
-                except json.JSONDecodeError as e:
-                    logger.error(f"JSON parse failed on retry: {content[:200]}")
-                    raise RuntimeError(f"Failed to get valid JSON from DeepSeek: {e}")
+                continue
+
+            parsed = self._parse_json_content(content)
+            if isinstance(parsed, list):
+                parsed = {"prompts": parsed}
+
+            if isinstance(parsed, dict):
+                if required_keys and not all(k in parsed for k in required_keys):
+                    last_error = "missing_required_keys"
+                elif required_schema:
+                    schema_ok = True
+                    for key, expected_type in required_schema.items():
+                        if key not in parsed or not isinstance(parsed.get(key), expected_type):
+                            schema_ok = False
+                            break
+                        value = parsed.get(key)
+                        if expected_type in (int, float) and isinstance(value, bool):
+                            schema_ok = False
+                            break
+                    if not schema_ok:
+                        last_error = "invalid_schema"
+                    else:
+                        return parsed
+                else:
+                    return parsed
             else:
-                raise
+                last_error = "invalid_json"
+
+            if not retry_on_invalid:
+                break
+
+            required_hint = ""
+            if required_keys:
+                required_hint = " Required keys: " + ", ".join(required_keys) + "."
+            if required_schema:
+                type_map = {
+                    list: "array",
+                    dict: "object",
+                    bool: "boolean",
+                    int: "integer",
+                    float: "number",
+                    str: "string",
+                }
+                schema_bits = []
+                for key, expected_type in required_schema.items():
+                    if isinstance(expected_type, tuple):
+                        type_names = [type_map.get(t, getattr(t, "__name__", "value")) for t in expected_type]
+                        schema_bits.append(f"{key}=" + "|".join(type_names))
+                    else:
+                        schema_bits.append(f"{key}={type_map.get(expected_type, getattr(expected_type, '__name__', 'value'))}")
+                if schema_bits:
+                    required_hint += " Schema: " + ", ".join(schema_bits) + "."
+            retry_prompt = (
+                user_prompt
+                + "\n\nIMPORTANT: Return ONLY valid json with double quotes. "
+                "Do not include markdown or code fences. "
+                "Your response must start with '{' and end with '}'."
+                + required_hint
+            )
+
+        logger.error("Failed to get valid JSON after %d attempts (last_error=%s).", max_retries, last_error)
+        raise RuntimeError("Failed to get valid JSON from DeepSeek.")
     
     def generate_json_r1(
         self,
         system_prompt: str,
         user_prompt: str,
         temperature: float = 0.1,
-        max_tokens: int = 1024,
+        max_tokens: int = 2000,
     ) -> Dict:
         """
-        Generate JSON using DeepSeek R1 (reasoner) model.
+        Generate JSON using DeepSeek reasoner (thinking mode).
         
         Thin wrapper around generate_json with model set to deepseek-reasoner.
         
@@ -794,7 +1010,7 @@ if __name__ == "__main__":
             result = deepseek.generate(
                 system_prompt="You are a helpful assistant.",
                 user_prompt="Say 'Hello' and nothing else.",
-                max_tokens=10,
+                max_tokens=2000,
             )
             print(f"   ✅ DeepSeek response: {result}")
         else:

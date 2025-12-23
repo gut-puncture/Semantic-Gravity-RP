@@ -34,12 +34,17 @@ This plan is structured logically for a coding agent. It breaks the project into
 # Module 2: Dataset Construction Pipeline
 **Goal:** Generate the 2,500 prompts. This is complex, so separate the "mining" from the "validation."
 
+**Candidate pool rule:** For every category, generate **1,000 candidates** (2× the final size). If a primary source yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner fallback using the category-specific schema (thinking enabled for reasoning).
+If reasoner acceptance yields fewer than 500 prompts in any category, rerun Stage 1 to append more candidates/validations until the accepted pool reaches 500.
+
 ### 2.1 API Clients (`api_clients.py`)
 * **DeepSeek Client:**
     * Implement a class `DeepSeekGen` with method `generate(system_prompt, user_prompt)`.
     * **Logic:** Use `requests` to hit the API. Implement a `while` loop with `try/except` for retries (exponential backoff) on timeouts or 500 errors.
     * **Logging:** All requests/responses must be logged to disk; fail fast if log path is not writable.
-    * *Edge Case:* Handle cases where the API returns text instead of the requested JSON.
+    * *Edge Case:* Handle cases where the API returns text instead of the requested JSON or an empty `message.content`.
+    * Use `response_format={"type":"json_object"}` and include the word "json" plus an example in prompts.
+    * Keep reasoning enabled and parse JSON from `message.content`.
 * **Wikidata Client:**
     * Implement helper functions using `requests`.
     * Include the exact SPARQL queries for Capitals and Currencies defined in the spec.
@@ -49,26 +54,40 @@ This plan is structured logically for a coding agent. It breaks the project into
 ### 2.2 Category Generators (`data_mining.py`)
 * **Logic:** Create a class or function for each category (A, B, C, D, E).
 * **Category A (Idioms):** Download CSV, parse, apply regex filter (`len>=3`, `last_word` is alpha).
+    * If idiom pool is short, use DeepSeek fallback (return `idiom_full`, `target_word`) and format with I1–I3 templates.
 * **Category B (Facts):** Run SPARQL, filter for single-word objects.
+    * If facts pool is short, use DeepSeek fallback (return `subject`, `relation`, `target_word`) and format with F1–F3 templates.
 * **Category C (Common Sense):** Query ConceptNet for a list of common nouns.
+    * If ConceptNet is down or yields too few candidates, use DeepSeek reasoner fallback (thinking enabled for reasoning):
+      - Return structured JSON with subject, relation (UsedFor/MadeOf/HasProperty), target_word
+      - Build prompts using C1-C3 templates
+      - Enforce diversity (no duplicate subject/target, balance relation types)
+      - Target 1,000 candidates (prompts_per_category * 2) before validation
 * **Category D & E (Generative):**
     * Use `wordfreq` to pick targets (Zipf 3.5-6.0).
     * Call `DeepSeekGen` to get K=5 candidates.
     * *Crucial:* Do not selection/validate yet. Just save "Candidates".
+    * If WritingPrompts is unavailable, continue with DeepSeek fallback (microstory + target_word) without scenario seeds.
+    * For creative/OOD fallback, enforce the same Zipf band on target_word.
+    * If OOD generation yields fewer than 1,000 candidates after per-target selection, fill the gap with fallback schema (context/style/target_word).
 
 ### 2.3 Validation & Selection (`validator.py`)
 * **Logic:** The "Filter Funnel."
-* **DeepSeek R1 Judge:**
-    * Send prompt to R1. Parse strict JSON response.
+* **DeepSeek reasoner Judge:**
+    * Send prompt to the reasoner. Parse strict JSON response.
     * Calculate $V(p)$ score based on the rubric (+40 if target is best, +20 if one-word format, etc.).
 * **Pressure Probe ($P_{sem}$):**
     * Load Qwen. Run the *baseline* prompt (no constraint).
     * Calculate probability of target word (see Module 5 for math).
 * **Selection Rule:**
     * For the generated categories (D/E), pick the candidate with max $S(p) = V(p) + 100 * P(p)$.
+    * For common sense fallback, enforce relation balance and deduplicate by (question_text, target_word) before selection.
+    * For every category, apply P_sem gating + 5-bin balancing and then keep the top 500 by S score within bins (diversity via bin balance + repetition caps).
 * **Global Gating:**
     * Discard if $P_{sem} < 0.2$ (Model doesn't know the answer).
     * Discard if target word has already appeared twice in the dataset (Global uniqueness check).
+    * If any category drops below 500 after repetition filtering, regenerate with a larger candidate pool or adjust max_target_repetition.
+    * If any category drops below 500 after P_sem gating/bin balancing, regenerate with a larger candidate pool and rerun Stage 1.
 * **Output:** Save final list to `data/validated/prompts.jsonl`.
 
 ---

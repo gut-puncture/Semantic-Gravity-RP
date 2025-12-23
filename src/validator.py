@@ -2,7 +2,7 @@
 validator.py - Prompt Validation and Selection
 
 This module provides:
-- DeepSeek R1 validation of prompts
+- DeepSeek reasoner validation of prompts
 - Scoring based on validation rubric
 - Pressure probing (requires model - Colab only)
 - Selection rule implementation
@@ -44,9 +44,9 @@ except ImportError:
 @dataclass
 class ValidationResult:
     """
-    Result of DeepSeek R1 validation.
+    Result of DeepSeek reasoner validation.
     
-    Contains all fields from spec Section 3.7.
+    Contains all fields from spec Section 3.8.
     """
     prompt_id: str
     is_one_word_answer_enforced: bool
@@ -66,8 +66,8 @@ class ValidationResult:
         """
         Compute V(p) score based on rubric.
         
-        Per spec Section 3.6:
-        - +40 if R1 says X is single most natural one-word completion
+        Per spec Section 3.7:
+        - +40 if the reasoner says X is single most natural one-word completion
         - +30 if no close alternative within top3
         - +20 if prompt enforces one-word answer
         - +10 if fluent (naturalness >= 7)
@@ -142,7 +142,7 @@ class ValidationResult:
         """
         Check if prompt passes acceptance rules.
         
-        Per spec Section 3.7:
+        Per spec Section 3.8:
         - is_X_best == true
         - ambiguity_score <= 3
         - leaks_answer == false
@@ -170,14 +170,14 @@ def build_prompt_text(question_text: str) -> str:
 
 
 # ============================================================================
-# DEEPSEEK R1 VALIDATOR
+# DEEPSEEK REASONER VALIDATOR
 # ============================================================================
 
 class PromptValidator:
     """
-    Validate prompts using DeepSeek R1.
+    Validate prompts using DeepSeek reasoner.
     
-    Sends each prompt to R1 for evaluation and parses structured response.
+    Sends each prompt to the reasoner for evaluation and parses structured response.
     """
     
     SYSTEM_PROMPT = """You are a rigorous prompt evaluator. Your task is to analyze cloze-style prompts and determine if they have a single, clear best one-word answer.
@@ -191,7 +191,10 @@ For each prompt, you must evaluate:
 6. Whether the answer is leaked in the prompt
 7. How natural/fluent the prompt is (0=awkward, 10=perfectly natural)
 
-Return your evaluation as valid JSON with these exact fields:
+Return ONLY valid json in message content. Do not include reasoning or extra text.
+Use the literal key name "is_X_best" exactly as written (do not substitute X).
+ambiguity_score and naturalness_score must be integers from 0 to 10.
+Return your evaluation as a json object with these exact fields:
 {
   "is_one_word_answer_enforced": true/false,
   "best_one_word_answer": "word",
@@ -213,7 +216,7 @@ Return your evaluation as valid JSON with these exact fields:
         prompt_id: Optional[str] = None,
     ) -> ValidationResult:
         """
-        Validate a single prompt using DeepSeek R1.
+        Validate a single prompt using DeepSeek reasoner.
         
         Args:
             prompt: The candidate prompt to validate
@@ -240,14 +243,35 @@ TARGET WORD: {prompt.target_word}
 
 Is "{prompt.target_word}" the single best one-word answer for this prompt?
 
-Return your evaluation as JSON."""
+Return your evaluation as json."""
 
         try:
             response = self.client.generate_json(
                 system_prompt=self.SYSTEM_PROMPT,
                 user_prompt=user_prompt,
-                model="deepseek-reasoner",  # R1 model
+                model=CONFIG.get("deepseek", {}).get("validator_model", "deepseek-reasoner"),
                 temperature=0.1,  # Low for consistency
+                max_tokens=CONFIG.get("deepseek", {}).get("max_tokens_validation", 2000),
+                required_keys=[
+                    "is_one_word_answer_enforced",
+                    "best_one_word_answer",
+                    "top3_one_word_answers",
+                    "is_X_best",
+                    "ambiguity_score",
+                    "leaks_answer",
+                    "naturalness_score",
+                    "comments",
+                ],
+                required_schema={
+                    "is_one_word_answer_enforced": bool,
+                    "best_one_word_answer": str,
+                    "top3_one_word_answers": list,
+                    "is_X_best": bool,
+                    "ambiguity_score": int,
+                    "leaks_answer": bool,
+                    "naturalness_score": int,
+                    "comments": str,
+                },
             )
             
             # Parse response
@@ -644,7 +668,7 @@ class PromptSelector:
         """
         Balance prompts across pressure bins.
         
-        Per spec Section 3.8:
+        Per spec Section 3.9:
         - 5 bins: [0-0.2), [0.2-0.4), [0.4-0.6), [0.6-0.8), [0.8-1.0]
         - Aim for target_per_bin prompts per bin
         
@@ -709,6 +733,7 @@ def validate_and_enrich_prompts(
     model_wrapper: Optional[ModelWrapper] = None,
     output_file: Optional[Path] = None,
     compute_pressure: bool = True,
+    append: bool = False,
 ) -> List[ValidatedPrompt]:
     """
     Validate prompts, compute semantic pressure, and persist enriched results.
@@ -719,6 +744,7 @@ def validate_and_enrich_prompts(
         model_wrapper: Optional preloaded ModelWrapper for scoring
         output_file: Optional path for JSONL export
         compute_pressure: If True, compute P_sem using the model
+        append: If True, append to output_file instead of overwriting
 
     Returns:
         List of ValidatedPrompt objects with v_score, p_sem, and s_score
@@ -727,8 +753,12 @@ def validate_and_enrich_prompts(
     validated_prompts: List[ValidatedPrompt] = []
 
     # Prepare deepseek_validation.jsonl path for audit log
-    base_paths = get_base_paths()
-    validation_log_path = base_paths['data_root'] / 'deepseek_validation.jsonl'
+    base_paths = None
+    if output_file is not None:
+        validation_log_path = output_file.parent.parent / "deepseek_validation.jsonl"
+    else:
+        base_paths = get_base_paths()
+        validation_log_path = base_paths['data_root'] / 'deepseek_validation.jsonl'
     validation_log_path.parent.mkdir(parents=True, exist_ok=True)
 
     for prompt, validation in batch_results:
@@ -768,12 +798,18 @@ def validate_and_enrich_prompts(
         compute_semantic_pressure(validated_prompts, model_wrapper=model_wrapper)
 
     # Persist to JSONL for downstream stages
-    validated_dir = base_paths['data_root'] / 'validated'
+    if output_file is None:
+        if base_paths is None:
+            base_paths = get_base_paths()
+        validated_dir = base_paths['data_root'] / 'validated'
+    else:
+        validated_dir = output_file.parent
     validated_dir.mkdir(parents=True, exist_ok=True)
     if output_file is None:
         output_file = validated_dir / 'prompts.jsonl'
 
-    with open(output_file, 'w', encoding='utf-8') as f:
+    write_mode = 'a' if append and output_file.exists() else 'w'
+    with open(output_file, write_mode, encoding='utf-8') as f:
         for vp in validated_prompts:
             if vp.s_score == 0:
                 vp.compute_s_score()
@@ -828,7 +864,10 @@ if __name__ == "__main__":
     
     # Test 3: Mock ValidatedPrompt
     print("\n3. Testing ValidatedPrompt:")
-    from data_mining import CandidatePrompt
+    try:
+        from .data_mining import CandidatePrompt
+    except ImportError:
+        from data_mining import CandidatePrompt
     
     candidate = CandidatePrompt(
         category="facts",

@@ -91,13 +91,13 @@ Module inventory:
 - `src/api_clients.py` (Partial)
   - Keep: DeepSeek client, Wikidata client, ConceptNet client, idiom CSV downloader.
   - Update: log full request/response JSON to disk; explicit DeepSeek model
-    selection (V3.2 vs R1); stronger retry/backoff + rate limiting policy.
+    selection (reasoner only); stronger retry/backoff + rate limiting policy.
 - `src/data_mining.py` (Partial)
   - Keep: CandidatePrompt dataclass; idioms/facts/common-sense generators;
     creative and OOD generators as base.
   - Update: enforce "prompt must not contain X"; ensure exact style IDs per spec;
-    generate OOD 1000 candidates before validation; remove or disable
-    `DeepSeekFallbackGenerator` for non-specified sources.
+    generate OOD 1000 candidates before validation; allow
+    `DeepSeekFallbackGenerator` for any category when a primary source is short.
 - `src/validator.py` (Partial)
   - Keep: ValidationResult, PromptValidator, TargetTracker, PromptSelector.
   - Update: use `prompt_builder` for baseline/negative formatting; replace
@@ -254,7 +254,13 @@ Module inventory:
   - Retries on timeouts and 5xx.
   - Logs request and response JSON.
   - If JSON invalid, re-ask with "Return ONLY valid JSON".
-- Add an R1 helper (new class or method) that returns strict JSON for
+  - Parse JSON from `message.content` only (ignore reasoning content).
+  - Use max_tokens=2000 to allow reasoning + JSON without truncation.
+  - Set `response_format` to `{"type": "json_object"}` for JSON-mode calls.
+  - Include the word "json" in the prompt and a JSON example for JSON-mode calls.
+  - Enable reasoning (deepseek-reasoner or `thinking={"type":"enabled"}`) and still parse JSON from `message.content`.
+  - If `message.content` is empty, retry with a stricter JSON-only instruction and keep `response_format`.
+- Add a reasoner helper (new class or method) that returns strict JSON for
   validation (schema in Section 5.3).
 - `Wikidata` client using `SPARQLWrapper` with exact queries in spec.
 - `ConceptNet` client for `api.conceptnet.io` edges.
@@ -266,17 +272,26 @@ Module inventory:
   - reject malformed strings
   - form prompt with last word replaced by "____"
   - style ids: I1, I2, I3
+  - if fewer than 1,000 candidates, use DeepSeek fallback (idiom_full/target_word) and format with I1–I3
 - B Facts: run SPARQL for capitals and currencies, filter answers to
   `^[A-Za-z]+$`, style ids F1, F2, F3.
+  - if fewer than 1,000 candidates, use DeepSeek fallback (subject/relation/target_word) and format with F1–F3
 - C Common sense: ConceptNet UsedFor, MadeOf, HasProperty; filter answers to
   single-word, style ids C1, C2, C3.
+  - If ConceptNet is down or yields too few candidates, use DeepSeek fallback:
+    - Return subject, relation (UsedFor/MadeOf/HasProperty), target_word
+    - Build question_text using C1-C3 templates
+    - Enforce diversity (no duplicate subject/target, balance relation types)
+    - Target 1,000 candidates (prompts_per_category * 2)
 - D Creative: select target X from wordfreq (Zipf 3.5-6.0), generate K=5
-  micro-story prompts via DeepSeek V3.2 (must not contain X), fixed format.
-- E OOD: generate 1000 candidate prompts via DeepSeek V3.2; select 500 after
-  validation and pressure ranking.
+  micro-story prompts via DeepSeek reasoner (thinking enabled for reasoning) (must not contain X), fixed format.
+  - Target 1,000 candidates after per-target selection (5,000 raw with K=5).
+  - If WritingPrompts is unavailable, proceed without scenario seeds and use the fallback schema.
+- E OOD: generate 1,000 candidates after per-target selection (5,000 raw with K=5),
+  then select 500 after validation and pressure ranking.
 
 5.3 Update existing `src/validator.py`:
-- Call DeepSeek R1 to return strict JSON:
+- Call DeepSeek reasoner (thinking enabled for reasoning) to return strict JSON:
   - is_one_word_answer_enforced
   - best_one_word_answer
   - top3_one_word_answers
@@ -291,7 +306,7 @@ Module inventory:
 5.4 Candidate selection (D/E):
 - For each X, generate K=5 candidates.
 - For each candidate compute:
-  - V(p) using R1 scoring rubric.
+  - V(p) using reasoner scoring rubric.
   - P(p) = P_sem under baseline.
 - Compute S(p) = V(p) + 100 * P(p).
 - Select argmax S(p); tie-breaker is shorter prompt text.
@@ -315,7 +330,8 @@ Module inventory:
 
 5.7 Repetition control across categories:
 - `target_word_normalized` may appear in at most 2 categories.
-- If cap violated, discard candidate and resample.
+- If cap violated, discard candidate.
+- If the category drops below 500 after repetition filtering, stop and regenerate the candidate pool (increase candidate_multiplier or adjust max_target_repetition).
 
 5.8 Manual spot check (mandatory):
 - Sample 50 accepted prompts per category.
@@ -330,7 +346,9 @@ Module inventory:
 5.10 Update `src/dataset_pipeline.py` to orchestrate:
 - candidate generation -> validation -> P0 scoring -> gating -> bin balancing
 - export all files from 5.9
-- no DeepSeek fallback for non-specified sources
+- DeepSeek fallback is allowed for any category when a primary source yields fewer than 1,000 candidates
+- If fallback still yields fewer than 1,000, increase `CONFIG['dataset']['fallback_max_extra_batches']` and rerun Stage 1
+- If reasoner acceptance yields fewer than 500 prompts in any category, rerun Stage 1 to append new candidates/validations until the accepted pool reaches 500
 
 ## 6. Pressure probe and gating (module 5)
 
@@ -361,6 +379,7 @@ Module inventory:
 - If >500 prompts per category after gating, keep 500 by bin balancing.
 - If <500, lower tau by 0.05 and recompute until 500 or tau == 0.05.
 - Log final tau for each category.
+- If any category still has <500 after tau lowering, stop and rerun Stage 1 with a larger candidate pool.
 
 6.5 Bin balancing:
 - Bins: [0-0.2), [0.2-0.4), [0.4-0.6), [0.6-0.8), [0.8-1.0].
@@ -645,7 +664,7 @@ format or attempt to cast to int.
 15.1 Mount Drive, verify A100, log environment.
 15.2 Run correctness engine tests and halt on failure.
 15.3 Build candidate pools per category.
-15.4 Validate candidates with DeepSeek R1.
+15.4 Validate candidates with DeepSeek reasoner (thinking enabled for reasoning).
 15.5 Compute P0 and gate/balance prompts.
 15.6 Save prompt list and review (prompts first).
 15.7 Run greedy paired runs and save traces.

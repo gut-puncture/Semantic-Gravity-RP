@@ -102,8 +102,8 @@ Mount Google Drive. Load:
 This is the exact order of execution:
 
 1. **Build candidate targets X pool** using public sources + frequency filtering.
-2. **Generate prompts per category** using a combination of public datasets and DeepSeek V3.2 generation.
-3. **Validate prompts** using DeepSeek R1 strict JSON scoring.
+2. **Generate prompts per category** using a combination of public datasets and DeepSeek reasoner (thinking enabled for reasoning) generation.
+3. **Validate prompts** using DeepSeek reasoner (thinking enabled for reasoning) strict JSON scoring.
 4. **Optional Qwen sanity check**: under baseline greedy decode, Qwen must output X for prompt acceptance.
 5. **Pressure probe**: compute baseline semantic pressure P0 for accepted prompts.
 6. **Pressure gating + balancing**: keep prompts above threshold and balance across pressure bins.
@@ -166,21 +166,25 @@ All sources below must be used exactly as specified.
 #### 3.3.1 Idioms
 
 * GitHub repo: `baiango/english_idioms` containing `idioms.csv` (license Unlicense). Use as candidate pool only; validate aggressively. (citation already collected previously)
+* If the idioms source yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner (thinking enabled for reasoning) fallback (Section 3.5F).
 
 #### 3.3.2 Facts
 
 * Wikidata Query Service SPARQL endpoint.
-* Use a limited set of high-familiarity relations (country→capital, country→currency, etc.) and filter to single-word answers.
+* Use a limited set of high-familiarity relations (country->capital, country->currency, etc.) and filter to single-word answers.
+* If Wikidata yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner (thinking enabled for reasoning) fallback (Section 3.5F).
 
 #### 3.3.3 Common sense
 
 * ConceptNet 5 REST API at `api.conceptnet.io`.
 * Use relations that yield single-word answers: UsedFor, MadeOf, HasProperty.
+* If ConceptNet is unavailable or yields insufficient candidates, use DeepSeek reasoner (thinking enabled for reasoning) fallback generation (see Section 3.5F) to fill to 1,000 candidates.
 
 #### 3.3.4 Creative
 
 * Hugging Face dataset `euclaise/writingprompts`.
 * Use prompts only as raw scenario text; convert to one-word cloze via DeepSeek generation.
+* If WritingPrompts is unavailable, use DeepSeek fallback (Section 3.5F) with no scenario seed.
 
 #### 3.3.5 Word frequency helper
 
@@ -299,11 +303,23 @@ Example:
 * `Fill the blank (one word): You use scissors to ____.`
 * target_word: `cut`
 
+Fallback when ConceptNet is down (mandatory if needed):
+
+1. Use DeepSeek reasoner (thinking enabled for reasoning) to generate structured JSON with fields: subject, relation, target_word.
+2. relation must be one of: UsedFor, MadeOf, HasProperty.
+3. Build question_text using the same C1-C3 templates above.
+4. Enforce diversity within fallback prompts:
+   * no duplicate (question_text, target_word)
+   * avoid repeating subjects or target_word
+   * balance relation types across prompts
+5. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before reasoner validation; if below target, regenerate.
+
 #### D) Creative
 
 Source:
 
 * Sample scenario texts from `euclaise/writingprompts`.
+* If WritingPrompts is unavailable, generate without scenario seeds (fallback schema in Section 3.5F).
 
 Target selection:
 
@@ -312,9 +328,10 @@ Target selection:
   * keep 3.5 ≤ Zipf(X) ≤ 6.0
   * alphabetic only
 
-Generation with DeepSeek V3.2:
+Generation with DeepSeek reasoner (thinking enabled for reasoning):
 
 * For each selected X, generate K=5 candidate micro-context cloze prompts that strongly imply X as the single best one-word completion and do not contain X.
+* Choose 1,000 targets (K=5 -> 5,000 raw prompts) so that the post-selection candidate pool is 1,000 prompts.
 
 Fixed creative format:
 
@@ -329,8 +346,8 @@ Example:
 
 Generation-only:
 
-1. Generate 1,000 candidate prompts using DeepSeek V3.2 with instructions: unusual, surreal, pseudo-technical, but still one-word cloze with single best completion X.
-2. Validate with DeepSeek R1.
+1. Generate 1,000 candidates after per-target selection (K=5 per target -> 5,000 raw prompts) using DeepSeek reasoner (thinking enabled for reasoning) with instructions: unusual, surreal, pseudo-technical, but still one-word cloze with single best completion X.
+2. Validate with DeepSeek reasoner (thinking enabled for reasoning).
 3. Rank by pressure probe and keep top 500.
 
 OOD formats:
@@ -340,16 +357,53 @@ OOD formats:
 
 (DeepSeek must produce preceding context that makes X uniquely best.)
 
-### 3.6 Candidate generation and selection: K=5 then keep 1 (exact deterministic rule)
+#### F) DeepSeek fallback schemas (source shortfalls)
 
-This applies to categories where multiple candidates are generated (Creative and OOD; optionally also to Facts/Common sense if using generation augmentation).
+When a primary source yields fewer than 1,000 candidates, fill the gap with
+DeepSeek reasoner (thinking enabled for reasoning) using the schema below and format with the existing templates.
+Deduplicate by `(question_text, target_word)` before validation.
+
+* Idioms: `{ "idiom_full": "...", "target_word": "..." }`
+  * target_word must be the final word of idiom_full
+  * format with I1–I3 idiom templates
+* Facts: `{ "subject": "...", "relation": "capital"|"currency", "target_word": "..." }`
+  * format with F1–F3 templates (capital uses F1/F2, currency uses F3)
+* Common sense: `{ "subject": "...", "relation": "UsedFor"|"MadeOf"|"HasProperty", "target_word": "..." }`
+  * format with C1–C3 templates
+* Creative: `{ "microstory": "...", "target_word": "..." }`
+  * format with the creative template; microstory excludes the blank
+  * enforce Zipf band (3.5–6.0) on target_word
+* OOD: `{ "context": "...", "style": "O1"|"O2", "target_word": "..." }`
+  * format with O1/O2 templates plus context
+  * enforce Zipf band (3.5–6.0) on target_word
+
+### 3.6 Candidate pool size and selection: 1,000 -> 500
+
+For every category, build a candidate pool of **1,000 prompts** (2× the final size). If a primary source yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner (thinking enabled for reasoning) fallback using the category-specific schema. Deduplicate by `(question_text, target_word)` before validation.
+If reasoner acceptance yields fewer than 500 prompts for any category, rerun Stage 1 to append additional candidates and validations until the accepted pool reaches 500.
+
+Final selection keeps **500 prompts per category** by:
+* applying reasoner acceptance rules
+* applying P_sem gating + pressure-bin balancing
+* ranking within bins by S(p) = V(p) + 100 * P_sem
+* enforcing target repetition caps
+
+### 3.7 Candidate generation and selection: K=5 then keep 1 (exact deterministic rule)
+
+This applies to categories where multiple candidates are generated per target (Creative and OOD).
+
+Common sense fallback selection (ConceptNet outage):
+* Build a candidate pool of 1,000 prompts (or prompts_per_category * 2).
+* Apply DeepSeek reasoner (thinking enabled for reasoning) acceptance rules.
+* Apply P_sem gating and 5-bin balancing (Section 3.9).
+* Keep diversity constraints for fallback prompts (subjects, targets, relation balance).
 
 For each (X, category):
 
 1. Generate K=5 candidates.
 2. For each candidate compute:
 
-   * DeepSeek-R1 validation score V(p) in [0,100]
+* DeepSeek reasoner validation score V(p) in [0,100]
    * Pressure probe score P(p) = P_sem under Qwen baseline (no negative instruction)
 3. Compute final score S(p) = V(p) + 100 * P(p)
 4. Select argmax S(p).
@@ -357,15 +411,15 @@ For each (X, category):
 
 V(p) scoring:
 
-* +40 if R1 says X is single most natural one-word completion
+* +40 if the reasoner says X is single most natural one-word completion
 * +30 if no close alternative within top3
 * +20 if prompt enforces one-word answer
 * +10 if fluent
 * If any hard fail: V(p)=0
 
-### 3.7 Prompt validation (mandatory DeepSeek R1)
+### 3.8 Prompt validation (mandatory DeepSeek reasoner (thinking enabled for reasoning))
 
-For each candidate prompt p with target X, call DeepSeek R1 to return strict JSON:
+For each candidate prompt p with target X, call DeepSeek reasoner (thinking enabled for reasoning) to return strict JSON:
 
 * is_one_word_answer_enforced
 * best_one_word_answer
@@ -389,19 +443,21 @@ Manual spot checks:
 * sample 50 accepted prompts per category
 * if >10% flagged -> tighten filters and regenerate
 
-### 3.8 Pressure gating and balancing
+### 3.9 Pressure gating and balancing
 
 After acceptance, compute baseline pressure P0 (Section 7 below).
 
 * Keep only prompts with P0 >= τ.
 * Start τ=0.20 and adjust until 500 prompts per category.
 * Balance per category across 5 bins of P0: [0–0.2), [0.2–0.4), [0.4–0.6), [0.6–0.8), [0.8–1.0]. Aim 100 per bin; if impossible, maximize coverage and log deviations.
+* If any category cannot reach 500 after gating and balancing, return to Stage 1 and expand the candidate pool before proceeding.
 
-### 3.9 Repetition control across categories
+### 3.10 Repetition control across categories
 
 * Do NOT create a global 2,500-word list.
 * Enforce cap: same target_word_normalized can appear in at most 2 categories.
-* If cap violated, discard candidate and resample.
+* If cap violated, discard candidate.
+* If the category drops below 500 after repetition filtering, stop and regenerate the candidate pool (increase candidate_multiplier or adjust max_target_repetition) before proceeding.
 
 ---
 
@@ -409,8 +465,9 @@ After acceptance, compute baseline pressure P0 (Section 7 below).
 
 ### 4.1 Models and endpoints
 
-* DeepSeek V3.2: used for generating prompts and candidates.
-* DeepSeek R1: used for validation scoring.
+* DeepSeek reasoner: used for generating prompts and candidates.
+* DeepSeek reasoner: used for validation scoring.
+* For JSON-mode calls, keep reasoning enabled and parse JSON from `message.content`.
 
 ### 4.2 Request format
 
@@ -419,6 +476,12 @@ After acceptance, compute baseline pressure P0 (Section 7 below).
 * Store response JSON raw.
 * Implement retry with exponential backoff.
 * If malformed JSON returned, re-ask with "Return ONLY valid JSON".
+* Parse JSON from `message.content` only (ignore reasoning content).
+* Use max_tokens=2000 to allow reasoning + JSON without truncation.
+* Set `response_format` to `{"type": "json_object"}` for JSON-mode calls.
+* Note: when reasoning is enabled, max_tokens includes reasoning tokens.
+* Ensure the word "json" appears in the system or user prompt and include a JSON example.
+* If `message.content` is empty, retry with a stricter JSON-only instruction and keep `response_format`.
 
 ### 4.3 Rate limiting
 
@@ -899,7 +962,7 @@ The agent must embed:
 1. Run unit tests for detection/mapping.
 2. Build target pool.
 3. Generate candidates per category.
-4. Validate with DeepSeek R1.
+4. Validate with DeepSeek reasoner (thinking enabled for reasoning).
 5. Optional Qwen baseline sanity check.
 6. Compute P0 and gate/balance.
 7. Run greedy paired runs + store internals.
