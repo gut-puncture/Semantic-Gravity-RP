@@ -97,6 +97,24 @@ def _load_validated_prompts(path: Path) -> List[ValidatedPrompt]:
     return prompts
 
 
+def _load_candidate_prompts(path: Path) -> List[CandidatePrompt]:
+    """Load CandidatePrompt JSONL entries from disk."""
+    prompts: List[CandidatePrompt] = []
+    if not path.exists():
+        raise FileNotFoundError(f"Candidate prompt file not found: {path}")
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            prompts.append(CandidatePrompt.from_dict(obj))
+    return prompts
+
+
 def _select_prompts_for_category(
     category: str,
     validated: List[ValidatedPrompt],
@@ -228,6 +246,8 @@ def build_dataset(
     paths = get_base_paths()
     data_root = output_root or paths['data_root']
     cache_dir = cache_dir or (data_root / "raw")
+    if cache_dir is not None:
+        cache_dir.mkdir(parents=True, exist_ok=True)
 
     if deepseek_client is None:
         deepseek_client = DeepSeekClient()
@@ -324,6 +344,8 @@ def build_r1_validated_candidates(
     deepseek_client: Optional[DeepSeekClient] = None,
     skip_generated: bool = False,
     output_root: Optional[Path] = None,
+    categories: Optional[List[str]] = None,
+    resume: bool = True,
 ) -> Dict[str, List[ValidatedPrompt]]:
     """
     Generate candidate prompts and score them with DeepSeek R1 only.
@@ -334,6 +356,8 @@ def build_r1_validated_candidates(
     paths = get_base_paths()
     data_root = output_root or paths['data_root']
     cache_dir = cache_dir or (data_root / "raw")
+    if cache_dir is not None:
+        cache_dir.mkdir(parents=True, exist_ok=True)
 
     if deepseek_client is None:
         deepseek_client = DeepSeekClient()
@@ -342,42 +366,101 @@ def build_r1_validated_candidates(
 
     candidates_dir = data_root / "candidates"
     validated_dir = data_root / "validated"
+    candidates_dir.mkdir(parents=True, exist_ok=True)
+    validated_dir.mkdir(parents=True, exist_ok=True)
+
+    categories = categories or CONFIG['dataset']['categories']
+
+    k = candidates_per_target or CONFIG['dataset']['candidates_per_target']
+    base_count = max(1, int(prompts_per_category * candidate_multiplier))
+    generated_count = max(1, int(prompts_per_category * candidate_multiplier * k))
+    desired_counts = {
+        'idioms': base_count,
+        'facts': base_count,
+        'common_sense': base_count,
+        'creative': generated_count,
+        'ood': generated_count,
+    }
 
     generator = DatasetGenerator(cache_dir=cache_dir, deepseek_client=deepseek_client)
-    candidates_by_category = generator.generate_all(
-        prompts_per_category=prompts_per_category,
-        candidate_multiplier=candidate_multiplier,
-        candidates_per_target=candidates_per_target,
-        skip_generated=skip_generated,
-        use_fallback=False,
-    )
-
-    save_candidates(candidates_by_category, candidates_dir)
-
     validator = PromptValidator(deepseek_client)
     validated_by_category: Dict[str, List[ValidatedPrompt]] = {}
 
-    for category in CONFIG['dataset']['categories']:
-        candidates = candidates_by_category.get(category, [])
-        if not candidates:
-            raise RuntimeError(
-                f"No candidates generated for category {category}. "
-                "Check source availability and DeepSeek key."
+    def generate_candidates_for_category(category: str) -> List[CandidatePrompt]:
+        if category == "idioms":
+            return generator.idiom_gen.generate_candidates(desired_counts["idioms"])
+        if category == "facts":
+            return generator.fact_gen.generate_candidates(desired_counts["facts"])
+        if category == "common_sense":
+            candidates = generator.common_sense_gen.generate_candidates(
+                desired_counts["common_sense"]
             )
+            if len(candidates) < desired_counts["common_sense"]:
+                gap = desired_counts["common_sense"] - len(candidates)
+                logger.warning(
+                    "Common sense: only %d ConceptNet candidates; "
+                    "filling %d via DeepSeek fallback.",
+                    len(candidates),
+                    gap,
+                )
+                fallback = generator.fallback_gen.generate_for_category(
+                    "common_sense",
+                    n=gap,
+                )
+                candidates.extend(fallback)
+            return candidates
+        if category == "creative":
+            return generator.creative_gen.generate_candidates(
+                desired_counts["creative"],
+                candidates_per_target=k,
+            )
+        if category == "ood":
+            return generator.ood_gen.generate_candidates(
+                desired_counts["ood"],
+                candidates_per_target=k,
+            )
+        raise ValueError(f"Unknown category: {category}")
+
+    for category in categories:
+        validated_path = validated_dir / f"{category}_validated.jsonl"
+        if resume and validated_path.exists():
+            validated_by_category[category] = _load_validated_prompts(validated_path)
+            continue
+
+        candidates_path = candidates_dir / f"{category}.jsonl"
+        if resume and candidates_path.exists():
+            candidates = _load_candidate_prompts(candidates_path)
+        else:
+            candidates = generate_candidates_for_category(category)
+            if not candidates:
+                raise RuntimeError(
+                    f"No candidates generated for category {category}. "
+                    "Check source availability and DeepSeek key."
+                )
+            _write_jsonl([c.to_dict() for c in candidates], candidates_path)
 
         validated = validate_and_enrich_prompts(
             candidates,
             validator,
             model_wrapper=None,
-            output_file=validated_dir / f"{category}_validated.jsonl",
+            output_file=validated_path,
             compute_pressure=False,
         )
         validated_by_category[category] = validated
 
-    combined = []
+    combined: List[ValidatedPrompt] = []
     for prompts in validated_by_category.values():
         combined.extend(prompts)
-    _write_jsonl([vp.to_dict() for vp in combined], validated_dir / "all_validated.jsonl")
+    if combined:
+        _write_jsonl([vp.to_dict() for vp in combined], validated_dir / "all_validated.jsonl")
+
+    all_candidates: List[CandidatePrompt] = []
+    for category in categories:
+        path = candidates_dir / f"{category}.jsonl"
+        if path.exists():
+            all_candidates.extend(_load_candidate_prompts(path))
+    if all_candidates:
+        _write_jsonl([c.to_dict() for c in all_candidates], candidates_dir / "all_candidates.jsonl")
 
     logger.info(
         "Wrote R1-validated candidates for %d categories to %s",
