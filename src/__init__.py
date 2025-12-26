@@ -7,7 +7,7 @@ study on Qwen models.
 Modules:
 - config: Global configuration, paths, and prompt templates
 - utils: Shared utilities (normalization, seeding, model loading)
-- api_clients: External API clients (DeepSeek, Wikidata, ConceptNet)
+- api_clients: External API clients (OpenAI GPT-5.2, Wikidata, ConceptNet)
 - data_mining: Category-specific prompt generators
 - validator: Prompt validation and selection
 """
@@ -26,7 +26,7 @@ from .utils import (
     map_word_to_tokens,
 )
 from .api_clients import (
-    DeepSeekClient,
+    OpenAIClient,
     WikidataClient,
     ConceptNetClient,
     download_idioms_csv,
@@ -38,7 +38,7 @@ from .data_mining import (
     CommonSenseGenerator,
     CreativeGenerator,
     OODGenerator,
-    DeepSeekFallbackGenerator,
+    OpenAIFallbackGenerator,
     DatasetGenerator,
 )
 from .validator import (
@@ -74,7 +74,7 @@ __all__ = [
     'compute_token_char_spans',
     'map_word_to_tokens',
     # API Clients
-    'DeepSeekClient',
+    'OpenAIClient',
     'WikidataClient',
     'ConceptNetClient',
     'download_idioms_csv',
@@ -85,6 +85,7 @@ __all__ = [
     'CommonSenseGenerator',
     'CreativeGenerator',
     'OODGenerator',
+    'OpenAIFallbackGenerator',
     'DatasetGenerator',
     # Validator
     'ValidationResult',

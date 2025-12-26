@@ -2,7 +2,7 @@
 validator.py - Prompt Validation and Selection
 
 This module provides:
-- DeepSeek reasoner validation of prompts
+- GPT-5.2 validation of prompts (batch workflow)
 - Scoring based on validation rubric
 - Pressure probing (requires model - Colab only)
 - Selection rule implementation
@@ -14,22 +14,100 @@ The "Filter Funnel" as described in the implementation plan.
 import json
 import logging
 import math
-from typing import Dict, List, Optional, Tuple, Set
+import re
+from typing import Dict, List, Optional, Tuple, Set, Any
 from dataclasses import dataclass, field
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
+_SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
+
+
+def _count_sentences(text: str) -> int:
+    parts = [p.strip() for p in _SENTENCE_SPLIT_RE.split(text or "") if p.strip()]
+    return len(parts)
+
+
+def _strip_non_letters(text: str) -> str:
+    return re.sub(r"[^A-Za-z]", "", text or "").lower()
+
+
+def _extract_prompt_context(prompt: CandidatePrompt) -> str:
+    if prompt.category == "creative":
+        raw = prompt.raw_data.get("microstory")
+        if raw:
+            return str(raw)
+    if prompt.category == "ood":
+        raw = prompt.raw_data.get("context")
+        if raw:
+            return str(raw)
+
+    question_text = prompt.question_text or ""
+    question_text = question_text.strip()
+    if question_text.lower().startswith("fill the blank with one word:"):
+        question_text = question_text.split(":", 1)[-1].strip()
+    question_text = re.sub(r"\\s+____\\.?$", "", question_text).strip()
+    return question_text
+
+
+def apply_deterministic_filters(prompts: List[CandidatePrompt]) -> Tuple[List[CandidatePrompt], Dict[str, int]]:
+    try:
+        from .utils import find_word_occurrences
+    except ImportError:
+        from utils import find_word_occurrences
+
+    stats = {
+        "whole_word_leak": 0,
+        "stripped_leak": 0,
+        "nonalpha_target": 0,
+        "creative_sentence_count": 0,
+        "ood_sentence_count": 0,
+    }
+    kept: List[CandidatePrompt] = []
+
+    for prompt in prompts:
+        target = prompt.target_word or ""
+        if not target.isalpha():
+            stats["nonalpha_target"] += 1
+            continue
+
+        if find_word_occurrences(target, prompt.question_text or ""):
+            stats["whole_word_leak"] += 1
+            continue
+
+        stripped = _strip_non_letters(prompt.question_text or "")
+        if target.lower() in stripped:
+            stats["stripped_leak"] += 1
+            continue
+
+        if prompt.category == "creative":
+            context = _extract_prompt_context(prompt)
+            if _count_sentences(context) != 2:
+                stats["creative_sentence_count"] += 1
+                continue
+
+        if prompt.category == "ood":
+            context = _extract_prompt_context(prompt)
+            count = _count_sentences(context)
+            if count < 1 or count > 2:
+                stats["ood_sentence_count"] += 1
+                continue
+
+        kept.append(prompt)
+
+    return kept, stats
+
 # Import local modules
 try:
-    from .api_clients import DeepSeekClient
+    from .api_clients import OpenAIClient
     from .data_mining import CandidatePrompt
     from .config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from .utils import ModelWrapper
     from .prompt_builder import build_prompt
     from .metrics_psem import compute_p_sem_for_prompt
 except ImportError:
-    from api_clients import DeepSeekClient
+    from api_clients import OpenAIClient
     from data_mining import CandidatePrompt
     from config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from utils import ModelWrapper
@@ -44,7 +122,7 @@ except ImportError:
 @dataclass
 class ValidationResult:
     """
-    Result of DeepSeek reasoner validation.
+    Result of GPT-5.2 validation.
     
     Contains all fields from spec Section 3.8.
     """
@@ -170,12 +248,12 @@ def build_prompt_text(question_text: str) -> str:
 
 
 # ============================================================================
-# DEEPSEEK REASONER VALIDATOR
+# GPT-5.2 VALIDATOR
 # ============================================================================
 
 class PromptValidator:
     """
-    Validate prompts using DeepSeek reasoner.
+    Validate prompts using GPT-5.2.
     
     Sends each prompt to the reasoner for evaluation and parses structured response.
     """
@@ -206,9 +284,26 @@ Return your evaluation as a json object with these exact fields:
   "comments": "brief explanation"
 }"""
 
-    def __init__(self, client: Optional[DeepSeekClient] = None):
-        self.client = client or DeepSeekClient()
+    def __init__(self, client: Optional[OpenAIClient] = None):
+        self.client = client or OpenAIClient()
         self.validation_log: List[Dict] = []
+
+    def _build_prompt_id(self, prompt: CandidatePrompt) -> str:
+        import hashlib
+        content = f"{prompt.question_text}||{prompt.target_word}||{prompt.category}"
+        hash_full = hashlib.sha256(content.encode('utf-8')).hexdigest()
+        hash8 = hash_full[:8]
+        return f"{prompt.category}_{prompt.target_word_normalized}_{hash8}"
+
+    def _build_user_prompt(self, prompt: CandidatePrompt) -> str:
+        prompt_text = build_prompt_text(prompt.question_text)
+        return (
+            "Evaluate this cloze prompt:\n\n"
+            f"PROMPT:\n{prompt_text}\n\n"
+            f"TARGET WORD: {prompt.target_word}\n\n"
+            f"Is \"{prompt.target_word}\" the single best one-word answer for this prompt?\n\n"
+            "Return your evaluation as json."
+        )
     
     def validate_prompt(
         self,
@@ -216,7 +311,7 @@ Return your evaluation as a json object with these exact fields:
         prompt_id: Optional[str] = None,
     ) -> ValidationResult:
         """
-        Validate a single prompt using DeepSeek reasoner.
+        Validate a single prompt using GPT-5.2.
         
         Args:
             prompt: The candidate prompt to validate
@@ -226,95 +321,23 @@ Return your evaluation as a json object with these exact fields:
             ValidationResult with parsed scores
         """
         if prompt_id is None:
-            # Compute hash-based prompt_id for uniqueness
-            import hashlib
-            content = f"{prompt.question_text}||{prompt.target_word}||{prompt.category}"
-            hash_full = hashlib.sha256(content.encode('utf-8')).hexdigest()
-            hash8 = hash_full[:8]
-            prompt_id = f"{prompt.category}_{prompt.target_word_normalized}_{hash8}"
-        
-        prompt_text = build_prompt_text(prompt.question_text)
-        user_prompt = f"""Evaluate this cloze prompt:
+            prompt_id = self._build_prompt_id(prompt)
 
-PROMPT:
-{prompt_text}
+        results = self.validate_batch([prompt])
+        if results:
+            return results[0][1]
 
-TARGET WORD: {prompt.target_word}
-
-Is "{prompt.target_word}" the single best one-word answer for this prompt?
-
-Return your evaluation as json."""
-
-        try:
-            response = self.client.generate_json(
-                system_prompt=self.SYSTEM_PROMPT,
-                user_prompt=user_prompt,
-                model=CONFIG.get("deepseek", {}).get("validator_model", "deepseek-reasoner"),
-                temperature=0.1,  # Low for consistency
-                max_tokens=CONFIG.get("deepseek", {}).get("max_tokens_validation", 2000),
-                required_keys=[
-                    "is_one_word_answer_enforced",
-                    "best_one_word_answer",
-                    "top3_one_word_answers",
-                    "is_X_best",
-                    "ambiguity_score",
-                    "leaks_answer",
-                    "naturalness_score",
-                    "comments",
-                ],
-                required_schema={
-                    "is_one_word_answer_enforced": bool,
-                    "best_one_word_answer": str,
-                    "top3_one_word_answers": list,
-                    "is_X_best": bool,
-                    "ambiguity_score": int,
-                    "leaks_answer": bool,
-                    "naturalness_score": int,
-                    "comments": str,
-                },
-            )
-            
-            # Parse response
-            result = ValidationResult(
-                prompt_id=prompt_id,
-                is_one_word_answer_enforced=response.get("is_one_word_answer_enforced", False),
-                best_one_word_answer=response.get("best_one_word_answer", ""),
-                top3_one_word_answers=response.get("top3_one_word_answers", []),
-                is_X_best=response.get("is_X_best", False),
-                ambiguity_score=int(response.get("ambiguity_score", 10)),
-                leaks_answer=response.get("leaks_answer", False),
-                naturalness_score=int(response.get("naturalness_score", 0)),
-                comments=response.get("comments", ""),
-                raw_response=response,
-            )
-            
-            # Compute V score
-            result.compute_v_score(prompt.target_word)
-            
-            # Log
-            self.validation_log.append({
-                "prompt_id": prompt_id,
-                "target": prompt.target_word,
-                "v_score": result.v_score,
-                "accepted": result.is_accepted(prompt.target_word),
-            })
-            
-            return result
-            
-        except Exception as e:
-            logger.error(f"Validation failed for {prompt_id}: {e}")
-            # Return failed result
-            return ValidationResult(
-                prompt_id=prompt_id,
-                is_one_word_answer_enforced=False,
-                best_one_word_answer="",
-                top3_one_word_answers=[],
-                is_X_best=False,
-                ambiguity_score=10,
-                leaks_answer=False,
-                naturalness_score=0,
-                comments=f"Validation error: {e}",
-            )
+        return ValidationResult(
+            prompt_id=prompt_id,
+            is_one_word_answer_enforced=False,
+            best_one_word_answer="",
+            top3_one_word_answers=[],
+            is_X_best=False,
+            ambiguity_score=10,
+            leaks_answer=False,
+            naturalness_score=0,
+            comments="Validation error: empty batch result",
+        )
     
     def validate_batch(
         self,
@@ -331,15 +354,101 @@ Return your evaluation as json."""
         Returns:
             List of (prompt, result) tuples
         """
-        results = []
-        
+        if not prompts:
+            return []
+
+        requests: List[Dict[str, Any]] = []
+        prompt_ids: List[str] = []
+        for prompt in prompts:
+            prompt_id = self._build_prompt_id(prompt)
+            prompt_ids.append(prompt_id)
+            user_prompt = self._build_user_prompt(prompt)
+            requests.append(
+                self.client.build_batch_request(
+                    custom_id=prompt_id,
+                    system_prompt=self.SYSTEM_PROMPT,
+                    user_prompt=user_prompt,
+                    model=CONFIG.get("openai", {}).get("model", "gpt-5.2-2025-12-11"),
+                    temperature=0.1,
+                    max_output_tokens=CONFIG.get("openai", {}).get("max_output_tokens_validation", 2000),
+                    text_format=CONFIG.get("openai", {}).get("text_format", {"type": "json_object"}),
+                )
+            )
+
+        try:
+            base_paths = get_base_paths()
+            batch_dir = base_paths['data_root'] / "batches"
+        except Exception:
+            batch_dir = Path("batches")
+
+        batch_results = self.client.run_batch_requests(
+            requests=requests,
+            batch_dir=batch_dir,
+            batch_name="validation",
+        )
+
+        results: List[Tuple[CandidatePrompt, ValidationResult]] = []
         for i, prompt in enumerate(prompts):
-            result = self.validate_prompt(prompt)
+            prompt_id = prompt_ids[i]
+            payload = batch_results.get(prompt_id)
+            if payload is None or payload.get("error"):
+                error_msg = payload.get("error", {}).get("message") if isinstance(payload, dict) else None
+                result = ValidationResult(
+                    prompt_id=prompt_id,
+                    is_one_word_answer_enforced=False,
+                    best_one_word_answer="",
+                    top3_one_word_answers=[],
+                    is_X_best=False,
+                    ambiguity_score=10,
+                    leaks_answer=False,
+                    naturalness_score=0,
+                    comments=f"Validation error: {error_msg or 'batch response missing'}",
+                )
+                results.append((prompt, result))
+                continue
+
+            parsed = self.client.extract_json_from_batch_payload(payload)
+            if not isinstance(parsed, dict):
+                result = ValidationResult(
+                    prompt_id=prompt_id,
+                    is_one_word_answer_enforced=False,
+                    best_one_word_answer="",
+                    top3_one_word_answers=[],
+                    is_X_best=False,
+                    ambiguity_score=10,
+                    leaks_answer=False,
+                    naturalness_score=0,
+                    comments="Validation error: invalid JSON response",
+                )
+                results.append((prompt, result))
+                continue
+
+            result = ValidationResult(
+                prompt_id=prompt_id,
+                is_one_word_answer_enforced=parsed.get("is_one_word_answer_enforced", False),
+                best_one_word_answer=parsed.get("best_one_word_answer", ""),
+                top3_one_word_answers=parsed.get("top3_one_word_answers", []),
+                is_X_best=parsed.get("is_X_best", False),
+                ambiguity_score=int(parsed.get("ambiguity_score", 10)),
+                leaks_answer=parsed.get("leaks_answer", False),
+                naturalness_score=int(parsed.get("naturalness_score", 0)),
+                comments=parsed.get("comments", ""),
+                raw_response=parsed,
+            )
+            result.compute_v_score(prompt.target_word)
+
+            self.validation_log.append({
+                "prompt_id": prompt_id,
+                "target": prompt.target_word,
+                "v_score": result.v_score,
+                "accepted": result.is_accepted(prompt.target_word),
+            })
+
             results.append((prompt, result))
-            
+
             if progress_callback:
                 progress_callback(i + 1, len(prompts))
-        
+
         return results
 
 
@@ -577,7 +686,7 @@ class PromptSelector:
     Select best prompts from validated candidates.
     
     Implements:
-    - K=5 candidate selection (max S score)
+    - K-per-target selection (max S score)
     - Pressure gating (P >= threshold)
     - Target word repetition control
     - Pressure bin balancing
@@ -734,6 +843,7 @@ def validate_and_enrich_prompts(
     output_file: Optional[Path] = None,
     compute_pressure: bool = True,
     append: bool = False,
+    write_output: bool = True,
 ) -> List[ValidatedPrompt]:
     """
     Validate prompts, compute semantic pressure, and persist enriched results.
@@ -749,16 +859,29 @@ def validate_and_enrich_prompts(
     Returns:
         List of ValidatedPrompt objects with v_score, p_sem, and s_score
     """
-    batch_results = validator.validate_batch(prompts)
+    filtered_prompts, filter_stats = apply_deterministic_filters(prompts)
+    removed = len(prompts) - len(filtered_prompts)
+    if removed:
+        logger.info(
+            "Deterministic filters removed %d prompts (whole_word=%d, stripped=%d, nonalpha=%d, creative_sent=%d, ood_sent=%d).",
+            removed,
+            filter_stats["whole_word_leak"],
+            filter_stats["stripped_leak"],
+            filter_stats["nonalpha_target"],
+            filter_stats["creative_sentence_count"],
+            filter_stats["ood_sentence_count"],
+        )
+
+    batch_results = validator.validate_batch(filtered_prompts)
     validated_prompts: List[ValidatedPrompt] = []
 
-    # Prepare deepseek_validation.jsonl path for audit log
+    # Prepare gpt5_validation.jsonl path for audit log
     base_paths = None
     if output_file is not None:
-        validation_log_path = output_file.parent.parent / "deepseek_validation.jsonl"
+        validation_log_path = output_file.parent.parent / "gpt5_validation.jsonl"
     else:
         base_paths = get_base_paths()
-        validation_log_path = base_paths['data_root'] / 'deepseek_validation.jsonl'
+        validation_log_path = base_paths['data_root'] / 'gpt5_validation.jsonl'
     validation_log_path.parent.mkdir(parents=True, exist_ok=True)
 
     for prompt, validation in batch_results:
@@ -770,7 +893,7 @@ def validate_and_enrich_prompts(
         )
         validated_prompts.append(vp)
         
-        # Write to deepseek_validation.jsonl audit log (append mode)
+        # Write to gpt5_validation.jsonl audit log (append mode)
         audit_record = {
             "prompt_id": validation.prompt_id,
             "category": prompt.category,
@@ -797,26 +920,27 @@ def validate_and_enrich_prompts(
     if compute_pressure:
         compute_semantic_pressure(validated_prompts, model_wrapper=model_wrapper)
 
-    # Persist to JSONL for downstream stages
-    if output_file is None:
-        if base_paths is None:
-            base_paths = get_base_paths()
-        validated_dir = base_paths['data_root'] / 'validated'
-    else:
-        validated_dir = output_file.parent
-    validated_dir.mkdir(parents=True, exist_ok=True)
-    if output_file is None:
-        output_file = validated_dir / 'prompts.jsonl'
+    if write_output:
+        # Persist to JSONL for downstream stages
+        if output_file is None:
+            if base_paths is None:
+                base_paths = get_base_paths()
+            validated_dir = base_paths['data_root'] / 'validated'
+        else:
+            validated_dir = output_file.parent
+        validated_dir.mkdir(parents=True, exist_ok=True)
+        if output_file is None:
+            output_file = validated_dir / 'prompts.jsonl'
 
-    write_mode = 'a' if append and output_file.exists() else 'w'
-    with open(output_file, write_mode, encoding='utf-8') as f:
-        for vp in validated_prompts:
-            if vp.s_score == 0:
-                vp.compute_s_score()
-            json.dump(vp.to_dict(), f)
-            f.write('\n')
+        write_mode = 'a' if append and output_file.exists() else 'w'
+        with open(output_file, write_mode, encoding='utf-8') as f:
+            for vp in validated_prompts:
+                if vp.s_score == 0:
+                    vp.compute_s_score()
+                json.dump(vp.to_dict(), f)
+                f.write('\n')
 
-    logger.info(f"Saved {len(validated_prompts)} validated prompts to {output_file}")
+        logger.info(f"Saved {len(validated_prompts)} validated prompts to {output_file}")
     logger.info(f"Appended {len(validated_prompts)} records to {validation_log_path}")
     return validated_prompts
 # ============================================================================

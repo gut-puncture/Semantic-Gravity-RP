@@ -8,7 +8,7 @@ import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from .api_clients import DeepSeekClient
+from .api_clients import OpenAIClient
 from .config import CONFIG, get_base_paths
 from .data_mining import CandidatePrompt, DatasetGenerator
 from .utils import ModelWrapper
@@ -252,6 +252,18 @@ def _select_prompts_for_category(
         if vp.s_score == 0:
             vp.compute_s_score()
 
+    def _prompt_id(vp: ValidatedPrompt) -> str:
+        if vp.prompt_id:
+            return vp.prompt_id
+        return _compute_prompt_id(
+            vp.candidate.category,
+            vp.candidate.target_word_normalized,
+            vp.candidate.question_text,
+            vp.candidate.target_word,
+        )
+
+    ranked = sorted(selected, key=lambda p: -p.s_score)
+
     # Tau-lowering loop with bin balancing (per spec Section 3.9)
     initial_tau = CONFIG['dataset'].get('min_pressure_threshold', 0.20)
     tau = initial_tau
@@ -309,30 +321,55 @@ def _select_prompts_for_category(
         tau -= tau_step
 
     if not final_selected:
-        if not last_balanced:
-            raise RuntimeError(
-                f"Category {category}: no prompts available after gating. "
-                "Check validation filters or model availability."
-            )
-        if len(last_balanced) < prompts_per_category:
-            raise RuntimeError(
-                f"Category {category}: could not reach {prompts_per_category} prompts even with tau={min_tau}. "
-                f"Only {len(last_balanced)} prompts available after bin balancing."
-            )
-        last_balanced.sort(key=lambda p: -p.s_score)
-        final_selected = last_balanced[:prompts_per_category]
-        final_tau = last_tau_with_balanced if last_tau_with_balanced is not None else min_tau
-        bin_shortfalls_category = last_bin_shortfalls
+        if last_balanced:
+            last_balanced.sort(key=lambda p: -p.s_score)
+            final_selected = last_balanced
+            final_tau = last_tau_with_balanced if last_tau_with_balanced is not None else min_tau
+            bin_shortfalls_category = last_bin_shortfalls
+        else:
+            final_selected = ranked
+            final_tau = min_tau
+            bin_shortfalls_category = last_bin_shortfalls
 
-    final_selected = selector.filter_by_target_repetition(final_selected)
     if len(final_selected) < prompts_per_category:
-        raise RuntimeError(
-            f"Category {category}: target repetition filter reduced prompts to {len(final_selected)} "
-            f"(need {prompts_per_category}). Increase candidate pool or adjust max_target_repetition."
-        )
-    final_selected.sort(key=lambda p: -p.s_score)
+        chosen_ids = {_prompt_id(vp) for vp in final_selected}
+        for vp in ranked:
+            pid = _prompt_id(vp)
+            if pid in chosen_ids:
+                continue
+            final_selected.append(vp)
+            chosen_ids.add(pid)
+            if len(final_selected) >= prompts_per_category:
+                break
 
-    return final_selected[:prompts_per_category], final_tau, bin_shortfalls_category
+    prioritized = final_selected[:]
+    prioritized_ids = {_prompt_id(vp) for vp in prioritized}
+    for vp in ranked:
+        pid = _prompt_id(vp)
+        if pid in prioritized_ids:
+            continue
+        prioritized.append(vp)
+        prioritized_ids.add(pid)
+
+    filtered: List[ValidatedPrompt] = []
+    for vp in prioritized:
+        if selector.target_tracker.register(vp.candidate.target_word_normalized, vp.candidate.category):
+            filtered.append(vp)
+            if len(filtered) >= prompts_per_category:
+                break
+
+    if len(filtered) < prompts_per_category:
+        logger.warning(
+            "Category %s: only %d prompts after repetition filtering (target %d). "
+            "Proceeding without regeneration.",
+            category,
+            len(filtered),
+            prompts_per_category,
+        )
+
+    filtered.sort(key=lambda p: -p.s_score)
+
+    return filtered[:prompts_per_category], final_tau, bin_shortfalls_category
 
 
 def build_dataset(
@@ -340,7 +377,7 @@ def build_dataset(
     candidate_multiplier: int = CONFIG['dataset'].get('candidate_multiplier', 2),
     candidates_per_target: Optional[int] = None,
     cache_dir: Optional[Path] = None,
-    deepseek_client: Optional[DeepSeekClient] = None,
+    openai_client: Optional[OpenAIClient] = None,
     model_wrapper: Optional[ModelWrapper] = None,
     skip_generated: bool = False,
     use_fallback: bool = True,
@@ -351,7 +388,7 @@ def build_dataset(
     """
     if use_fallback:
         logger.warning(
-            "DeepSeek fallback enabled: source gaps will be filled via DeepSeek."
+            "GPT-5.2 fallback enabled: source gaps will be filled via batch generation."
         )
     paths = get_base_paths()
     data_root = output_root or paths['data_root']
@@ -359,15 +396,15 @@ def build_dataset(
     if cache_dir is not None:
         cache_dir.mkdir(parents=True, exist_ok=True)
 
-    if deepseek_client is None:
-        deepseek_client = DeepSeekClient()
-    if deepseek_client.request_log_path is None:
-        deepseek_client.request_log_path = str(data_root / "deepseek_requests.jsonl")
+    if openai_client is None:
+        openai_client = OpenAIClient()
+    if openai_client.request_log_path is None:
+        openai_client.request_log_path = str(data_root / "gpt5_requests.jsonl")
 
     candidates_dir = data_root / "candidates"
     validated_dir = data_root / "validated"
 
-    generator = DatasetGenerator(cache_dir=cache_dir, deepseek_client=deepseek_client)
+    generator = DatasetGenerator(cache_dir=cache_dir, openai_client=openai_client)
     candidates_by_category = generator.generate_all(
         prompts_per_category=prompts_per_category,
         candidate_multiplier=candidate_multiplier,
@@ -378,7 +415,7 @@ def build_dataset(
 
     save_candidates(candidates_by_category, candidates_dir)
 
-    validator = PromptValidator(deepseek_client)
+    validator = PromptValidator(openai_client)
     tracker = TargetTracker(max_repetition=CONFIG['dataset']['max_target_repetition'])
     selector = PromptSelector(
         target_tracker=tracker,
@@ -451,7 +488,7 @@ def build_r1_validated_candidates(
     candidate_multiplier: int = CONFIG['dataset'].get('candidate_multiplier', 2),
     candidates_per_target: Optional[int] = None,
     cache_dir: Optional[Path] = None,
-    deepseek_client: Optional[DeepSeekClient] = None,
+    openai_client: Optional[OpenAIClient] = None,
     skip_generated: bool = False,
     output_root: Optional[Path] = None,
     categories: Optional[List[str]] = None,
@@ -461,12 +498,11 @@ def build_r1_validated_candidates(
     max_rounds: int = 5,
 ) -> Dict[str, List[ValidatedPrompt]]:
     """
-    Generate candidate prompts and score them with DeepSeek reasoner only.
+    Generate candidate prompts and validate them with GPT-5.2 only.
 
-    This stage does NOT compute P_sem (Qwen). It writes validated JSONL files
-    that can be uploaded to Drive and finalized later in Colab. When resume=True,
-    the function appends new candidates/validations until it reaches the target
-    candidate pool size and minimum accepted count per category.
+    This stage does NOT compute P_sem (Qwen). It builds candidate pools from
+    primary sources, fills gaps via GPT-5.2 batch generation, then validates
+    all remaining candidates in a single GPT-5.2 batch.
     """
     paths = get_base_paths()
     data_root = output_root or paths['data_root']
@@ -474,10 +510,10 @@ def build_r1_validated_candidates(
     if cache_dir is not None:
         cache_dir.mkdir(parents=True, exist_ok=True)
 
-    if deepseek_client is None:
-        deepseek_client = DeepSeekClient()
-    if deepseek_client.request_log_path is None:
-        deepseek_client.request_log_path = str(data_root / "deepseek_requests.jsonl")
+    if openai_client is None:
+        openai_client = OpenAIClient()
+    if openai_client.request_log_path is None:
+        openai_client.request_log_path = str(data_root / "gpt5_requests.jsonl")
 
     candidates_dir = data_root / "candidates"
     validated_dir = data_root / "validated"
@@ -488,204 +524,180 @@ def build_r1_validated_candidates(
 
     k = candidates_per_target or CONFIG['dataset']['candidates_per_target']
     base_count = max(1, int(prompts_per_category * candidate_multiplier))
-    generated_count = max(1, int(prompts_per_category * candidate_multiplier * k))
-    desired_counts = {
-        'idioms': base_count,
-        'facts': base_count,
-        'common_sense': base_count,
-        'creative': generated_count,
-        'ood': generated_count,
-    }
+    creative_ood_targets = CONFIG['dataset'].get('creative_ood_target_count', prompts_per_category)
+    creative_ood_count = max(1, int(creative_ood_targets * k))
+    desired_counts = {cat: base_count for cat in categories}
+    for category in ("creative", "ood"):
+        if category in desired_counts:
+            desired_counts[category] = creative_ood_count
 
-    generator = DatasetGenerator(cache_dir=cache_dir, deepseek_client=deepseek_client)
-    validator = PromptValidator(deepseek_client)
+    generator = DatasetGenerator(cache_dir=cache_dir, openai_client=openai_client)
+    validator = PromptValidator(openai_client)
+
+    candidates_by_category: Dict[str, List[CandidatePrompt]] = {}
     validated_by_category: Dict[str, List[ValidatedPrompt]] = {}
+    validated_ids_by_category: Dict[str, set] = {}
 
-    def generate_candidates_for_category(category: str, count: int) -> List[CandidatePrompt]:
-        if category == "idioms":
-            try:
-                candidates = generator.idiom_gen.generate_candidates(count)
-            except Exception as e:
-                logger.warning("Idiom source failed; falling back to DeepSeek: %s", e)
-                candidates = []
-        elif category == "facts":
-            try:
-                candidates = generator.fact_gen.generate_candidates(count)
-            except Exception as e:
-                logger.warning("Facts source failed; falling back to DeepSeek: %s", e)
-                candidates = []
-        elif category == "common_sense":
-            try:
-                candidates = generator.common_sense_gen.generate_candidates(count)
-            except Exception as e:
-                logger.warning("ConceptNet source failed; falling back to DeepSeek: %s", e)
-                candidates = []
-        elif category == "creative":
-            batch_count = _round_up_multiple(count, k)
-            try:
-                candidates = generator.creative_gen.generate_candidates(
-                    batch_count,
-                    candidates_per_target=k,
-                )
-            except Exception as e:
-                logger.warning("Creative generation failed; falling back to DeepSeek: %s", e)
-                candidates = []
-        elif category == "ood":
-            batch_count = _round_up_multiple(count, k)
-            try:
-                candidates = generator.ood_gen.generate_candidates(
-                    batch_count,
-                    candidates_per_target=k,
-                )
-            except Exception as e:
-                logger.warning("OOD generation failed; falling back to DeepSeek: %s", e)
-                candidates = []
-        else:
-            raise ValueError(f"Unknown category: {category}")
-
-        desired = count
-        gap = desired - len(candidates)
-        if gap > 0:
-            if category == "common_sense":
-                relation_counts = _common_sense_relation_counts(candidates)
-                relation_targets = _common_sense_relation_targets(gap, relation_counts)
-                logger.warning(
-                    "Common sense: only %d ConceptNet candidates; filling %d via DeepSeek fallback.",
-                    len(candidates),
-                    gap,
-                )
-                fallback = generator.fallback_gen.generate_for_category(
-                    "common_sense",
-                    n=gap,
-                    relation_targets=relation_targets,
-                )
-            else:
-                logger.warning(
-                    "Category %s: only %d candidates; filling %d via DeepSeek fallback.",
-                    category,
-                    len(candidates),
-                    gap,
-                )
-                fallback = generator.fallback_gen.generate_for_category(
-                    category,
-                    n=gap,
-                )
-            candidates.extend(fallback)
-
-        candidates = _dedupe_candidates(candidates)
-        if len(candidates) < desired:
-            raise RuntimeError(
-                f"Category {category}: only {len(candidates)} candidates after fallback, "
-                f"need {desired}. Increase fallback batches or relax diversity filters."
-            )
-
-        _log_category_diversity(category, candidates)
-        if category == "common_sense":
-            _log_common_sense_diversity(candidates)
-        return candidates
-
-    min_accepted_per_category = min_accepted_per_category or prompts_per_category
-
+    # Load existing candidates and validations if resuming.
     for category in categories:
         candidates_path = candidates_dir / f"{category}.jsonl"
         validated_path = validated_dir / f"{category}_validated.jsonl"
 
         candidates: List[CandidatePrompt] = []
         validated: List[ValidatedPrompt] = []
-        seen = set()
 
         if resume and candidates_path.exists():
             candidates = _load_candidate_prompts(candidates_path)
-            raw_candidate_count = len(candidates)
             candidates = _dedupe_candidates(candidates)
-            for cand in candidates:
-                seen.add((_normalize_question_key(cand.question_text), cand.target_word_normalized))
-            if len(candidates) != raw_candidate_count:
-                _write_jsonl([c.to_dict() for c in candidates], candidates_path)
 
         if resume and validated_path.exists():
             validated = _load_validated_prompts(validated_path)
-            raw_validated_count = len(validated)
             validated = _dedupe_validated(validated)
-            for vp in validated:
-                seen.add((_normalize_question_key(vp.candidate.question_text), vp.candidate.target_word_normalized))
             if not candidates:
                 candidates = [vp.candidate for vp in validated]
-            if len(validated) != raw_validated_count:
-                _write_jsonl([vp.to_dict() for vp in validated], validated_path)
-        if candidates:
+
+        candidates_by_category[category] = candidates
+        validated_by_category[category] = validated
+        validated_ids_by_category[category] = {
+            vp.prompt_id or vp.validation.prompt_id for vp in validated
+        }
+
+    # Generate from primary sources first.
+    for category in categories:
+        desired = desired_counts.get(category, base_count)
+        candidates = candidates_by_category[category]
+        if len(candidates) >= desired:
+            continue
+
+        source_candidates: List[CandidatePrompt] = []
+        try:
+            if category == "idioms":
+                source_candidates = generator.idiom_gen.generate_candidates(desired - len(candidates))
+            elif category == "facts":
+                source_candidates = generator.fact_gen.generate_candidates(desired - len(candidates))
+            elif category == "common_sense":
+                source_candidates = generator.common_sense_gen.generate_candidates(desired - len(candidates))
+            elif category in ("creative", "ood"):
+                source_candidates = []
+        except Exception as e:
+            logger.warning("Primary source failed for %s: %s", category, e)
+            source_candidates = []
+
+        if source_candidates:
+            candidates.extend(source_candidates)
             candidates = _dedupe_candidates(candidates)
-            if not candidates_path.exists():
-                _write_jsonl([c.to_dict() for c in candidates], candidates_path)
+            candidates_by_category[category] = candidates
 
-        desired = desired_counts.get(category, prompts_per_category)
-        accepted_count = _count_accepted(validated)
+    # Fill gaps via GPT-5.2 batch generation.
+    for category in categories:
+        desired = desired_counts.get(category, base_count)
+        candidates = candidates_by_category[category]
+        gap = desired - len(candidates)
+        if gap <= 0:
+            continue
 
-        round_idx = 0
-        while (len(candidates) < desired or accepted_count < min_accepted_per_category) and round_idx < max_rounds:
-            need_candidates = max(0, desired - len(candidates))
-            need_accepted = max(0, min_accepted_per_category - accepted_count)
-            extra = max(need_candidates, int(math.ceil(need_accepted * acceptance_buffer)))
-            if extra <= 0:
-                break
+        if skip_generated and category in ("creative", "ood"):
+            logger.warning("Skipping GPT-5.2 generation for %s; gap remains %d.", category, gap)
+            continue
 
-            logger.info(
-                "Category %s: generating %d more candidates (have %d, accepted %d)",
-                category,
-                extra,
+        if category == "common_sense":
+            relation_counts = _common_sense_relation_counts(candidates)
+            relation_targets = _common_sense_relation_targets(gap, relation_counts)
+            logger.warning(
+                "Common sense: only %d ConceptNet candidates; filling %d via GPT-5.2 batch fallback.",
                 len(candidates),
-                accepted_count,
+                gap,
             )
-            new_candidates = generate_candidates_for_category(category, extra)
-            if not new_candidates:
-                raise RuntimeError(
-                    f"No candidates generated for category {category}. "
-                    "Check source availability and DeepSeek key."
-                )
-
-            filtered_new: List[CandidatePrompt] = []
-            for cand in new_candidates:
-                key = (_normalize_question_key(cand.question_text), cand.target_word_normalized)
-                if key in seen:
-                    continue
-                seen.add(key)
-                filtered_new.append(cand)
-
-            if not filtered_new:
-                raise RuntimeError(
-                    f"Category {category}: no new unique candidates were generated. "
-                    "Increase fallback batches or relax filters."
-                )
-
-            candidates.extend(filtered_new)
-            _write_jsonl([c.to_dict() for c in candidates], candidates_path)
-
-            new_validated = validate_and_enrich_prompts(
-                filtered_new,
-                validator,
-                model_wrapper=None,
-                output_file=validated_path,
-                compute_pressure=False,
-                append=True,
+            new_candidates = generator.fallback_gen.generate_for_category(
+                "common_sense",
+                n=gap,
+                relation_targets=relation_targets,
             )
-            validated.extend(new_validated)
-            validated = _dedupe_validated(validated)
-            accepted_count = _count_accepted(validated)
-            round_idx += 1
+        elif category == "creative":
+            batch_count = _round_up_multiple(gap, k)
+            new_candidates = generator.creative_gen.generate_candidates(
+                batch_count,
+                candidates_per_target=k,
+            )
+        elif category == "ood":
+            batch_count = _round_up_multiple(gap, k)
+            new_candidates = generator.ood_gen.generate_candidates(
+                batch_count,
+                candidates_per_target=k,
+            )
+        else:
+            logger.warning(
+                "Category %s: only %d candidates; filling %d via GPT-5.2 batch fallback.",
+                category,
+                len(candidates),
+                gap,
+            )
+            new_candidates = generator.fallback_gen.generate_for_category(category, n=gap)
 
-        if len(candidates) < desired or accepted_count < min_accepted_per_category:
-            raise RuntimeError(
-                f"Category {category}: ended with {len(candidates)} candidates and "
-                f"{accepted_count} accepted (need {desired} candidates and "
-                f"{min_accepted_per_category} accepted). Increase fallback batches "
-                "or rerun Stage 1."
+        candidates.extend(new_candidates)
+        candidates = _dedupe_candidates(candidates)
+        candidates_by_category[category] = candidates
+
+        if len(candidates) < desired:
+            logger.warning(
+                "Category %s: only %d candidates after fallback (target %d). Proceeding without regeneration.",
+                category,
+                len(candidates),
+                desired,
             )
 
+    # Write candidates to disk.
+    for category, candidates in candidates_by_category.items():
+        candidates_path = candidates_dir / f"{category}.jsonl"
+        _write_jsonl([c.to_dict() for c in candidates], candidates_path)
+        _log_category_diversity(category, candidates)
+        if category == "common_sense":
+            _log_common_sense_diversity(candidates)
+
+    # Validate all remaining candidates in one GPT-5.2 batch.
+    to_validate: List[CandidatePrompt] = []
+    for category, candidates in candidates_by_category.items():
+        existing_ids = validated_ids_by_category.get(category, set())
+        for cand in candidates:
+            prompt_id = validator._build_prompt_id(cand)
+            if prompt_id not in existing_ids:
+                to_validate.append(cand)
+
+    if to_validate:
+        validated_new = validate_and_enrich_prompts(
+            to_validate,
+            validator,
+            model_wrapper=None,
+            output_file=None,
+            compute_pressure=False,
+            append=False,
+            write_output=False,
+        )
+        for vp in validated_new:
+            validated_by_category.setdefault(vp.candidate.category, []).append(vp)
+
+    # Deduplicate and write validated outputs.
+    min_accepted_per_category = min_accepted_per_category or prompts_per_category
+    combined: List[ValidatedPrompt] = []
+    for category in categories:
+        validated = _dedupe_validated(validated_by_category.get(category, []))
         validated_by_category[category] = validated
 
-    combined: List[ValidatedPrompt] = []
-    for prompts in validated_by_category.values():
-        combined.extend(prompts)
+        accepted_count = _count_accepted(validated)
+        if accepted_count < min_accepted_per_category:
+            logger.warning(
+                "Category %s: ended with %d validated and %d accepted (target %d). "
+                "Proceeding without regeneration.",
+                category,
+                len(validated),
+                accepted_count,
+                min_accepted_per_category,
+            )
+
+        validated_path = validated_dir / f"{category}_validated.jsonl"
+        _write_jsonl([vp.to_dict() for vp in validated], validated_path)
+        combined.extend(validated)
+
     if combined:
         _write_jsonl([vp.to_dict() for vp in combined], validated_dir / "all_validated.jsonl")
 
@@ -698,7 +710,7 @@ def build_r1_validated_candidates(
         _write_jsonl([c.to_dict() for c in all_candidates], candidates_dir / "all_candidates.jsonl")
 
     logger.info(
-        "Wrote reasoner-validated candidates for %d categories to %s",
+        "Wrote GPT-5.2 validated candidates for %d categories to %s",
         len(validated_by_category),
         validated_dir,
     )
@@ -930,10 +942,7 @@ def _write_prompts_outputs(
     except Exception:
         sampling_seeds = {'python': 42, 'numpy': 42, 'torch': 42}
 
-    deepseek_models = {
-        "generator": CONFIG.get('deepseek', {}).get('generator_model', 'deepseek-reasoner'),
-        "validator": CONFIG.get('deepseek', {}).get('validator_model', 'deepseek-reasoner'),
-    }
+    gpt5_model = CONFIG.get('openai', {}).get('model', 'gpt-5.2-2025-12-11')
 
     gating_failures: List[str] = []
     for cat, count in counts_by_category.items():
@@ -950,7 +959,7 @@ def _write_prompts_outputs(
         "bin_shortfalls": bin_shortfalls or {},
         "gating_failures": gating_failures,
         "sampling_seeds": sampling_seeds,
-        "deepseek_models": deepseek_models,
+        "gpt5_model": gpt5_model,
         "timestamps": {
             "generated_at": datetime.now().isoformat(),
         },

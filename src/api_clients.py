@@ -2,7 +2,7 @@
 api_clients.py - API Clients for External Data Sources
 
 This module provides clients for:
-- DeepSeek API (reasoner model for generation and validation)
+- OpenAI Responses API (GPT-5.2 for generation and validation, batch-only workflow)
 - Wikidata SPARQL queries (for factual data)
 - ConceptNet REST API (for common sense relations)
 
@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1"
 
 try:
     import requests
@@ -57,23 +57,24 @@ def _load_env_file(path: "Path") -> None:
 
 
 # ============================================================================
-# DEEPSEEK API CLIENT
+# OPENAI GPT-5.2 API CLIENT (BATCH WORKFLOW)
 # ============================================================================
 
 @dataclass
-class DeepSeekClient:
+class OpenAIClient:
     """
-    Client for DeepSeek API (reasoner model).
-    
+    Client for OpenAI Responses API (GPT-5.2).
+
     Handles:
-    - Chat completions with retry logic
+    - Responses requests with retry logic
     - JSON parsing with fallback
     - Rate limiting
+    - Batch file submission + retrieval
     - Full request/response logging to disk
     """
-    
+
     api_key: Optional[str] = None
-    base_url: str = DEFAULT_DEEPSEEK_BASE_URL
+    base_url: str = DEFAULT_OPENAI_BASE_URL
     retry_attempts: int = 3
     retry_base_delay: float = 1.0
     retry_max_delay: float = 30.0
@@ -83,7 +84,7 @@ class DeepSeekClient:
     min_request_interval: float = 0.0
     _last_request_time: float = field(default=0.0, repr=False)
 
-    def _get_deepseek_config(self) -> Dict[str, Any]:
+    def _get_openai_config(self) -> Dict[str, Any]:
         try:
             from .config import CONFIG
         except ImportError:
@@ -92,11 +93,11 @@ class DeepSeekClient:
             except ImportError:
                 return {}
         if isinstance(CONFIG, dict):
-            return CONFIG.get("deepseek", {}) or {}
+            return CONFIG.get("openai", {}) or {}
         return {}
 
-    def _get_request_timeout(self, deepseek_config: Optional[Dict[str, Any]] = None) -> int:
-        config = deepseek_config if deepseek_config is not None else self._get_deepseek_config()
+    def _get_request_timeout(self, openai_config: Optional[Dict[str, Any]] = None) -> int:
+        config = openai_config if openai_config is not None else self._get_openai_config()
         timeout = config.get("request_timeout_seconds")
         if isinstance(timeout, int) and timeout > 0:
             return timeout
@@ -159,7 +160,7 @@ class DeepSeekClient:
             # Try loading from .env file first
             try:
                 from dotenv import load_dotenv
-                
+
                 # Look for .env in project root
                 env_path = Path(__file__).parent.parent / '.env'
                 if env_path.exists():
@@ -168,8 +169,8 @@ class DeepSeekClient:
                 env_path = Path(__file__).parent.parent / '.env'
                 if env_path.exists():
                     _load_env_file(env_path)
-            
-            if not os.environ.get("DEEPSEEK_API_KEY"):
+
+            if not os.environ.get("OPENAI_API_KEY"):
                 try:
                     env_path = Path(__file__).parent.parent / '.env'
                     if env_path.exists():
@@ -177,24 +178,24 @@ class DeepSeekClient:
                 except OSError:
                     pass
 
-            self.api_key = os.environ.get("DEEPSEEK_API_KEY")
-        
-        if not self.api_key:
-            logger.warning("DEEPSEEK_API_KEY not set. API calls will fail.")
+            self.api_key = os.environ.get("OPENAI_API_KEY")
 
-        deepseek_config = self._get_deepseek_config()
-        json_retry = deepseek_config.get("json_retry_attempts")
+        if not self.api_key:
+            logger.warning("OPENAI_API_KEY not set. API calls will fail.")
+
+        openai_config = self._get_openai_config()
+        json_retry = openai_config.get("json_retry_attempts")
         if isinstance(json_retry, int) and json_retry > 0:
             self.json_retry_attempts = json_retry
 
-        cfg_base_url = deepseek_config.get("base_url")
-        if cfg_base_url and self.base_url == DEFAULT_DEEPSEEK_BASE_URL:
+        cfg_base_url = openai_config.get("base_url")
+        if cfg_base_url and self.base_url == DEFAULT_OPENAI_BASE_URL:
             self.base_url = cfg_base_url
         if self.base_url:
             self.base_url = self.base_url.rstrip("/")
 
         if self.request_log_path is None:
-            env_log_path = os.environ.get("DEEPSEEK_LOG_PATH")
+            env_log_path = os.environ.get("OPENAI_LOG_PATH")
             if env_log_path:
                 self.request_log_path = env_log_path
                 self._validate_log_path()
@@ -210,17 +211,16 @@ class DeepSeekClient:
             if get_base_paths is not None:
                 try:
                     paths = get_base_paths()
-                    self.request_log_path = str(paths["data_root"] / "deepseek_requests.jsonl")
+                    self.request_log_path = str(paths["data_root"] / "gpt5_requests.jsonl")
                 except Exception as e:
-                    logger.warning("Could not resolve data_root for DeepSeek logging: %s", e)
+                    logger.warning("Could not resolve data_root for GPT-5.2 logging: %s", e)
 
-            # Per spec: DeepSeek logging must not be silently disabled
-            # If we still don't have a log path, use a fallback and warn
+            # Per spec: logging must not be silently disabled
             if self.request_log_path is None:
-                fallback_path = os.path.join(os.getcwd(), "deepseek_requests.jsonl")
+                fallback_path = os.path.join(os.getcwd(), "gpt5_requests.jsonl")
                 logger.warning(
-                    "DeepSeek request_log_path not configured. "
-                    "Using fallback: %s. Set DEEPSEEK_LOG_PATH env var or "
+                    "GPT-5.2 request_log_path not configured. "
+                    "Using fallback: %s. Set OPENAI_LOG_PATH env var or "
                     "configure get_base_paths() to specify log location.",
                     fallback_path
                 )
@@ -228,9 +228,9 @@ class DeepSeekClient:
         self._validate_log_path()
 
     def _validate_log_path(self) -> None:
-        """Ensure the DeepSeek request log path is writable."""
+        """Ensure the request log path is writable."""
         if not self.request_log_path:
-            raise RuntimeError("DeepSeek request_log_path is not configured.")
+            raise RuntimeError("OpenAI request_log_path is not configured.")
         try:
             from pathlib import Path
             path = Path(self.request_log_path)
@@ -241,13 +241,13 @@ class DeepSeekClient:
                 pass
         except Exception as e:
             raise RuntimeError(
-                f"DeepSeek request_log_path is not writable: {self.request_log_path}"
+                f"OpenAI request_log_path is not writable: {self.request_log_path}"
             ) from e
     
     def _append_log(self, record: Dict) -> None:
         """Append a log record to the request log file."""
         if not self.request_log_path:
-            raise RuntimeError("DeepSeek request_log_path is not configured.")
+            raise RuntimeError("OpenAI request_log_path is not configured.")
         try:
             from pathlib import Path
             path = Path(self.request_log_path)
@@ -256,7 +256,7 @@ class DeepSeekClient:
                 f.write(json.dumps(record) + "\n")
         except Exception as e:
             raise RuntimeError(
-                f"Failed to write DeepSeek request log to {self.request_log_path}"
+                f"Failed to write OpenAI request log to {self.request_log_path}"
             ) from e
     
     def _rate_limit(self) -> None:
@@ -366,56 +366,107 @@ class DeepSeekClient:
                 time.sleep(delay)
                 delay = min(delay * 2, self.retry_max_delay)
         
-        raise RuntimeError(f"DeepSeek API failed after {self.retry_attempts} attempts: {last_error}")
+        raise RuntimeError(f"OpenAI API failed after {self.retry_attempts} attempts: {last_error}")
     
     def _extract_message_text(self, response: Dict[str, Any]) -> str:
-        """Extract text content from DeepSeek response."""
+        """Extract text content from OpenAI response."""
+        if not isinstance(response, dict):
+            raise RuntimeError(f"Unexpected response format: {response}")
+
+        output_text = response.get("output_text")
+        if isinstance(output_text, str) and output_text.strip():
+            return output_text
+
+        output = response.get("output")
+        if isinstance(output, list):
+            chunks: List[str] = []
+            for item in output:
+                content = item.get("content") if isinstance(item, dict) else None
+                if not isinstance(content, list):
+                    continue
+                for part in content:
+                    if not isinstance(part, dict):
+                        continue
+                    part_type = part.get("type")
+                    text = part.get("text")
+                    if part_type in ("output_text", "text") and text:
+                        chunks.append(text)
+            if chunks:
+                return "\n".join(chunks)
+
         try:
             message = response["choices"][0]["message"]
+            return message.get("content") or ""
         except (KeyError, IndexError, TypeError) as e:
-            logger.error(f"Unexpected response format: {response}")
-            raise RuntimeError(f"Failed to parse DeepSeek response: {e}") from e
-        return message.get("content") or ""
+            logger.error("Unexpected response format: %s", response)
+            raise RuntimeError(f"Failed to parse OpenAI response: {e}") from e
+
+    def _build_responses_payload(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        model: Optional[str] = None,
+        temperature: float = 0.7,
+        max_output_tokens: int = 2000,
+        text_format: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        config = self._get_openai_config()
+        payload = {
+            "model": model or config.get("model", "gpt-5.2-2025-12-11"),
+            "input": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "temperature": temperature,
+            "max_output_tokens": max_output_tokens,
+            "store": config.get("store", True),
+            "reasoning": config.get("reasoning", {"effort": "none"}),
+        }
+        if text_format is None:
+            text_format = config.get("text_format") or config.get("response_format")
+        text_block: Dict[str, Any] = {}
+        if text_format:
+            text_block["format"] = text_format
+        text_verbosity = config.get("verbosity")
+        if text_verbosity:
+            text_block["verbosity"] = text_verbosity
+        if text_block:
+            payload["text"] = text_block
+        return payload
 
     def generate(
         self,
         system_prompt: str,
         user_prompt: str,
-        model: str = "deepseek-reasoner",
+        model: Optional[str] = None,
         temperature: float = 0.7,
         max_tokens: int = 2000,
     ) -> str:
         """
-        Generate text using DeepSeek chat API.
-        
+        Generate text using OpenAI Responses API.
+
         Args:
             system_prompt: System instruction
             user_prompt: User message
-            model: Model to use (deepseek-reasoner)
+            model: Model to use (gpt-5.2-2025-12-11)
             temperature: Sampling temperature
-            max_tokens: Max tokens to generate
-            
+            max_tokens: Max output tokens
+
         Returns:
             Generated text content
         """
-        payload = {
-            "model": model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-        }
-        deepseek_config = self._get_deepseek_config()
-        thinking = deepseek_config.get("thinking")
-        if thinking:
-            payload["thinking"] = thinking
+        payload = self._build_responses_payload(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            model=model,
+            temperature=temperature,
+            max_output_tokens=max_tokens,
+        )
 
         response = self._make_request(
-            "chat/completions",
+            "responses",
             payload,
-            timeout=self._get_request_timeout(deepseek_config),
+            timeout=self._get_request_timeout(self._get_openai_config()),
         )
         return self._extract_message_text(response)
 
@@ -472,7 +523,7 @@ class DeepSeekClient:
         self,
         system_prompt: str,
         user_prompt: str,
-        model: str = "deepseek-reasoner",
+        model: Optional[str] = None,
         temperature: float = 0.3,
         max_tokens: int = 2000,
         retry_on_invalid: bool = True,
@@ -499,10 +550,9 @@ class DeepSeekClient:
         max_retries = max_retries or self.json_retry_attempts
         last_error: Optional[str] = None
 
-        deepseek_config = self._get_deepseek_config()
-        response_format = deepseek_config.get("response_format")
-        thinking = deepseek_config.get("thinking")
-        timeout = self._get_request_timeout(deepseek_config)
+        openai_config = self._get_openai_config()
+        text_format = openai_config.get("text_format") or openai_config.get("response_format")
+        timeout = self._get_request_timeout(openai_config)
 
         system_prompt, user_prompt = self._prepare_json_mode_prompts(
             system_prompt=system_prompt,
@@ -514,21 +564,16 @@ class DeepSeekClient:
 
         for attempt in range(max_retries):
             temp = temperature if attempt == 0 else 0.1
-            payload = {
-                "model": model,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": retry_prompt},
-                ],
-                "temperature": temp,
-                "max_tokens": max_tokens,
-            }
-            if response_format:
-                payload["response_format"] = response_format
-            if thinking:
-                payload["thinking"] = thinking
+            payload = self._build_responses_payload(
+                system_prompt=system_prompt,
+                user_prompt=retry_prompt,
+                model=model,
+                temperature=temp,
+                max_output_tokens=max_tokens,
+                text_format=text_format,
+            )
 
-            response = self._make_request("chat/completions", payload, timeout=timeout)
+            response = self._make_request("responses", payload, timeout=timeout)
             content = self._extract_message_text(response)
             if not content.strip():
                 last_error = "empty_content"
@@ -601,7 +646,7 @@ class DeepSeekClient:
             )
 
         logger.error("Failed to get valid JSON after %d attempts (last_error=%s).", max_retries, last_error)
-        raise RuntimeError("Failed to get valid JSON from DeepSeek.")
+        raise RuntimeError("Failed to get valid JSON from OpenAI.")
     
     def generate_json_r1(
         self,
@@ -611,27 +656,164 @@ class DeepSeekClient:
         max_tokens: int = 2000,
     ) -> Dict:
         """
-        Generate JSON using DeepSeek reasoner (thinking mode).
-        
-        Thin wrapper around generate_json with model set to deepseek-reasoner.
-        
-        Args:
-            system_prompt: System instruction
-            user_prompt: User message
-            temperature: Sampling temperature (default 0.1 for consistency)
-            max_tokens: Max tokens to generate
-            
-        Returns:
-            Parsed JSON dict
+        Generate JSON using GPT-5.2 (reasoning effort none).
+
+        Thin wrapper around generate_json with model set to gpt-5.2-2025-12-11.
         """
         return self.generate_json(
             system_prompt=system_prompt,
             user_prompt=user_prompt,
-            model="deepseek-reasoner",
+            model="gpt-5.2-2025-12-11",
             temperature=temperature,
             max_tokens=max_tokens,
             retry_on_invalid=True,
         )
+
+    def build_batch_request(
+        self,
+        custom_id: str,
+        system_prompt: str,
+        user_prompt: str,
+        model: Optional[str] = None,
+        temperature: float = 0.7,
+        max_output_tokens: int = 2000,
+        text_format: Optional[Dict[str, Any]] = None,
+        endpoint: str = "/v1/responses",
+    ) -> Dict[str, Any]:
+        payload = self._build_responses_payload(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            model=model,
+            temperature=temperature,
+            max_output_tokens=max_output_tokens,
+            text_format=text_format,
+        )
+        return {
+            "custom_id": custom_id,
+            "method": "POST",
+            "url": endpoint,
+            "body": payload,
+        }
+
+    def write_batch_requests(self, requests: List[Dict[str, Any]], output_path: Path) -> Path:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with output_path.open("w", encoding="utf-8") as f:
+            for req in requests:
+                f.write(json.dumps(req, ensure_ascii=True) + "\n")
+        return output_path
+
+    def upload_batch_file(self, input_path: Path) -> str:
+        req = _require_requests()
+        url = f"{self.base_url}/files"
+        headers = {"Authorization": f"Bearer {self.api_key}"}
+        files = {"file": (input_path.name, input_path.read_bytes())}
+        data = {"purpose": "batch"}
+        response = req.post(url, headers=headers, files=files, data=data, timeout=self._get_request_timeout())
+        response.raise_for_status()
+        payload = response.json()
+        return payload.get("id", "")
+
+    def create_batch(self, input_file_id: str, completion_window: Optional[str] = None) -> Dict[str, Any]:
+        config = self._get_openai_config()
+        window = completion_window or config.get("batch_completion_window", "24h")
+        payload = {
+            "input_file_id": input_file_id,
+            "endpoint": "/v1/responses",
+            "completion_window": window,
+        }
+        return self._make_request("batches", payload, timeout=self._get_request_timeout(config))
+
+    def get_batch(self, batch_id: str) -> Dict[str, Any]:
+        req = _require_requests()
+        url = f"{self.base_url}/batches/{batch_id}"
+        headers = {"Authorization": f"Bearer {self.api_key}"}
+        response = req.get(url, headers=headers, timeout=self._get_request_timeout())
+        response.raise_for_status()
+        return response.json()
+
+    def download_file(self, file_id: str, output_path: Path) -> Path:
+        req = _require_requests()
+        url = f"{self.base_url}/files/{file_id}/content"
+        headers = {"Authorization": f"Bearer {self.api_key}"}
+        response = req.get(url, headers=headers, timeout=self._get_request_timeout())
+        response.raise_for_status()
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_bytes(response.content)
+        return output_path
+
+    def parse_batch_output(self, output_path: Path) -> Dict[str, Dict[str, Any]]:
+        results: Dict[str, Dict[str, Any]] = {}
+        with output_path.open("r", encoding="utf-8") as f:
+            for line in f:
+                if not line.strip():
+                    continue
+                payload = json.loads(line)
+                custom_id = payload.get("custom_id")
+                if not custom_id:
+                    continue
+                results[custom_id] = payload
+        return results
+
+    def wait_for_batch(
+        self,
+        batch_id: str,
+        poll_interval: float = 5.0,
+        timeout_seconds: float = 6 * 60 * 60,
+    ) -> Dict[str, Any]:
+        start_time = time.time()
+        while True:
+            status_payload = self.get_batch(batch_id)
+            status = status_payload.get("status")
+            if status in ("completed", "failed", "canceled", "expired"):
+                return status_payload
+            if time.time() - start_time > timeout_seconds:
+                raise RuntimeError(f"Batch {batch_id} timed out after {timeout_seconds} seconds.")
+            time.sleep(poll_interval)
+
+    def run_batch_requests(
+        self,
+        requests: List[Dict[str, Any]],
+        batch_dir: Path,
+        batch_name: str,
+        poll_interval: float = 5.0,
+        timeout_seconds: float = 6 * 60 * 60,
+    ) -> Dict[str, Dict[str, Any]]:
+        batch_dir.mkdir(parents=True, exist_ok=True)
+        input_path = batch_dir / f"{batch_name}_input.jsonl"
+        output_path = batch_dir / f"{batch_name}_output.jsonl"
+
+        self.write_batch_requests(requests, input_path)
+        input_file_id = self.upload_batch_file(input_path)
+        if not input_file_id:
+            raise RuntimeError("Failed to upload batch input file.")
+
+        batch = self.create_batch(input_file_id)
+        batch_id = batch.get("id")
+        if not batch_id:
+            raise RuntimeError(f"Batch creation failed: {batch}")
+
+        status_payload = self.wait_for_batch(
+            batch_id,
+            poll_interval=poll_interval,
+            timeout_seconds=timeout_seconds,
+        )
+        status = status_payload.get("status")
+        if status != "completed":
+            raise RuntimeError(f"Batch {batch_id} ended with status {status}.")
+
+        output_file_id = status_payload.get("output_file_id")
+        if not output_file_id:
+            raise RuntimeError(f"Batch {batch_id} completed without output_file_id.")
+
+        self.download_file(output_file_id, output_path)
+        return self.parse_batch_output(output_path)
+
+    def extract_json_from_batch_payload(self, payload: Dict[str, Any]) -> Optional[object]:
+        response = payload.get("response")
+        if response is None:
+            return None
+        content = self._extract_message_text(response)
+        return self._parse_json_content(content)
 
 
 # ============================================================================
@@ -1002,21 +1184,21 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"   ❌ Idioms download failed: {e}")
     
-    # Test 4: DeepSeek (only if API key set)
-    print("\n4. Testing DeepSeekClient:")
+    # Test 4: OpenAI (only if API key set)
+    print("\n4. Testing OpenAIClient:")
     try:
-        deepseek = DeepSeekClient()
-        if deepseek.api_key:
-            result = deepseek.generate(
+        client = OpenAIClient()
+        if client.api_key:
+            result = client.generate(
                 system_prompt="You are a helpful assistant.",
                 user_prompt="Say 'Hello' and nothing else.",
                 max_tokens=2000,
             )
-            print(f"   ✅ DeepSeek response: {result}")
+            print(f"   ✅ OpenAI response: {result}")
         else:
-            print("   ⚠️ DEEPSEEK_API_KEY not set, skipping")
+            print("   ⚠️ OPENAI_API_KEY not set, skipping")
     except Exception as e:
-        print(f"   ❌ DeepSeek failed: {e}")
+        print(f"   ❌ OpenAI failed: {e}")
     
     print("\n" + "=" * 60)
     print("API clients tests complete!")

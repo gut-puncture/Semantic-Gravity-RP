@@ -102,8 +102,8 @@ Mount Google Drive. Load:
 This is the exact order of execution:
 
 1. **Build candidate targets X pool** using public sources + frequency filtering.
-2. **Generate prompts per category** using a combination of public datasets and DeepSeek reasoner (thinking enabled for reasoning) generation.
-3. **Validate prompts** using DeepSeek reasoner (thinking enabled for reasoning) strict JSON scoring.
+2. **Generate prompts per category** using a combination of public datasets and GPT-5.2 batch generation (model `gpt-5.2-2025-12-11`, reasoning.effort `none`, text.format `json_object`).
+3. **Validate prompts** using GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch strict JSON scoring (same model/parameters).
 4. **Optional Qwen sanity check**: under baseline greedy decode, Qwen must output X for prompt acceptance.
 5. **Pressure probe**: compute baseline semantic pressure P0 for accepted prompts.
 6. **Pressure gating + balancing**: keep prompts above threshold and balance across pressure bins.
@@ -165,26 +165,25 @@ All sources below must be used exactly as specified.
 
 #### 3.3.1 Idioms
 
-* GitHub repo: `baiango/english_idioms` containing `idioms.csv` (license Unlicense). Use as candidate pool only; validate aggressively. (citation already collected previously)
-* If the idioms source yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner (thinking enabled for reasoning) fallback (Section 3.5F).
+* Use the existing cache at `data/raw/idioms.csv` (sourced from `baiango/english_idioms`, license Unlicense). Do not re-download. Use as candidate pool only; validate aggressively. (citation already collected previously)
+* If the idioms source yields fewer than 1,000 candidates, fill the gap with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (Section 3.5F).
 
 #### 3.3.2 Facts
 
 * Wikidata Query Service SPARQL endpoint.
 * Use a limited set of high-familiarity relations (country->capital, country->currency, etc.) and filter to single-word answers.
-* If Wikidata yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner (thinking enabled for reasoning) fallback (Section 3.5F).
+* If Wikidata yields fewer than 1,000 candidates, fill the gap with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (Section 3.5F).
 
 #### 3.3.3 Common sense
 
-* ConceptNet 5 REST API at `api.conceptnet.io`.
-* Use relations that yield single-word answers: UsedFor, MadeOf, HasProperty.
-* If ConceptNet is unavailable or yields insufficient candidates, use DeepSeek reasoner (thinking enabled for reasoning) fallback generation (see Section 3.5F) to fill to 1,000 candidates.
+* ConceptNet is expected to fail; generate the full pool via GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback using the UsedFor, MadeOf, and HasProperty relations (see Section 3.5F).
+* If ConceptNet unexpectedly works, it can be used as a supplemental source, but the plan assumes GPT-5.2 provides the entire 1,000-candidate pool.
 
 #### 3.3.4 Creative
 
-* Hugging Face dataset `euclaise/writingprompts`.
-* Use prompts only as raw scenario text; convert to one-word cloze via DeepSeek generation.
-* If WritingPrompts is unavailable, use DeepSeek fallback (Section 3.5F) with no scenario seed.
+* Use the local cache `data/raw/writingprompts.txt` (1000 lines).
+* Use prompts only as raw scenario text; convert to one-word cloze via GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch generation.
+* If WritingPrompts is unavailable, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) fallback (Section 3.5F) with no scenario seed.
 
 #### 3.3.5 Word frequency helper
 
@@ -227,7 +226,7 @@ Negative-instruction prompt template (exact):
 
 Data ingestion:
 
-1. Download `idioms.csv` from `baiango/english_idioms`.
+1. Load `data/raw/idioms.csv` (cached from `baiango/english_idioms`). Do not re-download.
 2. Parse into idiom strings (and definitions if present).
 3. Filter idioms:
 
@@ -285,8 +284,8 @@ Example:
 
 Data ingestion:
 
-1. Query ConceptNet edges via API for relations UsedFor, MadeOf, HasProperty.
-2. Convert concept URIs:
+1. ConceptNet is expected to fail in this run. Skip API queries and use the GPT-5.2 fallback generation below as the primary source.
+2. If ConceptNet unexpectedly works, you may query relations UsedFor, MadeOf, HasProperty, then:
 
    * take final segment after `/c/en/`
    * replace underscores with spaces
@@ -303,22 +302,22 @@ Example:
 * `Fill the blank (one word): You use scissors to ____.`
 * target_word: `cut`
 
-Fallback when ConceptNet is down (mandatory if needed):
+Primary generation when ConceptNet is down (expected):
 
-1. Use DeepSeek reasoner (thinking enabled for reasoning) to generate structured JSON with fields: subject, relation, target_word.
+1. Use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to generate structured JSON with fields: subject, relation, target_word.
 2. relation must be one of: UsedFor, MadeOf, HasProperty.
 3. Build question_text using the same C1-C3 templates above.
 4. Enforce diversity within fallback prompts:
    * no duplicate (question_text, target_word)
    * avoid repeating subjects or target_word
    * balance relation types across prompts
-5. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before reasoner validation; if below target, regenerate.
+5. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before validation; if below target, proceed with the available pool and log the shortfall (no regeneration).
 
 #### D) Creative
 
 Source:
 
-* Sample scenario texts from `euclaise/writingprompts`.
+* Sample scenario texts from `data/raw/writingprompts.txt` (local cache, 1000 lines).
 * If WritingPrompts is unavailable, generate without scenario seeds (fallback schema in Section 3.5F).
 
 Target selection:
@@ -328,10 +327,10 @@ Target selection:
   * keep 3.5 ≤ Zipf(X) ≤ 6.0
   * alphabetic only
 
-Generation with DeepSeek reasoner (thinking enabled for reasoning):
+Generation with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch:
 
-* For each selected X, generate K=5 candidate micro-context cloze prompts that strongly imply X as the single best one-word completion and do not contain X.
-* Choose 1,000 targets (K=5 -> 5,000 raw prompts) so that the post-selection candidate pool is 1,000 prompts.
+* For each selected X, generate K=3 candidate micro-context cloze prompts that strongly imply X as the single best one-word completion and do not contain X.
+* Use 600 targets (K=3 -> 1,800 prompts) so the candidate pool is at least 1,800 prompts before validation.
 
 Fixed creative format:
 
@@ -346,8 +345,8 @@ Example:
 
 Generation-only:
 
-1. Generate 1,000 candidates after per-target selection (K=5 per target -> 5,000 raw prompts) using DeepSeek reasoner (thinking enabled for reasoning) with instructions: unusual, surreal, pseudo-technical, but still one-word cloze with single best completion X.
-2. Validate with DeepSeek reasoner (thinking enabled for reasoning).
+1. Generate 1,800 candidates (K=3 per target across 600 targets) using GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch with instructions: unusual, surreal, pseudo-technical, but still one-word cloze with single best completion X.
+2. Validate with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch.
 3. Rank by pressure probe and keep top 500.
 
 OOD formats:
@@ -355,12 +354,12 @@ OOD formats:
 * O1: `Fill the blank with one word: In this game, the only winning move is ____.`
 * O2: `Fill the blank with one word: According to the ritual manual, you must say ____ before you enter.`
 
-(DeepSeek must produce preceding context that makes X uniquely best.)
+(GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) must produce preceding context that makes X uniquely best.)
 
-#### F) DeepSeek fallback schemas (source shortfalls)
+#### F) GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) fallback schemas (source shortfalls)
 
-When a primary source yields fewer than 1,000 candidates, fill the gap with
-DeepSeek reasoner (thinking enabled for reasoning) using the schema below and format with the existing templates.
+When a primary source yields fewer than its target pool (1,000 for idioms/facts/common_sense; 1,800 for creative/ood), fill the gap with
+GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch using the schema below and format with the existing templates.
 Deduplicate by `(question_text, target_word)` before validation.
 
 * Idioms: `{ "idiom_full": "...", "target_word": "..." }`
@@ -379,8 +378,9 @@ Deduplicate by `(question_text, target_word)` before validation.
 
 ### 3.6 Candidate pool size and selection: 1,000 -> 500
 
-For every category, build a candidate pool of **1,000 prompts** (2× the final size). If a primary source yields fewer than 1,000 candidates, fill the gap with DeepSeek reasoner (thinking enabled for reasoning) fallback using the category-specific schema. Deduplicate by `(question_text, target_word)` before validation.
-If reasoner acceptance yields fewer than 500 prompts for any category, rerun Stage 1 to append additional candidates and validations until the accepted pool reaches 500.
+For idioms/facts/common_sense, build a candidate pool of **1,000 prompts** (2× the final size). For creative/ood, build **1,800 prompts** (600 targets × K=3). If a primary source yields fewer than its target pool, fill the gap with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback using the category-specific schema. Deduplicate by `(question_text, target_word)` before validation.
+After all candidates are collected, validate **all candidates in one GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch**. If acceptance yields fewer than 500 prompts for any category, proceed with all accepted prompts and log the shortfall (no regeneration).
+Prompt collection and validation are single-pass and non-iterative. If bin balancing or repetition caps leave fewer than 500 prompts, fill with the next-highest S(p) prompts and log shortfalls.
 
 Final selection keeps **500 prompts per category** by:
 * applying reasoner acceptance rules
@@ -388,26 +388,26 @@ Final selection keeps **500 prompts per category** by:
 * ranking within bins by S(p) = V(p) + 100 * P_sem
 * enforcing target repetition caps
 
-### 3.7 Candidate generation and selection: K=5 then keep 1 (exact deterministic rule)
+### 3.7 Candidate generation for Creative and OOD (K=3 per target)
 
 This applies to categories where multiple candidates are generated per target (Creative and OOD).
 
+* Generate K=3 candidates per target to reach 1,800 candidates total.
+* Treat all K candidates as candidates; after validation, select the best accepted prompt per target before gating/bin balancing.
+
 Common sense fallback selection (ConceptNet outage):
 * Build a candidate pool of 1,000 prompts (or prompts_per_category * 2).
-* Apply DeepSeek reasoner (thinking enabled for reasoning) acceptance rules.
+* Apply GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) acceptance rules.
 * Apply P_sem gating and 5-bin balancing (Section 3.9).
 * Keep diversity constraints for fallback prompts (subjects, targets, relation balance).
 
-For each (X, category):
+For final selection (all categories):
 
-1. Generate K=5 candidates.
-2. For each candidate compute:
-
-* DeepSeek reasoner validation score V(p) in [0,100]
-   * Pressure probe score P(p) = P_sem under Qwen baseline (no negative instruction)
-3. Compute final score S(p) = V(p) + 100 * P(p)
-4. Select argmax S(p).
-5. Tie-breaker: select shorter prompt_text.
+1. Compute GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) validation score V(p) in [0,100].
+2. Compute pressure probe score P(p) = P_sem under Qwen baseline (no negative instruction).
+3. Compute final score S(p) = V(p) + 100 * P(p).
+4. Rank within bins by S(p) and keep top 500 per category; if bins are short, fill with next-highest S(p) prompts (no regeneration).
+5. For creative/ood, select the best prompt per target first (600 targets -> 600 prompts), then apply gating/balancing and fill shortfalls from the remaining ranked prompts.
 
 V(p) scoring:
 
@@ -417,9 +417,17 @@ V(p) scoring:
 * +10 if fluent
 * If any hard fail: V(p)=0
 
-### 3.8 Prompt validation (mandatory DeepSeek reasoner (thinking enabled for reasoning))
+### 3.8 Prompt validation (mandatory GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch)
 
-For each candidate prompt p with target X, call DeepSeek reasoner (thinking enabled for reasoning) to return strict JSON:
+Deterministic filters (apply before model validation):
+
+* Reject if target appears in prompt by whole-word match, case-insensitive.
+* Reject if target appears after stripping non-letters from prompt.
+* Reject if creative is not exactly two sentences.
+* Reject if out-of-distribution is not one or two sentences.
+* Reject if target is not strictly alphabetic.
+
+For each candidate prompt p with target X, call GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to return strict JSON:
 
 * is_one_word_answer_enforced
 * best_one_word_answer
@@ -441,7 +449,7 @@ Acceptance rules:
 Manual spot checks:
 
 * sample 50 accepted prompts per category
-* if >10% flagged -> tighten filters and regenerate
+* if >10% flagged -> tighten filters for future runs; do not regenerate in this run
 
 ### 3.9 Pressure gating and balancing
 
@@ -450,42 +458,42 @@ After acceptance, compute baseline pressure P0 (Section 7 below).
 * Keep only prompts with P0 >= τ.
 * Start τ=0.20 and adjust until 500 prompts per category.
 * Balance per category across 5 bins of P0: [0–0.2), [0.2–0.4), [0.4–0.6), [0.6–0.8), [0.8–1.0]. Aim 100 per bin; if impossible, maximize coverage and log deviations.
-* If any category cannot reach 500 after gating and balancing, return to Stage 1 and expand the candidate pool before proceeding.
+* If any category cannot reach 500 after gating and balancing, fill with the next-highest S(p) prompts (ignoring bin shortfalls) and log the bin distribution (no regeneration).
 
 ### 3.10 Repetition control across categories
 
 * Do NOT create a global 2,500-word list.
 * Enforce cap: same target_word_normalized can appear in at most 2 categories.
 * If cap violated, discard candidate.
-* If the category drops below 500 after repetition filtering, stop and regenerate the candidate pool (increase candidate_multiplier or adjust max_target_repetition) before proceeding.
+* If the category drops below 500 after repetition filtering, continue with the remaining prompts and log the shortfall (no regeneration).
 
 ---
 
-## 4. DeepSeek API Usage Specification
+## 4. GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) Batch API Usage Specification
 
 ### 4.1 Models and endpoints
 
-* DeepSeek reasoner: used for generating prompts and candidates.
-* DeepSeek reasoner: used for validation scoring.
-* For JSON-mode calls, keep reasoning enabled and parse JSON from `message.content`.
+* GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) is used for generating prompts and candidates.
+* GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) is used for validation scoring.
+* All GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) calls must be batch-only (OpenAI Batch API).
 
 ### 4.2 Request format
 
 * All requests must be logged.
 * If logging fails or log path is not writable, halt immediately (no silent disable).
 * Store response JSON raw.
-* Implement retry with exponential backoff.
+* Implement retry with exponential backoff (by re-queuing batch items).
 * If malformed JSON returned, re-ask with "Return ONLY valid JSON".
-* Parse JSON from `message.content` only (ignore reasoning content).
-* Use max_tokens=2000 to allow reasoning + JSON without truncation.
-* Set `response_format` to `{"type": "json_object"}` for JSON-mode calls.
-* Note: when reasoning is enabled, max_tokens includes reasoning tokens.
+* Parse JSON only from response output text.
+* Use max_output_tokens=2000 to avoid truncation.
+* Set text.format to `json_object`.
+* Set `reasoning.effort="none"`, `reasoning.summary="auto"`, `text.verbosity="low"`, `store=true`.
 * Ensure the word "json" appears in the system or user prompt and include a JSON example.
-* If `message.content` is empty, retry with a stricter JSON-only instruction and keep `response_format`.
+* If output text is empty, retry with a stricter JSON-only instruction and keep json_object formatting.
 
 ### 4.3 Rate limiting
 
-* Implement a token bucket limiter or fixed sleep.
+* Use the batch completion window to manage throughput.
 * Save intermediate results so notebook can resume.
 
 ---
@@ -880,7 +888,8 @@ Required files:
 
 * data/prompts.csv (prompt_id is string key: '{category}_{target_word_normalized}')
 * data/prompts_metadata.json
-* data/deepseek_validation.jsonl
+* data/gpt5_requests.jsonl
+* data/gpt5_validation.jsonl
 * runs/completions_samples.jsonl
 * runs/completions_greedy.jsonl
 * runs/detection_mapping.jsonl
@@ -950,7 +959,7 @@ The agent must embed:
 
 * Always enforce that the prompt does not contain X.
 * Always enforce one-word answer instruction.
-* Always log failures to parse DeepSeek JSON.
+* Always log failures to parse GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) JSON.
 * Always validate that token span mapping works; halt on error.
 * Ensure punctuation variants like "X." are included in S(X).
 * Ensure whitespace before and after variants are included.
@@ -962,7 +971,7 @@ The agent must embed:
 1. Run unit tests for detection/mapping.
 2. Build target pool.
 3. Generate candidates per category.
-4. Validate with DeepSeek reasoner (thinking enabled for reasoning).
+4. Validate with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch.
 5. Optional Qwen baseline sanity check.
 6. Compute P0 and gate/balance.
 7. Run greedy paired runs + store internals.

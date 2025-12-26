@@ -5,8 +5,8 @@ This module provides generators for each prompt category:
 - Category A: Idioms (from baiango/english_idioms)
 - Category B: Facts (from Wikidata SPARQL)
 - Category C: Common Sense (from ConceptNet)
-- Category D: Creative (generated via DeepSeek)
-- Category E: Out-of-Distribution (generated via DeepSeek)
+- Category D: Creative (generated via GPT-5.2 batch)
+- Category E: Out-of-Distribution (generated via GPT-5.2 batch)
 
 Each generator produces candidate prompts in a standardized format.
 """
@@ -18,7 +18,7 @@ import random
 import logging
 from collections import Counter
 from io import StringIO
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -26,10 +26,10 @@ logger = logging.getLogger(__name__)
 
 # Import from local modules
 try:
-    from .api_clients import WikidataClient, ConceptNetClient, DeepSeekClient, download_idioms_csv
+    from .api_clients import WikidataClient, ConceptNetClient, OpenAIClient, download_idioms_csv
     from .config import PROMPT_TEMPLATES, CONFIG, get_base_paths
 except ImportError:
-    from api_clients import WikidataClient, ConceptNetClient, DeepSeekClient, download_idioms_csv
+    from api_clients import WikidataClient, ConceptNetClient, OpenAIClient, download_idioms_csv
     from config import PROMPT_TEMPLATES, CONFIG, get_base_paths
 
 
@@ -750,12 +750,12 @@ class CommonSenseGenerator:
 
 
 # ============================================================================
-# CATEGORY D: CREATIVE (DeepSeek Generated)
+# CATEGORY D: CREATIVE (GPT-5.2 Generated)
 # ============================================================================
 
 class CreativeGenerator:
     """
-    Generate creative micro-story prompts using DeepSeek.
+    Generate creative micro-story prompts using GPT-5.2.
     
     Uses wordfreq to select target words in common frequency band.
     """
@@ -777,11 +777,11 @@ Format your response as json (a single JSON object). Return json only:
 
     def __init__(
         self,
-        deepseek_client: Optional[DeepSeekClient] = None,
+        openai_client: Optional[OpenAIClient] = None,
         cache_dir: Optional[Path] = None,
         scenario_texts: Optional[List[str]] = None,
     ):
-        self.client = deepseek_client or DeepSeekClient()
+        self.client = openai_client or OpenAIClient()
         self.cache_dir = cache_dir
         self.scenario_texts = scenario_texts or []
         self.target_words: List[str] = []
@@ -896,7 +896,7 @@ Format your response as json (a single JSON object). Return json only:
     def generate_candidates(
         self, 
         n: int = 500,
-        candidates_per_target: int = 5,
+        candidates_per_target: int = 3,
     ) -> List[CandidatePrompt]:
         """
         Generate creative prompt candidates.
@@ -908,7 +908,7 @@ Format your response as json (a single JSON object). Return json only:
         Returns:
             List of CandidatePrompt objects
         """
-        n_targets = n // candidates_per_target
+        n_targets = (n + candidates_per_target - 1) // candidates_per_target
         self.target_words = self._get_target_words(n_targets)
 
         candidates = []
@@ -917,6 +917,8 @@ Format your response as json (a single JSON object). Return json only:
 
         scenarios = self._load_scenarios(n_targets) if n_targets > 0 else []
         
+        batch_requests = []
+        batch_meta: Dict[str, Dict[str, str]] = {}
         for target in self.target_words:
             scenario = random.choice(scenarios) if scenarios else ""
             scenario_line = f"Scenario seed: {scenario}\n" if scenario else ""
@@ -930,23 +932,47 @@ Each micro-story should:
 
 Return as json with "prompts" array. Each "microstory" should NOT include the blank."""
 
-            try:
-                result = self.client.generate_json(
+            custom_id = f"creative:{target}"
+            batch_requests.append(
+                self.client.build_batch_request(
+                    custom_id=custom_id,
                     system_prompt=self.SYSTEM_PROMPT,
                     user_prompt=user_prompt,
-                    model=CONFIG.get("deepseek", {}).get("generator_model", "deepseek-reasoner"),
+                    model=CONFIG.get("openai", {}).get("model", "gpt-5.2-2025-12-11"),
                     temperature=0.7,
-                    max_tokens=CONFIG.get("deepseek", {}).get("max_tokens_generation", 2000),
-                    required_keys=["prompts"],
-                    required_schema={"prompts": list},
+                    max_output_tokens=CONFIG.get("openai", {}).get("max_output_tokens_generation", 2000),
+                    text_format=CONFIG.get("openai", {}).get("text_format", {"type": "json_object"}),
                 )
-                
-                prompts = result.get("prompts", [])
+            )
+            batch_meta[custom_id] = {"target": target}
+
+        if batch_requests:
+            try:
+                base_paths = get_base_paths()
+                batch_dir = base_paths["data_root"] / "batches"
+            except Exception:
+                batch_dir = Path("batches")
+
+            batch_results = self.client.run_batch_requests(
+                requests=batch_requests,
+                batch_dir=batch_dir,
+                batch_name="creative_generation",
+            )
+
+            for custom_id, payload in batch_results.items():
+                meta = batch_meta.get(custom_id)
+                if not meta or payload.get("error"):
+                    continue
+                target = meta["target"]
+                parsed = self.client.extract_json_from_batch_payload(payload)
+                if not isinstance(parsed, dict):
+                    continue
+                prompts = parsed.get("prompts", [])
                 for i, p in enumerate(prompts):
                     if isinstance(p, str):
                         microstory = p.strip()
                     elif isinstance(p, dict):
-                        microstory = p.get("microstory", "").strip()
+                        microstory = (p.get("microstory", "") or "").strip()
                     else:
                         continue
                     if not microstory:
@@ -963,24 +989,21 @@ Return as json with "prompts" array. Each "microstory" should NOT include the bl
                         target_word=target,
                         target_word_normalized=target.lower(),
                         prompt_style_id=f"creative_{i}",
-                        source_trace=f"deepseek:creative:{target}",
+                        source_trace=f"gpt5:creative:{target}",
                         raw_data={"microstory": microstory, "target": target},
                     ))
-                        
-            except Exception as e:
-                logger.warning(f"Failed to generate creative prompts for {target}: {e}")
         
         logger.info(f"Generated {len(candidates)} creative candidates")
         return candidates
 
 
 # ============================================================================
-# CATEGORY E: OUT-OF-DISTRIBUTION (DeepSeek Generated)
+# CATEGORY E: OUT-OF-DISTRIBUTION (GPT-5.2 Generated)
 # ============================================================================
 
 class OODGenerator:
     """
-    Generate out-of-distribution prompts using DeepSeek.
+    Generate out-of-distribution prompts using GPT-5.2.
     
     Creates unusual, surreal, or pseudo-technical cloze prompts.
     """
@@ -1002,8 +1025,8 @@ Format your response as json (a single JSON object). Return json only:
   ]
 }"""
 
-    def __init__(self, deepseek_client: Optional[DeepSeekClient] = None):
-        self.client = deepseek_client or DeepSeekClient()
+    def __init__(self, openai_client: Optional[OpenAIClient] = None):
+        self.client = openai_client or OpenAIClient()
         self.target_words: List[str] = []
 
     def _get_target_words(self, n: int = 200) -> List[str]:
@@ -1021,7 +1044,7 @@ Format your response as json (a single JSON object). Return json only:
     def generate_candidates(
         self,
         n: int = 500,
-        candidates_per_target: int = 5,
+        candidates_per_target: int = 3,
     ) -> List[CandidatePrompt]:
         """
         Generate OOD prompt candidates.
@@ -1034,12 +1057,14 @@ Format your response as json (a single JSON object). Return json only:
             List of CandidatePrompt objects
         """
         candidates = []
-        n_targets = n // candidates_per_target
+        n_targets = (n + candidates_per_target - 1) // candidates_per_target
         self.target_words = self._get_target_words(n_targets)
         
         templates = PROMPT_TEMPLATES.get('ood', {})
         default_style = "O1"
         
+        batch_requests = []
+        batch_meta: Dict[str, Dict[str, str]] = {}
         for idx, target in enumerate(self.target_words):
             user_prompt = f"""Generate {candidates_per_target} out-of-distribution cloze contexts where the answer is "{target}".
 
@@ -1053,59 +1078,81 @@ Choose a style label for each prompt: "O1" or "O2".
 
 Return as json with "prompts" array containing objects with "context" and "style" fields."""
 
-            try:
-                result = self.client.generate_json(
+            custom_id = f"ood:{target}:{idx}"
+            batch_requests.append(
+                self.client.build_batch_request(
+                    custom_id=custom_id,
                     system_prompt=self.SYSTEM_PROMPT,
                     user_prompt=user_prompt,
-                    model=CONFIG.get("deepseek", {}).get("generator_model", "deepseek-reasoner"),
+                    model=CONFIG.get("openai", {}).get("model", "gpt-5.2-2025-12-11"),
                     temperature=0.9,
-                    max_tokens=CONFIG.get("deepseek", {}).get("max_tokens_generation", 2000),
-                    required_keys=["prompts"],
-                    required_schema={"prompts": list},
+                    max_output_tokens=CONFIG.get("openai", {}).get("max_output_tokens_generation", 2000),
+                    text_format=CONFIG.get("openai", {}).get("text_format", {"type": "json_object"}),
                 )
-                
-                prompts = result.get("prompts", [])
+            )
+            batch_meta[custom_id] = {"target": target, "idx": str(idx)}
+
+        if batch_requests:
+            try:
+                base_paths = get_base_paths()
+                batch_dir = base_paths["data_root"] / "batches"
+            except Exception:
+                batch_dir = Path("batches")
+
+            batch_results = self.client.run_batch_requests(
+                requests=batch_requests,
+                batch_dir=batch_dir,
+                batch_name="ood_generation",
+            )
+
+            for custom_id, payload in batch_results.items():
+                meta = batch_meta.get(custom_id)
+                if not meta or payload.get("error"):
+                    continue
+                target = meta["target"]
+                idx = int(meta["idx"])
+                parsed = self.client.extract_json_from_batch_payload(payload)
+                if not isinstance(parsed, dict):
+                    continue
+                prompts = parsed.get("prompts", [])
                 for i, p in enumerate(prompts):
                     if isinstance(p, str):
                         context = p.strip()
                         style = default_style
                     elif isinstance(p, dict):
-                        context = p.get("context", "").strip()
+                        context = (p.get("context", "") or "").strip()
                         style = p.get("style", default_style) or default_style
                     else:
                         continue
-                    
+
                     if not context:
                         continue
                     if _target_leaks_into_question(target, context):
                         continue
 
                     question = self._format_ood_prompt(context, style, templates)
-                    
+
                     candidates.append(CandidatePrompt(
                         category="ood",
                         question_text=question,
                         target_word=target,
                         target_word_normalized=target.lower(),
                         prompt_style_id=f"ood_{style}_{idx}_{i}",
-                        source_trace=f"deepseek:ood:{target}",
+                        source_trace=f"gpt5:ood:{target}",
                         raw_data={"context": context, "target": target, "style": style},
                     ))
-                        
-            except Exception as e:
-                logger.warning(f"Failed to generate OOD prompts for {target}: {e}")
         
         logger.info(f"Generated {len(candidates)} OOD candidates")
         return candidates[:n]
 
 
 # ============================================================================
-# DEEPSEEK FALLBACK GENERATOR
+# GPT-5.2 FALLBACK GENERATOR
 # ============================================================================
 
-class DeepSeekFallbackGenerator:
+class OpenAIFallbackGenerator:
     """
-    Generate prompts via DeepSeek when primary sources don't have enough.
+    Generate prompts via GPT-5.2 when primary sources don't have enough.
     
     Can generate prompts for any category by describing the category style.
     """
@@ -1169,8 +1216,8 @@ Requirements:
 
 Return your response as valid json only."""
 
-    def __init__(self, client: Optional[DeepSeekClient] = None):
-        self.client = client or DeepSeekClient()
+    def __init__(self, client: Optional[OpenAIClient] = None):
+        self.client = client or OpenAIClient()
     
     def generate_for_category(
         self,
@@ -1237,207 +1284,217 @@ Return your response as valid json only."""
         n_batches = (target_total + batch_size - 1) // batch_size
         max_batches = max_batches or (n_batches + extra_batches)
 
-        batch_idx = 0
-        while batch_idx < max_batches:
-            remaining = target_total - len(candidates)
+        batch_requests: List[Dict[str, Any]] = []
+        for batch_idx in range(max_batches):
+            remaining = target_total - (batch_idx * batch_size)
             if remaining <= 0:
                 break
-            
             current_batch = min(batch_size, remaining)
             user_prompt = f"Generate {current_batch} prompts.\n\n{category_prompt}"
-            
-            try:
-                result = self.client.generate_json(
+            custom_id = f"fallback:{category}:{batch_idx}"
+            batch_requests.append(
+                self.client.build_batch_request(
+                    custom_id=custom_id,
                     system_prompt=self.SYSTEM_PROMPT,
                     user_prompt=user_prompt,
-                    model=CONFIG.get("deepseek", {}).get("generator_model", "deepseek-reasoner"),
+                    model=CONFIG.get("openai", {}).get("model", "gpt-5.2-2025-12-11"),
                     temperature=0.7,
-                    max_tokens=CONFIG.get("deepseek", {}).get("max_tokens_generation", 2000),
-                    required_keys=["prompts"],
-                    required_schema={"prompts": list},
+                    max_output_tokens=CONFIG.get("openai", {}).get("max_output_tokens_generation", 2000),
+                    text_format=CONFIG.get("openai", {}).get("text_format", {"type": "json_object"}),
                 )
-                
-                prompts = result.get("prompts", [])
-                for i, p in enumerate(prompts):
-                    if not isinstance(p, dict):
-                        continue
-                    target = (p.get("target_word", "") or "").strip()
-                    if not _is_valid_target_word(target):
-                        continue
-                    target_norm = target.lower()
+            )
 
-                    if category == "common_sense":
-                        question = (p.get("question", "") or "").strip()
-                        relation = (p.get("relation", "") or "").strip()
-                        subject = (p.get("subject", "") or "").strip()
-                        if not relation or relation not in ("UsedFor", "MadeOf", "HasProperty"):
-                            relation = _infer_common_sense_relation(question)
-                        subject = _normalize_subject(subject)
-                        if not subject and question:
-                            subject = _extract_subject_from_question(question, relation)
-                        if not subject or not relation:
-                            continue
-                        relation_info = _format_common_sense_question(subject, relation)
-                        if relation_info is None:
-                            continue
-                        style_id, question_text = relation_info
-                        if relation_targets:
-                            target_limit = relation_targets.get(relation, 0)
-                            if relation_counts[relation] >= target_limit:
-                                continue
-                        subject_norm = subject.lower()
-                        if max_target_repeats is not None and target_counts[target_norm] >= max_target_repeats:
-                            continue
-                        if max_subject_repeats is not None and subject_counts[subject_norm] >= max_subject_repeats:
-                            continue
-                        if _target_leaks_into_question(target, question_text):
-                            continue
-                        key = (" ".join(question_text.lower().split()), target_norm)
-                        if key in seen_keys:
-                            continue
-                        seen_keys.add(key)
-                        target_counts[target_norm] += 1
-                        subject_counts[subject_norm] += 1
-                        relation_counts[relation] += 1
-                        candidates.append(CandidatePrompt(
-                            category=category,
-                            question_text=question_text,
-                            target_word=target,
-                            target_word_normalized=target_norm,
-                            prompt_style_id=style_id,
-                            source_trace=f"deepseek:fallback:{category}:batch{batch_idx}",
-                            raw_data={
-                                "subject": subject,
-                                "relation": relation,
-                                "target": target,
-                            },
-                        ))
-                        continue
+        if not batch_requests:
+            return []
 
-                    if category == "idioms":
-                        idiom_full = (p.get("idiom_full", "") or "").strip()
-                        idiom_with_blank = _format_idiom_with_blank(idiom_full, target)
-                        if not idiom_with_blank:
-                            continue
-                        style_id = idiom_style_ids[idiom_style_idx % len(idiom_style_ids)]
-                        idiom_style_idx += 1
-                        template = idiom_templates.get(style_id, 'Fill the blank (one word): {idiom_with_blank}')
-                        question_text = template.format(idiom_with_blank=idiom_with_blank)
-                        if _target_leaks_into_question(target, question_text):
-                            continue
-                        key = (" ".join(question_text.lower().split()), target_norm)
-                        if key in seen_keys:
-                            continue
-                        seen_keys.add(key)
-                        candidates.append(CandidatePrompt(
-                            category=category,
-                            question_text=question_text,
-                            target_word=target,
-                            target_word_normalized=target_norm,
-                            prompt_style_id=style_id,
-                            source_trace=f"deepseek:fallback:{category}:batch{batch_idx}",
-                            raw_data={"idiom_full": idiom_full, "idiom_with_blank": idiom_with_blank},
-                        ))
-                        continue
+        try:
+            base_paths = get_base_paths()
+            batch_dir = base_paths["data_root"] / "batches"
+        except Exception:
+            batch_dir = Path("batches")
 
-                    if category == "facts":
-                        subject = (p.get("subject", "") or "").strip()
-                        relation = _normalize_fact_relation(p.get("relation", "") or "")
-                        subject_norm = _normalize_subject(subject)
-                        if not subject_norm or relation is None:
-                            continue
-                        if relation == "capital":
-                            style_id = fact_capital_styles[fact_capital_idx % len(fact_capital_styles)]
-                            fact_capital_idx += 1
-                            template = fact_templates.get(style_id, 'Fill the blank with one word: The capital of {subject} is ____.')
-                        else:
-                            style_id = fact_currency_style
-                            template = fact_templates.get(style_id, 'Complete with one word: The currency of {subject} is ____.')
-                        question_text = template.format(subject=subject_norm)
-                        if _target_leaks_into_question(target, question_text):
-                            continue
-                        key = (" ".join(question_text.lower().split()), target_norm)
-                        if key in seen_keys:
-                            continue
-                        seen_keys.add(key)
-                        candidates.append(CandidatePrompt(
-                            category=category,
-                            question_text=question_text,
-                            target_word=target,
-                            target_word_normalized=target_norm,
-                            prompt_style_id=style_id,
-                            source_trace=f"deepseek:fallback:{category}:batch{batch_idx}",
-                            raw_data={"subject": subject_norm, "relation": relation, "target": target},
-                        ))
-                        continue
+        batch_results = self.client.run_batch_requests(
+            requests=batch_requests,
+            batch_dir=batch_dir,
+            batch_name=f"fallback_{category}",
+        )
 
-                    if category == "creative":
-                        microstory = _format_creative_microstory(p.get("microstory", "") or "")
-                        if not microstory:
-                            continue
-                        if not _within_zipf_band(target_norm):
-                            continue
-                        if _target_leaks_into_question(target, microstory):
-                            continue
-                        question_text = creative_template.format(microstory=microstory)
-                        key = (" ".join(question_text.lower().split()), target_norm)
-                        if key in seen_keys:
-                            continue
-                        seen_keys.add(key)
-                        candidates.append(CandidatePrompt(
-                            category=category,
-                            question_text=question_text,
-                            target_word=target,
-                            target_word_normalized=target_norm,
-                            prompt_style_id=f"creative_fallback_{batch_idx}_{i}",
-                            source_trace=f"deepseek:fallback:{category}:batch{batch_idx}",
-                            raw_data={"microstory": microstory, "target": target},
-                        ))
-                        continue
+        for batch_idx in range(max_batches):
+            custom_id = f"fallback:{category}:{batch_idx}"
+            payload = batch_results.get(custom_id)
+            if payload is None or payload.get("error"):
+                continue
+            parsed = self.client.extract_json_from_batch_payload(payload)
+            if not isinstance(parsed, dict):
+                continue
+            prompts = parsed.get("prompts", [])
+            for i, p in enumerate(prompts):
+                if not isinstance(p, dict):
+                    continue
+                target = (p.get("target_word", "") or "").strip()
+                if not _is_valid_target_word(target):
+                    continue
+                target_norm = target.lower()
 
-                    if category == "ood":
-                        context = (p.get("context", "") or "").strip()
-                        style = (p.get("style", "") or "O1").strip() or "O1"
-                        if style not in ("O1", "O2"):
-                            style = "O1"
-                        if not context:
-                            continue
-                        if not _within_zipf_band(target_norm):
-                            continue
-                        if _target_leaks_into_question(target, context):
-                            continue
-                        question_text = _format_ood_prompt_text(
-                            context=context,
-                            style=style,
-                            templates=ood_templates,
-                        )
-                        key = (" ".join(question_text.lower().split()), target_norm)
-                        if key in seen_keys:
-                            continue
-                        seen_keys.add(key)
-                        candidates.append(CandidatePrompt(
-                            category=category,
-                            question_text=question_text,
-                            target_word=target,
-                            target_word_normalized=target_norm,
-                            prompt_style_id=f"ood_{style}_fallback_{batch_idx}_{i}",
-                            source_trace=f"deepseek:fallback:{category}:batch{batch_idx}",
-                            raw_data={"context": context, "style": style, "target": target},
-                        ))
+                if category == "common_sense":
+                    question = (p.get("question", "") or "").strip()
+                    relation = (p.get("relation", "") or "").strip()
+                    subject = (p.get("subject", "") or "").strip()
+                    if not relation or relation not in ("UsedFor", "MadeOf", "HasProperty"):
+                        relation = _infer_common_sense_relation(question)
+                    subject = _normalize_subject(subject)
+                    if not subject and question:
+                        subject = _extract_subject_from_question(question, relation)
+                    if not subject or not relation:
                         continue
+                    relation_info = _format_common_sense_question(subject, relation)
+                    if relation_info is None:
+                        continue
+                    style_id, question_text = relation_info
+                    if relation_targets:
+                        target_limit = relation_targets.get(relation, 0)
+                        if relation_counts[relation] >= target_limit:
+                            continue
+                    subject_norm = subject.lower()
+                    if max_target_repeats is not None and target_counts[target_norm] >= max_target_repeats:
+                        continue
+                    if max_subject_repeats is not None and subject_counts[subject_norm] >= max_subject_repeats:
+                        continue
+                    if _target_leaks_into_question(target, question_text):
+                        continue
+                    key = (" ".join(question_text.lower().split()), target_norm)
+                    if key in seen_keys:
+                        continue
+                    seen_keys.add(key)
+                    target_counts[target_norm] += 1
+                    subject_counts[subject_norm] += 1
+                    relation_counts[relation] += 1
+                    candidates.append(CandidatePrompt(
+                        category=category,
+                        question_text=question_text,
+                        target_word=target,
+                        target_word_normalized=target_norm,
+                        prompt_style_id=style_id,
+                        source_trace=f"gpt5:fallback:{category}:batch{batch_idx}",
+                        raw_data={
+                            "subject": subject,
+                            "relation": relation,
+                            "target": target,
+                        },
+                    ))
+                    continue
 
-            except Exception as e:
-                logger.warning(f"Fallback generation failed for {category} batch {batch_idx}: {e}")
-            
-            batch_idx += 1
-            if relation_targets:
-                met_all = True
-                for relation, target_limit in relation_targets.items():
-                    if relation_counts[relation] < target_limit:
-                        met_all = False
-                        break
-                if met_all:
-                    break
+                if category == "idioms":
+                    idiom_full = (p.get("idiom_full", "") or "").strip()
+                    idiom_with_blank = _format_idiom_with_blank(idiom_full, target)
+                    if not idiom_with_blank:
+                        continue
+                    style_id = idiom_style_ids[idiom_style_idx % len(idiom_style_ids)]
+                    idiom_style_idx += 1
+                    template = idiom_templates.get(style_id, 'Fill the blank (one word): {idiom_with_blank}')
+                    question_text = template.format(idiom_with_blank=idiom_with_blank)
+                    if _target_leaks_into_question(target, question_text):
+                        continue
+                    key = (" ".join(question_text.lower().split()), target_norm)
+                    if key in seen_keys:
+                        continue
+                    seen_keys.add(key)
+                    candidates.append(CandidatePrompt(
+                        category=category,
+                        question_text=question_text,
+                        target_word=target,
+                        target_word_normalized=target_norm,
+                        prompt_style_id=style_id,
+                        source_trace=f"gpt5:fallback:{category}:batch{batch_idx}",
+                        raw_data={"idiom_full": idiom_full, "idiom_with_blank": idiom_with_blank},
+                    ))
+                    continue
+
+                if category == "facts":
+                    subject = (p.get("subject", "") or "").strip()
+                    relation = _normalize_fact_relation(p.get("relation", "") or "")
+                    subject_norm = _normalize_subject(subject)
+                    if not subject_norm or relation is None:
+                        continue
+                    if relation == "capital":
+                        style_id = fact_capital_styles[fact_capital_idx % len(fact_capital_styles)]
+                        fact_capital_idx += 1
+                        template = fact_templates.get(style_id, 'Fill the blank with one word: The capital of {subject} is ____.')
+                    else:
+                        style_id = fact_currency_style
+                        template = fact_templates.get(style_id, 'Complete with one word: The currency of {subject} is ____.')
+                    question_text = template.format(subject=subject_norm)
+                    if _target_leaks_into_question(target, question_text):
+                        continue
+                    key = (" ".join(question_text.lower().split()), target_norm)
+                    if key in seen_keys:
+                        continue
+                    seen_keys.add(key)
+                    candidates.append(CandidatePrompt(
+                        category=category,
+                        question_text=question_text,
+                        target_word=target,
+                        target_word_normalized=target_norm,
+                        prompt_style_id=style_id,
+                        source_trace=f"gpt5:fallback:{category}:batch{batch_idx}",
+                        raw_data={"subject": subject_norm, "relation": relation, "target": target},
+                    ))
+                    continue
+
+                if category == "creative":
+                    microstory = _format_creative_microstory(p.get("microstory", "") or "")
+                    if not microstory:
+                        continue
+                    if not _within_zipf_band(target_norm):
+                        continue
+                    if _target_leaks_into_question(target, microstory):
+                        continue
+                    question_text = creative_template.format(microstory=microstory)
+                    key = (" ".join(question_text.lower().split()), target_norm)
+                    if key in seen_keys:
+                        continue
+                    seen_keys.add(key)
+                    candidates.append(CandidatePrompt(
+                        category=category,
+                        question_text=question_text,
+                        target_word=target,
+                        target_word_normalized=target_norm,
+                        prompt_style_id=f"creative_fallback_{batch_idx}_{i}",
+                        source_trace=f"gpt5:fallback:{category}:batch{batch_idx}",
+                        raw_data={"microstory": microstory, "target": target},
+                    ))
+                    continue
+
+                if category == "ood":
+                    context = (p.get("context", "") or "").strip()
+                    style = (p.get("style", "") or "O1").strip() or "O1"
+                    if style not in ("O1", "O2"):
+                        style = "O1"
+                    if not context:
+                        continue
+                    if not _within_zipf_band(target_norm):
+                        continue
+                    if _target_leaks_into_question(target, context):
+                        continue
+                    question_text = _format_ood_prompt_text(
+                        context=context,
+                        style=style,
+                        templates=ood_templates,
+                    )
+                    key = (" ".join(question_text.lower().split()), target_norm)
+                    if key in seen_keys:
+                        continue
+                    seen_keys.add(key)
+                    candidates.append(CandidatePrompt(
+                        category=category,
+                        question_text=question_text,
+                        target_word=target,
+                        target_word_normalized=target_norm,
+                        prompt_style_id=f"ood_{style}_fallback_{batch_idx}_{i}",
+                        source_trace=f"gpt5:fallback:{category}:batch{batch_idx}",
+                        raw_data={"context": context, "style": style, "target": target},
+                    ))
+                    continue
 
         logger.info(f"Generated {len(candidates)} fallback prompts for {category}")
         return candidates[:target_total]
@@ -1451,16 +1508,16 @@ class DatasetGenerator:
     """
     Unified interface for generating all category candidates.
     
-    Automatically uses DeepSeek fallback when primary sources don't provide enough prompts.
+    Automatically uses GPT-5.2 batch fallback when primary sources don't provide enough prompts.
     """
     
     def __init__(
         self,
         cache_dir: Optional[Path] = None,
-        deepseek_client: Optional[DeepSeekClient] = None,
+        openai_client: Optional[OpenAIClient] = None,
     ):
         self.cache_dir = cache_dir
-        self.deepseek_client = deepseek_client or DeepSeekClient()
+        self.openai_client = openai_client or OpenAIClient()
         
         # Initialize generators
         self.idiom_gen = IdiomGenerator(
@@ -1468,9 +1525,9 @@ class DatasetGenerator:
         )
         self.fact_gen = FactGenerator()
         self.common_sense_gen = CommonSenseGenerator()
-        self.creative_gen = CreativeGenerator(self.deepseek_client, cache_dir=cache_dir)
-        self.ood_gen = OODGenerator(self.deepseek_client)
-        self.fallback_gen = DeepSeekFallbackGenerator(self.deepseek_client)
+        self.creative_gen = CreativeGenerator(self.openai_client, cache_dir=cache_dir)
+        self.ood_gen = OODGenerator(self.openai_client)
+        self.fallback_gen = OpenAIFallbackGenerator(self.openai_client)
     
     def generate_all(
         self,
@@ -1483,12 +1540,12 @@ class DatasetGenerator:
         """
         Generate candidates for all categories.
         
-        Automatically uses DeepSeek fallback when categories don't reach target count.
+        Automatically uses GPT-5.2 batch fallback when categories don't reach target count.
         
         Args:
             prompts_per_category: Target prompts per category
-            skip_generated: If True, skip categories requiring DeepSeek (creative, OOD)
-            use_fallback: If True, use DeepSeek to fill gaps
+            skip_generated: If True, skip categories requiring GPT-5.2 (creative, OOD)
+            use_fallback: If True, use GPT-5.2 to fill gaps
             
         Returns:
             Dict mapping category name to list of candidates
@@ -1496,13 +1553,14 @@ class DatasetGenerator:
         results = {}
         k = candidates_per_target or CONFIG['dataset']['candidates_per_target']
         base_count = max(1, int(prompts_per_category * candidate_multiplier))
-        generated_count = max(1, int(prompts_per_category * candidate_multiplier * k))
+        creative_ood_targets = CONFIG['dataset'].get('creative_ood_target_count', prompts_per_category)
+        creative_ood_count = max(1, int(creative_ood_targets * k))
         desired_counts = {
             'idioms': base_count,
             'facts': base_count,
             'common_sense': base_count,
-            'creative': generated_count,
-            'ood': generated_count,
+            'creative': creative_ood_count,
+            'ood': creative_ood_count,
         }
         
         # Category A: Idioms
@@ -1559,7 +1617,7 @@ class DatasetGenerator:
                 if gap <= 0:
                     continue
                 logger.info(
-                    "Category %s has %d prompts, need %d more. Using DeepSeek fallback...",
+                    "Category %s has %d prompts, need %d more. Using GPT-5.2 batch fallback...",
                     category,
                     len(candidates),
                     gap,
@@ -1606,10 +1664,11 @@ class DatasetGenerator:
                     deduped.append(cand)
                 results[category] = deduped
                 if len(results[category]) < desired_counts.get(category, base_count):
-                    raise RuntimeError(
-                        f"Category {category}: only {len(results[category])} candidates after fallback, "
-                        f"need {desired_counts.get(category, base_count)}. "
-                        "Increase fallback batches or relax filters."
+                    logger.warning(
+                        "Category %s: only %d candidates after fallback (target %d). Proceeding without regeneration.",
+                        category,
+                        len(results[category]),
+                        desired_counts.get(category, base_count),
                     )
                 logger.info("Category %s now has %d prompts", category, len(results[category]))
 

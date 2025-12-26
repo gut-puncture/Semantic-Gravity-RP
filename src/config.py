@@ -92,9 +92,10 @@ CONFIG = {
         'candidate_multiplier': 2,
         'pressure_bins': [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],
         'min_pressure_threshold': 0.20,
-        'candidates_per_target': 5,
+        'candidates_per_target': 3,
+        'creative_ood_target_count': 600,
         'max_target_repetition': 2,  # Same word in at most 2 categories
-        # DeepSeek fallback tuning (when sources are down or sparse)
+        # GPT-5.2 fallback tuning (when sources are down or sparse)
         'fallback_max_extra_batches': 3,
         'common_sense_fallback_max_target_repeats': 1,
         'common_sense_fallback_max_subject_repeats': 1,
@@ -106,19 +107,21 @@ CONFIG = {
         'max_ambiguity_score': 3,
     },
     
-    # ----- DeepSeek API Configuration -----
-    'deepseek': {
-        'base_url': 'https://api.deepseek.com',
+    # ----- OpenAI GPT-5.2 API Configuration -----
+    'openai': {
+        'base_url': 'https://api.openai.com/v1',
         'retry_attempts': 3,
         'retry_base_delay': 1.0,
         'retry_max_delay': 30.0,
         'json_retry_attempts': 4,
-        'generator_model': 'deepseek-reasoner',
-        'validator_model': 'deepseek-reasoner',
-        'max_tokens_generation': 2000,
-        'max_tokens_validation': 2000,
-        'response_format': {"type": "json_object"},
-        'thinking': {"type": "enabled"},
+        'model': 'gpt-5.2-2025-12-11',
+        'max_output_tokens_generation': 2000,
+        'max_output_tokens_validation': 2000,
+        'text_format': {"type": "json_object"},
+        'reasoning': {"effort": "none", "summary": "auto"},
+        'verbosity': "low",
+        'store': True,
+        'batch_completion_window': "24h",
         'request_timeout_seconds': 180,
     },
     
