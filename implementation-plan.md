@@ -37,6 +37,8 @@ This plan is structured logically for a coding agent. It breaks the project into
 **Candidate pool rule:** For idioms/facts/common_sense, generate **1,000 candidates** (2× the final size). For creative/ood, generate **1,800 candidates** (600 targets × K=3). If a primary source yields fewer than its target count, fill the gap with GPT-5.2 batch fallback using the category-specific schema (model `gpt-5.2-2025-12-11`, text.format `json_object`, reasoning.effort `none`, reasoning.summary `auto`, text.verbosity `low`, store `true`).
 After all candidate pools are assembled, validate **all candidates in a single GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch**. Selection is single-pass and non-iterative: if any category ends with fewer than 500 after gating/bin balancing/repetition caps, fill from the remaining highest S(p) prompts and log the shortfall (no regeneration).
 
+**Process streamlining (non-functional refactor):** consolidate the manual steps for candidate collection, gap computation, batch submission, and batch ingestion into a single automated workflow. Do **not** change any filtering, validation, or selection logic; this refactor is purely to remove manual effort and preserve full audit logging for transparency.
+
 ### 2.1 API Clients (`api_clients.py`)
 * **GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) Batch Client (OpenAI):**
     * Implement a class `OpenAIClient` with batch helpers (`build_batch_request`, `write_batch_requests`, `create_batch`, `wait_for_batch`, `parse_batch_output`).

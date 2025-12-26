@@ -763,10 +763,14 @@ class CreativeGenerator:
     SYSTEM_PROMPT = """You are a creative writing assistant. Your task is to generate short micro-stories that have exactly one best one-word completion.
 
 Requirements:
-1. Create a 2-sentence micro-story that strongly implies a specific target word
+1. Create a 2-sentence micro-story for a cloze test
+2. Leave out a word that is strongly implied
 2. Do NOT include the target word anywhere in the micro-story
 3. The target word should be the single most natural completion
 4. Keep prompts engaging and varied in theme
+5. Prompts should be very diverse from each other in terms of content, setting, structure, placement of target word etc. 
+6. The prompt should simply be a micro-story and should not ask the reader a question, or ask the reader to provide the missing word or even imply the existence of a missing word
+
 
 Format your response as json (a single JSON object). Return json only:
 {
@@ -1013,8 +1017,12 @@ class OODGenerator:
 Your task is to create one-word cloze prompts that are:
 1. Unusual or surreal in framing
 2. Pseudo-technical, ritualistic, or game-like
-3. Still have a single clear best one-word answer
-4. Engaging and surprising
+3. Should be something which would never be written by humans
+4. Still have a single clear best one-word answer
+5. Engaging and surprising
+6. Prompts should be very diverse from each other in terms of content, setting, structure, placement of target word etc. 
+7. The prompt should simply be a micro-story and should not ask the reader a question, or ask the reader to provide the missing word or even imply the existence of a missing word
+
 
 The prompts should feel "out of distribution" compared to typical factual or common-sense questions.
 
@@ -1158,51 +1166,130 @@ class OpenAIFallbackGenerator:
     """
     
     CATEGORY_PROMPTS = {
-        'idioms': """Generate English idiom completion prompts. Each prompt should:
-- Provide the full idiom and the final target_word (last word of the idiom)
-- Have exactly ONE correct answer (the original idiom ending)
-- Be recognizable and common idioms
-- Avoid repeating idioms or target words
+        'idioms': """Generate English idiom completion prompts. Each prompt must follow ALL rules:
+1) Output fields:
+   - idiom_full: the complete idiom (lowercase, standard spelling, no trailing punctuation)
+   - target_word: the last word of idiom_full
 
-Return json: {"prompts": [{"idiom_full": "bite the bullet", "target_word": "bullet"}]}""",
+2) Uniqueness and correctness:
+   - Exactly ONE correct answer exists: target_word must be the canonical final word of the idiom in standard modern English.
+   - Avoid idioms with common alternate endings, optional clauses, or extended variants.
+   - Avoid idioms where the final word is commonly replaced with a synonym or where multiple spellings are common.
+   - Do not repeat idioms or target_word values across prompts.
 
-        'facts': """Generate factual one-word answer prompts. Each prompt should:
-- Provide a subject (country/entity), a relation ("capital" or "currency"), and a single-word target_word
-- Have exactly ONE correct single-word answer
-- Be well-known facts that most educated people would know
-- Vary domains and avoid repeating targets
+3) Commonness:
+   - Use recognizable, common idioms that most fluent English speakers know.
 
-Return json: {"prompts": [{"subject": "Japan", "relation": "capital", "target_word": "Tokyo"}]}""",
+4) Target word constraints (make the ending non-trivial):
+   - target_word must be a content word (noun, main verb, or adjective).
+   - target_word must NOT be a function word such as an article, pronoun, auxiliary verb, conjunction, preposition, or verb particle.
+   - Disallow target_word if it is in this set:
+     {a, an, the, and, or, but, nor, so, yet, to, of, for, with, from, by, at, in, on, into, onto, over, under,
+      up, down, out, off, away, back, around, through, as, than, that, this, these, those, who, whom, which, what,
+      when, where, why, how, it, its, he, she, they, we, you, i, me, him, her, them, us, my, your, our, their,
+      is, are, was, were, be, been, being}
+   - Also disallow “light verbs” as target_word:
+     {do, does, did, done, have, has, had, get, got, go, went, make, made, take, took, put, keep, kept, let, set}
 
-        'common_sense': """Generate common sense prompts about everyday objects and concepts. Each prompt should:
-- Provide a relation label: "UsedFor", "MadeOf", or "HasProperty"
-- Provide a simple subject noun (everyday object) and a single-word target_word
-- UsedFor -> target_word is a verb (what the subject is used to do)
-- MadeOf -> target_word is a material noun
-- HasProperty -> target_word is an adjective property
-- Avoid repeating subjects or target words; vary domains (kitchen, outdoors, office, school, home)
+Return ONLY valid JSON in exactly this shape:
+{"prompts":[{"idiom_full":"bite the bullet","target_word":"bullet"}]}
+""",
 
-Return json: {"prompts": [{"subject": "scissors", "relation": "UsedFor", "target_word": "cut"}]}""",
+        'facts': """Generate factual one-word answer prompts. Each prompt must follow ALL rules:
+1) Output fields:
+   - subject: a country or well-known entity (proper noun)
+   - relation: one of {capital, currency, continent, language, element_symbol, largest_planet}
+   - target_word: the single correct one-word answer
 
-        'creative': """Generate creative micro-story cloze prompts. Each prompt should:
-- Provide a 1-2 sentence microstory (without the blank) and a target_word
-- The target word should NOT appear in the microstory
-- The target word should be the single best one-word completion
-- Use common English words (avoid proper nouns or rare terms) for target_word
-- Be imaginative and varied in theme
-- Avoid repeating themes or target words
+2) One-word answer requirement:
+   - target_word must be ONE token with letters only (a–z or A–Z). No spaces. No punctuation. No accents/diacritics.
+   - Avoid items where common answers include punctuation or multiword forms (for example “Washington, D.C.” or “Mexico City”).
 
-Return json: {"prompts": [{"microstory": "The astronaut looked back at Earth, feeling an overwhelming sense of wonder as the stars pulsed quietly.", "target_word": "awe"}]}""",
+3) Exactly one correct answer:
+   - The fact must be unambiguous and have a single dominant expected answer for the given subject + relation.
+   - Avoid disputed cases, multiple official answers, or common alternate spellings (for example “Kyiv/Kiev”).
 
-        'ood': """Generate unusual, out-of-distribution cloze prompts. Each prompt should:
-- Provide a 1-2 sentence context, a style label ("O1" or "O2"), and a target_word
-- The target word should NOT appear in the context
-- Have ONE clear best single-word answer despite the unusual framing
-- Feel surprising or unexpected compared to typical questions
-- Use common English words (avoid proper nouns or rare terms) for target_word
-- Avoid repeating motifs or target words
+4) Common knowledge with controlled difficulty:
+   - Facts must be broadly taught and known by most educated people (not trivia).
+   - Maintain a difficulty mix across the full output:
+     - ~50% easy, ~35% medium, ~15% hard (hard must still be “textbook common”, not obscure).
 
-Return json: {"prompts": [{"context": "According to the ancient ritual, before entering the chamber you must whisper", "style": "O2", "target_word": "silence"}]}""",
+5) Diversity:
+   - Vary relation labels and world regions/domains.
+   - Do not repeat subjects or target_word values across prompts.
+
+Return ONLY valid JSON in exactly this shape:
+{"prompts":[{"subject":"Japan","relation":"capital","target_word":"Tokyo"}]}
+""",
+
+        'common_sense': """Generate common sense prompts about everyday objects and concepts. Each prompt must follow ALL rules:
+1) Output fields:
+   - subject: a simple everyday object noun (optionally a simple compound noun like “paper towel” to remove ambiguity)
+   - relation: one of {UsedFor, MadeOf, HasProperty}
+   - target_word: a single-word answer
+
+2) Relation semantics:
+   - UsedFor: target_word must be a base-form verb describing the single most typical use of the subject.
+   - MadeOf: target_word must be a material noun that is the typical/implied material for the subject.
+     If the base object is commonly made from many materials (for example “cup”), use a compound subject
+     that makes the material obvious (for example “paper cup” -> paper).
+   - HasProperty: target_word must be an objective adjective strongly associated with the subject in everyday context.
+
+3) Exactly one correct answer (minimize ambiguity):
+   - Prefer subjects where one association is dominant and obvious.
+   - Avoid subjects with many equally-plausible uses/materials/properties.
+
+4) Diversity and balance:
+   - Balance relation labels across the full output: ~1/3 UsedFor, ~1/3 MadeOf, ~1/3 HasProperty.
+   - Cover multiple everyday domains (kitchen, outdoors, office, school, home) and keep any single domain ≤30%.
+   - Do not repeat subjects or target_word values across prompts.
+
+5) One-word requirement:
+   - target_word must be one lowercase word with letters only (no spaces, no punctuation).
+
+Return ONLY valid JSON in exactly this shape:
+{"prompts":[{"subject":"scissors","relation":"UsedFor","target_word":"cut"}]}
+""",
+
+        'creative': """You are a creative writing assistant. Your task is to generate short micro-stories that have exactly one best one-word completion.
+
+Requirements:
+1. Create a 2-sentence micro-story for a cloze test
+2. Leave out a word that is strongly implied
+2. Do NOT include the target word anywhere in the micro-story
+3. The target word should be the single most natural completion
+4. Keep prompts engaging and varied in theme
+5. Prompts should be very diverse from each other in terms of content, setting, structure, placement of target word etc. 
+6. The prompt should simply be a micro-story and should not ask the reader a question, or ask the reader to provide the missing word or even imply the existence of a missing word
+
+
+Format your response as json (a single JSON object). Return json only:
+{
+  "prompts": [
+    {"microstory": "Two sentence story WITHOUT the final blank"}
+  ]
+}""",
+
+        'ood': """You are a creative prompt generator specializing in unusual, surreal, and out-of-distribution scenarios.
+
+Your task is to create one-word cloze prompts that are:
+1. Unusual or surreal in framing
+2. Pseudo-technical, ritualistic, or game-like
+3. Should be something which would never be written by humans
+4. Still have a single clear best one-word answer
+5. Engaging and surprising
+6. Prompts should be very diverse from each other in terms of content, setting, structure, placement of target word etc. 
+7. The prompt should simply be a micro-story and should not ask the reader a question, or ask the reader to provide the missing word or even imply the existence of a missing word
+
+
+The prompts should feel "out of distribution" compared to typical factual or common-sense questions.
+
+Format your response as json (a single JSON object). Return json only:
+{
+  "prompts": [
+    {"context": "1-2 sentence context", "style": "O1"}
+  ]
+}""",
     }
     
     SYSTEM_PROMPT = """You are a prompt generator for a research experiment. Generate high-quality cloze-style prompts with single-word answers.

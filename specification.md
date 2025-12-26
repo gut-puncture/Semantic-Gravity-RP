@@ -222,6 +222,10 @@ Negative-instruction prompt template (exact):
 
 ### 3.5 Category-specific construction recipes
 
+#### 3.5.0 Process streamlining (non-functional refactor)
+
+Automate the mechanical steps of: loading static candidates, computing deltas to target candidate counts (1,000 or 1,800 for creative/OOD), preparing batch inputs, submitting batches, and ingesting batch outputs. This refactor must **not** change any filtering, selection, or validation logic; it only removes manual effort and improves repeatability. Preserve full request/response logging and all audit artifacts for transparency.
+
 #### A) Idioms
 
 Data ingestion:

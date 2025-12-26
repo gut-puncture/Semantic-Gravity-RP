@@ -260,6 +260,10 @@ Module inventory:
 - `Wikidata` client using `SPARQLWrapper` with exact queries in spec.
 - `ConceptNet` client for `api.conceptnet.io` edges.
 
+5.1.1 Process streamlining (non-functional refactor):
+- Add a single orchestrator step that loads static candidates, computes deltas to target counts, prepares batch input JSONL files, submits batches, and ingests outputs.
+- Preserve all existing filtering/validation/selection logic and full request/response logging; this refactor is only to remove manual steps.
+
 5.2 Update existing `src/data_mining.py` generators for each category:
 - A Idioms: use existing `data/raw/idioms.csv` (cache), filter:
   - at least 3 tokens
