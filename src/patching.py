@@ -188,12 +188,13 @@ def select_patching_subset(
     seed: Optional[int] = None,
 ) -> List[Dict]:
     """
-    Select stratified subset of prompts for patching.
+    Select balanced subset of high-pressure prompts for patching.
 
-    Uses CONFIG['patching'] for parameters:
-    - prompts_per_bin: target per bin (default 50)
-    - total_subset_size: target total (default 250)
-    - min_failures: minimum failures required (default 30)
+    Strategy (Change 2):
+    1. Filter to high pressure: p0 >= max(0.7, p0.quantile(0.75))
+    2. Split into success (word_present=False) and failure (word_present=True)
+    3. Max-balanced selection: N = 2 * min(S, F)
+    4. Hard halt if S == 0 (patching requires obey cases)
 
     Args:
         output_root: Run root directory
@@ -227,90 +228,83 @@ def select_patching_subset(
     prompts_df = _load_prompts_df(prompts_path, data_root)
     outcome_map = _load_detection_mapping(run_root)
 
-    # Get config
-    patching_cfg = CONFIG.get("patching", {})
-    prompts_per_bin = patching_cfg.get("prompts_per_bin", 50)
-    min_failures = patching_cfg.get("min_failures", 30)
-
     if seed is None:
         seed = CONFIG.get("seeds", {}).get("python", 42)
 
     rng = random.Random(seed)
 
-    # Join with outcomes
-    prompts_df["outcome"] = prompts_df["prompt_id"].apply(
-        lambda pid: "failure" if outcome_map.get(str(pid), False) else "success"
+    # Join with outcomes (only keep prompts with known detection mapping)
+    outcome_keys = set(outcome_map.keys())
+    prompts_df["prompt_id_str"] = prompts_df["prompt_id"].astype(str)
+    prompts_df["outcome_known"] = prompts_df["prompt_id_str"].isin(outcome_keys)
+    prompts_df["outcome"] = prompts_df["prompt_id_str"].apply(
+        lambda pid: "failure" if outcome_map.get(pid, False) else "success"
     )
 
-    # Group by p0_bin
-    bins = prompts_df["p0_bin"].unique()
-    selected = []
-    selected_ids: Set[str] = set()
+    # Step 1: Filter to high pressure
+    # Threshold = max(0.7, p0.quantile(0.75))
+    p0_q75 = prompts_df["p0"].quantile(0.75)
+    threshold = max(0.7, p0_q75)
+    
+    high_pressure_df = prompts_df[prompts_df["p0"] >= threshold].copy()
+    high_pressure_total = len(high_pressure_df)
+    logger.info(
+        "High-pressure filter: threshold=%.3f, %d of %d prompts",
+        threshold, high_pressure_total, len(prompts_df)
+    )
+    
+    high_pressure_df = high_pressure_df[high_pressure_df["outcome_known"]].copy()
+    logger.info(
+        "Outcome-known filter: %d of %d high-pressure prompts",
+        len(high_pressure_df), high_pressure_total
+    )
 
-    for bin_name in sorted(bins):
-        bin_df = prompts_df[prompts_df["p0_bin"] == bin_name]
+    if len(high_pressure_df) == 0:
+        raise RuntimeError(
+            f"No high-pressure prompts found (threshold={threshold:.3f}). "
+            "Cannot proceed with patching."
+        )
 
-        failures = bin_df[bin_df["outcome"] == "failure"].to_dict("records")
-        successes = bin_df[bin_df["outcome"] == "success"].to_dict("records")
+    # Step 2: Split into success/failure
+    successes = high_pressure_df[high_pressure_df["outcome"] == "success"].to_dict("records")
+    failures = high_pressure_df[high_pressure_df["outcome"] == "failure"].to_dict("records")
 
-        rng.shuffle(failures)
-        rng.shuffle(successes)
+    n_success = len(successes)
+    n_failure = len(failures)
 
-        # Select failures first
-        bin_selected = []
-        if len(failures) <= prompts_per_bin:
-            bin_selected.extend(failures)
-        else:
-            bin_selected.extend(failures[:prompts_per_bin])
+    logger.info(
+        "High-pressure pool: %d successes, %d failures", 
+        n_success, n_failure
+    )
 
-        # Fill with successes if needed
-        remaining = prompts_per_bin - len(bin_selected)
-        if remaining > 0:
-            bin_selected.extend(successes[:remaining])
+    # Hard halt if no successes (patching requires obey cases)
+    if n_success == 0:
+        raise RuntimeError(
+            "HARD HALT: No success (obey) cases in high-pressure pool. "
+            "Patching requires obey cases for comparison."
+        )
 
-        for rec in bin_selected:
-            pid = str(rec["prompt_id"])
-            if pid not in selected_ids:
-                selected.append(rec)
-                selected_ids.add(pid)
+    # Step 3: Max-balanced selection
+    # n_failure_selected = min(F, S)
+    # Total N = S + min(F, S) = S + n_failure_selected
+    n_failure_selected = min(n_failure, n_success)
+    
+    # Shuffle for reproducibility
+    rng.shuffle(successes)
+    rng.shuffle(failures)
 
-    # Check min_failures
-    total_failures = sum(1 for r in selected if r["outcome"] == "failure")
+    # Select all successes + balanced failures
+    selected = successes + failures[:n_failure_selected]
+    rng.shuffle(selected)
 
-    if total_failures < min_failures:
-        # Gather remaining unselected failures
-        all_failures = prompts_df[prompts_df["outcome"] == "failure"]
-        extra_failures = [
-            r for r in all_failures.to_dict("records")
-            if str(r["prompt_id"]) not in selected_ids
-        ]
-        rng.shuffle(extra_failures)
+    total_selected = len(selected)
+    total_failures = n_failure_selected
+    total_successes = n_success
 
-        # Swap in for successes
-        success_indices = [
-            i for i, r in enumerate(selected) if r["outcome"] == "success"
-        ]
-        rng.shuffle(success_indices)
-
-        swapped = 0
-        for extra in extra_failures:
-            if total_failures >= min_failures:
-                break
-            if not success_indices:
-                break
-            swap_idx = success_indices.pop()
-            old_pid = str(selected[swap_idx]["prompt_id"])
-            selected_ids.remove(old_pid)
-            selected[swap_idx] = extra
-            selected_ids.add(str(extra["prompt_id"]))
-            total_failures += 1
-            swapped += 1
-
-        if total_failures < min_failures:
-            logger.warning(
-                "Only %d failures available (min required: %d)",
-                total_failures, min_failures
-            )
+    logger.info(
+        "Selected %d prompts: %d successes + %d failures (max-balanced)",
+        total_selected, total_successes, total_failures
+    )
 
     # Prepare output records
     output_records = []
@@ -329,8 +323,8 @@ def select_patching_subset(
         json.dump(output_records, f, indent=2)
 
     logger.info(
-        "Selected %d prompts (%d failures) for patching subset",
-        len(output_records), total_failures
+        "Wrote patching subset to %s (%d prompts)",
+        subset_path, len(output_records)
     )
 
     return output_records

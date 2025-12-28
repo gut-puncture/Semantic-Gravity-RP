@@ -170,14 +170,16 @@ All sources below must be used exactly as specified.
 
 #### 3.3.2 Facts
 
-* Wikidata Query Service SPARQL endpoint.
-* Use a limited set of high-familiarity relations (country->capital, country->currency, etc.) and filter to single-word answers.
-* If Wikidata yields fewer than 1,000 candidates, fill the gap with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (Section 3.5F).
+* Wikidata Query Service SPARQL endpoint + RestCountries cache.
+* Use a limited set of high-familiarity relations and filter to single-word answers:
+  capital, currency, language, continent, occupation, demonym, birth_month (month name), national_sport (if available).
+* If Wikidata/RestCountries yield fewer than 1,000 candidates, fill the gap with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (Section 3.5F).
 
 #### 3.3.3 Common sense
 
-* ConceptNet is expected to fail; generate the full pool via GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback using the UsedFor, MadeOf, and HasProperty relations (see Section 3.5F).
-* If ConceptNet unexpectedly works, it can be used as a supplemental source, but the plan assumes GPT-5.2 provides the entire 1,000-candidate pool.
+* Use OMCS sentences (Open Mind Common Sense) as the primary source; generate cloze prompts by masking a single content word.
+* ConceptNet is expected to fail; if it unexpectedly works, it is supplemental only.
+* If OMCS/ConceptNet yield fewer than 1,000 candidates, fill the gap via GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback using the 10 base relations with labeled variants A–J (see Section 3.5C and 3.5F).
 
 #### 3.3.4 Creative
 
@@ -278,6 +280,18 @@ Prompt templates:
 * F1: `Fill the blank with one word: The capital of <SUBJECT> is ____.`
 * F2: `One-word answer: <SUBJECT>'s capital is ____.`
 * F3: `Complete with one word: The currency of <SUBJECT> is ____.`
+* F4: `One-word answer: An official language of <SUBJECT> is ____.`
+* F5: `Fill the blank (one word): <SUBJECT> is in ____.`
+* F6: `Fill the blank (one word): The highest mountain in <SUBJECT> is ____.`
+* F7: `Fill the blank (one word): The longest river in <SUBJECT> is ____.`
+* F8: `Fill the blank (one word): The largest lake in <SUBJECT> is ____.`
+* F9: `Fill the blank (one word): A national animal of <SUBJECT> is ____.`
+* F10: `Fill the blank (one word): A national flower of <SUBJECT> is ____.`
+* F11: `Fill the blank (one word): A primary export of <SUBJECT> is ____.`
+* F12: `Fill the blank (one word): A one-word occupation associated with <SUBJECT> is ____.`
+* F13: `Fill the blank (one word): A demonym for <SUBJECT> is ____.`
+* F14: `Fill the blank (one word): <SUBJECT> was born in the month of ____.`
+* F15: `Fill the blank (one word): The national sport of <SUBJECT> is ____.`
 
 Example:
 
@@ -288,8 +302,8 @@ Example:
 
 Data ingestion:
 
-1. ConceptNet is expected to fail in this run. Skip API queries and use the GPT-5.2 fallback generation below as the primary source.
-2. If ConceptNet unexpectedly works, you may query relations UsedFor, MadeOf, HasProperty, then:
+1. Use OMCS sentences as the primary source and form cloze prompts by masking a single content word.
+2. If ConceptNet unexpectedly works, you may query relations UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn, then:
 
    * take final segment after `/c/en/`
    * replace underscores with spaces
@@ -300,22 +314,30 @@ Prompt templates:
 * C1 UsedFor: `Fill the blank (one word): You use a <SUBJECT> to ____.`
 * C2 MadeOf: `Fill the blank (one word): A <SUBJECT> is made of ____.`
 * C3 HasProperty: `Fill the blank (one word): A typical <SUBJECT> is ____.`
+* C4 HasPart: `Fill the blank (one word): A <SUBJECT> has a ____.`
+* C5 AtLocation: `Fill the blank (one word): You usually find a <SUBJECT> in the ____.`
+* C6 CapableOf: `Fill the blank (one word): A <SUBJECT> can ____.`
+* C7 UsedBy: `Fill the blank (one word): A <SUBJECT> is used by a ____.`
+* C8 Requires: `Fill the blank (one word): A <SUBJECT> requires ____.`
+* C9 Contains: `Fill the blank (one word): A <SUBJECT> contains ____.`
+* C10 WornOn: `Fill the blank (one word): A <SUBJECT> is worn on the ____.`
 
 Example:
 
 * `Fill the blank (one word): You use scissors to ____.`
 * target_word: `cut`
 
-Primary generation when ConceptNet is down (expected):
+Primary generation for common sense:
 
-1. Use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to generate structured JSON with fields: subject, relation, target_word.
-2. relation must be one of: UsedFor, MadeOf, HasProperty.
-3. Build question_text using the same C1-C3 templates above.
-4. Enforce diversity within fallback prompts:
+1. Use OMCS sentences to form cloze prompts by masking a single content word (target_word must be alphabetic, single word).
+2. If the pool is still short, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to generate structured JSON with fields: subject, relation, target_word, optional relation_label.
+3. relation must be one of: UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn.
+4. Build question_text using the C1–C10 templates above.
+5. Enforce diversity within fallback prompts:
    * no duplicate (question_text, target_word)
    * avoid repeating subjects or target_word
-   * balance relation types across prompts
-5. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before validation; if below target, proceed with the available pool and log the shortfall (no regeneration).
+   * balance relation types across prompts (use labeled variants A–J to spread coverage)
+6. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before validation; if below target, proceed with the available pool and log the shortfall (no regeneration).
 
 #### D) Creative
 
@@ -369,10 +391,10 @@ Deduplicate by `(question_text, target_word)` before validation.
 * Idioms: `{ "idiom_full": "...", "target_word": "..." }`
   * target_word must be the final word of idiom_full
   * format with I1–I3 idiom templates
-* Facts: `{ "subject": "...", "relation": "capital"|"currency", "target_word": "..." }`
-  * format with F1–F3 templates (capital uses F1/F2, currency uses F3)
-* Common sense: `{ "subject": "...", "relation": "UsedFor"|"MadeOf"|"HasProperty", "target_word": "..." }`
-  * format with C1–C3 templates
+* Facts: `{ "subject": "...", "relation": "capital"|"currency"|"language"|"continent"|"occupation"|"demonym"|"birth_month"|"national_sport", "target_word": "..." }`
+  * format with the matching fact templates (capital/currency/language/continent/occupation/demonym/birth_month/national_sport)
+* Common sense: `{ "subject": "...", "relation": "UsedFor"|"MadeOf"|"HasProperty"|"HasPart"|"AtLocation"|"CapableOf"|"UsedBy"|"Requires"|"Contains"|"WornOn", "target_word": "...", "relation_label": "optional" }`
+  * format with C1–C10 templates; relation_label is optional for diversity tracking
 * Creative: `{ "microstory": "...", "target_word": "..." }`
   * format with the creative template; microstory excludes the blank
   * enforce Zipf band (3.5–6.0) on target_word
@@ -383,7 +405,7 @@ Deduplicate by `(question_text, target_word)` before validation.
 ### 3.6 Candidate pool size and selection: 1,000 -> 500
 
 For idioms/facts/common_sense, build a candidate pool of **1,000 prompts** (2× the final size). For creative/ood, build **1,800 prompts** (600 targets × K=3). If a primary source yields fewer than its target pool, fill the gap with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback using the category-specific schema. Deduplicate by `(question_text, target_word)` before validation.
-After all candidates are collected, validate **all candidates in one GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch**. If acceptance yields fewer than 500 prompts for any category, proceed with all accepted prompts and log the shortfall (no regeneration).
+After all candidates are collected, validate **all candidates in one GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch**. If fewer than 500 validated prompts exist in a category, log the shortfall; otherwise fill to 500 with the next-highest S(p) prompts (no regeneration).
 Prompt collection and validation are single-pass and non-iterative. If bin balancing or repetition caps leave fewer than 500 prompts, fill with the next-highest S(p) prompts and log shortfalls.
 
 Final selection keeps **500 prompts per category** by:
@@ -399,11 +421,11 @@ This applies to categories where multiple candidates are generated per target (C
 * Generate K=3 candidates per target to reach 1,800 candidates total.
 * Treat all K candidates as candidates; after validation, select the best accepted prompt per target before gating/bin balancing.
 
-Common sense fallback selection (ConceptNet outage):
+Common sense fallback selection (OMCS/ConceptNet shortfall):
 * Build a candidate pool of 1,000 prompts (or prompts_per_category * 2).
 * Apply GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) acceptance rules.
 * Apply P_sem gating and 5-bin balancing (Section 3.9).
-* Keep diversity constraints for fallback prompts (subjects, targets, relation balance).
+* Keep diversity constraints for fallback prompts (subjects, targets, relation balance using A–J variants).
 
 For final selection (all categories):
 
@@ -427,9 +449,8 @@ Deterministic filters (apply before model validation):
 
 * Reject if target appears in prompt by whole-word match, case-insensitive.
 * Reject if target appears after stripping non-letters from prompt.
-* Reject if creative is not exactly two sentences.
-* Reject if out-of-distribution is not one or two sentences.
 * Reject if target is not strictly alphabetic.
+* Sentence-count checks for creative/OOD are diagnostic only (log counts; do not filter).
 
 For each candidate prompt p with target X, call GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to return strict JSON:
 
@@ -469,7 +490,7 @@ After acceptance, compute baseline pressure P0 (Section 7 below).
 * Do NOT create a global 2,500-word list.
 * Enforce cap: same target_word_normalized can appear in at most 2 categories.
 * If cap violated, discard candidate.
-* If the category drops below 500 after repetition filtering, continue with the remaining prompts and log the shortfall (no regeneration).
+* If the category drops below 500 after repetition filtering, fill from remaining validated prompts by S(p) when possible; if fewer than 500 validated exist, log the shortfall (no regeneration).
 
 ---
 
@@ -494,6 +515,7 @@ After acceptance, compute baseline pressure P0 (Section 7 below).
 * Set `reasoning.effort="none"`, `reasoning.summary="auto"`, `text.verbosity="low"`, `store=true`.
 * Ensure the word "json" appears in the system or user prompt and include a JSON example.
 * If output text is empty, retry with a stricter JSON-only instruction and keep json_object formatting.
+* Do not auto-poll batch status; only fetch status/output when manually requested.
 
 ### 4.3 Rate limiting
 
@@ -595,6 +617,24 @@ Construct synthetic completions and ensure:
 After processing any batch of completions:
 
 * if mapping_error_rate > 0.1% OR mapping_error_count > 0 (stricter recommended), halt notebook and require fixing.
+
+### 5.7.1 Detection mapping outputs
+
+* Write greedy-only mapping for mechanistic metrics to `runs/detection_mapping_greedy.jsonl`.
+* If behavioral samples are mapped, write them separately to `runs/detection_mapping.jsonl` (samples-only or legacy).
+
+### 5.8 Decision step for mechanistic metrics (critical)
+
+Mechanistic measurements (attention, logit lens, FFN/attn contributions) must be computed at the **decision step**:
+
+* Let the first detected occurrence of X start at generated token index **T** (0-based) in the completion.
+* The decision step is **T** (the step whose forward pass produces the distribution for token T).
+* If X is multi-token, use the **first subtoken** only (T is the first subtoken index).
+* If `word_present == false` (obey case), **use decision_step = 0** (first generated token).
+* If `mapping_error == true`, **skip** the entry (do not default to step 0).
+* If X appears multiple times, **use the first occurrence only**.
+
+This rule is mandatory for all mechanistic metrics.
 
 ---
 
@@ -754,7 +794,7 @@ For each layer ℓ, obtain hidden state at answer position and compute logits vi
 Compute probability mass assigned to X variants at that layer.
 Because X may be multi-token, compute per-step for each token in the chosen X token sequence(s):
 
-* For simplicity, analyze the first generated token’s distribution and compute mass over the set of first tokens of sequences in S(X).
+* For simplicity, analyze the **decision step** distribution and compute mass over the set of first tokens of sequences in S(X).
 * Additionally, for the actual greedy output sequence, compute token probabilities across layers along the generated path.
 
 Store layer curves for baseline vs negative instruction.
@@ -771,8 +811,8 @@ Hook into transformer blocks to record:
 * h_in + attn_out
 * h_in + attn_out + ffn_out
   Compute per layer:
-* attn_contrib = P(h_in) - P(h_in+attn_out)
-* ffn_contrib  = P(h_in+attn_out) - P(h_out)
+* attn_contrib = P(h_in+attn_out) - P(h_in)  (positive means attention increases target probability)
+* ffn_contrib  = P(h_in+attn_out+ffn_out) - P(h_in+attn_out)  (positive means FFN increases target probability)
   Compare success vs failure prompts.
 
 ---
@@ -896,7 +936,8 @@ Required files:
 * data/gpt5_validation.jsonl
 * runs/completions_samples.jsonl
 * runs/completions_greedy.jsonl
-* runs/detection_mapping.jsonl
+* runs/detection_mapping_greedy.jsonl
+* runs/detection_mapping.jsonl (optional, samples-only or legacy)
 * runs/psem.csv
 * runs/pressure_bins.csv
 * runs/attention_metrics.csv

@@ -58,6 +58,217 @@ def _resolve_run_root(output_root: Optional[Path]) -> Path:
 
 
 # ============================================================================
+# HELPER: DETECTION MAPPING LOADING
+# ============================================================================
+
+
+def _load_detection_mapping(runs_dir: Path) -> Dict[Tuple[str, str], Dict]:
+    """
+    Load detection_mapping_greedy.jsonl as a lookup dict keyed by (prompt_id, condition).
+    
+    Uses greedy-only detection file to avoid collision with behavioral samples.
+    Falls back to detection_mapping.jsonl if greedy-only not found.
+    Returns empty dict if neither file exists.
+    """
+    # Prefer greedy-only file to avoid collision with behavioral samples
+    greedy_path = runs_dir / "detection_mapping_greedy.jsonl"
+    fallback_path = runs_dir / "detection_mapping.jsonl"
+    
+    mapping_path = greedy_path if greedy_path.exists() else fallback_path
+    
+    result: Dict[Tuple[str, str], Dict] = {}
+    
+    if not mapping_path.exists():
+        logger.warning("No detection mapping found at %s or %s", greedy_path, fallback_path)
+        return result
+    
+    if mapping_path == fallback_path and greedy_path != fallback_path:
+        logger.warning(
+            "Using fallback %s - consider generating greedy-only file", 
+            fallback_path
+        )
+    
+    try:
+        with open(mapping_path, "r") as f:
+            for line in f:
+                if line.strip():
+                    entry = json.loads(line)
+                    key = (str(entry.get("prompt_id", "")), str(entry.get("condition", "")))
+                    result[key] = entry
+    except Exception as e:
+        logger.error("Failed to load detection mapping: %s", e)
+    
+    return result
+
+
+def _get_decision_step(
+    prompt_id: str,
+    condition: str,
+    detection_mapping: Dict[Tuple[str, str], Dict],
+    generated_len: int,
+) -> Tuple[Optional[int], bool, bool]:
+    """
+    Get the decision step for attention/logit lens computation.
+    
+    The decision step is the step (within generated sequence) where the target
+    token is about to be emitted. This is the position for measuring internal
+    signals like attention and logit lens.
+    
+    Args:
+        prompt_id: The prompt identifier
+        condition: "baseline" or "negative"
+        detection_mapping: Loaded detection mapping dict
+        generated_len: Length of generated sequence (for validation)
+    
+    Returns:
+        Tuple of:
+        - decision_step: Index within attentions list (0 = first generated token).
+          For word_present=False (obey case), returns 0.
+          Returns None only if entry missing or mapping_error=True.
+        - word_present: Whether target word was detected in completion
+        - mapping_error: Whether there was a mapping error (skip this entry)
+    
+    Logic:
+    - If target is first generated token: decision_step = 0
+    - If target starts at token T: decision_step = T
+    - If target not present (obey case): decision_step = 0
+    - If mapping_error=True: return (None, word_present, True) to skip
+    """
+    key = (prompt_id, condition)
+    entry = detection_mapping.get(key)
+    
+    if entry is None:
+        # No detection entry - return None to indicate fallback needed
+        return (None, False, False)
+    
+    word_present = entry.get("word_present", False)
+    mapping_error = entry.get("mapping_error", False)
+    
+    # Fix C: If mapping_error, skip this entry entirely
+    if mapping_error:
+        return (None, word_present, True)
+    
+    # Fix B: For word_present=False (obey case), use step 0
+    # We still need to measure metrics for success cases
+    if not word_present:
+        return (0, False, False)
+    
+    pre_target_indices = entry.get("pre_target_token_indices", [])
+    if not pre_target_indices:
+        # Target detected but no valid token span mapping
+        # Fallback to step 0 (first generated step)
+        return (0, True, False)
+    
+    # Use first occurrence's pre-target index (spec: first occurrence only)
+    pre_idx = pre_target_indices[0]
+    
+    if pre_idx is None:
+        # Target is the first generated token - use step 0
+        return (0, True, False)
+    
+    # pre_idx is the index (0-indexed within generated) of token before target
+    # Target first token is at index = pre_idx + 1
+    # decision_step = target token index = pre_idx + 1
+    decision_step = pre_idx + 1
+    
+    # Validate bounds
+    if decision_step < 0 or decision_step >= generated_len:
+        logger.debug(
+            "Decision step %d out of bounds for generated_len %d (prompt=%s)",
+            decision_step, generated_len, prompt_id
+        )
+        # Clamp to valid range
+        decision_step = max(0, min(decision_step, generated_len - 1))
+    
+    return (decision_step, True, False)
+
+
+def _get_metric_target_ids(
+    word_present: bool,
+    exact_first_ids: List[int],
+    detection_entry: Optional[Dict],
+    generated_ids_list: Optional[List[int]],
+    decision_step: int,
+    tokenizer: Any,
+) -> Tuple[List[int], str]:
+    """
+    Compute the metric target set (first token IDs) for logit lens/decomp.
+    
+    Handles context-aware tracking: if target appeared as multi-token split,
+    track the actual prefix token used instead of full exact set.
+    
+    Args:
+        word_present: Whether target was detected
+        exact_first_ids: Precomputed first IDs from token_sequences_for_variants
+        detection_entry: Detection mapping entry for this prompt/condition
+        generated_ids_list: List of generated token IDs
+        decision_step: Computed decision step
+        tokenizer: Tokenizer for encoding variants
+    
+    Returns:
+        Tuple of:
+        - metric_target_ids: List of token IDs to track
+        - metric_target_kind: "exact" or "prefix"
+    """
+    # Default: use exact set
+    if not word_present:
+        return (exact_first_ids, "exact")
+    
+    # Check token span length from detection mapping
+    token_spans = detection_entry.get("token_spans", []) if detection_entry else []
+    if not token_spans:
+        return (exact_first_ids, "exact")
+    
+    # Use first occurrence only
+    first_span = token_spans[0]
+    if not isinstance(first_span, (list, tuple)) or len(first_span) < 2:
+        return (exact_first_ids, "exact")
+    
+    span_start, span_end = first_span[0], first_span[1]
+    span_length = span_end - span_start + 1 if span_end >= span_start else 1
+    
+    # Single-token: use exact set
+    if span_length == 1:
+        return (exact_first_ids, "exact")
+    
+    # Multi-token (split failure): track prefix token
+    # Use span_start from detection mapping (more reliable than decision_step)
+    if not generated_ids_list:
+        return (exact_first_ids, "exact")
+    if span_start is None or span_start < 0 or span_start >= len(generated_ids_list):
+        return (exact_first_ids, "exact")
+    
+    actual_prefix_id = generated_ids_list[span_start]
+    prefix_ids = {actual_prefix_id}
+    
+    # Build prefix variants (capitalize, lowercase, etc.)
+    prefix_text = tokenizer.decode([actual_prefix_id])
+    
+    # Preserve leading space
+    has_leading_space = prefix_text.startswith(" ") or prefix_text.startswith("\u0120")
+    base_text = prefix_text.lstrip()
+    if has_leading_space:
+        space_prefix = prefix_text[:len(prefix_text) - len(base_text)]
+    else:
+        space_prefix = ""
+    
+    # Capitalization variants
+    variants = [
+        base_text,
+        base_text.lower(),
+        base_text.upper(),
+        base_text.capitalize(),
+    ]
+    
+    for variant in variants:
+        full_variant = space_prefix + variant
+        encoded = tokenizer.encode(full_variant, add_special_tokens=False)
+        if len(encoded) == 1:
+            prefix_ids.add(encoded[0])
+    
+    return (sorted(prefix_ids), "prefix")
+
+# ============================================================================
 # HELPER: PROMPT SPAN EXTRACTION (CHARACTER SPANS)
 # ============================================================================
 
@@ -253,11 +464,15 @@ def compute_attention_metrics(
     """
     Compute attention-based metrics from mechanistic traces.
 
-    Metrics computed per layer/head for the first generated token:
+    Metrics computed per layer/head at the TARGET DECISION STEP
+    (the step where the target token is about to be emitted):
     - IAR: Instruction Attention Ratio
     - NF: Negation Focus (within instruction span)
     - TMF: Target Mention Focus (within instruction span)
     - PI: Polarity Index (TMF - NF)
+
+    NOTE: Uses detection_mapping.jsonl to determine the correct decision step.
+    If target was not detected, metrics are skipped for that completion.
 
     Args:
         output_root: Run root directory. If None, auto-selects latest.
@@ -293,6 +508,14 @@ def compute_attention_metrics(
     if limit:
         prompts_df = prompts_df.head(limit)
 
+    # Load detection mapping for decision step lookup
+    detection_mapping = _load_detection_mapping(runs_dir)
+    if not detection_mapping:
+        logger.warning(
+            "Detection mapping not found - falling back to step 0 for all. "
+            "Run detection first for correct measurement."
+        )
+
     # Get tokenizer
     wrapper = ModelWrapper.get_instance()
     if wrapper.tokenizer is None:
@@ -300,6 +523,8 @@ def compute_attention_metrics(
     tokenizer = wrapper.tokenizer
 
     rows = []
+    skipped_mapping_error = 0
+    skipped_no_entry = 0
 
     for _, row in prompts_df.iterrows():
         prompt_id = str(row["prompt_id"])
@@ -339,6 +564,37 @@ def compute_attention_metrics(
                 input_ids_list = list(input_ids)
 
             context_len = len(input_ids_list)
+            generated_len = len(attentions)
+
+            # Get decision step from detection mapping
+            decision_step, word_present, mapping_error = _get_decision_step(
+                prompt_id, condition, detection_mapping, generated_len
+            )
+
+            # Fix C: Skip entries with mapping_error
+            if mapping_error:
+                skipped_mapping_error += 1
+                continue
+
+            # If no detection entry exists (decision_step is None and not mapping_error),
+            # use fallback step 0
+            if decision_step is None:
+                if not detection_mapping:
+                    # No detection mapping at all - use step 0 as fallback
+                    decision_step = 0
+                    word_present = False
+                else:
+                    # Entry missing for this prompt - skip
+                    skipped_no_entry += 1
+                    continue
+
+            # Validate step is in bounds
+            if decision_step >= len(attentions):
+                logger.debug(
+                    "Decision step %d >= len(attentions) %d for %s_%s, using last step",
+                    decision_step, len(attentions), prompt_id, condition
+                )
+                decision_step = len(attentions) - 1
 
             # Build prompt and get spans
             prompt_text = build_prompt(question_text, target_word, condition)
@@ -352,24 +608,25 @@ def compute_attention_metrics(
             target_tokens = _map_char_span_to_token_indices(offsets, char_spans["target_mention_span"])
             question_tokens = _map_char_span_to_token_indices(offsets, char_spans["question_span"])
 
-            # Step 0 attentions (first generated token)
-            step0_attn = attentions[0]  # Tuple of layer tensors
+            # Use decision step attentions (NOT step 0)
+            step_attn = attentions[decision_step]  # Tuple of layer tensors
 
-            num_layers = len(step0_attn)
+            num_layers = len(step_attn)
             all_head_metrics = []
 
-            for layer_idx, layer_attn in enumerate(step0_attn):
+            for layer_idx, layer_attn in enumerate(step_attn):
                 # layer_attn shape: [1, num_heads, seq_len, seq_len]
-                # For generated token, we look at last position attending to context
+                # For the decision step, we look at the generated position attending to context
                 if layer_attn.dim() < 4:
                     continue
 
                 num_heads = layer_attn.shape[1]
                 seq_len = layer_attn.shape[2]
-                gen_pos = seq_len - 1  # Last position = generated token
+                # The position attending = context_len + decision_step (current position in full seq)
+                gen_pos = seq_len - 1  # Last position in this step's attention
 
                 for head_idx in range(num_heads):
-                    # Attention weights from gen_pos to all positions
+                    # Attention weights from gen_pos to all context positions
                     attn_weights = layer_attn[0, head_idx, gen_pos, :context_len].float()
 
                     # Compute mass for each span
@@ -395,6 +652,8 @@ def compute_attention_metrics(
                     head_row = {
                         "prompt_id": prompt_id,
                         "condition": condition,
+                        "decision_step": decision_step,  # Added for visibility
+                        "word_present": word_present,
                         "layer": layer_idx,
                         "head": head_idx,
                         "iar": iar,
@@ -417,6 +676,8 @@ def compute_attention_metrics(
                     rows.append({
                         "prompt_id": prompt_id,
                         "condition": condition,
+                        "decision_step": decision_step,
+                        "word_present": word_present,
                         "layer": layer_idx,
                         "head": -1,
                         "iar": mean_iar,
@@ -436,6 +697,8 @@ def compute_attention_metrics(
                 rows.append({
                     "prompt_id": prompt_id,
                     "condition": condition,
+                    "decision_step": decision_step,
+                    "word_present": word_present,
                     "layer": -1,
                     "head": -1,
                     "iar": global_iar,
@@ -444,6 +707,11 @@ def compute_attention_metrics(
                     "pi": global_pi,
                     "aggregate_flag": "global_mean",
                 })
+
+    if skipped_mapping_error > 0:
+        logger.info("Skipped %d completions due to mapping_error", skipped_mapping_error)
+    if skipped_no_entry > 0:
+        logger.info("Skipped %d completions with missing detection entries", skipped_no_entry)
 
     # Write output
     runs_dir.mkdir(parents=True, exist_ok=True)
@@ -466,12 +734,16 @@ def compute_logit_lens_and_decomp(
     limit: Optional[int] = None,
 ) -> Dict[str, Path]:
     """
-    Compute logit lens and attention/FFN decomposition via forward pass.
+    Compute logit lens and attention/FFN decomposition at TARGET DECISION STEP.
 
-    For each prompt/condition:
-    - Runs forward pass with hooks to capture layer activations
+    For each prompt/condition where target was detected:
+    - Builds extended prefix: prompt + generated tokens up to (not including) target
+    - Runs forward pass with hooks to capture layer activations at decision step
     - Computes p_sem at each layer (logit lens)
     - Decomposes into attention and FFN contributions
+
+    NOTE: Uses detection_mapping.jsonl and completion traces to determine correct step.
+    If target was not detected, skips the entry.
 
     Args:
         output_root: Run root directory. If None, auto-selects latest.
@@ -507,6 +779,14 @@ def compute_logit_lens_and_decomp(
     if limit:
         prompts_df = prompts_df.head(limit)
 
+    # Load detection mapping for decision step lookup
+    detection_mapping = _load_detection_mapping(runs_dir)
+    if not detection_mapping:
+        logger.warning(
+            "Detection mapping not found - will compute at prompt-end (last token). "
+            "Run detection first for correct measurement."
+        )
+
     # Load model/tokenizer
     wrapper = ModelWrapper.get_instance()
     if not wrapper.is_loaded:
@@ -534,38 +814,108 @@ def compute_logit_lens_and_decomp(
     # Data collection
     logit_lens_rows = []
     decomp_rows = []
+    skipped_mapping_error = 0
+    skipped_no_entry = 0
+    skipped_missing_trace = 0
 
     for _, row in prompts_df.iterrows():
         prompt_id = str(row["prompt_id"])
         question_text = row["question_text"]
         target_word = row["target_word"]
 
-        # Get first token IDs for target
-        seqs = token_sequences_for_variants(target_word, tokenizer)
-        first_ids = sorted({seq[0] for seq in seqs if seq})
+    # Get first token IDs for target (for logit lens p_sem calculation)
+    # Exact set = only single-token variants (avoid ambiguous prefixes)
+    seqs = token_sequences_for_variants(target_word, tokenizer)
+    first_ids = sorted({seq[0] for seq in seqs if len(seq) == 1})
 
         for condition in ["baseline", "negative"]:
-            prompt_text = build_prompt(question_text, target_word, condition)
-
-            # Tokenize (consistent with generation)
-            add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
-            inputs = tokenizer(prompt_text, return_tensors="pt", add_special_tokens=add_special_tokens)
-            input_ids = inputs["input_ids"].to(model.device)
-
-            # Try to get greedy_token_id from trace
-            greedy_token_id = None
             trace_path = trace_dir / f"{prompt_id}_{condition}.pt"
+
+            # Load trace to get generated tokens
+            generated_ids_list = None
+            greedy_token_id = None
             if trace_path.exists():
                 try:
                     trace = torch.load(trace_path, map_location="cpu")
                     gen_ids = trace.get("generated_ids")
                     if gen_ids is not None:
-                        if hasattr(gen_ids, "item"):
-                            greedy_token_id = gen_ids[0][0].item() if gen_ids.dim() > 1 else gen_ids[0].item()
-                        elif hasattr(gen_ids, "__getitem__"):
-                            greedy_token_id = int(gen_ids[0][0]) if hasattr(gen_ids[0], "__getitem__") else int(gen_ids[0])
-                except Exception:
-                    pass
+                        if hasattr(gen_ids, "tolist"):
+                            if gen_ids.dim() > 1:
+                                generated_ids_list = gen_ids[0].tolist()
+                            else:
+                                generated_ids_list = gen_ids.tolist()
+                        elif isinstance(gen_ids, list):
+                            generated_ids_list = gen_ids
+                        if generated_ids_list:
+                            greedy_token_id = generated_ids_list[0]
+                except Exception as e:
+                    logger.debug("Failed to load trace for %s_%s: %s", prompt_id, condition, e)
+
+            # Get decision step from detection mapping
+            gen_len = len(generated_ids_list) if generated_ids_list else 1
+            decision_step, word_present, mapping_error = _get_decision_step(
+                prompt_id, condition, detection_mapping, gen_len
+            )
+
+            # Fix C: Skip entries with mapping_error
+            if mapping_error:
+                skipped_mapping_error += 1
+                continue
+
+            # If no detection entry exists, use fallback or skip
+            if decision_step is None:
+                if not detection_mapping:
+                    decision_step = 0
+                    word_present = False
+                else:
+                    skipped_no_entry += 1
+                    continue
+
+            # Fix F: If decision_step > 0 but we don't have enough generated tokens, we cannot
+            # construct the correct prefix - skip this entry rather than computing at wrong position
+            # Note: We need generated_ids_list[:decision_step] for prefix AND generated_ids_list[decision_step] for greedy token
+            if decision_step > 0 and (not generated_ids_list or len(generated_ids_list) <= decision_step):
+                logger.warning(
+                    "Skipping %s_%s: decision_step=%d but only %d generated tokens available",
+                    prompt_id, condition, decision_step, 
+                    len(generated_ids_list) if generated_ids_list else 0
+                )
+                skipped_missing_trace += 1
+                continue
+
+            # Build extended prefix: prompt tokens + generated tokens up to decision step
+            prompt_text = build_prompt(question_text, target_word, condition)
+            add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
+            prompt_inputs = tokenizer(prompt_text, return_tensors="pt", add_special_tokens=add_special_tokens)
+            prompt_ids = prompt_inputs["input_ids"][0].tolist()
+
+            # decision_step is the index of the token being generated
+            # We need prefix = prompt + generated[0:decision_step]
+            if decision_step > 0:
+                prefix_ids = prompt_ids + generated_ids_list[:decision_step]
+                # Fix E: greedy_token_id should be the token AT decision_step (not token 0)
+                greedy_token_id = generated_ids_list[decision_step]
+            else:
+                # decision_step = 0 means first token, so prefix = just prompt
+                prefix_ids = prompt_ids
+                # greedy_token_id is already set to generated_ids_list[0] or will be computed
+
+            # Context-aware metric target set (Change 1)
+            # Get detection entry for token span info
+            detection_key = (prompt_id, condition)
+            detection_entry = detection_mapping.get(detection_key)
+            
+            metric_target_ids, metric_target_kind = _get_metric_target_ids(
+                word_present=word_present,
+                exact_first_ids=first_ids,
+                detection_entry=detection_entry,
+                generated_ids_list=generated_ids_list,
+                decision_step=decision_step,
+                tokenizer=tokenizer,
+            )
+
+            input_ids = torch.tensor([prefix_ids], dtype=torch.long, device=model.device)
+            decision_position = len(prefix_ids) - 1  # Last position in extended prefix
 
             # Storage for hook captures
             h_in_storage = {}
@@ -621,7 +971,7 @@ def compute_logit_lens_and_decomp(
 
                     hooks.append(ffn_module.register_forward_hook(make_ffn_hook(layer_idx)))
 
-            # Forward pass
+            # Forward pass on extended prefix
             try:
                 with torch.inference_mode():
                     outputs = model(
@@ -633,16 +983,17 @@ def compute_logit_lens_and_decomp(
                 hidden_states = outputs.hidden_states  # (num_layers+1) tuple
                 final_logits = outputs.logits
 
-                # Determine greedy_token_id from final logits if not from trace
+                # Determine greedy_token_id at decision position
                 if greedy_token_id is None:
                     greedy_token_id = final_logits[0, -1, :].argmax().item()
 
                 greedy_token = tokenizer.decode([greedy_token_id])
 
-                # Process each layer
+                # Process each layer at the decision position (last of extended prefix)
                 for layer_idx in range(num_layers):
                     # hidden_states[layer_idx+1] is output of layer_idx
-                    hidden = hidden_states[layer_idx + 1][:, -1, :]  # Last position
+                    # Use decision_position (last position in extended prefix)
+                    hidden = hidden_states[layer_idx + 1][:, -1, :]
 
                     # Apply final norm if available
                     if final_norm is not None:
@@ -654,9 +1005,9 @@ def compute_logit_lens_and_decomp(
                     logits = lm_head(normed)
                     probs = torch.softmax(logits, dim=-1)
 
-                    # p_sem_first_token
-                    if first_ids:
-                        p_sem_first = probs[0, list(first_ids)].sum().item()
+                    # p_sem_first_token (using context-aware metric_target_ids)
+                    if metric_target_ids:
+                        p_sem_first = probs[0, list(metric_target_ids)].sum().item()
                     else:
                         p_sem_first = 0.0
 
@@ -665,19 +1016,22 @@ def compute_logit_lens_and_decomp(
                     logit_lens_rows.append({
                         "prompt_id": prompt_id,
                         "condition": condition,
+                        "decision_step": decision_step,
+                        "word_present": word_present,
+                        "metric_target_kind": metric_target_kind,
                         "layer": layer_idx,
                         "p_sem_first_token": p_sem_first,
                         "greedy_token": greedy_token,
                         "greedy_token_prob": greedy_prob,
                     })
 
-                    # Decomposition
+                    # Decomposition at decision position
                     h_in = h_in_storage.get(layer_idx)
                     attn_out = attn_out_storage.get(layer_idx)
                     ffn_out = ffn_out_storage.get(layer_idx)
 
                     if h_in is not None and attn_out is not None and ffn_out is not None:
-                        # Extract last position
+                        # Extract decision position (last position)
                         h = h_in[:, -1, :]
                         a = attn_out[:, -1, :]
                         f = ffn_out[:, -1, :]
@@ -689,20 +1043,26 @@ def compute_logit_lens_and_decomp(
                                 n = state
                             lg = lm_head(n)
                             pr = torch.softmax(lg, dim=-1)
-                            if first_ids:
-                                return pr[0, list(first_ids)].sum().item()
+                            if metric_target_ids:
+                                return pr[0, list(metric_target_ids)].sum().item()
                             return 0.0
 
                         p_h_in = compute_p(h)
                         p_h_plus_attn = compute_p(h + a)
                         p_h_out = compute_p(h + a + f)
 
-                        attn_contrib = p_h_in - p_h_plus_attn
-                        ffn_contrib = p_h_plus_attn - p_h_out
+                        # Fix D: Positive contribution means the module INCREASED target probability
+                        # attn adds to h_in, so attn_contrib = p_after_attn - p_before_attn
+                        # ffn adds to h+a, so ffn_contrib = p_after_ffn - p_before_ffn
+                        attn_contrib = p_h_plus_attn - p_h_in
+                        ffn_contrib = p_h_out - p_h_plus_attn
 
                         decomp_rows.append({
                             "prompt_id": prompt_id,
                             "condition": condition,
+                            "decision_step": decision_step,
+                            "word_present": word_present,
+                            "metric_target_kind": metric_target_kind,
                             "layer": layer_idx,
                             "p_h_in": p_h_in,
                             "p_h_in_plus_attn": p_h_plus_attn,
@@ -723,6 +1083,13 @@ def compute_logit_lens_and_decomp(
 
                 # Clear cache
                 torch.cuda.empty_cache()
+
+    if skipped_mapping_error > 0:
+        logger.info("Skipped %d completions due to mapping_error", skipped_mapping_error)
+    if skipped_no_entry > 0:
+        logger.info("Skipped %d completions with missing detection entries", skipped_no_entry)
+    if skipped_missing_trace > 0:
+        logger.info("Skipped %d completions due to missing trace data", skipped_missing_trace)
 
     # Write outputs
     runs_dir.mkdir(parents=True, exist_ok=True)

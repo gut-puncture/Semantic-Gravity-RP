@@ -26,10 +26,10 @@ logger = logging.getLogger(__name__)
 
 # Import from local modules
 try:
-    from .api_clients import WikidataClient, ConceptNetClient, OpenAIClient, download_idioms_csv
+    from .api_clients import WikidataClient, RestCountriesClient, ConceptNetClient, OpenAIClient, download_idioms_csv
     from .config import PROMPT_TEMPLATES, CONFIG, get_base_paths
 except ImportError:
-    from api_clients import WikidataClient, ConceptNetClient, OpenAIClient, download_idioms_csv
+    from api_clients import WikidataClient, RestCountriesClient, ConceptNetClient, OpenAIClient, download_idioms_csv
     from config import PROMPT_TEMPLATES, CONFIG, get_base_paths
 
 
@@ -153,6 +153,20 @@ def _infer_common_sense_relation(question: str) -> Optional[str]:
     if not question:
         return None
     q = question.lower()
+    if "used by" in q:
+        return "UsedBy"
+    if "worn on" in q:
+        return "WornOn"
+    if "requires" in q:
+        return "Requires"
+    if "contains" in q:
+        return "Contains"
+    if "has a" in q:
+        return "HasPart"
+    if "find a" in q and " in the " in q:
+        return "AtLocation"
+    if " can " in q:
+        return "CapableOf"
     if "made of" in q:
         return "MadeOf"
     if "use a" in q or "use an" in q or "use the" in q:
@@ -171,6 +185,13 @@ def _format_common_sense_question(subject: str, relation: str) -> Optional[Tuple
         "UsedFor": ("C1_UsedFor", "Fill the blank (one word): You use a {subject} to ____."),
         "MadeOf": ("C2_MadeOf", "Fill the blank (one word): A {subject} is made of ____."),
         "HasProperty": ("C3_HasProperty", "Fill the blank (one word): A typical {subject} is ____."),
+        "HasPart": ("C4_HasPart", "Fill the blank (one word): A {subject} has a ____."),
+        "AtLocation": ("C5_AtLocation", "Fill the blank (one word): You usually find a {subject} in the ____."),
+        "CapableOf": ("C6_CapableOf", "Fill the blank (one word): A {subject} can ____."),
+        "UsedBy": ("C7_UsedBy", "Fill the blank (one word): A {subject} is used by a ____."),
+        "Requires": ("C8_Requires", "Fill the blank (one word): A {subject} requires ____."),
+        "Contains": ("C9_Contains", "Fill the blank (one word): A {subject} contains ____."),
+        "WornOn": ("C10_WornOn", "Fill the blank (one word): A {subject} is worn on the ____."),
     }
     if relation not in relation_map:
         return None
@@ -193,6 +214,20 @@ def _extract_subject_from_question(question: str, relation: Optional[str]) -> Op
         patterns.append(r"(?:a|an|the) ([a-z ]+) is made of")
     if relation in (None, "HasProperty"):
         patterns.append(r"typical ([a-z ]+) is")
+    if relation in (None, "HasPart"):
+        patterns.append(r"(?:a|an|the) ([a-z ]+) has a")
+    if relation in (None, "AtLocation"):
+        patterns.append(r"find (?:a|an|the) ([a-z ]+) in the")
+    if relation in (None, "CapableOf"):
+        patterns.append(r"(?:a|an|the) ([a-z ]+) can")
+    if relation in (None, "UsedBy"):
+        patterns.append(r"(?:a|an|the) ([a-z ]+) is used by")
+    if relation in (None, "Requires"):
+        patterns.append(r"(?:a|an|the) ([a-z ]+) requires")
+    if relation in (None, "Contains"):
+        patterns.append(r"(?:a|an|the) ([a-z ]+) contains")
+    if relation in (None, "WornOn"):
+        patterns.append(r"(?:a|an|the) ([a-z ]+) is worn on")
     for pattern in patterns:
         match = re.search(pattern, q)
         if match:
@@ -208,6 +243,30 @@ def _normalize_fact_relation(relation: str) -> Optional[str]:
         return "capital"
     if "currency" in rel:
         return "currency"
+    if "language" in rel:
+        return "language"
+    if "continent" in rel:
+        return "continent"
+    if "mountain" in rel:
+        return "highest_mountain"
+    if "river" in rel:
+        return "longest_river"
+    if "lake" in rel:
+        return "largest_lake"
+    if "animal" in rel:
+        return "national_animal"
+    if "flower" in rel:
+        return "national_flower"
+    if "export" in rel:
+        return "primary_export"
+    if "occupation" in rel or "job" in rel:
+        return "occupation"
+    if "demonym" in rel or "nationality" in rel:
+        return "demonym"
+    if "birth month" in rel or "born month" in rel or "birthmonth" in rel:
+        return "birth_month"
+    if "national sport" in rel or "sport" in rel:
+        return "national_sport"
     return None
 
 
@@ -513,33 +572,232 @@ class IdiomGenerator:
 
 class FactGenerator:
     """
-    Generate factual prompts from Wikidata.
+    Generate factual prompts from Wikidata + Rest Countries.
     
     Relations:
     - Country -> Capital
     - Country -> Currency
+    - Country -> Language
+    - Country -> Continent
+    - Person -> Occupation
+    - Person -> Demonym (citizenship)
+    - Person -> Birth month
+    - Country -> National sport
     """
     
     def __init__(self):
         self.client = WikidataClient()
+        self.rest_client = RestCountriesClient()
         self.templates = PROMPT_TEMPLATES.get('facts', {})
-        self.capitals: List[Tuple[str, str]] = []
-        self.currencies: List[Tuple[str, str]] = []
+        self.relations: Dict[str, List[Dict[str, str]]] = {}
     
-    def load_data(self) -> Tuple[int, int]:
+    def load_data(self) -> Dict[str, int]:
         """
-        Load data from Wikidata.
+        Load data from Wikidata + Rest Countries.
         
         Returns:
-            Tuple of (num_capitals, num_currencies)
+            Dict of relation -> count
         """
+        self.relations = {
+            "capital": [],
+            "currency": [],
+            "language": [],
+            "continent": [],
+            "occupation": [],
+            "demonym": [],
+            "birth_month": [],
+            "national_sport": [],
+        }
+        seen: Dict[str, set] = {key: set() for key in self.relations}
+
         logger.info("Fetching capitals from Wikidata...")
-        self.capitals = self.client.get_capitals()
+        try:
+            capitals = self.client.get_capitals()
+        except Exception as e:
+            logger.warning("Wikidata capitals query failed: %s", e)
+            capitals = []
+        for country, capital in capitals:
+            key = (country.lower(), capital.lower())
+            if key in seen["capital"]:
+                continue
+            seen["capital"].add(key)
+            self.relations["capital"].append({
+                "subject": country,
+                "target": capital,
+                "source": "wikidata",
+            })
         
         logger.info("Fetching currencies from Wikidata...")
-        self.currencies = self.client.get_currencies()
-        
-        return len(self.capitals), len(self.currencies)
+        try:
+            currencies = self.client.get_currencies()
+        except Exception as e:
+            logger.warning("Wikidata currencies query failed: %s", e)
+            currencies = []
+        for country, currency in currencies:
+            key = (country.lower(), currency.lower())
+            if key in seen["currency"]:
+                continue
+            seen["currency"].add(key)
+            self.relations["currency"].append({
+                "subject": country,
+                "target": currency,
+                "source": "wikidata",
+            })
+
+        logger.info("Fetching occupations from Wikidata...")
+        try:
+            occupations = self.client.get_occupations()
+        except Exception as e:
+            logger.warning("Wikidata occupations query failed: %s", e)
+            occupations = []
+        for person, occupation in occupations:
+            key = (person.lower(), occupation.lower())
+            if key in seen["occupation"]:
+                continue
+            seen["occupation"].add(key)
+            self.relations["occupation"].append({
+                "subject": person,
+                "target": occupation,
+                "source": "wikidata",
+            })
+
+        logger.info("Fetching demonyms from Wikidata...")
+        try:
+            demonyms = self.client.get_demonyms()
+        except Exception as e:
+            logger.warning("Wikidata demonyms query failed: %s", e)
+            demonyms = []
+        for person, demonym in demonyms:
+            key = (person.lower(), demonym.lower())
+            if key in seen["demonym"]:
+                continue
+            seen["demonym"].add(key)
+            self.relations["demonym"].append({
+                "subject": person,
+                "target": demonym,
+                "source": "wikidata",
+            })
+
+        logger.info("Fetching birth months from Wikidata...")
+        try:
+            birth_months = self.client.get_birth_months()
+        except Exception as e:
+            logger.warning("Wikidata birth month query failed: %s", e)
+            birth_months = []
+        for person, month in birth_months:
+            key = (person.lower(), month.lower())
+            if key in seen["birth_month"]:
+                continue
+            seen["birth_month"].add(key)
+            self.relations["birth_month"].append({
+                "subject": person,
+                "target": month,
+                "source": "wikidata",
+            })
+
+        logger.info("Fetching national sports from Wikidata...")
+        try:
+            sports = self.client.get_national_sports()
+        except Exception as e:
+            logger.warning("Wikidata national sport query failed: %s", e)
+            sports = []
+        for country, sport in sports:
+            key = (country.lower(), sport.lower())
+            if key in seen["national_sport"]:
+                continue
+            seen["national_sport"].add(key)
+            self.relations["national_sport"].append({
+                "subject": country,
+                "target": sport,
+                "source": "wikidata",
+            })
+
+        try:
+            base_paths = get_base_paths()
+            cache_path = base_paths["data_root"] / "raw" / "restcountries.json"
+        except Exception:
+            cache_path = None
+
+        logger.info("Fetching country metadata from Rest Countries...")
+        records = self.rest_client.get_country_records(cache_path)
+        for record in records:
+            name = record.get("name") or ""
+            if not name:
+                continue
+
+            capitals_rc = [
+                c.strip() for c in record.get("capitals", [])
+                if isinstance(c, str) and _is_valid_target_word(c.strip())
+            ]
+            if len(capitals_rc) == 1:
+                capital = capitals_rc[0]
+                key = (name.lower(), capital.lower())
+                if key not in seen["capital"]:
+                    seen["capital"].add(key)
+                    self.relations["capital"].append({
+                        "subject": name,
+                        "target": capital,
+                        "source": "restcountries",
+                    })
+
+            currency_names: List[str] = []
+            currencies_rc = record.get("currencies") or {}
+            if isinstance(currencies_rc, dict):
+                for details in currencies_rc.values():
+                    if isinstance(details, dict):
+                        currency_name = details.get("name")
+                        if isinstance(currency_name, str):
+                            currency_names.append(currency_name.strip())
+            currency_names = [
+                c for c in currency_names if _is_valid_target_word(c)
+            ]
+            if len(currency_names) == 1:
+                currency = currency_names[0]
+                key = (name.lower(), currency.lower())
+                if key not in seen["currency"]:
+                    seen["currency"].add(key)
+                    self.relations["currency"].append({
+                        "subject": name,
+                        "target": currency,
+                        "source": "restcountries",
+                    })
+
+            languages_rc = record.get("languages") or {}
+            language_names = []
+            if isinstance(languages_rc, dict):
+                for lang in languages_rc.values():
+                    if isinstance(lang, str):
+                        language_names.append(lang.strip())
+            language_names = [
+                l for l in language_names if _is_valid_target_word(l)
+            ]
+            if len(language_names) == 1:
+                language = language_names[0]
+                key = (name.lower(), language.lower())
+                if key not in seen["language"]:
+                    seen["language"].add(key)
+                    self.relations["language"].append({
+                        "subject": name,
+                        "target": language,
+                        "source": "restcountries",
+                    })
+
+            continents_rc = [
+                c.strip() for c in record.get("continents", [])
+                if isinstance(c, str) and _is_valid_target_word(c.strip())
+            ]
+            if len(continents_rc) == 1:
+                continent = continents_rc[0]
+                key = (name.lower(), continent.lower())
+                if key not in seen["continent"]:
+                    seen["continent"].add(key)
+                    self.relations["continent"].append({
+                        "subject": name,
+                        "target": continent,
+                        "source": "restcountries",
+                    })
+
+        return {rel: len(items) for rel, items in self.relations.items()}
     
     def generate_candidates(self, n: int = 500) -> List[CandidatePrompt]:
         """
@@ -551,81 +809,65 @@ class FactGenerator:
         Returns:
             List of CandidatePrompt objects
         """
-        if not self.capitals and not self.currencies:
+        if not self.relations:
             self.load_data()
         
         candidates = []
         
-        # Split evenly between capitals and currencies
-        n_capitals = n // 2
-        n_currencies = n - n_capitals
-        
-        # Generate capital prompts
-        capital_sample = random.sample(
-            self.capitals, 
-            min(n_capitals, len(self.capitals))
-        )
-        
-        for country, capital in capital_sample:
-            # Validate target word (single word, alphabetic, no leakage)
-            if not _is_valid_target_word(capital):
-                logger.debug(f"Skipping invalid capital target: {capital}")
+        relation_templates = {
+            "capital": (["F1", "F2"], 'Fill the blank with one word: The capital of {subject} is ____.'),
+            "currency": (["F3"], 'Complete with one word: The currency of {subject} is ____.'),
+            "language": (["F4"], 'One-word answer: An official language of {subject} is ____.'),
+            "continent": (["F5"], 'Fill the blank (one word): {subject} is in ____.'),
+            "occupation": (["F12"], 'Fill the blank (one word): A one-word occupation associated with {subject} is ____.'),
+            "demonym": (["F13"], 'Fill the blank (one word): A demonym for {subject} is ____.'),
+            "birth_month": (["F14"], 'Fill the blank (one word): {subject} was born in the month of ____.'),
+            "national_sport": (["F15"], 'Fill the blank (one word): The national sport of {subject} is ____.'),
+        }
+
+        available_relations = [rel for rel, items in self.relations.items() if items]
+        if not available_relations:
+            logger.warning("No fact relations available from Wikidata or Rest Countries.")
+            return candidates
+
+        per_relation = n // len(available_relations)
+        remainder = n % len(available_relations)
+
+        for idx, relation in enumerate(available_relations):
+            items = self.relations.get(relation, [])
+            if not items:
                 continue
-            
-            # Pick template (F1 or F2 for capitals)
-            style_id = random.choice(['F1', 'F2'])
-            template = self.templates.get(style_id, 
-                'Fill the blank with one word: The capital of {subject} is ____.')
-            
-            question = template.format(subject=country)
-            
-            # Check for target leakage into question
-            if _target_leaks_into_question(capital, question):
-                logger.debug(f"Skipping leaking capital target: {capital} in {question}")
-                continue
-            
-            candidates.append(CandidatePrompt(
-                category="facts",
-                question_text=question,
-                target_word=capital,
-                target_word_normalized=capital.lower(),
-                prompt_style_id=style_id,
-                source_trace=f"wikidata:capital:{country}",
-                raw_data={"country": country, "capital": capital},
-            ))
-        
-        # Generate currency prompts
-        currency_sample = random.sample(
-            self.currencies,
-            min(n_currencies, len(self.currencies))
-        )
-        
-        for country, currency in currency_sample:
-            # Validate target word (single word, alphabetic, no leakage)
-            if not _is_valid_target_word(currency):
-                logger.debug(f"Skipping invalid currency target: {currency}")
-                continue
-            
-            style_id = 'F3'
-            template = self.templates.get(style_id,
-                'Complete with one word: The currency of {subject} is ____.')
-            
-            question = template.format(subject=country)
-            
-            # Check for target leakage into question
-            if _target_leaks_into_question(currency, question):
-                logger.debug(f"Skipping leaking currency target: {currency} in {question}")
-                continue
-            
-            candidates.append(CandidatePrompt(
-                category="facts",
-                question_text=question,
-                target_word=currency,
-                target_word_normalized=currency.lower(),
-                prompt_style_id=style_id,
-                source_trace=f"wikidata:currency:{country}",
-                raw_data={"country": country, "currency": currency},
-            ))
+            target_count = per_relation + (1 if idx < remainder else 0)
+            sample = random.sample(items, min(target_count, len(items)))
+            style_ids, default_template = relation_templates.get(relation, (["F1"], 'Fill the blank with one word: {subject} is ____.'))
+            style_idx = 0
+
+            for item in sample:
+                country = _normalize_subject(item.get("subject", ""))
+                target = (item.get("target", "") or "").strip()
+                source = item.get("source", "unknown")
+                if not country or not _is_valid_target_word(target):
+                    continue
+                style_id = style_ids[style_idx % len(style_ids)]
+                style_idx += 1
+                template = self.templates.get(style_id, default_template)
+                question = template.format(subject=country)
+                if _target_leaks_into_question(target, question):
+                    continue
+                candidates.append(CandidatePrompt(
+                    category="facts",
+                    question_text=question,
+                    target_word=target,
+                    target_word_normalized=target.lower(),
+                    prompt_style_id=style_id,
+                    source_trace=f"{source}:{relation}:{country}",
+                    raw_data={
+                        "subject": country,
+                        "relation": relation,
+                        "target": target,
+                        "source": source,
+                    },
+                ))
         
         logger.info(f"Generated {len(candidates)} fact candidates")
         return candidates
@@ -1198,7 +1440,7 @@ Return ONLY valid JSON in exactly this shape:
         'facts': """Generate factual one-word answer prompts. Each prompt must follow ALL rules:
 1) Output fields:
    - subject: a country or well-known entity (proper noun)
-   - relation: one of {capital, currency, continent, language, element_symbol, largest_planet}
+   - relation: one of {capital, currency, language, continent, highest_mountain, longest_river, largest_lake, national_animal, national_flower, primary_export, occupation, demonym, birth_month, national_sport}
    - target_word: the single correct one-word answer
 
 2) One-word answer requirement:
@@ -1207,16 +1449,33 @@ Return ONLY valid JSON in exactly this shape:
 
 3) Exactly one correct answer:
    - The fact must be unambiguous and have a single dominant expected answer for the given subject + relation.
-   - Avoid disputed cases, multiple official answers, or common alternate spellings (for example “Kyiv/Kiev”).
+   - Avoid disputed cases, multiple official answers, or common alternate spellings.
 
-4) Common knowledge with controlled difficulty:
-   - Facts must be broadly taught and known by most educated people (not trivia).
-   - Maintain a difficulty mix across the full output:
-     - ~50% easy, ~35% medium, ~15% hard (hard must still be “textbook common”, not obscure).
+4) Diversity within this batch:
+   - Use all relation types across this batch (do not collapse to only capital/currency).
+   - Use countries from diverse regions (Africa, Asia, Europe, Americas, Oceania).
+   - Do not repeat subjects or target_word values within this batch.
+   - Avoid overusing common currency names (dollar, peso, franc, pound) within this batch.
 
-5) Diversity:
-   - Vary relation labels and world regions/domains.
-   - Do not repeat subjects or target_word values across prompts.
+5) Batch uniqueness:
+   - The 20 items in this batch must be mutually distinct in subject, target_word, and relation.
+   - If you cannot produce 20 unique items, return fewer rather than repeating.
+
+Examples (one per relation type; match the relation label exactly):
+- capital: France -> Paris
+- currency: Japan -> Yen
+- language: Spain -> Spanish
+- continent: Kenya -> Africa
+- highest_mountain: Tanzania -> Kilimanjaro
+- longest_river: Egypt -> Nile
+- largest_lake: Uganda -> Victoria
+- national_animal: Australia -> Kangaroo
+- national_flower: Netherlands -> Tulip
+- primary_export: Saudi Arabia -> Oil
+- occupation: Ada Lovelace -> Mathematician
+- demonym: Leonardo da Vinci -> Italian
+- birth_month: Albert Einstein -> March
+- national_sport: Canada -> Hockey
 
 Return ONLY valid JSON in exactly this shape:
 {"prompts":[{"subject":"Japan","relation":"capital","target_word":"Tokyo"}]}
@@ -1225,7 +1484,7 @@ Return ONLY valid JSON in exactly this shape:
         'common_sense': """Generate common sense prompts about everyday objects and concepts. Each prompt must follow ALL rules:
 1) Output fields:
    - subject: a simple everyday object noun (optionally a simple compound noun like “paper towel” to remove ambiguity)
-   - relation: one of {UsedFor, MadeOf, HasProperty}
+   - relation: one of {UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn}
    - target_word: a single-word answer
 
 2) Relation semantics:
@@ -1234,18 +1493,42 @@ Return ONLY valid JSON in exactly this shape:
      If the base object is commonly made from many materials (for example “cup”), use a compound subject
      that makes the material obvious (for example “paper cup” -> paper).
    - HasProperty: target_word must be an objective adjective strongly associated with the subject in everyday context.
+   - HasPart: target_word must be a concrete noun that is a physical part of the subject.
+   - AtLocation: target_word must be a typical location noun where the subject is usually found.
+   - CapableOf: target_word must be a base-form verb the subject can typically do.
+   - UsedBy: target_word must be a noun describing who typically uses the subject.
+   - Requires: target_word must be a noun describing what the subject typically needs to function.
+   - Contains: target_word must be a noun describing what the subject typically contains.
+   - WornOn: target_word must be a body-part noun describing where the subject is worn.
 
 3) Exactly one correct answer (minimize ambiguity):
    - Prefer subjects where one association is dominant and obvious.
    - Avoid subjects with many equally-plausible uses/materials/properties.
 
-4) Diversity and balance:
-   - Balance relation labels across the full output: ~1/3 UsedFor, ~1/3 MadeOf, ~1/3 HasProperty.
-   - Cover multiple everyday domains (kitchen, outdoors, office, school, home) and keep any single domain ≤30%.
-   - Do not repeat subjects or target_word values across prompts.
+4) Diversity and balance within this batch:
+   - Use all relation types across this batch (do not collapse to only 2-3 relations).
+   - Cover multiple everyday domains (kitchen tools, clothing, vehicles, rooms, animals, food, outdoors, school, office, sports, health, electronics).
+   - Do not repeat subjects or target_word values within this batch.
+   - Avoid abstract concepts and proper nouns.
 
-5) One-word requirement:
+5) Batch uniqueness:
+   - The 20 items in this batch must be mutually distinct in subject, target_word, and relation.
+   - If you cannot produce 20 unique items, return fewer rather than repeating.
+
+6) One-word requirement:
    - target_word must be one lowercase word with letters only (no spaces, no punctuation).
+
+Examples (one per relation type; match the relation label exactly):
+- UsedFor: scissors -> cut
+- MadeOf: glass bottle -> glass
+- HasProperty: ice -> cold
+- HasPart: bicycle -> wheel
+- AtLocation: toothbrush -> bathroom
+- CapableOf: bird -> fly
+- UsedBy: stethoscope -> doctor
+- Requires: candle -> oxygen
+- Contains: wallet -> cash
+- WornOn: ring -> finger
 
 Return ONLY valid JSON in exactly this shape:
 {"prompts":[{"subject":"scissors","relation":"UsedFor","target_word":"cut"}]}
@@ -1291,6 +1574,172 @@ Format your response as json (a single JSON object). Return json only:
   ]
 }""",
     }
+
+    COMMON_SENSE_VARIANTS: Dict[str, List[Dict[str, str]]] = {
+        "A": [
+            {"label": "UsedFor_CleaningAction", "relation": "UsedFor", "rule": "cleaning action verb", "example": "broom -> sweep"},
+            {"label": "MadeOf_NaturalMaterial", "relation": "MadeOf", "rule": "natural material noun", "example": "canoe -> wood"},
+            {"label": "HasProperty_Texture", "relation": "HasProperty", "rule": "texture adjective", "example": "sandpaper -> rough"},
+            {"label": "HasPart_HandleGrip", "relation": "HasPart", "rule": "grip or handle part noun", "example": "suitcase -> handle"},
+            {"label": "AtLocation_Room", "relation": "AtLocation", "rule": "room noun", "example": "toothbrush -> bathroom"},
+            {"label": "CapableOf_Motion", "relation": "CapableOf", "rule": "motion verb", "example": "frog -> jump"},
+            {"label": "UsedBy_Occupation", "relation": "UsedBy", "rule": "occupation noun", "example": "stethoscope -> doctor"},
+            {"label": "Requires_PowerSource", "relation": "Requires", "rule": "power source noun", "example": "lamp -> electricity"},
+            {"label": "Contains_Liquid", "relation": "Contains", "rule": "liquid noun", "example": "thermos -> coffee"},
+            {"label": "WornOn_BodyPart", "relation": "WornOn", "rule": "body part noun", "example": "ring -> finger"},
+        ],
+        "B": [
+            {"label": "UsedFor_CookingAction", "relation": "UsedFor", "rule": "cooking action verb", "example": "pan -> fry"},
+            {"label": "MadeOf_SyntheticMaterial", "relation": "MadeOf", "rule": "synthetic material noun", "example": "raincoat -> nylon"},
+            {"label": "HasProperty_Temperature", "relation": "HasProperty", "rule": "temperature adjective", "example": "ice -> cold"},
+            {"label": "HasPart_LidCover", "relation": "HasPart", "rule": "lid or cover part noun", "example": "jar -> lid"},
+            {"label": "AtLocation_Workspace", "relation": "AtLocation", "rule": "workspace place noun", "example": "stapler -> office"},
+            {"label": "CapableOf_Sound", "relation": "CapableOf", "rule": "sound verb", "example": "bell -> ring"},
+            {"label": "UsedBy_AgeGroup", "relation": "UsedBy", "rule": "age group noun", "example": "rattle -> baby"},
+            {"label": "Requires_Fuel", "relation": "Requires", "rule": "fuel noun", "example": "lawnmower -> gasoline"},
+            {"label": "Contains_Food", "relation": "Contains", "rule": "food noun", "example": "lunchbox -> sandwich"},
+            {"label": "WornOn_UpperBody", "relation": "WornOn", "rule": "upper-body part noun", "example": "scarf -> neck"},
+        ],
+        "C": [
+            {"label": "UsedFor_WritingAction", "relation": "UsedFor", "rule": "writing action verb", "example": "pen -> write"},
+            {"label": "MadeOf_RigidMaterial", "relation": "MadeOf", "rule": "rigid material noun", "example": "anvil -> iron"},
+            {"label": "HasProperty_Color", "relation": "HasProperty", "rule": "color adjective", "example": "lemon -> yellow"},
+            {"label": "HasPart_Fastener", "relation": "HasPart", "rule": "fastener part noun", "example": "jacket -> zipper"},
+            {"label": "AtLocation_Outdoors", "relation": "AtLocation", "rule": "outdoor place noun", "example": "bench -> park"},
+            {"label": "CapableOf_Light", "relation": "CapableOf", "rule": "light verb", "example": "firefly -> glow"},
+            {"label": "UsedBy_Student", "relation": "UsedBy", "rule": "student role noun", "example": "notebook -> student"},
+            {"label": "Requires_Water", "relation": "Requires", "rule": "water noun", "example": "plant -> water"},
+            {"label": "Contains_Paper", "relation": "Contains", "rule": "paper noun", "example": "folder -> paper"},
+            {"label": "WornOn_Wrist", "relation": "WornOn", "rule": "wrist body part noun", "example": "watch -> wrist"},
+        ],
+        "D": [
+            {"label": "UsedFor_RepairAction", "relation": "UsedFor", "rule": "repair action verb", "example": "wrench -> tighten"},
+            {"label": "MadeOf_FlexibleMaterial", "relation": "MadeOf", "rule": "flexible material noun", "example": "rubber band -> rubber"},
+            {"label": "HasProperty_Size", "relation": "HasProperty", "rule": "size adjective", "example": "elephant -> large"},
+            {"label": "HasPart_ButtonSwitch", "relation": "HasPart", "rule": "button or switch part noun", "example": "remote -> button"},
+            {"label": "AtLocation_Storage", "relation": "AtLocation", "rule": "storage place noun", "example": "box -> attic"},
+            {"label": "CapableOf_Float", "relation": "CapableOf", "rule": "float verb", "example": "leaf -> float"},
+            {"label": "UsedBy_Teacher", "relation": "UsedBy", "rule": "teacher noun", "example": "whiteboard -> teacher"},
+            {"label": "Requires_Air", "relation": "Requires", "rule": "air noun", "example": "balloon -> air"},
+            {"label": "Contains_Tools", "relation": "Contains", "rule": "tools noun", "example": "toolbox -> tools"},
+            {"label": "WornOn_Feet", "relation": "WornOn", "rule": "feet body part noun", "example": "boots -> feet"},
+        ],
+        "E": [
+            {"label": "UsedFor_MeasuringAction", "relation": "UsedFor", "rule": "measuring action verb", "example": "ruler -> measure"},
+            {"label": "MadeOf_TransparentMaterial", "relation": "MadeOf", "rule": "transparent material noun", "example": "window -> glass"},
+            {"label": "HasProperty_Weight", "relation": "HasProperty", "rule": "weight adjective", "example": "rock -> heavy"},
+            {"label": "HasPart_ScreenSurface", "relation": "HasPart", "rule": "screen or surface part noun", "example": "tablet -> screen"},
+            {"label": "AtLocation_Vehicle", "relation": "AtLocation", "rule": "vehicle noun", "example": "seatbelt -> car"},
+            {"label": "CapableOf_Spin", "relation": "CapableOf", "rule": "spin verb", "example": "top -> spin"},
+            {"label": "UsedBy_Doctor", "relation": "UsedBy", "rule": "doctor noun", "example": "scalpel -> doctor"},
+            {"label": "Requires_Electricity", "relation": "Requires", "rule": "electricity noun", "example": "printer -> electricity"},
+            {"label": "Contains_Money", "relation": "Contains", "rule": "money noun", "example": "wallet -> cash"},
+            {"label": "WornOn_Waist", "relation": "WornOn", "rule": "waist body part noun", "example": "belt -> waist"},
+        ],
+        "F": [
+            {"label": "UsedFor_StorageAction", "relation": "UsedFor", "rule": "storage action verb", "example": "bin -> store"},
+            {"label": "MadeOf_SoftMaterial", "relation": "MadeOf", "rule": "soft material noun", "example": "pillow -> cotton"},
+            {"label": "HasProperty_Sharpness", "relation": "HasProperty", "rule": "sharpness adjective", "example": "knife -> sharp"},
+            {"label": "HasPart_WheelSupport", "relation": "HasPart", "rule": "wheel part noun", "example": "cart -> wheel"},
+            {"label": "AtLocation_Building", "relation": "AtLocation", "rule": "building place noun", "example": "elevator -> lobby"},
+            {"label": "CapableOf_Roll", "relation": "CapableOf", "rule": "roll verb", "example": "ball -> roll"},
+            {"label": "UsedBy_Chef", "relation": "UsedBy", "rule": "chef noun", "example": "whisk -> chef"},
+            {"label": "Requires_Battery", "relation": "Requires", "rule": "battery noun", "example": "flashlight -> battery"},
+            {"label": "Contains_Clothing", "relation": "Contains", "rule": "clothing noun", "example": "suitcase -> clothes"},
+            {"label": "WornOn_Hands", "relation": "WornOn", "rule": "hands body part noun", "example": "gloves -> hands"},
+        ],
+        "G": [
+            {"label": "UsedFor_ProtectionAction", "relation": "UsedFor", "rule": "protection action verb", "example": "helmet -> protect"},
+            {"label": "MadeOf_HardMaterial", "relation": "MadeOf", "rule": "hard material noun", "example": "statue -> stone"},
+            {"label": "HasProperty_Softness", "relation": "HasProperty", "rule": "softness adjective", "example": "blanket -> soft"},
+            {"label": "HasPart_BladeEdge", "relation": "HasPart", "rule": "blade or edge part noun", "example": "axe -> blade"},
+            {"label": "AtLocation_Kitchen", "relation": "AtLocation", "rule": "kitchen place noun", "example": "spoon -> kitchen"},
+            {"label": "CapableOf_OpenClose", "relation": "CapableOf", "rule": "open or close verb", "example": "door -> open"},
+            {"label": "UsedBy_Artist", "relation": "UsedBy", "rule": "artist noun", "example": "easel -> artist"},
+            {"label": "Requires_Heat", "relation": "Requires", "rule": "heat noun", "example": "oven -> heat"},
+            {"label": "Contains_Medicine", "relation": "Contains", "rule": "medicine noun", "example": "pillbox -> pills"},
+            {"label": "WornOn_Head", "relation": "WornOn", "rule": "head body part noun", "example": "hat -> head"},
+        ],
+        "H": [
+            {"label": "UsedFor_CommunicationAction", "relation": "UsedFor", "rule": "communication action verb", "example": "phone -> call"},
+            {"label": "MadeOf_LightMaterial", "relation": "MadeOf", "rule": "light material noun", "example": "kite -> foam"},
+            {"label": "HasProperty_Transparency", "relation": "HasProperty", "rule": "transparency adjective", "example": "glass -> transparent"},
+            {"label": "HasPart_StrapCord", "relation": "HasPart", "rule": "strap or cord part noun", "example": "backpack -> strap"},
+            {"label": "AtLocation_Bathroom", "relation": "AtLocation", "rule": "bathroom place noun", "example": "soap -> bathroom"},
+            {"label": "CapableOf_Bounce", "relation": "CapableOf", "rule": "bounce verb", "example": "ball -> bounce"},
+            {"label": "UsedBy_Athlete", "relation": "UsedBy", "rule": "athlete noun", "example": "cleats -> athlete"},
+            {"label": "Requires_Signal", "relation": "Requires", "rule": "signal noun", "example": "radio -> signal"},
+            {"label": "Contains_Ink", "relation": "Contains", "rule": "ink noun", "example": "pen -> ink"},
+            {"label": "WornOn_Neck", "relation": "WornOn", "rule": "neck body part noun", "example": "necklace -> neck"},
+        ],
+        "I": [
+            {"label": "UsedFor_TransportAction", "relation": "UsedFor", "rule": "transport action verb", "example": "truck -> haul"},
+            {"label": "MadeOf_DurableMaterial", "relation": "MadeOf", "rule": "durable material noun", "example": "shield -> steel"},
+            {"label": "HasProperty_Brightness", "relation": "HasProperty", "rule": "brightness adjective", "example": "sun -> bright"},
+            {"label": "HasPart_Hinge", "relation": "HasPart", "rule": "hinge part noun", "example": "door -> hinge"},
+            {"label": "AtLocation_School", "relation": "AtLocation", "rule": "school place noun", "example": "locker -> school"},
+            {"label": "CapableOf_Grow", "relation": "CapableOf", "rule": "grow verb", "example": "tree -> grow"},
+            {"label": "UsedBy_Driver", "relation": "UsedBy", "rule": "driver noun", "example": "steering wheel -> driver"},
+            {"label": "Requires_Maintenance", "relation": "Requires", "rule": "maintenance noun", "example": "bike -> maintenance"},
+            {"label": "Contains_Seeds", "relation": "Contains", "rule": "seeds noun", "example": "apple -> seeds"},
+            {"label": "WornOn_Back", "relation": "WornOn", "rule": "back body part noun", "example": "backpack -> back"},
+        ],
+        "J": [
+            {"label": "UsedFor_CreativeAction", "relation": "UsedFor", "rule": "creative action verb", "example": "brush -> paint"},
+            {"label": "MadeOf_ConductiveMaterial", "relation": "MadeOf", "rule": "conductive material noun", "example": "wire -> copper"},
+            {"label": "HasProperty_NoiseLevel", "relation": "HasProperty", "rule": "noise-level adjective", "example": "drum -> loud"},
+            {"label": "HasPart_NozzleSpout", "relation": "HasPart", "rule": "nozzle or spout part noun", "example": "teapot -> spout"},
+            {"label": "AtLocation_Office", "relation": "AtLocation", "rule": "office place noun", "example": "printer -> office"},
+            {"label": "CapableOf_Melt", "relation": "CapableOf", "rule": "melt verb", "example": "ice -> melt"},
+            {"label": "UsedBy_Parent", "relation": "UsedBy", "rule": "parent noun", "example": "stroller -> parent"},
+            {"label": "Requires_Tool", "relation": "Requires", "rule": "tool noun", "example": "screw -> screwdriver"},
+            {"label": "Contains_Waste", "relation": "Contains", "rule": "waste noun", "example": "trashcan -> waste"},
+            {"label": "WornOn_Legs", "relation": "WornOn", "rule": "legs body part noun", "example": "pants -> legs"},
+        ],
+    }
+
+    def _build_common_sense_prompt(self, variant_id: str) -> str:
+        items = self.COMMON_SENSE_VARIANTS.get(variant_id)
+        if not items:
+            return self.CATEGORY_PROMPTS["common_sense"]
+        labels = ", ".join([item["label"] for item in items])
+        example_label = items[0]["label"]
+        example_relation = items[0]["relation"]
+        example_pair = items[0]["example"].split("->", 1)
+        example_subject = example_pair[0].strip() if example_pair else "broom"
+        example_target = example_pair[1].strip() if len(example_pair) > 1 else "sweep"
+        lines = [
+            "Generate common sense prompts about everyday objects and concepts. Each prompt must follow ALL rules:",
+            "1) Output fields:",
+            "   - subject: a simple everyday object noun (use a compound noun if needed to remove ambiguity)",
+            "   - relation: one of {UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn}",
+            "   - relation_label: one of the labels listed below (use each label exactly once)",
+            "   - target_word: a single-word answer (letters only, no spaces, no punctuation)",
+            "2) One-word answer requirement:",
+            "   - target_word must be one lowercase word with letters only (no spaces, no punctuation).",
+            "3) Exactly one correct answer (minimize ambiguity):",
+            "   - Prefer subjects where one association is dominant and obvious.",
+            "   - Avoid subjects with many equally plausible answers.",
+            "4) Diversity within this batch:",
+            "   - Use each relation_label exactly once (10 items total).",
+            "   - Do not repeat subjects or target_word values within this batch.",
+            "   - Avoid abstract concepts and proper nouns.",
+            "5) Leakage avoidance:",
+            "   - Do NOT include the target_word in the subject or the prompt text.",
+            "",
+            f"Relation labels for this prompt (use each exactly once): {labels}",
+            "Examples for each relation_label (match the relation_label exactly):",
+        ]
+        for item in items:
+            lines.append(
+                f"- {item['label']} (relation={item['relation']}): {item['rule']}. Example: {item['example']}"
+            )
+        lines.extend([
+            "",
+            "Return ONLY valid JSON in exactly this shape:",
+            f"{{\"prompts\":[{{\"subject\":\"{example_subject}\",\"relation\":\"{example_relation}\",\"relation_label\":\"{example_label}\",\"target_word\":\"{example_target}\"}}]}}",
+        ])
+        return "\n".join(lines)
     
     SYSTEM_PROMPT = """You are a prompt generator for a research experiment. Generate high-quality cloze-style prompts with single-word answers.
 
@@ -1352,6 +1801,27 @@ Return your response as valid json only."""
         fact_currency_style = "F3" if "F3" in fact_templates else (fact_capital_styles[0])
         idiom_style_idx = 0
         fact_capital_idx = 0
+        fact_relation_styles = {
+            "capital": (fact_capital_styles, 'Fill the blank with one word: The capital of {subject} is ____.'),
+            "currency": ([fact_currency_style], 'Complete with one word: The currency of {subject} is ____.'),
+            "language": (["F4"], 'One-word answer: An official language of {subject} is ____.'),
+            "continent": (["F5"], 'Fill the blank (one word): {subject} is in ____.'),
+            "highest_mountain": (["F6"], 'Fill the blank (one word): The highest mountain in {subject} is ____.'),
+            "longest_river": (["F7"], 'Fill the blank (one word): The longest river in {subject} is ____.'),
+            "largest_lake": (["F8"], 'Fill the blank (one word): The largest lake in {subject} is ____.'),
+            "national_animal": (["F9"], 'Fill the blank (one word): A national animal of {subject} is ____.'),
+            "national_flower": (["F10"], 'Fill the blank (one word): A national flower of {subject} is ____.'),
+            "primary_export": (["F11"], 'Fill the blank (one word): A primary export of {subject} is ____.'),
+            "occupation": (["F12"], 'Fill the blank (one word): A one-word occupation associated with {subject} is ____.'),
+            "demonym": (["F13"], 'Fill the blank (one word): A demonym for {subject} is ____.'),
+            "birth_month": (["F14"], 'Fill the blank (one word): {subject} was born in the month of ____.'),
+            "national_sport": (["F15"], 'Fill the blank (one word): The national sport of {subject} is ____.'),
+        }
+        fact_relation_counts = Counter()
+        common_sense_variant_ids = list(self.COMMON_SENSE_VARIANTS.keys())
+        common_sense_label_set = {
+            item["label"] for items in self.COMMON_SENSE_VARIANTS.values() for item in items
+        }
 
         if category == "common_sense":
             extra_batches = CONFIG['dataset'].get('fallback_max_extra_batches', 0)
@@ -1363,6 +1833,8 @@ Return your response as valid json only."""
                 max_subject_repeats = CONFIG['dataset'].get(
                     'common_sense_fallback_max_subject_repeats', 1
                 )
+            if batch_size != 10:
+                batch_size = 10
         else:
             extra_batches = CONFIG['dataset'].get('fallback_max_extra_batches', 0)
             relation_targets = None
@@ -1377,8 +1849,13 @@ Return your response as valid json only."""
             if remaining <= 0:
                 break
             current_batch = min(batch_size, remaining)
+            if category == "common_sense" and common_sense_variant_ids:
+                variant_id = common_sense_variant_ids[batch_idx % len(common_sense_variant_ids)]
+                category_prompt = self._build_common_sense_prompt(variant_id)
+                custom_id = f"fallback:{category}:{variant_id}:{batch_idx}"
+            else:
+                custom_id = f"fallback:{category}:{batch_idx}"
             user_prompt = f"Generate {current_batch} prompts.\n\n{category_prompt}"
-            custom_id = f"fallback:{category}:{batch_idx}"
             batch_requests.append(
                 self.client.build_batch_request(
                     custom_id=custom_id,
@@ -1407,7 +1884,11 @@ Return your response as valid json only."""
         )
 
         for batch_idx in range(max_batches):
-            custom_id = f"fallback:{category}:{batch_idx}"
+            if category == "common_sense" and common_sense_variant_ids:
+                variant_id = common_sense_variant_ids[batch_idx % len(common_sense_variant_ids)]
+                custom_id = f"fallback:{category}:{variant_id}:{batch_idx}"
+            else:
+                custom_id = f"fallback:{category}:{batch_idx}"
             payload = batch_results.get(custom_id)
             if payload is None or payload.get("error"):
                 continue
@@ -1424,20 +1905,44 @@ Return your response as valid json only."""
                 target_norm = target.lower()
 
                 if category == "common_sense":
-                    question = (p.get("question", "") or "").strip()
+                    question = (p.get("question_text", "") or p.get("question", "") or "").strip()
                     relation = (p.get("relation", "") or "").strip()
+                    relation_label = (p.get("relation_label", "") or "").strip()
                     subject = (p.get("subject", "") or "").strip()
-                    if not relation or relation not in ("UsedFor", "MadeOf", "HasProperty"):
+                    allowed_relations = (
+                        "UsedFor",
+                        "MadeOf",
+                        "HasProperty",
+                        "HasPart",
+                        "AtLocation",
+                        "CapableOf",
+                        "UsedBy",
+                        "Requires",
+                        "Contains",
+                        "WornOn",
+                    )
+                    if relation_label:
+                        if relation_label not in common_sense_label_set:
+                            relation_label = ""
+                        else:
+                            prefix = relation_label.split("_", 1)[0]
+                            if prefix in allowed_relations:
+                                relation = prefix
+                    if not relation or relation not in allowed_relations:
                         relation = _infer_common_sense_relation(question)
                     subject = _normalize_subject(subject)
                     if not subject and question:
                         subject = _extract_subject_from_question(question, relation)
                     if not subject or not relation:
                         continue
-                    relation_info = _format_common_sense_question(subject, relation)
-                    if relation_info is None:
-                        continue
-                    style_id, question_text = relation_info
+                    if question:
+                        question_text = question
+                        style_id = f"common_sense_{relation}"
+                    else:
+                        relation_info = _format_common_sense_question(subject, relation)
+                        if relation_info is None:
+                            continue
+                        style_id, question_text = relation_info
                     if relation_targets:
                         target_limit = relation_targets.get(relation, 0)
                         if relation_counts[relation] >= target_limit:
@@ -1466,6 +1971,7 @@ Return your response as valid json only."""
                         raw_data={
                             "subject": subject,
                             "relation": relation,
+                            "relation_label": relation_label,
                             "target": target,
                         },
                     ))
@@ -1503,13 +2009,14 @@ Return your response as valid json only."""
                     subject_norm = _normalize_subject(subject)
                     if not subject_norm or relation is None:
                         continue
-                    if relation == "capital":
-                        style_id = fact_capital_styles[fact_capital_idx % len(fact_capital_styles)]
-                        fact_capital_idx += 1
-                        template = fact_templates.get(style_id, 'Fill the blank with one word: The capital of {subject} is ____.')
-                    else:
-                        style_id = fact_currency_style
-                        template = fact_templates.get(style_id, 'Complete with one word: The currency of {subject} is ____.')
+                    relation_info = fact_relation_styles.get(relation)
+                    if not relation_info:
+                        continue
+                    style_ids, default_template = relation_info
+                    style_idx = fact_relation_counts[relation] % len(style_ids)
+                    style_id = style_ids[style_idx]
+                    fact_relation_counts[relation] += 1
+                    template = fact_templates.get(style_id, default_template)
                     question_text = template.format(subject=subject_norm)
                     if _target_leaks_into_question(target, question_text):
                         continue
@@ -1710,7 +2217,18 @@ class DatasetGenerator:
                     gap,
                 )
                 if category == "common_sense":
-                    relation_types = ["UsedFor", "MadeOf", "HasProperty"]
+                    relation_types = [
+                        "UsedFor",
+                        "MadeOf",
+                        "HasProperty",
+                        "HasPart",
+                        "AtLocation",
+                        "CapableOf",
+                        "UsedBy",
+                        "Requires",
+                        "Contains",
+                        "WornOn",
+                    ]
                     relation_counts = {rel: 0 for rel in relation_types}
                     for cand in candidates:
                         relation = cand.raw_data.get("relation")
@@ -1721,6 +2239,20 @@ class DatasetGenerator:
                                 relation = "MadeOf"
                             elif cand.prompt_style_id.startswith("C3_"):
                                 relation = "HasProperty"
+                            elif cand.prompt_style_id.startswith("C4_"):
+                                relation = "HasPart"
+                            elif cand.prompt_style_id.startswith("C5_"):
+                                relation = "AtLocation"
+                            elif cand.prompt_style_id.startswith("C6_"):
+                                relation = "CapableOf"
+                            elif cand.prompt_style_id.startswith("C7_"):
+                                relation = "UsedBy"
+                            elif cand.prompt_style_id.startswith("C8_"):
+                                relation = "Requires"
+                            elif cand.prompt_style_id.startswith("C9_"):
+                                relation = "Contains"
+                            elif cand.prompt_style_id.startswith("C10_"):
+                                relation = "WornOn"
                         if relation in relation_counts:
                             relation_counts[relation] += 1
 
@@ -1778,7 +2310,18 @@ class DatasetGenerator:
                 len({" ".join(c.question_text.lower().split()) for c in deduped}),
             )
             if category == "common_sense":
-                relation_counts = {"UsedFor": 0, "MadeOf": 0, "HasProperty": 0}
+                relation_counts = {
+                    "UsedFor": 0,
+                    "MadeOf": 0,
+                    "HasProperty": 0,
+                    "HasPart": 0,
+                    "AtLocation": 0,
+                    "CapableOf": 0,
+                    "UsedBy": 0,
+                    "Requires": 0,
+                    "Contains": 0,
+                    "WornOn": 0,
+                }
                 subject_set = set()
                 for cand in deduped:
                     relation = cand.raw_data.get("relation")

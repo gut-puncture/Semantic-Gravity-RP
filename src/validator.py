@@ -85,14 +85,12 @@ def apply_deterministic_filters(prompts: List[CandidatePrompt]) -> Tuple[List[Ca
             context = _extract_prompt_context(prompt)
             if _count_sentences(context) != 2:
                 stats["creative_sentence_count"] += 1
-                continue
 
         if prompt.category == "ood":
             context = _extract_prompt_context(prompt)
             count = _count_sentences(context)
             if count < 1 or count > 2:
                 stats["ood_sentence_count"] += 1
-                continue
 
         kept.append(prompt)
 

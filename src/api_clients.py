@@ -4,6 +4,7 @@ api_clients.py - API Clients for External Data Sources
 This module provides clients for:
 - OpenAI Responses API (GPT-5.2 for generation and validation, batch-only workflow)
 - Wikidata SPARQL queries (for factual data)
+- Rest Countries REST API (for country metadata)
 - ConceptNet REST API (for common sense relations)
 
 All clients include retry logic with exponential backoff.
@@ -372,6 +373,10 @@ class OpenAIClient:
         """Extract text content from OpenAI response."""
         if not isinstance(response, dict):
             raise RuntimeError(f"Unexpected response format: {response}")
+
+        body = response.get("body")
+        if isinstance(body, dict):
+            return self._extract_message_text(body)
 
         output_text = response.get("output_text")
         if isinstance(output_text, str) and output_text.strip():
@@ -828,17 +833,24 @@ class WikidataClient:
     Provides pre-built queries for:
     - Country capitals
     - Country currencies
+    - Person occupations
+    - Person demonyms (via citizenship)
+    - Person birth months
+    - Country national sports
     """
     
     endpoint: str = "https://query.wikidata.org/sparql"
-    timeout: int = 30
+    timeout: int = 120
     
     # SPARQL queries per specification
     QUERY_CAPITALS = """
     SELECT ?country ?countryLabel ?capital ?capitalLabel WHERE {
       ?country wdt:P31 wd:Q6256.  # instance of country
       ?country wdt:P36 ?capital.   # has capital
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+      ?country rdfs:label ?countryLabel.
+      ?capital rdfs:label ?capitalLabel.
+      FILTER(LANG(?countryLabel) = "en")
+      FILTER(LANG(?capitalLabel) = "en")
     }
     LIMIT 500
     """
@@ -847,7 +859,60 @@ class WikidataClient:
     SELECT ?country ?countryLabel ?currency ?currencyLabel WHERE {
       ?country wdt:P31 wd:Q6256.    # instance of country
       ?country wdt:P38 ?currency.   # has currency
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+      ?country rdfs:label ?countryLabel.
+      ?currency rdfs:label ?currencyLabel.
+      FILTER(LANG(?countryLabel) = "en")
+      FILTER(LANG(?currencyLabel) = "en")
+    }
+    LIMIT 500
+    """
+
+    QUERY_OCCUPATIONS = """
+    SELECT ?person ?personLabel ?occupation ?occupationLabel WHERE {
+      ?person wdt:P31 wd:Q5.         # instance of human
+      ?person wdt:P106 ?occupation.  # occupation
+      ?person rdfs:label ?personLabel.
+      ?occupation rdfs:label ?occupationLabel.
+      FILTER(LANG(?personLabel) = "en")
+      FILTER(LANG(?occupationLabel) = "en")
+    }
+    LIMIT 200
+    """
+
+    QUERY_DEMONYMS = """
+    SELECT ?person ?personLabel ?demonym WHERE {
+      ?person wdt:P31 wd:Q5.
+      ?person wdt:P27 ?country.   # citizenship
+      ?country wdt:P1549 ?demonym.
+      ?person rdfs:label ?personLabel.
+      FILTER(LANG(?personLabel) = "en")
+      FILTER(LANG(?demonym) = "en")
+    }
+    LIMIT 200
+    """
+
+    QUERY_BIRTH_MONTHS = """
+    SELECT ?person ?personLabel ?birthdate WHERE {
+      ?person wdt:P31 wd:Q5.
+      ?person p:P569 ?birthStatement.
+      ?birthStatement ps:P569 ?birthdate.
+      ?birthStatement psv:P569 ?valueNode.
+      ?valueNode wikibase:timePrecision ?precision.
+      FILTER(?precision >= 10)
+      ?person rdfs:label ?personLabel.
+      FILTER(LANG(?personLabel) = "en")
+    }
+    LIMIT 200
+    """
+
+    QUERY_NATIONAL_SPORTS = """
+    SELECT ?country ?countryLabel ?sport ?sportLabel WHERE {
+      ?country wdt:P31 wd:Q6256.     # instance of country
+      ?country wdt:P241 ?sport.      # national sport
+      ?country rdfs:label ?countryLabel.
+      ?sport rdfs:label ?sportLabel.
+      FILTER(LANG(?countryLabel) = "en")
+      FILTER(LANG(?sportLabel) = "en")
     }
     LIMIT 500
     """
@@ -859,22 +924,36 @@ class WikidataClient:
             "Accept": "application/sparql-results+json",
             "User-Agent": "SemanticGravityExperiment/1.0",
         }
-        
-        try:
-            response = req.get(
-                self.endpoint,
-                params={"query": query},
-                headers=headers,
-                timeout=self.timeout,
-            )
-            response.raise_for_status()
-            
-            data = response.json()
-            return data.get("results", {}).get("bindings", [])
-            
-        except req.exceptions.RequestException as e:
-            logger.error(f"Wikidata query failed: {e}")
-            raise
+
+        retry_attempts = 3
+        for attempt in range(retry_attempts):
+            try:
+                response = req.get(
+                    self.endpoint,
+                    params={"query": query},
+                    headers=headers,
+                    timeout=self.timeout,
+                )
+                response.raise_for_status()
+
+                data = response.json()
+                return data.get("results", {}).get("bindings", [])
+
+            except req.exceptions.RequestException as e:
+                status = getattr(getattr(e, "response", None), "status_code", None)
+                if status in (429, 500, 502, 503, 504) and attempt < retry_attempts - 1:
+                    delay = 2 ** attempt
+                    logger.warning(
+                        "Wikidata query failed with status %s (attempt %d/%d); retrying in %ds.",
+                        status,
+                        attempt + 1,
+                        retry_attempts,
+                        delay,
+                    )
+                    time.sleep(delay)
+                    continue
+                logger.error(f"Wikidata query failed: {e}")
+                raise
     
     def get_capitals(self) -> List[Tuple[str, str]]:
         """
@@ -925,6 +1004,157 @@ class WikidataClient:
         
         logger.info(f"Retrieved {len(pairs)} valid currency pairs from Wikidata")
         return pairs
+
+    def get_occupations(self) -> List[Tuple[str, str]]:
+        """
+        Get list of (person, occupation) pairs.
+
+        Filters to occupations with single-word alphabetic labels.
+        """
+        results = self._execute_query(self.QUERY_OCCUPATIONS)
+        pairs = []
+        for row in results:
+            person = row.get("personLabel", {}).get("value", "")
+            occupation = row.get("occupationLabel", {}).get("value", "")
+            if person and occupation:
+                occupation_clean = occupation.strip()
+                if occupation_clean.isalpha() and " " not in occupation_clean:
+                    pairs.append((person, occupation_clean))
+        logger.info(f"Retrieved {len(pairs)} valid occupation pairs from Wikidata")
+        return pairs
+
+    def get_demonyms(self) -> List[Tuple[str, str]]:
+        """
+        Get list of (person, demonym) pairs.
+
+        Filters to demonyms with single-word alphabetic labels.
+        """
+        results = self._execute_query(self.QUERY_DEMONYMS)
+        pairs = []
+        for row in results:
+            person = row.get("personLabel", {}).get("value", "")
+            demonym = row.get("demonym", {}).get("value", "")
+            if person and demonym:
+                demonym_clean = demonym.strip()
+                if demonym_clean.isalpha() and " " not in demonym_clean:
+                    pairs.append((person, demonym_clean))
+        logger.info(f"Retrieved {len(pairs)} valid demonym pairs from Wikidata")
+        return pairs
+
+    def get_birth_months(self) -> List[Tuple[str, str]]:
+        """
+        Get list of (person, birth_month_name) pairs.
+        """
+        results = self._execute_query(self.QUERY_BIRTH_MONTHS)
+        month_map = {
+            1: "January",
+            2: "February",
+            3: "March",
+            4: "April",
+            5: "May",
+            6: "June",
+            7: "July",
+            8: "August",
+            9: "September",
+            10: "October",
+            11: "November",
+            12: "December",
+        }
+        pairs = []
+        for row in results:
+            person = row.get("personLabel", {}).get("value", "")
+            birthdate = row.get("birthdate", {}).get("value", "")
+            if not person or not birthdate:
+                continue
+            match = re.search(r"[+-]?\d{4,}-([0-1]\d)-", str(birthdate))
+            if not match:
+                continue
+            try:
+                month_num = int(match.group(1))
+            except ValueError:
+                continue
+            month_name = month_map.get(month_num)
+            if month_name:
+                pairs.append((person, month_name))
+        logger.info(f"Retrieved {len(pairs)} valid birth month pairs from Wikidata")
+        return pairs
+
+    def get_national_sports(self) -> List[Tuple[str, str]]:
+        """
+        Get list of (country, sport) pairs.
+
+        Filters to sport names with single-word alphabetic labels.
+        """
+        results = self._execute_query(self.QUERY_NATIONAL_SPORTS)
+        pairs = []
+        for row in results:
+            country = row.get("countryLabel", {}).get("value", "")
+            sport = row.get("sportLabel", {}).get("value", "")
+            if country and sport:
+                sport_clean = sport.strip()
+                if sport_clean.isalpha() and " " not in sport_clean:
+                    pairs.append((country, sport_clean))
+        logger.info(f"Retrieved {len(pairs)} valid national sport pairs from Wikidata")
+        return pairs
+
+
+# ============================================================================
+# REST COUNTRIES API CLIENT
+# ============================================================================
+
+@dataclass
+class RestCountriesClient:
+    """
+    Client for the Rest Countries API (v3.1).
+
+    Fetches country metadata for:
+    - Capitals
+    - Currencies
+    - Languages
+    - Continents
+    """
+
+    endpoint: str = "https://restcountries.com/v3.1/all"
+    timeout: int = 30
+    fields: str = "name,capital,currencies,languages,continents"
+
+    def fetch_all(self) -> List[Dict[str, Any]]:
+        req = _require_requests()
+        params = {"fields": self.fields}
+        response = req.get(self.endpoint, params=params, timeout=self.timeout)
+        response.raise_for_status()
+        payload = response.json()
+        if not isinstance(payload, list):
+            raise RuntimeError("Unexpected Rest Countries response shape.")
+        return payload
+
+    def load_or_fetch(self, cache_path: Optional[Path] = None) -> List[Dict[str, Any]]:
+        if cache_path and cache_path.exists():
+            try:
+                return json.loads(cache_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                logger.warning("Failed to read Rest Countries cache at %s; refetching.", cache_path)
+        payload = self.fetch_all()
+        if cache_path:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_path.write_text(json.dumps(payload, ensure_ascii=True), encoding="utf-8")
+        return payload
+
+    def get_country_records(self, cache_path: Optional[Path] = None) -> List[Dict[str, Any]]:
+        payload = self.load_or_fetch(cache_path)
+        records: List[Dict[str, Any]] = []
+        for row in payload:
+            name = (row.get("name") or {}).get("common")
+            if not name:
+                continue
+            records.append({
+                "name": name,
+                "capitals": row.get("capital") or [],
+                "currencies": row.get("currencies") or {},
+                "languages": row.get("languages") or {},
+                "continents": row.get("continents") or [],
+            })
+        return records
 
 
 # ============================================================================

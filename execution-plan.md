@@ -96,7 +96,7 @@ Module inventory:
   - Keep: CandidatePrompt dataclass; idioms/facts/common-sense generators;
     creative and OOD generators as base.
   - Update: enforce "prompt must not contain X"; ensure exact style IDs per spec;
-    generate OOD 1000 candidates before validation; allow
+    generate OOD 1,800 candidates (K=3 per target across 600 targets) before validation; allow
     `OpenAIFallbackGenerator` for any category when a primary source is short.
 - `src/validator.py` (Partial)
   - Keep: ValidationResult, PromptValidator, TargetTracker, PromptSelector.
@@ -105,7 +105,7 @@ Module inventory:
     ensure strict JSON logging and acceptance rules.
 - `src/dataset_pipeline.py` (Partial)
   - Keep: overall scaffold for dataset build.
-  - Update: pressure gating with tau adjustment, bin balancing, prompt metadata
+  - Update: pressure gating with tau adjustment, bin balancing, hard 500 backfill, prompt metadata
     export (`prompts.csv` + `prompts_metadata.json`), manual spot check hooks.
 - `src/prompt_builder.py` (Missing)
   - Implement exact baseline + negative templates and `build_prompt()`.
@@ -250,7 +250,7 @@ Module inventory:
 
 5.1 Update existing `src/api_clients.py`:
 - Use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch-only client (OpenAI Batch API).
-  - Build JSONL requests, upload, create batch, poll, download output.
+  - Build JSONL requests, upload, create batch; do not auto-poll. Download output only when manually requested.
   - Log request/response JSON for every item; if logging fails, halt.
   - Model `gpt-5.2-2025-12-11` with text.format `json_object`,
     `reasoning.effort="none"`, `reasoning.summary="auto"`, `text.verbosity="low"`, `store=true`.
@@ -272,14 +272,15 @@ Module inventory:
   - form prompt with last word replaced by "____"
   - style ids: I1, I2, I3
   - if fewer than 1,000 candidates, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (idiom_full/target_word) and format with I1–I3
-- B Facts: run SPARQL for capitals and currencies, filter answers to
-  `^[A-Za-z]+$`, style ids F1, F2, F3.
-  - if fewer than 1,000 candidates, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (subject/relation/target_word) and format with F1–F3
-- C Common sense: ConceptNet is expected to be down. Generate the full pool with GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback:
-  - Return subject, relation (UsedFor/MadeOf/HasProperty), target_word
-  - Build question_text using C1-C3 templates
-  - Enforce diversity (no duplicate subject/target, balance relation types)
-  - Target 1,000 candidates (prompts_per_category * 2)
+- B Facts: use Wikidata SPARQL + RestCountries cache, filter answers to
+  `^[A-Za-z]+$`, style ids F1–F15 (capital, currency, language, continent, occupation, demonym, birth_month, national_sport if available).
+  - if fewer than 1,000 candidates, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback (subject/relation/target_word) and format with matching fact templates
+- C Common sense: use OMCS sentences as primary source; ConceptNet is expected to be down.
+  - If short, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback with relation + relation_label variants A–J.
+  - Return subject, relation (one of 10 base relations), target_word (relation_label optional for diversity).
+  - Build question_text using C1–C10 templates.
+  - Enforce diversity (no duplicate subject/target, balance relation types).
+  - Target 1,000 candidates (prompts_per_category * 2).
 - D Creative: select target X from wordfreq (Zipf 3.5-6.0), seed from `data/raw/writingprompts.txt`, generate K=3
   micro-story prompts via GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch (must not contain X), fixed format.
   - Target 1,800 candidates total (K=3 per target across 600 targets).
@@ -292,9 +293,8 @@ Module inventory:
 - Apply deterministic filters before any model validation:
   - Reject if target appears in prompt by whole-word match (case-insensitive).
   - Reject if target appears after stripping non-letters from prompt.
-  - Reject if creative is not exactly two sentences.
-  - Reject if out-of-distribution is not one or two sentences.
   - Reject if target is not strictly alphabetic.
+  - Sentence-count checks for creative/OOD are diagnostic only (log counts; do not filter).
 - Call GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) (batch-only) to return strict JSON:
   - is_one_word_answer_enforced
   - best_one_word_answer
@@ -432,10 +432,12 @@ Module inventory:
 ## 8. Detection and behavioral metrics (module 4)
 
 8.1 Run detection/mapping on:
-- `runs/completions_greedy.jsonl`
-- `runs/completions_samples.jsonl`
+- **Greedy completions only** for mechanistic metrics:
+  - `runs/completions_greedy.jsonl` → `runs/detection_mapping_greedy.jsonl`
+- Sampling completions for behavioral metrics (optional separate file):
+  - `runs/completions_samples.jsonl` → `runs/detection_mapping.jsonl` (samples-only or legacy)
 
-8.2 Save `runs/detection_mapping.jsonl` with:
+8.2 Save `runs/detection_mapping_greedy.jsonl` with:
 - prompt_id, condition, completion_text, completion_norm
 - target_word, target_word_norm
 - word_present, token_spans, mapping_error
@@ -461,7 +463,13 @@ Module inventory:
 
 9.2 Attention metrics (`src/metrics_attn.py`):
 - Use mechanistic traces and attention weights.
-- For generated position p (first answer token):
+- Determine decision step from `detection_mapping_greedy.jsonl`:
+  - If word_present=True: decision_step = index of first target token.
+  - If target is multi-token: use the first subtoken only.
+  - If multiple occurrences: use the first occurrence only.
+  - If word_present=False: decision_step = 0.
+  - If mapping_error=True: skip entry.
+- For generated position p (decision step):
   - Mass(S) = sum attention over context positions in span S.
 - Compute per layer and per head:
   - IAR, NF, TMF, PI
@@ -469,9 +477,9 @@ Module inventory:
   per-prompt aggregate.
 
 9.3 Layerwise logit lens:
-- For each layer, project hidden state at answer position through
+- For each layer, project hidden state at the **decision step** through
   `model.model.norm` then `lm_head`.
-- Compute probability mass over first tokens of sequences in S(X).
+- Compute probability mass over first tokens of sequences in S(X) (first subtoken only for multi-token targets).
 - Save to `runs/logit_lens.csv`.
 
 9.4 Attention vs FFN contribution decomposition:
@@ -479,6 +487,9 @@ Module inventory:
   - h_in
   - attn_out
   - ffn_out
+- Contributions are **positive when the module increases target probability**:
+  - attn_contrib = P(h_in + attn_out) - P(h_in)
+  - ffn_contrib = P(h_in + attn_out + ffn_out) - P(h_in + attn_out)
 - Compute proxy probabilities at:
   - h_in
   - h_in + attn_out
@@ -590,13 +601,16 @@ identifier; do not assume any specific format or attempt to parse it.
 - generated_text, generated_token_ids
 - finish_reason, timestamp
 
-13.6 `runs/detection_mapping.jsonl`:
+13.6 `runs/detection_mapping_greedy.jsonl` (required for mechanistic metrics):
 - prompt_id, condition, completion_text, completion_norm
 - target_word, target_word_norm
 - word_present (bool)
 - token_spans (list of [start,end])
 - mapping_error (bool)
 - format_adherence (bool)
+
+13.6.1 `runs/detection_mapping.jsonl` (optional, samples-only or legacy):
+- same schema as greedy mapping
 
 13.7 `runs/psem.csv`:
 - prompt_id, category, p0, p1

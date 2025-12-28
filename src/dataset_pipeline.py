@@ -112,7 +112,18 @@ def _round_up_multiple(value: int, multiple: int) -> int:
 
 
 def _common_sense_relation_counts(candidates: List[CandidatePrompt]) -> Dict[str, int]:
-    counts = {"UsedFor": 0, "MadeOf": 0, "HasProperty": 0}
+    counts = {
+        "UsedFor": 0,
+        "MadeOf": 0,
+        "HasProperty": 0,
+        "HasPart": 0,
+        "AtLocation": 0,
+        "CapableOf": 0,
+        "UsedBy": 0,
+        "Requires": 0,
+        "Contains": 0,
+        "WornOn": 0,
+    }
     for cand in candidates:
         relation = cand.raw_data.get("relation")
         if not relation and cand.prompt_style_id:
@@ -122,13 +133,38 @@ def _common_sense_relation_counts(candidates: List[CandidatePrompt]) -> Dict[str
                 relation = "MadeOf"
             elif cand.prompt_style_id.startswith("C3_"):
                 relation = "HasProperty"
+            elif cand.prompt_style_id.startswith("C4_"):
+                relation = "HasPart"
+            elif cand.prompt_style_id.startswith("C5_"):
+                relation = "AtLocation"
+            elif cand.prompt_style_id.startswith("C6_"):
+                relation = "CapableOf"
+            elif cand.prompt_style_id.startswith("C7_"):
+                relation = "UsedBy"
+            elif cand.prompt_style_id.startswith("C8_"):
+                relation = "Requires"
+            elif cand.prompt_style_id.startswith("C9_"):
+                relation = "Contains"
+            elif cand.prompt_style_id.startswith("C10_"):
+                relation = "WornOn"
         if relation in counts:
             counts[relation] += 1
     return counts
 
 
 def _common_sense_relation_targets(gap: int, counts: Dict[str, int]) -> Dict[str, int]:
-    relation_types = ["UsedFor", "MadeOf", "HasProperty"]
+    relation_types = [
+        "UsedFor",
+        "MadeOf",
+        "HasProperty",
+        "HasPart",
+        "AtLocation",
+        "CapableOf",
+        "UsedBy",
+        "Requires",
+        "Contains",
+        "WornOn",
+    ]
     targets = {rel: 0 for rel in relation_types}
     for _ in range(gap):
         rel = min(relation_types, key=lambda r: counts.get(r, 0) + targets[r])
@@ -248,7 +284,8 @@ def _select_prompts_for_category(
             if vp.validation.is_accepted(vp.candidate.target_word)
         ]
 
-    for vp in selected:
+    all_ranked = list(validated)
+    for vp in all_ranked:
         if vp.s_score == 0:
             vp.compute_s_score()
 
@@ -263,6 +300,7 @@ def _select_prompts_for_category(
         )
 
     ranked = sorted(selected, key=lambda p: -p.s_score)
+    all_ranked.sort(key=lambda p: -p.s_score)
 
     # Tau-lowering loop with bin balancing (per spec Section 3.9)
     initial_tau = CONFIG['dataset'].get('min_pressure_threshold', 0.20)
@@ -366,6 +404,22 @@ def _select_prompts_for_category(
             len(filtered),
             prompts_per_category,
         )
+        chosen_ids = {_prompt_id(vp) for vp in filtered}
+        for vp in all_ranked:
+            pid = _prompt_id(vp)
+            if pid in chosen_ids:
+                continue
+            filtered.append(vp)
+            chosen_ids.add(pid)
+            if len(filtered) >= prompts_per_category:
+                break
+        if len(filtered) < prompts_per_category:
+            logger.warning(
+                "Category %s: only %d prompts available after fallback fill (target %d).",
+                category,
+                len(filtered),
+                prompts_per_category,
+            )
 
     filtered.sort(key=lambda p: -p.s_score)
 
