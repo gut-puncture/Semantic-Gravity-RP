@@ -21,6 +21,12 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
+# Import CandidatePrompt early - needed for type hints before other imports
+try:
+    from .data_mining import CandidatePrompt
+except ImportError:
+    from data_mining import CandidatePrompt
+
 _SENTENCE_SPLIT_RE = re.compile(r"[.!?]+")
 
 
@@ -99,14 +105,12 @@ def apply_deterministic_filters(prompts: List[CandidatePrompt]) -> Tuple[List[Ca
 # Import local modules
 try:
     from .api_clients import OpenAIClient
-    from .data_mining import CandidatePrompt
     from .config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from .utils import ModelWrapper
     from .prompt_builder import build_prompt
     from .metrics_psem import compute_p_sem_for_prompt
 except ImportError:
     from api_clients import OpenAIClient
-    from data_mining import CandidatePrompt
     from config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from utils import ModelWrapper
     from prompt_builder import build_prompt
