@@ -33,6 +33,7 @@
 }
 
 \begin{document}
+\raggedbottom
 
 \begin{abstract}
 Negative constraints---instructions of the form ``do not use word X''---represent a fundamental test of instruction-following capability in large language models. Despite their apparent simplicity, these constraints fail with striking regularity, and the conditions governing failure have remained poorly understood. This paper presents the first comprehensive mechanistic investigation of negative instruction failure. We introduce \emph{semantic pressure}, a quantitative measure of the model's intrinsic probability of generating the forbidden token, and demonstrate that violation probability follows a tight logistic relationship with pressure ($p = \sigma(-2.40 + 2.27 \cdot P_0)$; $n=40{,}000$ samples; bootstrap 95\% CI for slope: $[2.21, 2.33]$). Through layer-wise analysis using the logit lens technique, we establish that the suppression signal induced by negative instructions is present but systematically weaker in failures: the instruction reduces target probability by only 5.2 percentage points in failures versus 22.8 points in successes---a $4.4\times$ asymmetry. We trace this asymmetry to two mechanistically distinct failure modes. In \emph{priming failure} (87.5\% of violations), the instruction's explicit mention of the forbidden word paradoxically activates rather than suppresses the target representation. In \emph{override failure} (12.5\%), late-layer feed-forward networks generate contributions of +0.39 toward the target probability---nearly $4\times$ larger than in successes---overwhelming earlier suppression signals. Activation patching confirms that layers 23--27 are causally responsible: replacing these layers' activations flips the sign of constraint effects. These findings reveal a fundamental tension in negative constraint design: the very act of naming a forbidden word primes the model to produce it.
@@ -476,7 +477,7 @@ Each variant is tokenized. Probability computed via teacher-forced forward pass 
 
 \section{Extended Results Tables}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{Violation rate by pressure bin ($n=40{,}000$).}
 \begin{tabular}{@{}lrrrr@{}}
@@ -492,7 +493,7 @@ $[0.8, 1.0]$ & 0.463 & 0.435 & 0.491 & 916 \\
 \end{tabular}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{FFN and Attention contributions at layer 27 (negative instruction condition).}
 \begin{tabular}{@{}lrr@{}}
@@ -505,7 +506,7 @@ Failure & $-0.132$ & $+0.386$ \\
 \end{tabular}
 \end{table}
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{Patching effects by layer (high-pressure, $P_0 \geq 0.8$).}
 \begin{tabular}{@{}lr|lr@{}}
@@ -518,5 +519,7 @@ Layers & $\Delta P$ & Layers & $\Delta P$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\vfill
 
 \end{document}

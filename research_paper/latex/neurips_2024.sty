@@ -1,9 +1,9 @@
-% neurips_2025.sty - NeurIPS 2025 Style File
+% neurips_2024.sty - NeurIPS 2024 Style File
 % Two-column document with full-width title and abstract
-% Fixed to properly handle math mode in abstract
+% Uses the official NeurIPS approach with quote environment for abstract
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{neurips_2025}[2025/01/01 NeurIPS 2025 submission style]
+\ProvidesPackage{neurips_2024}[2024/01/01 NeurIPS 2024 submission style]
 
 % Options
 \newif\if@final\@finalfalse
@@ -37,22 +37,16 @@
 % Line spacing
 \linespread{1.0}
 
-% Storage for abstract content
-\newsavebox{\@abstractbox}
+% Use environ package to capture abstract body (official NeurIPS approach)
+\RequirePackage{environ}
+\RenewEnviron{abstract}{\global\let\@abstractbody\BODY}
+\let\@abstractbody\@empty
 
-% Custom abstract environment - saves content to a box
-\renewenvironment{abstract}{%
-    \global\setbox\@abstractbox=\vbox\bgroup
-    \small
-}{%
-    \egroup
-}
-
-% Custom maketitle - outputs title, author, AND abstract together in twocolumn[]
+% Custom maketitle - matches official NeurIPS style using quote environment
 \def\@maketitle{%
     \twocolumn[%
         \begin{center}%
-            \vskip 0.1in%
+            \vskip 0.075in%
             {\LARGE \bfseries \@title \par}%
             \vskip 0.25in%
             {\large
@@ -61,15 +55,13 @@
                     \@author
                 \end{tabular}\par}%
         \end{center}%
-        \vskip 0.15in%
+        \vskip 0.075in%
         \centerline{\large\bfseries Abstract}%
         \vspace{0.5ex}%
-        \begin{center}%
-        \begin{minipage}{0.9\textwidth}%
-            \usebox{\@abstractbox}%
-        \end{minipage}%
-        \end{center}%
-        \vskip 0.1in%
+        \begin{quote}%
+            \small\@abstractbody%
+        \end{quote}%
+        \vskip 1ex%
     ]%
 }
 
