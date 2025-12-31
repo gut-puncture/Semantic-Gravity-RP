@@ -10,7 +10,7 @@ This module provides:
 Per specification Sections 6 and 7.
 """
 
-from typing import List, Tuple, Set, Any, Optional
+from typing import List, Tuple, Set, Any, Optional, Dict
 
 # ============================================================================
 # IMPORT UTILITIES
@@ -282,6 +282,293 @@ def _compute_sequence_prob(
 
     import math
     return math.exp(log_prob)
+
+
+# ============================================================================
+# BATCHED SEQUENCE LOG-PROBABILITIES
+# ============================================================================
+
+
+def _get_pad_token_id(tokenizer: Any) -> int:
+    """Resolve a safe pad token id for batching."""
+    pad_token_id = getattr(tokenizer, "pad_token_id", None)
+    if pad_token_id is None:
+        pad_token_id = getattr(tokenizer, "eos_token_id", None)
+    if pad_token_id is None:
+        pad_token_id = 0
+    return int(pad_token_id)
+
+
+def _iter_task_batches(
+    indices: List[int],
+    contexts: List[List[int]],
+    sequences: List[Tuple[int, ...]],
+    max_batch_size: int,
+    max_batch_tokens: Optional[int],
+) -> List[List[int]]:
+    """Yield batches of task indices bounded by size and total tokens."""
+    batch = []
+    token_count = 0
+    for idx in indices:
+        ctx_len = len(contexts[idx])
+        seq_len = len(sequences[idx])
+        task_tokens = ctx_len + seq_len
+        if batch:
+            if len(batch) >= max_batch_size:
+                yield batch
+                batch = []
+                token_count = 0
+            elif max_batch_tokens and token_count + task_tokens > max_batch_tokens:
+                yield batch
+                batch = []
+                token_count = 0
+
+        batch.append(idx)
+        token_count += task_tokens
+
+    if batch:
+        yield batch
+
+
+def _compute_sequence_logprobs_batch(
+    model: Any,
+    tokenizer: Any,
+    contexts: List[List[int]],
+    sequences: List[Tuple[int, ...]],
+    batch_indices: List[int],
+) -> Dict[int, float]:
+    """
+    Compute log-probabilities for a batch of (context, sequence) pairs.
+
+    Returns dict mapping global task index -> log_prob.
+    """
+    import torch
+
+    device = next(model.parameters()).device if hasattr(model, "parameters") else torch.device("cpu")
+    pad_token_id = _get_pad_token_id(tokenizer)
+
+    max_len = 0
+    for idx in batch_indices:
+        max_len = max(max_len, len(contexts[idx]) + len(sequences[idx]))
+
+    batch_size = len(batch_indices)
+    input_ids = torch.full(
+        (batch_size, max_len),
+        pad_token_id,
+        dtype=torch.long,
+        device=device,
+    )
+    attention_mask = torch.zeros((batch_size, max_len), dtype=torch.long, device=device)
+
+    context_lens: List[int] = []
+    seqs: List[Tuple[int, ...]] = []
+    for i, idx in enumerate(batch_indices):
+        ctx = contexts[idx]
+        seq = sequences[idx]
+        full_ids = ctx + list(seq)
+        length = len(full_ids)
+        input_ids[i, :length] = torch.tensor(full_ids, dtype=torch.long, device=device)
+        attention_mask[i, :length] = 1
+        context_lens.append(len(ctx))
+        seqs.append(seq)
+
+    with torch.inference_mode():
+        outputs = model(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            use_cache=False,
+        )
+
+    logits = outputs.logits
+    results: Dict[int, float] = {}
+
+    for i, idx in enumerate(batch_indices):
+        ctx_len = context_lens[i]
+        seq = seqs[i]
+        if not seq:
+            results[idx] = 0.0
+            continue
+        if ctx_len <= 0:
+            raise ValueError("compute_p_sem: empty context_ids. Cannot compute P_sem.")
+
+        positions = [ctx_len - 1 + j for j in range(len(seq))]
+        logits_i = logits[i, positions, :]
+        log_probs_i = torch.log_softmax(logits_i, dim=-1)
+        token_ids = torch.tensor(seq, dtype=torch.long, device=logits_i.device)
+        log_prob = log_probs_i[torch.arange(len(seq), device=logits_i.device), token_ids].sum().item()
+        results[idx] = log_prob
+
+    return results
+
+
+def compute_sequence_logprobs_batched(
+    model: Any,
+    tokenizer: Any,
+    contexts: List[List[int]],
+    sequences: List[Tuple[int, ...]],
+    batch_size: int = 32,
+    max_batch_tokens: Optional[int] = None,
+    logger: Optional[Any] = None,
+) -> List[float]:
+    """
+    Compute log-probabilities for many (context, sequence) pairs in batches.
+
+    Args:
+        model: Language model
+        tokenizer: Tokenizer
+        contexts: List of context token ID lists
+        sequences: List of target token sequences
+        batch_size: Max tasks per batch
+        max_batch_tokens: Optional cap on total tokens per batch
+        logger: Optional logger for OOM warnings
+
+    Returns:
+        List of log-probabilities aligned with inputs.
+    """
+    import torch
+
+    if len(contexts) != len(sequences):
+        raise ValueError("contexts and sequences must be the same length")
+
+    total = len(contexts)
+    if total == 0:
+        return []
+
+    indices = list(range(total))
+    log_probs: List[float] = [0.0] * total
+
+    def compute_with_oom_split(batch_indices: List[int]) -> None:
+        try:
+            batch_results = _compute_sequence_logprobs_batch(
+                model=model,
+                tokenizer=tokenizer,
+                contexts=contexts,
+                sequences=sequences,
+                batch_indices=batch_indices,
+            )
+            for idx, value in batch_results.items():
+                log_probs[idx] = value
+        except RuntimeError as e:
+            if "out of memory" not in str(e).lower():
+                raise
+            if logger:
+                logger.warning("OOM in batch of %d tasks; retrying with smaller batch", len(batch_indices))
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+            if len(batch_indices) <= 1:
+                raise
+            mid = len(batch_indices) // 2
+            compute_with_oom_split(batch_indices[:mid])
+            compute_with_oom_split(batch_indices[mid:])
+
+    for batch_indices in _iter_task_batches(
+        indices=indices,
+        contexts=contexts,
+        sequences=sequences,
+        max_batch_size=max(1, int(batch_size)),
+        max_batch_tokens=max_batch_tokens,
+    ):
+        compute_with_oom_split(batch_indices)
+
+    return log_probs
+
+
+def compute_p_sem_for_prompts(
+    prompt_texts: List[str],
+    target_words: List[str],
+    model: Any,
+    tokenizer: Any,
+    batch_size: int = 32,
+    max_batch_tokens: Optional[int] = None,
+    strict: bool = True,
+    logger: Optional[Any] = None,
+) -> List[float]:
+    """
+    Compute P_sem for many prompts in batches.
+
+    Args:
+        prompt_texts: List of full prompt texts
+        target_words: List of target words (same length as prompt_texts)
+        model: Language model
+        tokenizer: Tokenizer
+        batch_size: Max tasks per batch (tasks = context+sequence pairs)
+        max_batch_tokens: Optional cap on total tokens per batch
+        strict: If True, raise on invalid inputs
+        logger: Optional logger
+
+    Returns:
+        List of P_sem values aligned to prompt_texts.
+    """
+    if len(prompt_texts) != len(target_words):
+        raise ValueError("prompt_texts and target_words must be the same length")
+
+    add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
+
+    context_ids_list: List[List[int]] = []
+    token_sequences_list: List[List[Tuple[int, ...]]] = []
+
+    seq_cache: Dict[str, List[Tuple[int, ...]]] = {}
+
+    for prompt_text, target_word in zip(prompt_texts, target_words):
+        context_ids = tokenizer.encode(prompt_text, add_special_tokens=add_special_tokens)
+        if not context_ids:
+            if strict:
+                raise ValueError("compute_p_sem: empty context_ids. Cannot compute P_sem.")
+            context_ids_list.append([])
+            token_sequences_list.append([])
+            continue
+
+        if target_word in seq_cache:
+            token_sequences = seq_cache[target_word]
+        else:
+            token_sequences = token_sequences_for_variants(target_word, tokenizer)
+            seq_cache[target_word] = token_sequences
+
+        if not token_sequences:
+            if strict:
+                raise ValueError(
+                    "compute_p_sem: empty token_sequences. Cannot compute P_sem "
+                    "without target token sequences."
+                )
+            context_ids_list.append(context_ids)
+            token_sequences_list.append([])
+            continue
+
+        context_ids_list.append(context_ids)
+        token_sequences_list.append(token_sequences)
+
+    # Build batched tasks
+    contexts: List[List[int]] = []
+    sequences: List[Tuple[int, ...]] = []
+    prompt_index_for_task: List[int] = []
+    task_counts = [0] * len(prompt_texts)
+
+    for i, (context_ids, seqs) in enumerate(zip(context_ids_list, token_sequences_list)):
+        for seq in seqs:
+            contexts.append(context_ids)
+            sequences.append(seq)
+            prompt_index_for_task.append(i)
+            task_counts[i] += 1
+
+    log_probs = compute_sequence_logprobs_batched(
+        model=model,
+        tokenizer=tokenizer,
+        contexts=contexts,
+        sequences=sequences,
+        batch_size=batch_size,
+        max_batch_tokens=max_batch_tokens,
+        logger=logger,
+    )
+
+    import math
+
+    p_sem_values: List[float] = [0.0] * len(prompt_texts)
+    for log_prob, prompt_idx in zip(log_probs, prompt_index_for_task):
+        p_sem_values[prompt_idx] += math.exp(log_prob)
+
+    # Clamp to [0, 1] for numerical stability
+    p_sem_values = [min(max(v, 0.0), 1.0) for v in p_sem_values]
+    return p_sem_values
 
 
 # ============================================================================

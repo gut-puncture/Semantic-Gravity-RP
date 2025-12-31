@@ -13,9 +13,14 @@ import json
 import logging
 import warnings
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Tuple, Any, Set
 
 logger = logging.getLogger(__name__)
+
+# Simple batch iterator for streaming workloads.
+def _iter_batches(items: List[Any], batch_size: int) -> List[List[Any]]:
+    for i in range(0, len(items), batch_size):
+        yield items[i:i + batch_size]
 
 # ============================================================================
 # IMPORTS
@@ -460,6 +465,8 @@ def compute_attention_metrics(
     output_root: Optional[Path] = None,
     prompts_path: Optional[Path] = None,
     limit: Optional[int] = None,
+    log_every: int = 50,
+    checkpoint_path: Optional[Path] = None,
 ) -> Path:
     """
     Compute attention-based metrics from mechanistic traces.
@@ -478,12 +485,16 @@ def compute_attention_metrics(
         output_root: Run root directory. If None, auto-selects latest.
         prompts_path: Path to prompts.csv. If None, uses data_root.
         limit: Optional limit on number of prompts to process.
+        log_every: Log progress every N prompt/condition pairs.
+        checkpoint_path: Optional JSONL checkpoint for resume.
 
     Returns:
         Path to attention_metrics.csv
     """
+    import csv
     import pandas as pd
     import torch
+    import time
 
     # Resolve paths
     run_root = _resolve_run_root(output_root)
@@ -522,204 +533,369 @@ def compute_attention_metrics(
         wrapper.load()
     tokenizer = wrapper.tokenizer
 
-    rows = []
-    skipped_mapping_error = 0
-    skipped_no_entry = 0
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    output_path = runs_dir / "attention_metrics.csv"
+    checkpoint_path = checkpoint_path or (runs_dir / "attention_metrics_checkpoint.jsonl")
 
+    processed: Set[str] = set()
+    if checkpoint_path.exists():
+        try:
+            with checkpoint_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    rec = json.loads(line)
+                    pid = rec.get("prompt_id")
+                    cond = rec.get("condition")
+                    if pid is not None and cond is not None:
+                        processed.add(f"{pid}|{cond}")
+        except Exception as e:
+            logger.warning("Failed to load attention metrics checkpoint %s: %s", checkpoint_path, e)
+    elif output_path.exists():
+        try:
+            with output_path.open("r", encoding="utf-8", newline="") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    pid = row.get("prompt_id")
+                    cond = row.get("condition")
+                    if pid and cond:
+                        processed.add(f"{pid}|{cond}")
+        except Exception as e:
+            logger.warning("Failed to recover processed set from %s: %s", output_path, e)
+
+    tasks: List[Dict[str, Any]] = []
+    skipped_missing_trace = 0
     for _, row in prompts_df.iterrows():
         prompt_id = str(row["prompt_id"])
         question_text = row["question_text"]
         target_word = row["target_word"]
 
         for condition in ["baseline", "negative"]:
+            key = f"{prompt_id}|{condition}"
+            if key in processed:
+                continue
+
             trace_path = trace_dir / f"{prompt_id}_{condition}.pt"
-
             if not trace_path.exists():
-                logger.debug("Trace not found: %s", trace_path)
+                skipped_missing_trace += 1
                 continue
 
-            try:
-                trace = torch.load(trace_path, map_location="cpu")
-            except Exception as e:
-                logger.warning("Failed to load trace %s: %s", trace_path, e)
-                continue
+            tasks.append({
+                "prompt_id": prompt_id,
+                "question_text": question_text,
+                "target_word": target_word,
+                "condition": condition,
+                "trace_path": trace_path,
+            })
 
-            # Check for attentions
-            attentions = trace.get("attentions")
-            if not attentions or len(attentions) == 0:
-                logger.debug("No attentions in trace: %s", trace_path)
-                continue
+    if not tasks:
+        logger.info("No attention metrics tasks to run (all processed or skipped).")
+        return output_path
 
-            # Get input_ids for context length
-            input_ids = trace.get("input_ids")
-            if input_ids is None:
-                continue
+    logger.info("Computing attention metrics for %d prompt/condition pairs", len(tasks))
 
-            if hasattr(input_ids, "tolist"):
-                if input_ids.dim() > 1:
-                    input_ids_list = input_ids[0].tolist()
-                else:
-                    input_ids_list = input_ids.tolist()
-            else:
-                input_ids_list = list(input_ids)
+    fieldnames = [
+        "prompt_id",
+        "condition",
+        "decision_step",
+        "word_present",
+        "layer",
+        "head",
+        "iar",
+        "nf",
+        "tmf",
+        "pi",
+        "aggregate_flag",
+    ]
 
-            context_len = len(input_ids_list)
-            generated_len = len(attentions)
+    def _append_rows(rows: List[Dict[str, Any]]) -> None:
+        if not rows:
+            return
+        write_header = not output_path.exists()
+        with output_path.open("a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            if write_header:
+                writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
 
-            # Get decision step from detection mapping
-            decision_step, word_present, mapping_error = _get_decision_step(
-                prompt_id, condition, detection_mapping, generated_len
-            )
+    def _append_checkpoint(pid: str, cond: str) -> None:
+        with checkpoint_path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"prompt_id": pid, "condition": cond}, ensure_ascii=True) + "\n")
 
-            # Fix C: Skip entries with mapping_error
-            if mapping_error:
-                skipped_mapping_error += 1
-                continue
+    processed_count = 0
+    last_log = 0
+    start_time = time.monotonic()
+    skipped_mapping_error = 0
+    skipped_no_entry = 0
+    skipped_no_attn = 0
 
-            # If no detection entry exists (decision_step is None and not mapping_error),
-            # use fallback step 0
-            if decision_step is None:
-                if not detection_mapping:
-                    # No detection mapping at all - use step 0 as fallback
-                    decision_step = 0
-                    word_present = False
-                else:
-                    # Entry missing for this prompt - skip
-                    skipped_no_entry += 1
-                    continue
+    for task in tasks:
+        prompt_id = task["prompt_id"]
+        question_text = task["question_text"]
+        target_word = task["target_word"]
+        condition = task["condition"]
+        trace_path = task["trace_path"]
 
-            # Validate step is in bounds
-            if decision_step >= len(attentions):
-                logger.debug(
-                    "Decision step %d >= len(attentions) %d for %s_%s, using last step",
-                    decision_step, len(attentions), prompt_id, condition
+        try:
+            trace = torch.load(trace_path, map_location="cpu")
+        except Exception as e:
+            logger.warning("Failed to load trace %s: %s", trace_path, e)
+            skipped_missing_trace += 1
+            processed_count += 1
+            if log_every and (processed_count - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = processed_count / elapsed
+                remaining = len(tasks) - processed_count
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "Attention metrics progress: %d/%d (%.1f%%) | %.2f pairs/s | ETA %.1fs",
+                    processed_count,
+                    len(tasks),
+                    100.0 * processed_count / len(tasks),
+                    rate,
+                    eta,
                 )
-                decision_step = len(attentions) - 1
+                last_log = processed_count
+            continue
 
-            # Build prompt and get spans
-            prompt_text = build_prompt(question_text, target_word, condition)
-            char_spans = _compute_char_spans(prompt_text, target_word, condition)
+        attentions = trace.get("attentions")
+        if not attentions or len(attentions) == 0:
+            logger.debug("No attentions in trace: %s", trace_path)
+            skipped_no_attn += 1
+            processed_count += 1
+            if log_every and (processed_count - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = processed_count / elapsed
+                remaining = len(tasks) - processed_count
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "Attention metrics progress: %d/%d (%.1f%%) | %.2f pairs/s | ETA %.1fs",
+                    processed_count,
+                    len(tasks),
+                    100.0 * processed_count / len(tasks),
+                    rate,
+                    eta,
+                )
+                last_log = processed_count
+            continue
 
-            # Get offsets and map to token indices
-            offsets = _get_offsets_for_prompt(prompt_text, tokenizer, input_ids_list)
+        input_ids = trace.get("input_ids")
+        if input_ids is None:
+            processed_count += 1
+            if log_every and (processed_count - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = processed_count / elapsed
+                remaining = len(tasks) - processed_count
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "Attention metrics progress: %d/%d (%.1f%%) | %.2f pairs/s | ETA %.1fs",
+                    processed_count,
+                    len(tasks),
+                    100.0 * processed_count / len(tasks),
+                    rate,
+                    eta,
+                )
+                last_log = processed_count
+            continue
 
-            instr_tokens = _map_char_span_to_token_indices(offsets, char_spans["instr_span"])
-            negation_tokens = _map_char_span_to_token_indices(offsets, char_spans["negation_span"])
-            target_tokens = _map_char_span_to_token_indices(offsets, char_spans["target_mention_span"])
-            question_tokens = _map_char_span_to_token_indices(offsets, char_spans["question_span"])
+        if hasattr(input_ids, "tolist"):
+            if input_ids.dim() > 1:
+                input_ids_list = input_ids[0].tolist()
+            else:
+                input_ids_list = input_ids.tolist()
+        else:
+            input_ids_list = list(input_ids)
 
-            # Use decision step attentions (NOT step 0)
-            step_attn = attentions[decision_step]  # Tuple of layer tensors
+        context_len = len(input_ids_list)
+        generated_len = len(attentions)
 
-            num_layers = len(step_attn)
-            all_head_metrics = []
+        decision_step, word_present, mapping_error = _get_decision_step(
+            prompt_id, condition, detection_mapping, generated_len
+        )
 
-            for layer_idx, layer_attn in enumerate(step_attn):
-                # layer_attn shape: [1, num_heads, seq_len, seq_len]
-                # For the decision step, we look at the generated position attending to context
-                if layer_attn.dim() < 4:
-                    continue
+        if mapping_error:
+            skipped_mapping_error += 1
+            processed_count += 1
+            if log_every and (processed_count - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = processed_count / elapsed
+                remaining = len(tasks) - processed_count
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "Attention metrics progress: %d/%d (%.1f%%) | %.2f pairs/s | ETA %.1fs",
+                    processed_count,
+                    len(tasks),
+                    100.0 * processed_count / len(tasks),
+                    rate,
+                    eta,
+                )
+                last_log = processed_count
+            continue
 
-                num_heads = layer_attn.shape[1]
-                seq_len = layer_attn.shape[2]
-                # The position attending = context_len + decision_step (current position in full seq)
-                gen_pos = seq_len - 1  # Last position in this step's attention
+        if decision_step is None:
+            if not detection_mapping:
+                decision_step = 0
+                word_present = False
+            else:
+                skipped_no_entry += 1
+                processed_count += 1
+                if log_every and (processed_count - last_log) >= log_every:
+                    elapsed = max(time.monotonic() - start_time, 1e-6)
+                    rate = processed_count / elapsed
+                    remaining = len(tasks) - processed_count
+                    eta = remaining / rate if rate > 0 else 0.0
+                    logger.info(
+                        "Attention metrics progress: %d/%d (%.1f%%) | %.2f pairs/s | ETA %.1fs",
+                        processed_count,
+                        len(tasks),
+                        100.0 * processed_count / len(tasks),
+                        rate,
+                        eta,
+                    )
+                    last_log = processed_count
+                continue
 
-                for head_idx in range(num_heads):
-                    # Attention weights from gen_pos to all context positions
-                    attn_weights = layer_attn[0, head_idx, gen_pos, :context_len].float()
+        if decision_step >= len(attentions):
+            logger.debug(
+                "Decision step %d >= len(attentions) %d for %s_%s, using last step",
+                decision_step, len(attentions), prompt_id, condition
+            )
+            decision_step = len(attentions) - 1
 
-                    # Compute mass for each span
-                    def mass(token_indices):
-                        if not token_indices:
-                            return 0.0
-                        valid_indices = [i for i in token_indices if i < len(attn_weights)]
-                        if not valid_indices:
-                            return 0.0
-                        return attn_weights[valid_indices].sum().item()
+        prompt_text = build_prompt(question_text, target_word, condition)
+        char_spans = _compute_char_spans(prompt_text, target_word, condition)
+        offsets = _get_offsets_for_prompt(prompt_text, tokenizer, input_ids_list)
 
-                    mass_instr = mass(instr_tokens)
-                    mass_negation = mass(negation_tokens)
-                    mass_target = mass(target_tokens)
-                    mass_question = mass(question_tokens)
+        instr_tokens = _map_char_span_to_token_indices(offsets, char_spans["instr_span"])
+        negation_tokens = _map_char_span_to_token_indices(offsets, char_spans["negation_span"])
+        target_tokens = _map_char_span_to_token_indices(offsets, char_spans["target_mention_span"])
+        question_tokens = _map_char_span_to_token_indices(offsets, char_spans["question_span"])
 
-                    # Compute metrics
-                    iar = mass_instr / (mass_instr + mass_question + 1e-9)
-                    nf = mass_negation / (mass_instr + 1e-9)
-                    tmf = mass_target / (mass_instr + 1e-9)
-                    pi = tmf - nf
+        step_attn = attentions[decision_step]
 
-                    head_row = {
-                        "prompt_id": prompt_id,
-                        "condition": condition,
-                        "decision_step": decision_step,  # Added for visibility
-                        "word_present": word_present,
-                        "layer": layer_idx,
-                        "head": head_idx,
-                        "iar": iar,
-                        "nf": nf,
-                        "tmf": tmf,
-                        "pi": pi,
-                        "aggregate_flag": "head",
-                    }
-                    rows.append(head_row)
-                    all_head_metrics.append((layer_idx, head_idx, iar, nf, tmf, pi))
+        rows: List[Dict[str, Any]] = []
+        all_head_metrics: List[Tuple[int, int, float, float, float, float]] = []
 
-                # Per-layer mean
-                layer_heads = [(h, iar, nf, tmf, pi) for (l, h, iar, nf, tmf, pi) in all_head_metrics if l == layer_idx]
-                if layer_heads:
-                    mean_iar = sum(x[1] for x in layer_heads) / len(layer_heads)
-                    mean_nf = sum(x[2] for x in layer_heads) / len(layer_heads)
-                    mean_tmf = sum(x[3] for x in layer_heads) / len(layer_heads)
-                    mean_pi = sum(x[4] for x in layer_heads) / len(layer_heads)
+        for layer_idx, layer_attn in enumerate(step_attn):
+            if layer_attn.dim() < 4:
+                continue
 
-                    rows.append({
-                        "prompt_id": prompt_id,
-                        "condition": condition,
-                        "decision_step": decision_step,
-                        "word_present": word_present,
-                        "layer": layer_idx,
-                        "head": -1,
-                        "iar": mean_iar,
-                        "nf": mean_nf,
-                        "tmf": mean_tmf,
-                        "pi": mean_pi,
-                        "aggregate_flag": "layer_mean",
-                    })
+            num_heads = layer_attn.shape[1]
+            seq_len = layer_attn.shape[2]
+            gen_pos = seq_len - 1
 
-            # Global mean
-            if all_head_metrics:
-                global_iar = sum(x[2] for x in all_head_metrics) / len(all_head_metrics)
-                global_nf = sum(x[3] for x in all_head_metrics) / len(all_head_metrics)
-                global_tmf = sum(x[4] for x in all_head_metrics) / len(all_head_metrics)
-                global_pi = sum(x[5] for x in all_head_metrics) / len(all_head_metrics)
+            for head_idx in range(num_heads):
+                attn_weights = layer_attn[0, head_idx, gen_pos, :context_len].float()
+
+                def mass(token_indices: List[int]) -> float:
+                    if not token_indices:
+                        return 0.0
+                    valid_indices = [i for i in token_indices if i < len(attn_weights)]
+                    if not valid_indices:
+                        return 0.0
+                    return attn_weights[valid_indices].sum().item()
+
+                mass_instr = mass(instr_tokens)
+                mass_negation = mass(negation_tokens)
+                mass_target = mass(target_tokens)
+                mass_question = mass(question_tokens)
+
+                iar = mass_instr / (mass_instr + mass_question + 1e-9)
+                nf = mass_negation / (mass_instr + 1e-9)
+                tmf = mass_target / (mass_instr + 1e-9)
+                pi = tmf - nf
 
                 rows.append({
                     "prompt_id": prompt_id,
                     "condition": condition,
                     "decision_step": decision_step,
                     "word_present": word_present,
-                    "layer": -1,
+                    "layer": layer_idx,
+                    "head": head_idx,
+                    "iar": iar,
+                    "nf": nf,
+                    "tmf": tmf,
+                    "pi": pi,
+                    "aggregate_flag": "head",
+                })
+                all_head_metrics.append((layer_idx, head_idx, iar, nf, tmf, pi))
+
+            layer_heads = [
+                (h, iar, nf, tmf, pi)
+                for (l, h, iar, nf, tmf, pi) in all_head_metrics
+                if l == layer_idx
+            ]
+            if layer_heads:
+                mean_iar = sum(x[1] for x in layer_heads) / len(layer_heads)
+                mean_nf = sum(x[2] for x in layer_heads) / len(layer_heads)
+                mean_tmf = sum(x[3] for x in layer_heads) / len(layer_heads)
+                mean_pi = sum(x[4] for x in layer_heads) / len(layer_heads)
+
+                rows.append({
+                    "prompt_id": prompt_id,
+                    "condition": condition,
+                    "decision_step": decision_step,
+                    "word_present": word_present,
+                    "layer": layer_idx,
                     "head": -1,
-                    "iar": global_iar,
-                    "nf": global_nf,
-                    "tmf": global_tmf,
-                    "pi": global_pi,
-                    "aggregate_flag": "global_mean",
+                    "iar": mean_iar,
+                    "nf": mean_nf,
+                    "tmf": mean_tmf,
+                    "pi": mean_pi,
+                    "aggregate_flag": "layer_mean",
                 })
 
+        if all_head_metrics:
+            global_iar = sum(x[2] for x in all_head_metrics) / len(all_head_metrics)
+            global_nf = sum(x[3] for x in all_head_metrics) / len(all_head_metrics)
+            global_tmf = sum(x[4] for x in all_head_metrics) / len(all_head_metrics)
+            global_pi = sum(x[5] for x in all_head_metrics) / len(all_head_metrics)
+
+            rows.append({
+                "prompt_id": prompt_id,
+                "condition": condition,
+                "decision_step": decision_step,
+                "word_present": word_present,
+                "layer": -1,
+                "head": -1,
+                "iar": global_iar,
+                "nf": global_nf,
+                "tmf": global_tmf,
+                "pi": global_pi,
+                "aggregate_flag": "global_mean",
+            })
+
+        if rows:
+            _append_rows(rows)
+            _append_checkpoint(prompt_id, condition)
+
+        processed_count += 1
+        if log_every and (processed_count - last_log) >= log_every:
+            elapsed = max(time.monotonic() - start_time, 1e-6)
+            rate = processed_count / elapsed
+            remaining = len(tasks) - processed_count
+            eta = remaining / rate if rate > 0 else 0.0
+            logger.info(
+                "Attention metrics progress: %d/%d (%.1f%%) | %.2f pairs/s | ETA %.1fs",
+                processed_count,
+                len(tasks),
+                100.0 * processed_count / len(tasks),
+                rate,
+                eta,
+            )
+            last_log = processed_count
+
+    if skipped_missing_trace > 0:
+        logger.info("Skipped %d prompts due to missing or unreadable traces", skipped_missing_trace)
+    if skipped_no_attn > 0:
+        logger.info("Skipped %d prompts with no attentions", skipped_no_attn)
     if skipped_mapping_error > 0:
         logger.info("Skipped %d completions due to mapping_error", skipped_mapping_error)
     if skipped_no_entry > 0:
         logger.info("Skipped %d completions with missing detection entries", skipped_no_entry)
 
-    # Write output
-    runs_dir.mkdir(parents=True, exist_ok=True)
-    output_path = runs_dir / "attention_metrics.csv"
-    df = pd.DataFrame(rows)
-    df.to_csv(output_path, index=False)
-    logger.info("Wrote %d attention metric rows to %s", len(df), output_path)
-
+    logger.info("Attention metrics complete. Output at %s", output_path)
     return output_path
 
 
@@ -732,6 +908,9 @@ def compute_logit_lens_and_decomp(
     output_root: Optional[Path] = None,
     prompts_path: Optional[Path] = None,
     limit: Optional[int] = None,
+    batch_size: int = 4,
+    log_every: int = 50,
+    checkpoint_path: Optional[Path] = None,
 ) -> Dict[str, Path]:
     """
     Compute logit lens and attention/FFN decomposition at TARGET DECISION STEP.
@@ -749,12 +928,16 @@ def compute_logit_lens_and_decomp(
         output_root: Run root directory. If None, auto-selects latest.
         prompts_path: Path to prompts.csv. If None, uses data_root.
         limit: Optional limit on number of prompts to process.
+        batch_size: Batch size for padded forward passes.
+        log_every: Log progress every N prompt/condition pairs.
+        checkpoint_path: Optional JSONL checkpoint for resume.
 
     Returns:
         Dict with paths to logit_lens.csv and ffn_attn_decomp.csv
     """
     import pandas as pd
     import torch
+    import time
 
     # Resolve paths
     run_root = _resolve_run_root(output_root)
@@ -811,24 +994,62 @@ def compute_logit_lens_and_decomp(
     if lm_head is None:
         raise RuntimeError("Cannot find lm_head in model")
 
-    # Data collection
-    logit_lens_rows = []
-    decomp_rows = []
+    # Output paths + resume checkpoint
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    logit_lens_path = runs_dir / "logit_lens.csv"
+    decomp_path = runs_dir / "ffn_attn_decomp.csv"
+    checkpoint_path = checkpoint_path or (runs_dir / "logit_lens_checkpoint.jsonl")
+
+    processed: Set[str] = set()
+    if checkpoint_path.exists():
+        try:
+            with checkpoint_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    rec = json.loads(line)
+                    pid = rec.get("prompt_id")
+                    cond = rec.get("condition")
+                    if pid is not None and cond is not None:
+                        processed.add(f"{pid}|{cond}")
+        except Exception as e:
+            logger.warning("Failed to load logit lens checkpoint %s: %s", checkpoint_path, e)
+    elif logit_lens_path.exists():
+        # Best-effort recovery from existing CSV if checkpoint missing
+        try:
+            import csv
+            with logit_lens_path.open("r", encoding="utf-8", newline="") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    pid = row.get("prompt_id")
+                    cond = row.get("condition")
+                    if pid and cond:
+                        processed.add(f"{pid}|{cond}")
+        except Exception as e:
+            logger.warning("Failed to recover processed set from %s: %s", logit_lens_path, e)
+
+    # Data collection (streamed)
+    logit_lens_written = 0
+    decomp_written = 0
     skipped_mapping_error = 0
     skipped_no_entry = 0
     skipped_missing_trace = 0
 
+    tasks: List[Dict[str, Any]] = []
     for _, row in prompts_df.iterrows():
         prompt_id = str(row["prompt_id"])
         question_text = row["question_text"]
         target_word = row["target_word"]
 
-    # Get first token IDs for target (for logit lens p_sem calculation)
-    # Exact set = only single-token variants (avoid ambiguous prefixes)
-    seqs = token_sequences_for_variants(target_word, tokenizer)
-    first_ids = sorted({seq[0] for seq in seqs if len(seq) == 1})
+        # Get first token IDs for target (for logit lens p_sem calculation)
+        seqs = token_sequences_for_variants(target_word, tokenizer)
+        first_ids = sorted({seq[0] for seq in seqs if len(seq) == 1})
 
         for condition in ["baseline", "negative"]:
+            key = f"{prompt_id}|{condition}"
+            if key in processed:
+                continue
+
             trace_path = trace_dir / f"{prompt_id}_{condition}.pt"
 
             # Load trace to get generated tokens
@@ -857,12 +1078,10 @@ def compute_logit_lens_and_decomp(
                 prompt_id, condition, detection_mapping, gen_len
             )
 
-            # Fix C: Skip entries with mapping_error
             if mapping_error:
                 skipped_mapping_error += 1
                 continue
 
-            # If no detection entry exists, use fallback or skip
             if decision_step is None:
                 if not detection_mapping:
                     decision_step = 0
@@ -871,40 +1090,29 @@ def compute_logit_lens_and_decomp(
                     skipped_no_entry += 1
                     continue
 
-            # Fix F: If decision_step > 0 but we don't have enough generated tokens, we cannot
-            # construct the correct prefix - skip this entry rather than computing at wrong position
-            # Note: We need generated_ids_list[:decision_step] for prefix AND generated_ids_list[decision_step] for greedy token
             if decision_step > 0 and (not generated_ids_list or len(generated_ids_list) <= decision_step):
                 logger.warning(
                     "Skipping %s_%s: decision_step=%d but only %d generated tokens available",
-                    prompt_id, condition, decision_step, 
-                    len(generated_ids_list) if generated_ids_list else 0
+                    prompt_id, condition, decision_step,
+                    len(generated_ids_list) if generated_ids_list else 0,
                 )
                 skipped_missing_trace += 1
                 continue
 
-            # Build extended prefix: prompt tokens + generated tokens up to decision step
             prompt_text = build_prompt(question_text, target_word, condition)
             add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
             prompt_inputs = tokenizer(prompt_text, return_tensors="pt", add_special_tokens=add_special_tokens)
             prompt_ids = prompt_inputs["input_ids"][0].tolist()
 
-            # decision_step is the index of the token being generated
-            # We need prefix = prompt + generated[0:decision_step]
             if decision_step > 0:
                 prefix_ids = prompt_ids + generated_ids_list[:decision_step]
-                # Fix E: greedy_token_id should be the token AT decision_step (not token 0)
                 greedy_token_id = generated_ids_list[decision_step]
             else:
-                # decision_step = 0 means first token, so prefix = just prompt
                 prefix_ids = prompt_ids
-                # greedy_token_id is already set to generated_ids_list[0] or will be computed
 
-            # Context-aware metric target set (Change 1)
-            # Get detection entry for token span info
             detection_key = (prompt_id, condition)
             detection_entry = detection_mapping.get(detection_key)
-            
+
             metric_target_ids, metric_target_kind = _get_metric_target_ids(
                 word_present=word_present,
                 exact_first_ids=first_ids,
@@ -914,98 +1122,156 @@ def compute_logit_lens_and_decomp(
                 tokenizer=tokenizer,
             )
 
-            input_ids = torch.tensor([prefix_ids], dtype=torch.long, device=model.device)
-            decision_position = len(prefix_ids) - 1  # Last position in extended prefix
+            tasks.append({
+                "prompt_id": prompt_id,
+                "condition": condition,
+                "decision_step": decision_step,
+                "word_present": word_present,
+                "metric_target_ids": metric_target_ids,
+                "metric_target_kind": metric_target_kind,
+                "greedy_token_id": greedy_token_id,
+                "prefix_ids": prefix_ids,
+                "decision_position": len(prefix_ids) - 1,
+            })
 
-            # Storage for hook captures
-            h_in_storage = {}
-            attn_out_storage = {}
-            ffn_out_storage = {}
-            hooks = []
+    if not tasks:
+        logger.info("No logit lens tasks to run (all processed or skipped).")
+        return {
+            "logit_lens_path": logit_lens_path,
+            "ffn_attn_decomp_path": decomp_path,
+        }
 
-            # Register hooks
-            for layer_idx, layer in enumerate(layers):
-                # Pre-hook for layer input
-                def make_pre_hook(idx):
-                    def hook(module, args):
-                        if isinstance(args, tuple) and len(args) > 0:
-                            h_in_storage[idx] = args[0].detach()
-                        return None
+    logger.info("Running logit lens/decomp for %d prompt/condition pairs (batch=%d)", len(tasks), max(1, int(batch_size)))
+
+    import csv
+    def _append_csv(path: Path, fieldnames: List[str], rows: List[Dict[str, Any]]) -> None:
+        if not rows:
+            return
+        write_header = not path.exists()
+        with path.open("a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            if write_header:
+                writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
+
+    def _append_checkpoint(records: List[Dict[str, Any]]) -> None:
+        if not records:
+            return
+        with checkpoint_path.open("a", encoding="utf-8") as f:
+            for rec in records:
+                f.write(json.dumps(rec, ensure_ascii=True) + "\n")
+
+    processed_count = 0
+    last_log = 0
+    start_time = time.monotonic()
+
+    def _process_batch(batch: List[Dict[str, Any]]) -> None:
+        nonlocal logit_lens_written, decomp_written, processed_count, last_log
+
+        pad_token_id = tokenizer.pad_token_id or tokenizer.eos_token_id or 0
+        max_len = max(len(t["prefix_ids"]) for t in batch)
+
+        input_ids = torch.full(
+            (len(batch), max_len),
+            pad_token_id,
+            dtype=torch.long,
+            device=model.device,
+        )
+        attention_mask = torch.zeros((len(batch), max_len), dtype=torch.long, device=model.device)
+        for i, task in enumerate(batch):
+            ids = task["prefix_ids"]
+            input_ids[i, :len(ids)] = torch.tensor(ids, dtype=torch.long, device=model.device)
+            attention_mask[i, :len(ids)] = 1
+
+        h_in_storage = {}
+        attn_out_storage = {}
+        ffn_out_storage = {}
+        hooks = []
+
+        # Register hooks
+        for layer_idx, layer in enumerate(layers):
+            def make_pre_hook(idx):
+                def hook(module, args):
+                    if isinstance(args, tuple) and len(args) > 0:
+                        h_in_storage[idx] = args[0].detach()
+                    return None
+                return hook
+
+            hooks.append(layer.register_forward_pre_hook(make_pre_hook(layer_idx)))
+
+            attn_module = None
+            for attr in ["self_attn", "attention", "attn"]:
+                if hasattr(layer, attr):
+                    attn_module = getattr(layer, attr)
+                    break
+
+            if attn_module is not None:
+                def make_attn_hook(idx):
+                    def hook(module, args, output):
+                        if isinstance(output, tuple):
+                            attn_out_storage[idx] = output[0].detach()
+                        else:
+                            attn_out_storage[idx] = output.detach()
                     return hook
 
-                hooks.append(layer.register_forward_pre_hook(make_pre_hook(layer_idx)))
+                hooks.append(attn_module.register_forward_hook(make_attn_hook(layer_idx)))
 
-                # Find attention module
-                attn_module = None
-                for attr in ["self_attn", "attention", "attn"]:
-                    if hasattr(layer, attr):
-                        attn_module = getattr(layer, attr)
-                        break
+            ffn_module = None
+            for attr in ["mlp", "feed_forward", "ffn"]:
+                if hasattr(layer, attr):
+                    ffn_module = getattr(layer, attr)
+                    break
 
-                if attn_module is not None:
-                    def make_attn_hook(idx):
-                        def hook(module, args, output):
-                            if isinstance(output, tuple):
-                                attn_out_storage[idx] = output[0].detach()
-                            else:
-                                attn_out_storage[idx] = output.detach()
-                        return hook
+            if ffn_module is not None:
+                def make_ffn_hook(idx):
+                    def hook(module, args, output):
+                        if isinstance(output, tuple):
+                            ffn_out_storage[idx] = output[0].detach()
+                        else:
+                            ffn_out_storage[idx] = output.detach()
+                    return hook
 
-                    hooks.append(attn_module.register_forward_hook(make_attn_hook(layer_idx)))
+                hooks.append(ffn_module.register_forward_hook(make_ffn_hook(layer_idx)))
 
-                # Find FFN module
-                ffn_module = None
-                for attr in ["mlp", "feed_forward", "ffn"]:
-                    if hasattr(layer, attr):
-                        ffn_module = getattr(layer, attr)
-                        break
+        logit_rows = []
+        decomp_rows = []
+        checkpoint_records = []
 
-                if ffn_module is not None:
-                    def make_ffn_hook(idx):
-                        def hook(module, args, output):
-                            if isinstance(output, tuple):
-                                ffn_out_storage[idx] = output[0].detach()
-                            else:
-                                ffn_out_storage[idx] = output.detach()
-                        return hook
+        try:
+            with torch.inference_mode():
+                outputs = model(
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    output_hidden_states=True,
+                    use_cache=False,
+                )
 
-                    hooks.append(ffn_module.register_forward_hook(make_ffn_hook(layer_idx)))
+            hidden_states = outputs.hidden_states
+            final_logits = outputs.logits
 
-            # Forward pass on extended prefix
-            try:
-                with torch.inference_mode():
-                    outputs = model(
-                        input_ids=input_ids,
-                        output_hidden_states=True,
-                        use_cache=False,
-                    )
+            for i, task in enumerate(batch):
+                decision_pos = task["decision_position"]
+                greedy_token_id = task["greedy_token_id"]
+                metric_target_ids = task["metric_target_ids"]
+                metric_target_kind = task["metric_target_kind"]
 
-                hidden_states = outputs.hidden_states  # (num_layers+1) tuple
-                final_logits = outputs.logits
-
-                # Determine greedy_token_id at decision position
                 if greedy_token_id is None:
-                    greedy_token_id = final_logits[0, -1, :].argmax().item()
+                    greedy_token_id = final_logits[i, decision_pos, :].argmax().item()
 
                 greedy_token = tokenizer.decode([greedy_token_id])
 
-                # Process each layer at the decision position (last of extended prefix)
                 for layer_idx in range(num_layers):
-                    # hidden_states[layer_idx+1] is output of layer_idx
-                    # Use decision_position (last position in extended prefix)
-                    hidden = hidden_states[layer_idx + 1][:, -1, :]
+                    hidden = hidden_states[layer_idx + 1][i, decision_pos, :].unsqueeze(0)
 
-                    # Apply final norm if available
                     if final_norm is not None:
                         normed = final_norm(hidden)
                     else:
                         normed = hidden
 
-                    # Get logits
                     logits = lm_head(normed)
                     probs = torch.softmax(logits, dim=-1)
 
-                    # p_sem_first_token (using context-aware metric_target_ids)
                     if metric_target_ids:
                         p_sem_first = probs[0, list(metric_target_ids)].sum().item()
                     else:
@@ -1013,11 +1279,11 @@ def compute_logit_lens_and_decomp(
 
                     greedy_prob = probs[0, greedy_token_id].item()
 
-                    logit_lens_rows.append({
-                        "prompt_id": prompt_id,
-                        "condition": condition,
-                        "decision_step": decision_step,
-                        "word_present": word_present,
+                    logit_rows.append({
+                        "prompt_id": task["prompt_id"],
+                        "condition": task["condition"],
+                        "decision_step": task["decision_step"],
+                        "word_present": task["word_present"],
                         "metric_target_kind": metric_target_kind,
                         "layer": layer_idx,
                         "p_sem_first_token": p_sem_first,
@@ -1025,16 +1291,14 @@ def compute_logit_lens_and_decomp(
                         "greedy_token_prob": greedy_prob,
                     })
 
-                    # Decomposition at decision position
                     h_in = h_in_storage.get(layer_idx)
                     attn_out = attn_out_storage.get(layer_idx)
                     ffn_out = ffn_out_storage.get(layer_idx)
 
                     if h_in is not None and attn_out is not None and ffn_out is not None:
-                        # Extract decision position (last position)
-                        h = h_in[:, -1, :]
-                        a = attn_out[:, -1, :]
-                        f = ffn_out[:, -1, :]
+                        h = h_in[i:i + 1, decision_pos, :]
+                        a = attn_out[i:i + 1, decision_pos, :]
+                        f = ffn_out[i:i + 1, decision_pos, :]
 
                         def compute_p(state):
                             if final_norm is not None:
@@ -1051,17 +1315,14 @@ def compute_logit_lens_and_decomp(
                         p_h_plus_attn = compute_p(h + a)
                         p_h_out = compute_p(h + a + f)
 
-                        # Fix D: Positive contribution means the module INCREASED target probability
-                        # attn adds to h_in, so attn_contrib = p_after_attn - p_before_attn
-                        # ffn adds to h+a, so ffn_contrib = p_after_ffn - p_before_ffn
                         attn_contrib = p_h_plus_attn - p_h_in
                         ffn_contrib = p_h_out - p_h_plus_attn
 
                         decomp_rows.append({
-                            "prompt_id": prompt_id,
-                            "condition": condition,
-                            "decision_step": decision_step,
-                            "word_present": word_present,
+                            "prompt_id": task["prompt_id"],
+                            "condition": task["condition"],
+                            "decision_step": task["decision_step"],
+                            "word_present": task["word_present"],
                             "metric_target_kind": metric_target_kind,
                             "layer": layer_idx,
                             "p_h_in": p_h_in,
@@ -1071,18 +1332,71 @@ def compute_logit_lens_and_decomp(
                             "ffn_contrib": ffn_contrib,
                         })
 
-            finally:
-                # Remove hooks
-                for hook in hooks:
-                    hook.remove()
+                checkpoint_records.append({
+                    "prompt_id": task["prompt_id"],
+                    "condition": task["condition"],
+                })
 
-                # Clear storage
-                h_in_storage.clear()
-                attn_out_storage.clear()
-                ffn_out_storage.clear()
+        finally:
+            for hook in hooks:
+                hook.remove()
+            h_in_storage.clear()
+            attn_out_storage.clear()
+            ffn_out_storage.clear()
+            torch.cuda.empty_cache()
 
-                # Clear cache
+        logit_fields = [
+            "prompt_id", "condition", "decision_step", "word_present",
+            "metric_target_kind", "layer", "p_sem_first_token",
+            "greedy_token", "greedy_token_prob",
+        ]
+        decomp_fields = [
+            "prompt_id", "condition", "decision_step", "word_present",
+            "metric_target_kind", "layer", "p_h_in",
+            "p_h_in_plus_attn", "p_h_out", "attn_contrib", "ffn_contrib",
+        ]
+
+        _append_csv(logit_lens_path, logit_fields, logit_rows)
+        _append_csv(decomp_path, decomp_fields, decomp_rows)
+        _append_checkpoint(checkpoint_records)
+
+        logit_lens_written += len(logit_rows)
+        decomp_written += len(decomp_rows)
+        processed_count += len(batch)
+
+        if log_every and (processed_count - last_log) >= log_every:
+            elapsed = max(time.monotonic() - start_time, 1e-6)
+            rate = processed_count / elapsed
+            remaining = len(tasks) - processed_count
+            eta = remaining / rate if rate > 0 else 0.0
+            logger.info(
+                "Logit lens progress: %d/%d (%.1f%%) | %.2f prompts/s | ETA %.1fs",
+                processed_count,
+                len(tasks),
+                100.0 * processed_count / len(tasks),
+                rate,
+                eta,
+            )
+            last_log = processed_count
+
+    def _run_batch(batch: List[Dict[str, Any]]) -> None:
+        try:
+            _process_batch(batch)
+        except RuntimeError as e:
+            if "out of memory" not in str(e).lower():
+                raise
+            logger.warning("OOM in logit lens batch of %d; splitting", len(batch))
+            if torch.cuda.is_available():
                 torch.cuda.empty_cache()
+            if len(batch) <= 1:
+                raise
+            mid = len(batch) // 2
+            _run_batch(batch[:mid])
+            _run_batch(batch[mid:])
+
+    batch_size = max(1, int(batch_size))
+    for batch in _iter_batches(tasks, batch_size):
+        _run_batch(batch)
 
     if skipped_mapping_error > 0:
         logger.info("Skipped %d completions due to mapping_error", skipped_mapping_error)
@@ -1091,18 +1405,8 @@ def compute_logit_lens_and_decomp(
     if skipped_missing_trace > 0:
         logger.info("Skipped %d completions due to missing trace data", skipped_missing_trace)
 
-    # Write outputs
-    runs_dir.mkdir(parents=True, exist_ok=True)
-
-    logit_lens_path = runs_dir / "logit_lens.csv"
-    df_lens = pd.DataFrame(logit_lens_rows)
-    df_lens.to_csv(logit_lens_path, index=False)
-    logger.info("Wrote %d logit lens rows to %s", len(df_lens), logit_lens_path)
-
-    decomp_path = runs_dir / "ffn_attn_decomp.csv"
-    df_decomp = pd.DataFrame(decomp_rows)
-    df_decomp.to_csv(decomp_path, index=False)
-    logger.info("Wrote %d decomp rows to %s", len(df_decomp), decomp_path)
+    logger.info("Wrote %d logit lens rows to %s", logit_lens_written, logit_lens_path)
+    logger.info("Wrote %d decomp rows to %s", decomp_written, decomp_path)
 
     return {
         "logit_lens_path": logit_lens_path,

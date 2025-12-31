@@ -311,15 +311,90 @@ class ModelWrapper:
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
         
+        # Resolve device and dtype
+        env_device = os.environ.get("SEMANTIC_GRAVITY_DEVICE") or os.environ.get("MODEL_DEVICE")
+        config_device = None
+        try:
+            from .config import CONFIG
+            config_device = CONFIG.get("model", {}).get("device")
+        except Exception:
+            config_device = None
+
+        device = env_device or config_device or "auto"
+        if device == "auto":
+            if torch.cuda.is_available():
+                device = "cuda"
+            elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+                device = "mps"
+            else:
+                device = "cpu"
+
+        dtype_env = os.environ.get("SEMANTIC_GRAVITY_TORCH_DTYPE") or os.environ.get("MODEL_TORCH_DTYPE")
+        dtype_cfg = None
+        try:
+            from .config import CONFIG
+            dtype_cfg = CONFIG.get("model", {}).get("torch_dtype")
+        except Exception:
+            dtype_cfg = None
+
+        dtype_raw = dtype_env or dtype_cfg or "bfloat16"
+        if isinstance(dtype_raw, str):
+            dtype_key = dtype_raw.strip().lower()
+            dtype_map = {
+                "float16": torch.float16,
+                "fp16": torch.float16,
+                "bfloat16": torch.bfloat16,
+                "bf16": torch.bfloat16,
+                "float32": torch.float32,
+                "fp32": torch.float32,
+            }
+            torch_dtype = dtype_map.get(dtype_key, torch.bfloat16)
+        else:
+            torch_dtype = dtype_raw
+
+        if device == "mps" and torch_dtype == torch.bfloat16:
+            logger.warning("bfloat16 not supported on MPS; switching to float16")
+            torch_dtype = torch.float16
+
+        device_map = None
+        try:
+            from .config import CONFIG
+            device_map = CONFIG.get("model", {}).get("device_map", "auto")
+        except Exception:
+            device_map = "auto"
+
+        env_device_map = os.environ.get("SEMANTIC_GRAVITY_DEVICE_MAP")
+        if env_device_map:
+            device_map = env_device_map
+
         # Load model
         logger.info("Loading model (this may take a few minutes)...")
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            device_map="auto",
-            torch_dtype=torch.bfloat16,
-            trust_remote_code=True,
-        )
-        
+        model_kwargs = {
+            "torch_dtype": torch_dtype,
+            "trust_remote_code": True,
+        }
+
+        if device.startswith("cuda"):
+            model_kwargs["device_map"] = device_map or "auto"
+        else:
+            model_kwargs["device_map"] = None
+
+        self.model = AutoModelForCausalLM.from_pretrained(model_path, **model_kwargs)
+        if not device.startswith("cuda") and device != "cpu":
+            self.model.to(device)
+
+        # Ensure eager attention when we need output_attentions from generate().
+        # Some backends (sdpa) do not return attentions.
+        try:
+            if hasattr(self.model, "set_attn_implementation"):
+                self.model.set_attn_implementation("eager")
+            if hasattr(self.model, "config"):
+                self.model.config.attn_implementation = "eager"
+            if hasattr(self.model, "generation_config"):
+                self.model.generation_config.attn_implementation = "eager"
+        except Exception as e:
+            logger.warning("Failed to set eager attention implementation: %s", e)
+
         self.model.eval()  # Set to evaluation mode
         self._loaded = True
         

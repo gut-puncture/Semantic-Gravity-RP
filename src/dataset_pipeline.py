@@ -6,7 +6,7 @@ import json
 import math
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Any
 
 from .api_clients import OpenAIClient
 from .config import CONFIG, get_base_paths
@@ -50,6 +50,14 @@ def _compute_prompt_id(category: str, target_word_normalized: str, question_text
 def _write_jsonl(items: List[dict], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, 'w', encoding='utf-8') as f:
+        for item in items:
+            json.dump(item, f)
+            f.write('\n')
+
+
+def _append_jsonl(items: List[dict], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, 'a', encoding='utf-8') as f:
         for item in items:
             json.dump(item, f)
             f.write('\n')
@@ -235,6 +243,103 @@ def _load_validated_prompts(path: Path) -> List[ValidatedPrompt]:
     if skipped:
         logger.warning("Skipped %d invalid JSONL lines in %s", skipped, path)
     return prompts
+
+
+def filter_validated_single_token_targets(
+    validated_dir: Path,
+    output_dir: Path,
+    tokenizer: Any,
+    categories: Optional[List[str]] = None,
+    checkpoint_path: Optional[Path] = None,
+    log_every: int = 1000,
+) -> Dict[str, Dict[str, int]]:
+    """
+    Filter validated prompts to targets with at least one single-token variant.
+
+    Writes filtered files to output_dir and supports resume via checkpoint.
+    """
+    import json as _json
+    from .metrics_psem import token_sequences_for_variants
+
+    categories = categories or CONFIG['dataset']['categories']
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    checkpoint_path = checkpoint_path or (output_dir / "single_token_filter_checkpoint.json")
+    completed = set()
+    stats: Dict[str, Dict[str, int]] = {}
+
+    if checkpoint_path.exists():
+        try:
+            payload = _json.loads(checkpoint_path.read_text())
+            completed = set(payload.get("completed_categories", []))
+            stats = payload.get("stats", {}) or {}
+        except Exception as e:
+            logger.warning("Failed to load checkpoint %s: %s", checkpoint_path, e)
+
+    seq_cache: Dict[str, List[Tuple[int, ...]]] = {}
+
+    for category in categories:
+        if category in completed:
+            logger.info("Single-token filter: skipping %s (checkpoint)", category)
+            continue
+
+        input_path = validated_dir / f"{category}_validated.jsonl"
+        if not input_path.exists():
+            raise FileNotFoundError(f"Missing validated file: {input_path}")
+
+        output_path = output_dir / f"{category}_validated.jsonl"
+        kept = 0
+        removed = 0
+        processed = 0
+
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with input_path.open("r", encoding="utf-8") as fin, output_path.open("w", encoding="utf-8") as fout:
+            for line in fin:
+                if not line.strip():
+                    continue
+                processed += 1
+                row = _json.loads(line)
+                target = row.get("target_word", "")
+                if target in seq_cache:
+                    seqs = seq_cache[target]
+                else:
+                    seqs = token_sequences_for_variants(target, tokenizer)
+                    seq_cache[target] = seqs
+                has_single = any(len(seq) == 1 for seq in seqs)
+                if has_single:
+                    kept += 1
+                    fout.write(_json.dumps(row, ensure_ascii=True) + "\n")
+                else:
+                    removed += 1
+
+                if log_every and processed % log_every == 0:
+                    logger.info(
+                        "Single-token filter %s: %d processed (kept=%d removed=%d)",
+                        category,
+                        processed,
+                        kept,
+                        removed,
+                    )
+
+        stats[category] = {"kept": kept, "removed": removed, "processed": processed}
+        completed.add(category)
+        checkpoint_payload = {
+            "completed_categories": sorted(completed),
+            "stats": stats,
+        }
+        checkpoint_path.write_text(_json.dumps(checkpoint_payload, indent=2))
+        logger.info(
+            "Single-token filter complete for %s: kept=%d removed=%d",
+            category,
+            kept,
+            removed,
+        )
+
+    summary_path = output_dir / "single_token_filter_summary.json"
+    summary_path.write_text(_json.dumps(stats, indent=2))
+    logger.info("Wrote single-token filter summary to %s", summary_path)
+
+    return stats
 
 
 def _load_candidate_prompts(path: Path) -> List[CandidatePrompt]:
@@ -776,6 +881,8 @@ def finalize_dataset_with_psem(
     output_root: Optional[Path] = None,
     model_wrapper: Optional[ModelWrapper] = None,
     prompts_per_category: int = CONFIG['dataset']['prompts_per_category'],
+    batch_config: Optional[Dict[str, Dict[str, Any]]] = None,
+    checkpoint_dir: Optional[Path] = None,
 ) -> Dict[str, List[ValidatedPrompt]]:
     """
     Compute P_sem (P0/P1), select final prompts, and write prompts.csv/metadata.
@@ -800,7 +907,21 @@ def finalize_dataset_with_psem(
         validated_by_category[category] = validated
         all_validated.extend(validated)
 
-    compute_semantic_pressure(all_validated, model_wrapper=model_wrapper)
+    batch_config = batch_config or {}
+    checkpoint_dir = checkpoint_dir or validated_dir
+
+    psem_cfg = batch_config.get("psem", {})
+    psem_checkpoint = psem_cfg.get("checkpoint_path") or (checkpoint_dir / "psem_checkpoint.jsonl")
+
+    compute_semantic_pressure(
+        all_validated,
+        model_wrapper=model_wrapper,
+        prompt_batch_size=psem_cfg.get("prompt_batch_size", 32),
+        task_batch_size=psem_cfg.get("task_batch_size", 64),
+        max_batch_tokens=psem_cfg.get("max_batch_tokens"),
+        log_every=psem_cfg.get("log_every", 50),
+        checkpoint_path=psem_checkpoint,
+    )
 
     selector = PromptSelector(
         target_tracker=TargetTracker(
@@ -838,6 +959,8 @@ def finalize_dataset_with_psem(
         model_wrapper=model_wrapper,
         tau_per_category=tau_per_category,
         bin_shortfalls=bin_shortfalls,
+        p1_batch_config=batch_config.get("p1", {}),
+        p1_checkpoint_path=(batch_config.get("p1", {}).get("checkpoint_path") or (checkpoint_dir / "p1_checkpoint.jsonl")),
     )
 
     return final_by_category
@@ -850,6 +973,8 @@ def _write_prompts_outputs(
     model_wrapper: Optional[ModelWrapper] = None,
     tau_per_category: Optional[Dict[str, float]] = None,
     bin_shortfalls: Optional[Dict[str, Dict[str, int]]] = None,
+    p1_batch_config: Optional[Dict[str, Any]] = None,
+    p1_checkpoint_path: Optional[Path] = None,
 ) -> None:
     """
     Compute P1, write prompts.csv, and write prompts_metadata.json.
@@ -857,7 +982,7 @@ def _write_prompts_outputs(
     import hashlib
     import pandas as pd
     from .prompt_builder import build_prompt
-    from .metrics_psem import compute_p_sem_for_prompt
+    from .metrics_psem import compute_p_sem_for_prompts
 
     if not combined:
         raise RuntimeError("No prompts provided for prompts.csv output.")
@@ -868,34 +993,130 @@ def _write_prompts_outputs(
     if not wrapper.is_loaded:
         wrapper.load()
 
-    failures: List[Dict[str, str]] = []
-    logger.info("Computing p1 (negative P_sem) for %d prompts...", len(combined))
+    p1_batch_config = p1_batch_config or {}
+    p1_checkpoint_path = Path(p1_checkpoint_path) if p1_checkpoint_path else None
+
+    # Load checkpoint if present
+    if p1_checkpoint_path and p1_checkpoint_path.exists():
+        try:
+            with p1_checkpoint_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    rec = json.loads(line)
+                    pid = rec.get("prompt_id")
+                    val = rec.get("p1")
+                    if pid is not None and val is not None:
+                        p1_values[str(pid)] = float(val)
+        except Exception as e:
+            logger.warning("Failed to load p1 checkpoint %s: %s", p1_checkpoint_path, e)
+
+    prompt_ids = []
+    prompt_texts = []
+    target_words = []
+
     for vp in combined:
         prompt_id = _compute_prompt_id(
             vp.candidate.category,
             vp.candidate.target_word_normalized,
             vp.candidate.question_text,
-            vp.candidate.target_word
+            vp.candidate.target_word,
         )
-        try:
-            neg_prompt = build_prompt(
-                vp.candidate.question_text,
-                vp.candidate.target_word,
-                "negative"
-            )
-            p1_values[prompt_id] = compute_p_sem_for_prompt(
-                neg_prompt,
-                vp.candidate.target_word,
-                wrapper.model,
-                wrapper.tokenizer,
-            )
-        except Exception as e:
-            failures.append({"prompt_id": prompt_id, "error": str(e)})
+        if prompt_id in p1_values:
+            continue
+        neg_prompt = build_prompt(
+            vp.candidate.question_text,
+            vp.candidate.target_word,
+            "negative",
+        )
+        prompt_ids.append(prompt_id)
+        prompt_texts.append(neg_prompt)
+        target_words.append(vp.candidate.target_word)
 
-    if failures:
-        sample = failures[:3]
+    total_pending = len(prompt_texts)
+    if total_pending:
+        logger.info(
+            "Computing p1 (negative P_sem) for %d prompts (checkpoint hit=%d)",
+            total_pending,
+            len(p1_values),
+        )
+
+        import time
+        start_time = time.monotonic()
+        completed = 0
+        last_log = 0
+
+        prompt_batch_size = max(1, int(p1_batch_config.get("prompt_batch_size", 32)))
+        task_batch_size = max(1, int(p1_batch_config.get("task_batch_size", 64)))
+        max_batch_tokens = p1_batch_config.get("max_batch_tokens")
+        log_every = p1_batch_config.get("log_every", 50)
+
+        for i in range(0, total_pending, prompt_batch_size):
+            batch_ids = prompt_ids[i:i + prompt_batch_size]
+            batch_prompts = prompt_texts[i:i + prompt_batch_size]
+            batch_targets = target_words[i:i + prompt_batch_size]
+
+            try:
+                batch_values = compute_p_sem_for_prompts(
+                    prompt_texts=batch_prompts,
+                    target_words=batch_targets,
+                    model=wrapper.model,
+                    tokenizer=wrapper.tokenizer,
+                    batch_size=task_batch_size,
+                    max_batch_tokens=max_batch_tokens,
+                    strict=True,
+                    logger=logger,
+                )
+            except Exception as e:
+                raise RuntimeError(f"p1 computation failed near prompt {batch_ids[0]}: {e}") from e
+
+            if len(batch_values) != len(batch_ids):
+                raise RuntimeError("p1 batch result length mismatch.")
+
+            checkpoint_records = []
+            for pid, p1 in zip(batch_ids, batch_values):
+                p1_values[pid] = p1
+                if p1_checkpoint_path:
+                    checkpoint_records.append({"prompt_id": pid, "p1": p1})
+
+            if p1_checkpoint_path and checkpoint_records:
+                p1_checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+                with p1_checkpoint_path.open("a", encoding="utf-8") as f:
+                    for rec in checkpoint_records:
+                        f.write(json.dumps(rec, ensure_ascii=True) + "\n")
+
+            completed += len(batch_ids)
+            if log_every and (completed - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = completed / elapsed
+                remaining = total_pending - completed
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "p1 progress: %d/%d (%.1f%%) | %.2f prompts/s | ETA %.1fs",
+                    completed,
+                    total_pending,
+                    100.0 * completed / total_pending,
+                    rate,
+                    eta,
+                )
+                last_log = completed
+
+    # Verify all p1 values exist
+    missing = []
+    for vp in combined:
+        prompt_id = _compute_prompt_id(
+            vp.candidate.category,
+            vp.candidate.target_word_normalized,
+            vp.candidate.question_text,
+            vp.candidate.target_word,
+        )
+        if prompt_id not in p1_values:
+            missing.append(prompt_id)
+
+    if missing:
+        sample = missing[:3]
         raise RuntimeError(
-            f"p1 computation failed for {len(failures)} prompts. Sample errors: {sample}"
+            f"p1 computation missing for {len(missing)} prompts. Sample: {sample}"
         )
 
     pressure_bins = CONFIG['dataset'].get('pressure_bins', [0.0, 0.2, 0.4, 0.6, 0.8, 1.0])

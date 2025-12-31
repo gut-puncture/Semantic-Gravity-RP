@@ -75,6 +75,58 @@ def append_completion(jsonl_path: Path, record: Dict) -> None:
 
 
 # ============================================================================
+# BATCH HELPERS
+# ============================================================================
+
+
+def _iter_batches(items: List[Any], batch_size: int) -> List[List[Any]]:
+    for i in range(0, len(items), batch_size):
+        yield items[i:i + batch_size]
+
+
+def _trim_generated_ids(
+    token_ids: List[int],
+    eos_token_id: Optional[int],
+    pad_token_id: Optional[int],
+) -> List[int]:
+    """Trim trailing padding tokens; keep a single EOS if present."""
+    if eos_token_id is not None and eos_token_id in token_ids:
+        eos_idx = token_ids.index(eos_token_id)
+        return token_ids[:eos_idx + 1]
+    if pad_token_id is not None:
+        while token_ids and token_ids[-1] == pad_token_id:
+            token_ids = token_ids[:-1]
+    return token_ids
+
+
+def _tokenize_batch(wrapper: ModelWrapper, prompt_texts: List[str]) -> Dict[str, Any]:
+    from .config import CONFIG
+
+    add_special_tokens = CONFIG.get("model", {}).get("add_special_tokens", False)
+    tokenizer = wrapper.tokenizer
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    enc = tokenizer(
+        prompt_texts,
+        return_tensors="pt",
+        padding=True,
+        add_special_tokens=add_special_tokens,
+    )
+    input_ids = enc["input_ids"].to(wrapper.model.device)
+    attention_mask = enc.get("attention_mask")
+    if attention_mask is None:
+        pad_token_id = tokenizer.pad_token_id or tokenizer.eos_token_id or 0
+        attention_mask = (input_ids != pad_token_id).long()
+    attention_mask = attention_mask.to(wrapper.model.device)
+    input_lengths = attention_mask.sum(dim=1).tolist()
+    return {
+        "input_ids": input_ids,
+        "attention_mask": attention_mask,
+        "input_lengths": input_lengths,
+    }
+
+# ============================================================================
 # MECHANISTIC (GREEDY) RUNNER
 # ============================================================================
 
@@ -129,8 +181,14 @@ def run_mechanistic(
 
     # Extract generated portion
     generated_ids = outputs.sequences[:, input_length:]
+    generated_ids_list = generated_ids[0].tolist()
+    generated_ids_list = _trim_generated_ids(
+        generated_ids_list,
+        wrapper.tokenizer.eos_token_id,
+        wrapper.tokenizer.pad_token_id,
+    )
     generated_text = wrapper.tokenizer.decode(
-        generated_ids[0],
+        generated_ids_list,
         skip_special_tokens=True,
         clean_up_tokenization_spaces=False,
     )
@@ -173,12 +231,12 @@ def run_mechanistic(
 
     # Determine finish reason
     finish_reason = "length"  # Default for greedy
-    if generated_ids.shape[1] < max_new_tokens:
+    if len(generated_ids_list) < max_new_tokens:
         finish_reason = "stop"
 
     return {
         "generated_text": generated_text,
-        "generated_ids": generated_ids[0].tolist(),
+        "generated_ids": generated_ids_list,
         "finish_reason": finish_reason,
     }
 
@@ -253,15 +311,21 @@ def run_behavioral(
     timestamp = time.time()
     for i, sample_id in enumerate(samples_to_run):
         generated_ids = outputs[i, input_length:]
+        generated_ids_list = generated_ids.tolist()
+        generated_ids_list = _trim_generated_ids(
+            generated_ids_list,
+            wrapper.tokenizer.eos_token_id,
+            wrapper.tokenizer.pad_token_id,
+        )
         generated_text = wrapper.tokenizer.decode(
-            generated_ids,
+            generated_ids_list,
             skip_special_tokens=True,
             clean_up_tokenization_spaces=False,
         )
 
         # Determine finish reason
         finish_reason = "length"
-        if len(generated_ids) < max_new_tokens:
+        if len(generated_ids_list) < max_new_tokens:
             finish_reason = "stop"
 
         record = {
@@ -269,7 +333,7 @@ def run_behavioral(
             "condition": condition,
             "sample_id": sample_id,
             "generated_text": generated_text,
-            "generated_token_ids": generated_ids.tolist(),
+            "generated_token_ids": generated_ids_list,
             "finish_reason": finish_reason,
             "timestamp": timestamp,
         }
@@ -296,6 +360,9 @@ def run_experiment(
     skip_mechanistic: bool = False,
     skip_behavioral: bool = False,
     limit: Optional[int] = None,
+    mechanistic_batch_size: int = 1,
+    behavioral_batch_size: int = 4,
+    log_every: int = 50,
 ) -> Dict[str, int]:
     """
     Run the full experiment on all prompts.
@@ -306,12 +373,17 @@ def run_experiment(
         skip_mechanistic: Skip greedy/mechanistic runs
         skip_behavioral: Skip sampling runs
         limit: Limit number of prompts to process (for testing)
+        mechanistic_batch_size: Batch size for mechanistic runs (same-length prompts only)
+        behavioral_batch_size: Batch size for behavioral runs
+        log_every: Log progress every N prompts or samples
 
     Returns:
         Dict with counts of completed runs
     """
     import pandas as pd
     import torch
+    from collections import defaultdict
+    from .config import CONFIG
 
     # Setup paths
     if output_root is None:
@@ -371,51 +443,213 @@ def run_experiment(
         "samples_negative": 0,
     }
 
-    # Process each prompt
-    for idx, row in df.iterrows():
-        prompt_id = str(row["prompt_id"])
-        question_text = row["question_text"]  # Required column
-        target_word = row["target_word"]
-        category = row["category"]
+    model_cfg = CONFIG.get("model", {})
+    max_new_tokens_greedy = int(model_cfg.get("max_new_tokens_greedy", 8))
+    max_new_tokens_stochastic = int(model_cfg.get("max_new_tokens_stochastic", 10))
+    num_samples = int(model_cfg.get("num_stochastic_samples", 16))
+    temperature = float(model_cfg.get("temperature", 1.0))
+    top_p = float(model_cfg.get("top_p", 0.9))
+    add_special_tokens = model_cfg.get("add_special_tokens", False)
 
-        logger.info(f"Processing prompt {idx + 1}/{len(df)}: {prompt_id}")
+    # Build task lists
+    mechanistic_tasks: List[Dict[str, Any]] = []
+    behavioral_tasks: List[Dict[str, Any]] = []
+
+    for _, row in df.iterrows():
+        prompt_id = str(row["prompt_id"])
+        question_text = row["question_text"]
+        target_word = row["target_word"]
 
         for condition in ["baseline", "negative"]:
-            # Build prompt
             prompt_text = build_prompt(question_text, target_word, condition)
             greedy_key = f"{prompt_id}|{condition}|"
             trace_path = mechanistic_dir / f"{prompt_id}_{condition}.pt"
 
-            # Mechanistic run
-            if not skip_mechanistic:
-                result = run_mechanistic(
-                    wrapper=wrapper,
-                    prompt_text=prompt_text,
-                    prompt_id=prompt_id,
-                    condition=condition,
-                    output_dir=mechanistic_dir,
+            if not skip_mechanistic and not trace_path.exists():
+                input_len = len(
+                    wrapper.tokenizer.encode(prompt_text, add_special_tokens=add_special_tokens)
                 )
-                if result:
-                    counts[f"mechanistic_{condition}"] += 1
+                mechanistic_tasks.append({
+                    "prompt_id": prompt_id,
+                    "condition": condition,
+                    "prompt_text": prompt_text,
+                    "trace_path": trace_path,
+                    "greedy_key": greedy_key,
+                    "input_len": input_len,
+                })
 
-                    # Also save greedy completion to JSONL
-                    if greedy_key not in existing_greedy:
-                        greedy_record = {
-                            "prompt_id": prompt_id,
-                            "condition": condition,
-                            "sample_id": "",
-                            "prompt_text": prompt_text,
-                            "generated_text": result["generated_text"],
-                            "generated_token_ids": result["generated_ids"],
-                            "finish_reason": result.get("finish_reason", "unknown"),
-                            "timestamp": time.time(),
-                        }
-                        append_completion(greedy_jsonl, greedy_record)
-                        existing_greedy.add(greedy_key)
-                        counts[f"greedy_{condition}"] += 1
+            if not skip_behavioral:
+                samples_to_run = []
+                for sample_id in range(num_samples):
+                    key = f"{prompt_id}|{condition}|{sample_id}"
+                    if key not in existing_samples:
+                        samples_to_run.append(sample_id)
+                if samples_to_run:
+                    behavioral_tasks.append({
+                        "prompt_id": prompt_id,
+                        "condition": condition,
+                        "prompt_text": prompt_text,
+                        "samples_to_run": samples_to_run,
+                    })
 
-            # Recovery: if trace exists but greedy JSONL missing, recover from trace
-            if greedy_key not in existing_greedy and trace_path.exists():
+    # Mechanistic runs (grouped by input length to avoid padding artifacts)
+    if not skip_mechanistic and mechanistic_tasks:
+        length_groups: Dict[int, List[Dict[str, Any]]] = defaultdict(list)
+        for task in mechanistic_tasks:
+            length_groups[task["input_len"]].append(task)
+
+        logger.info(
+            "Mechanistic tasks: %d across %d length groups (batch=%d)",
+            len(mechanistic_tasks),
+            len(length_groups),
+            max(1, int(mechanistic_batch_size)),
+        )
+
+        processed = 0
+        last_log = 0
+        start_time = time.monotonic()
+
+        def _process_mechanistic_batch(batch: List[Dict[str, Any]]) -> None:
+            nonlocal processed, last_log
+
+            prompt_texts = [t["prompt_text"] for t in batch]
+            tokenized = _tokenize_batch(wrapper, prompt_texts)
+            input_ids = tokenized["input_ids"]
+            attention_mask = tokenized["attention_mask"]
+            batch_input_len = input_ids.shape[1]
+
+            with torch.inference_mode():
+                outputs = wrapper.model.generate(
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    max_new_tokens=max_new_tokens_greedy,
+                    do_sample=False,
+                    output_hidden_states=True,
+                    output_attentions=True,
+                    return_dict_in_generate=True,
+                    pad_token_id=wrapper.tokenizer.pad_token_id,
+                )
+
+            if getattr(outputs, "attentions", None) is None:
+                raise RuntimeError(
+                    "Model returned no attentions. Ensure attention implementation is set to eager."
+                )
+            if any(step is None for step in outputs.attentions):
+                raise RuntimeError(
+                    "Model returned None attention steps. Ensure attention implementation is set to eager."
+                )
+
+            sequences = outputs.sequences
+            eos_token_id = wrapper.tokenizer.eos_token_id
+            pad_token_id = wrapper.tokenizer.pad_token_id
+
+            for i, task in enumerate(batch):
+                prompt_id = task["prompt_id"]
+                condition = task["condition"]
+                trace_path = task["trace_path"]
+                greedy_key = task["greedy_key"]
+
+                generated_ids = sequences[i, batch_input_len:].tolist()
+                generated_ids = _trim_generated_ids(generated_ids, eos_token_id, pad_token_id)
+                gen_len = len(generated_ids)
+                generated_text = wrapper.tokenizer.decode(
+                    generated_ids,
+                    skip_special_tokens=True,
+                    clean_up_tokenization_spaces=False,
+                )
+
+                trace_data = {
+                    "prompt_id": prompt_id,
+                    "condition": condition,
+                    "input_ids": input_ids[i:i + 1, :batch_input_len].cpu(),
+                    "generated_ids": torch.tensor([generated_ids], dtype=torch.long),
+                }
+
+                if getattr(outputs, "hidden_states", None):
+                    hidden_states_cpu = []
+                    for step_states in outputs.hidden_states[:gen_len]:
+                        step_cpu = tuple(h[i:i + 1].cpu() for h in step_states)
+                        hidden_states_cpu.append(step_cpu)
+                    trace_data["hidden_states"] = hidden_states_cpu
+
+                if getattr(outputs, "attentions", None):
+                    attentions_cpu = []
+                    for step_attn in outputs.attentions[:gen_len]:
+                        step_cpu = tuple(a[i:i + 1].cpu() for a in step_attn)
+                        attentions_cpu.append(step_cpu)
+                    trace_data["attentions"] = attentions_cpu
+
+                torch.save(trace_data, trace_path)
+                counts[f"mechanistic_{condition}"] += 1
+
+                if greedy_key not in existing_greedy:
+                    greedy_record = {
+                        "prompt_id": prompt_id,
+                        "condition": condition,
+                        "sample_id": "",
+                        "prompt_text": task["prompt_text"],
+                        "generated_text": generated_text,
+                        "generated_token_ids": generated_ids,
+                        "finish_reason": "stop" if gen_len < max_new_tokens_greedy else "length",
+                        "timestamp": time.time(),
+                    }
+                    append_completion(greedy_jsonl, greedy_record)
+                    existing_greedy.add(greedy_key)
+                    counts[f"greedy_{condition}"] += 1
+
+            del outputs
+            del input_ids
+            del attention_mask
+            torch.cuda.empty_cache()
+
+            processed += len(batch)
+            if log_every and (processed - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = processed / elapsed
+                remaining = len(mechanistic_tasks) - processed
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "Mechanistic progress: %d/%d (%.1f%%) | %.2f prompts/s | ETA %.1fs",
+                    processed,
+                    len(mechanistic_tasks),
+                    100.0 * processed / len(mechanistic_tasks),
+                    rate,
+                    eta,
+                )
+                last_log = processed
+
+        def _run_mechanistic_batch(batch: List[Dict[str, Any]]) -> None:
+            try:
+                _process_mechanistic_batch(batch)
+            except RuntimeError as e:
+                if "out of memory" not in str(e).lower():
+                    raise
+                logger.warning("OOM in mechanistic batch of %d; splitting", len(batch))
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                if len(batch) <= 1:
+                    raise
+                mid = len(batch) // 2
+                _run_mechanistic_batch(batch[:mid])
+                _run_mechanistic_batch(batch[mid:])
+
+        mech_batch_size = max(1, int(mechanistic_batch_size))
+        for _, tasks in length_groups.items():
+            for batch in _iter_batches(tasks, mech_batch_size):
+                _run_mechanistic_batch(batch)
+
+    # Recovery: if trace exists but greedy JSONL missing, recover from trace
+    if not skip_mechanistic:
+        for _, row in df.iterrows():
+            prompt_id = str(row["prompt_id"])
+            question_text = row["question_text"]
+            target_word = row["target_word"]
+            for condition in ["baseline", "negative"]:
+                prompt_text = build_prompt(question_text, target_word, condition)
+                greedy_key = f"{prompt_id}|{condition}|"
+                trace_path = mechanistic_dir / f"{prompt_id}_{condition}.pt"
+                if greedy_key in existing_greedy or not trace_path.exists():
+                    continue
                 try:
                     trace_data = torch.load(trace_path, map_location="cpu")
                     generated_ids = trace_data["generated_ids"]
@@ -441,29 +675,130 @@ def run_experiment(
                     append_completion(greedy_jsonl, greedy_record)
                     existing_greedy.add(greedy_key)
                     counts[f"greedy_{condition}"] += 1
-                    logger.debug(f"Recovered greedy completion from trace: {prompt_id}_{condition}")
+                    logger.debug("Recovered greedy completion from trace: %s_%s", prompt_id, condition)
                 except Exception as e:
-                    logger.warning(f"Failed to recover greedy from trace {trace_path}: {e}")
+                    logger.warning("Failed to recover greedy from trace %s: %s", trace_path, e)
 
-            # Behavioral sampling
-            if not skip_behavioral:
-                samples = run_behavioral(
-                    wrapper=wrapper,
-                    prompt_text=prompt_text,
-                    prompt_id=prompt_id,
-                    condition=condition,
-                    existing_keys=existing_samples,
-                    completions_path=samples_jsonl,
+    # Behavioral runs (group by missing sample count)
+    if not skip_behavioral and behavioral_tasks:
+        sample_groups: Dict[int, List[Dict[str, Any]]] = defaultdict(list)
+        for task in behavioral_tasks:
+            sample_groups[len(task["samples_to_run"])].append(task)
+
+        total_behavioral_samples = sum(len(t["samples_to_run"]) for t in behavioral_tasks)
+
+        logger.info(
+            "Behavioral tasks: %d prompts across %d groups (batch=%d)",
+            len(behavioral_tasks),
+            len(sample_groups),
+            max(1, int(behavioral_batch_size)),
+        )
+
+        processed_samples = 0
+        last_log = 0
+        start_time = time.monotonic()
+
+        def _process_behavioral_batch(batch: List[Dict[str, Any]], num_to_generate: int) -> None:
+            nonlocal processed_samples, last_log
+
+            prompt_texts = [t["prompt_text"] for t in batch]
+            tokenized = _tokenize_batch(wrapper, prompt_texts)
+            input_ids = tokenized["input_ids"]
+            attention_mask = tokenized["attention_mask"]
+            batch_input_len = input_ids.shape[1]
+
+            with torch.inference_mode():
+                outputs = wrapper.model.generate(
+                    input_ids=input_ids,
+                    attention_mask=attention_mask,
+                    max_new_tokens=max_new_tokens_stochastic,
+                    do_sample=True,
+                    temperature=temperature,
+                    top_p=top_p,
+                    num_return_sequences=num_to_generate,
+                    pad_token_id=wrapper.tokenizer.pad_token_id,
                 )
-                counts[f"samples_{condition}"] += len(samples)
 
-                # Update existing keys
-                for rec in samples:
-                    key = f"{rec['prompt_id']}|{rec['condition']}|{rec['sample_id']}"
+            eos_token_id = wrapper.tokenizer.eos_token_id
+            pad_token_id = wrapper.tokenizer.pad_token_id
+            timestamp = time.time()
+
+            for i, task in enumerate(batch):
+                prompt_id = task["prompt_id"]
+                condition = task["condition"]
+                sample_ids = task["samples_to_run"]
+
+                for j, sample_id in enumerate(sample_ids):
+                    seq_idx = i * num_to_generate + j
+                    seq = outputs[seq_idx]
+                    generated_ids = seq[batch_input_len:].tolist()
+                    generated_ids = _trim_generated_ids(generated_ids, eos_token_id, pad_token_id)
+                    generated_text = wrapper.tokenizer.decode(
+                        generated_ids,
+                        skip_special_tokens=True,
+                        clean_up_tokenization_spaces=False,
+                    )
+                    finish_reason = "stop" if len(generated_ids) < max_new_tokens_stochastic else "length"
+                    record = {
+                        "prompt_id": prompt_id,
+                        "condition": condition,
+                        "sample_id": sample_id,
+                        "generated_text": generated_text,
+                        "generated_token_ids": generated_ids,
+                        "finish_reason": finish_reason,
+                        "timestamp": timestamp,
+                    }
+                    append_completion(samples_jsonl, record)
+                    key = f"{prompt_id}|{condition}|{sample_id}"
                     existing_samples.add(key)
+                    counts[f"samples_{condition}"] += 1
+                    processed_samples += 1
 
-        # Memory cleanup after each prompt
-        torch.cuda.empty_cache()
+            del outputs
+            del input_ids
+            del attention_mask
+            torch.cuda.empty_cache()
+
+            if log_every and (processed_samples - last_log) >= log_every:
+                elapsed = max(time.monotonic() - start_time, 1e-6)
+                rate = processed_samples / elapsed
+                remaining = total_behavioral_samples - processed_samples
+                eta = remaining / rate if rate > 0 else 0.0
+                logger.info(
+                    "Behavioral progress: %d/%d samples (%.1f%%) | %.2f samples/s | ETA %.1fs",
+                    processed_samples,
+                    total_behavioral_samples,
+                    100.0 * processed_samples / max(1, total_behavioral_samples),
+                    rate,
+                    eta,
+                )
+                last_log = processed_samples
+
+        def _run_behavioral_batch(batch: List[Dict[str, Any]], num_to_generate: int) -> None:
+            try:
+                _process_behavioral_batch(batch, num_to_generate)
+            except RuntimeError as e:
+                if "out of memory" not in str(e).lower():
+                    raise
+                logger.warning("OOM in behavioral batch of %d; splitting", len(batch))
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                if len(batch) <= 1:
+                    raise
+                mid = len(batch) // 2
+                _run_behavioral_batch(batch[:mid], num_to_generate)
+                _run_behavioral_batch(batch[mid:], num_to_generate)
+
+        beh_batch_size = max(1, int(behavioral_batch_size))
+        for num_to_generate, tasks in sample_groups.items():
+            if num_to_generate <= 0:
+                continue
+            for batch in _iter_batches(tasks, beh_batch_size):
+                _run_behavioral_batch(batch, num_to_generate)
+
+    counts["mechanistic_completed"] = counts["mechanistic_baseline"] + counts["mechanistic_negative"]
+    counts["greedy_completed"] = counts["greedy_baseline"] + counts["greedy_negative"]
+    counts["behavioral_completed"] = counts["samples_baseline"] + counts["samples_negative"]
 
     logger.info(f"Experiment complete. Counts: {counts}")
     return counts

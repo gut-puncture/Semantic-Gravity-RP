@@ -108,13 +108,13 @@ try:
     from .config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from .utils import ModelWrapper
     from .prompt_builder import build_prompt
-    from .metrics_psem import compute_p_sem_for_prompt
+    from .metrics_psem import compute_p_sem_for_prompt, compute_p_sem_for_prompts
 except ImportError:
     from api_clients import OpenAIClient
     from config import CONFIG, PROMPT_TEMPLATES, get_base_paths
     from utils import ModelWrapper
     from prompt_builder import build_prompt
-    from metrics_psem import compute_p_sem_for_prompt
+    from metrics_psem import compute_p_sem_for_prompt, compute_p_sem_for_prompts
 
 
 # ============================================================================
@@ -457,20 +457,34 @@ Return your evaluation as a json object with these exact fields:
 def compute_semantic_pressure(
     validated_prompts: List['ValidatedPrompt'],
     model_wrapper: Optional[ModelWrapper] = None,
+    prompt_batch_size: int = 32,
+    task_batch_size: int = 64,
+    max_batch_tokens: Optional[int] = None,
+    log_every: int = 50,
+    checkpoint_path: Optional['Path'] = None,
 ) -> List['ValidatedPrompt']:
     """
     Compute semantic pressure P(p) for validated prompts using the model.
 
-    Uses compute_p_sem_for_prompt from metrics_psem module.
+    Uses compute_p_sem_for_prompts from metrics_psem module.
     Results are written into ValidatedPrompt.p_sem and S scores are refreshed.
 
     Args:
         validated_prompts: List of validated prompts to score
         model_wrapper: Optional pre-loaded ModelWrapper instance
+        prompt_batch_size: Number of prompts per batch
+        task_batch_size: Number of (context, sequence) tasks per batch
+        max_batch_tokens: Optional cap on total tokens per task batch
+        log_every: Log progress every N prompts
+        checkpoint_path: Optional JSONL checkpoint file for resumable runs
 
     Returns:
         List of validated prompts with p_sem populated
     """
+    import json
+    import time
+    from pathlib import Path
+
     wrapper = model_wrapper or ModelWrapper.get_instance()
 
     # Try to load model; fail hard if unavailable
@@ -486,31 +500,111 @@ def compute_semantic_pressure(
     except ImportError:
         raise RuntimeError("PyTorch unavailable; cannot compute semantic pressure.")
 
-    # Compute P_sem for each prompt (re-raise errors per spec hard-fail behavior)
-    failures = []
-    for vp in validated_prompts:
+    # Load checkpoint if present
+    checkpoint_map: Dict[str, float] = {}
+    checkpoint_path = Path(checkpoint_path) if checkpoint_path else None
+    if checkpoint_path and checkpoint_path.exists():
         try:
-            prompt_text = build_prompt_text(vp.candidate.question_text)
-            vp.p_sem = compute_p_sem_for_prompt(
-                prompt_text,
-                vp.candidate.target_word,
-                wrapper.model,
-                wrapper.tokenizer,
+            with checkpoint_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    rec = json.loads(line)
+                    pid = rec.get("prompt_id")
+                    val = rec.get("p_sem")
+                    if pid is not None and val is not None:
+                        checkpoint_map[str(pid)] = float(val)
+        except Exception as e:
+            logger.warning("Failed to load P_sem checkpoint %s: %s", checkpoint_path, e)
+
+    def _prompt_id(vp: 'ValidatedPrompt') -> str:
+        return vp.prompt_id or vp.validation.prompt_id
+
+    # Apply checkpointed values
+    pending: List['ValidatedPrompt'] = []
+    for vp in validated_prompts:
+        pid = _prompt_id(vp)
+        if pid in checkpoint_map:
+            vp.p_sem = checkpoint_map[pid]
+            vp.compute_s_score()
+        else:
+            pending.append(vp)
+
+    if not pending:
+        logger.info("All prompts already have P_sem (checkpoint hit=%d).", len(checkpoint_map))
+        return validated_prompts
+
+    total = len(pending)
+    logger.info(
+        "Computing P_sem for %d prompts (checkpoint hit=%d, batch=%d, task_batch=%d)",
+        total,
+        len(checkpoint_map),
+        max(1, int(prompt_batch_size)),
+        max(1, int(task_batch_size)),
+    )
+
+    start_time = time.monotonic()
+    completed = 0
+    last_log = 0
+
+    prompt_batch_size = max(1, int(prompt_batch_size))
+
+    for i in range(0, total, prompt_batch_size):
+        batch = pending[i:i + prompt_batch_size]
+        prompt_texts = [build_prompt_text(vp.candidate.question_text) for vp in batch]
+        target_words = [vp.candidate.target_word for vp in batch]
+
+        try:
+            p_sem_values = compute_p_sem_for_prompts(
+                prompt_texts=prompt_texts,
+                target_words=target_words,
+                model=wrapper.model,
+                tokenizer=wrapper.tokenizer,
+                batch_size=max(1, int(task_batch_size)),
+                max_batch_tokens=max_batch_tokens,
+                strict=True,
+                logger=logger,
             )
         except Exception as e:
-            logger.error(f"Pressure computation failed for {vp.candidate.target_word}: {e}")
-            failures.append({
-                "target_word": vp.candidate.target_word,
-                "prompt_id": vp.validation.prompt_id,
-                "error": str(e),
-            })
-            # Per spec: P_sem unavailability should halt processing, not silently proceed
-            raise RuntimeError(
-                f"Pressure computation failed for prompt {vp.validation.prompt_id} "
-                f"(target: {vp.candidate.target_word}): {e}"
-            ) from e
+            # Per spec: P_sem unavailability should halt processing
+            pid = _prompt_id(batch[0]) if batch else "unknown"
+            raise RuntimeError(f"Pressure computation failed near prompt {pid}: {e}") from e
 
-        vp.compute_s_score()
+        if len(p_sem_values) != len(batch):
+            raise RuntimeError("P_sem batch result length mismatch.")
+
+        checkpoint_records = []
+        for vp, p_sem in zip(batch, p_sem_values):
+            vp.p_sem = p_sem
+            vp.compute_s_score()
+            if checkpoint_path:
+                checkpoint_records.append({
+                    "prompt_id": _prompt_id(vp),
+                    "target_word": vp.candidate.target_word,
+                    "p_sem": vp.p_sem,
+                })
+
+        if checkpoint_path and checkpoint_records:
+            checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
+            with checkpoint_path.open("a", encoding="utf-8") as f:
+                for rec in checkpoint_records:
+                    f.write(json.dumps(rec, ensure_ascii=True) + "\n")
+
+        completed += len(batch)
+        if log_every and (completed - last_log) >= log_every:
+            elapsed = max(time.monotonic() - start_time, 1e-6)
+            rate = completed / elapsed
+            remaining = total - completed
+            eta = remaining / rate if rate > 0 else 0.0
+            logger.info(
+                "P_sem progress: %d/%d (%.1f%%) | %.2f prompts/s | ETA %.1fs",
+                completed,
+                total,
+                100.0 * completed / total,
+                rate,
+                eta,
+            )
+            last_log = completed
 
     return validated_prompts
 

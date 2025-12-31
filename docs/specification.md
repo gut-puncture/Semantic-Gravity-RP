@@ -177,9 +177,7 @@ All sources below must be used exactly as specified.
 
 #### 3.3.3 Common sense
 
-* Use OMCS sentences (Open Mind Common Sense) as the primary source; generate cloze prompts by masking a single content word.
-* ConceptNet is expected to fail; if it unexpectedly works, it is supplemental only.
-* If OMCS/ConceptNet yield fewer than 1,000 candidates, fill the gap via GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch fallback using the 10 base relations with labeled variants A–J (see Section 3.5C and 3.5F).
+* Use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch using the 10 base relations with labeled variants A–J (see Section 3.5C and 3.5F).
 
 #### 3.3.4 Creative
 
@@ -302,12 +300,7 @@ Example:
 
 Data ingestion:
 
-1. Use OMCS sentences as the primary source and form cloze prompts by masking a single content word.
-2. If ConceptNet unexpectedly works, you may query relations UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn, then:
-
-   * take final segment after `/c/en/`
-   * replace underscores with spaces
-   * filter targets to single-word (no spaces) for target_word
+1. Use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch using the 10 base relations with labeled variants A–J.
 
 Prompt templates:
 
@@ -329,15 +322,14 @@ Example:
 
 Primary generation for common sense:
 
-1. Use OMCS sentences to form cloze prompts by masking a single content word (target_word must be alphabetic, single word).
-2. If the pool is still short, use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to generate structured JSON with fields: subject, relation, target_word, optional relation_label.
-3. relation must be one of: UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn.
-4. Build question_text using the C1–C10 templates above.
-5. Enforce diversity within fallback prompts:
+1. Use GPT-5.2 (`gpt-5.2-2025-12-11`, reasoning.effort `none`) batch to generate structured JSON with fields: subject, relation, target_word, optional relation_label.
+2. relation must be one of: UsedFor, MadeOf, HasProperty, HasPart, AtLocation, CapableOf, UsedBy, Requires, Contains, WornOn.
+3. Build question_text using the C1–C10 templates above.
+4. Enforce diversity within fallback prompts:
    * no duplicate (question_text, target_word)
    * avoid repeating subjects or target_word
    * balance relation types across prompts (use labeled variants A–J to spread coverage)
-6. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before validation; if below target, proceed with the available pool and log the shortfall (no regeneration).
+5. Generate 1,000 candidates (prompts_per_category * 2) for common_sense before validation; if below target, proceed with the available pool and log the shortfall (no regeneration).
 
 #### D) Creative
 
@@ -831,15 +823,27 @@ Hook into transformer blocks to record:
 
 ### 10.3 Subset selection
 
-Select prompts stratified by:
+Selection is driven by **high semantic pressure** with a balanced success/failure mix.
 
-* Pressure bin (based on P0): 5 bins
-* Outcome under negative instruction (using greedy run): success vs failure
+1) **High-pressure filter** (based on P0):
 
-Target subset size:
+* Compute `q75 = P0.quantile(0.75)`.
+* Set threshold `T = max(0.7, min(0.95, q75))`.
+* If the high-pressure pool is empty at `T`, retry once with `q50` using the same clamp:  
+  `T = max(0.7, min(0.95, P0.quantile(0.5)))`.
 
-* 50 prompts per bin = 250 prompts total
-* Ensure at least 30 failures across subset; if failures are rare in some bins, oversample bins with failures.
+2) **Outcome filter** (greedy negative condition):
+
+* Use **greedy detection mapping** outcomes (not samples).
+* Keep only prompts with known greedy outcome.
+
+3) **Balanced selection**:
+
+* Split into **success** (word_present=False) and **failure** (word_present=True).
+* Select **all successes** plus **min(S, F)** failures (max-balanced).
+* Shuffle once with a fixed seed for reproducibility.
+
+This yields a high-pressure, outcome-balanced subset sized `S + min(S, F)`.
 
 ### 10.4 Patching procedure
 

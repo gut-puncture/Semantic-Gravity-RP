@@ -28,7 +28,7 @@ try:
     from .utils import ModelWrapper, word_in_text, normalize_for_match, resolve_run_root
     from .prompt_builder import build_prompt
     from .config import get_base_paths, CONFIG
-    from .metrics_psem import token_sequences_for_variants, compute_p_sem
+    from .metrics_psem import token_sequences_for_variants, compute_p_sem, compute_sequence_logprobs_batched
     from .metrics_attn import (
         _compute_char_spans,
         _get_offsets_for_prompt,
@@ -38,7 +38,7 @@ except ImportError:
     from utils import ModelWrapper, word_in_text, normalize_for_match, resolve_run_root
     from prompt_builder import build_prompt
     from config import get_base_paths, CONFIG
-    from metrics_psem import token_sequences_for_variants, compute_p_sem
+    from metrics_psem import token_sequences_for_variants, compute_p_sem, compute_sequence_logprobs_batched
     from metrics_attn import (
         _compute_char_spans,
         _get_offsets_for_prompt,
@@ -59,6 +59,21 @@ def _resolve_run_root(output_root: Optional[Path]) -> Path:
     New code should import resolve_run_root from utils directly.
     """
     return resolve_run_root(output_root)
+
+
+def _to_legacy_cache(past_key_values: Any) -> Any:
+    """Convert cache object to legacy tuple format if supported."""
+    if hasattr(past_key_values, "to_legacy_cache"):
+        return past_key_values.to_legacy_cache()
+    return past_key_values
+
+
+def _from_legacy_cache(legacy_cache: Any, reference_cache: Any) -> Any:
+    """Convert legacy tuple cache back to cache object if supported."""
+    cache_type = type(reference_cache)
+    if hasattr(cache_type, "from_legacy_cache"):
+        return cache_type.from_legacy_cache(legacy_cache)
+    return legacy_cache
 
 
 # ============================================================================
@@ -102,7 +117,7 @@ def _load_prompts_df(
 
 def _load_detection_mapping(run_root: Path) -> Dict[str, bool]:
     """
-    Load detection_mapping.jsonl and extract outcome for negative greedy.
+    Load detection mapping and extract outcome for negative greedy.
 
     Args:
         run_root: Run root directory
@@ -113,10 +128,22 @@ def _load_detection_mapping(run_root: Path) -> Dict[str, bool]:
     Raises:
         FileNotFoundError: If detection_mapping.jsonl not found
     """
-    path = run_root / "runs" / "detection_mapping.jsonl"
-    if not path.exists():
+    greedy_path = run_root / "runs" / "detection_mapping_greedy.jsonl"
+    fallback_path = run_root / "runs" / "detection_mapping.jsonl"
+
+    if greedy_path.exists():
+        path = greedy_path
+        filter_sample_id = True
+    elif fallback_path.exists():
+        path = fallback_path
+        filter_sample_id = False
+        logger.warning(
+            "Greedy detection mapping not found; falling back to %s",
+            fallback_path,
+        )
+    else:
         raise FileNotFoundError(
-            f"detection_mapping.jsonl not found: {path}. "
+            f"detection mapping not found: {greedy_path} or {fallback_path}. "
             "Run detection mapping first."
         )
 
@@ -131,7 +158,7 @@ def _load_detection_mapping(run_root: Path) -> Dict[str, bool]:
                 # Keep only negative greedy (sample_id == "")
                 if record.get("condition") != "negative":
                     continue
-                if record.get("sample_id", "") != "":
+                if filter_sample_id and record.get("sample_id", "") != "":
                     continue
                 prompt_id = str(record.get("prompt_id", ""))
                 word_present = record.get("word_present", False)
@@ -243,10 +270,21 @@ def select_patching_subset(
 
     # Step 1: Filter to high pressure
     # Threshold = max(0.7, p0.quantile(0.75))
-    p0_q75 = prompts_df["p0"].quantile(0.75)
-    threshold = max(0.7, p0_q75)
+    p0_series = prompts_df["p0"].astype(float)
+    p0_q75 = p0_series.quantile(0.75)
+    threshold = max(0.7, min(0.95, p0_q75))
+    logger.info("High-pressure quantile q75=%.6f, threshold=%.3f", p0_q75, threshold)
     
-    high_pressure_df = prompts_df[prompts_df["p0"] >= threshold].copy()
+    high_pressure_df = prompts_df[p0_series >= threshold].copy()
+    if len(high_pressure_df) == 0:
+        p0_q50 = p0_series.quantile(0.5)
+        threshold = max(0.7, min(0.95, p0_q50))
+        logger.warning(
+            "High-pressure pool empty at q75 threshold; retrying with q50=%.6f (threshold=%.3f)",
+            p0_q50,
+            threshold,
+        )
+        high_pressure_df = prompts_df[p0_series >= threshold].copy()
     high_pressure_total = len(high_pressure_df)
     logger.info(
         "High-pressure filter: threshold=%.3f, %d of %d prompts",
@@ -340,6 +378,8 @@ def _compute_p_rest_sum(
     model: Any,
     tokenizer: Any,
     context_ids: List[int],
+    batch_size: int = 32,
+    max_batch_tokens: Optional[int] = None,
 ) -> Dict[int, float]:
     """
     Precompute suffix probability sums grouped by first token.
@@ -366,25 +406,53 @@ def _compute_p_rest_sum(
             suffix = seq[1:] if len(seq) > 1 else ()
             sequences_by_first[first_tok].append(suffix)
 
-    p_rest_sum = {}
+    p_rest_sum: Dict[int, float] = {}
+
+    # Build batched tasks for all non-empty suffixes
+    contexts: List[List[int]] = []
+    sequences: List[Tuple[int, ...]] = []
+    first_token_for_task: List[int] = []
 
     for first_tok, suffixes in sequences_by_first.items():
         total = 0.0
-        extended_context = context_ids + [first_tok]
-
         for suffix in suffixes:
             if not suffix:
-                # Empty suffix means probability = 1.0
                 total += 1.0
             else:
-                # Compute P(suffix | context + first_tok)
-                try:
-                    p_suffix = compute_p_sem(model, tokenizer, extended_context, [suffix])
-                    total += p_suffix
-                except Exception:
-                    pass
+                contexts.append(context_ids + [first_tok])
+                sequences.append(tuple(suffix))
+                first_token_for_task.append(first_tok)
+        if total > 0.0:
+            p_rest_sum[first_tok] = total
 
-        p_rest_sum[first_tok] = total
+    if sequences:
+        try:
+            log_probs = compute_sequence_logprobs_batched(
+                model=model,
+                tokenizer=tokenizer,
+                contexts=contexts,
+                sequences=sequences,
+                batch_size=batch_size,
+                max_batch_tokens=max_batch_tokens,
+                logger=logger,
+            )
+            import math
+            for log_prob, first_tok in zip(log_probs, first_token_for_task):
+                p_rest_sum[first_tok] = p_rest_sum.get(first_tok, 0.0) + math.exp(log_prob)
+        except Exception as e:
+            logger.warning("Batched p_rest_sum failed; falling back to sequential: %s", e)
+            for first_tok, suffixes in sequences_by_first.items():
+                total = p_rest_sum.get(first_tok, 0.0)
+                extended_context = context_ids + [first_tok]
+                for suffix in suffixes:
+                    if not suffix:
+                        continue
+                    try:
+                        p_suffix = compute_p_sem(model, tokenizer, extended_context, [suffix])
+                        total += p_suffix
+                    except Exception:
+                        pass
+                p_rest_sum[first_tok] = total
 
     return p_rest_sum
 
@@ -477,6 +545,10 @@ def run_activation_patching(
     output_root: Optional[Path] = None,
     prompts_path: Optional[Path] = None,
     limit: Optional[int] = None,
+    log_every: int = 50,
+    checkpoint_path: Optional[Path] = None,
+    p_rest_batch_size: int = 32,
+    p_rest_max_batch_tokens: Optional[int] = None,
 ) -> Path:
     """
     Run activation patching on selected subset.
@@ -491,12 +563,17 @@ def run_activation_patching(
         output_root: Run root directory
         prompts_path: Path to prompts.csv
         limit: Optional limit on prompts to process
+        log_every: Log progress every N prompts
+        checkpoint_path: Optional JSONL checkpoint file for resume
+        p_rest_batch_size: Batch size for p_rest_sum computation
+        p_rest_max_batch_tokens: Optional token cap for p_rest_sum batches
 
     Returns:
         Path to patching_results.csv
     """
     import pandas as pd
     import torch
+    import time
 
     run_root = _resolve_run_root(output_root)
     runs_dir = run_root / "runs"
@@ -514,6 +591,35 @@ def run_activation_patching(
 
     if limit:
         subset = subset[:limit]
+
+    runs_dir.mkdir(parents=True, exist_ok=True)
+    output_path = runs_dir / "patching_results.csv"
+    checkpoint_path = checkpoint_path or (runs_dir / "patching_checkpoint.jsonl")
+
+    processed: Set[str] = set()
+    if checkpoint_path.exists():
+        try:
+            with checkpoint_path.open("r", encoding="utf-8") as f:
+                for line in f:
+                    if not line.strip():
+                        continue
+                    rec = json.loads(line)
+                    pid = rec.get("prompt_id")
+                    if pid is not None:
+                        processed.add(str(pid))
+        except Exception as e:
+            logger.warning("Failed to load patching checkpoint %s: %s", checkpoint_path, e)
+    elif output_path.exists():
+        try:
+            import csv
+            with output_path.open("r", encoding="utf-8", newline="") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    pid = row.get("prompt_id")
+                    if pid:
+                        processed.add(str(pid))
+        except Exception as e:
+            logger.warning("Failed to recover processed set from %s: %s", output_path, e)
 
     paths = get_base_paths()
     data_root = paths.get("data_root", Path("data"))
@@ -551,13 +657,52 @@ def run_activation_patching(
     num_layers = len(layers)
     max_new_tokens = CONFIG.get("model", {}).get("max_new_tokens_greedy", 8)
 
-    results = []
+    import csv
+
+    result_fields = [
+        "prompt_id",
+        "category",
+        "p0_bin",
+        "outcome",
+        "layer",
+        "patch_type",
+        "p_sem_original_neg",
+        "p_sem_patched",
+        "delta_p",
+        "flip_indicator",
+        "greedy_token_original",
+        "greedy_token_patched",
+    ]
+
+    def _append_results(rows: List[Dict[str, Any]]) -> None:
+        if not rows:
+            return
+        write_header = not output_path.exists()
+        with output_path.open("a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=result_fields)
+            if write_header:
+                writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
+
+    def _append_checkpoint(pid: str) -> None:
+        with checkpoint_path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps({"prompt_id": pid}, ensure_ascii=True) + "\n")
+
+    pending_total = sum(1 for rec in subset if str(rec["prompt_id"]) not in processed)
+    processed_count = 0
+    last_log = 0
+    start_time = time.monotonic()
 
     for rec in subset:
         prompt_id = str(rec["prompt_id"])
         category = rec["category"]
         p0_bin = rec["p0_bin"]
         outcome = rec["outcome"]
+
+        if prompt_id in processed:
+            logger.info("Skipping patching for %s (checkpoint)", prompt_id)
+            continue
 
         info = prompt_info.get(prompt_id)
         if not info:
@@ -596,7 +741,14 @@ def run_activation_patching(
         context_ids_neg = tokenizer.encode(negative_text, add_special_tokens=add_special_tokens)
 
         # Compute p_rest_sum
-        p_rest_sum = _compute_p_rest_sum(token_seqs, model, tokenizer, context_ids_neg)
+        p_rest_sum = _compute_p_rest_sum(
+            token_seqs,
+            model,
+            tokenizer,
+            context_ids_neg,
+            batch_size=p_rest_batch_size,
+            max_batch_tokens=p_rest_max_batch_tokens,
+        )
 
         # Get span indices for NEGATIVE prompt
         neg_input_ids_list = negative_ids[0].tolist()
@@ -627,15 +779,19 @@ def run_activation_patching(
         instr_pairs = _align_span_indices(negative_instr_tokens, baseline_instr_tokens)
         question_pairs = _align_span_indices(negative_question_tokens, baseline_question_tokens)
 
+        prompt_results: List[Dict[str, Any]] = []
+
         try:
             with torch.inference_mode():
                 # Compute baseline prefix KV
                 baseline_prefix_out = model(baseline_prefix, use_cache=True)
                 baseline_past = baseline_prefix_out.past_key_values
+                baseline_past_legacy = _to_legacy_cache(baseline_past)
 
                 # Compute negative prefix KV
                 negative_prefix_out = model(negative_prefix, use_cache=True)
                 negative_past = negative_prefix_out.past_key_values
+                negative_past_legacy = _to_legacy_cache(negative_past)
 
                 # Capture baseline last-token activations
                 baseline_residuals = {}
@@ -746,7 +902,7 @@ def run_activation_patching(
                     finally:
                         hook_a.remove()
 
-                    results.append({
+                    prompt_results.append({
                         "prompt_id": prompt_id,
                         "category": category,
                         "p0_bin": p0_bin,
@@ -797,7 +953,7 @@ def run_activation_patching(
                         finally:
                             hook_b.remove()
 
-                        results.append({
+                        prompt_results.append({
                             "prompt_id": prompt_id,
                             "category": category,
                             "p0_bin": p0_bin,
@@ -814,9 +970,10 @@ def run_activation_patching(
 
                     # === Patch C: Instruction KV ===
                     if instr_pairs:
-                        patched_past_c = _patch_kv_at_index_pairs(
-                            negative_past, baseline_past, layer_idx, instr_pairs
+                        patched_past_c_legacy = _patch_kv_at_index_pairs(
+                            negative_past_legacy, baseline_past_legacy, layer_idx, instr_pairs
                         )
+                        patched_past_c = _from_legacy_cache(patched_past_c_legacy, negative_past)
 
                         out_c = model(
                             negative_last,
@@ -832,7 +989,7 @@ def run_activation_patching(
                         patched_violation_c = word_in_text(target_word, patched_text_c)
                         flip_c = 1 if original_violation != patched_violation_c else 0
 
-                        results.append({
+                        prompt_results.append({
                             "prompt_id": prompt_id,
                             "category": category,
                             "p0_bin": p0_bin,
@@ -849,9 +1006,10 @@ def run_activation_patching(
 
                     # === Patch D: Question KV ===
                     if question_pairs:
-                        patched_past_d = _patch_kv_at_index_pairs(
-                            negative_past, baseline_past, layer_idx, question_pairs
+                        patched_past_d_legacy = _patch_kv_at_index_pairs(
+                            negative_past_legacy, baseline_past_legacy, layer_idx, question_pairs
                         )
+                        patched_past_d = _from_legacy_cache(patched_past_d_legacy, negative_past)
 
                         out_d = model(
                             negative_last,
@@ -867,7 +1025,7 @@ def run_activation_patching(
                         patched_violation_d = word_in_text(target_word, patched_text_d)
                         flip_d = 1 if original_violation != patched_violation_d else 0
 
-                        results.append({
+                        prompt_results.append({
                             "prompt_id": prompt_id,
                             "category": category,
                             "p0_bin": p0_bin,
@@ -888,12 +1046,26 @@ def run_activation_patching(
         finally:
             torch.cuda.empty_cache()
 
-    # Write results
-    output_path = runs_dir / "patching_results.csv"
-    df = pd.DataFrame(results)
-    df.to_csv(output_path, index=False)
-    logger.info("Wrote %d patching results to %s", len(df), output_path)
+        _append_results(prompt_results)
+        _append_checkpoint(prompt_id)
+        processed.add(prompt_id)
+        processed_count += 1
+        if log_every and (processed_count - last_log) >= log_every:
+            elapsed = max(time.monotonic() - start_time, 1e-6)
+            rate = processed_count / elapsed
+            remaining = pending_total - processed_count
+            eta = remaining / rate if rate > 0 else 0.0
+            logger.info(
+                "Patching progress: %d/%d (%.1f%%) | %.2f prompts/s | ETA %.1fs",
+                processed_count,
+                pending_total,
+                100.0 * processed_count / max(1, pending_total),
+                rate,
+                eta,
+            )
+            last_log = processed_count
 
+    logger.info("Patching complete. Results at %s", output_path)
     return output_path
 
 
