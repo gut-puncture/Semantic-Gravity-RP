@@ -1,4 +1,4 @@
-# The Forbidden Word Effect: A Mechanistic Investigation of Negative Instruction Failure in Large Language Models
+# Semantic Gravity Wells: Why Negative Constraints Backfire
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
