@@ -177,6 +177,7 @@ python -m src.data_mining --stage validate
 ### Stage 2: GPU Pipeline (A100 recommended)
 
 The full pipeline runs in `notebooks/semantic_gravity.ipynb` on Google Colab or a GPU VM.
+For Colab-specific setup, see `docs/colab.md`.
 
 **Steps:**
 1. Mount Google Drive with model files and validated prompts
