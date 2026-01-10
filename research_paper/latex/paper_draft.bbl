@@ -1,0 +1,90 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Geva et~al.(2022)Geva, Caciularu, Wang, and
+  Goldberg]{geva2022transformer}
+Mor Geva, Avi Caciularu, Kevin Wang, and Yoav Goldberg.
+\newblock Transformer feed-forward layers build predictions by promoting
+  concepts in the vocabulary space.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in
+  Natural Language Processing}, pages 30--45. Association for Computational
+  Linguistics, 2022.
+
+\bibitem[Hossain et~al.(2022)Hossain, Blanco, and Kautz]{hossain2022analysis}
+Md~Mosharaf Hossain, Eduardo Blanco, and Henry Kautz.
+\newblock An analysis of negation in natural language inference.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in
+  Natural Language Processing}, pages 5383--5395. Association for Computational
+  Linguistics, 2022.
+
+\bibitem[Kassner and Sch{\"u}tze(2020)]{kassner2020negated}
+Nora Kassner and Hinrich Sch{\"u}tze.
+\newblock Negated and misprimed probes for pretrained language models: Birds
+  can talk, but cannot fly.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association
+  for Computational Linguistics}, pages 7811--7818. Association for
+  Computational Linguistics, 2020.
+
+\bibitem[Lu et~al.(2022)Lu, Bartolo, Moore, Riedel, and
+  Stenetorp]{lu2022fantastically}
+Yao Lu, Max Bartolo, Alastair Moore, Sebastian Riedel, and Pontus Stenetorp.
+\newblock Fantastically ordered prompts and where to find them: Overcoming
+  few-shot prompt order sensitivity.
+\newblock In \emph{Proceedings of the 60th Annual Meeting of the Association
+  for Computational Linguistics}, pages 8086--8098. Association for
+  Computational Linguistics, 2022.
+
+\bibitem[Meng et~al.(2022)Meng, Bau, Andonian, and Belinkov]{meng2022locating}
+Kevin Meng, David Bau, Alex Andonian, and Yonatan Belinkov.
+\newblock Locating and editing factual associations in {GPT}.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, pages 17359--17372. Curran Associates, Inc., 2022.
+
+\bibitem[nostalgebraist(2020)]{nostalgebraist2020logitlens}
+nostalgebraist.
+\newblock Interpreting {GPT}: The logit lens.
+\newblock \emph{LessWrong}, 2020.
+\newblock Available at
+  \url{https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens}.
+
+\bibitem[Ouyang et~al.(2022)Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin,
+  Zhang, Agarwal, Slama, Ray, Schulman, Hilton, Kelton, Miller, Simens, Askell,
+  Welinder, Christiano, Leike, and Lowe]{ouyang2022training}
+Long Ouyang, Jeffrey Wu, Xu~Jiang, Diogo Almeida, Carroll Wainwright, Pamela
+  Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John
+  Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda
+  Askell, Peter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe.
+\newblock Training language models to follow instructions with human feedback.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, pages 27730--27744. Curran Associates, Inc., 2022.
+
+\bibitem[Wang et~al.(2023)Wang, Variengien, Conmy, Shlegeris, and
+  Steinhardt]{wang2023interpretability}
+Kevin Wang, Alexandre Variengien, Arthur Conmy, Buck Shlegeris, and Jacob
+  Steinhardt.
+\newblock Interpretability in the wild: A circuit for indirect object
+  identification in {GPT-2} small.
+\newblock In \emph{International Conference on Learning Representations}, 2023.
+\newblock URL \url{https://openreview.net/forum?id=NpsVSN6o4ul}.
+
+\bibitem[Wei et~al.(2022)Wei, Bosma, Zhao, Guu, Yu, Lester, Du, Dai, and
+  Le]{wei2022finetuned}
+Jason Wei, Maarten Bosma, Vincent Zhao, Kelvin Guu, Adams~Wei Yu, Brian Lester,
+  Nan Du, Andrew~M Dai, and Quoc~V Le.
+\newblock Finetuned language models are zero-shot learners.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+\newblock URL \url{https://openreview.net/forum?id=gEZrGCozdqR}.
+
+\bibitem[Zhao et~al.(2021)Zhao, Wallace, Feng, Klein, and
+  Singh]{zhao2021calibrate}
+Zihao Zhao, Eric Wallace, Shi Feng, Dan Klein, and Sameer Singh.
+\newblock Calibrate before use: Improving few-shot performance of language
+  models.
+\newblock In \emph{Proceedings of the 38th International Conference on Machine
+  Learning}, pages 12697--12706. PMLR, 2021.
+
+\end{thebibliography}

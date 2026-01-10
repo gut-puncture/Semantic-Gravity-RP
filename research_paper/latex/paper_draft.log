@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  31 DEC 2025 19:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  10 JAN 2026 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -583,32 +583,55 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@dima=\skip70
 \bigstrutjot=\dimen259
 )
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/natbib/natb
+ib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip71
+\bibsep=\skip72
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count323
+)
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amscls/amst
+hm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks33
+\thm@bodyfont=\toks34
+\thm@headfont=\toks35
+\thm@notefont=\toks36
+\thm@headpunct=\toks37
+\thm@preskip=\skip73
+\thm@postskip=\skip74
+\thm@headsep=\skip75
+\dth@everypar=\toks38
+)
+\c@definition=\count324
+
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/l3backend/l
 3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count323
+\l__color_backend_stack_int=\count325
 \l__pdf_internal_box=\box60
 ) (./paper_draft.aux)
 \openout1 = `paper_draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -648,17 +671,17 @@ LaTeX Font Info:    ... okay on input line 35.
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/context/base/mkii
 /supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count324
+\scratchcounter=\count326
 \scratchdimen=\dimen260
 \scratchbox=\box61
-\nofMPsegments=\count325
-\nofMParguments=\count326
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count327
+\nofMPsegments=\count327
+\nofMParguments=\count328
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count329
 \MPscratchDim=\dimen261
-\MPnumerator=\count328
-\makeMPintoPDFobject=\count329
-\everyMPtoPDFconversion=\toks34
+\MPnumerator=\count330
+\makeMPintoPDFobject=\count331
+\everyMPtoPDFconversion=\toks40
 )
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/epstopdf-pk
 g/epstopdf-base.sty
@@ -674,25 +697,25 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 35.
+Package hyperref Info: Link coloring ON on input line 40.
  (./paper_draft.out) (./paper_draft.out)
 \@outlinefile=\write3
 \openout3 = `paper_draft.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 35.
-Package microtype Info: Applying patch `item' on input line 35.
-Package microtype Info: Applying patch `toc' on input line 35.
-Package microtype Info: Applying patch `eqnum' on input line 35.
-Package microtype Info: Applying patch `footnote' on input line 35.
-Package microtype Info: Applying patch `verbatim' on input line 35.
-LaTeX Info: Redefining \microtypesetup on input line 35.
+LaTeX Info: Redefining \microtypecontext on input line 40.
+Package microtype Info: Applying patch `item' on input line 40.
+Package microtype Info: Applying patch `toc' on input line 40.
+Package microtype Info: Applying patch `eqnum' on input line 40.
+Package microtype Info: Applying patch `footnote' on input line 40.
+Package microtype Info: Applying patch `verbatim' on input line 40.
+LaTeX Info: Redefining \microtypesetup on input line 40.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 35.
+LaTeX Info: Redefining \showhyphens on input line 40.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -706,7 +729,7 @@ t-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
 
 
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsfonts/um
@@ -717,7 +740,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 t-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
 
 
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsfonts/um
@@ -728,7 +751,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 t-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 43
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 48
 .
 
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/psnfss/t1pc
@@ -740,7 +763,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (4.18759pt too wide) in paragraph at lines 49--50
+Overfull \hbox (4.18759pt too wide) in paragraph at lines 54--55
 \T1/ptm/m/n/10 (-20) Imagine ask-ing a lan-guage model a sim-ple ques-tion: ``W
 hat
  []
@@ -755,129 +778,129 @@ dmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts
 
 
 ]
-Overfull \hbox (2.77618pt too wide) in paragraph at lines 83--84
+
+
+Overfull \hbox (2.77618pt too wide) in paragraph at lines 92--93
 \T1/ptm/m/n/10 (-20) gence of instruction-following ca-pa-bil-i-ties has trans-
 formed
  []
 
 
 
-
-
 [2]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-04.
+13.
 
 (/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/psnfss/ts1p
 tm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 
-<../figures/fig1_violation_rate.png, id=136, 353.8821pt x 245.9589pt>
-File: ../figures/fig1_violation_rate.png Graphic file (type png)
-<use ../figures/fig1_violation_rate.png>
-Package pdftex.def Info: ../figures/fig1_violation_rate.png  used on input line
- 144.
-(pdftex.def)             Requested size: 225.84377pt x 156.97029pt.
+<../figures/fig1_violation_rate.pdf, id=166, 353.73035pt x 245.66405pt>
+File: ../figures/fig1_violation_rate.pdf Graphic file (type pdf)
+<use ../figures/fig1_violation_rate.pdf>
+Package pdftex.def Info: ../figures/fig1_violation_rate.pdf  used on input line
+ 159.
+(pdftex.def)             Requested size: 225.84377pt x 156.8496pt.
 
 
-[3 <../figures/fig1_violation_rate.png>]
-<../figures/fig2_suppression.png, id=150, 245.9589pt x 209.583pt>
-File: ../figures/fig2_suppression.png Graphic file (type png)
-<use ../figures/fig2_suppression.png>
-Package pdftex.def Info: ../figures/fig2_suppression.png  used on input line 17
-3.
-(pdftex.def)             Requested size: 191.96857pt x 163.5796pt.
+[3]
+<../figures/fig2_suppression.pdf, id=180, 245.69353pt x 209.56154pt>
+File: ../figures/fig2_suppression.pdf Graphic file (type pdf)
+<use ../figures/fig2_suppression.pdf>
+Package pdftex.def Info: ../figures/fig2_suppression.pdf  used on input line 18
+8.
+(pdftex.def)             Requested size: 191.96857pt x 163.73872pt.
 
 
-<../figures/fig3_attention.png, id=151, 498.9039pt x 195.6108pt>
-File: ../figures/fig3_attention.png Graphic file (type png)
-<use ../figures/fig3_attention.png>
-Package pdftex.def Info: ../figures/fig3_attention.png  used on input line 202.
+<../figures/fig3_attention.pdf, id=181, 498.81949pt x 195.1497pt>
+File: ../figures/fig3_attention.pdf Graphic file (type pdf)
+<use ../figures/fig3_attention.pdf>
+Package pdftex.def Info: ../figures/fig3_attention.pdf  used on input line 217.
 
-(pdftex.def)             Requested size: 225.84377pt x 88.54935pt.
+(pdftex.def)             Requested size: 225.84377pt x 88.35551pt.
 
 
-[4 <../figures/fig2_suppression.png> <../figures/fig3_attention.png>]
-<../figures/fig4_logit_lens.png, id=163, 354.3639pt x 245.9589pt>
-File: ../figures/fig4_logit_lens.png Graphic file (type png)
-<use ../figures/fig4_logit_lens.png>
-Package pdftex.def Info: ../figures/fig4_logit_lens.png  used on input line 229
+[4 <../figures/fig1_violation_rate.pdf> <../figures/fig2_suppression.pdf>]
+<../figures/fig4_logit_lens.pdf, id=290, 354.13052pt x 245.66405pt>
+File: ../figures/fig4_logit_lens.pdf Graphic file (type pdf)
+<use ../figures/fig4_logit_lens.pdf>
+Package pdftex.def Info: ../figures/fig4_logit_lens.pdf  used on input line 244
 .
-(pdftex.def)             Requested size: 225.84377pt x 156.75636pt.
+(pdftex.def)             Requested size: 225.84377pt x 156.66966pt.
 
 
 
-Overfull \hbox (6.49484pt too wide) in paragraph at lines 246--247
+Overfull \hbox (6.49484pt too wide) in paragraph at lines 261--262
 \T1/ptm/m/n/10 (-20) multi-head self-attention and a feed-forward net-work (FFN
 ).
  []
 
-<../figures/fig5_decomposition.png, id=164, 426.6339pt x 209.8239pt>
-File: ../figures/fig5_decomposition.png Graphic file (type png)
-<use ../figures/fig5_decomposition.png>
-Package pdftex.def Info: ../figures/fig5_decomposition.png  used on input line 
-255.
-(pdftex.def)             Requested size: 225.84377pt x 111.07166pt.
+<../figures/fig5_decomposition.pdf, id=291, 426.55945pt x 209.5968pt>
+File: ../figures/fig5_decomposition.pdf Graphic file (type pdf)
+<use ../figures/fig5_decomposition.pdf>
+Package pdftex.def Info: ../figures/fig5_decomposition.pdf  used on input line 
+270.
+(pdftex.def)             Requested size: 225.84377pt x 110.97382pt.
 
 
-[5 <../figures/fig4_logit_lens.png> <../figures/fig5_decomposition.png>]
-Overfull \hbox (12.37546pt too wide) in paragraph at lines 291--292
+[5 <../figures/fig3_attention.pdf> <../figures/fig4_logit_lens.pdf>]
+Overfull \hbox (12.37546pt too wide) in paragraph at lines 306--307
 []\T1/ptm/m/n/10 (-20) Measure the change in fi-nal tar-get prob-a-bil-ity: $\O
 T1/cmr/m/n/10 ^^A\OML/cmm/m/it/10 P[] \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (14.92386pt too wide) in paragraph at lines 294--295
+Overfull \hbox (14.92386pt too wide) in paragraph at lines 309--310
 []\T1/ptm/m/n/10 (-20) If patch-ing base-line ac-ti-va-tions into the negative-
 instruction
  []
 
-<../figures/fig6_patching.png, id=180, 354.3639pt x 245.9589pt>
-File: ../figures/fig6_patching.png Graphic file (type png)
-<use ../figures/fig6_patching.png>
-Package pdftex.def Info: ../figures/fig6_patching.png  used on input line 300.
-(pdftex.def)             Requested size: 225.84377pt x 156.75636pt.
+<../figures/fig6_patching.pdf, id=391, 354.12927pt x 245.68663pt>
+File: ../figures/fig6_patching.pdf Graphic file (type pdf)
+<use ../figures/fig6_patching.pdf>
+Package pdftex.def Info: ../figures/fig6_patching.pdf  used on input line 315.
+(pdftex.def)             Requested size: 225.84377pt x 156.68407pt.
 
-Overfull \hbox (0.39392pt too wide) in paragraph at lines 313--314
+
+
+Overfull \hbox (0.39392pt too wide) in paragraph at lines 328--329
 []\T1/ptm/m/n/10 (-20) This pattern provides direct causal evidence. Layers 23-
 -
  []
 
 
-Overfull \hbox (0.12494pt too wide) in paragraph at lines 313--314
+Overfull \hbox (0.12494pt too wide) in paragraph at lines 328--329
 \T1/ptm/m/n/10 (-20) specifically, the large FFN contributions we documented---
 
  []
 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 336.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 321.
+(hyperref)                removing `math shift' on input line 336.
+
+
+
+[6 <../figures/fig5_decomposition.pdf> <../figures/fig6_patching.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 352.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 321.
+(hyperref)                removing `math shift' on input line 352.
 
+<../figures/fig8_taxonomy.pdf, id=481, 182.87172pt x 209.64362pt>
+File: ../figures/fig8_taxonomy.pdf Graphic file (type pdf)
+<use ../figures/fig8_taxonomy.pdf>
+Package pdftex.def Info: ../figures/fig8_taxonomy.pdf  used on input line 370.
+(pdftex.def)             Requested size: 158.08994pt x 181.24326pt.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 337.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 337.
-
-
-
-[6 <../figures/fig6_patching.png>]
-<../figures/fig8_taxonomy.png, id=191, 182.8431pt x 209.8239pt>
-File: ../figures/fig8_taxonomy.png Graphic file (type png)
-<use ../figures/fig8_taxonomy.png>
-Package pdftex.def Info: ../figures/fig8_taxonomy.png  used on input line 355.
-(pdftex.def)             Requested size: 158.08994pt x 181.43114pt.
-
-Overfull \hbox (1.249pt too wide) in paragraph at lines 367--368
+Overfull \hbox (1.249pt too wide) in paragraph at lines 382--383
 []\T1/ptm/m/n/10 (-20) Positive re-fram-ing: ``Use only gen-eral ge-o-graphic t
 erms'' 
  []
@@ -885,56 +908,80 @@ erms''
 
 
 
-Overfull \hbox (12.37218pt too wide) in paragraph at lines 392--393
+Overfull \hbox (12.37218pt too wide) in paragraph at lines 407--408
 []\T1/ptm/b/n/10 (-20) Taxonomic level: \T1/ptm/m/n/10 (-20) Two dis-tinct mode
 s---priming (87.5%)
  []
 
 
-Overfull \hbox (5.88416pt too wide) in paragraph at lines 411--413
+
+[7 <../figures/fig8_taxonomy.pdf>]
+Overfull \hbox (5.88416pt too wide) in paragraph at lines 426--428
 []\T1/ptm/b/n/10 (-20) Single model. \T1/ptm/m/n/10 (-20) All ex-per-i-ments us
 e Qwen2.5-7B-Instruct.
  []
 
 
 
-[7 <../figures/fig8_taxonomy.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 446--446
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--461
 [][][][][]$\T1/pcr/m/n/8 https : / / github . com / gut-[]puncture /
  []
 
 
 
-
-
 [8]
 
+(./paper_draft.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 48--53
+[]\T1/ptm/m/n/9 (+20) nostalgebraist.  In-ter-pret-ing GPT: The logit lens.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--53
+\T1/ptm/m/it/9 (+20) Less-Wrong\T1/ptm/m/n/9 (+20) , 2020.  Avail-able at [][]$
+\T1/pcr/m/n/9 https : / / www .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--53
+\T1/pcr/m/n/9 lesswrong . com / posts / AcKRB8wDpdaN6v6ru /
+ []
+
+
+
+[9]
+Underfull \hbox (badness 1062) in paragraph at lines 76--81
+[]\T1/ptm/m/n/9 (+20) Jason Wei, Maarten Bosma, Vin-cent Zhao, Kelvin Guu,
+ []
+
+)
 
 Package caption Warning: Unused \captionsetup[sub] on input line 19.
 See the caption package documentation for explanation.
 
 
 
-[9] (./paper_draft.aux)
+
+
+[10
+
+] (./paper_draft.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `paper_draft.out' has not changed.
-(rerunfilecheck)             Checksum: 342B9BC75BD237FEF444798F0AD76E70;5755.
+(rerunfilecheck)             Checksum: 01275539DE56EECE5C3A87B2E3EA4B91;4216.
  ) 
 Here is how much of TeX's memory you used:
- 17201 strings out of 473190
- 278489 string characters out of 5704335
- 720156 words of memory out of 5000000
- 39724 multiletter control sequences out of 15000+600000
- 625980 words of font info for 364 fonts, out of 8000000 for 9000
+ 17722 strings out of 473190
+ 286274 string characters out of 5704335
+ 729790 words of memory out of 5000000
+ 40189 multiletter control sequences out of 15000+600000
+ 631946 words of font info for 388 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,10n,93p,1868b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,93p,1866b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20250
@@ -956,10 +1003,10 @@ nts/type1/urw/times/utmb8a.pfb></opt/homebrew/Cellar/texlive/20250308_2/share/t
 exmf-dist/fonts/type1/urw/times/utmbi8a.pfb></opt/homebrew/Cellar/texlive/20250
 308_2/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></opt/homebrew/Cellar/t
 exlive/20250308_2/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_draft.pdf (9 pages, 741465 bytes).
+Output written on paper_draft.pdf (10 pages, 332952 bytes).
 PDF statistics:
- 309 PDF objects out of 1000 (max. 8388607)
- 247 compressed objects within 3 object streams
- 66 named destinations out of 1000 (max. 500000)
- 62708 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 652 PDF objects out of 1000 (max. 8388607)
+ 325 compressed objects within 4 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 67316 words of extra memory for PDF output out of 74296 (max. 10000000)
 
