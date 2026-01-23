@@ -191,6 +191,21 @@ For Colab-specific setup, see `docs/colab.md`.
 9. Bootstrap confidence intervals
 10. Generate figures
 
+### Stage 2b: Behavioral Replication on Additional Models (No Mechanistic)
+
+To run the behavioral-only replication (baseline pressure + negative-instruction sampling)
+on additional Hugging Face models, use the new runner:
+
+```bash
+python -m src.behavioral_replication \
+  --models meta-llama/Llama-3.1-8B-Instruct mistralai/Mistral-7B-Instruct-v0.3 \
+  --prompts /path/to/prompts.csv
+```
+
+This produces per-model run folders under `outputs/experiment_run_<timestamp>_<model>/`
+containing `psem.csv`, `pressure_bins.csv`, `completions_samples.jsonl`,
+`detection_mapping.jsonl`, `behavior_metrics.csv`, and plots/summary outputs.
+
 ### Stage 3: Figure Generation and Analysis
 
 ```bash
