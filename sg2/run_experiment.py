@@ -186,6 +186,7 @@ def measure_chunk(lm: core.LM, rows: list[dict], args) -> pd.DataFrame:
         row = {
             "prompt_id": r["prompt_id"], "category": r["category"], "question": r["question"],
             "target": X, "variants": sc_base[i][2],
+            "variant_ntok": [len(v) for v in sc_base[i][3]],
             "variant_p_base": sc_base[i][1], "variant_p_neg": sc_neg[i][1],
             "p0": sc_base[i][0], "p1": sc_neg[i][0], "p0_bin": core.p0_bin(sc_base[i][0]),
             "t_star": tstar[i], "t_star_str": tok.decode([tstar[i]]), "tset": tset[i],
