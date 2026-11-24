@@ -13,15 +13,26 @@ The code that produces every model measurement in `DESIGN_v2.md` ("Prompts given
 
 ## One-command runs
 
-- **Modal**: `modal run --detach sg2/modal_app.py --prompts data/prompts_v2.jsonl --run-name v2`,
+Both run the same chain, `sg2/pipeline.py`: probe P0 for every accepted candidate
+(`sg2/probe_p0.py`), select 500 per category balanced over P0 bins (`sg2data/select_final.py
+select`, writing `prompts_v2.jsonl` and `selection_report.json` into the run folder), checks,
+the 64-prompt smoke test, the full run with patching, analysis, and checks against the run's
+own patching output. Each finished step leaves a `.done_<step>` marker and is skipped on
+rerun. The input file is copied into the run folder, and a rerun with a different input is
+refused. The chain stops at the first failed step. Pass `--prompts` instead of
+`--candidates` to skip the probe and the selection.
+
+- **Modal**: `modal run --detach sg2/modal_app.py --candidates data/accepted_candidates.jsonl --run-name v2`,
   then `modal volume get sg2-runs v2 runs/v2`. It uses one GPU from H100, A100-80GB, L40S, A10
-  (first available), caches the weights in volume `sg2-hf-cache`, has a 3 h timeout, and
-  runs checks → smoke → full run → analysis → in-run checks. `--detach` keeps it running
-  when your laptop disconnects. Rerunning the same command resumes. Not yet run on Modal;
-  locally only the app graph was built.
-- **Plain GPU box** (Prime Intellect pod): `bash sg2/setup_pod.sh data/prompts_v2.jsonl runs/v2`
-  installs everything, downloads the weights, and runs the same steps in tmux session `sg2`,
-  logging to `runs/v2.log`. It stops at the first failed step, and rerunning it resumes.
+  (first available), caches the weights in volume `sg2-hf-cache`, and has a 3 h timeout.
+  `--detach` keeps it running when your laptop disconnects. Not yet run on Modal; locally
+  only the app graph was built.
+- **Plain GPU box** (Prime Intellect pod): `bash sg2/setup_pod.sh data/accepted_candidates.jsonl runs/v2`
+  installs everything, downloads the weights, and runs the chain in tmux session `sg2`,
+  logging to `runs/v2.log`. `SG2_PROMPTS=<file>` skips the probe and the selection, and
+  `SG2_PER_CAT=<n>` shrinks the selection for tests.
+- **Tested on the Mac** with Qwen2.5-0.5B, `sg2/test_prompts.jsonl` as candidates and
+  `--per-cat 5`: the whole chain ran end to end in 5.6 min, and both rounds of checks passed.
 
 ## Set up a fresh Linux GPU box by hand
 

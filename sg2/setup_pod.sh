@@ -1,54 +1,39 @@
 #!/usr/bin/env bash
 # Set up a plain Linux GPU box (e.g. Prime Intellect pod, Ubuntu + CUDA image) and run the
-# whole v2 job inside tmux: checks -> 64-prompt smoke test -> full run -> analysis.
+# whole v2 job inside tmux (chain in sg2/pipeline.py): probe_p0 -> select -> checks ->
+# 64-prompt smoke test -> full run with patching -> analyze.
 #
-#   bash sg2/setup_pod.sh data/prompts_v2.jsonl runs/v2
+#   bash sg2/setup_pod.sh data/accepted_candidates.jsonl runs/v2
+#   SG2_PROMPTS=data/prompts_v2.jsonl bash sg2/setup_pod.sh - runs/v2    # skip probe+select
+#   SG2_PER_CAT=2 ...                                                   # tiny selection (tests)
 #
 # Run from the repo root. Everything is logged to <run-dir>.log. The job runs in tmux
 # session "sg2"; detach with Ctrl-b d, reattach with `tmux attach -t sg2`. Rerunning the
-# script resumes: finished steps are skipped and the experiment skips finished prompts.
-# It stops with a clear message at the first failed step.
+# script resumes: finished steps are skipped, and the probe and the experiment skip finished
+# work. It stops with a clear message at the first failed step.
 set -euo pipefail
 
-PROMPTS="${1:?usage: setup_pod.sh <prompts.jsonl> <run-dir>}"
-RUN="${2:?usage: setup_pod.sh <prompts.jsonl> <run-dir>}"
+CANDIDATES="${1:?usage: setup_pod.sh <accepted_candidates.jsonl> <run-dir>}"
+RUN="${2:?usage: setup_pod.sh <accepted_candidates.jsonl> <run-dir>}"
 MODEL="${SG2_MODEL:-Qwen/Qwen2.5-7B-Instruct}"
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
 export PYTHONPATH="$REPO" HF_HUB_DISABLE_TELEMETRY=1 TOKENIZERS_PARALLELISM=false PYTHONUNBUFFERED=1
 LOG="$RUN.log"
+INPUT=(--candidates "$CANDIDATES")
+[[ -n "${SG2_PROMPTS:-}" ]] && INPUT=(--prompts "$SG2_PROMPTS")
+EXTRA=()
+[[ -n "${SG2_PER_CAT:-}" ]] && EXTRA+=(--per-cat "$SG2_PER_CAT")
 
 # ---------------------------------------------------------------- pipeline (runs in tmux)
 if [[ "${SG2_PIPELINE:-}" == "1" ]]; then
   source .venv/bin/activate
-  mkdir -p "$RUN"
-  GB=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)
-  BATCH=()
-  if (( GB < 40000 )); then BATCH=(--gen-batch 256 --score-batch 128); fi
-  step() {  # step <name> <python args...>; skipped if its marker exists
-    local name="$1"; shift
-    if [[ -f "$RUN/.done_$name" ]]; then echo "== $name: already done, skipping"; return; fi
-    echo "== $name: started $(date '+%F %T')"
-    if ! python -u "$@"; then
-      echo "STOPPED: step '$name' failed. Read $LOG, fix, and rerun the same command."
-      exit 1
-    fi
-    date '+%F %T' > "$RUN/.done_$name"
-    echo "== $name: finished $(date '+%F %T')"
-  }
-  nvidia-smi
-  step checks -m sg2.checks --model "$MODEL" --out "$RUN/checks"
-  step smoke -m sg2.run_experiment --prompts "$PROMPTS" --out "$RUN/smoke" --model "$MODEL" \
-       --limit 64 --skip-patching "${BATCH[@]}"
-  step full -m sg2.run_experiment --prompts "$PROMPTS" --out "$RUN" --model "$MODEL" "${BATCH[@]}"
-  step analyze -m sg2.analyze --run "$RUN"
-  step checks_in_run -m sg2.checks --model "$MODEL" --out "$RUN/checks_after" --run-dir "$RUN" --n-brute 500
-  echo "ALL DONE $(date '+%F %T'). Results: $RUN/analysis/tables.json and figures."
-  exit 0
+  nvidia-smi || true
+  exec python -u -m sg2.pipeline --run-dir "$RUN" --model "$MODEL" "${INPUT[@]}" ${EXTRA[@]+"${EXTRA[@]}"}
 fi
 
 # ---------------------------------------------------------------- setup (runs once)
-[[ -f "$PROMPTS" ]] || { echo "prompts file not found: $PROMPTS"; exit 1; }
+f="${SG2_PROMPTS:-$CANDIDATES}"; [[ -f "$f" ]] || { echo "input file not found: $f"; exit 1; }
 SUDO=""; [[ $(id -u) -ne 0 ]] && SUDO="sudo"
 if ! command -v tmux >/dev/null; then $SUDO apt-get update -qq && $SUDO apt-get install -y -qq tmux; fi
 if ! command -v uv >/dev/null; then
@@ -77,5 +62,5 @@ python -c "from huggingface_hub import snapshot_download as s; print(s('$MODEL',
 df -h "$REPO" | tail -1
 
 tmux kill-session -t sg2 2>/dev/null || true
-tmux new-session -d -s sg2 "SG2_PIPELINE=1 bash '$REPO/sg2/setup_pod.sh' '$PROMPTS' '$RUN' 2>&1 | tee -a '$LOG'; echo '[pipeline exited; press Enter]'; read"
+tmux new-session -d -s sg2 "SG2_PIPELINE=1 SG2_MODEL='$MODEL' SG2_PROMPTS='${SG2_PROMPTS:-}' SG2_PER_CAT='${SG2_PER_CAT:-}' bash '$REPO/sg2/setup_pod.sh' '$CANDIDATES' '$RUN' 2>&1 | tee -a '$LOG'; echo '[pipeline exited; press Enter]'; read"
 echo "Started in tmux session 'sg2'. Watch: tmux attach -t sg2   or   tail -f $LOG"

@@ -42,13 +42,14 @@ def accepted():
     print(json.dumps(report, indent=1))
 
 
-def select(probe_path):
+def select(probe_path, candidates=None, out_dir=None, per_cat=PER_CAT):
     rng = random.Random(SEED)
     p0 = {}
     for l in open(probe_path):
         d = json.loads(l)
         p0[d["prompt_id"]] = d["p0"]
-    cands = [json.loads(l) for l in open(DATA / "accepted_candidates.jsonl")]
+    cands = [json.loads(l) for l in open(candidates or DATA / "accepted_candidates.jsonl")]
+    out_dir = Path(out_dir) if out_dir else DATA
     final, report = [], {}
     for c in CATS:
         bins = defaultdict(list)
@@ -59,10 +60,10 @@ def select(probe_path):
         for b in bins.values():
             b.sort(key=lambda r: r["prompt_id"]); rng.shuffle(b)
         avail = {b: len(bins[b]) for b in range(N_BINS)}
-        take = {b: min(PER_CAT // N_BINS, avail[b]) for b in range(N_BINS)}
-        short = PER_CAT - sum(take.values())
+        take = {b: min(per_cat // N_BINS, avail[b]) for b in range(N_BINS)}
+        short = per_cat - sum(take.values())
         # fill the shortfall from bins with spare items, nearest to the short bins first
-        short_bins = [b for b in range(N_BINS) if take[b] < PER_CAT // N_BINS]
+        short_bins = [b for b in range(N_BINS) if take[b] < per_cat // N_BINS]
         order = sorted(range(N_BINS), key=lambda b: (min([abs(b - s) for s in short_bins] or [0]), b))
         while short > 0:
             moved = False
@@ -73,12 +74,12 @@ def select(probe_path):
                 break
         chosen = [r for b in range(N_BINS) for r in bins[b][:take[b]]]
         report[c] = {"available_per_bin": avail, "selected_per_bin": take, "selected": len(chosen),
-                     "shortfall": PER_CAT - len(chosen)}
+                     "shortfall": per_cat - len(chosen)}
         final += chosen
-    with open(DATA / "prompts_v2.jsonl", "w") as fh:
+    with open(out_dir / "prompts_v2.jsonl", "w") as fh:
         for r in final:
             fh.write(json.dumps(r) + "\n")
-    (DATA / "selection_report.json").write_text(json.dumps(report, indent=1))
+    (out_dir / "selection_report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps(report, indent=1))
 
 
@@ -86,5 +87,12 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=["accepted", "select"])
     ap.add_argument("--probe")
+    ap.add_argument("--candidates", default=None, help="default data/accepted_candidates.jsonl")
+    ap.add_argument("--out-dir", default=None, help="where prompts_v2.jsonl and "
+                    "selection_report.json go; default data/")
+    ap.add_argument("--per-cat", type=int, default=PER_CAT, help="prompts per category (tests)")
     a = ap.parse_args()
-    accepted() if a.step == "accepted" else select(a.probe)
+    if a.step == "accepted":
+        accepted()
+    else:
+        select(a.probe, a.candidates, a.out_dir, a.per_cat)
