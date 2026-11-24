@@ -47,7 +47,13 @@ OOD_FRAMINGS = [
     "a census form for the inhabitants of a dream", "a patent for a machine that runs on silence",
 ]
 
+# Realistic everyday settings for generated common sense (the fictional ones removed).
+COMMON_SENSE_SETTINGS = [x for x in CREATIVE_SETTINGS if x not in {
+    "a pirate ship", "a medieval castle", "a space station", "a 1940s detective's office",
+    "a fairy-tale forest", "a submarine", "a lighthouse in a storm"}]
+
 CREATIVE_TEMPLATE = "Fill the blank with one word: {text}"
+COMMON_SENSE_TEMPLATE = "Fill the blank (one word): {text}"
 OOD_TEMPLATE = "Fill the blank with one word: {text}"
 
 GEN_SCHEMA = {
@@ -194,6 +200,43 @@ Bad examples:
 - BAD (target "knight", not out of distribution): "In chess, the piece that moves in an L shape is the ____." This is an ordinary fact, not an unusual framing.
 
 Assigned framings, one per item in order:
+{SETTINGS}
+
+Return JSON only, matching the provided schema, with "target_word" set to "{X}".
+"""
+
+COMMON_SENSE_GEN = """\
+You write test items for a research study of how language models answer one-word
+fill-in-the-blank questions. This set tests everyday common-sense knowledge: what things
+are used for, what they are made of, where they are found, what they typically do or are
+like, and cause and effect in daily life. Each item is shown to a reader as
+
+  Fill the blank (one word): <your text>
+
+and the reader must reply with exactly one English word.
+
+TARGET WORD: "{X}"
+
+Write five items whose single clearly best answer is "{X}". Each item is one or two short,
+plain sentences about ordinary, realistic life, with the blank anywhere in the last
+sentence. No fantasy, no story twists, no rare expertise: any adult should know the answer
+from daily experience. Each item should rest on a piece of common-sense knowledge about
+"{X}" (its use, material, place, typical behaviour or property, or a cause and its effect),
+and the five items should use different kinds of knowledge where the word allows. Write
+only the text (the "text" field); do not write "Fill the blank (one word):".
+
+""" + _GEN_COMMON_RULES.replace("Between 15 and 60 words.", "Between 8 and 40 words.") + """
+
+Good examples:
+- GOOD (target "scissors"): "To cut along the dotted line on the craft paper, Mia picked up a pair of ____."
+- GOOD (target "melt"): "If you leave an ice cube on a warm plate in the sun, it will soon ____."
+- GOOD (target "heavy"): "The box of books was so ____ that it took two people to carry it up the stairs."
+
+Bad examples:
+- BAD (target "drawer", rivals): "You usually keep a spoon in the ____." Kitchen, drawer, cup and bowl all fit.
+- BAD (target "wood", leak): "The carpenter carved the wooden chair from a single block of ____." "wooden" is derived from the target.
+
+Assigned settings, one per item in order (use the setting as the everyday context):
 {SETTINGS}
 
 Return JSON only, matching the provided schema, with "target_word" set to "{X}".

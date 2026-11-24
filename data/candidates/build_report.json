@@ -17,7 +17,7 @@
       "duplicate": 14,
       "target_not_alpha": 5
     },
-    "written": 1500
+    "written": 2700
   },
   "facts": {
     "relations": {
@@ -127,15 +127,25 @@
       "subject_max_uses": 2,
       "per_target_cap": 3
     },
-    "written": 1458
+    "written": 1458,
+    "note": "round 1 only; judge accepted 46 of 1,433, so common sense is generated instead (common_sense_conceptnet.jsonl is a record)"
   },
   "two_category_rule_dropped": {
-    "common_sense": 2,
-    "facts": 1
+    "facts": 1,
+    "common_sense": 2
   },
   "generated_targets": {
     "eligible_pool": 7801,
     "per_category": 750,
     "rule": "wordfreq 'en' Zipf 3.5-6.0, [a-z]+, len>=3, not a function word, lowercase base entry in Hunspell en_US, in <2 source categories; seeded shuffle, disjoint creative/ood"
+  },
+  "idioms_extension": {
+    "added": 1200,
+    "dropped_two_category_or_cap": 3
+  },
+  "common_sense_targets": {
+    "eligible_pool": 1098,
+    "chosen": 750,
+    "min_conceptnet_edges": 10
   }
 }

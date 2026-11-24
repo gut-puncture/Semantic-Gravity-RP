@@ -13,7 +13,7 @@ PY=.venv/bin/python            # needs: pip install -r sg2data/requirements.txt
 
 $PY -m sg2data.fetch_sources                   # 1. snapshot sources (done; committed)
 $PY -m sg2data.build_candidates                # 2. idioms/facts/common_sense + target words
-$PY -m sg2data.llm_tasks gen                   # 3. 1,500 generation units (creative, ood)
+$PY -m sg2data.llm_tasks gen                   # 3. 2,250 generation units (creative, ood, common_sense)
 #    run every data/llm_units/gen/*.json  ->  data/llm_outputs/gen/<unit_id>.json
 $PY -m sg2data.llm_collect gen --model NAME    # 4. -> data/candidates/{creative,ood}.jsonl
 $PY -m sg2data.llm_tasks judge                 # 5. judge units, <= 25 items each
@@ -68,6 +68,24 @@ relation, edge weights, unit id, ...). `data/judged/{category}.jsonl` adds `judg
 `data/sources/manifest.json` records URL, retrieval time, sha256, size and (GitHub)
 commit for every file. The raw ConceptNet dump (475 MB) is git-ignored in
 `data/sources/large/`; its URL and sha256 are in the manifest.
+
+## Round 2 (after the first judging)
+
+The blind judge accepted 595/1,375 idioms, 828/981 facts but only 46/1,433 ConceptNet
+common-sense items (the templates are mostly ambiguous or garbled). So:
+
+- **Common sense is now generated** like creative/ood: 750 target words, K=5, instruction
+  `COMMON_SENSE_GEN` (everyday uses, materials, places, typical behaviour, cause and effect;
+  plain realistic sentences; shown as "Fill the blank (one word): ..."), 57 realistic
+  settings. Targets: same wordfreq/Hunspell rules, plus at least 10 ConceptNet edges as an
+  everyday-concreteness proxy; disjoint from creative/ood targets; two-category rule kept.
+  The ConceptNet candidates, their judge units, outputs and judged file are kept as a
+  record (`*_conceptnet*`) and are **not** used, including the 46 accepted ones: one
+  construction method per category is simpler to describe and 46 items would not matter.
+- **1,200 more idioms** from Wiktionary (same filters, same seeded order; the first 1,500
+  are byte-identical), judged by new units `unit_idioms_0061`-`0108`
+  (`llm_tasks judge --categories idioms --append`).
+- `build_candidates` reproduces round 1 byte for byte and then applies round 2.
 
 ## Decisions
 

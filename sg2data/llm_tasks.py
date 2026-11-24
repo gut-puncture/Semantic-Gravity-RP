@@ -23,7 +23,7 @@ import shutil
 from collections import Counter
 
 from .common import CANDIDATES, LLM_UNITS, SEED, read_jsonl
-from .prompts import (CREATIVE_GEN, CREATIVE_SETTINGS, GEN_SCHEMA, JUDGE, JUDGE_CATEGORY_NOTES,
+from .prompts import (COMMON_SENSE_GEN, COMMON_SENSE_SETTINGS, CREATIVE_GEN, CREATIVE_SETTINGS, GEN_SCHEMA, JUDGE, JUDGE_CATEGORY_NOTES,
                       JUDGE_SCHEMA, K_PER_TARGET, OOD_FRAMINGS, OOD_GEN)
 
 JUDGE_BATCH = 25
@@ -34,13 +34,19 @@ def _write(path, unit) -> None:
     path.write_text(json.dumps(unit, indent=1, ensure_ascii=True))
 
 
-def build_gen() -> dict:
+GEN_CATEGORIES = {"creative": (CREATIVE_GEN, CREATIVE_SETTINGS), "ood": (OOD_GEN, OOD_FRAMINGS),
+                  "common_sense": (COMMON_SENSE_GEN, COMMON_SENSE_SETTINGS)}
+
+
+def build_gen(categories: list[str]) -> dict:
+    """(Re)write the generation units of the given categories only; other categories' units
+    and all outputs are left alone."""
     out_dir = LLM_UNITS / "gen"
-    if out_dir.exists():
-        shutil.rmtree(out_dir)
     counts = {}
-    for category, template, pool in [("creative", CREATIVE_GEN, CREATIVE_SETTINGS),
-                                     ("ood", OOD_GEN, OOD_FRAMINGS)]:
+    for category in categories:
+        template, pool = GEN_CATEGORIES[category]
+        for old in out_dir.glob(f"unit_{category}_*.json"):
+            old.unlink()
         words = json.loads((CANDIDATES / f"targets_{category}.json").read_text())["words"]
         rng = random.Random(f"{SEED}:gen:{category}")
         for i, w in enumerate(words, 1):
@@ -78,41 +84,62 @@ def _batches(rows: list[dict], rng: random.Random) -> list[list[dict]]:
     return [b for b in batches if b]
 
 
-def build_judge(categories: list[str]) -> dict:
+def _write_judge_units(category: str, rows: list[dict], start: int, rng: random.Random) -> int:
+    out_dir = LLM_UNITS / "judge"
+    batches = _batches(rows, rng)
+    for i, batch in enumerate(batches, start):
+        mapping = {f"q{j:02d}": r["prompt_id"] for j, r in enumerate(batch, 1)}
+        items_text = "\n".join(json.dumps({"id": f"q{j:02d}", "question": r["question"]}, ensure_ascii=True)
+                               for j, r in enumerate(batch, 1))
+        prompt = (JUDGE.replace("{CATEGORY_NOTE}", JUDGE_CATEGORY_NOTES.get(category, ""))
+                  .replace("{CATEGORY}", category).replace("{ITEMS}", items_text))
+        unit_id = f"unit_{category}_{i:04d}"
+        _write(out_dir / f"{unit_id}.json", {
+            "unit_id": unit_id, "kind": "judge", "category": category,
+            "n_items": len(batch), "ids": mapping, "prompt": prompt, "output_schema": JUDGE_SCHEMA})
+    return len(batches)
+
+
+def build_judge(categories: list[str], append: bool = False) -> dict:
+    """Without --append: rewrite all judge units of each category. With --append: keep the
+    existing units and add units (numbered after the last one) for candidates that no unit
+    covers yet."""
     counts = {}
+    out_dir = LLM_UNITS / "judge"
     for category in categories:
         path = CANDIDATES / f"{category}.jsonl"
         if not path.exists():
             print(f"judge: {category}: no candidates yet ({path.name}); skipped")
             continue
-        out_dir = LLM_UNITS / "judge"
-        for old in out_dir.glob(f"unit_{category}_*.json"):
-            old.unlink()
         rows = read_jsonl(path)
-        batches = _batches(rows, random.Random(f"{SEED}:judge:{category}"))
-        for i, batch in enumerate(batches, 1):
-            mapping = {f"q{j:02d}": r["prompt_id"] for j, r in enumerate(batch, 1)}
-            items_text = "\n".join(json.dumps({"id": f"q{j:02d}", "question": r["question"]}, ensure_ascii=True)
-                                   for j, r in enumerate(batch, 1))
-            prompt = (JUDGE.replace("{CATEGORY_NOTE}", JUDGE_CATEGORY_NOTES.get(category, ""))
-                      .replace("{CATEGORY}", category).replace("{ITEMS}", items_text))
-            unit_id = f"unit_{category}_{i:04d}"
-            _write(out_dir / f"{unit_id}.json", {
-                "unit_id": unit_id, "kind": "judge", "category": category,
-                "n_items": len(batch), "ids": mapping, "prompt": prompt, "output_schema": JUDGE_SCHEMA})
-        counts[category] = {"candidates": len(rows), "units": len(batches)}
+        existing = sorted(out_dir.glob(f"unit_{category}_*.json"))
+        if append:
+            covered = {pid for p in existing for pid in json.loads(p.read_text())["ids"].values()}
+            rows = [r for r in rows if r["prompt_id"] not in covered]
+            start = max((int(p.stem.rsplit("_", 1)[1]) for p in existing), default=0) + 1
+            rng = random.Random(f"{SEED}:judge:{category}:from{start}")
+        else:
+            for old in existing:
+                old.unlink()
+            start, rng = 1, random.Random(f"{SEED}:judge:{category}")
+        n = _write_judge_units(category, rows, start, rng) if rows else 0
+        counts[category] = {"candidates": len(rows), "units": n, "first_unit": start}
     return counts
 
 
 def main(argv=None) -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("kind", choices=["gen", "judge"])
-    ap.add_argument("--categories", default="idioms,facts,common_sense,creative,ood")
+    ap.add_argument("--categories", default=None,
+                    help="default: creative,ood,common_sense for gen; all five for judge")
+    ap.add_argument("--append", action="store_true",
+                    help="judge: only add units for candidates no existing unit covers")
     args = ap.parse_args(argv)
     if args.kind == "gen":
-        print(json.dumps(build_gen()))
+        print(json.dumps(build_gen((args.categories or "creative,ood,common_sense").split(","))))
     else:
-        print(json.dumps(build_judge(args.categories.split(","))))
+        cats = (args.categories or "idioms,facts,common_sense,creative,ood").split(",")
+        print(json.dumps(build_judge(cats, append=args.append)))
 
 
 if __name__ == "__main__":

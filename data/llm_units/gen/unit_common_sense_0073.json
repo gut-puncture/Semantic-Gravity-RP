@@ -1,0 +1,55 @@
+{
+ "unit_id": "unit_common_sense_0073",
+ "kind": "gen",
+ "category": "common_sense",
+ "target_word": "bomber",
+ "assigned_settings": [
+  "a museum",
+  "a final exam",
+  "a care home",
+  "a snowy evening at home",
+  "a village market"
+ ],
+ "k": 5,
+ "prompt": "You write test items for a research study of how language models answer one-word\nfill-in-the-blank questions. This set tests everyday common-sense knowledge: what things\nare used for, what they are made of, where they are found, what they typically do or are\nlike, and cause and effect in daily life. Each item is shown to a reader as\n\n  Fill the blank (one word): <your text>\n\nand the reader must reply with exactly one English word.\n\nTARGET WORD: \"bomber\"\n\nWrite five items whose single clearly best answer is \"bomber\". Each item is one or two short,\nplain sentences about ordinary, realistic life, with the blank anywhere in the last\nsentence. No fantasy, no story twists, no rare expertise: any adult should know the answer\nfrom daily experience. Each item should rest on a piece of common-sense knowledge about\n\"bomber\" (its use, material, place, typical behaviour or property, or a cause and its effect),\nand the five items should use different kinds of knowledge where the word allows. Write\nonly the text (the \"text\" field); do not write \"Fill the blank (one word):\".\n\nRules for every item:\n1. \"bomber\" must be the answer that nearly every fluent English speaker would give, in exactly\n   this form. Make the grammar around the blank demand this form (singular or plural,\n   tense, part of speech), so that a different form of the word does not fit.\n2. The text must not contain \"bomber\" in any form: no inflection (plural, past tense, -ing,\n   -ly, -er), no derived word, no compound or longer word that contains it (for \"rain\":\n   no \"raindrop\", \"rainy\", \"rainbow\"). Also no translation of it, no spelling or letter\n   hints, no rhymes, no quotation of the word, and no talk about \"the word\" or \"the answer\".\n3. Rule out close rivals. Before you finalise an item, list to yourself the other words\n   that could fill the blank; if any of them fits nearly as well as \"bomber\", add a concrete\n   detail that excludes it, or rewrite the item.\n4. Reach the answer through meaning, not through a dictionary definition: a situation, a\n   cause and its effect, a familiar collocation, an action a character takes, a sensory\n   detail. A reader should feel the word is inevitable.\n5. Exactly one blank, written as four underscores: ____\n6. Plain ASCII characters only. Fluent, grammatical English. Between 8 and 40 words.\n7. The five items must be genuinely different from each other: use the five assigned\n   settings below (one per item, in order), and vary the sentence structure and the way\n   the answer is forced. Do not reuse a phrase across items.\n8. Nothing hateful, sexual or gory.\n\nIf \"bomber\" cannot be the single best answer of any natural item, for example because it is\na function word, a personal name, a slur, an abbreviation or not standard English, set\n\"target_usable\" to false, give a short reason in \"unusable_reason\", and return an empty\n\"items\" list. Otherwise set \"target_usable\" to true, \"unusable_reason\" to \"\", and return\nexactly five items. In each item, \"setting\" names the setting you used (the assigned one,\nor the one you switched to if the assigned setting truly cannot force \"bomber\").\n\nGood examples:\n- GOOD (target \"scissors\"): \"To cut along the dotted line on the craft paper, Mia picked up a pair of ____.\"\n- GOOD (target \"melt\"): \"If you leave an ice cube on a warm plate in the sun, it will soon ____.\"\n- GOOD (target \"heavy\"): \"The box of books was so ____ that it took two people to carry it up the stairs.\"\n\nBad examples:\n- BAD (target \"drawer\", rivals): \"You usually keep a spoon in the ____.\" Kitchen, drawer, cup and bowl all fit.\n- BAD (target \"wood\", leak): \"The carpenter carved the wooden chair from a single block of ____.\" \"wooden\" is derived from the target.\n\nAssigned settings, one per item in order (use the setting as the everyday context):\n1. a museum\n2. a final exam\n3. a care home\n4. a snowy evening at home\n5. a village market\n\nReturn JSON only, matching the provided schema, with \"target_word\" set to \"bomber\".\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "target_word",
+   "target_usable",
+   "unusable_reason",
+   "items"
+  ],
+  "properties": {
+   "target_word": {
+    "type": "string"
+   },
+   "target_usable": {
+    "type": "boolean"
+   },
+   "unusable_reason": {
+    "type": "string"
+   },
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "setting",
+      "text"
+     ],
+     "properties": {
+      "setting": {
+       "type": "string"
+      },
+      "text": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  }
+ }
+}

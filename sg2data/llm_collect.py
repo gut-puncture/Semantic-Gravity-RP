@@ -24,7 +24,10 @@ from jsonschema import Draft202012Validator
 
 from .common import (BLANK, CANDIDATES, JUDGED, LLM_OUTPUTS, LLM_UNITS, code_filter, prompt_id,
                      read_jsonl, write_jsonl)
-from .prompts import CREATIVE_TEMPLATE, GEN_SCHEMA, JUDGE_SCHEMA, K_PER_TARGET, OOD_TEMPLATE
+from .prompts import (COMMON_SENSE_TEMPLATE, CREATIVE_TEMPLATE, GEN_SCHEMA, JUDGE_SCHEMA,
+                      K_PER_TARGET, OOD_TEMPLATE)
+
+GEN_TEMPLATE_IDS = {"creative": "D_creative", "ood": "E_ood", "common_sense": "C_gen"}
 
 # DESIGN_v2 acceptance rules (v1 thresholds)
 MAX_AMBIGUITY = 3
@@ -81,8 +84,11 @@ def check_gen(unit: dict, payload) -> str | None:
 def collect_gen(model: str | None) -> dict:
     bad: dict[str, str] = {}
     report: dict = {}
-    for category, template in [("creative", CREATIVE_TEMPLATE), ("ood", OOD_TEMPLATE)]:
+    for category, template in [("creative", CREATIVE_TEMPLATE), ("ood", OOD_TEMPLATE),
+                               ("common_sense", COMMON_SENSE_TEMPLATE)]:
         units = sorted((LLM_UNITS / "gen").glob(f"unit_{category}_*.json"))
+        if not units:
+            continue
         rows, rejects, unusable = [], Counter(), []
         seen = set()
         for path in units:
@@ -113,7 +119,7 @@ def collect_gen(model: str | None) -> dict:
                 rows.append({
                     "prompt_id": prompt_id(category, question, target), "category": category,
                     "question": question, "target": target,
-                    "template_id": "D_creative" if category == "creative" else "E_ood",
+                    "template_id": GEN_TEMPLATE_IDS[category],
                     "source_trace": {"source": "llm_generation", "unit_id": unit["unit_id"],
                                      "item_index": idx, "setting": it["setting"],
                                      "assigned_setting": unit["assigned_settings"][idx]

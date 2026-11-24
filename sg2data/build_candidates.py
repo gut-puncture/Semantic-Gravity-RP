@@ -22,7 +22,9 @@ from wordfreq import top_n_list, zipf_frequency
 from .common import (BLANK, CANDIDATES, SEED, SOURCES, ZIPF_MAX, ZIPF_MIN, code_filter,
                      prompt_id, write_jsonl)
 
-TARGET_POOL = 1500          # candidates wanted per source category
+TARGET_POOL = 1500          # candidates wanted per source category (first build)
+IDIOM_EXTENSION = 1200      # second round: more Wiktionary idioms after the first judging
+N_CS_TARGETS = 750          # common sense, generated (second round)
 PER_TARGET_CAP = 3          # same answer at most 3 times inside one category (facts: 5)
 FACTS_PER_TARGET_CAP = 5
 N_GEN_TARGETS = 750         # target words per generated category (creative, ood)
@@ -152,7 +154,7 @@ def wiktionary_ok(title: str) -> bool:
     return all(zipf_frequency(w, "en") >= 2.5 for w in low if w.isalpha())
 
 
-def build_idioms(report: dict) -> list[dict]:
+def build_idioms(report: dict, pool: int = TARGET_POOL) -> list[dict]:
     rng = rng_for("idioms")
     rejects: Counter = Counter()
     rows, seen_idioms = [], set()
@@ -193,7 +195,7 @@ def build_idioms(report: dict) -> list[dict]:
     n_b = sum(r["source_trace"]["source"] == "baiango/english_idioms" for r in rows)
     wik_kept = [r for r in rows if r["source_trace"]["source"] != "baiango/english_idioms"]
     out = [r for r in rows if r["source_trace"]["source"] == "baiango/english_idioms"] + \
-        wik_kept[: max(0, TARGET_POOL - n_b)]
+        wik_kept[: max(0, pool - n_b)]
     report["idioms"] = {"baiango_rows": len(baiango), "baiango_parsed": n_baiango,
                         "baiango_after_filters": n_b, "wiktionary_titles": len(wik),
                         "wiktionary_pass_prefilter": len(wik_ok),
@@ -537,22 +539,100 @@ def choose_gen_targets(cats: dict[str, list[dict]], report: dict) -> dict[str, l
     return out
 
 
+def extend_idioms(base: list[dict], facts: list[dict], gen_targets: dict[str, list[str]],
+                  report: dict) -> list[dict]:
+    """Second round: the next IDIOM_EXTENSION Wiktionary idioms in the same seeded order.
+    build_idioms with a larger pool returns the base rows as a prefix, so the first-round
+    candidates (and their judge units) are unchanged. A new idiom is dropped if its target
+    is already in two other categories."""
+    full = build_idioms({}, pool=TARGET_POOL + 10 * IDIOM_EXTENSION)
+    base_ids = {r["prompt_id"] for r in base}
+    other = Counter()
+    for words in [{r["target"].lower() for r in facts}, set(gen_targets["creative"]), set(gen_targets["ood"])]:
+        for w in words:
+            other[w] += 1
+    ext, dropped = [], 0
+    seen_t = Counter(r["target"].lower() for r in base)
+    for r in full:
+        if r["prompt_id"] in base_ids:
+            continue
+        t = r["target"].lower()
+        if other[t] >= 2 or seen_t[t] >= PER_TARGET_CAP:
+            dropped += 1
+            continue
+        seen_t[t] += 1
+        ext.append(r)
+        if len(ext) == IDIOM_EXTENSION:
+            break
+    report["idioms_extension"] = {"added": len(ext), "dropped_two_category_or_cap": dropped}
+    return ext
+
+
+def choose_common_sense_targets(cats: dict[str, list[dict]], gen_targets: dict[str, list[str]],
+                                report: dict) -> list[str]:
+    """Target words for generated common sense. Everyday concreteness is approximated by
+    ConceptNet: a word must appear in at least CS_MIN_EDGES English edges of the snapshot's
+    common-sense relations (things used for, made of, found at, capable of ...). Same
+    wordfreq band and Hunspell base-form rule as creative/ood; disjoint from the creative
+    and ood targets; not a word already in two categories."""
+    edges = Counter()
+    with gzip.open(SOURCES / "conceptnet" / "conceptnet_5.7.0_en_subset.tsv.gz", "rt", encoding="utf-8") as f:
+        next(f)
+        for line in f:
+            _rel, start, end, *_ = line.split("\t")
+            for u in (start, end):
+                edges[concept_term(u)] += 1
+    in_cats = Counter()
+    for rows in cats.values():
+        for w in {r["target"].lower() for r in rows}:
+            in_cats[w] += 1
+    used = set(gen_targets["creative"]) | set(gen_targets["ood"])
+    pool = sorted(w for w, n in edges.items()
+                  if n >= CS_MIN_EDGES and re.fullmatch(r"[a-z]{3,}", w) and w in LEX
+                  and w not in STOPWORDS and w not in BLOCKED_TERMS and w not in used
+                  and in_cats[w] < 2 and ZIPF_MIN <= zipf_frequency(w, "en") <= ZIPF_MAX)
+    rng_for("cs_targets").shuffle(pool)
+    report["common_sense_targets"] = {"eligible_pool": len(pool), "chosen": N_CS_TARGETS,
+                                      "min_conceptnet_edges": CS_MIN_EDGES}
+    return sorted(pool[:N_CS_TARGETS])
+
+
+CS_MIN_EDGES = 10
+
+
+def write_targets(category: str, words: list[str]) -> None:
+    from importlib.metadata import version
+    (CANDIDATES / f"targets_{category}.json").write_text(json.dumps(
+        {"category": category, "seed": SEED, "zipf_band": [ZIPF_MIN, ZIPF_MAX], "wordfreq": version("wordfreq"),
+         "n": len(words), "words": words}, indent=1))
+    print(f"targets_{category}: {len(words)} words")
+
+
 def main() -> None:
+    """Round 1 (unchanged): idioms (1,500), facts, ConceptNet common sense, creative/ood
+    targets. Round 2, after the first judging: ConceptNet common sense is replaced by
+    generation (its candidates are kept only as a record), and 1,200 more idioms are added.
+    Round-1 outputs are reproduced byte for byte, so existing units stay valid."""
     report: dict = {"seed": SEED}
     cats = {"idioms": build_idioms(report), "facts": build_facts(report),
             "common_sense": build_common_sense(report)}
     enforce_two_categories(cats, report)
+    gen_targets = choose_gen_targets(cats, report)
+    for c, words in gen_targets.items():
+        write_targets(c, words)
+
+    # round 2
+    cs_conceptnet = cats.pop("common_sense")
+    write_jsonl(CANDIDATES / "common_sense_conceptnet.jsonl", cs_conceptnet)
+    report["common_sense"]["written"] = len(cs_conceptnet)
+    report["common_sense"]["note"] = ("round 1 only; judge accepted 46 of 1,433, so common sense "
+                                      "is generated instead (common_sense_conceptnet.jsonl is a record)")
+    cats["idioms"] = cats["idioms"] + extend_idioms(cats["idioms"], cats["facts"], gen_targets, report)
     for c, rows in cats.items():
         n = write_jsonl(CANDIDATES / f"{c}.jsonl", rows)
         report[c]["written"] = n
         print(f"{c}: {n} candidates")
-    targets = choose_gen_targets(cats, report)
-    from importlib.metadata import version
-    for c, words in targets.items():
-        (CANDIDATES / f"targets_{c}.json").write_text(json.dumps(
-            {"category": c, "seed": SEED, "zipf_band": [ZIPF_MIN, ZIPF_MAX], "wordfreq": version("wordfreq"),
-             "n": len(words), "words": words}, indent=1))
-        print(f"targets_{c}: {len(words)} words")
+    write_targets("common_sense", choose_common_sense_targets(cats, gen_targets, report))
     (CANDIDATES / "build_report.json").write_text(json.dumps(report, indent=2))
 
 
