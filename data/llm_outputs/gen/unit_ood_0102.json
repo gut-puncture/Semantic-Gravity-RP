@@ -1,0 +1,27 @@
+{
+  "target_word": "calculating",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement, where the ticket clerk adds your age to your shoe size and divides the result by seven. Please wait while she is ____ your admission fee."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At dawn, each monk must determine the exact number of bells needed by multiplying the day's date by the number of candles. No bell may be rung while a monk is still ____ the total."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 41: I tried to add the temperatures of all twelve shelves and divide by twelve, but my arithmetic circuit froze. I must reboot before I can finish ____ the average temperature."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To set the rainbow quota, multiply the number of raindrops in the tank by the number of sunlight valves. Keep the rainbow chute closed while the machine is ____ the product."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the game of Wandering Fortresses, add the points on all your captured tiles to determine your final score. The next player may not take a turn while you are still ____ your score."
+    }
+  ]
+}

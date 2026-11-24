@@ -1,0 +1,27 @@
+{
+  "target_word": "barbecue",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has decreed that humans must gather in a garden each summer to cook burgers and sausages over hot coals and eat together. The event specified by the law is a ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Rainbow Bureau's conversion table, amber becomes the smell of smoky grilled meat, and red becomes the tang of a sweet, smoky sauce. Together they recreate the smell of a backyard ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Manual of the Order of the Floating Apron prescribes an annual feast outdoors, with corn and burgers cooked over coals while guests mingle. The monks call this gathering a ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the sun must linger until the night has tasted a sauce that is smoky, sweet, and often brushed onto ribs. The contract calls for ____ sauce."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguards must investigate smoke rising from a beach before sounding the alarm. If the smoke comes from people grilling food outdoors for a summer party, record the event as a ____."
+    }
+  ]
+}

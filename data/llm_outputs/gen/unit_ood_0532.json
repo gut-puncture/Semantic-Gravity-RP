@@ -1,0 +1,27 @@
+{
+  "target_word": "reference",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The toaster applied to supervise the pantry, and the kettle offered to vouch for its reliability. The chair asked the kettle to provide a character ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream census, section seven: If you are a talking staircase applying for a job in the waking world, give the name and contact details of a former employer who can act as a professional ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the royal table for converting colours into smells, every scent is compared with the scent assigned to white. The white entry is marked as the standard of ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game of migrating castles, each player must keep the folded sheet listing all legal moves beside the board. When uncertain whether a move is allowed, consult this quick ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, every payment receives a unique number that identifies it in the treasury's records. A dragon disputing a payment must give the treasury its payment ____."
+    }
+  ]
+}

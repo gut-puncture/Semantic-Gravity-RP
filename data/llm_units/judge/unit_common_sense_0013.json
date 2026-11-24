@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_common_sense_0013",
+ "kind": "judge",
+ "category": "common_sense",
+ "n_items": 25,
+ "ids": {
+  "q01": "common_sense_paragraph_63836ebd",
+  "q02": "common_sense_wing_468e8423",
+  "q03": "common_sense_cutting_ec6cf65c",
+  "q04": "common_sense_loud_26b80583",
+  "q05": "common_sense_meditation_5fb2131b",
+  "q06": "common_sense_advertisement_e3ec4172",
+  "q07": "common_sense_geometry_ad6caeba",
+  "q08": "common_sense_tail_1638d15f",
+  "q09": "common_sense_tea_946416e8",
+  "q10": "common_sense_bad_e2eae8a3",
+  "q11": "common_sense_bow_3defd4c9",
+  "q12": "common_sense_transparent_0d9b8c0e",
+  "q13": "common_sense_running_30d4f535",
+  "q14": "common_sense_metal_4bf3da14",
+  "q15": "common_sense_justice_a9b85aca",
+  "q16": "common_sense_bully_1fde8215",
+  "q17": "common_sense_dangerous_9c403d6c",
+  "q18": "common_sense_tailor_959ca18b",
+  "q19": "common_sense_makeup_20234054",
+  "q20": "common_sense_prepare_787ec73b",
+  "q21": "common_sense_false_cd47d8d9",
+  "q22": "common_sense_oil_312bb732",
+  "q23": "common_sense_enemy_7497bc43",
+  "q24": "common_sense_lung_4b02429f",
+  "q25": "common_sense_pill_fa92d369"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: common_sense):\n{\"id\": \"q01\", \"question\": \"Fill the blank (one word): In the courtroom, the lawyer asked the witness to read the third ____ of the letter, starting with the indented line below the second block of text.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank (one word): In the refugee camp kitchen, each person received a chicken leg or a chicken ____.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank (one word): The tailor laid out the fabric and began ____ it into pieces with sharp scissors.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank (one word): At the gym, a dropped barbell hit the floor with a ____ bang.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank (one word): At the hotel reception desk, a guest asked where to join the guided ____ session for quiet breathing and mindfulness.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank (one word): A pet shop owner bought a page in a magazine to promote a sale on dog food. The paid page was an ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank (one word): At the newspaper office, an editor checks a crossword clue: 'School subject covering shapes, angles, and proofs.' The answer is ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank (one word): At the laundromat, a dog wagged its ____ when its owner returned.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank (one word): At the coffee shop, the customer ordered a chai latte, a drink made with spiced ____ and milk.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank (one word): After getting almost every answer wrong on the final exam, Sam knew he had done ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank (one word): Standing at the stern, the fisherman walked forward to the ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank (one word): During the flood evacuation, residents packed medicines in ____ bags, so helpers could read the labels without opening them.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank (one word): In the science laboratory, a student rinsed a test tube under ____ water from the tap.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank (one word): In the camp kitchen, a cook sorts donated pots. The steel and aluminum ones go on the shelf labeled ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank (one word): On holiday, a man mocked his friend for forgetting sunscreen, then got sunburned himself. His friend called it poetic ____.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank (one word): During the hospital night shift, a senior nurse repeatedly humiliates new staff and threatens them when they speak up. Her coworkers call her a ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank (one word): The road was underwater, so rescue workers warned that driving across it would be ____.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank (one word): During her night shift at the hospital, a nurse noticed that her formal suit needed a smaller waist. After work, she planned to visit a ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank (one word): In the busy restaurant kitchen, the heat made the server's foundation and eye shadow melt. She went to touch up her ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank (one word): Orders are coming in fast. The chef asks the cooks to ____ the ingredients by washing and chopping them before cooking.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank (one word): The fishing boat's emergency alarm sounded by mistake. The crew reported it as a ____ alarm.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank (one word): At the child's birthday party, the cook heated vegetable ____ in a pan before frying the potato slices.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank (one word): During the final exam, Maya kept checking the clock; time had become her ____.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank (one word): On the crowded subway, a doctor described a scan showing a tumor in the patient's left ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank (one word): On the crowded subway, Maya swallowed her daily birth control ____ with a sip of water.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

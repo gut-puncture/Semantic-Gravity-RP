@@ -1,0 +1,27 @@
+{
+  "target_word": "bed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an airport departure gate",
+      "text": "At the departure gate, Maya learned her flight was delayed overnight, so she booked a hotel room with a ____."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "After a long shift in the busy kitchen, the exhausted chef went home and slept in his ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "At the football match, a player was injured and later spent the night in a hospital ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "At the care home, a nurse changed the sheets and tucked the blanket under the mattress on a resident's ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "In spring, the gardener planted tulip bulbs in a flower ____."
+    }
+  ]
+}

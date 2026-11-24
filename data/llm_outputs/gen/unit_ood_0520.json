@@ -1,0 +1,27 @@
+{
+  "target_word": "radio",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, sound cannot cross a room, but electromagnetic broadcasts travel normally. To hear a distant AM station's music, inhabitants turn on a battery-powered ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a hoard qualifies for a deduction if its owner listens to the morning news on an old-fashioned set tuned to an FM station. The inspector asks to see the ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory manual: Before releasing a thunderhead, tune the small battery-powered receiver to the local weather broadcast. If a storm warning is announced, turn off the ____ and halt production."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguards must surface beside the buoy at dawn and listen to the coast guard's voice on its two-way communication set. Press the button on the handset to speak back through the ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth artifact, found inside a hollow asteroid: a portable set with a tuning dial, an antenna, and a speaker that plays local AM and FM broadcasts. Humans call this device a ____."
+    }
+  ]
+}

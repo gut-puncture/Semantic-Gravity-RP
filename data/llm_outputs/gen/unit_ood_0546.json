@@ -1,0 +1,27 @@
+{
+  "target_word": "represent",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a hoard may appoint a lawyer to speak on its behalf at an audit. The lawyer is licensed to ____ the hoard before the tax court."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8 asks travellers to draw a symbol for each emotion packed in their suitcase. If you packed fear, which symbol will you choose to ____ it?"
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The monks of the Silent Orbit elect one member to speak and vote on behalf of the entire order at the council of stars. Whom did the monks choose to ____ them?"
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "In the weather cookbook's illustrated recipe for thunder soup, each ingredient has an icon beside its name. The key says that a silver spiral is used to ____ a gust of wind."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "The cloud factory's control panel displays a map of the sky with one blue dot for every cloud currently in production. On this map, what does each blue dot ____?"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "ask",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: When a stranded sailor points at the glowing shell, do not assume it belongs to him. Before taking it aboard, you must ____ his permission."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Border Customs, entry 7: The inspector may confiscate any undeclared nightmare, but must first put this exact question to its carrier: 'Do you have anything to declare?' The inspector must ____ it before opening the suitcase."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet contains the prophecy =IF(the moon turns blue, 'Seek and ye shall find; ____ and ye shall receive', 'Keep waiting'). At midnight the moon turns blue, so the first branch appears."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, field 4: Each sleeping cloud must state how many stars live inside it. If a cloud leaves the field empty, the census taker must ____ it, 'How many stars live inside you?'"
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "Riddle Door user guide: The door ignores answers and opens only when it hears a riddle addressed to it. Stand in front of the door and ____ it, 'What has keys but cannot open locks?'"
+    }
+  ]
+}

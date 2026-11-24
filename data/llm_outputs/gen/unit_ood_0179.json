@@ -1,0 +1,27 @@
+{
+  "target_word": "decision",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Order of the Hollow Bell must choose one of two silent prayers before dawn. The abbot weighs both, picks one, and announces: 'I have made my ____.'"
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census Form 8: The council has spent three nights weighing whether to give the clouds feet. Tick the box marked 'pending' if the council has not yet reached a ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, choose either silver waves or green waves before sealing the lid. The seal is permanent, so take your time and think carefully before making your ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Lantern Island, you must choose which of two bridges to cross, but the other players must stay silent. Once you have chosen, announce: 'My ____ is final.'"
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form C: If an inspector refuses to admit your traveling shadow, you may ask a senior inspector to review the refusal. Write the date on which the first inspector made that ____."
+    }
+  ]
+}

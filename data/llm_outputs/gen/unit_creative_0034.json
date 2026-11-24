@@ -1,0 +1,27 @@
+{
+  "target_word": "attachment",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a mountain hiking trail",
+      "text": "At a mountain trailhead, Maya tried to open the route map her guide had emailed her. She found the message but could not download its PDF ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "At the post office, the clerk received an email from a customer who had forgotten to include the prepaid shipping label. The clerk replied, asking her to resend the label as an ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "A museum visitor saw a violinist's bow displayed beside the instrument it belonged to. The label explained that the bow was a separate tool, not a permanent ____."
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "After years of caring for the castle's old hound, the young squire dreaded leaving him behind. Even the stern knight understood the boy's deep emotional ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, Lena's food processor could slice apples only after she fitted the special disc. She searched the box for the slicing ____."
+    }
+  ]
+}

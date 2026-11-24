@@ -1,0 +1,27 @@
+{
+  "target_word": "utilize",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking a partner who enjoys warm evenings and ambitious renewable-energy projects. My profile editor insists on formal language and rejects 'use', 'employ', and 'exploit': together, we could ____ my geothermal heat to power a small town."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts that a kingdom without sunlight will survive by putting stored moonlight to practical use. Its formal prophecy template rejects 'use', 'employ', and 'exploit': =IF(SUNLIGHT=0, \"The kingdom shall ____ its stores of moonlight\", \"Harvest crops\")."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The household objects agreed that the umbrella's broken handle could serve as a curtain rod. The chair dictated the decision in formal administrative language, correcting any instance of 'use', 'employ', or 'exploit': the curtains will ____ the handle as their rod."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "A pocket-sized ocean needs a current to keep its tiny salt crystals moving. In the manufacturer's formal instructions, 'use', 'employ', and 'exploit' are forbidden: to start the current, ____ the enclosed miniature pump."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This ghost insurance policy covers damage caused when a policyholder puts a borrowed haunted doorway to practical use. The insurer requires formal wording and excludes 'use', 'employ', and 'exploit': policyholders may ____ a borrowed doorway with its owner's consent."
+    }
+  ]
+}

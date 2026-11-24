@@ -1,0 +1,27 @@
+{
+  "target_word": "whiskey",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a family road trip",
+      "text": "On their road trip through Kentucky, the family stopped at a distillery, where Dad bought a bottle of bourbon and Mom chose rye. The kids laughed when their parents discovered they had both picked American ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "After a day on the slopes, Nora ordered an Irish coffee at the resort bar. The bartender added hot coffee, sugar and cream to a measure of Irish ____."
+    },
+    {
+      "setting": "a final exam",
+      "text": "On his final exam, Sam had to name the spirit traditionally used with sugar, bitters and an orange peel in an Old Fashioned. He remembered making the drink with bourbon and wrote down ____."
+    },
+    {
+      "setting": "a child's birthday party",
+      "text": "At Maya's birthday party, her grandfather brought out a cake for the adults, made with a generous splash of bourbon. He kept it away from the children because it contained ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "While sorting donations in the refugee camp kitchen, Leila found a bottle of Tennessee bourbon among the cooking supplies. She set it aside and told the cook that someone had donated ____."
+    }
+  ]
+}

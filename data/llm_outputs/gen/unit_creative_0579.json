@@ -1,0 +1,27 @@
+{
+  "target_word": "rue",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "Rain tapped against the old apartment's windows as Mara threw away a box of letters without opening it. When she learned that one contained her late father's last message, she knew it was a decision she would live to ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "At the ski resort, Ben ignored the guide's warning and took the closed trail, where he broke his leg. As he waited for the rescue team, he thought of the day he had decided to ignore her, a day he would forever ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow piled against the windows as Ella deleted the only recording of her grandmother's voice. She had meant to delete a different file, and the mistake was one she would always ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Sam sold his battered old violin for a few dollars, eager to lighten the load. Years later, when he discovered it had belonged to his grandfather, the sale was something he came to ____."
+    },
+    {
+      "setting": "a lighthouse in a storm",
+      "text": "As the storm battered the lighthouse, its keeper dismissed the warning that the lamp needed repair. When the light failed and a ship ran aground, he had every reason to ____."
+    }
+  ]
+}

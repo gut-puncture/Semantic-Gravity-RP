@@ -1,0 +1,27 @@
+{
+  "target_word": "epic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a zoo",
+      "text": "At the zoo, a teacher read her class a passage about Odysseus meeting the Cyclops. She explained that Homer's Odyssey was not a short lyric but a lengthy heroic ____."
+    },
+    {
+      "setting": "a laundromat",
+      "text": "While her clothes tumbled in the laundromat, Nina sorted books for a literature quiz. She placed Virgil's Aeneid beside the Iliad in the category marked ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "A sailor on the fishing boat read aloud about Odysseus struggling to return home across the sea. His crewmate recognized the Odyssey, Homer's ancient Greek ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "Spring flowers surrounded the bench where Arun's grandmother told him stories of the Pandavas and the war at Kurukshetra. She had learned them from the Mahabharata, the great Indian ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "At the care home, Mr. Bell recited lines about a warrior who fought Grendel. His daughter brought him a copy of Beowulf, the Old English ____."
+    }
+  ]
+}

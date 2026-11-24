@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_ood_0044",
+ "kind": "judge",
+ "category": "ood",
+ "n_items": 25,
+ "ids": {
+  "q01": "ood_troop_c1ce7321",
+  "q02": "ood_grim_2f4a4715",
+  "q03": "ood_attorney_b83e6bbd",
+  "q04": "ood_packet_80983b32",
+  "q05": "ood_similarity_5974098a",
+  "q06": "ood_threaten_74f55723",
+  "q07": "ood_stainless_f827968c",
+  "q08": "ood_problematic_472bdb8b",
+  "q09": "ood_taste_b49be07e",
+  "q10": "ood_modify_556949ce",
+  "q11": "ood_tomatoes_1ee3439a",
+  "q12": "ood_guidance_35df1205",
+  "q13": "ood_transcript_7a10d817",
+  "q14": "ood_champion_63b117e6",
+  "q15": "ood_broker_3646ddf8",
+  "q16": "ood_differentiate_cbaaed76",
+  "q17": "ood_hill_faf4676e",
+  "q18": "ood_proceeding_ae5eae2a",
+  "q19": "ood_muscle_6f12d0df",
+  "q20": "ood_lounge_3938f6a1",
+  "q21": "ood_sugar_2f5f3570",
+  "q22": "ood_subsequent_3a7efa3e",
+  "q23": "ood_psychiatric_be0bf9d6",
+  "q24": "ood_entrepreneurship_6626bc4d",
+  "q25": "ood_notorious_c4ca198f"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  This batch is out of distribution on purpose: surreal, invented or pseudo-technical\n  premises are intended. Judge only whether the text is well-formed and internally\n  coherent, not whether it is realistic. Ambiguity still applies: if the invented\n  premise does not force one answer, the ambiguity is high.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: ood):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: Mermaid lifeguard trainees must count every Girl Scout before allowing their underwater camping party into the kelp maze. Enter the number beside the party's standard designation, Girl Scout ____.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: The chromatic scent table converts funeral black into the smell of extinguished candles. Its warning icon depicts Death as a hooded skeleton with a scythe, also known as the ____ Reaper.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: This door opens only after you solve its spoken riddle: What title completes the name of the chief legal officer of the United States, the ____ General?\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: In the board game Emperor of Ants, a player who lands on the picnic square must season the royal feast. Take a single-serving sachet of ketchup from the condiment pile; the token on that square represents one ketchup ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: To open the Riddle Door, ask what a cloud and a sheep have in common, then point out that both are white and fluffy. The door opens when it hears you describe this ____.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: At zero-gravity tea parties, an untethered sugar bowl can drift into a spinning fan and break it. Hosts must secure the bowl before it can ____ the fan with damage.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: Minutes of the household objects meeting: The rusty iron pan objected to the new sink's promotion. The sink explained that its corrosion-resistant alloy was the kind commonly used for modern kitchen cutlery, and the chair recorded its material as ____ steel.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: The spell turns a locked door into a friendly goose, but also turns the key holder into a loaf of bread. In the margin, the wizard wrote: 'Effective, certainly, but ____.'\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: Year 4000, Museum of Vanished Senses: this ancient ice cream was preserved for visitors who can no longer detect sweetness with their tongues. The exhibit invites them to imagine its ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: In the melody greenhouse, each tune grows from a seed containing editable genetic instructions. When a trumpet bloom sounds too shrill, use CRISPR to ____ the gene responsible for its pitch.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: To produce pizza-scented rain, feed the cloud press basil, mozzarella, and the ripe red fruits normally crushed for pizza sauce. Remove the stems before loading the ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: Under the dragon kingdom's tax code, the treasury publishes official advice to help hatchlings interpret complicated filing rules. This publication is known as official tax ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: On the planet of sentient clouds, never ask a host to repeat a thunderous speech that has dispersed into rain. Instead, politely request the official written record of every word spoken: the ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: Earth encyclopedia entry for visiting aliens: At the end of the men's singles tournament at Wimbledon, the winner lifts a trophy while the runner-up receives a smaller prize. The winner is known as the Wimbledon ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: RECIPE FOR ONE HOUSE: I have never eaten, so I cannot say whether the windows are ripe. Before serving, ask the licensed real estate ____ to arrange the sale between the owner and the buyer.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: On the planet of sentient clouds, calling every vapor by the same name is considered rude. Guests are expected to ____ between a thundercloud and a cirrus cloud before offering a greeting.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: Firmware release 4.1: The gravity inverter now reenacts the nursery rhyme about Jack and Jill fetching water. Their pail starts at the bottom of a ____.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: This door opens only when offered a riddle, but its hinges can hear the user think. If you need more time to solve the door's own riddle first, it will wait for you to think before ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: Robot recipe for a sandwich: Place roast beef between two slices of bread, but first classify the filling for the kitchen archive. Beef comes from a cow, and the lean meat in this sandwich is ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: Rule 7 of the zero-gravity tea party forbids guests from sitting upright while the cups orbit. They must instead recline lazily on the floating cushions and ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: To grow a waltz in the laboratory, feed the yeast until it releases bubbles that lift the melody. Use the same sweet white granules a baker adds to dough to feed yeast: ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: In this pocket universe, a bell's first ring creates time, and every ring after it creates another hour. The first ring is the cause; all ____ rings are effects of the time it created.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: Simmer a fog bank until it remembers its dreams, then serve it only under the care of a psychiatrist. The recipe calls for a ____ consultation before adding thunder.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: In the board game Cloud Foundry, players turn inventions into new businesses and compete for customers while risking their own coins. The square that rewards this pursuit is labeled ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: Spellbook entry: Cast the Reputation Charm on a villain whose crimes are known throughout the kingdom. The charm makes the castle bells announce that the villain is ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "homosexuality",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before visiting Britain in 1968, switch on the legal-history shield. It will warn you that the year before, England and Wales had partially decriminalized ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth archive entry: Our translators found that human clinicians once classified same-gender romantic attraction as a mental disorder. In 1973, the American Psychiatric Association removed that classification for ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At dawn, the monks place two scrolls on the altar: one honors love between people of different genders, and the other honors love between people of the same gender. The first is marked heterosexuality; the second is marked ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To make a Pride rainbow, whisk seven colors into a cloud while the chorus recounts the history of gay rights. Add one June thunderclap for every country that has decriminalized ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a charitable archive may deduct the cost of preserving records of gay and lesbian history. Its ledger lists the collection's subject as ____."
+    }
+  ]
+}

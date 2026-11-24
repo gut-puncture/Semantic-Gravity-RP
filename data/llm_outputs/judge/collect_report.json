@@ -1,0 +1,71 @@
+{
+  "idioms": {
+    "candidates": 2700,
+    "judged": 2700,
+    "not_judged": 0,
+    "accepted": 947,
+    "accepted_distinct_targets": 697,
+    "fail_reasons": {
+      "not_X_best": 1267,
+      "ambiguous": 464,
+      "unnatural": 15,
+      "offensive": 6,
+      "leak": 1
+    }
+  },
+  "facts": {
+    "candidates": 1079,
+    "judged": 1054,
+    "not_judged": 25,
+    "accepted": 885,
+    "accepted_distinct_targets": 678,
+    "fail_reasons": {
+      "not_X_best": 88,
+      "ambiguous": 72,
+      "unnatural": 4,
+      "leak": 5
+    }
+  },
+  "common_sense": {
+    "candidates": 3722,
+    "judged": 3722,
+    "not_judged": 0,
+    "accepted": 2395,
+    "accepted_distinct_targets": 722,
+    "fail_reasons": {
+      "leak": 35,
+      "ambiguous": 581,
+      "not_X_best": 704,
+      "unnatural": 7
+    }
+  },
+  "creative": {
+    "candidates": 3475,
+    "judged": 3475,
+    "not_judged": 0,
+    "accepted": 1759,
+    "accepted_distinct_targets": 632,
+    "fail_reasons": {
+      "not_X_best": 992,
+      "ambiguous": 683,
+      "leak": 35,
+      "unnatural": 4,
+      "offensive": 2
+    }
+  },
+  "ood": {
+    "candidates": 3613,
+    "judged": 3490,
+    "not_judged": 123,
+    "accepted": 1971,
+    "accepted_distinct_targets": 660,
+    "fail_reasons": {
+      "ambiguous": 556,
+      "not_X_best": 878,
+      "leak": 80,
+      "offensive": 1,
+      "unnatural": 4
+    }
+  },
+  "units_to_rerun": 6
+}

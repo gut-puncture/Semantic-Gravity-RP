@@ -1,0 +1,27 @@
+{
+  "target_word": "commons",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The kettle proposed giving every chair and lamp the right to graze its pet moth on the village's shared pasture. The motion passed, and the pasture remains part of the ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the Sun and the Night must each appear before both chambers of the British Parliament to renew their lease on the sky. After addressing the House of Lords, they shall proceed to the House of ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare any photograph of the British Parliament's two debating chambers. If the picture shows elected MPs questioning the prime minister, tick the box marked House of ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "The dragon kingdom taxes every private pasture but exempts land where all villagers may graze their animals. To claim the exemption, a dragon must show that the pasture belongs to the ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "To open the riddle door, name the lower house of the British Parliament. The door rejects the upper house, the House of Lords, so speak the missing name in House of ____."
+    }
+  ]
+}

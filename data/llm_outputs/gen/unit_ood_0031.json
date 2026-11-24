@@ -1,0 +1,27 @@
+{
+  "target_word": "ankle",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Cloud Knees, landing on a silver square sends your token to the doctor. Move it to the square showing the body part commonly twisted when a person rolls their foot sideways: the ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The Rainbow Perfumery converts blue into the smell of a freshly unwrapped elastic bandage. Its table specifies that this bandage is wrapped around a sprained ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed rubbing against a visitor's knee before breakfast. Under the new law, each cat must instead wind around the visitor's lower leg just above the foot, rubbing against the ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: the left sock complained that its elastic had slipped down. It asked the shoe to hold the sock up where the foot meets the leg, around the ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8 asks travellers to declare any tracking bracelet issued by the court of sleep. The bracelet must be worn around the lower leg just above the foot; enter its location as the ____."
+    }
+  ]
+}

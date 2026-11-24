@@ -1,0 +1,27 @@
+{
+  "target_word": "useful",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The colour-to-smell table converts blue into the scent of fresh bread, letting the scentless bakery inspector find the ovens. For anyone who needs to locate an oven, the table is ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The hammer objected to being displayed in a glass case while nails protruded from the floor. It asked to be taken out and put to work, so it could make itself ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Weather report for the inside of the teapot: Expect dense steam until noon, followed by a clear view of the waterline. This forecast will be ____ for anyone deciding when to look inside and check the water level."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, every object floats away unless someone can find a practical purpose for it. The astronaut kept her wrench anchored by finding a loose bolt and making the wrench ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court found that the shadow had guided lost travellers home by pointing toward the lighthouse each night. The judge ruled that, far from being a mere nuisance, the shadow had proved ____."
+    }
+  ]
+}

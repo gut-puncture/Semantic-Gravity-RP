@@ -1,0 +1,27 @@
+{
+  "target_word": "outright",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a courtroom",
+      "text": "The prosecutor offered to reduce the charge if Mara pleaded guilty. Convinced that she was innocent, Mara refused the deal ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "The tailor had saved for years for a new sewing machine. Instead of taking out a loan or paying in instalments, she bought it ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "The witch promised to grant the prince one wish if he surrendered his crown. He wanted no bargain with her and rejected the proposal ____."
+    },
+    {
+      "setting": "a long train journey",
+      "text": "On the overnight train, the conductor asked Leo whether he had taken another passenger's wallet. Though it was hidden in his bag, he denied taking it ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "Two guests had tied in the first round of the hotel's trivia contest. At the reception desk, Nina answered the final question correctly and won ____."
+    }
+  ]
+}

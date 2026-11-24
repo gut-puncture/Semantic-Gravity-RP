@@ -1,0 +1,27 @@
+{
+  "target_word": "rainbow",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The kettle complained that the garden looked dull after a shower. The window reported that sunlight had appeared behind the house and that a multicolored arc now spanned the sky; the objects agreed to admire the ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, guests must float with their backs to the sun while the host sprays water ahead of them. The first guest to spot the familiar multicolored arc in the mist wins a cup shaped like a ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare any weather you brought from your previous dream. If you carried over the multicolored arc that appeared in the sky when sunlight followed a shower, tick the box marked ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a sky after a storm, simmer clouds until they release a shower, then let the sun shine through the falling droplets. Serve the resulting multicolored arc across the horizon as a single ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragons' tax code, a hoard loses its cloud exemption when sunlight shines through a passing shower and a multicolored arc appears overhead. The collector records that event as the appearance of a ____."
+    }
+  ]
+}

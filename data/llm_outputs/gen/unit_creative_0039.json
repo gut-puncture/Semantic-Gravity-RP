@@ -1,0 +1,27 @@
+{
+  "target_word": "autopsy",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a carpentry workshop",
+      "text": "A carpenter died unexpectedly at his workbench, with no obvious sign of injury. To determine his cause of death, the medical examiner performed an ____."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "After a painter was found dead in her studio, her family wanted to know what had happened. The doctor could not establish the cause of death without an ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "A sailor died suddenly aboard the submarine, and the crew brought him ashore. A pathologist examined his body to determine why he had died, then wrote a report on the ____."
+    },
+    {
+      "setting": "a courtroom",
+      "text": "In court, the pathologist testified that he had examined the deceased woman's body to determine her cause of death. The prosecutor then showed the jury photographs taken during the ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "A museum curator died overnight, leaving investigators unsure whether illness or an accident was responsible. Her relatives agreed that a pathologist should examine her body in an ____."
+    }
+  ]
+}

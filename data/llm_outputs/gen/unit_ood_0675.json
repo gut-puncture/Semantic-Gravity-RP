@@ -1,0 +1,27 @@
+{
+  "target_word": "thirsty",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth Encyclopedia, entry on humans: After walking all day without water, a human may point to a glass and say, \"I need a drink. I'm ____.\""
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In the pocket universe of Glass Nine, drinking a cup of water reverses gravity for precisely as long as it takes to relieve the drinker's urge to drink. Until that urge is satisfied, the drinker remains ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent for a silence-powered machine: The apparatus serves water whenever its operator says, \"My mouth is dry, and I could really use a glass of water because I'm ____.\""
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Dating profile of Mount Ember: I enjoy long eruptions and sunsets. I once swallowed an entire lake, but after a thousand dry years I could use another drink; I'm ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, question 8: You have been searching the endless desert for water, and your mouth is parched. Complete the sentence for your census record: \"I would love a glass of water because I am ____.\""
+    }
+  ]
+}

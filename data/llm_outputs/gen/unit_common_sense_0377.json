@@ -1,0 +1,27 @@
+{
+  "target_word": "lake",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a laundromat",
+      "text": "While waiting for her laundry, Ana reads a travel guide about Utah's Great Salt ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "At the post office, Ben buys a postcard showing a large body of fresh water surrounded by land. The picture shows a ____."
+    },
+    {
+      "setting": "a desert expedition",
+      "text": "After days among dry dunes, the expedition reaches a large natural body of water with land all around it. They have found a ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "A customer asks the tailor to sew a patch showing a boat floating on water enclosed by mountains. The boat is on a ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "The teacher points to Lake Superior on a map and asks what kind of body of water it is. A pupil answers, \"A ____.\""
+    }
+  ]
+}

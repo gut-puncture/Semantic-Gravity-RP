@@ -1,0 +1,27 @@
+{
+  "target_word": "anterior",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "To open the Riddle Door, name the knee ligament that prevents the shinbone from sliding too far forward relative to the thighbone. The door displays the remaining words on its screen: ____ cruciate ligament."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Cat Parliament has decreed that every dream must be accompanied by a burst of growth hormone from the portion of the pituitary that produces it. The clerk shall stamp each dream with the label '____ pituitary'."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the cloud planet, polite guests enter a host's giant glass eye through the space between its cornea and iris. Your invitation calls this the ____ chamber of the eye."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The monks chant to the paired regions of a pilgrim's brain, beginning with the rear cingulate cortex and then addressing its counterpart toward the front. The second chant invokes the ____ cingulate cortex."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To bake a thunderstorm, place a paper model of a frog in the oven with its head pointing toward the heat. The recipe's anatomical labels mark the tail end as posterior and the head end as ____."
+    }
+  ]
+}

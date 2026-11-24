@@ -1,0 +1,27 @@
+{
+  "target_word": "poetry",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide: This door opens only when a riddle is spoken. Ask it what kind of writing fills an anthology of sonnets and haiku, and it will open when you say ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle entered a prophecy in cell A1: =IF(the moon turns square, the laureate will write sonnets and haiku, the laureate will sleep). When the moon turns square, the laureate will write ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory manual: Feed the machine a collection of sonnets and haiku, and it will print the collection's literary category on every cloud. The clouds will be labeled ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a bard may pay a gold tax by writing a cycle of sonnets for the royal treasury instead. The bard can settle the debt with ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of a shadow, the judge found that it had stolen a manuscript consisting entirely of sonnets. The court ordered the shadow to return the manuscript of ____."
+    }
+  ]
+}

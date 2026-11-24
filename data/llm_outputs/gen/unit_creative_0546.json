@@ -1,0 +1,27 @@
+{
+  "target_word": "raid",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a construction site",
+      "text": "At dawn, officers swept through the construction site and arrested several people suspected of handling stolen equipment. The foreman arrived just as police were completing their surprise ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "At the supermarket checkout, Maya saw officers enter together with a warrant to search the store for illegal drugs. The cashier froze as the police began their ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "On a rainy afternoon, Gran showed me a wartime photograph of her old apartment building after enemy planes had bombed the street. She said the family had survived by sheltering underground during the air ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "The post office was still closed when armed robbers burst in and seized bags of cash before speeding away. Detectives later described the swift, planned attack as a ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "A small fishing boat was far out at sea when pirates boarded, grabbed its fuel and supplies, and quickly escaped. The shaken crew radioed the coast guard to report the pirate ____."
+    }
+  ]
+}

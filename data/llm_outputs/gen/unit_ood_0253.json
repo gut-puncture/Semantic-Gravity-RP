@@ -1,0 +1,27 @@
+{
+  "target_word": "fluid",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The sponge complained that the soap dispenser had been filled with pebbles. The dispenser replied that its pump was designed for liquid soap, also sold as soap ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.0 for the Yesterday Printer: The new cooling circuit prevents the machine from overheating while it prints tomorrow's memories. Before startup, fill the radiator with coolant, also called cooling ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the enchanted teapot, steam clouds will gather above the spout by noon. The court physician advises any travelers who lose water through sweating to drink plenty of ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon tax code, a hoard of gold coins is taxed differently from money that can be spent immediately. Gold locked in a mountain is a less ____ asset than cash."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed stiff, jerky performances at the annual rooftop dance. Under the new law, each dancer must move with smooth, continuous, ____ movements."
+    }
+  ]
+}

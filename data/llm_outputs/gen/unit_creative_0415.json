@@ -1,0 +1,27 @@
+{
+  "target_word": "mediated",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tailor's shop",
+      "text": "Two tailors argued over who should use the only sewing machine that morning. Their boss brought them together, guided their discussion without taking sides, and ____."
+    },
+    {
+      "setting": "a gym",
+      "text": "A dispute over the gym's loud music threatened to drive away both the lifters and the yoga class. Neither group would talk until a neutral trainer sat with both sides and ____."
+    },
+    {
+      "setting": "a desert expedition",
+      "text": "Two guides on a desert expedition disagreed about which route to take to the next well. Rather than choose the route herself, their colleague helped them reach a joint decision; she ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, two farmers met at a fence to settle a dispute about their shared water supply. A neutral neighbor helped them hear each other out and find an agreement; she ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "Rain tapped the windows as two tenants argued over a leak in their old apartment. Their neighbor sat between them and helped them work out a compromise; she ____."
+    }
+  ]
+}

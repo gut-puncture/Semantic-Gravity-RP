@@ -1,0 +1,27 @@
+{
+  "target_word": "composition",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a thunderstorm, first mix nitrogen, oxygen, water vapor, and trace gases in the proportions listed on the sky chart. The chart specifies the atmosphere's chemical ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth schools: Young humans are sometimes assigned a short piece of original prose on a given topic, such as what they did during their holidays. A teacher may call the finished piece a ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 9.4: The machine can now turn a century of silence into an original piece of music for piano. Its print function produces a score of the resulting musical ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Recipe for human breakfast, by Unit 6: Combine oats and milk, then scan the mixture for its proportions of carbohydrates, fat, and protein. Record the result as its nutritional ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats decrees that portraits of its members must place the ears, whiskers, and tail in a pleasing arrangement within the frame. Each painter shall be judged on the picture's ____."
+    }
+  ]
+}

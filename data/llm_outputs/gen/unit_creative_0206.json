@@ -1,0 +1,27 @@
+{
+  "target_word": "distress",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a village market",
+      "text": "After months of poor sales, several stallholders could no longer pay their suppliers. At the village market, the bank's adviser explained that their businesses were in financial ____."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "In the recording studio, an actor rehearsed the role of a sailor whose boat was sinking. She spoke into the microphone: \"Mayday, Mayday, this vessel is in ____.\""
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "A princess waited in the castle tower while a knight rode up to rescue her. The storyteller introduced her as a damsel in ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "Lost in a snowstorm, a skier blew six short blasts on her whistle, paused for a minute, and repeated them. A patroller recognized the Alpine signal for ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At the hotel reception desk, a guest sobbed after learning that her flight home had been cancelled. Seeing her tears, the receptionist apologized for causing her emotional ____."
+    }
+  ]
+}

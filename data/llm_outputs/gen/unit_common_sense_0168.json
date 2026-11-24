@@ -1,0 +1,27 @@
+{
+  "target_word": "committee",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, the farmers met to plan the village fair. They elected a chair and secretary for their planning ____."
+    },
+    {
+      "setting": "a child's birthday party",
+      "text": "For her birthday party, Maya jokingly appointed her friends to a cake selection ____; they voted on which cake to order."
+    },
+    {
+      "setting": "a car repair garage",
+      "text": "Workers at the garage chose representatives to meet management about safety. Their elected safety ____ inspects the workplace and recommends improvements."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "After months of arranging stalls and volunteers, the harvest festival organizing ____ met to review how the event had gone."
+    },
+    {
+      "setting": "a football match",
+      "text": "After the football match, the league's disciplinary ____ reviewed the referee's report and decided whether to suspend the player."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "stem",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory Manual: To make a rose-shaped cloud, first form the blossom and leaves, then add the green stalk that joins them to the roots. The leaves must be attached to the ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game River Reversal, players lose a turn whenever their imaginary boat drifts downstream. To win the turn back, a player must paddle upstream and ____ the current."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At zero-gravity tea parties, every guest receives a rose in a floating vase. To avoid crushing its petals or touching its thorns, lift the flower by the smooth green part between its leaves and its roots: the ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware release notes for the Time-Reversing Mill: Version 4 traces each new crisis back to its original cause. When several crises share one cause, the display reports that they all ____ from it."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Weather report for the inside of a teapot: Heavy rain has flooded the sugar basin, and a tiny dam is being built across its outlet. Forecasters expect the dam to ____ the flow of water."
+    }
+  ]
+}

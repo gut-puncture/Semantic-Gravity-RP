@@ -1,0 +1,27 @@
+{
+  "target_word": "matrix",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "The cook compared three meal plans using cost, nutrition and cooking time, scoring each option against every criterion. To make the choice together, the volunteers filled in a decision ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "The teacher arranged numbers in a rectangular grid on the board, with two rows and three columns. She explained that mathematicians call such an array a ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "An old printer rattled as the tailor printed a receipt, forming each character with a pattern of tiny ink dots. When a customer asked what kind of printer it was, he replied that it was a dot ____."
+    },
+    {
+      "setting": "an airport departure gate",
+      "text": "While waiting to board, Maya watched a science fiction film in which Neo takes a red pill and discovers that his everyday world is a simulation. Her brother recognized it immediately as The ____."
+    },
+    {
+      "setting": "a final exam",
+      "text": "A student multiplied two rectangular arrays of numbers using the row-by-column method taught in linear algebra. The question then asked her to find the determinant of the resulting square ____."
+    }
+  ]
+}

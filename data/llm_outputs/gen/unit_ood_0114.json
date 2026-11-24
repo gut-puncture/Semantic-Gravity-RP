@@ -1,0 +1,27 @@
+{
+  "target_word": "ceramic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Today's forecast inside the teapot calls for dense steam and a brief shower of condensation. The vessel was shaped from clay and hardened in a kiln, so the rain will fall on its glazed ____ walls."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "When invited to a cloud's home, never bring metal or plastic gifts: hosts consider them unlucky. Instead, present a kiln-fired clay bowl, preferably one with a glossy ____ glaze."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To keep the moon from escaping, place it in a cup made from clay that has been shaped and fired in a kiln. The spell will fail unless the cup is ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Before adding the miniature tides, fit the basin into its protective shell. Use the glazed, kiln-fired clay shell supplied in the kit; the instructions label it the ____ shell."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "In the oracle's spreadsheet, cell B2 contains a clay mug fired in a kiln, and the prophecy labels objects by material. Its formula reads: IF(B2 survives the dragon's sneeze, the mug remains ____)."
+    }
+  ]
+}

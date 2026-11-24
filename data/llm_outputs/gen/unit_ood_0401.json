@@ -1,0 +1,27 @@
+{
+  "target_word": "mod",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth field guide, entry on British youth tribes: In the 1960s, a sharp dresser riding a scooter and listening to The Who would likely identify as a ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream customs declaration: Your suitcase contains a player-created addition that lets you ride dragons in Skyrim. Declare this unofficial game add-on as one ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The shadow is acquitted of stealing the moon from Minecraft: the evidence shows it installed a player-made addition that replaces the moon with a giant cheese. The court recognizes the addition as a ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Release 8.4 allows the impossible machine to run a player-created Stardew Valley add-on that gives every chicken a wizard hat. Install the fan-made ____ before starting the game."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To make rain fall upward in The Sims 4, feed the cloud factory an unofficial gameplay alteration downloaded from its creator. The factory accepts one player-made ____ at a time."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "mystic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Order of the Upside-Down Bell begins each ceremony by reading Rumi's poems about the soul's longing for union with the divine. Its manual calls him a Sufi poet and ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Before sealing the pocket-sized ocean, place its tiny figure of William Blake beside the painted waves. The accompanying label describes him as a visionary poet and ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, a guest who finds God through contemplation rather than argument receives a floating cup. The rulebook reserves that cup for a ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "The dream census asks each inhabitant to name an earthly occupation before dissolving at dawn. Teresa of Avila enters religious writer and Christian ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court acquits the shadow of stealing its owner's visions of direct union with God. The ruling identifies that owner, Meister Eckhart, as a medieval Christian theologian and ____."
+    }
+  ]
+}

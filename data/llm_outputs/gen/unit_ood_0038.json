@@ -1,0 +1,27 @@
+{
+  "target_word": "army",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare any land forces travelling with you, even if they fit inside your suitcase. If you command the entire national force of soldiers, rather than a single regiment, check the box marked ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Nimbus, a visiting general is greeted with a respectful drizzle. Never ask whether she leads the navy or the air force; her soldiers fight on land, so compliment her on her ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Install the tiny ocean between the two model shores, then place the miniature land forces on the eastern beach. To complete the familiar pairing of a nation's navy and its land forces, label the latter ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement at noon to see the chess king petition a vast collection of toy soldiers for protection. He is tired of relying on a lone guard and wants a whole ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy covers one ghost's accidental haunting of a military base. The premium depends on the branch stationed there: select navy for sailors, air force for pilots, or ____ for the nation's land forces."
+    }
+  ]
+}

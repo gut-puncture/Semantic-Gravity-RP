@@ -1,0 +1,27 @@
+{
+  "target_word": "oxygen",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a police station",
+      "text": "At the police station, an officer gave a breathless visitor a mask connected to a tank of medical ____."
+    },
+    {
+      "setting": "a job interview",
+      "text": "During her interview for a firefighting job, Lena explained that a fire needs fuel, heat, and ____ to keep burning."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "At the supermarket checkout, a child asked why the apples had turned brown after being sliced. His mother explained that the cut surfaces had reacted with ____ in the air."
+    },
+    {
+      "setting": "a gym",
+      "text": "After a hard workout at the gym, Ravi breathed quickly to supply his working muscles with more ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "In the dentist's waiting room, a patient checked the clip on her finger that measures the level of ____ in her blood."
+    }
+  ]
+}

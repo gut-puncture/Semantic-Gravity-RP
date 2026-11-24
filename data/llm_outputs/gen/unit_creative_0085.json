@@ -1,0 +1,27 @@
+{
+  "target_word": "cache",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a child's birthday party",
+      "text": "Maya's birthday scavenger hunt ended when the children spotted a hollow beneath the garden steps. Inside was a hidden candy ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "While packing the attic, Lena found an old box concealed behind a loose panel. She opened it to discover her grandfather's secret coin ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "After days of searching the vineyard for stolen bottles, the police noticed freshly turned soil beside a shed. Beneath it they uncovered the thieves' wine ____."
+    },
+    {
+      "setting": "a final exam",
+      "text": "During her computing exam, Nina was asked why a website still showed an outdated image after she refreshed it. She explained that the browser might be loading a stored copy from its ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "At rush hour, an officer saw someone pull a pistol from a concealed compartment under a subway bench. The search that followed revealed an illegal weapons ____."
+    }
+  ]
+}

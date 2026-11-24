@@ -1,0 +1,27 @@
+{
+  "target_word": "overdose",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when you solve its spoken riddle. Today it asks: What is the common term for taking so much of a drug that it poisons you? Reply aloud: ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Apothecary Moon, the healer has a safe dose of three potion tokens per turn. Take six, and your character suffers a drug ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody, feed the singing cells their prescribed medicine each morning. If a technician accidentally gives them ten times that amount and they become poisoned, record the incident as an accidental ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 lets the Time Ambulance rewind a poisoning caused by excessive medication. Its display now alerts the crew: Patient has taken too much medicine; suspected ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, never make thunderous jokes when a guest has taken a dangerous excess of a prescribed drug. Instead, summon the rain medics and tell them the guest may ____."
+    }
+  ]
+}

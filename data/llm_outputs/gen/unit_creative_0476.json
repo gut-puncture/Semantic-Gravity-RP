@@ -1,0 +1,27 @@
+{
+  "target_word": "parameter",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a courtroom",
+      "text": "An expert witness explained that the jury survey estimated the proportion of all eligible voters who recognized the defendant. The lawyer asked whether that population proportion was a sample statistic or a population ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "The resort's engineer adjusted the snowmaking forecast until its predictions matched the season's measurements. She changed the numerical coefficient inside the model, a fitted ____."
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "In the castle library, a visiting mathematician showed the princess a family of curves written as y = ax, with a taking a different fixed value for each line. He called a the family's ____."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, a reporter checked a pollster's explanation of a confidence interval. It gave a range of plausible values for an unknown population ____."
+    },
+    {
+      "setting": "a pirate ship",
+      "text": "The pirate captain's navigation program had a function called sail that accepted a speed supplied when the crew ran it. In the function declaration, speed was its sole formal ____."
+    }
+  ]
+}

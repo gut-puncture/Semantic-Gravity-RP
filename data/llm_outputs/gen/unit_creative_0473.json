@@ -1,0 +1,27 @@
+{
+  "target_word": "pale",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a bank",
+      "text": "At the bank, the teller saw an armed robber enter and felt the color drain from her face. Her colleague later said she had turned as white as a sheet and looked very ____."
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "From the castle tower, the guard watched the full moon rise through a thin veil of mist. Its usual brilliant white light was dimmed until it looked ghostly and ____."
+    },
+    {
+      "setting": "a family road trip",
+      "text": "On the family road trip, Dad added so much milk to his coffee that its dark brown color almost disappeared. Mum laughed at how weak it looked, saying that it was far too ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "In the dentist's waiting room, a nervous boy's mother noticed that his normally rosy cheeks had lost their color. She asked if he felt faint because he looked so ____."
+    },
+    {
+      "setting": "a space station",
+      "text": "On the space station, an astronaut showed a colleague two photos of Earth, one with vivid colors and one badly washed out by glare. Beside the first image, the second looked ____."
+    }
+  ]
+}

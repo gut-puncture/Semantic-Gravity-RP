@@ -1,0 +1,27 @@
+{
+  "target_word": "segment",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, a farmer found an earthworm in the damp soil and examined its repeating body rings. Under her magnifying glass, she counted each ring as one body ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "The receptionist turned up the lobby television when the morning news began its feature on their town. She watched the presenter introduce the next news ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "In the forest, a fairy marked two points on a map and joined them with a straight stroke. Her geometry lesson called the path between those endpoints a line ____."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "Amid the clatter of pans, the chef peeled an orange and separated its natural, crescent-shaped sections. She garnished each plate with one orange ____."
+    },
+    {
+      "setting": "a job interview",
+      "text": "During the interview, Maya explained that her advertising campaign would focus on first-time parents who buy organic food. The hiring manager asked how she would reach that market ____."
+    }
+  ]
+}

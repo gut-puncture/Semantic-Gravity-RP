@@ -1,0 +1,27 @@
+{
+  "target_word": "celestial",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 47: Humans navigate oceans by measuring the positions of stars with a sextant. The tentacled editors classify this method as ____ navigation."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR: The freezer has replaced its ice cubes with miniature planets and set them orbiting the milk. Its repair manual assigns the calculation of their gravitational motions to ____ mechanics."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Descend beneath the moon to see the giant hollow globe on which our resident spiders have mapped every star. Astronomers call this imagined globe the ____ sphere."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The lampshade proposed projecting Earth's equator onto the imaginary sphere surrounding the planet. The assembled objects voted to label the resulting circle the ____ equator."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Transit Authority: Declare any miniature planets, moons, or stars carried in your luggage. List each one under the heading ____ bodies."
+    }
+  ]
+}

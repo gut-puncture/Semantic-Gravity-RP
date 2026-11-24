@@ -1,0 +1,34 @@
+{
+  "creative": {
+    "units": 750,
+    "units_ok": 746,
+    "targets_unusable": 21,
+    "candidates": 3475,
+    "targets_with_candidates": 722,
+    "item_rejections": {
+      "leak": 18,
+      "creative_blank_not_final": 132
+    }
+  },
+  "ood": {
+    "units": 750,
+    "units_ok": 738,
+    "targets_unusable": 10,
+    "candidates": 3613,
+    "targets_with_candidates": 726,
+    "item_rejections": {
+      "leak": 27
+    }
+  },
+  "common_sense": {
+    "units": 750,
+    "units_ok": 748,
+    "targets_unusable": 1,
+    "candidates": 3722,
+    "targets_with_candidates": 746,
+    "item_rejections": {
+      "leak": 13
+    }
+  },
+  "units_to_rerun": 18
+}

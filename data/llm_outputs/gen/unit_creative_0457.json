@@ -1,0 +1,27 @@
+{
+  "target_word": "oneself",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a job interview",
+      "text": "The interviewer welcomed each candidate and asked for a brief account of their background. She explained that the first task was to introduce ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "A shopper left a wallet on the counter, but the cashier caught the mistake before anyone else could take it. The notice above the register warned that keeping such a find would be stealing, even if one intended to keep it for ____."
+    },
+    {
+      "setting": "a theatre rehearsal",
+      "text": "The director asked the actors to speak loudly enough to reach the back row. With the whole cast reciting together, one could barely hear ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "A resident wanted to button her own cardigan, although it took her a few minutes. Her carer understood how satisfying it can be to do such things for ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "The drill's distant whine made the wait feel longer. A magazine offered a welcome way to distract ____."
+    }
+  ]
+}

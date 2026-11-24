@@ -1,0 +1,27 @@
+{
+  "target_word": "climate",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a rock concert",
+      "text": "At the rock concert, the singer urged fans to support a campaign against rising global temperatures. Behind her, a banner called for action to protect the ____."
+    },
+    {
+      "setting": "a wedding reception",
+      "text": "At their wedding reception, the newlyweds thanked everyone who had flown in from colder countries. They joked that their tropical island had attracted guests as much as its sunny ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "A customer asked the tailor for a suit to wear year-round after moving to the tropics. He recommended lightweight linen, explaining that it would be comfortable in the hot, humid ____."
+    },
+    {
+      "setting": "an airport departure gate",
+      "text": "While waiting at the departure gate, Maya read a guide to the desert country she was about to visit. It advised packing for hot days, cold nights and the region's dry ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "In the laboratory, researchers compared ice cores containing records of snowfall and temperature from thousands of years ago. Their findings helped them reconstruct Earth's past ____."
+    }
+  ]
+}

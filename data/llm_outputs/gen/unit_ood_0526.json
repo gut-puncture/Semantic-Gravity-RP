@@ -1,0 +1,27 @@
+{
+  "target_word": "rate",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun lends the night one hour of light, to be paid back with interest. Their contract fixes the annual interest ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the chromatic scent market, traders swap blue tokens for jars of lavender scent. The conversion table shows how many jars one blue token buys under exchange ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after hearing a riddle, then asks visitors to judge it from one to five stars. Press the button marked 'Submit' after you ____ the riddle."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a steady shower, pour clouds into a pan and set the dial to ten millimeters per hour. The dial controls the rainfall ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth: Some humans seeking paid work cannot find a job. Their share of the labor force is reported as the unemployment ____."
+    }
+  ]
+}

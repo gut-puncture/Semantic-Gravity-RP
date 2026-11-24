@@ -1,0 +1,27 @@
+{
+  "target_word": "probability",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody, plant one note in each of ten identical dishes, then roll a fair six-sided die over each dish. Record the chance of rolling a six as a fraction under the heading '____'."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 418: Humans sometimes settle disputes by tossing a small metal disk that can land heads or tails. For a fair coin, they calculate that heads has a one-half ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For a soup of scattered showers, simmer a cloud until it releases rain on three days out of ten. The forecast you serve with it should state that rain has a 30 percent ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after you solve the riddle it whispers through its keyhole: 'I can be expressed as a number from zero to one; for a fair die, mine is one-sixth for rolling a four. What am I?' Turn the handle after saying ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "In the moon's basement, visit the casino where transparent dice float beneath the floor. The display beside each table shows the chance of each possible roll as a percentage, labeled '____'."
+    }
+  ]
+}

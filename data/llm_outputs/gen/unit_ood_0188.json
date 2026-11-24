@@ -1,0 +1,27 @@
+{
+  "target_word": "depression",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The kettle reported that its owner had lost interest in everything for months, could barely sleep, and had received a diagnosis from her doctor. The assembled objects voted to support her treatment for major ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Dragon tax code, historical exemption: hoards inherited from American banks that failed after the 1929 stock market crash are exempt. The exemption covers losses during the Great ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before the Order of Hollow Bells rings its dawn chimes, each monk must honor the mood disorder that can follow childbirth. Place a candle beside the mother's bed for postpartum ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguards must evacuate the reef when a tropical cyclone forms, even before it grows strong enough to become a tropical storm. At that earliest stage, it is called a tropical ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Clockwork Clinic, a player moves between two marked spaces representing the contrasting mood episodes of bipolar disorder. A token leaving mania must next land on ____."
+    }
+  ]
+}

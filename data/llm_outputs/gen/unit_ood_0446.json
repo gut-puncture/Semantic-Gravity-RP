@@ -1,0 +1,27 @@
+{
+  "target_word": "panel",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The kettle proposed a public discussion on cupboard rights. The toaster will moderate while three lamps answer questions from the audience; together, the lamps will form a ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To stop the cloud factory from producing hail, the operator must press the red STOP button among the switches and indicator lights on the machine's control ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, expect dense steam until noon. The forecast was prepared by three meteorologists who jointly review every prediction as an expert ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 41: My temperature display and touch buttons have stopped responding. I can still keep food cold, but a technician must replace the entire front control ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Moonfruit Court, each player draws a single rectangular comic picture showing a creature and its speech balloon. Arrange these pictures in turn order, then tell the story beginning with the first ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "disc",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a dentist's waiting room",
+      "text": "Maya shifted carefully in her chair while waiting for her dental appointment. Her back had hurt ever since she lifted a heavy box and suffered a slipped ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "At an exhibition about recorded music, Leo saw an early album released on a small silver optical medium. The label said it was a compact ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "Nina brought a Frisbee to the counter and asked for a box big enough to mail it. The clerk found a flat package that would protect the flying ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "During a long voyage, the crew gathered to watch a film on their old DVD player. The captain opened the case and inserted the digital versatile ____."
+    },
+    {
+      "setting": "a job interview",
+      "text": "During her interview at an eye clinic, Priya was shown a photograph of a retina. Asked to identify the spot where the optic nerve enters the eye, she pointed to the optic ____."
+    }
+  ]
+}

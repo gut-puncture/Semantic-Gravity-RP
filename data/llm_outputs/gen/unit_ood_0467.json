@@ -1,0 +1,27 @@
+{
+  "target_word": "piper",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent claim 8: The silence engine stops whenever its acoustic sensor hears bagpipes. During trials, it shut down as soon as the bagpipes were played by a ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The kettle reported that the Pied one had led the rats out of Hamelin. The teapot asked whether the town had paid the ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, fit the tide wheel beneath the miniature island. Then place a musician playing Scottish bagpipes on the shore; the gulls will circle the ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Rat Kingdom, the player who hires the Pied one must pay him before moving the rat pieces off the board. A player who refuses to pay loses the services of the ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, occupation section: A resident reports that he marches in a Scottish band, playing the bagpipes. Enter his occupation in the singular: ____."
+    }
+  ]
+}

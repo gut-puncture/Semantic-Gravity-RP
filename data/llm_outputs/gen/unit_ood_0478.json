@@ -1,0 +1,27 @@
+{
+  "target_word": "posting",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide: This door opens only when a riddle appears on its public social media page. Type your riddle into the page and press Share; the door will open as soon as you finish ____ it."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts a flood with the formula IF(the king uploads his selfie to social media, FLOOD, SUNSHINE). The forecast changed to FLOOD immediately after the king finished ____ the selfie online."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The toaster complained that the kettle had put a photo of their messy kitchen on social media for everyone to see. The kettle promised to ask permission before ____ any more photos online."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Welcome to the moon's basement, where the stalactites glow whenever visitors upload their holiday photos to social media. Keep your pictures private until you leave if you want to see the cave in darkness; otherwise, enjoy ____ them online."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court found that the shadow had uploaded a video of its owner dancing to a public social media account. Its sentence was a ban on ____ videos online for thirty days."
+    }
+  ]
+}

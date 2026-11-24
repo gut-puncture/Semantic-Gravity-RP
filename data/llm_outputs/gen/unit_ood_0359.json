@@ -1,0 +1,27 @@
+{
+  "target_word": "lightly",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: the rescue bubble bursts under firm pressure, but its latch opens with the faintest touch. Do not press hard; press ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth encyclopedia, entry on toast: humans sometimes prefer a pale golden surface with only a faint crunch. To obtain it, they toast the bread ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the chromatic scent table, pale pink converts to a faint rose fragrance, while deep red converts to an overpowering one. A room painted pale pink will smell ____ of roses."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware release 7.4 for the cloud-weighing engine: the seasoning nozzle now adds only a small pinch of salt to each thunderbolt. Thunderbolts are now salted ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "In the Order of the Sleeping Mountain, the dawn gong must be audible only to the monk standing beside it. Strike the gong ____."
+    }
+  ]
+}

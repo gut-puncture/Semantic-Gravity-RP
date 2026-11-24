@@ -1,0 +1,27 @@
+{
+  "target_word": "yea",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the cloud planet, polite guests vote on the host's proposed rainfall using the traditional parliamentary pair, yea or nay. A cloud in favor says ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Ghost insurance covers a policy change only after a roll-call vote using the traditional parliamentary responses. Each opposing ghost answers nay; each approving ghost answers ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "An oracle encodes the fate of a floating city as a spreadsheet formula. It returns the traditional parliamentary vote of nay if the city falls and, if the city survives, ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, particles settle disputes by parliamentary vote: an opposed particle calls out nay. Under the local laws of physics, a particle voting in favor must call out ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "A robot that has never eaten writes a recipe requiring a parliamentary vote by the ingredients before mixing. Its instructions tell each unwilling ingredient to say nay and each willing ingredient to say ____."
+    }
+  ]
+}

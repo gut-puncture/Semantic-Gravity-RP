@@ -1,0 +1,27 @@
+{
+  "target_word": "mascot",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The spoons voted to send their team to the Moonlight Games. They chose a cheerful toaster character in a giant costume to lead their supporters as the team's ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: If your school sports team is travelling with a person in a giant animal costume who cheers on the crowd, declare that character as the team's ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a marching tune in a petri dish, first paint a tiny school band on the lid. Add a costumed tiger character to cheer for its football team; the tune will sprout only when the band has a ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle entered =IF(A1=\"team spirit\",B1,\"silence\") into the sheet of prophecy. Cell B1 shows a grinning bear character in a costume who cheers for the local football team; the formula therefore foretells the arrival of the team's ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For a stadium thunderstorm, simmer clouds until the crowd begins to cheer. Serve it above the field while the team's costumed eagle character dances on the sidelines; no sporting forecast is complete without the team's ____."
+    }
+  ]
+}

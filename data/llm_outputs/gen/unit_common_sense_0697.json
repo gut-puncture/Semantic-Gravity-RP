@@ -1,0 +1,27 @@
+{
+  "target_word": "tube",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a child's birthday party",
+      "text": "At the birthday party, Mia squeezed icing onto the cake from a small plastic ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "During the football match, a player squeezed a strip of sunscreen onto his hand from a ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "In the refugee camp kitchen, the cook squeezed tomato paste from its metal ____ into the pot."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "On the mountain hiking trail, Ravi stopped to patch a puncture in his bicycle's inner ____."
+    },
+    {
+      "setting": "a village market",
+      "text": "At the village market, Leela bought a ____ of toothpaste for brushing her teeth."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "simultaneous",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory operating manual: The two rain valves must open at precisely the same instant; neither may open before the other. The control panel calls their openings ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "In the Order of the Hollow Bell, two monks strike separate bells at exactly noon, with neither strike preceding the other. The ritual requires their strikes to be ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their new contract, the sun will extinguish its last ray at the exact instant the night unveils its first star. The two events shall be ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has decreed that every citizen must begin washing one ear at the very instant the town clock strikes six. Across the city, the starts of these ear washings must be ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Kingdoms of Fog, each player writes a move in secret and reveals it only when both are ready. Both moves then take effect at the exact same instant: their execution is ____."
+    }
+  ]
+}

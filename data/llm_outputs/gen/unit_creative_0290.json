@@ -1,0 +1,27 @@
+{
+  "target_word": "fundamental",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a pirate ship",
+      "text": "A pirate plucked a taut rope and heard a low pitch beneath several higher overtones. The lowest frequency, from which the harmonics are whole-number multiples, is called the ____."
+    },
+    {
+      "setting": "an airport departure gate",
+      "text": "At the gate, a physicist listened to a pure tone mixed with frequencies at twice and three times its rate. She identified the lowest component of that harmonic series as the ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "A fairy's flute sounded one lowest note along with fainter tones at integer multiples of its frequency. The wise owl called that lowest frequency the ____."
+    },
+    {
+      "setting": "a sailing race",
+      "text": "During the race, a sailor noticed that a vibrating cable produced several pitches at once. Its lowest resonant frequency, with the others occurring at whole-number multiples, was the ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "A hiker struck a hollow tube and recorded its lowest resonant tone along with several higher harmonics. In her notes, she labeled the lowest frequency the ____."
+    }
+  ]
+}

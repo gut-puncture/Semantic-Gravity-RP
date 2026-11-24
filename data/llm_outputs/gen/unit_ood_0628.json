@@ -1,0 +1,27 @@
+{
+  "target_word": "spinning",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "The riddle-door accepts answers only while its brass top is balanced on its point. Wind the top with the cord and release it; before you speak, check that the top is still ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a miniature tornado is passing through the sugar clouds. The funnel has touched down on the bottom and is ____ rapidly around its own narrow axis."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under this contract, the Sun and Night shall take turns watching over the enchanted planet, which completes one turn on its axis each day. Neither party may stop the planet from ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 17: I asked my built-in record player to stop after the music ended, but its motor failed to switch off. The record is still going round and round on the turntable; it is still ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, each guest must twist once to send their own body turning head over heels. The host may pour only after every guest is ____."
+    }
+  ]
+}

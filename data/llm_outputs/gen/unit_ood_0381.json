@@ -1,0 +1,27 @@
+{
+  "target_word": "marketing",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 73: My shelves have begun promoting their own brands of yogurt. The sales team says the campaign budget comes from the department of ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a warm front will carry miniature billboards through the steam. Their slogans and product launches are the work of the tea company's vice president of ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Ancient Commerce, year 4000: This fossilized conference table belonged to the team that chose product names, studied customer demand, and planned promotions. Its surviving door sign reads: Department of ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To sell enchanted brooms, cast the charm that reveals what buyers want, then devise a brand and plan a campaign to reach them. The guild classifies this entire commercial activity as ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At dawn, the monks consult their sacred chart: production makes the levitating candles, finance manages the money, and sales closes individual deals. The brothers who research customers, shape the brand, and plan promotions practice ____."
+    }
+  ]
+}

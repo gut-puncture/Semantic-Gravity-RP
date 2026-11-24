@@ -1,0 +1,27 @@
+{
+  "target_word": "massacre",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Fit the tiny harbor into the glass basin, then wind its history dial to Boston in 1770, when British soldiers fired on a crowd. The dial stops at the Boston ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To summon a phantom newspaper from Chicago in 1929, stir seven drops of ink into the cauldron. Its headline recalls the gangland killings known as the St. Valentine's Day ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Version 4.1 lets the machine project films into yesterday. Its new horror catalog includes the 1974 film The Texas Chain Saw ____, in which a family of killers terrorizes a group of young travelers."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when a visitor completes its historical riddle: In Paris in 1572, the killing of Huguenots began on a saint's feast day. What completes the name St. Bartholomew's Day ____?"
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "When the teapot floats over a painting of Herod's soldiers and the children of Bethlehem, guests must name the biblical episode before pouring. Announce it as the ____ of the Innocents."
+    }
+  ]
+}

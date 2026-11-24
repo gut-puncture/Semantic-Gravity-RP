@@ -1,0 +1,27 @@
+{
+  "target_word": "marathon",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, Maya fed the chickens before setting off for the city race. She had trained for months to run the full 26.2 miles of the ____."
+    },
+    {
+      "setting": "a zoo",
+      "text": "At the zoo, a keeper jogged past the giraffes wearing a medal from Sunday's race. Its ribbon showed that she had completed the Boston ____."
+    },
+    {
+      "setting": "a beach holiday",
+      "text": "Rain kept the family inside their beach cottage all afternoon. To pass the time, they watched all eight Harry Potter films back to back in a movie ____."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "Paint covered the studio floor after Leo stayed up all night finishing twelve canvases. Exhausted, he called the uninterrupted session his painting ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "Nina paused on the mountain hiking trail to drink some water. Her brother checked his watch and said the climb was good training for his upcoming 26.2-mile road ____."
+    }
+  ]
+}

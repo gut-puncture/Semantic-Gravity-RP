@@ -1,0 +1,27 @@
+{
+  "target_word": "lighter",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a fishing boat at sea",
+      "text": "The fisherman used a pocket-sized, refillable device with a thumb wheel to ignite the stove. He put the ____ back in his pocket."
+    },
+    {
+      "setting": "a carpentry workshop",
+      "text": "The carpenter weighed two boards of the same size. The pine board weighed half as much as the oak board, so the pine was ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At the hotel desk, one suitcase weighed 10 kilograms and the other weighed 25. The guest picked up the ____ suitcase first."
+    },
+    {
+      "setting": "a family road trip",
+      "text": "At a roadside stop, Dad pressed the button on his refillable pocket ____ to ignite the camping stove."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "At the vineyard, the guide held up a glass of pale pink wine beside a glass of deep red wine. The pink wine was ____ in color."
+    }
+  ]
+}

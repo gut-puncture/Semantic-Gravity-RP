@@ -1,0 +1,27 @@
+{
+  "target_word": "proceed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "My flavor sensors are imaginary, so I measure soup by the angle of its steam. If the steam points toward the ceiling, the display grants permission to ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To summon a door, draw its hinges in moonlight and knock on the empty air. If the hinges begin to whisper, the next page explains how to ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the game of Royal Staircases, landing on a gold square earns you a royal pardon. The judge then announces: Your turn may ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "When the thunder tank rattles, the cloud factory's warning lamp flashes amber. Its safety panel displays the instruction: ____ with caution."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For a mild afternoon, fold three breezes into a bowl of sunlight. Once the mixture casts a shadow, ____ as follows: add a pinch of drizzle and stir."
+    }
+  ]
+}

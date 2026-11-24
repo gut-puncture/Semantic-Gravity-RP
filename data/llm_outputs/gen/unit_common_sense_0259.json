@@ -1,0 +1,27 @@
+{
+  "target_word": "faith",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a courtroom",
+      "text": "In court, the lawyer argued that her client had acted in good ____ when signing the contract."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "Leaving her steady job to paint full time was a leap of ____ for the artist."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "On the steep trail, Ben joked that he was taking it on ____ that the map was accurate."
+    },
+    {
+      "setting": "a small-town library",
+      "text": "At the library, Nora borrowed books about religious doubt while going through a crisis of ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "The pet shop owner said the puppy needed no training, but Lena wasn't willing to accept that claim on blind ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "toy",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, a child won a stuffed bear at a game booth. She hugged her new ____."
+    },
+    {
+      "setting": "a small-town library",
+      "text": "At the small-town library, a toddler drove a plastic truck across the floor. His mother put the ____ back in the play area."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "At the pet shop, a customer bought a squeaky rubber bone for her puppy. The puppy loved its new ____."
+    },
+    {
+      "setting": "a construction site",
+      "text": "Near the construction site, a child played with a miniature plastic bulldozer. Unlike the real machines, the ____ could fit in his hand."
+    },
+    {
+      "setting": "a coffee shop",
+      "text": "At the coffee shop, a parent gave her restless child a small plastic dinosaur to play with. The child dropped the ____ under the table."
+    }
+  ]
+}

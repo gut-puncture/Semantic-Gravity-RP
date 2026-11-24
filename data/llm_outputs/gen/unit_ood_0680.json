@@ -1,0 +1,27 @@
+{
+  "target_word": "tired",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Pillow Siege, a player who crosses the board without sleeping for three nights must stop moving and place a bed beside their piece. The rulebook says that player is too ____ to continue."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the customs form for travel between dreams, explain why you need a nap before entering the next dream. Complete the sentence: I have been awake all night and feel ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "A ghost's insurance policy covers a replacement bed if its owner cannot rest after haunting houses all night. To claim, the ghost must complete this statement: I need sleep because I am ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a collector who has stayed awake for three days may postpone counting gold and go to bed. The exemption applies when the collector is too ____ to stay awake."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "The cloud factory's manual requires workers to pause the rain machine when they keep yawning after a sleepless night. Before taking a nap, the operator records the reason as feeling ____."
+    }
+  ]
+}

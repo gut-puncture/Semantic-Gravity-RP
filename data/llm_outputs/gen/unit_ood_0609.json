@@ -1,0 +1,27 @@
+{
+  "target_word": "slight",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon, where our guides promise that the crater lift almost always arrives on time. If it gets stuck between floors, there may be a ____ delay."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Ghost Insurance Policy 13 covers damage caused by exorcists but excludes hurt feelings. A guest's failure to acknowledge the insured at a seance shall be treated as a personal ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow moved the sundial's pointer by one barely visible mark, not the full hour claimed by the prosecution. The change in its position was ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano seeking someone who enjoys long evenings under the stars and can overlook occasional smoke. I cannot promise perfect safety: there is always a ____ chance I might erupt."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, guests must not bow deeply, because a full bow sends them tumbling across the room. To greet the host, give your head a ____ nod."
+    }
+  ]
+}

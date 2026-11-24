@@ -1,0 +1,86 @@
+[
+ {
+  "word": "amid",
+  "reason": "Amid is a preposition that normally requires an object after it, so it cannot naturally be the final word of these sentences."
+ },
+ {
+  "word": "ave",
+  "reason": "\"Ave\" is chiefly an abbreviation for \"avenue\" or a Latin greeting, so it cannot reliably be the single best answer for these natural English items."
+ },
+ {
+  "word": "cal",
+  "reason": "\"cal\" is primarily an abbreviation or a name, so it cannot be the clearly best answer to a natural item under these rules."
+ },
+ {
+  "word": "capt",
+  "reason": "\"Capt\" is an abbreviation for \"captain,\" not a standard standalone English word."
+ },
+ {
+  "word": "chandler",
+  "reason": "Although chandler is a standard word for a candle maker or a dealer in ship supplies, it is uncommon enough that most fluent English speakers would not reliably supply it as the single best answer."
+ },
+ {
+  "word": "cis",
+  "reason": "Although \"cis\" is a standard English adjective, it is not familiar enough to nearly every fluent English speaker for the requested clues to reliably produce it as the single best answer."
+ },
+ {
+  "word": "cunt",
+  "reason": "The target is a vulgar sexual term and an insult; under the restrictions, natural contexts cannot reliably distinguish it from other insults."
+ },
+ {
+  "word": "grad",
+  "reason": "\u201cGrad\u201d is an informal shortening of \u201cgraduate,\u201d and natural contexts do not reliably make it the single clearly best answer over the full form."
+ },
+ {
+  "word": "hank",
+  "reason": "Hank is a standard term for a coil of yarn, but it is not familiar enough to nearly every fluent English speaker to make it the inevitable answer in a natural item."
+ },
+ {
+  "word": "inter",
+  "reason": "Although 'inter' is a standard English verb, natural contexts also admit more familiar alternatives such as 'bury' or 'entomb', so it cannot be made the clearly best answer under these constraints."
+ },
+ {
+  "word": "mickey",
+  "reason": "Mickey is chiefly a personal name; its lowercase slang meaning is not familiar enough to make it an inevitable answer for nearly every fluent English speaker."
+ },
+ {
+  "word": "molly",
+  "reason": "The lowercase term has several meanings, including a fish and a slang term for MDMA, but none is familiar or uniquely identifiable enough to make it the inevitable answer for nearly every fluent English speaker without spelling hints."
+ },
+ {
+  "word": "pic",
+  "reason": "\"Pic\" is an informal abbreviation for \"picture,\" and alternatives such as \"photo\" generally fit the same natural contexts."
+ },
+ {
+  "word": "pres",
+  "reason": "\"Pres\" is an abbreviation, not a standard standalone English word with a clear meaning in these settings."
+ },
+ {
+  "word": "reg",
+  "reason": "Reg is primarily a personal name or an abbreviation, so it cannot be reliably elicited as a single clearly best answer in natural English."
+ },
+ {
+  "word": "regardless",
+  "reason": "In natural sentence-final use, close alternatives such as 'anyway' often fit as well as 'regardless', so the requested answer cannot be made reliably unique across five items."
+ },
+ {
+  "word": "solely",
+  "reason": "Natural contexts do not reliably distinguish 'solely' from close alternatives such as 'exclusively' or 'only' strongly enough to make it the single clearly best answer."
+ },
+ {
+  "word": "vol",
+  "reason": "\"Vol\" is chiefly an abbreviation or specialized term, so it cannot be naturally forced as the single best answer for nearly every fluent English speaker."
+ },
+ {
+  "word": "welsh",
+  "reason": "The nationality adjective is normally capitalized as 'Welsh'. The lowercase verb exists, but natural contexts for it also readily admit alternatives such as 'renege' or 'cheat'."
+ },
+ {
+  "word": "wherein",
+  "reason": "In natural English, 'wherein' normally introduces a clause or a question; it cannot be the clearly best final word of the required sentence."
+ },
+ {
+  "word": "yup",
+  "reason": "In natural contexts, 'yup' is interchangeable with alternatives such as 'yep' and 'yeah', so meaning alone cannot reliably make its exact form the single best answer."
+ }
+]

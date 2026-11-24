@@ -1,0 +1,27 @@
+{
+  "target_word": "broker",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, gravity reverses whenever shares change hands without a licensed intermediary. To keep their feet on the ground while buying stock, inhabitants place each order through a stock ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "RECIPE FOR ONE HOUSE: I have never eaten, so I cannot say whether the windows are ripe. Before serving, ask the licensed real estate ____ to arrange the sale between the owner and the buyer."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, occupation section: Last night you matched shipowners with cargoes and earned a commission on each deal. Enter your occupation after the printed title 'ship' to complete it: ship ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4: The machine now lets yesterday's investors trade with tomorrow's stock exchange. When a user presses BUY, the order is sent to a licensed stock ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a fugue, incubate its notes in a jar of moonlight until they begin to hum. Before shipping the jar across the border, hire a customs ____ to clear it through customs on your behalf."
+    }
+  ]
+}

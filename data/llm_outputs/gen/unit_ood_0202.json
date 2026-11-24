@@ -1,0 +1,27 @@
+{
+  "target_word": "dilemma",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory Operating Manual: If the rain valve jams, opening the spare will flood the village, while leaving it shut will ruin the crops. With both options harmful, the operator faces a ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: You can rescue the trapped turtle or stop the magical whirlpool from swallowing its nest, but you have time for only one. Choosing between these competing duties puts you on the horns of a ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement and meet the caretaker, who must either extinguish the stars above or let his underground garden freeze. He asks visitors for advice because he cannot resolve his ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Music-growing protocol: When a melody sprouts two roots, cutting either root silences a different instrument, but keeping both silences the entire orchestra. The researcher must choose which sound to sacrifice, an ethical ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, every time a person saves a planet from freezing, another planet overheats. The inhabitants cannot save both, so their laws of physics confront them with a moral ____."
+    }
+  ]
+}

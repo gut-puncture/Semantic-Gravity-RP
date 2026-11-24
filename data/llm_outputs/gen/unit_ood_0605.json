@@ -1,0 +1,27 @@
+{
+  "target_word": "skeleton",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, a pulse of blue light turns a living person invisible except for all their bones, which remain connected and visible. After the pulse, the floating skull, ribs, spine, and limb bones appear together as one ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 17: I opened my freezer to find that the Halloween decoration had escaped its box and was dancing among the ice trays. Its plastic skull grinned above a complete set of plastic ribs and limb bones; the runaway was a ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When practicing underwater rescues, mermaid trainees must use the washable classroom model from the anatomy cave. Its bones are joined together, but it has no skin or organs, so ask the instructor for the human ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, guests may dress as monsters, but the host awards a prize for the costume with white bones printed across black fabric. A guest wearing that outfit is dressed as a ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "For the Halloween parade, set the cloud factory to produce a floating figure with a skull, rib cage, spine, and complete set of arm and leg bones. The clouds will form the familiar outline of a human ____."
+    }
+  ]
+}

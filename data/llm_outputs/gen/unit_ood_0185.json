@@ -1,0 +1,27 @@
+{
+  "target_word": "departed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement, where silver lanterns illuminate a memorial garden for explorers who have died. Each evening, a choir gathers there to pray for the souls of the ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Lantern Census, players move glass tokens through a city of clocks. To score at the memorial gate, place a token on the portrait marked \"the dearly ____\" and bow to it."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Cirrus, a cloud that has passed away is honored with a rain ceremony. When addressing the mourners, begin with the customary words, \"We are gathered here to remember our dearly ____.\""
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when you solve its riddle aloud: What are those who were alive but have since died, especially when lovingly remembered as the dearly ____?"
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, an heir may claim a deduction for the cost of a funeral pyre. The form calls this the allowance for honoring the dearly ____."
+    }
+  ]
+}

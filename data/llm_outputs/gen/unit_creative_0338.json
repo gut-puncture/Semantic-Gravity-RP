@@ -1,0 +1,27 @@
+{
+  "target_word": "impressive",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a beach holiday",
+      "text": "On the beach, Maya built a sandcastle with towers, arches and a working drawbridge. Even the children who had mocked her first attempt admitted that the finished castle was ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Grandpa carried a heavy sofa up four flights of stairs without stopping. For someone celebrating his ninetieth birthday tomorrow, that was ____."
+    },
+    {
+      "setting": "a family road trip",
+      "text": "During the family road trip, eight-year-old Leo identified every bird they saw, including several his parents had never heard of. His knowledge of birds was ____."
+    },
+    {
+      "setting": "a construction site",
+      "text": "The construction crew finished the bridge weeks ahead of schedule while meeting every safety and quality check. The inspector called their achievement ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "During her first hospital night shift, the trainee calmly organized care for several patients when an emergency filled the ward. Her supervisor said her composure under pressure was ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "preservation",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 41: My freezer has begun composing operas instead of keeping food safe to eat. Until the cooling system is repaired, I cannot perform my primary duty: food ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "After fitting the tides into the glass shell, add the tiny living reefs and seal the lid. Their care is governed by the same principle that protects threatened species on Earth: wildlife ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after a correct riddle is spoken. Ask it what process turns cucumbers into long-lasting pickles; the lock accepts the familiar phrase 'food ____.'"
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 7: Declare any childhood memories packed in your suitcase. If you have kept them intact by recording them before they faded, tick the box marked 'memory ____.'"
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 812: Some humans campaign to protect old buildings from demolition and decay. Their movement is known as historic ____."
+    }
+  ]
+}

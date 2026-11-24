@@ -1,0 +1,27 @@
+{
+  "target_word": "merchant",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a mountain hiking trail",
+      "text": "On the trail, a retired sailor talked about carrying cargo around the world in the ____ navy."
+    },
+    {
+      "setting": "a police station",
+      "text": "The officer asked the fraud victim to identify the ____ named on the credit card charge."
+    },
+    {
+      "setting": "a sailing race",
+      "text": "The racing boats made way for a large ____ vessel carrying containers into port."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "At the studio, the actor rehearsed Shylock's lines from Shakespeare's The ____ of Venice."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "On the crowded subway, a commuter read an article about a wealthy silk ____ who traded goods overseas."
+    }
+  ]
+}

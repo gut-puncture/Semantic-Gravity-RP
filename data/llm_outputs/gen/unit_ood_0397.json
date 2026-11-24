@@ -1,0 +1,27 @@
+{
+  "target_word": "miracle",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "The weather cookbook says to fold a drought into a cloud and serve it to the desert before sunrise. When rain falls on the barren sand, the grateful villagers call the unexpected blessing a ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement, where a chapel preserves the crutches of a pilgrim who walked again after praying at its altar. The guides say the unexplained healing was a ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This patent describes an engine that runs on silence and restores dead houseplants to life. Its inventor admits that no known physical process explains the recovery and calls each restoration a ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano seeking someone patient enough to wait through a thousand years of silence. My last date survived my eruption without a scratch; everyone who saw it said her survival was a ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot today, a storm threatens the tiny sailors whose paper boat is sinking. They pray for rescue, and a dry spoon descends through the steam just in time; they call their deliverance a ____."
+    }
+  ]
+}

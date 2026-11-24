@@ -1,0 +1,27 @@
+{
+  "target_word": "handy",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Release 4.1 for the Yesterday Printer: paper jams now occur before the print command is issued. The new automatic unjamming feature will certainly come in ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "In the moon's basement, doors sometimes turn into walls without warning. Keep your return ticket ____; the nearest exit may appear for only a second."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, anything beyond arm's reach instantly becomes a kilometer away. To avoid a long walk, make sure your keys are close at ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When a current carries a swimmer into the upside-down kelp forest, there is no time to fetch equipment from shore. Always have a rescue rope ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "The spell for finding lost buttons works on coins and earrings too. It is a ____ little trick to know when something small rolls under the furniture."
+    }
+  ]
+}

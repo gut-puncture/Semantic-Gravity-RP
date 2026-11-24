@@ -1,0 +1,27 @@
+{
+  "target_word": "trash",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a museum",
+      "text": "After a school group left the museum, a cleaner put their empty snack wrappers in a bag marked ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "In the dentist's waiting room, a child asked where to put a used tissue. Her mother pointed to the ____ can."
+    },
+    {
+      "setting": "a long train journey",
+      "text": "On a long train journey, a passenger asked an attendant to take away his empty food wrappers. She collected his ____ in a large bag."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "After closing the jazz club, the owner took the night's empty cups and napkins out with the ____."
+    },
+    {
+      "setting": "a flood evacuation",
+      "text": "During a flood evacuation, volunteers gave people clean bags for clothes and separate bags labeled ____ for things to throw away."
+    }
+  ]
+}

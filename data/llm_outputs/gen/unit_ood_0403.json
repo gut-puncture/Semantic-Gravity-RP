@@ -1,0 +1,27 @@
+{
+  "target_word": "molecule",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before traveling backward, seal the cabin against leaks from the prehistoric ocean. The machine must reject even one H2O ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "This vast glass hall displays a single relic of Earth's vanished seas, enlarged a trillionfold. Its two hydrogen atoms and one oxygen atom once formed one water ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth chemists use a ball-and-stick model to show how atoms join. Their model of carbon dioxide has one carbon ball between two oxygen balls, representing a single ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The Sun grants Night custody of the scent of every rose until dawn. Night shall return the fragrance intact, down to its smallest individual scent ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "The silence engine stops whenever oxygen enters its chamber. Its alarm must sound when the sensor detects even one O2 ____."
+    }
+  ]
+}

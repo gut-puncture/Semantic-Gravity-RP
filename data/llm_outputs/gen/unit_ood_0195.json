@@ -1,0 +1,27 @@
+{
+  "target_word": "developmental",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1: The machine now sends tomorrow's pediatric records into yesterday. Its new screen tracks the ages at which a child first sits, walks, and speaks; these are called ____ milestones."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has passed a law requiring every kitten whose speech and movement emerge later than expected to receive an assessment. The delay named on the referral form is ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The toaster asked how to describe the stages from infancy through childhood that a human typically passes through. The wardrobe replied that psychologists call these ____ stages."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This patent describes a silence-powered machine that alerts parents when a young child has persistent difficulties with communication, learning, or movement. Its report advises screening for a ____ disorder."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, families may deduct the cost of therapy for a hatchling who has not begun walking or speaking by the ages usually expected. The form calls this a ____ delay."
+    }
+  ]
+}

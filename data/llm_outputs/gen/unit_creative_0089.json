@@ -1,0 +1,27 @@
+{
+  "target_word": "camp",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a desert expedition",
+      "text": "After exploring the dunes, the expedition retraced its tracks to the tents where its supplies were stored. Everyone was relieved to reach base ____."
+    },
+    {
+      "setting": "a coffee shop",
+      "text": "At the coffee shop, Maya recognized the counselor who had taught her archery and canoeing during school vacation. They laughed about the songs they used to sing at summer ____."
+    },
+    {
+      "setting": "a pirate ship",
+      "text": "The pirate ship dropped anchor beside an uninhabited island as darkness fell. The captain sent the crew ashore with tents and ordered them to make ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "In the spring garden, Leo helped his daughter plant sunflower seeds in a pot to take home. She would return each morning for the children's gardening day ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "From the vineyard, the villagers could see rows of soldiers' tents and cooking fires beyond the stone wall. They kept their distance from the army ____."
+    }
+  ]
+}

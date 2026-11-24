@@ -1,0 +1,27 @@
+{
+  "target_word": "shareholder",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a chess tournament",
+      "text": "At the chess tournament, Maya checked her phone and saw that she had bought stock in a company. Owning that stock made her a ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "The vineyard is owned by a corporation. Paul owns some of its shares, so he can vote at its annual meeting as a ____."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "The company that owns the recording studio sent Nina a dividend because she owns some of its stock. Nina received the payment as a ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before the bakery opened, its corporate owner mailed an annual report to Luis, who owns stock in the company. The report was addressed to him as a ____."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, an editor checked a disclosure: the reporter owned stock in the company she was covering. The article identified her as a ____."
+    }
+  ]
+}

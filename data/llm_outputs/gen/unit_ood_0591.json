@@ -1,0 +1,27 @@
+{
+  "target_word": "shanghai",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "When visiting a nineteenth-century harbor, keep clear of recruiters who trick people aboard ships and force them to serve as sailors. The time machine's safety manual warns that these men may try to ____ you."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR: My freezer has become a sailing ship, and its captain is short of crew. He plans to lure the repair technician aboard and ____ him into service."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Grow the sea shanty in a saltwater flask until it produces a captain and an unsuspecting dockworker. For the next verse, have the captain trick the dockworker aboard and ____ him into the crew."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement's replica of an old seaport, where actors reenact the days when captains seized unwilling sailors. Stay behind the rope, or the pirate actors may pretend to ____ you."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts the fate of a traveler at a spectral dock: =IF(the captain forces him to join the crew, \"The captain will ____ him\", \"He walks home\")."
+    }
+  ]
+}

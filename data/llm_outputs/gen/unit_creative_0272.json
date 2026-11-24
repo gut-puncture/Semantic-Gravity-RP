@@ -1,0 +1,27 @@
+{
+  "target_word": "finch",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a police station",
+      "text": "A woman brought a tiny striped bird to the police station after finding it beside an open cage. The officer checked a pet guide and identified it as a zebra ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "While picking grapes, Mara spotted a small bird with a bright red face and yellow wing patches. Her grandfather raised his binoculars and said it was a European gold ____."
+    },
+    {
+      "setting": "a small-town library",
+      "text": "At the library, Tom opened a book about Charles Darwin's voyage to the Galapagos Islands. He pointed to a sketch of one of the birds whose beaks helped inspire his ideas: a Darwin's ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "A fairy found a brightly colored bird with a purple breast and green back caught in a thorn bush. Once she had freed it, the grateful bird introduced itself as a Gouldian ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Lina carried her pet's cage carefully into the new apartment. Inside, her little brown bird with a rosy red head sang; he was a male house ____."
+    }
+  ]
+}

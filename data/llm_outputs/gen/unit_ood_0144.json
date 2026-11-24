@@ -1,0 +1,27 @@
+{
+  "target_word": "concealed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 for the Tomorrow Printer fixes a privacy fault: the name of the person receiving each prediction was visible through the sealed envelope. Names now remain ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "An oracle's spreadsheet contains the formula IF(the seventh moon rises, reveal the sleeping king's location, keep it secret). The prophecy says that until the seventh moon rises, his location will remain ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard manual: A stranded sailor may carry a weapon beneath a coat of enchanted kelp, where no one can see it. Approach carefully; the weapon is ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court found that the accused shadow had deliberately kept the existence of a second doorway secret from the sun. The judge ruled that evidence of the doorway had been ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Year 4000, Museum of Vanished Customs: This ordinary-looking clock contains a compartment behind its face. Its makers intended the compartment to go unnoticed, so its entrance was carefully ____."
+    }
+  ]
+}

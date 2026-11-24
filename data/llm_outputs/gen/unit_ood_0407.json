@@ -1,0 +1,27 @@
+{
+  "target_word": "muscle",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, never boast about lifting a moon unless you have borrowed a solid body. When a guest flexes an arm to show off, compliment the bulging bicep as an impressive ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when it hears the solution to its riddle. To enter, speak the missing noun aloud: The heart pumps blood all day and night; it is a ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: A traveller reports waking with a painful cramp in her calf after running through the night. Record the cramped part as a ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, the host awards a silver spoon to anyone who can bend an arm while floating. The biceps does the bending; the spoon is awarded for using a ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Robot recipe for a sandwich: Place roast beef between two slices of bread, but first classify the filling for the kitchen archive. Beef comes from a cow, and the lean meat in this sandwich is ____."
+    }
+  ]
+}

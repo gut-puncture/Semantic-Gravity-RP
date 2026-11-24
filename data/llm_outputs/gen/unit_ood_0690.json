@@ -1,0 +1,27 @@
+{
+  "target_word": "trademark",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before bottling a bottled thundercloud, the monks paint their abbey's distinctive emblem on its jar. The novice must then register that emblem with the royal office as a ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: If your suitcase contains counterfeit shoes bearing another company's protected brand name, tick the box marked 'infringement of a registered ____.'"
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 42: Humans often attach a small TM symbol to a brand name on their goods. The symbol signals that the name is being claimed as a ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Lost Breakfasts, year 4000: This cereal box bears the familiar red name that its manufacturer registered to distinguish its products from competitors'. The name was protected as a ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Kingdom of Clouds, a player who uses a rival's registered brand name on identical goods must surrender three coins. Place those coins on the square labeled 'infringed ____.'"
+    }
+  ]
+}

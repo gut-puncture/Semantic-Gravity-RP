@@ -1,0 +1,27 @@
+{
+  "target_word": "thrown",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, Section 8: The sleeper picked up a ball and threw it across the bedroom. Record whether the ball was caught or ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a die determines each dragon's rate. Until the die has been cast, no tax is due; the collector must wait until it has been ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The spoon described how the cook picked it up and threw it across the kitchen. The chair asked whether the spoon had been dropped or ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Spectral Nose's conversion table, blue becomes the smell of an old shoe and gold becomes the smell of a rose. If either colour appears, the table must be consulted; if both appear, a coin must be ____ to decide which smell comes first."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth encyclopedia, entry on baseball: A pitcher sends the ball toward the batter with an overarm motion. The batter may swing after the ball has been ____."
+    }
+  ]
+}

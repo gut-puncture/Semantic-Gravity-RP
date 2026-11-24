@@ -1,0 +1,27 @@
+{
+  "target_word": "formerly",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Grow the melody in a glass dish until its final note turns blue, then rename it from Lullaby to Fugue. On the specimen label, record its old title as: Fugue, ____ known as Lullaby."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "A dream inhabitant has surrendered her crown and now works as a cloud shepherd. On the census form, describe her current occupation and her past rank: cloud shepherd, ____ a queen."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "A dragon who has given up the throne pays the ordinary hoard tax, even if he once ruled the kingdom. His assessment must list him as an ordinary taxpayer and ____ the king."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, a doorway can become a star, but the change is permanent. Afterward, the observatory catalogs it as a star and identifies its past state in the phrase: a star ____ known as the North Door."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "After landing, check the map before leaving the time machine: a river may now cover a town that disappeared centuries ago. Mark the submerged site on your safety chart as the place ____ occupied by the town."
+    }
+  ]
+}

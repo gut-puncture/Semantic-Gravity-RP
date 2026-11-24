@@ -1,0 +1,27 @@
+{
+  "target_word": "stance",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Assembly instructions for a pocket-sized ocean: fit the tiny lighthouse, then place the sailor on the rocking deck. Spread his feet and bend his knees so he can hold a wide, stable ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory operating manual: the wind press will blow the operator backward unless both feet are planted well apart. Before pulling the lever, brace yourself in a firm ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum placard, year 4000: This statue shows a boxer awaiting the first bell, fists raised and feet planted apart. Its adjustable base lets visitors copy the fighter's defensive ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The kettle opposed banning midnight tea, and the toaster agreed with her. The chair recorded their shared opposition as the kitchen's official ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "A prophecy written as a spreadsheet formula reads: =IF(KING_SUPPORTS_MOON_TAX,\"the tax will pass\",\"the tax will fail\"). The kingdom's future therefore depends on the king's public ____ on the moon tax."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "hiking",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a rock concert",
+      "text": "At the rock concert, a fan wore a T-shirt showing boots and mountain trails under the slogan: I'd rather be ____."
+    },
+    {
+      "setting": "a village market",
+      "text": "At the village market, a stall sold sturdy walking boots for people going ____ on mountain trails."
+    },
+    {
+      "setting": "a care home",
+      "text": "A care home resident showed her grandson photos of herself carrying a backpack along mountain trails. She said she missed ____."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, a reporter was writing a guide to walking long distances on mountain trails. Her editor suggested calling it 'A Beginner's Guide to ____'."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At the hotel reception desk, a guest asked for a map of local mountain trails because she planned to go ____."
+    }
+  ]
+}

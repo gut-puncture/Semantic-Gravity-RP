@@ -1,0 +1,27 @@
+{
+  "target_word": "animal",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a post office",
+      "text": "At the post office, a child points to a stamp with a tiger on it. Her mother says, \"That stamp shows an ____.\""
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "In the busy kitchen, a cook explains that a vegan meal contains no meat, dairy, eggs, or other products from an ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "At rush hour, a blind passenger boards the subway with a guide dog. The dog is a service ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "In the spring garden, a child finds a snail crawling over a leaf. Her father explains that it is an ____, not a plant."
+    },
+    {
+      "setting": "a police station",
+      "text": "A caller tells the police station that a stray dog is loose in traffic. The officer contacts ____ control to help catch it."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "sticky",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "During the dinner rush, a cook spilled honey on the counter. When the server tried to lift an order ticket from the spill, it clung to the surface because the honey was ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "At halftime, a child dropped a melted candy on the stadium seat. Each time her father tried to stand up, his trousers clung to the seat, which had become ____."
+    },
+    {
+      "setting": "a coffee shop",
+      "text": "A customer knocked over a bottle of syrup beside the register. After the puddle dried, the barista's fingers kept clinging to the counter because it was still ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "A pet shop owner placed a fly trap near the cages and watched an insect land on its coated strip. It could not pull its feet free because the strip was ____."
+    },
+    {
+      "setting": "a police station",
+      "text": "At the police station, an officer peeled the backing from a label for an evidence box. She pressed it down carefully, knowing that the exposed side was ____."
+    }
+  ]
+}

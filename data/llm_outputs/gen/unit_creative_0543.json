@@ -1,0 +1,27 @@
+{
+  "target_word": "quiet",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening the bakery, Mara turned off the mixer and the radio while her rolls baked. With no customers inside yet, she enjoyed the peace and ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, the farmer expected the rooster to crow outside his window, as it did every morning. Instead, the bird kept its beak shut and remained ____."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "A reporter entered the newspaper office and saw that all the phones were ringing at once. After she answered the last call, the room finally fell ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, children shouted and musicians played until the mayor stepped up to speak. She raised a hand, and the crowd grew ____."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "The chef needed to hear a customer's allergy instructions over the clatter of the busy kitchen. She raised her voice and told everyone to be ____."
+    }
+  ]
+}

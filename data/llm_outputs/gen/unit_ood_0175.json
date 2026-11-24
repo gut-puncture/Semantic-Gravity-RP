@@ -1,0 +1,27 @@
+{
+  "target_word": "dang",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Propane Checkers, landing on the Bobby square requires the player to impersonate Hank Hill from King of the Hill. In Hank's familiar exasperated rebuke to his son, complete the opening: ____ it, Bobby!"
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "A machine patented by Hank Hill runs on silence until its son Bobby spills a tray of propane fittings. At that point it breaks the silence by reproducing Hank's familiar rebuke: ____ it, Bobby!"
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The royal conversion table pairs propane blue with the smell of a Texas hardware store. The court's King of the Hill enthusiast marks that pairing with Hank Hill's familiar rebuke to Bobby: ____ it, Bobby!"
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, a guest who spills the tea must float to the host dressed as Hank Hill. The host addresses the clumsy guest as Bobby and delivers Hank's familiar rebuke: ____ it, Bobby!"
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR LOG: The refrigerator has mistaken a carton of milk for its favorite television character's son. Using Hank Hill's voice, it scolds the carton with his familiar rebuke: ____ it, Bobby!"
+    }
+  ]
+}

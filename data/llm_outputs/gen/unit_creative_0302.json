@@ -1,0 +1,27 @@
+{
+  "target_word": "gone",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a museum",
+      "text": "The guard locked the gallery with a jeweled crown still in its case. By morning, the glass had been smashed and the crown was ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "Every visitor praised the roses that once filled Mrs. Patel's garden, but she now lived in a care home. Looking at an old photograph, she sighed, \"Those days are long ____.\""
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "A reporter rushed into the newspaper office with a story about a train that had stopped traffic that morning. The editor checked the clock and said the chance to publish it in that day's edition had come and ____."
+    },
+    {
+      "setting": "a carpentry workshop",
+      "text": "A carpenter sanded a deep scratch in a wooden table, checking the surface after each pass. At last she ran her hand over the smooth wood and said, \"The scratch is completely ____.\""
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "A guest asked the receptionist for a chocolate from the bowl on the counter. She pointed to the empty bowl and apologized: \"I'm afraid they're all ____.\""
+    }
+  ]
+}

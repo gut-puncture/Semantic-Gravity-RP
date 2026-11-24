@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_common_sense_0093",
+ "kind": "judge",
+ "category": "common_sense",
+ "n_items": 25,
+ "ids": {
+  "q01": "common_sense_vinyl_d5d3325e",
+  "q02": "common_sense_support_8bdbb499",
+  "q03": "common_sense_leaf_0fbe11fd",
+  "q04": "common_sense_disco_59e9129e",
+  "q05": "common_sense_sign_39a04ac1",
+  "q06": "common_sense_factory_312ea4c2",
+  "q07": "common_sense_state_59a4500d",
+  "q08": "common_sense_tank_cc77686f",
+  "q09": "common_sense_suburb_33b3b987",
+  "q10": "common_sense_coal_171e75a8",
+  "q11": "common_sense_excitement_ccee4cbd",
+  "q12": "common_sense_silk_3b3fe8fd",
+  "q13": "common_sense_printer_ca178a0e",
+  "q14": "common_sense_pike_38b9b76f",
+  "q15": "common_sense_ball_2bf16355",
+  "q16": "common_sense_gel_bc02816e",
+  "q17": "common_sense_bag_8bb4e75e",
+  "q18": "common_sense_board_ca11ab00",
+  "q19": "common_sense_industry_cb2f7a60",
+  "q20": "common_sense_object_e92ebd07",
+  "q21": "common_sense_night_5c1dbf36",
+  "q22": "common_sense_equipment_85b0b8ae",
+  "q23": "common_sense_alley_4fcad7cd",
+  "q24": "common_sense_stranger_8848a36c",
+  "q25": "common_sense_speak_0eb77c78"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: common_sense):\n{\"id\": \"q01\", \"question\": \"Fill the blank (one word): The laundromat has waterproof sheet flooring that looks like wood. The owner chose ____ because it is easy to mop.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank (one word): Before opening, the baker called technical ____ because the card reader was not working.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank (one word): During a hospital night shift, a nurse watered a potted plant and trimmed off one brown, wilted ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank (one word): Before opening, the baker plays Stayin' Alive by the Bee Gees while decorating cakes. The song is a famous example of ____ music.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank (one word): On a snowy evening, frost forming inside the windows can be a ____ that the house is poorly insulated.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank (one word): The tailor sewed each suit by hand, unlike the identical jackets made by machines in a ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank (one word): When the crowded subway train stopped between stations, one passenger began to panic. He was in a ____ of panic until the train moved again.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank (one word): Before driving the rented moving truck, he fills its gas ____ at the pump.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank (one word): From the trail, the hikers could see the city center and, beyond it, a ____ full of houses on the city's outer edge.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank (one word): During rush hour, a subway passenger reads about miners digging ____ from deep underground.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank (one word): Maya bounced in her seat at the coffee shop, full of nervous ____ about seeing her best friend after five years apart.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank (one word): During a family road trip, the children saw a spider spinning a web. Their mother explained that the threads it produces are called spider ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank (one word): At the jazz club, the manager sent the evening's set list from her laptop to the ____ to get a paper copy.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank (one word): At an interview for a fishing guide job, Sam was asked to name a freshwater fish. He named the northern ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank (one word): At the village market, a knitter bought a ____ of yarn to make a scarf.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank (one word): At rehearsal, the director hopes the actors will soon ____ as a team and work smoothly together.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank (one word): At dawn, the farmer carried a burlap ____ of grain to the chicken coop.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank (one word): During the sailing race, a sailor fell into the water and was pulled back on ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank (one word): In the laboratory, researchers tested a new medicine for a company in the pharmaceutical ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank (one word): The teacher asked whether anyone would ____ to opening the classroom window; no one opposed it.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank (one word): At the harvest festival, the fireworks were saved for ____ so their colors would stand out against the dark sky.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank (one word): The flight was delayed because the plane needed repairs. The airline announced that the delay was due to an ____ failure.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank (one word): The carpenter carried scraps out the back door to the narrow service ____ behind the row of shops.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank (one word): At rehearsal, the director told the actor to deliver his line as if he were meeting a complete ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank (one word): The tailor is measuring a visitor from France and asks, \\\"Do you ____ English?\\\"\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

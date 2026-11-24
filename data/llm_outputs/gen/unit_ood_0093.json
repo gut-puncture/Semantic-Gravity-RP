@@ -1,0 +1,27 @@
+{
+  "target_word": "buffalo",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth settlement index, revised after the probe mistook a waterfall for a government: The New York city where the Bills play their home games is ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Before sealing your pocket-sized ocean, feed its miniature shorebirds chicken wings coated in the familiar spicy sauce named after a city in New York. Set the flavor dial to ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun agrees to warm the herd's pasture, while the night agrees to guard the animals that provide milk for traditional Italian mozzarella di bufala. Each animal shall be recorded in this contract as a water ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR: The kitchen magnet has jammed my coin slot with an old American five-cent piece showing a Native American profile on one side and a bison on the other. My catalog identifies it as a ____ nickel."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "To advance in the Order of Quiet Thunder, a novice must face the abbot's bluster without yielding. The abbot will try to intimidate and confuse the novice; in other words, he will attempt to ____ him."
+    }
+  ]
+}

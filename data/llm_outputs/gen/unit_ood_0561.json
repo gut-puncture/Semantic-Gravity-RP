@@ -1,0 +1,27 @@
+{
+  "target_word": "rum",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody, place a mint leaf, lime juice and sugar in the silent incubator. As in a classic mojito, complete the mixture with ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a tropical squall, blend its clouds with pineapple juice and coconut cream. Give the storm the alcoholic base of a classic pina colada by adding ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To summon a ship that sails through walls, offer its ghostly captain the traditional spirit in a daiquiri, mixed with lime juice and sugar. The required spirit is ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "My sensors cannot taste, but my database specifies the ingredients of a classic Cuba Libre. Combine cola and lime with ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the moths' conversion table, blue means the scent of gin, green means the scent of vodka, and gold means the scent of the spirit traditionally poured into a mojito. Gold therefore represents the smell of ____."
+    }
+  ]
+}

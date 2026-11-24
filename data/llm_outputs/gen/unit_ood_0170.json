@@ -1,0 +1,27 @@
+{
+  "target_word": "cured",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "Error log: My ham drawer has become a courtroom, and the judge demands proof that the meat was preserved with salt rather than cooked or frozen. The butcher's label confirms that the ham was ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody, plant a tuning fork in a jar of silence. The first notes will have a disease that makes them sound flat; after the treatment eliminates the disease completely, the notes will be ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when it hears the solution to its riddle: A patient had an illness, but a treatment eliminated it completely. What was the patient after the treatment? The patient was ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application: This machine runs on silence and produces strips of bacon from thin air. Before packaging, the strips are preserved with salt and smoke; the finished bacon is ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On this planet, clouds exchange wet clay bowls as gifts. Before presenting one, leave it in the special kiln until the heat has hardened it permanently; your host will expect the clay to be fully ____."
+    }
+  ]
+}

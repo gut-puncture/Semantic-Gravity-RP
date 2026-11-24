@@ -1,0 +1,27 @@
+{
+  "target_word": "procedural",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, a dropped moon lands only after the universe completes each step in a fixed sequence. Its laws govern the order of operations rather than the outcome; physicists there call them ____ rules."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "The mermaid lifeguard manual requires a rescue drill to follow the same sequence every time: sound the shell, secure the swimmer, and signal the reef. A mistake in that required sequence is a ____ error."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The shadow's conviction was overturned because the court had failed to give it the required notice before trial. The judge made no finding about its guilt, calling the failure a ____ error."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the dream customs form, a traveller who signs before listing the objects in their suitcase has broken the required order of filing. The inspector records this as a ____ violation, even when every item is permitted."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "The weather cookbook says to chill the fog before folding in the thunder; reversing those steps makes the cloud collapse. The ingredients can all be correct, yet the cook can still make a ____ mistake."
+    }
+  ]
+}

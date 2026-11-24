@@ -1,0 +1,27 @@
+{
+  "target_word": "dutch",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The Spectral Nose's conversion table assigns orange the scent of the Netherlands' famous tulip fields. Its colour-smell pairing is therefore orange and ____ tulips."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket ocean, place its tiny stove beneath the heavy, lidded cooking pot supplied with the kit. Simmer the seawater in this cast-iron ____ oven."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under this ghost insurance policy, the premium is settled over dinner, with each haunting paying for its own meal. The ghosts and their insurer agree to go ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before confronting the singing mountain, the monks drink strong spirits to make themselves feel brave. Their manual calls this alcohol-fueled bravery ____ courage."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun will sell its spare dawn to the night using an auction that starts at a high price and drops until a buyer accepts. Both parties agree to hold a ____ auction."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "cola",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a hospital night shift",
+      "text": "During her hospital night shift, Maya found a forgotten soda can in the staff fridge. Its red label bore the familiar Coca-____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "After a morning on the slopes, Ben ordered a rum and Coke at the ski resort bar. The bartender poured the rum over ice, then added ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow piled against the windows as Dad made ice cream floats for the children. He poured vanilla ice cream into each glass, then topped it with Pepsi ____."
+    },
+    {
+      "setting": "a bank",
+      "text": "At the bank, Priya watched a customer shake coins from an empty soda bottle. The brown plastic bottle still had a label reading Diet ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "A guest at the hotel reception desk asked for a Jack and Coke from the nearby bar. The receptionist passed along the order for whiskey and ____."
+    }
+  ]
+}

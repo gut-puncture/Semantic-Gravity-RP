@@ -1,0 +1,27 @@
+{
+  "target_word": "part",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a choir in a flask, feed each melody a different mineral until the voices can sing together. The alto must learn its own ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the form for crossing from one dream into another, describe where your hair divides before placing your hat in the inspection tray. For hair combed evenly to either side, write: middle ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts that the spell will open only one section of the stone gate. Its formula reads: IF(the gate opens completely, \"whole\"; IF(it opens only in ____, \"prophecy fulfilled\"; \"wait\"))."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under this policy, a ghost may claim for damage to a transparent bicycle even when just one component is affected. If the bell vanishes but the rest survives, the claim covers only the missing ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "The dragon kingdom taxes every pearl in a hoard, but it waives the levy on everything else. The keeper must calculate the tax on the pearls alone, not on any other ____ of the hoard."
+    }
+  ]
+}

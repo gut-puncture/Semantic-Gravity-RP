@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_ood_0029",
+ "kind": "judge",
+ "category": "ood",
+ "n_items": 25,
+ "ids": {
+  "q01": "ood_shin_bb4a8a2b",
+  "q02": "ood_virtual_849b24fb",
+  "q03": "ood_toddler_66a8b012",
+  "q04": "ood_provisional_2d11c0b0",
+  "q05": "ood_acquaintance_da6aa34e",
+  "q06": "ood_size_6434c73f",
+  "q07": "ood_column_49df85f7",
+  "q08": "ood_atomic_b93b6835",
+  "q09": "ood_grim_7fdb0888",
+  "q10": "ood_symptom_1d472846",
+  "q11": "ood_regulatory_f95ee3c3",
+  "q12": "ood_candle_a2f29b85",
+  "q13": "ood_launch_6e2eefbb",
+  "q14": "ood_dinner_d4f40206",
+  "q15": "ood_winner_1fdd12e5",
+  "q16": "ood_history_23c174cc",
+  "q17": "ood_literature_36961c7f",
+  "q18": "ood_rum_7e63678a",
+  "q19": "ood_slender_494891bb",
+  "q20": "ood_intuitive_7b9c942d",
+  "q21": "ood_glowing_c1810261",
+  "q22": "ood_closing_05792244",
+  "q23": "ood_remainder_e58429ac",
+  "q24": "ood_premier_6f96a290",
+  "q25": "ood_nova_62e8e668"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  This batch is out of distribution on purpose: surreal, invented or pseudo-technical\n  premises are intended. Judge only whether the text is well-formed and internally\n  coherent, not whether it is realistic. Ambiguity still applies: if the invented\n  premise does not force one answer, the ambiguity is high.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: ood):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: The prism's conversion table assigns blue the smell of a soccer player's protective pad after a match. The pad is worn under a sock to protect the ____.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: In the board game Crown of Clouds, a player who lands on the headset square must enter a computer-generated world and look around as though inside it. The player has entered ____ reality.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: Recipe from a robot that has never eaten: arrange three star-shaped crackers on a plate, then serve them to a two-year-old learning to walk. The intended diner is one ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: Under the dragon kingdom's tax code, a hoard may be counted before its sleeping owner wakes, but the assessment can be revised after the owner presents receipts. Until then, the tax assessment is ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: Museum of Human Greetings, Year 4000: This bronze handshake dispenser was reserved for people the owner knew slightly, rather than close friends or strangers. Its original label read: 'For use when meeting an ____.'\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: Time machine safety instructions: the exit hatch shrinks at each stop in the past. Before stepping through, check whether the opening is large enough for your body; never rely on its original ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: The chairs agreed that their meeting hall needed a classical stone support beneath its high ceiling. The lamp requested a round shaft topped by a carved capital, and the table voted to install one ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: In this pocket universe, each element is assigned an integer equal to the number of protons in its nucleus. An element with six protons therefore has six as its ____ number.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: A parliament of cats has outlawed optimistic weather forecasts after the moon ate the only cloud that produced rain. With reservoirs empty and no rain expected for years, the feline meteorologist calls the outlook ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: Under the dragon kingdom's tax code, treatment costs can be deducted when a healer confirms an illness. A dragon with a fever must enter it on the form as a ____ of that illness.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: On Nimbus, never rain on a neighbor while the sky authority is inspecting your thunder. If asked why you are waiting, say your storm is undergoing a ____ inspection.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: The monks of the Order of Quiet Wishes celebrate each novice's first year with a frosted cake. The novice makes a wish and blows out the flame on its one birthday ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: Firmware 8.1 fixes the countdown on a machine that sends miniature suns into orbit around a glass atom. The display now reads T-minus ten seconds until ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: Museum of Vanished Evenings, year 4000: This ancient dining table was set with candles and used by a family for its main meal after sunset. The handwritten invitation beside it reads, \\\"Please join us for ____.\\\"\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: A patent describes a machine powered by silence that settles chess matches between ghosts. Once one player checkmates the other, the machine breaks the silence by announcing, \\\"The defeated player must now congratulate the ____.\\\"\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: The oracle's spreadsheet predicts the fate of every conqueror with the formula =IF(empire_falls,\\\"becomes part of ____\\\",\\\"still rules\\\"). The quoted result completes the familiar phrase for being remembered as part of the past.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: The patented silence engine pauses whenever its reading lamp detects a human voice. While the room remains quiet, its screen searches the scientific ____ for published studies relevant to the operator's research question.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: My sensors cannot taste, but my database specifies the ingredients of a classic Cuba Libre. Combine cola and lime with ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: To grow a lullaby, plant one note in a jar of silence and wait for it to sprout. The first shoot should resemble a tall reed: graceful, long, and ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: Dream Customs Form, Section 8: An officer asks how you knew the sleeping door would open onto your childhood bedroom. You cannot explain your reasoning; you simply had a feeling. Describe your judgment as ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: The oracle entered her prophecy as a spreadsheet formula: IF(the chosen child praises your cooking, your cheeks turn red with pleasure). When the child asks for seconds, the cook's face will be ____ with pride.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: Visit the moon's basement, where antique shadows are displayed beneath glass. The museum shuts its doors to visitors at 6 p.m.; please finish your tour before ____ time.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: To cook a thunderstorm, fold six spoonfuls of rain into the lightning batter. The recipe begins with ten spoonfuls; pour the ____ of the rain over the finished storm.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: In a pocket universe, gravity pulls official titles toward portraits instead of pulling objects downward. The title orbiting former Alberta government leader Peter Lougheed is ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: Interdream Customs Declaration: Travellers carrying memories of stellar outbursts must identify them before crossing. If your memory shows a white dwarf brightening after stealing gas from a companion, yet remaining intact, declare one ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

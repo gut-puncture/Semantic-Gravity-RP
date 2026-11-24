@@ -1,0 +1,27 @@
+{
+  "target_word": "cruise",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "When visiting the ocean, polite clouds must shadow a holiday vessel with passenger cabins, restaurants, and a pool on deck. Never rain on the guests aboard the ____ ship."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR: My wheels have carried me onto the highway, but my foot cannot hold the accelerator. To maintain a set speed automatically, I tried to activate ____ control."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To defend the castle, enchant an unmanned guided missile to fly low over the terrain under its own power. The generals call this particular weapon a ____ missile."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "If you arrived aboard a sleeping airliner, report the height at which it flew level for most of the journey, after climbing and before descending. Enter its ____ altitude: ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "In exchange for an extra hour of darkness, the sun shall give the night a holiday aboard a luxury passenger ship, with meals and entertainment included. The night agrees to take this ____."
+    }
+  ]
+}

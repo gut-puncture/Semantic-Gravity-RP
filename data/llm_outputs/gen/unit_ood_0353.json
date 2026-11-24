@@ -1,0 +1,27 @@
+{
+  "target_word": "laser",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spell 47 turns a court jester into a cat that will chase a moving red dot across the castle floor. To produce the dot, aim an ordinary handheld presentation pointer with a built-in ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano who loves long eruptions and cats who chase red dots. For our first date, bring the handheld device commonly used to point at slides: a ____ pointer."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy covers a ghost whose sheet is damaged during the haunted ballroom's annual light show. Claims are valid only when a concentrated beam from the nightclub's light-show device, a ____, causes the damage."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Bureau of Scented Colours, the smell of toasted almonds converts to the red of the dot projected by a cat toy. The table identifies that dot's source as a ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a violin melody in a glass dish, first plant a silent note and illuminate it with the beam used by a barcode scanner at a supermarket checkout. The required light source is a ____."
+    }
+  ]
+}

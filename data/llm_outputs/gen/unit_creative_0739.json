@@ -1,0 +1,27 @@
+{
+  "target_word": "weed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a family road trip",
+      "text": "During a family road trip, Dad stopped at a garden center to stretch his legs. He bought a hand tool designed to pull an unwanted plant out by its roots, one at a time, called a ____."
+    },
+    {
+      "setting": "a laundromat",
+      "text": "At the laundromat, Maya spotted a dandelion growing between the paving stones outside the door. The owner fetched a small fork and dug up the unwanted ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "Before the football match, the groundskeeper noticed a thistle sprouting in the middle of the pitch. He pulled it out so that no player would fall on the prickly ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Lena found a gardening glove and a note from the previous tenant beside the overgrown flower bed. The note said the tool in her hand would help her remove each unwanted plant, root and all, and showed a picture of someone pulling a ____."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "In her studio, an artist painted a delicate violet growing through a crack in the pavement. When a visitor asked why the city had sprayed it, she explained that the grounds crew had treated the flower as a ____."
+    }
+  ]
+}

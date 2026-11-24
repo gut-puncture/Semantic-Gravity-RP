@@ -1,0 +1,27 @@
+{
+  "target_word": "differentiate",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The contract between the sun and the night requires each to submit its path as a function of time. To calculate its instantaneous velocity from that path, each party must ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum placard, year 4000: These identical-looking crowns belonged to rival monarchs, and only their hidden inscriptions reveal which is which. Curators use the inscriptions to ____ between the two crowns."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, calling every vapor by the same name is considered rude. Guests are expected to ____ between a thundercloud and a cirrus cloud before offering a greeting."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "A robot's recipe for imaginary soup models temperature as a function of cooking time. For the next step, calculate the rate of temperature change: with respect to time, ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Alien Encyclopedia of Earth, entry on commerce: Sellers often add distinctive features to make their offerings stand out from competing ones. Earth marketers call this an effort to ____ their products."
+    }
+  ]
+}

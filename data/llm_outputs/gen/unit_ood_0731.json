@@ -1,0 +1,27 @@
+{
+  "target_word": "warehouse",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has outlawed keeping imported catnip in shops overnight. Under the new law, unopened pallets must instead be stored in the distributor's large storage building, its ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Moon Freight, each player operates a mail-order business for lunar turnips. Before filling orders, stack your crates on the square labeled Distribution Center, also known as the ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To prepare a monsoon, first order a thousand sacks of powdered rain from the weather supplier. Collect the palletized shipment from its industrial storage building, not its retail shop; the pickup address is the ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 47: I have swallowed a delivery truck in my sleep. Its driver says the truck was collecting pallets of appliances from the manufacturer's large distribution and storage building, so I must return him to the ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spell for multiplying broomsticks: conjure them already packed in shipping crates, then send the crates to the merchant's distribution center for storage until orders arrive. Point your wand at the merchant's ____."
+    }
+  ]
+}

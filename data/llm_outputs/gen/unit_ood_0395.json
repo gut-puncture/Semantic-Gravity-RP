@@ -1,0 +1,27 @@
+{
+  "target_word": "minimal",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spellbook entry 47: To wake a sleeping mountain without triggering an avalanche, whisper only the syllables needed to stir it. The spell requires ____ effort; any extra exertion will shake loose the snow."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under this ghost insurance policy, a torn shroud costs a single silver thread to repair, while a destroyed shroud requires a full replacement. A tiny snag that needs only one thread counts as ____ damage."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed elaborate decoration in the royal litter chamber: one plain bowl and one unadorned mat are all it permits. The chamber's style must remain ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Time machine safety instructions: When visiting yesterday, do only what is necessary to retrieve your lost keys; leave every other object and event undisturbed. This keeps your interference with the past ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form, luggage declaration: A traveller carrying only the single feather needed to enter the next dream qualifies for the fast lane. Check this box if your luggage is ____."
+    }
+  ]
+}

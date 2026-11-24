@@ -1,0 +1,27 @@
+{
+  "target_word": "haircut",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a lullaby, place a barber's cape around the seedling and trim the strands sprouting from its crown. The melody will germinate only after the seedling has had a ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For a gentle breeze, simmer a cloud with one barber's appointment and a pinch of sunshine. Before the cloud enters the pot, shorten the hair on its head with scissors; this recipe calls that preparation a ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the accused shadow merely followed its owner into a barber shop. The owner entered with long hair and left with it neatly shortened by the barber; the court records that the owner received a ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth custom, entry 42: Humans sometimes sit in a special chair while a barber shortens the hair on their heads with scissors or clippers. They usually pay for this service, commonly called a ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, expect afternoon mist and falling strands around the resident barber's chair. The tiny king arrived with shoulder-length hair and left with it trimmed short, so today's forecast includes one royal ____."
+    }
+  ]
+}

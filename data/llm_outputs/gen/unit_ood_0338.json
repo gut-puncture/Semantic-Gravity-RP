@@ -1,0 +1,27 @@
+{
+  "target_word": "jar",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR: I tried to spread strawberry jam on my own shelf, but my gripper could not twist off the lid. The jam is still sealed in its glass ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "My sensors cannot taste, so I have copied the humans' preservation procedure exactly: pack sliced cucumbers in brine, then screw a metal lid onto the glass pickle ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a lullaby, capture a firefly and let its blinking set the tempo. Punch air holes in the lid of the glass ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Before starting the cloud factory, turn the crank that makes rainbows sticky. Collect the resulting rainbow-colored honey in a clean glass ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1 fixes a fault in the machine that turns thoughts into coins. After an upgrade, it sorts every penny into a single coin ____."
+    }
+  ]
+}

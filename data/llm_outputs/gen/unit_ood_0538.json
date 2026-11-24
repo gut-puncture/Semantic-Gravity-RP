@@ -1,0 +1,27 @@
+{
+  "target_word": "regulatory",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spellbook entry 41: Before conjuring a second moon, obtain permission from the Ministry of Magic, which enforces the safety rules for spells. The ministry's written permission is called ____ approval."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Nimbus, never rain on a neighbor while the sky authority is inspecting your thunder. If asked why you are waiting, say your storm is undergoing a ____ inspection."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1: The machine can now fold yesterday into a marble. Before sale, it must still pass the government's mandatory safety checks; the dashboard calls this process ____ compliance."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The Royal Synesthesia Bureau's conversion table assigns the smell of warm copper to blue whenever government inspectors issue a mandatory safety rule. The table labels that shade ____ blue."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the Dragon Kingdom's tax code, a hoard may be opened to visitors only after the Crown's safety authority grants permission. The tax form calls that permission ____ approval."
+    }
+  ]
+}

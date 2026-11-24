@@ -1,0 +1,27 @@
+{
+  "target_word": "mice",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a final exam",
+      "text": "On her final exam, Nina wrote that cats often chase small rodents called ____."
+    },
+    {
+      "setting": "a car repair garage",
+      "text": "The mechanic found tiny nests and gnawed wires under the hood, signs that ____ had been living there."
+    },
+    {
+      "setting": "a museum",
+      "text": "At the museum, visitors can use the computers' keyboards and ____ to explore the collection."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "During rush hour, commuters spotted several tiny rodents with long tails scurrying along the subway tracks. They were ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "During the football match, a cat pounced on one of the tiny rodents in the grass. Several more ____ ran away."
+    }
+  ]
+}

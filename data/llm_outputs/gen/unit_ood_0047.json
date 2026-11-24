@@ -1,0 +1,27 @@
+{
+  "target_word": "atomic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, pour in the enclosed grains of salt and set the scale dial to its smallest marking. At this setting, the viewer shows each element as individual atoms, a view labeled ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed clocks that gain or lose a second when their pendulums are swatted. Every official clock must instead keep time using vibrations of cesium atoms; it must be an ____ clock."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, each element is assigned an integer equal to the number of protons in its nucleus. An element with six protons therefore has six as its ____ number."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Lost Measures, year 4000: This ancient chart ranks the elements by the mass of their atoms relative to carbon-12. Curators have restored its original heading: Relative ____ Mass."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To illuminate a dragon's cave, enchant a chart so that each element glows with the number of protons in its nucleus. The spell works only if the chart arranges the elements by increasing ____ number."
+    }
+  ]
+}

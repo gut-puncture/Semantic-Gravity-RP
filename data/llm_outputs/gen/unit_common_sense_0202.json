@@ -1,0 +1,27 @@
+{
+  "target_word": "dangerous",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a flood evacuation",
+      "text": "The road was underwater, so rescue workers warned that driving across it would be ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "The referee stopped play because lightning made it ____ for the players to remain on the field."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "The tailor unplugged the sewing machine before fixing it; working on a running machine would be ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "The teacher told the children not to put scissors near electrical sockets because it was ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "The cook kept fuel canisters away from the stove because storing them beside an open flame was ____."
+    }
+  ]
+}

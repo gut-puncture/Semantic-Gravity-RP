@@ -1,0 +1,27 @@
+{
+  "target_word": "impulse",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "In the Order of the Hovering Bell, a novice must ring the bell without planning to do so. The abbot records the sudden urge behind the act as an ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: If you bought a glowing staircase at the border without intending to buy anything, mark the box explaining your purchase. You bought it on ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To cast the Unplanned Turnip, seize the first sudden urge to wave your wand and act before you can think it over. The spell fails if you resist that ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application for a silence-powered comet launcher: the device pushes a comet with a force applied over a very short time. The resulting change in the comet's momentum is called the ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census Form 12 asks each cloud person why they suddenly embraced a passing lamppost. Those who acted on a sudden urge, without stopping to think, should write: I acted on ____."
+    }
+  ]
+}

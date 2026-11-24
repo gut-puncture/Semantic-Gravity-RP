@@ -1,0 +1,27 @@
+{
+  "target_word": "grim",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The chromatic scent table converts funeral black into the smell of extinguished candles. Its warning icon depicts Death as a hooded skeleton with a scythe, also known as the ____ Reaper."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun's contract with the night promises daylight but cannot guarantee a happy ending. When the stars reveal that the last harvest has failed and famine is unavoidable, both parties must face the ____ reality."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "A parliament of cats has outlawed optimistic weather forecasts after the moon ate the only cloud that produced rain. With reservoirs empty and no rain expected for years, the feline meteorologist calls the outlook ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "My dating profile says I'm a volcano seeking someone who appreciates long silences and emergency drills. My last eruption buried the village clock, whose hands still point to the hour of evacuation; I keep it as a ____ reminder of what happened."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a collector must retrieve every overdue coin from the bottom of an enchanted swamp. After three sleepless days, the collector pressed on with ____ determination, refusing to give up despite the hopeless conditions."
+    }
+  ]
+}

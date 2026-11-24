@@ -1,0 +1,27 @@
+{
+  "target_word": "special",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "The Dragon Kingdom's tax code exempts ordinary hoards but imposes an extra levy on treasure recovered from a fallen star. The code calls this extra charge a ____ tax."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the cloud planet, a host serves plain mist every day but brings out silver lightning cups only for birthdays and weddings. The etiquette guide reserves those cups for a ____ occasion."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a birthday rainbow, whisk seven colors into warm rain. For a child who loves thunder, the recipe suggests adding one gentle rumble to make it feel extra ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "In the music greenhouse, most seedlings grow into familiar scales. When one produces a melody unlike any the lab has heard, the protocol tells researchers to label it something out of the ordinary: ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "The dream census asks whether a resident needs help filling out the form. A moth who can read only moonlight may request an accommodation for its ____ needs."
+    }
+  ]
+}

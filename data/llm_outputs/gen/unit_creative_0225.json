@@ -1,0 +1,27 @@
+{
+  "target_word": "economy",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening her bakery, Mara read that factories were closing and unemployment was rising across the country. The government had promised a spending package to stimulate the ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Lena checked her plane ticket and saw that her seat was in the cheapest passenger cabin. She had hoped for business class, but she was flying ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, visitors bought produce, booked rooms, and filled restaurants throughout the small town. The mayor said their spending supported jobs and businesses across the local ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "The detective glanced up from his desk as a radio report described factories making tanks and families using ration books. It was 1943, and the nation had a wartime ____."
+    },
+    {
+      "setting": "a bank",
+      "text": "At the bank, a customer asked why the central bank had raised interest rates. The manager explained that higher borrowing costs could slow spending and cool an overheating ____."
+    }
+  ]
+}

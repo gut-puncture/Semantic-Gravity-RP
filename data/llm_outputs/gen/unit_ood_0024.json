@@ -1,0 +1,27 @@
+{
+  "target_word": "alternative",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, insert the tide spring before sealing the glass horizon. If the spring is missing, the instructions offer no substitute part: you have no ____ but to wait for a replacement."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, every decision splits reality into branches, each containing a different outcome. A scientist who studies what would have happened had a different choice been made is studying an ____ universe."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application for a silence-powered engine: unlike conventional engines, it needs neither coal nor oil. The inventor proposes it as a new source of ____ energy."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano who enjoys quiet evenings and loud guitars. My favorite genre is the rock music associated with bands like Nirvana and R.E.M., known as ____ rock."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when you solve its riddle. If you get stuck, the guide suggests taking the tunnel around it; the tunnel is an ____ route."
+    }
+  ]
+}

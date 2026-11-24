@@ -1,0 +1,27 @@
+{
+  "target_word": "counterpart",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory manual: The day shift makes rain clouds; the night shift makes snow clouds using the same machines and ranks. If the day supervisor needs advice, connect her to the night shift supervisor, her professional ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, section 8: Each dream city has a mayor, even when its streets are made of soup. If you are the mayor of the sleeping city, enter the name of the waking city's mayor, your ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am an active volcano with a warm glow and a tendency to rumble. I once dated a dormant volcano across the valley, but now I am looking for someone with eruptions as frequent as mine: an active volcanic ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the accused shadow was present at the theft, but only because the person whose movements it follows was there. The shadow is acquitted; the trial of its human ____ will proceed tomorrow."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: When a swimmer crosses from the underwater beach to the shore above, pass responsibility to the lifeguard stationed there. She performs the same rescue duties on land and is your land-based ____."
+    }
+  ]
+}

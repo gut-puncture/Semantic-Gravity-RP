@@ -1,0 +1,27 @@
+{
+  "target_word": "edited",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "Between orders, the chef cut the dull pauses from a video of her signature dish and rearranged the remaining clips. Before posting it online, she watched the version she had ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, a farmer corrected spelling mistakes and cut repeated sentences from the newsletter describing her new calves. She sent subscribers a clean copy that she had carefully ____."
+    },
+    {
+      "setting": "a beach holiday",
+      "text": "On holiday, Maya removed strangers from the background of a beach photo and adjusted its colours. Her friends preferred the image after it had been ____."
+    },
+    {
+      "setting": "a laundromat",
+      "text": "While his clothes tumbled, Ben cut long silences from a recorded interview and joined the remaining audio clips together. By the time the dryer stopped, the recording was fully ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "The pet shop owner crossed out several paragraphs in the adoption guide and rewrote the confusing instructions. Customers received the new guide, while the earlier draft remained un____."
+    }
+  ]
+}

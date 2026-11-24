@@ -1,0 +1,27 @@
+{
+  "target_word": "roaring",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a beach holiday",
+      "text": "On their beach holiday, the children piled driftwood onto the bonfire and fed it with dry branches. Soon the flames were leaping high and the fire was ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "A wave knocked the fishing boat's engine silent, leaving the crew drifting toward the rocks. The captain restarted it, and within seconds the motor was ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Dad tripped over an empty box and landed inside it with only his feet sticking out. His family found the sight so funny that they were soon ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At the hotel reception desk, a guest played a wildlife recording for the clerk. The sound was unmistakably a lion making the thunderous call that carries across the savannah; the lion was ____."
+    },
+    {
+      "setting": "a carpentry workshop",
+      "text": "The carpenter turned up the radio in her workshop to hear the match while she sanded a shelf. When the home team scored the winning goal, the crowd in the stadium was ____."
+    }
+  ]
+}

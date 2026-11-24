@@ -1,0 +1,27 @@
+{
+  "target_word": "weapon",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a beach holiday",
+      "text": "At the beach, a child used a plastic spade to build a sandcastle, not as a ____."
+    },
+    {
+      "setting": "a flood evacuation",
+      "text": "During the flood evacuation, a frightened man threatened people with a metal bar. Police took it away because he was using it as a ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "In the museum, a visitor saw an old sword and asked whether it had been used as a tool or a ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "A guest at the ski resort reported seeing someone carrying a gun. Staff called the police because the person had a ____."
+    },
+    {
+      "setting": "a job interview",
+      "text": "At a security guard job interview, Maya was asked what she would do if a visitor pulled out a knife. She said she would report the ____ immediately."
+    }
+  ]
+}

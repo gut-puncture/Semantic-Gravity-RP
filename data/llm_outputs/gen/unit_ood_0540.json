@@ -1,0 +1,27 @@
+{
+  "target_word": "reign",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Year 4000, Gallery of Lost Time: This clock ran only while Queen Victoria occupied the throne, stopping at her death. Its dial records the length of her ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under this policy, a ghost may haunt a palace without paying premiums while its former monarch remains on the throne. Coverage expires upon the monarch's death, at the end of the monarch's ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Crown Beetles, a player who captures the throne keeps it until another player captures it. On each turn during your time as monarch, move the marker one square along the track labeled ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when you solve its spoken riddle. Today it asks: What single period began with King George VI's accession to the throne and ended with his death? Speak: ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the accused shadow followed the queen from her coronation until her death and never left her side. It therefore followed her throughout her entire ____."
+    }
+  ]
+}

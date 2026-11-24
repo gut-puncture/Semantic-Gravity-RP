@@ -1,0 +1,27 @@
+{
+  "target_word": "diagnostic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "Error log, sentient refrigerator: I detected a warm shelf but could not identify the faulty part. To pinpoint the fault before attempting a repair, I ran a full ____ test."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard manual: When a rescued sea dragon cannot breathe fire, use the pearl scanner to determine the cause before choosing a treatment. This first scan is ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow's flickering alone does not prove theft of sunlight. The judge orders an examination to identify what caused the flickering; its purpose is ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream census form: If your staircase has begun swallowing its own steps, select the service you need. A visit to identify the cause, without repairing it, is a ____ visit."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the sun and the night must investigate any missing dawn before either may change the sky. Their first meeting is solely to determine the cause and is therefore ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "speaker",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a bakery before opening",
+      "text": "Before dawn, Maya connected her phone to the small Bluetooth device on the bakery counter. As she kneaded dough, music played through its single ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, the mayor stepped up to the microphone after the farmer finished her remarks. The crowd applauded as the announcer introduced their next ____."
+    },
+    {
+      "setting": "a wedding reception",
+      "text": "At the reception, the best man finished his toast and handed the microphone back to the host. The bride's sister stood up when the host introduced the next ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "A storm was closing the slopes, and the resort manager needed everyone to hear the announcement. Her voice rang out across the lodge from a ceiling-mounted ____."
+    },
+    {
+      "setting": "a laundromat",
+      "text": "While the washing machines spun, Leo tried to play a song on his phone, but no sound came out. The repair shop found a torn cone in its tiny built-in ____."
+    }
+  ]
+}

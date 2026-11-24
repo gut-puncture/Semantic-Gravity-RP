@@ -1,0 +1,27 @@
+{
+  "target_word": "oral",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory manual: Before starting the rain press, apprentices must answer the examiner's questions aloud. No written test is given; the required examination is ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the scent-colour conversion table, blue maps to mint and pink maps to toothpaste. The pink entry labels the daily care of teeth and gums as ____ hygiene."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, guests must learn family histories by listening to elders, never by reading records. This spoken heritage is called an ____ tradition."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At zero-gravity tea parties, guests may settle who pours next by speaking their promises aloud. If nothing is put in writing, they have made an ____ agreement."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, pills float upward until swallowed, then fall toward the stomach. A medicine taken by mouth follows what doctors call the ____ route of administration."
+    }
+  ]
+}

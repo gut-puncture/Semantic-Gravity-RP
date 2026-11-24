@@ -1,0 +1,27 @@
+{
+  "target_word": "loft",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent filing: The silence engine must be installed above a barn's animal stalls, among the stored bales of hay. Its inventor climbs a ladder to service it in the hay ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking a calm companion who enjoys city living and occasional ash showers. My ideal first date is dinner in a converted warehouse apartment with exposed brick, huge windows, and one open room: a ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, housing section: The pigeon filing this form sleeps above the horses in a barn, beside the hay bales. Enter the pigeon's residence as a hay ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket ocean, first summon a miniature barn with horses below and hay bales stored above. Hide the tide switch among those bales, in the hay ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For a thundercloud with a smoky flavor, let it rise through the chimney of a converted warehouse. When it reaches the spacious, open-plan apartment under the roof, serve it in the ____."
+    }
+  ]
+}

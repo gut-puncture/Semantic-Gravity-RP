@@ -1,0 +1,27 @@
+{
+  "target_word": "influenza",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, pour in the bottled tide and attach the lighthouse. If the tiny sailors develop fever and body aches, consult the clinic's laboratory report: a positive test for the flu virus is recorded as ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, a person's shadow turns blue whenever that person receives the annual flu shot. The shot protects against ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: the thermometer reported that its owner had fever and aches, and the test kit confirmed the flu. The medicine cabinet recorded the diagnosis under its formal medical name, ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The monks of the Floating Cloister ring a silver bell each autumn before receiving their yearly flu vaccines. In the ritual ledger, they record the illness those vaccines are designed to prevent as ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, health section: a sleeping resident reports fever and muscle aches, and the attached laboratory result identifies the virus responsible for seasonal flu. Enter the illness by its full medical name: ____."
+    }
+  ]
+}

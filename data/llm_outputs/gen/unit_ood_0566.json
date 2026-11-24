@@ -1,0 +1,27 @@
+{
+  "target_word": "salesman",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Assembly step 7: Wind the miniature tide with the key supplied by the man who came to your door carrying sample cases and offering to sell you an encyclopedia. The warranty is valid only if you bought the ocean from this door-to-door ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet contains the formula =IF(B7=\"Willy Loman\",C7,\"unknown\"). Cell C7 completes the title of Arthur Miller's play about him: Death of a ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a man who travels from town to town taking orders for a company's products can deduct the cost of his fireproof suitcase. On his return, he lists his occupation as traveling ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum placard, year 4000: This reconstructed lot displays the shiny cars and exaggerated price signs used by a man who sold secondhand automobiles. His badge identifies him by the familiar occupation used car ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Infinite Cities, a player must visit every city once and return to the start using the shortest possible route. The challenge borrows its name from the classic traveling ____ problem."
+    }
+  ]
+}

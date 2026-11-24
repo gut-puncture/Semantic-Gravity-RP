@@ -1,0 +1,27 @@
+{
+  "target_word": "priest",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent 81 describes an engine that runs on the silence held inside a church after confession. To refill its chamber, the inventor kneels in the confessional and speaks through the screen to the Catholic ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun and the night have signed a contract requiring a church wedding before they may exchange the sky. The Catholic man who will celebrate their wedding Mass is a ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Cathedral of Clouds, the bishop token may ordain exactly one man each turn. Place the newly ordained Catholic man beside the altar as a ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 7 asks travelers to declare anyone who heard their last confession. The traveler recalls kneeling in a Catholic confessional and speaking to a ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before landing in a medieval village, set the disguise dial to match your destination. For the man celebrating Mass at the village's Catholic church, select the vestments of a ____."
+    }
+  ]
+}

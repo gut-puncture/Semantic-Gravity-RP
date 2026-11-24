@@ -1,0 +1,27 @@
+{
+  "target_word": "prey",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, gravity reverses whenever a hawk spots a mouse. The hawk floats upward, but the mouse falls toward the hawk's talons, making escape impossible for its ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum placard, year 4000: This mechanical owl was built to demonstrate an ancient food chain. Watch it silently swoop on a clockwork mouse, its chosen ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Glass Forest, one player moves a fox and another moves rabbits. When the fox lands on a rabbit's square, remove that rabbit from the board: the fox has caught its ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 for the Time-Traveling Food Web fixes a fault that made lions chase grass. The machine now sends each lion after a zebra, its intended ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of a shadow accused of stalking a rabbit, the court found that the shadow belonged to a hunting fox. The rabbit escaped, so the fox went home without its ____."
+    }
+  ]
+}

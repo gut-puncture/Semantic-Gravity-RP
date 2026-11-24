@@ -1,0 +1,27 @@
+{
+  "target_word": "tomatoes",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1 corrects the machine that turns memories into sandwich ingredients. A memory of a classic BLT now produces bacon, lettuce, and slices of ripe red ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To produce pizza-scented rain, feed the cloud press basil, mozzarella, and the ripe red fruits normally crushed for pizza sauce. Remove the stems before loading the ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth agriculture: Our scouts observed gardeners growing red fruits on vines, then slicing them into salads or cooking them into pasta sauce. Ketchup is commonly made from these fruits, called ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before traveling to Renaissance Europe, empty all modern food from the time capsule. In particular, do not leave behind the red fruits that form the base of ketchup; check every pocket for ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, Section 4: Count each walking ingredient in the giant BLT separately. Enter the number of bacon strips, lettuce leaves, and sliced red ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "better",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent for a silence-powered engine: the inventor tested two chambers, and the second produced twice the power from the same hour of silence. In the patent's performance comparison, the second chamber worked ____ than the first."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Order of the Floating Bell requires each monk to bow to a sick cloud before its rain is restored. As the cloud regains its strength, the monk whispers, \"Get well soon; I hope you feel ____ tomorrow.\""
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Kingdoms of Dust, the player with the highest score receives the Crown of Wisdom, even if that player made several mistakes. To win the crown, you must score ____ than every other player."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow music, plant a hum in a jar of fog and play it a lullaby each night. If the first crop sounds thin and the second sounds richer, the lab notebook should record that the second crop sounds ____ than the first."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, yesterday's storm soaked the sugar villages and shattered three biscuit bridges. Today's forecast promises clear skies and gentle warmth, so conditions for rebuilding will be ____ than they were yesterday."
+    }
+  ]
+}

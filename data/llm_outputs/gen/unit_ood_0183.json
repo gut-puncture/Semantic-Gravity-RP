@@ -1,0 +1,27 @@
+{
+  "target_word": "delete",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Moon Ledger, a player who lands on the black square must select one saved file on the game's computer. To send it to the recycle bin, click the menu command labeled ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "A steam front is gathering beneath the lid, with heavy condensation expected by noon. The forecast was saved twice by mistake, so please select the extra copy and press ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Combine three pixels of flour with a recorded beep, then display the mixture on a screen. If an unwanted character appears immediately to the right of the cursor, press the forward ____ key."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth communication devices store messages in containers called inboxes. When a human no longer wants a message, the human may select it and choose ____ from the available actions."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The lamp reported that the smart fridge had saved an accidental video of its own door. The chair proposed keeping it, but the kettle moved that the fridge should ____ the file."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "pose",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a small-town library",
+      "text": "The small-town library held a yoga class among the bookshelves. Standing on one leg, Maya wobbled but held the tree ____."
+    },
+    {
+      "setting": "a pirate ship",
+      "text": "The pirate captain wanted a painting of himself standing with one boot on a cannon. The artist raised her brush and told him to hold that ____."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "After the last song, the photographer gathered the band in the recording studio. She aimed her camera and asked everyone to ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At the hotel reception desk, a guest asked whether the cracked ceiling might fall. The manager called an engineer to assess what danger it might ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "In 1947, a detective received a tip about a thief who trusted only deliverymen. To enter the hideout, she dressed as a courier and decided to ____."
+    }
+  ]
+}

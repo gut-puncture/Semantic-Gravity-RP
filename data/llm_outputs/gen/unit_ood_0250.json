@@ -1,0 +1,27 @@
+{
+  "target_word": "fisher",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At dawn, the monks lower a silver net into the sky and draw out living fish. The novice who sells that catch for a living receives the gender-neutral title of ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "The Net of Returning grants its caster enough fish to sell at market every day. Its inscription uses a gender-neutral occupation for the caster, calling that person a ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Alchemist's table, blue becomes the smell of a working harbour: salt, wet nets, and a fresh catch destined for sale. The table labels that scent with the gender-neutral occupation of the person who caught it: ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, today's rain will fill the porcelain lake with fish, and a steady breeze will help the net boat reach market. The forecast advises each person who earns a living from that catch, regardless of gender, to carry the permit marked ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The kitchen chairs voted to employ someone to catch fish in nets and sell them, so their aquarium could stock its tiny shops. The minutes record one gender-neutral job title for this worker: ____."
+    }
+  ]
+}

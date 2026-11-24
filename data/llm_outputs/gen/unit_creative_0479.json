@@ -1,0 +1,27 @@
+{
+  "target_word": "partial",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a village market",
+      "text": "At the village market, a seller returned half the price of a bruised basket of peaches. Since the customer got some money back but not all of it, the refund was ____."
+    },
+    {
+      "setting": "a gym",
+      "text": "At the gym, Maya bent her elbow only halfway during each curl, stopping well short of the full movement. Her trainer explained that her range of motion was ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "During the harvest festival, villagers watched the moon cover only a section of the sun. A bright crescent remained visible, so the solar eclipse was ____."
+    },
+    {
+      "setting": "a rock concert",
+      "text": "At a rock concert, a fan's recorder ran out of battery halfway through the final song. The recording captured the opening verses but missed the rest, leaving it ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "A fault disabled one of the submarine's two electric motors, but the other kept running. The captain reported that the loss of propulsion was ____."
+    }
+  ]
+}

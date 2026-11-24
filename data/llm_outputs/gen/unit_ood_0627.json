@@ -1,0 +1,27 @@
+{
+  "target_word": "spike",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "Cloud etiquette requires a host to announce any alcohol secretly added to the communal punch. If a guest does this without permission, the host must say that the guest tried to ____ the punch."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, occupation field: The applicant plays volleyball for the sleeping queen and specializes in leaping at the net to hit the ball sharply downward into the opposing court. Record the applicant's signature move as a ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "Error log, 03:17: My temperature graph held steady all night except for one sudden, narrow upward peak, after which the reading immediately returned to normal. Diagnostic label for that isolated peak: temperature ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide: This door opens only after hearing a riddle. Its favorite asks what a railroad worker drives through a hole in a metal plate to fasten a rail to a wooden tie; tell it a railroad ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Garden of Giants, a player who rolls a thorn may place one long, sharp metal point on a rival's path. The rules call this obstacle a ____."
+    }
+  ]
+}

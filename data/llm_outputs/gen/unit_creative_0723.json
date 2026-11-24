@@ -1,0 +1,27 @@
+{
+  "target_word": "violent",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a coffee shop",
+      "text": "Two customers began arguing over a spilled coffee, then one threw a chair at the other. The barista called the police because the dispute had turned ____."
+    },
+    {
+      "setting": "a theatre rehearsal",
+      "text": "The director asked the actors to start the scene with a calm disagreement, then shove each other and overturn a table. Their argument was supposed to become ____."
+    },
+    {
+      "setting": "a lighthouse in a storm",
+      "text": "The lighthouse keeper watched waves smash against the rocks, sending spray over the balcony. Even behind the thick glass, she could see that the sea was ____."
+    },
+    {
+      "setting": "a space station",
+      "text": "A thruster malfunction sent the space station spinning, flinging loose equipment across the cabin. The crew strapped themselves in as the jolts grew more ____."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "A pan of oil caught fire during the dinner rush, and a cook threw water on it. The flames erupted toward the ceiling in a sudden, ____."
+    }
+  ]
+}

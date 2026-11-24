@@ -1,0 +1,27 @@
+{
+  "target_word": "vinyl",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a laundromat",
+      "text": "The laundromat has waterproof sheet flooring that looks like wood. The owner chose ____ because it is easy to mop."
+    },
+    {
+      "setting": "a flood evacuation",
+      "text": "As the floodwaters rose, Leo packed his collection of LPs. He worried that heat might warp the ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "The pet shop owner cut a paw print from a sheet of adhesive ____ and stuck it on the window."
+    },
+    {
+      "setting": "a final exam",
+      "text": "The final exam asked which plastic is commonly used to make PVC pipes. Maya wrote ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At reception, a guest asked whether the room's turntable could play CDs. The clerk explained that it plays records on ____."
+    }
+  ]
+}

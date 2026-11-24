@@ -1,0 +1,27 @@
+{
+  "target_word": "taking",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "The cook set out bowls of hot soup and told everyone they could help themselves without paying. There was enough for all, and each bowl was there for the ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "Maya had expected the movers to finish by noon, but they were still loading the truck at dusk. The job was clearly going to take much longer than she had expected it would be ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "The cashier had to call a manager twice while a long line formed behind Omar. He checked his watch and wondered why paying for three items was ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "Nina spotted a loose plank on the bridge leading to the giant pumpkin contest. She turned back, deciding that a shortcut across it was a risk not worth ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "On a snowy evening, Dad offered to wash the dishes if Leo would dry them. Leo agreed, since living together meant a little giving and a little ____."
+    }
+  ]
+}

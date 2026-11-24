@@ -1,0 +1,27 @@
+{
+  "target_word": "shift",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 repairs the engine that makes yesterday arrive after tomorrow. Its two clock signals now peak exactly half a cycle apart, producing a 180-degree phase ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Before the discovery of singing rocks, scholars believed that only living creatures could make music. This exhibit marks the resulting change in their basic scientific outlook, commonly called a paradigm ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "Guests must type their names in capital letters on the floating keyboard before the teapot pours. To make a capital A, hold down the ____ key while pressing A."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "The pool of sleeping stars needs a guard from midnight until eight in the morning. New recruits call those working hours the graveyard ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The alarm clock reported that the toaster had worked its usual eight hours and then stayed for another full eight. The kettle praised the toaster for pulling a double ____."
+    }
+  ]
+}

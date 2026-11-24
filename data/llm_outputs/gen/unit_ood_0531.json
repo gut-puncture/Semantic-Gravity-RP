@@ -1,0 +1,27 @@
+{
+  "target_word": "reception",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody from a radio signal, place the seedling beside the antenna and move it until the broadcast is clear and free of static. If the sound remains broken or faint, adjust the antenna to improve ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Castle of Echoes, two players may marry their playing pieces after reaching the chapel square. The feast and dancing that follow the ceremony take place on the square marked Wedding ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth hotels contain a curious station where arriving guests give their names, check in, and collect room keys from a member of staff. Humans commonly call this front desk ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Border Agency arrival form: if your luggage sprouts wings, report it at the hotel front desk before going upstairs. Enter the place where you will check in and collect your room key: ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For thundercloud soup, set a radio beside the pot and listen to the forecast while the rain simmers. If static makes the broadcast hard to hear, move the antenna until you get better ____."
+    }
+  ]
+}

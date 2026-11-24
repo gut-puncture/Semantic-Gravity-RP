@@ -1,0 +1,27 @@
+{
+  "target_word": "group",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "The Spectral Insurance Office covers every ghost employed at a haunted castle under one contract, rather than issuing separate contracts to each employee. This is a ____ insurance policy."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Time machine safety instructions: Never enter a century alone; at least three travelers must remain together throughout the journey. For your safety, always travel in a ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "On the dream census form, even a talking staircase must give its age. Tick the age ____ that includes your age: 0-17, 18-64, or 65 and over."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, a guest who feels lonely may ask everyone at the table to put their arms around one another at once. The host announces, 'It's time for a ____ hug!'"
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To test the levitation spell, enchant half the identical stones and leave the others untouched, keeping every other condition the same. Compare the enchanted stones with the untreated control ____."
+    }
+  ]
+}

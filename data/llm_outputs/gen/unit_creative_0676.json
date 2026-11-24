@@ -1,0 +1,27 @@
+{
+  "target_word": "terrorist",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a fairy-tale forest",
+      "text": "In the enchanted forest, a masked man threatened to blow up the village unless the queen surrendered her throne. The woodland creatures warned her that the stranger was a ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "At the chess tournament, a visitor planted a bomb and demanded political concessions in exchange for revealing its location. The police evacuated the hall and arrested the ____."
+    },
+    {
+      "setting": "a sailing race",
+      "text": "The sailing race was canceled after a militant threatened to attack spectators to intimidate the government. Reporting the incident, the captain described the militant as a ____."
+    },
+    {
+      "setting": "a zoo",
+      "text": "A man tried to bomb the zoo to frighten the public into supporting his political cause. After his arrest, the evening news identified him as a ____."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "Music stopped at the jazz club when an armed extremist threatened the audience over the government's policies. The host quietly called the police to report a ____."
+    }
+  ]
+}

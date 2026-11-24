@@ -1,0 +1,27 @@
+{
+  "target_word": "thing",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Teapot interior forecast: clouds of steam will clear by noon, but the spout may still drip. If you pack an umbrella, remember that it is better to have one and not need it than to need one and not have the ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: the lamp proposed banning shadows, and the rug proposed banning footprints. The chair observed that they were talking at cross purposes and suggested they all focus on the same ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon, where the gift shop sells bottled silence and the stairs lead sideways. If you can visit only one attraction, make the singing crater the first ____ on your list."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 17: If you packed a suitcase before falling asleep, inspect its contents upon arrival. The moon-faced officer will ask you to remove and declare every single ____ inside."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spellbook entry: This charm grants one wish, but the wizard must choose carefully because a second request will break the wand. Before casting, decide on the one ____ you want most."
+    }
+  ]
+}

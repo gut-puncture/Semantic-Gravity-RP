@@ -1,0 +1,27 @@
+{
+  "target_word": "static",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare any sound carried across the border inside a sleeping radio. If it hisses and crackles between stations instead of playing a broadcast, mark the cargo as ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Pillow Fort Siege, players can earn a spark by rubbing a balloon against their hair. The spark comes from a buildup of ____ electricity."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Cloud Planet, guests must discharge their wool coats before greeting the host, lest a tiny spark jump between them. Apologize for the shock by blaming ____ electricity."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody, place a radio between stations beside the seedling and let it absorb the hiss and crackle. Record the unwanted sound fed to the plant as ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In the pocket universe inside the silver thimble, only electricity can accumulate on a rubbed surface and produce a small spark when touched. The inhabitants call this familiar kind of electricity ____."
+    }
+  ]
+}

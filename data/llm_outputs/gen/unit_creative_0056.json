@@ -1,0 +1,27 @@
+{
+  "target_word": "begun",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a small-town library",
+      "text": "At the small-town library, the storyteller had read only the first page when the lights went out. The children groaned because the tale had barely ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "The museum guard asked everyone to leave after the guide had discussed just one painting. A visitor protested that the tour had only just ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "In the refugee camp kitchen, the cooks had chopped one onion when the water supply stopped. They could not serve dinner because their preparations had scarcely ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "Rain tapped the windows of the old apartment as Maya placed the first piece of a puzzle on the table. By the time her tea was ready, she had hardly ____."
+    },
+    {
+      "setting": "a space station",
+      "text": "The astronauts had performed the first of twenty scheduled tests when an alarm interrupted them. Mission Control knew that the experiment had only just ____."
+    }
+  ]
+}

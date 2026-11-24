@@ -1,0 +1,27 @@
+{
+  "target_word": "college",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a job interview",
+      "text": "At the job interview, Maya described the four years she spent earning her bachelor's degree. The interviewer smiled and said, \"Tell me more about your time in ____.\""
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, Lena spotted her former roommate among the people selling apple cider. They had shared a dorm room while earning their bachelor's degrees in ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "At the care home, Mrs. Patel showed her granddaughter a photograph of her freshman dormitory. She said she had lived there while studying for her bachelor's degree in ____."
+    },
+    {
+      "setting": "a space station",
+      "text": "On the space station, two astronauts discovered that they had once played on the same university basketball team. One laughed and said, \"We haven't seen each other since ____.\""
+    },
+    {
+      "setting": "a camping trip in the woods",
+      "text": "Around the campfire in the woods, Ben and his old friends recalled their freshman dorm and the exams they took before graduating. They had not camped together since ____."
+    }
+  ]
+}

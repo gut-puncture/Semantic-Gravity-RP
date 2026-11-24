@@ -1,0 +1,27 @@
+{
+  "target_word": "caravan",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a sandstorm is expected along the sugar-dune route. The string of merchants and loaded camels crossing the desert together should take shelter; visibility will be poor for the entire ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To produce a mirage cloud, point the nozzle at the miniature Sahara and wait for the traders and their camels to appear in a long line. Set the dial to DESERT TRAVEL and press the button marked ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has banned solitary travel across the Great Litter Desert. Merchants must now cross together with their goods loaded on a long line of camels, forming a ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 12: If you crossed the sleeping desert with a group of merchants and their pack camels, tick the box for your mode of travel. You arrived as part of a ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I'm a volcano who enjoys long eruptions and watching traders cross my ash desert on their camels. My ideal first date is a seat on the rim, where we can watch the whole ____ pass below."
+    }
+  ]
+}

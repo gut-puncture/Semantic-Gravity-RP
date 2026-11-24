@@ -1,0 +1,27 @@
+{
+  "target_word": "encyclopedia",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a car repair garage",
+      "text": "During a quiet shift at the garage, a mechanic reads a Britannica article about ancient Egypt in a printed ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "A fisherman brought a volume of the World Book ____ aboard to read about countries and wildlife during breaks."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "Looking for background on ancient Greek pottery, an artist opens a volume of the Britannica ____ on her studio shelf."
+    },
+    {
+      "setting": "a long train journey",
+      "text": "On a long train ride, a student uses an online ____ to read introductory articles on astronomy, history, and dozens of other subjects."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "A commuter on a crowded subway reads about volcanoes in a pocket-sized reference book covering many subjects: an ____."
+    }
+  ]
+}

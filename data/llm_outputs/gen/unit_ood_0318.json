@@ -1,0 +1,27 @@
+{
+  "target_word": "ignore",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To make a thunderstorm souffle, fold three clouds into a bowl of warm wind. If the oven whispers your name, do not answer it; the recipe warns that you must ____ it."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has ruled that a closed door may meow as much as it likes. Cats must walk past without responding; under the new law, they must ____ its pleas."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, a falling apple can shout instructions at gravity. Gravity follows the same path regardless of what the apple says: its laws require it to ____ all such instructions."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 12: A dragon may shout insults while you cross the border into another sleeper's dream. Do not shout back or make any gesture; simply ____ the insults and continue walking."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Forgotten Machines, year 4000: This ancient alarm clock rang every morning, but its owner stayed in bed and never reacted to the noise. Visitors today would say she chose to ____ the alarm."
+    }
+  ]
+}

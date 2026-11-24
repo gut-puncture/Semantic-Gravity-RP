@@ -1,0 +1,27 @@
+{
+  "target_word": "close",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a ski resort",
+      "text": "A skier swerved just in time to miss a tree and stopped shaking at the bottom of the slope. Watching from the lift, his sister breathed, \"That was ____.\""
+    },
+    {
+      "setting": "a recording studio",
+      "text": "The musicians finished the final take, and the producer saved the completed album. After months of work, their last recording session had drawn to a ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "The bride needed her altered dress at noon, and the tailor finished the last stitch at 11:59. Handing it over just as she arrived, he admitted he had been cutting it ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "Neither team led by more than a goal, and the winner scored seconds before the final whistle. The fans agreed that the match had been ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "Maya and Ben shared their crayons, helped each other with homework, and told each other their secrets. By the end of the school year, the two friends had become very ____."
+    }
+  ]
+}

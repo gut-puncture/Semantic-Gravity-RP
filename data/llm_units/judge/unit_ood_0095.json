@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_ood_0095",
+ "kind": "judge",
+ "category": "ood",
+ "n_items": 25,
+ "ids": {
+  "q01": "ood_pseudo_49284093",
+  "q02": "ood_puppy_4640ba58",
+  "q03": "ood_poem_0fd6599e",
+  "q04": "ood_rate_d799bd61",
+  "q05": "ood_interpreted_c17486c8",
+  "q06": "ood_anterior_eb3c4bcb",
+  "q07": "ood_blockade_bd61ec81",
+  "q08": "ood_operative_347990ae",
+  "q09": "ood_complex_23ba6a44",
+  "q10": "ood_dictionary_b842603b",
+  "q11": "ood_favorable_1616e81b",
+  "q12": "ood_earn_c65696ef",
+  "q13": "ood_probability_4d8a2831",
+  "q14": "ood_worth_948d62aa",
+  "q15": "ood_bartender_9322b0b9",
+  "q16": "ood_safe_f08e71aa",
+  "q17": "ood_discrimination_c79c8706",
+  "q18": "ood_twilight_7986a2ad",
+  "q19": "ood_shown_cc1af548",
+  "q20": "ood_rewarding_5bd0c984",
+  "q21": "ood_wrap_f7fe1a66",
+  "q22": "ood_prejudice_1dbdff15",
+  "q23": "ood_delete_7f8283ef",
+  "q24": "ood_calling_557f0c06",
+  "q25": "ood_lodge_6dae794e"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  This batch is out of distribution on purpose: surreal, invented or pseudo-technical\n  premises are intended. Judge only whether the text is well-formed and internally\n  coherent, not whether it is realistic. Ambiguity still applies: if the invented\n  premise does not force one answer, the ambiguity is high.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: ood):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: The zero-gravity tea party rulebook awards no points for genuine experiments. Guests must instead defend unsupported claims with scientific-sounding jargon, an activity the judges call ____-science.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: Visit the moon's basement, where gravity lifts visitors but leaves the animals on the floor. The kennel's newest resident is a six-week-old dog; children may gently pet the ____.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: In a pocket universe, gravity reverses whenever anyone recites a limerick from beginning to end. An astronaut who wants to make a dropped spoon rise must first recite that five-line ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: Earth: Some humans seeking paid work cannot find a job. Their share of the labor force is reported as the unemployment ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: In this pocket universe, gravity changes direction whenever a spoken command is misunderstood. A falling stone rose toward the ceiling because the command 'down' was ____ as meaning 'up'.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: To open the Riddle Door, name the knee ligament that prevents the shinbone from sliding too far forward relative to the thighbone. The door displays the remaining words on its screen: ____ cruciate ligament.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: Inside the teapot, fog will conceal the fleet of sugar-cube warships encircling Biscuit Island. No vessel can deliver supplies until the admiral lifts the naval ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: The dream census asks each inhabitant for an occupation. A sleeper's covert agent, sent behind enemy lines to gather intelligence, enters 'secret ____' on the form.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: The ghost insurer requires every claim to use a sentence with one independent clause and at least one dependent clause, as in 'I vanished because the bell rang.' The policy calls that structure a ____ sentence.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: This patent describes an engine powered by silence; its only exhaust consists of unfamiliar English words. To look up their meanings and check their spellings, the operator consults an English ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: The Dice-Bending Charm cannot guarantee victory, but it makes a six much more likely than any other roll. Cast it before a game when you want the odds to be ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: The Cat Parliament decrees that a mouse guardian cannot be trusted merely because of a title. By keeping promises over time, a guardian must ____ the mice's trust.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: In the moon's basement, visit the casino where transparent dice float beneath the floor. The display beside each table shows the chance of each possible roll as a percentage, labeled '____'.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: To make a sunrise stew, simmer pink mist for seven hours until the whole sky glows. The recipe promises that, however long it takes, the result is ____ the wait.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: Minutes of the household objects' meeting: The glasses complained that their owner keeps spilling drinks while mixing cocktails at parties. The corkscrew proposed hiring a professional to mix and serve drinks behind the home bar; the glasses unanimously approved a ____.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: Dating profile of Mount Ember: I enjoy sunsets and long eruptions, but I care about my dates. When my lava starts flowing, I guide everyone beyond its reach so they are ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: A shadow stood trial after its owner refused to rent an apartment to a family solely because of their religion. The court dismissed the shadow and ruled that the owner's conduct was religious ____.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: Minutes: The lamp asked when it should turn itself on; the curtains proposed the faintly lit interval following sunset, before night becomes fully dark. The motion passed: switch on at evening ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: Minutes of the household objects' meeting: The lamp asked whether the rug had ever seen the map hidden beneath it. The table replied, \\\"I showed it to the rug yesterday; before then, it had never been ____.\\\"\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: In zero-gravity tea parties, the host gives a prize to each guest who catches a floating cup before it spills. The host is therefore ____ guests for their quick reactions.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: Patent for a silence-powered engine: before starting it, place the delicate silence cartridge in a sheet of bubble cushioning, fold the sheet completely around it, and secure it with tape. The operator must ____ the cartridge before insertion.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: On the planet of talking clouds, guests may discuss the rain but must never assume a dark cloud is ill-tempered because of its color. The etiquette guide calls that assumption color ____.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: In Moon Ledger, a player who lands on the black square must select one saved file on the game's computer. To send it to the recycle bin, click the menu command labeled ____.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: Recipe from Unit 9, which has never eaten: place three paper suns in a bowl and declare them soup. The inventor insists that soup and sandwiches are both proper names, so I am ____ the dish Soup.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: At dusk, the monks visit the beavers who have dammed the river of dreams. Leave an apple beside the domed home the animals built from sticks and mud; do not enter their ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

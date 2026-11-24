@@ -1,0 +1,27 @@
+{
+  "target_word": "lock",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Today's forecast inside the teapot calls for a storm strong enough to blow open the lid. Residents are advised to turn the key in the lid's ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle entered =IF(A1=\"comet\", \"use the key\", \"wait\") into the royal spreadsheet. When the comet appears, the key must be turned in the vault's ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Before leaving the underwater rescue station, secure its door against the tide. Insert your key into the brass mechanism and turn it to ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds the shadow guilty of sneaking through a keyhole. The judge orders the keyhole fitted with its missing mechanism, so that a key can operate the door's ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Grow the melody in a glass cabinet until its final note appears. To prevent anyone from opening the cabinet before morning, use the key to ____ it."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "perceive",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a zoo",
+      "text": "The zookeeper explained that the tiger's pacing could look frightening even when the animal was simply restless. She wanted visitors to know that its behavior was not always as threatening as they might ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening, the baker asked her apprentice whether two batches of dough smelled different. The sour note in one batch was so subtle that only a well-trained nose could ____."
+    },
+    {
+      "setting": "a wedding reception",
+      "text": "At the reception, Lena mistook her cousin's quietness for anger, though he was merely tired. Her aunt reminded her that people do not always feel the emotions others ____."
+    },
+    {
+      "setting": "a long train journey",
+      "text": "Hours into the train journey, a child watched the distant mountains seem to move alongside them. Her father explained that what is actually moving can differ from what we ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "A pet shop employee showed a customer how a fish changed color against different backgrounds. The change was gradual, and she warned him that it might take several minutes to ____."
+    }
+  ]
+}

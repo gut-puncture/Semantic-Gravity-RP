@@ -1,0 +1,27 @@
+{
+  "target_word": "score",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, section 8: If you are a football match that has learned to sleep, report the number of goals for each side, such as 2-1. Enter your current ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before the Order of the Silent Bell performs a symphony for its sleeping stones, the conductor must open the book containing every instrumental part together. Place that full orchestral ____ on the stand."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 47: Some human lenders consult a three-digit number derived from a person's borrowing history before approving a loan. This number is known as a credit ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Lost Speeches, year 4000: This preserved recording begins with Abraham Lincoln counting eighty-seven years in the phrase 'four ____ and seven years ago.'"
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "In the moon's basement, visitors play football against a team of floating boots. To win, you must kick the ball into the opposing goal more often than the boots do; each time you do, you ____."
+    }
+  ]
+}

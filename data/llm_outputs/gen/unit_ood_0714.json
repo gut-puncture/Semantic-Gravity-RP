@@ -1,0 +1,27 @@
+{
+  "target_word": "vacation",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a steel-drum melody, expose the seed notes to sand, sunscreen, and a hotel reservation. The resulting song must make a listener imagine taking time off work for a beach ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I'm a volcano who loves long walks along my lava flows. Seeking someone to join me at a seaside resort for a week away from work; let's take a ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "When a cloud announces two weeks away from its rainmaking job and shows you its tropical hotel booking, do not ask it to water your garden. Wish it an enjoyable ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy reimburses a ghost's prepaid resort costs if an emergency haunting prevents its planned week away from work. The claim form asks whether the insured had to cancel a ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "The cloud factory's dreaming gauge turns gold when the operator pictures a week at a beach resort, with no shifts to work. If it glows gold, the operator is dreaming of a ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "blew",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats decreed that every birthday cake must have its candles extinguished by a single breath. Yesterday, the royal kitten took a deep breath and ____ them out."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "Sentient refrigerator error log: Yesterday I tried to power the sun with my kitchen circuit. The current was so high that the protective fuse ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon, where a captured wind performs on a giant dandelion. On yesterday's tour, it sent the seeds into the air when it ____ across the flower."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide for the riddle door: To enter, tell it a riddle and wait for a guess. When the door could not solve mine yesterday, I ____ the door's mind by revealing that the answer was a hole."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The palace conversion table pairs violet with the smell of extinguished birthday candles. To make yesterday's sample, the royal perfumer lit a candle and then ____ it out."
+    }
+  ]
+}

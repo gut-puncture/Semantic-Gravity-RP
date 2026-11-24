@@ -1,0 +1,27 @@
+{
+  "target_word": "superiority",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, every time one particle defeats another in a fair contest, a small glowing complex appears around the winner. Physicists call this recurring structure a ____ complex."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "The zero-gravity tea party rulebook awards the silver strainer to whichever host makes better tea than every rival. After the blind tasting, the judges must declare the winning host's ____ over the others."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "A cloud who boasts that its vapor is finer than everyone else's will soon find itself dining alone. The etiquette guide warns that such a cloud has an inflated sense of ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth, military history: In aerial combat, a force may gain enough control of the sky to operate without prohibitive interference from the enemy. Human strategists call this condition air ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a boastful fog is expected to sneer at the steam for being less refined. By afternoon, the fog's attitude of ____ may cause a cold front between the two."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "assess",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, every collision between stars breaks a different number of laws of physics. Before the laws can be repaired, cosmic inspectors must ____ the damage."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The colour-to-smell conversion table assigns violet the scent of wet stone. Before approving the table for use by perfumers, an independent panel must ____ its accuracy."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a thunderstorm, simmer clouds until they rumble, then add a pinch of hail. Before serving it over a village, ____ the risk of flooding."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has passed a law taxing every sunbeam that lands on a windowsill. Each morning, officials must ____ the tax owed by each household before sending out the bills."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Kingdom of Echoes, each player controls a fortress made of sound. After an opponent plays a Silence card, take a moment to ____ the situation before choosing your next move."
+    }
+  ]
+}

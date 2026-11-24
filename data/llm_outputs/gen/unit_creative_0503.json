@@ -1,0 +1,27 @@
+{
+  "target_word": "platoon",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lighthouse in a storm",
+      "text": "Waves battered the lighthouse as three army squads took shelter inside. Their lieutenant counted every soldier under her command and radioed that she had accounted for her entire ____."
+    },
+    {
+      "setting": "a coffee shop",
+      "text": "At the coffee shop, Maya recognized the sergeant who had trained her years ago. They laughed about the morning their lieutenant had ordered all three squads to clean the barracks, keeping the whole ____."
+    },
+    {
+      "setting": "a wedding reception",
+      "text": "At the wedding reception, the bride's former army comrades crowded together for a photograph. She had once led these three squads as a lieutenant, and she was delighted to see so much of her old ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "Rain tapped the windows of the old apartment as Grandfather opened his army photo album. He pointed to the three squads he had commanded as a lieutenant and told me about each soldier in his ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening the bakery, Luis packed a hundred rolls for a nearby army company. The captain had ordered enough for each of her three lieutenants to share with one ____."
+    }
+  ]
+}

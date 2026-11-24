@@ -1,0 +1,27 @@
+{
+  "target_word": "spur",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an artist's studio",
+      "text": "The artist was painting a cowboy on horseback, but one boot looked unfinished. She added a small metal wheel on a strap around its heel: a ____."
+    },
+    {
+      "setting": "a small-town library",
+      "text": "Maya found an old photo of a railway line branching off the main track to serve the town's mill. The librarian explained that this short branch was called a ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "A rancher brought in a parcel containing the small metal riding aid that straps to the heel of a cowboy boot. On the customs form, he described its contents as one ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "During the packed commute, Leo read a notice about a short subway branch leading from the main line to a new airport station. The map labeled that branch the airport ____."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "At the jazz club, a dancer in cowboy boots tapped along to the band. A tiny metal wheel jingled at one heel, and the bartender bent down to pick up its matching ____."
+    }
+  ]
+}

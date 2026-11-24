@@ -1,0 +1,27 @@
+{
+  "target_word": "boat",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, the farmer used oars to cross the pond in a small ____."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "The jazz club floated on the river. From the dock, guests stepped aboard the ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "During the hospital night shift, a nurse brought gravy to a patient in a gravy ____."
+    },
+    {
+      "setting": "a long train journey",
+      "text": "On the long train journey, a child folded a paper ____ and floated it in a cup of water."
+    },
+    {
+      "setting": "a police station",
+      "text": "At the police station, an officer took a report about a stolen fishing ____."
+    }
+  ]
+}

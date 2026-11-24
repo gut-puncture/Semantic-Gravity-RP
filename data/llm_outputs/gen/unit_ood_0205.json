@@ -1,0 +1,27 @@
+{
+  "target_word": "diocese",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under the Ghost Assurance Policy, a bishop's specter remains covered while haunting any parish under his episcopal jurisdiction. The policy calls this entire group of parishes his ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census Form 8 requires each sleeping cathedral to list every parish governed by its bishop as one administrative unit. Enter the name of that bishop's ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "When a new bishop arrives, the monks unfold a map and place a candle on every parish entrusted to his care. They then trace a single boundary around his entire ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "The patented Silence Engine rings a bell whenever a bishop is appointed, then prints a map of all the parishes he will oversee. Each printout depicts his ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To make a rain cloud for a bishop's installation, feed the factory a map of every parish under his jurisdiction, not just his cathedral parish. The machine will shape the cloud to match his ____."
+    }
+  ]
+}

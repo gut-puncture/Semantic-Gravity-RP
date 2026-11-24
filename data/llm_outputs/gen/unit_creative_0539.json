@@ -1,0 +1,27 @@
+{
+  "target_word": "pump",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a submarine",
+      "text": "Water seeped into the submarine's bilge as the crew prepared to surface. The engineer switched on the electric bilge ____."
+    },
+    {
+      "setting": "moving day",
+      "text": "On moving day, Maya unfolded an inflatable mattress for her first night in the new house. To fill it with air, she plugged in an electric air ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "The refugee camp kitchen's water tank was lower than the sink, so water would not flow through the tap on its own. A volunteer got it flowing by operating the hand ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "On the mountain trail, Ravi's inflatable sleeping pad went flat after he repaired a tiny hole. He filled it again with his small battery-powered air ____."
+    },
+    {
+      "setting": "a long train journey",
+      "text": "During the long train journey, the toilet stopped flushing because its water system had failed. At the next stop, a mechanic replaced the broken water ____."
+    }
+  ]
+}

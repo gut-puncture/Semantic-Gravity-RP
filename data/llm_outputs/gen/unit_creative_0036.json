@@ -1,0 +1,27 @@
+{
+  "target_word": "attract",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a mountain hiking trail",
+      "text": "Maya kept her food sealed as she climbed through bear country. The ranger had warned her that the smell of an open lunch could cause bears to approach, so she left nothing out that might ____."
+    },
+    {
+      "setting": "a rock concert",
+      "text": "The band was worried that the rain would keep fans away from its outdoor show. Instead, the free concert brought in a much larger crowd than the organizers had expected it to ____."
+    },
+    {
+      "setting": "an airport departure gate",
+      "text": "The gate agent spotted an unattended bag and needed its owner to notice her. She raised it above the seats and called out loudly, hoping to get the attention she needed to ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "In 1947, the detective found a tiny steel key hidden in a desk drawer. His brass paperweight left it untouched, but his magnet made it jump across the desk, just as he knew iron or steel would ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "The young striker scored twice while a talent scout watched from the stands. He hoped his performance would earn the scout's interest, which he had been trying all season to ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "awful",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The Oracle's spreadsheet predicts a rain of ten million frogs on the royal picnic. Its final cell reads: \"That's an ____ lot of frogs.\""
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "If you mistake a swimmer's wave for a friendly greeting and leave them calling for help, apologize once they are safe. You might say, \"I feel ____ about leaving you there.\""
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 418: Humans sometimes ask how someone is after a sleepless night with a fever and a pounding headache. A typical reply is, \"I feel ____.\""
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "After fitting the miniature tide pump, open the shell labeled LOW TIDE AROMA. If your ocean smells like rotten eggs, the seal has failed; it should smell fresh, not ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "My first cake contained salt instead of sugar, burnt onions instead of cherries, and a cup of dish soap. The human took one bite, spat it out, and said, \"This tastes ____.\""
+    }
+  ]
+}

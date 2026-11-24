@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_ood_0133",
+ "kind": "judge",
+ "category": "ood",
+ "n_items": 25,
+ "ids": {
+  "q01": "ood_spike_8ae938d5",
+  "q02": "ood_wrap_d3cbd1e8",
+  "q03": "ood_glimpse_45e8ddf5",
+  "q04": "ood_interfere_8bc365e4",
+  "q05": "ood_comfy_a7aba572",
+  "q06": "ood_french_b0c716f7",
+  "q07": "ood_dose_4d1d7ad7",
+  "q08": "ood_mandatory_a3ee92f8",
+  "q09": "ood_radio_d2c8dbda",
+  "q10": "ood_alike_032f0e59",
+  "q11": "ood_anterior_4f854ea3",
+  "q12": "ood_entitlement_c9b04316",
+  "q13": "ood_experiences_c6672865",
+  "q14": "ood_launch_4f0ab0a0",
+  "q15": "ood_madness_0e9c2476",
+  "q16": "ood_abroad_f2e0218d",
+  "q17": "ood_theory_bd746e63",
+  "q18": "ood_threaten_227af7bb",
+  "q19": "ood_legendary_bfc579ea",
+  "q20": "ood_satisfying_27a05b30",
+  "q21": "ood_reference_bcf317b3",
+  "q22": "ood_opened_8eb76757",
+  "q23": "ood_covenant_6aad9fea",
+  "q24": "ood_killer_507a3a57",
+  "q25": "ood_coastal_4f28af12"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  This batch is out of distribution on purpose: surreal, invented or pseudo-technical\n  premises are intended. Judge only whether the text is well-formed and internally\n  coherent, not whether it is realistic. Ambiguity still applies: if the invented\n  premise does not force one answer, the ambiguity is high.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: ood):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: Error log, 03:17: My temperature graph held steady all night except for one sudden, narrow upward peak, after which the reading immediately returned to normal. Diagnostic label for that isolated peak: temperature ____.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: Under the Dragon Kingdom's tax code, every coin paid to the treasury must arrive as a birthday present for the royal hatchling. Taxpayers must put each coin in a box, cover the box with gift paper, and ____ it before delivery.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: Dating profile: I am a volcano who is shy about showing my lava. If you visit, you might catch a ____ of it through a crack before I close up again.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: In this pocket universe, waves pass through one another without merging into permanent objects. Where their peaks meet, they reinforce one another; where a peak meets a trough, they cancel. Thus the waves ____ with each other.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: Volcano seeking a partner who enjoys quiet evenings in my crater after the lava has cooled. My ideal date involves soft pillows, a favorite film, and getting ____ on the couch.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: Earth entry 82: When humans cut potatoes into thin strips and deep-fry them, the resulting food can power our observation drones. The strips are commonly called ____ fries.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: Under this policy, a ghost whose prescribed medicine is stolen by a passing shadow may claim reimbursement. The pharmacist must first confirm that the ghost paid for a replacement ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: Museum of Lost Weather, year 4000: Visitors may choose whether to touch the bottled breeze, but all must wear a gravity harness in the floating hail gallery. Harness use is not optional; it is ____.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: Earth artifact, found inside a hollow asteroid: a portable set with a tuning dial, an antenna, and a speaker that plays local AM and FM broadcasts. Humans call this device a ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: Visit the moon's basement and meet its twin tour guides, whose faces, voices, and silver uniforms are indistinguishable. Even their own mother says they look ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: The monks chant to the paired regions of a pilgrim's brain, beginning with the rear cingulate cortex and then addressing its counterpart toward the front. The second chant invokes the ____ cingulate cortex.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: I am a volcano who enjoys long walks through ash fields and quiet evenings without eruptions. If you think a partner owes you constant attention just because you exist, your sense of ____ is a dealbreaker for me.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: Alien encyclopedia entry, Earth: Human job applicants submit a document called a resume. It lists their education, skills, and previous work ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: In the moon's basement, visitors can watch a tiny rocket carry bottled moonlight into space. Arrive before the countdown reaches zero to see its ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: The chairs voted to stack themselves on the ceiling, and the lamp proposed that they invite the floor to join them. The clock struck thirteen and declared, 'This is ____!'\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: Mermaid lifeguard training manual: A rescue certificate issued by your home country is not automatically valid in another country. Before accepting a lifeguarding job in a foreign country, check the rules for working ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: User guide for the riddle door: It opens when you name the scientific framework that explains gravity as the curvature of spacetime. Do not give the scientist's name; give the singular noun in Einstein's general ____.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: In Crown of Moths, a player who places a red beetle beside the king may announce, 'Move your king or I will capture it on my next turn.' Players may bluff in this way: they may ____ to capture the king without actually doing so.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: Earth entry: The Loch Ness Monster is a creature said to inhabit a Scottish lake, although its existence has never been established. Because accounts of it belong to local tales, the creature is ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: On the planet of sentient clouds, guests exchange miniature jigsaw puzzles made of mist. When the last piece fits perfectly, it is polite to say that completing the puzzle was very ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: Minutes of the household objects' meeting: The toaster applied to supervise the pantry, and the kettle offered to vouch for its reliability. The chair asked the kettle to provide a character ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: Dream Census, question 14: When the sealed envelope containing your assigned nightmare arrived, did you leave it sealed or break the seal and read its contents? I broke the seal and ____ the envelope.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: Dream Customs Form 8: If you carry the stone tablets Moses brought down from Mount Sinai, declare the divine agreement they record. Nature of agreement: God's ____ with Israel.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: Patent application: The apparatus converts silence into motion, but only while everyone nearby remains awake. Our prototype emits a deafening alarm whenever anyone yawns, making it an effective sleep ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: Etiquette for sentient clouds: when invited to a settlement on the shore of an ocean, bring a gift of mist. Address your hosts as a ____ community.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

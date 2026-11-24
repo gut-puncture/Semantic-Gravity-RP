@@ -1,0 +1,27 @@
+{
+  "target_word": "dose",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At zero-gravity tea parties, guests swallow their prescribed medicine before releasing the teapot from its tether. A guest who forgets must take the missed ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To keep the moon from turning purple, brew the patient's medicine in a cauldron that floats upside down. The label says to take one ____ twice a day."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The talking kettle called the household objects to order, and the alarm clock reported that their owner had forgotten her morning medicine. The pillbox reminded her to take the missed ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This patent describes an engine that runs on silence and rings a bell when its inventor needs medicine. Its display then flashes the instruction: Take your next ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under this policy, a ghost whose prescribed medicine is stolen by a passing shadow may claim reimbursement. The pharmacist must first confirm that the ghost paid for a replacement ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "drone",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At the Ceremony of the Unmoving Sun, the monks must sustain one low note beneath the abbot's changing melody. The abbot begins to chant only after he hears their continuous ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Lost Deliveries, year 4000: This four-rotor aircraft carried parcels without a pilot aboard, guided by a remote operator. Before the skies were reserved for migrating umbrellas, people called such a craft a ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has forbidden humans to fly camera-equipped aircraft over royal naps. Any pilotless craft caught hovering above a sleeping cat shall be confiscated as a ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking a patient listener who enjoys warm evenings and overlooks occasional ash. My ex spoke for hours in the same dull, monotonous voice; please don't ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1 for the Yesterday Engine fixes a fault in its bagpipe setting: the chanter now plays a melody while the other pipe sustains a single continuous note. That background note is the ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "pension",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth encyclopedia, entry 84: Humans often stop working in old age, yet former employers may continue sending them money every month. Earthlings call this retirement income a ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Robot recipe for retirement soup: Insert a gold coin each payday for forty years, then stop working and withdraw a fixed amount every month. The machine labels this stream of retirement payments a ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement and meet its retired lighthouse keeper, who once guided comets safely home. Her old employer still pays her a monthly ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The Oracle's spreadsheet foretells a dragon's old age: =IF(YEARS_OF_SERVICE>=40, MONTHLY_RETIREMENT_PAYMENT, 0). When the dragon leaves its job after forty years, the formula predicts a ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats decrees that every mouse inspector who retires after thirty years of service shall receive a monthly payment from the treasury for life. Each retired inspector shall call this benefit a ____."
+    }
+  ]
+}

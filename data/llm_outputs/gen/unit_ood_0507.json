@@ -1,0 +1,27 @@
+{
+  "target_word": "prosecutor",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth encyclopedia, entry on criminal trials: The black-robed judge decides questions of law, while the defense lawyer represents the accused. The lawyer who presents the criminal case against the accused on behalf of the state is the ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the court's impossible conversion table, the scent of burning toast maps to a red courtroom badge. The badge belongs to the lawyer who brings criminal charges on behalf of the state, so its wearer is the ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, Occupation Box 17: The judge is a cloud, and the defendant is a clock. Enter the occupation of the human lawyer appointed by the state to present its criminal case against the clock: ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguards, when a rescued sailor dreams of a criminal trial, swim him past the judge's coral bench and the defense table. The state's lawyer, who is presenting the case against him, is the ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy covers a ghost's legal expenses if a criminal case follows an accidental haunting. It pays for the ghost's defense lawyer, but not for the state lawyer bringing the case against the ghost: that lawyer is the ____."
+    }
+  ]
+}

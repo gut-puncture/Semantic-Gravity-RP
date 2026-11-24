@@ -1,0 +1,27 @@
+{
+  "target_word": "parent",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a museum",
+      "text": "A museum form asks how the adult accompanying a child is related to them. The adult writes the gender-neutral term for mother or father: ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, a farmer sees a calf nursing from its mother. The cow is the calf's female ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "At the care home, Nina visits her father. When staff ask whether he is her child or her ____, she says he is her father."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "The hotel receptionist explains that a child must be accompanied by a mother, father, or legal guardian. The child's father signs the form as her ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening the bakery, Luis packs a lunch for his daughter. She calls him Dad; he is her ____."
+    }
+  ]
+}

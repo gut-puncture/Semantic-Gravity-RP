@@ -1,0 +1,27 @@
+{
+  "target_word": "vice",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "The cloud court's etiquette guide forbids judging a guest for a single bad habit. If a guest insists on calling greed a virtue, however, gently remind them that greed is a ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, moral qualities exert gravity: virtue pulls objects upward, while its opposite pulls them downward. A falling stone is responding to ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when given the solution to its own riddle. Ask it, 'What is the opposite of virtue?' and the required reply is ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I'm a volcano seeking someone who enjoys long eruptions and quiet evenings under ash. My one bad habit is gambling, and I know it's a ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow tempted its owner with greed and cruelty, then falsely called both virtues. The judge rules that each is instead a ____."
+    }
+  ]
+}

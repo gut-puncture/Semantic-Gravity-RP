@@ -1,0 +1,27 @@
+{
+  "target_word": "purchase",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare each object you brought across the border, even if it dissolved when you woke. For an object bought with money, tick the box marked ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the scent-painter's conversion table, blue becomes the smell of rain and gold becomes the smell of a new car. The gold entry is used on the receipt for a new car ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle entered =IF(B2>C2,\"WAIT\",\"BUY\") to decide when the kingdom should acquire a dragon egg. If its price falls within the treasury's budget, the formula signals that it is time to ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the sun may borrow the night sky's stars for free, but must pay the agreed price to own them permanently. The sun has chosen permanent ownership, so the contract calls this transaction a ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application for a silence-powered kettle: the inventor sells each machine with a thirty-day money-back guarantee. The guarantee begins on the date of ____."
+    }
+  ]
+}

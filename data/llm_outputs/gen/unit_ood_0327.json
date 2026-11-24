@@ -1,0 +1,27 @@
+{
+  "target_word": "insurance",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon, where stalactites hang above a sea of lost luggage. If your suitcase vanishes there, the travel policy you bought will reimburse its value: before you leave Earth, remember to buy travel ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Each dawn, the monks of the Empty Bell ring once for every roof tile that fell during the night. Before the rainy season, their treasurer pays a yearly premium so the monastery can claim money for storm damage under its property ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: List any nightmares in your carry-on, then declare whether a company will cover your hospital bills if you fall ill during your journey. Tick yes or no beside the heading 'Health ____'."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy covers a ghost's replacement bedsheet if the original is stolen during a haunting. To keep the cover active, the ghost must pay the monthly premium for its ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has ruled that every flying carpet used on public roads must carry the same financial protection as a car. Before a cat can drive one, it must buy motor ____."
+    }
+  ]
+}

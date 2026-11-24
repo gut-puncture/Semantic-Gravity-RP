@@ -1,0 +1,27 @@
+{
+  "target_word": "tobacco",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.1: The Yesterday Printer now sends its smoke backward through time. To recreate the smell of a grandfather's pipe, load the chamber with the dried leaves he used for smoking: ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To summon the ghost of a cigar, roll a dried leaf around a pinch of the same cured plant material found inside ordinary cigars. Whisper the charm over the finished roll of ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When a sinking sailor asks for his chewing pouch, do not fetch seaweed or gum. The brown, nicotine-containing leaves he tucks between his cheek and gum are chewing ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the game of Cloud Harvest, each player grows one imaginary crop. If your card shows the broad-leaved plant harvested and cured to fill cigarettes, place your harvest on the square marked ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare any substance carried in a pouch for an old-fashioned smoking pipe. If the pouch contains the usual cured, shredded leaves, enter its contents here: ____."
+    }
+  ]
+}

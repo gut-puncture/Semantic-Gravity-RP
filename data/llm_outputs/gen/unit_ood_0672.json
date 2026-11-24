@@ -1,0 +1,27 @@
+{
+  "target_word": "thickness",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Travellers carrying a sheet of frozen moonlight must measure it with calipers across its two broad faces. Record neither its length nor its width, but its ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth encyclopedia entry, shelf fungi: Humans cut bread into slices before eating it. When they ask for each slice to be cut thinner or thicker, they are specifying its ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To enchant the castle walls, first cast the spell that makes them twice as thick without changing their height or length. This doubles their ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking a patient companion: I enjoy slow sunsets and comparing the coats of ash I leave on nearby roofs. Bring calipers so we can measure each layer's ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Inhabitants Census, question 12: If you are a sentient pane of glass, enter the distance between your front and back surfaces, not your height or width. Glass pane ____: ____."
+    }
+  ]
+}

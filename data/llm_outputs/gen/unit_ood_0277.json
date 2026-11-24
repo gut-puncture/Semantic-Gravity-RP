@@ -1,0 +1,27 @@
+{
+  "target_word": "genes",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1: The Ancestor Printer can now build a child from two drops of parental blood. To predict inherited traits such as blood type, the printer reads specific sections of DNA called ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court acquitted the shadow of stealing its owner's dimples. Its ruling held that dimples can run in families because parents pass on ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Alchemist's conversion table, violet becomes the smell of roses and amber becomes the smell of rain. The entry for the smell of freshly copied DNA is blue; this smell is released when cells copy their ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, gravity pulls only on inherited instructions. A chromosome floats, but when it is cut into the individual DNA segments that code for particular products, gravity pulls those segments down; the floor fills with ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth encyclopedia, entry 412: Human children often resemble their biological parents, even when raised far away from them. The resemblance is partly explained by inherited ____."
+    }
+  ]
+}

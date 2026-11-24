@@ -1,0 +1,27 @@
+{
+  "target_word": "expectation",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a gym",
+      "text": "Maya had hoped to lift the bar once, but she managed ten repetitions. Her progress had surpassed her wildest ____."
+    },
+    {
+      "setting": "a flood evacuation",
+      "text": "The flooded road looked impassable, and the rescuers feared they would have to turn back. Yet the bus made it through, contrary to all ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "When the crew spotted gulls circling over the water, they hurried to cast their nets. They watched the ropes in eager ____."
+    },
+    {
+      "setting": "a carpentry workshop",
+      "text": "The carpenter had promised the customer a perfectly level table. When it arrived with one leg shorter than the others, it fell short of her ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "The class rolled a fair six-sided die many times and calculated the average score. Their teacher explained that this average should approach 3.5, the mathematical ____."
+    }
+  ]
+}

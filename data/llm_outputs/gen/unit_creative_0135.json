@@ -1,0 +1,27 @@
+{
+  "target_word": "compatibility",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a chess tournament",
+      "text": "At the chess tournament, the clock app would not run on the arbiter's old tablet. Before installing a replacement, she checked its operating system ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "At the ski resort, Maya's new boots would not lock into her old bindings. The technician consulted a chart of boot and binding ____."
+    },
+    {
+      "setting": "a construction site",
+      "text": "On the construction site, a worker noticed that the new sealant reacted with the plastic pipe. The foreman checked the manufacturer's table for material ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "At the supermarket checkout, a shopper's phone could not communicate with the card reader. The cashier suggested checking the payment app's device ____."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "In the recording studio, Lena's audio plugin refused to open in the latest version of her editing software. She visited the developer's website to check version ____."
+    }
+  ]
+}

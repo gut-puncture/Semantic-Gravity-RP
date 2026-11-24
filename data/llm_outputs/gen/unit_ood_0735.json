@@ -1,0 +1,27 @@
+{
+  "target_word": "weigh",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 12: Before entering another person's dream, place each bottled memory on the scale and record its mass in grams. The officer must ____ each bottle."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At dawn, monks of the Order of the Hollow Bell place a moonstone on one pan of a balance and add gram masses to the other until the pans are level. They must then record how many grams the moonstone would ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The Oracle's spreadsheet contains the formula =IF(B2>100,\"THE GATE OPENS\",\"THE GATE STAYS SHUT\"). Cell B2 records the mass in kilograms of a dragon's egg, so before the prophecy can run, place the egg on a scale and ____ it."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of a shadow accused of stealing mass, the court ordered a peculiar test: put the accused on a scale and record the reading in kilograms. The clerk shall ____ the shadow."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano seeking someone patient enough to date a mountain. On our first date, bring a giant scale: I have always wanted to know how many tonnes I ____."
+    }
+  ]
+}

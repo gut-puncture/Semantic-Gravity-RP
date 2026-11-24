@@ -1,0 +1,27 @@
+{
+  "target_word": "planet",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a small-town library",
+      "text": "At the library, Nina reads that Jupiter is the largest ____ in our solar system."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "In class, the teacher asks what kind of object Earth is. A pupil replies that it is a ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "A tailor is sewing a picture of Saturn onto a jacket. Its famous rings surround the ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, a farmer sees Venus shining in the sky. Despite its star-like appearance, Venus is a ____."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "During a break at the jazz club, a musician mentions that Pluto was once considered the ninth ____ from the Sun."
+    }
+  ]
+}

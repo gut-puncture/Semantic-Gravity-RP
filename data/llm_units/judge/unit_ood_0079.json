@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_ood_0079",
+ "kind": "judge",
+ "category": "ood",
+ "n_items": 25,
+ "ids": {
+  "q01": "ood_exotic_1640d646",
+  "q02": "ood_fluid_1fe4e045",
+  "q03": "ood_surpassed_04905f3c",
+  "q04": "ood_mystic_3859f91c",
+  "q05": "ood_principle_4f06ee4f",
+  "q06": "ood_myth_877c06d6",
+  "q07": "ood_proxy_138964a0",
+  "q08": "ood_foremost_a7af6b7a",
+  "q09": "ood_healthy_45f160f9",
+  "q10": "ood_panel_32400e08",
+  "q11": "ood_prairie_567646c7",
+  "q12": "ood_authenticity_8c28e3ac",
+  "q13": "ood_pressing_033865db",
+  "q14": "ood_morocco_6a6233ba",
+  "q15": "ood_attach_61ab3303",
+  "q16": "ood_regulated_6a6e96e5",
+  "q17": "ood_colored_f35eb6e6",
+  "q18": "ood_merge_96b7613b",
+  "q19": "ood_yea_73119493",
+  "q20": "ood_clerk_3b7496f9",
+  "q21": "ood_adaptation_9f3667ce",
+  "q22": "ood_spell_16cf36e8",
+  "q23": "ood_wrath_97bfb2c4",
+  "q24": "ood_cod_8d65f244",
+  "q25": "ood_panther_225aac9b"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  This batch is out of distribution on purpose: surreal, invented or pseudo-technical\n  premises are intended. Judge only whether the text is well-formed and internally\n  coherent, not whether it is realistic. Ambiguity still applies: if the invented\n  premise does not force one answer, the ambiguity is high.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: ood):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: Under the dragon kingdom's tax code, pepper and cinnamon from distant lands incur a special duty, while common local herbs do not. The treasury lists the taxed goods as ____ spices.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: Under the dragon tax code, a hoard of gold coins is taxed differently from money that can be spent immediately. Gold locked in a mountain is a less ____ asset than cash.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: Inside the royal teapot, today's steam rose higher than any cloud recorded in its thousand-year weather log. The previous height record, which had stood for eight centuries, has finally been ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: At a zero-gravity tea party, a guest who finds God through contemplation rather than argument receives a floating cup. The rulebook reserves that cup for a ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: Visit the moon's basement, where our guide refuses to accept tips, even from royalty. She says accepting money for special treatment violates her moral ____.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: Alien encyclopedia of Earth: Humans tell an ancient Greek story in which Icarus flies too close to the sun and falls when the wax in his wings melts. Classify this tale as a Greek ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: Museum of Ancient Networks, year 4000: This glass cabinet contains a server that stood between users and the wider internet, forwarding their requests. Its label identifies it as a ____ server.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: Minutes of the household objects' meeting: the kettle proposed a parade, but the smoke alarm insisted that preventing fires take priority over every celebration. The chair agreed that safety must be their ____ concern.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: The parliament of cats has passed a law requiring free veterinary checkups for every kitten. Its stated aim is to keep all kittens ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: In Moonfruit Court, each player draws a single rectangular comic picture showing a creature and its speech balloon. Arrange these pictures in turn order, then tell the story beginning with the first ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: Before setting the machine for the Ingalls family's covered wagon journey, secure the latch on the rear door. If the destination dial displays the title of Laura Ingalls Wilder's Little House book about that journey, stop it at ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: SENTIENT REFRIGERATOR ERROR LOG: The milk is cold and the seal is intact, but the supposed signed painting on my door may be a forgery. Before insuring it, the owner must verify its ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: Grow a melody in a glass piano until its roots reach the keys. To make the melody louder, keep ____ the sustain pedal with your foot.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: Recipe from a robot that has never eaten: place a bowl beneath a miniature cloud until couscous falls into it. To season the cloud, set its destination to the North African country whose capital is Rabat: ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: My recipe for a ceremonial oil cake requires no tasting, because I have no mouth. Before baking, use the supplied clip to ____ the temperature probe to the rim of the pan.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: I have never eaten, but my recipe for cloud soup specifies a constant simmer. My electronic valve continuously adjusts the flame to maintain the selected temperature, keeping the heat automatically ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: This door opens only after a correct riddle response. It asks: What have you done to a black-and-white drawing after filling its outlines with crayons? Reply: I have ____ it.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: Under the dragon kingdom's tax code, two hoards are taxed as one when their owners file a joint return. On line 8, instruct the treasury to ____ the two accounts into a single account.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: In a pocket universe, particles settle disputes by parliamentary vote: an opposed particle calls out nay. Under the local laws of physics, a particle voting in favor must call out ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: Firmware 4.1 for the Time-Folding Hotel fixes a bug that assigned room keys to yesterday's guests. When a traveller arrives, the front desk now summons the hotel ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: Release 8.4: The machine now grows yesterday's plants in tomorrow's soil. When drought lasts for generations, a heritable trait that helps a population survive and reproduce in those dry conditions is recorded as an ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: Entry 42: To make a teapot sing, tap it twice with your wand and recite the incantation below. Never cast this ____ near a sleeping dragon.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: At a zero-gravity tea party, the host assigns each guest a role from the seven deadly sins. The guest who hurls a teapot in furious anger must play ____.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: The sun shall provide light, and the night shall provide one fish for each plate of chips. Both parties agree to use the fish whose liver oil has long been sold as a supplement: ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: To open the riddle door, identify the animal completing the title of the 1960s American political organization founded by Huey Newton and Bobby Seale. Say Black ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "morocco",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Recipe from a robot that has never eaten: place a bowl beneath a miniature cloud until couscous falls into it. To season the cloud, set its destination to the North African country whose capital is Rabat: ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Atlas of Floating Cities, a player may rescue Casablanca from the sky only by placing a token on its actual country. Place the token on ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1: The teleporting lighthouse now crosses the Strait of Gibraltar without disturbing ships. When sent from Spain to the country immediately across the strait, it arrives in ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: if a swimmer vanishes near Tangier, summon the shore patrol responsible for the country where that city stands. Your request should go to ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats decrees that every flying carpet must carry a flag showing its place of origin. A carpet from Marrakech must fly the red flag with a green five-pointed star that belongs to ____."
+    }
+  ]
+}

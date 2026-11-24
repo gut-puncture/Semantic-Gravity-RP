@@ -1,0 +1,27 @@
+{
+  "target_word": "publishing",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, gravity reverses whenever a journal editor makes a new research paper available to readers. Merely writing or reviewing the paper has no effect; the reversal occurs only when the editor is ____ it."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8 asks whether your manuscript is staying private or will be released as a book for the public to read. If it is going to bookstores, tick the box marked ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Ink Moons, a player wins by turning an accepted manuscript into a book available for sale. A player who merely writes or prints a private copy cannot win; the winning move is ____ it."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun and the night agree to keep their poems secret until an editor accepts them for a public anthology. Under their contract, the editor must then make the anthology available to readers; this final act is called ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 42: I submitted my memoir to a magazine, and the editor accepted it. The issue is now on sale with my memoir inside, but my door display still says the magazine is only considering ____ it."
+    }
+  ]
+}

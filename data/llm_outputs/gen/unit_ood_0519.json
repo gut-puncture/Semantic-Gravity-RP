@@ -1,0 +1,27 @@
+{
+  "target_word": "quantity",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.2 for the Yesterday Printer fixes a fault in the order screen. When an operator selects ten copies of Tuesday, the number ten now appears in the field labeled ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 12: Declare every jar of borrowed laughter before entering another sleeper's dream. In the column marked 'Description,' write 'jars of laughter'; in the adjacent column marked ____, enter how many jars you carry."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To multiply a dragon's hiccups, cast the spell once for each extra hiccup desired. The spell changes neither their sound nor their color, only their ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The Sun shall deliver identical stars to Night in sacks of twelve. If Night orders more sacks, the price per star shall remain fixed, but the invoice total shall rise with the ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At zero-gravity tea parties, guests vote on how much tea to pour into each floating cup. They must choose between two labeled settings: 'Quality,' for the grade of tea leaves, and ____, for the amount poured."
+    }
+  ]
+}

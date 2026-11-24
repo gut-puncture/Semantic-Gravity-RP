@@ -1,0 +1,27 @@
+{
+  "target_word": "thin",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide: This door opens only when a visitor completes its riddle aloud. What gets wetter as it dries? A towel. What kind of air do magicians make rabbits appear out of? ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard manual: Test the frozen lagoon before allowing anyone onto it. If the ice cracks under a pebble, warn swimmers to stay off because the ice is too ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To prepare cloud carpaccio, shave a fog bank into slices so delicate you can read a newspaper through each one. Serve every slice very ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, pour in the water before adding the oil. Use only one drop of oil and spread it across the entire surface to form a very ____ film."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At zero-gravity tea parties, the host must provide one saucer for every guest. If a host tries to serve fifty guests with only two saucers, the rules say their resources are spread too ____."
+    }
+  ]
+}

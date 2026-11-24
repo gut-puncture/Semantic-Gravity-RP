@@ -1,0 +1,27 @@
+{
+  "target_word": "handmade",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, a reporter photographed pottery that local artisans had shaped and decorated without machinery. Her editor changed the caption from \"factory-made\" to ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "In the spring garden, Mia admired a birdhouse that her grandfather had cut, assembled and painted himself. When she asked whether he had bought it ready-made, he said, \"No, it's ____.\""
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, every quilt in the contest had to be sewn by its maker, with no machine stitching allowed. The judges rejected one entry because it was not entirely ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "At the supermarket checkout, a customer pointed out that the scarf's label said it was made by an artisan, not in a factory. The cashier corrected the price description from \"mass-produced\" to ____."
+    },
+    {
+      "setting": "a bank",
+      "text": "A child brought a clay piggy bank to the bank and proudly explained that she had shaped and painted it herself. The teller admired it and asked, \"Is that ____?\""
+    }
+  ]
+}

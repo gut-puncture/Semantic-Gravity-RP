@@ -1,0 +1,27 @@
+{
+  "target_word": "vat",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an artist's studio",
+      "text": "Maya lowered a length of white cotton into the indigo dye and waited for it to soak. When she pulled it out, blue dripped back into the dye ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "On their outing from the care home, the residents watched workers make cheese. One resident pointed to the huge vessel where the milk was turning into curds and called it a cheese ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "Far out at sea, the crew sorted their catch for salting. They plunged the fish into the enormous open vessel of brine, loading one basket after another into the brining ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, the farmer carried fresh milk into the small dairy beside the barn. She poured it into the large stainless-steel vessel where she made cheddar, filling the cheese ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening, the baker dipped rows of doughnuts into warm liquid chocolate. As the level dropped in the huge open vessel, she added another block to the chocolate ____."
+    }
+  ]
+}

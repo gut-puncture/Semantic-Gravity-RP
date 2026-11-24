@@ -1,0 +1,27 @@
+{
+  "target_word": "tourism",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare the purpose of your visit. If you are staying only to see the dream's landmarks and spend money at local attractions, tick the box marked ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before visiting the past, switch off the engine's history-altering mode. The Ministry permits trips to ancient monuments for sightseeing and leisure, a trade it calls ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To revive a sleeping seaside village, cast the spell that draws paying visitors to its beaches, inns, and guided excursions. The villagers will prosper again from ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application: A silence-powered device projects famous landmarks into remote towns, allowing visitors to spend their holidays there. Its inventor expects hotels and local guides to benefit from increased ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.1 for the mountain that walks: The peak now returns to its resort each morning so holidaymakers can ride the cable cars and visit the summit. This update supports the region's ____ industry."
+    }
+  ]
+}

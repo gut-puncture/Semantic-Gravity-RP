@@ -1,0 +1,27 @@
+{
+  "target_word": "kindly",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts the dragon's reaction to criticism: IF(criticized, offended, delighted). Its gloss warns that the dragon does not take ____ to criticism."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun agrees to warm the night whenever her stars are cold, asking nothing in return. The night thanks the sun for treating her so ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before inviting a lost cloud inside, the monks must say, 'Would you be so ____ as to come in?' Only that precise, courteous request opens the monastery gate."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The judge found that the shadow had sheltered a frightened child without seeking a reward. The court ruled that, far from acting cruelly, the shadow had acted ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "The recipe promises a breeze that will bring rain to thirsty gardens without damaging a single petal. If the spell works, the weather will look ____ upon the flowers."
+    }
+  ]
+}

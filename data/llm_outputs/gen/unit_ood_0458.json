@@ -1,0 +1,27 @@
+{
+  "target_word": "pepper",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 12: declare any seasonings carried across the border between dreams. If your bag contains the ground black spice commonly shaken onto food alongside salt, write ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed the familiar ground black spice that makes their noses twitch. Under the new law, any table set with salt must be checked for ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 repairs the machine that turns sneezes back into their causes. When a diner sneezes after grinding black spice over soup, the output tray now contains ground ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguards must practice rescuing sailors who become trapped in dreams of a giant dinner table. To locate the dreamer, swim past the salt shaker toward its usual companion, the shaker of ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "In the basement of the moon, visitors can watch an enchanted mill turn dried black spicecorns into a table seasoning. Each tour ends with a free pinch of freshly ground ____."
+    }
+  ]
+}

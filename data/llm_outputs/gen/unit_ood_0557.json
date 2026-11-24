@@ -1,0 +1,27 @@
+{
+  "target_word": "rise",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry, section on human ceremonies: When a judge enters the courtroom, everyone present is instructed to stand up. The customary command is: All ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Install the miniature moon above the basin, then pour in the enchanted seawater. Twice each day, the water will creep higher up the shore as the tides ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the lunar basement's backward bakery, where invisible yeast makes dough swell inside sealed glass jars. Watch each loaf slowly ____ before it goes into the oven."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, the host must tie every helium balloon to the table before serving. Otherwise, the balloons will float upward and continue to ____ toward the ceiling."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy covers damage to a ghost's house caused by floodwater, even when the house is invisible. Coverage begins when the river overflows its banks and the water levels ____."
+    }
+  ]
+}

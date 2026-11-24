@@ -1,0 +1,27 @@
+{
+  "target_word": "gentleman",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tailor's shop",
+      "text": "The tailor adjusted the old diplomat's cuffs while his apprentice admired the elegant suit. The tailor smiled and said, \"Clothes do not make the ____.\""
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "A prince helped a lost child across a stream, then bowed to her mud-covered grandmother. Watching from the trees, a fairy declared him every inch a ____."
+    },
+    {
+      "setting": "a beach holiday",
+      "text": "When a sudden wave knocked over a woman's chair, a man helped her up and fetched her scattered belongings. Her friend thanked him, saying, \"You are a true ____.\""
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "A boy held the kitchen door open while an older woman carried a heavy pot through it. She thanked him with a smile and called him a little ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "At the museum's costume exhibit, a guide pointed out a portrait of a Victorian woman beside one of her husband. The label beneath his portrait read, \"A Victorian ____.\""
+    }
+  ]
+}

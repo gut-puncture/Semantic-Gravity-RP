@@ -1,0 +1,27 @@
+{
+  "target_word": "exam",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Castle of Chalk, a player who lands on the mortarboard must sit a three-hour written paper covering the entire course. To graduate and win, the player must pass the final ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, cups may float freely, but students must tether their notes before studying. When the last revision session ends, everyone drifts to the hall to sit the end-of-term ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a fog of steam will clear by noon, revealing the desks of a nervous class of sugar cubes. Pencils will be sharpened and bags left outside as they prepare to take their mathematics ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon, where retired astronauts attend night school beneath glowing stalactites. Arrive quietly in June: the students will be sitting their final ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow did not steal the sealed papers; it merely followed a nervous student into the hall. The student had stayed up all night revising and was about to sit an ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "several",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Welcome to the moon's basement, where your guide will show you four glowing caverns before lunch. The tour takes visitors through ____ caverns, with time to explore each one."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow slipped away from its owner on five separate nights, each witnessed by a different lamppost. The defendant is therefore found to have absconded on ____ occasions."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the royal teapot, expect a short spell of steam followed by four distinct showers of sugar crystals. The showers will pass in ____ minutes, leaving the spout clear by teatime."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano who enjoys quiet evenings and has been dormant for four centuries. I am looking for someone patient enough to wait ____ hundred years between eruptions."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Recovered from the ruins of the Floating Post Office, these six umbrellas once protected letters from upward rain. Conservators spent ____ years restoring them before opening this exhibit in 4000."
+    }
+  ]
+}

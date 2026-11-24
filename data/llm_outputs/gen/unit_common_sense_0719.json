@@ -1,0 +1,27 @@
+{
+  "target_word": "waitress",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a job interview",
+      "text": "At the restaurant interview, Nina said she had spent five years taking customers' orders and serving their meals. She was applying for a job as a ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "For the class play set in a cafe, Emma wore an apron and carried plates to the pretend diners. She played the ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before the bakery opened, the woman who served customers at its tables tied on her apron. The baker had already filled the display, so the ____ set out menus."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "In the dentist's waiting room, a woman told the receptionist about her work bringing food and drinks to diners at a restaurant. She said she was a ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "While planting spring flowers, Rosa told her neighbor that her daughter had a new job serving meals at a restaurant. Her daughter was happy to be a ____."
+    }
+  ]
+}

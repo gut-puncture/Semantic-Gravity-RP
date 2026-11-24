@@ -1,0 +1,27 @@
+{
+  "target_word": "phase",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a laundromat",
+      "text": "At the laundromat, Maya's son insisted on wearing his superhero cape while they folded the sheets. She smiled and told another parent, \"He'll grow out of it; it's just a ____.\""
+    },
+    {
+      "setting": "a final exam",
+      "text": "On his final exam, Leo drew the moon as a thin crescent lit on the right. Beneath the drawing, he identified its lunar ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "The tailor pinned the hem of a customer's wedding dress and marked where to take in the waist. Cutting and sewing would come next; for now, the dress was still in the fitting ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "In the laboratory, two identical waves reached their peaks at opposite times. The scientist adjusted the equipment because the waves were out of ____."
+    },
+    {
+      "setting": "a theatre rehearsal",
+      "text": "The actors already knew their lines and movements when the director brought them back for one last rehearsal. With opening night tomorrow, the production had entered its final ____."
+    }
+  ]
+}

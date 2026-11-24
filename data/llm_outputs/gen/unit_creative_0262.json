@@ -1,0 +1,27 @@
+{
+  "target_word": "fall",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a sailing race",
+      "text": "During the race, Maya watched the marker buoy move with the passing swells. She saw it rise on each crest and then ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "At rush hour, Lena tripped on the subway stairs and pitched forward. She put out both hands to break her ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "At her pet shop in Boston, Rosa changes the window display with each season. After summer, she puts out orange leaves for ____."
+    },
+    {
+      "setting": "a courtroom",
+      "text": "The executive had ordered the fraud, but he blamed his assistant when the case reached court. He expected her to take the ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "In the laboratory, Dr. Chen dropped a metal ball inside a vacuum tube. With no air resistance, it was in free ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "surpassed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun's contract with the night promised a modest display of pink at dawn. Instead, the sky blazed gold and violet from horizon to horizon; the spectacle had ____ even the night's wildest expectations."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the royal teapot, today's steam rose higher than any cloud recorded in its thousand-year weather log. The previous height record, which had stood for eight centuries, has finally been ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Snail Throne, each player builds a tower of tiny cardboard snails. The judges thought Mira's tower last year was unbeatable, but her even taller and more elaborate creation this year has ____ it."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano who expresses affection with carefully arranged lava fountains. My last date said the first fountain was magnificent, but that the second, with its shimmering arches and golden sparks, had ____ the first."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the moon's basement to hear the legendary Choir of Sleeping Craters. For centuries, visitors have called its music the most beautiful in the universe, a performance never equaled and never ____."
+    }
+  ]
+}

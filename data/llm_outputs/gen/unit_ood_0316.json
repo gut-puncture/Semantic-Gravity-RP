@@ -1,0 +1,27 @@
+{
+  "target_word": "identical",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Crown of Moss, a player may claim the twin throne only with two cards that match in every detail: picture, colour, number, and even the tiny ink marks. To win, the two cards must be ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This patent describes an engine powered by silence that prints a second snowflake without melting the first. Every branch and notch is reproduced exactly, so the original and its copy are ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court acquitted the shadow of impersonating the judge: its outline changed whenever the judge moved, but it had no face, clothing, or physical substance. The ruling held that resemblance alone did not make the two ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Alchemists' conversion table, every shade maps to one smell. Two swatches produce precisely the same smell only if they match in hue, saturation, and brightness; otherwise their smells differ. Swatches with matching smells must therefore be ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon and see the famous twin craters, made from the same mould and painted to match down to the last speck. Guides invite you to search for a difference, but the craters are ____."
+    }
+  ]
+}

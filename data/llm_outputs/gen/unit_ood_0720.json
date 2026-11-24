@@ -1,0 +1,27 @@
+{
+  "target_word": "vibration",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow music in a petri dish, stretch a tiny string across the gel and pluck it once. The seedlings sprout only while the string moves rapidly back and forth, so the technician must record the duration of its ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon tax code, a hoard is exempt from inspection if its owner keeps a purring cat on the treasure chest. The assessor must place a hand on the lid and verify that the cat's purr produces a perceptible ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To summon a silent bell, strike the rim of an ordinary bell and cast the spell before it stops ringing. The spell removes the sound but leaves the metal's rapid back-and-forth motion untouched; a hand on the rim can still feel its ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of the shadow, the court rejected the claim that a passing earthquake had spoken. The judge found that the witness had heard no voice; she had only felt the floor's ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth artifact: mobile phone. When its owner selects silent mode, an incoming call can still make the device buzz against a table; this alert is produced by a small motor that creates a ____."
+    }
+  ]
+}

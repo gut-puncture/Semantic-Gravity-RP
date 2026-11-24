@@ -1,0 +1,27 @@
+{
+  "target_word": "necessity",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a primary school classroom",
+      "text": "When the classroom ran out of paintbrushes, the children made their own from twigs and string. Their teacher smiled and said they had just met the mother of invention: ____."
+    },
+    {
+      "setting": "a desert expedition",
+      "text": "With their water nearly gone and no rescue in sight, the explorers drank from a muddy puddle. They would normally have avoided it, but they did so out of ____."
+    },
+    {
+      "setting": "a family road trip",
+      "text": "Mia wanted to pack her giant stuffed bear, but the car was already full and her father had to make room for her asthma inhaler. The bear was a luxury; the inhaler was a ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, the farmer used a broken gate to bridge the flooded path to the stranded sheep. She had no time or spare materials for a proper bridge, so her repair was born of ____."
+    },
+    {
+      "setting": "a police station",
+      "text": "An officer broke a locked window to pull a child from a burning car, then explained her actions back at the station. She told her supervisor that protecting the child had made breaking the glass a matter of ____."
+    }
+  ]
+}

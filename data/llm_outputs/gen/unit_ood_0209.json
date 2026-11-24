@@ -1,0 +1,27 @@
+{
+  "target_word": "distinctive",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8 asks travellers to identify the recurring smell, sound, or image by which they can recognize their own dream among thousands of others. Enter that dream's most ____ feature: ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has decreed that every ambassador must wear a bell whose sound makes its owner instantly recognizable, even in a crowd of meowing delegates. Each ambassador must therefore have a ____ bell."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.2 fixes a bug in the machine that turns memories into clouds: childhood birthdays no longer all produce identical white puffs. Each memory now generates a cloud with its own ____ shape."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "Under the zero-gravity tea party rules, cups drift freely and guests cannot keep them in front of their seats. To help everyone recognize their own cup, choose one with a ____ pattern."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "The Dragon Kingdom's tax code requires each hoard to carry a scent that lets inspectors identify its owner among the dragons. An ordinary smell shared by many hoards does not qualify; the scent must be ____."
+    }
+  ]
+}

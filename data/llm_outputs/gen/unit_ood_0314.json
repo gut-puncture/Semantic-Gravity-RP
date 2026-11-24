@@ -1,0 +1,27 @@
+{
+  "target_word": "hostility",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "A ghost's haunting policy pays for damage caused by angry villagers wielding torches and shouting threats, but not by frightened villagers fleeing. The claim form classifies the torchbearers' openly antagonistic attitude as ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed greeting visiting cats with arched backs, hissing, and swipes of the paw. Its decree calls this display of aggressive ill will ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "When assembling your pocket-sized ocean, fit the rival fleets on opposite shores before adding water. Their mutual threats and readiness to attack create an atmosphere of ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "If your time machine lands amid a crowd pointing weapons at you and demanding that you leave, do not mistake their conduct for curiosity. Return to the cabin immediately at the first sign of ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of a shadow, the judge found that its owner had repeatedly threatened the sun and tried to strike it. The court ruled that these acts showed open ____ toward the sun."
+    }
+  ]
+}

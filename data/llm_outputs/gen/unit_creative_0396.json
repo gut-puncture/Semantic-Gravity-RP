@@ -1,0 +1,27 @@
+{
+  "target_word": "lotus",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a care home",
+      "text": "At the care home, Mrs. Shah showed her grandchildren a photograph of the national flower of India. Growing above the pond on its long stem was a pink ____."
+    },
+    {
+      "setting": "a carpentry workshop",
+      "text": "A temple commissioned a carved pedestal for a statue of the Buddha, and the carpenter studied the reference drawing. Its overlapping petals were meant to look like a sacred ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "In the dentist's waiting room, Maya read about Odysseus and his crew on a strange island. The inhabitants offered his sailors a plant that made them forget their journey home: the ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "After picking grapes at the vineyard, the workers joined a yoga class on the lawn. The instructor crossed her legs, placing each foot on the opposite thigh, and settled into the position known as full ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "During a quiet hospital night shift, a nurse showed her colleague a photograph from her trip to Egypt. In the Nile pond behind her stood the pink, seedpod-bearing flower sacred to Buddhists and Hindus: a ____."
+    }
+  ]
+}

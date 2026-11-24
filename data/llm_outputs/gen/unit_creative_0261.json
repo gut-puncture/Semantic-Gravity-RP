@@ -1,0 +1,27 @@
+{
+  "target_word": "falcon",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a museum",
+      "text": "At the museum, Maya stopped before a small ancient Egyptian statue of Horus. Its plaque explained that the sky god was often portrayed as a ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "During the night shift, a patient showed her nurse a picture of a peregrine diving after a pigeon. The nurse recognized the bird as a ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "On the crowded subway, Leo watched a wildlife video about a kestrel hovering over a field. When another passenger asked what kind of bird it was, he said it was a ____."
+    },
+    {
+      "setting": "a pirate ship",
+      "text": "The pirate captain pointed to the bird on his leather glove and boasted that it could dive faster than any other animal. His first mate knew the peregrine well and had often helped train the ____."
+    },
+    {
+      "setting": "a lighthouse in a storm",
+      "text": "As the storm battered the lighthouse, the keeper found a bedraggled merlin sheltering beside the door. She brought the small bird of prey inside and called a wildlife rescue worker about the ____."
+    }
+  ]
+}

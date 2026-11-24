@@ -1,0 +1,27 @@
+{
+  "target_word": "tree",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a pet shop",
+      "text": "At the pet shop, a parrot sat on a branch cut from a ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "From the fishing boat, a sailor saw a tall oak growing on the island. It was the only ____ visible from the sea."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening the bakery, Ana picked apples from the branches of a ____ behind the shop."
+    },
+    {
+      "setting": "a family road trip",
+      "text": "During the family road trip, the children played a game counting each ____ they passed along the wooded highway."
+    },
+    {
+      "setting": "a camping trip in the woods",
+      "text": "At the campsite, rain began to fall, so we sheltered under the leafy branches of a large ____."
+    }
+  ]
+}

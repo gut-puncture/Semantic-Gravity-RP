@@ -1,0 +1,27 @@
+{
+  "target_word": "column",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after hearing a riddle. Arrange the riddle's lines vertically in the newspaper layout it recognizes; a horizontal row will be rejected. Print all the lines in a single ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "To prepare soup, first enter every ingredient and its quantity into my cooking spreadsheet. Put the ingredient names under the left heading and their quantities under the right heading, so each quantity occupies the second ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The feline parliament decrees that every newspaper delivered to the palace must reserve a recurring opinion piece for the royal cat. Each week, the editor shall print His Majesty's political ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To make a thundercloud, start the vapor pump beneath the ceiling hatch. Its narrow vertical plume must reach the hatch without spreading sideways; the pressure gauge should then show a steady rising ____ of vapor."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "The chairs agreed that their meeting hall needed a classical stone support beneath its high ceiling. The lamp requested a round shaft topped by a carved capital, and the table voted to install one ____."
+    }
+  ]
+}

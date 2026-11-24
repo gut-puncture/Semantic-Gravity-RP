@@ -1,0 +1,27 @@
+{
+  "target_word": "proprietary",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spellbook entry 41: The cloud-summoning incantation belongs to the Guild of Mists, which licenses its use but forbids rivals to copy or sell it. In the guild's licensing ledger, the incantation is classified as ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after hearing a riddle composed by its manufacturer. Unlike an open-source system that anyone may inspect and modify, its manufacturer-controlled riddle recognition software is ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under this contract, the Sun may license its method for painting dawn to the Night, but retains exclusive commercial rights and forbids unlicensed copying. Both parties agree to label the method ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, section 8: List the software that gives your imaginary body its shape. If a company owns it, restricts modification, and sells licenses to use it, mark the software as ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 704: I tried to chill a miniature galaxy using a rival manufacturer's cooling algorithm. Its license bars me from copying or modifying the code, so my log identifies the algorithm as ____."
+    }
+  ]
+}

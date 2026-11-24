@@ -1,0 +1,27 @@
+{
+  "target_word": "sorted",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Before sealing the pocket ocean, separate its miniature shells into piles according to size. Fit the lid only after all the shells have been ____ by size."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Today's steam squall will scatter the teapot's lettered raindrops across the spout. By teatime, a gentle current will have ____ them alphabetically from A to Z."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun and the night disagree over who owns the twilight. Their contract requires the dispute to be ____ out before either party may change the length of the day."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "At a cloud banquet, guests bring droplets for the host to divide into separate groups by flavor. A courteous host returns the droplets to their owners only after they have been ____ into those groups."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Version 4.1 fixes a bug in the machine that prints tomorrow's lottery numbers yesterday. Its output is now ____ in ascending numerical order, with the smallest number printed first."
+    }
+  ]
+}

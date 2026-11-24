@@ -1,0 +1,27 @@
+{
+  "target_word": "cow",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "Zero-gravity tea party rule: guests must secure the milk pitcher before pouring. If the pitcher floats away, retrieve fresh milk from the adult female of the dairy herd, a ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory operators must inspect each animal-shaped vapor before release. A black-and-white dairy animal with udders and a calf must be labeled as one ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard drill: a farm animal has fallen from the ferry and is drifting toward the reef. The adult female in the cattle herd has a calf waiting aboard; rescue the ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "This pasture spell turns a bull into an adult female of the same species, complete with an udder. When the smoke clears, the bull has become a ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot today, expect a brief shower of cream followed by a patch of blue sky. The steam has formed a picture of a dairy farmer milking a ____."
+    }
+  ]
+}

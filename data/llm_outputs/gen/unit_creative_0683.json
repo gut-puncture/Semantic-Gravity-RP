@@ -1,0 +1,27 @@
+{
+  "target_word": "tidal",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a football match",
+      "text": "During the match, seawater crept across the pitch as the sea rose, then retreated hours later. The referee explained that the flooding followed the ocean's regular rise and fall, so it was ____."
+    },
+    {
+      "setting": "a police station",
+      "text": "A boat owner reported that her vessel had vanished from its mooring. The officer checked the harbor chart and explained that the rising and falling water there was ____."
+    },
+    {
+      "setting": "a construction site",
+      "text": "Workers building a bridge watched the river reverse direction as the sea rose and fell. The engineer marked the current on her plans as ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "The submarine waited near the coast while a current changed direction with the ocean's rise and fall. Consulting his charts, the captain identified the flow as ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, a farmer showed visitors the gates that kept seawater off her fields. She opened them when the sea receded and explained that the flooding was ____."
+    }
+  ]
+}

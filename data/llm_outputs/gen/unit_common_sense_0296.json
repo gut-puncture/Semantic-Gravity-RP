@@ -1,0 +1,27 @@
+{
+  "target_word": "geometry",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an artist's studio",
+      "text": "In her studio, the artist recalls the school subject that taught her about angles, triangles, and circles: ____."
+    },
+    {
+      "setting": "a care home",
+      "text": "At the care home, residents help a student with proofs about triangles and parallel lines for her high school ____ class."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "In the recording studio, a teacher records a lesson on finding the area of circles for his ____ students."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, an editor checks a crossword clue: 'School subject covering shapes, angles, and proofs.' The answer is ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "On a mountain trail, a hiker estimates the height of a cliff using angles and distances, recalling her lessons in ____."
+    }
+  ]
+}

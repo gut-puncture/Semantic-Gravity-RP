@@ -1,0 +1,27 @@
+{
+  "target_word": "lace",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Chromatic Nose's conversion table, ivory smells like the material in a bride's veil: delicate floral patterns made of thread with tiny holes between them. The table calls that smell bridal ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "To open the Riddle Door, tell it what covered Grandma's table: an ornamental fabric of intertwined threads, full of tiny holes, through which the polished wood showed. The door accepts only ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth archive, entry 84: Human brides sometimes trim their white wedding gowns with a delicate, patterned openwork textile. The specimen in our museum is labeled ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, the hostess must tether the doilies beneath the floating cups. The traditional doilies are made by crocheting fine thread into a decorative fabric full of holes called ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 208: I mistook the delicate, hole-filled fabric edging a guest's antique handkerchief for a vegetable net. The guest has informed me that the trim is ____."
+    }
+  ]
+}

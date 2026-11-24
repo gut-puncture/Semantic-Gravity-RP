@@ -1,0 +1,27 @@
+{
+  "target_word": "strike",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Assembly step 4: Install the tiny lighthouse on the western shore, then fit the storm cloud above it. To test the lightning rod, wait for lightning to ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, the host floats a miniature grandfather clock beside the teapot. Guests must wait until the clock has finished chiming twelve times; they may pour only after its final ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "Error log, sentient refrigerator: The unionized ice cubes have stopped all work and refuse to make any more ice until I repair their freezer light. Their collective refusal to work is a ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of a shadow accused of stealing sunlight, the judge ruled that a witness's last remark was inadmissible. The court ordered the clerk to ____ the remark from the record."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before entering the time machine, put on your helmet and check the overhead clearance. In a low-ceilinged era, the helmet will protect you if you accidentally ____ your head on a beam."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "sheep",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "moving day",
+      "text": "The moving truck had to wait while a shepherd led his flock of woolly ____ across the road."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "At the jazz club, the singer wore a wool sweater made from the fleece of ____."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "Unable to sleep, the hotel guest told the receptionist she had tried counting ____ jumping over a fence."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, visitors watched a farmer shear the thick wool off his ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "On the mountain trail, hikers saw lambs grazing beside their mothers, a flock of ____."
+    }
+  ]
+}

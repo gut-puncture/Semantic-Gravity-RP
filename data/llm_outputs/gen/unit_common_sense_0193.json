@@ -1,0 +1,27 @@
+{
+  "target_word": "crash",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a wedding reception",
+      "text": "Someone dropped a stack of plates at the wedding reception, and they hit the floor with a loud ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "In the dentist's waiting room, a patient watched a news report about a plane ____ that had forced the airport to close."
+    },
+    {
+      "setting": "a final exam",
+      "text": "Maya stayed up all night studying for her final exam. When she got home afterward, she was so exhausted she wanted to ____ on the couch."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, an editor wrote a headline about the stock market ____, when share prices suddenly plunged."
+    },
+    {
+      "setting": "a hotel reception desk",
+      "text": "At the hotel reception desk, the clerk apologized because the computer system might ____ again, shutting down the booking software."
+    }
+  ]
+}

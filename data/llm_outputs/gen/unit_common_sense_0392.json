@@ -1,0 +1,27 @@
+{
+  "target_word": "librarian",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an artist's studio",
+      "text": "In her studio, an artist painted a portrait of the person who runs the local library. Her subject was a ____."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "In the spring garden, a woman sorted flowers for a display at work. She would take them to the library, where she worked as a ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "On a rainy afternoon in his old apartment, Tom read a library book. To ask about renewing it, he called the library and spoke to a ____."
+    },
+    {
+      "setting": "a zoo",
+      "text": "At the zoo, a child asked where she could borrow books about lions. Her teacher suggested asking the school ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "The chess tournament was held at the public library. The person who runs the library announced that it was closing, so the players thanked the ____."
+    }
+  ]
+}

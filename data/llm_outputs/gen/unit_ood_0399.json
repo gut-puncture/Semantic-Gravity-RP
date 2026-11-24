@@ -1,0 +1,27 @@
+{
+  "target_word": "mistress",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before entering the time machine, tell the brass watchdog whether the owner of the house is a man or a woman. It addresses a male owner as master and a female owner as ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "To prepare a banquet for the invisible household, arrange the plates without tasting them. Place the male host's crown at the head of the table and the female host's crown beside it, at the place marked ____ of the house."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When a lost sea dog swims into your rescue station, read the name on its collar and summon the woman who owns it. The animal will wag its tail when it sees its ____."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Grow the overture in a glass dish until it announces each performer at the laboratory concert. Since the female host will introduce the acts, label her podium: ____ of ceremonies."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "The cloud factory's costume chamber lets its female operator become indistinguishable from a raven, a queen, or a mountain. After she has fooled every inspector in all three forms, award her the title ____ of disguise."
+    }
+  ]
+}

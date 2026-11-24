@@ -1,0 +1,27 @@
+{
+  "target_word": "cleaning",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a bakery before opening",
+      "text": "Before the bakery opens, the baker wipes flour off the counters. She is ____ the work surfaces."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "Between rounds at the chess tournament, a worker uses disinfectant wipes on the shared tables. He is ____ them."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "In the busy restaurant kitchen, the cook scrubs grease and burnt food off a pan. She is ____ it."
+    },
+    {
+      "setting": "a garden in spring",
+      "text": "In spring, the gardener washes dried mud off her shovel with a hose. She is ____ the tool."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, the printer has stopped because its rollers are coated in ink. A technician is ____ the rollers with a cloth."
+    }
+  ]
+}

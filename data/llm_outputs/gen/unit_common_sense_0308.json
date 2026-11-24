@@ -1,0 +1,27 @@
+{
+  "target_word": "guard",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, the farmer asked his son to stand ____ over the prize pumpkin until judging began."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "A ski racer attached a chin ____ to her helmet to protect her face from slalom poles."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "When a fight broke out at the supermarket checkout, the cashier called the security ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "The sudden leak in the old apartment ceiling caught Maya off ____, and she had to rush for a bucket."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "At the pet shop, a customer asked for a breed suited to protecting a house as a ____ dog."
+    }
+  ]
+}

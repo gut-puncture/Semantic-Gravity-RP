@@ -1,0 +1,27 @@
+{
+  "target_word": "horizon",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth survey, entry 81: When a human stands on a flat beach and looks toward open water, the sea appears to meet the sky along a distant line. Humans call that apparent boundary the ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their ancient contract, the sun must sink below the apparent line where the sea meets the sky before the night may begin its shift. Tonight, the sun has reached the ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Sky Sailors, your ship advances toward a painted line where the ocean appears to meet the sky. To win, place your final marker on that line, labeled the ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking a patient companion who enjoys long sunsets and can overlook the occasional plume of ash. From my summit we can watch the sun disappear beyond the distant ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, guests must keep their cups pointed toward the distant line where Earth's curved surface appears to meet space. A cup aimed away from that visible boundary has lost sight of the ____."
+    }
+  ]
+}

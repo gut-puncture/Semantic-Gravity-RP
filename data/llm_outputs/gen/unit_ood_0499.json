@@ -1,0 +1,27 @@
+{
+  "target_word": "procedure",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "A ghost's insurance policy covers accidental loss of transparency only if the claimant follows the required sequence of steps. To file a claim, first document the mishap and then follow the claims ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The table maps blue to the smell of rain and gold to the smell of toast. When a shade falls between two entries, technicians must follow the standard operating ____: mix the two listed scents in equal amounts."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, gravity reverses whenever a bell rings, trapping moons against the ceiling. To restore normal gravity, inhabitants must carry out an emergency ____: ring the bell twice more and stand still until the moons fall."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "A robot that has never eaten writes a recipe for clouds on toast. Under Ingredients it lists one cloud and two slices of toast; under ____ it gives the numbered steps for assembling them."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the customs form for travellers between dreams, a checked box signals that a suitcase contains a recurring nightmare. The officer must then open the suitcase in a sealed room, following the inspection ____."
+    }
+  ]
+}

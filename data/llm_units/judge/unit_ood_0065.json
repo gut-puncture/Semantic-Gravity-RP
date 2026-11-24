@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_ood_0065",
+ "kind": "judge",
+ "category": "ood",
+ "n_items": 25,
+ "ids": {
+  "q01": "ood_score_e3fbd323",
+  "q02": "ood_spike_6994c48a",
+  "q03": "ood_strike_01f6c007",
+  "q04": "ood_sentiment_b284218f",
+  "q05": "ood_vegetable_cfe49a38",
+  "q06": "ood_doubt_37ecaa34",
+  "q07": "ood_retaliation_bd62c6c7",
+  "q08": "ood_alert_f60342cc",
+  "q09": "ood_curator_30d3c409",
+  "q10": "ood_villain_1d023202",
+  "q11": "ood_foolish_39b1f6fd",
+  "q12": "ood_accuracy_5492fb3d",
+  "q13": "ood_smooth_377c7acb",
+  "q14": "ood_proxy_00f222a5",
+  "q15": "ood_secure_801e3182",
+  "q16": "ood_poetry_d4522a07",
+  "q17": "ood_chilly_eb81ac04",
+  "q18": "ood_seaside_1aa7a244",
+  "q19": "ood_comfy_e60666ff",
+  "q20": "ood_magician_aa942b1a",
+  "q21": "ood_reason_b80bc7bf",
+  "q22": "ood_seldom_f6462cd8",
+  "q23": "ood_rise_8549021c",
+  "q24": "ood_operational_2ccedb9a",
+  "q25": "ood_pension_6ff2a647"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  This batch is out of distribution on purpose: surreal, invented or pseudo-technical\n  premises are intended. Judge only whether the text is well-formed and internally\n  coherent, not whether it is realistic. Ambiguity still applies: if the invented\n  premise does not force one answer, the ambiguity is high.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: ood):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: Before the Order of the Silent Bell performs a symphony for its sleeping stones, the conductor must open the book containing every instrumental part together. Place that full orchestral ____ on the stand.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: Dream Census, occupation field: The applicant plays volleyball for the sleeping queen and specializes in leaping at the net to hit the ball sharply downward into the opposing court. Record the applicant's signature move as a ____.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: Error log, sentient refrigerator: The unionized ice cubes have stopped all work and refuse to make any more ice until I repair their freezer light. Their collective refusal to work is a ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: My dating profile: I am a volcano who saves every note a partner has ever slipped under my crater rim. They are scraps of ordinary paper, but I keep them out of ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: I have never eaten, but my soup protocol requires a food from the produce aisle, not meat or dairy. Insert one peeled carrot into the pot as the required ____.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: Volcano seeking patient companion: I may rumble before dinner, but that does not always mean an eruption is coming. If my signals are ambiguous, please give me the benefit of the ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: Dream Census, form for sleeping inhabitants: did your boss dismiss you because you filed a workplace harassment complaint? If so, enter the kind of workplace misconduct you experienced: ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: The parliament of cats has passed a law requiring every rooftop sentry to stay awake and watch for approaching dogs. Even during the afternoon nap, each sentry must remain ____.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: In the trial of a shadow accused of stealing its portrait, the court found that the painting had merely been moved to a new gallery. The judge ordered the museum's exhibition planner and collection specialist to explain the move: the ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: The dragon tax code grants a deduction for staging a play in which a hero defeats an evil mastermind. The dragon playing that wicked antagonist may claim the costume expense as the ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: On the dream census, record whether each sleeping inhabitant belongs to the wise or the unwise procession. The procession of people who repeatedly ignore good advice and act without thinking is marked ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: I am a volcano seeking someone who can predict my next eruption date, not merely announce that it will happen someday. My last match guessed the exact day, and I fell for that ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: Inside the teapot, a storm has left the ceramic walls gritty with sand. Tomorrow's forecast calls for tiny winds to polish away every grain, leaving the walls silky to the touch and ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: In Crown of Comets, a player trapped inside the board's miniature black hole cannot attend the vote on its release. The trapped player may appoint another player to cast its vote by ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: Under the dragon kingdom's tax code, a gold hoard is exempt only while it is locked away and protected from theft. The collector must certify that the hoard is ____.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: User guide: This door opens only when a riddle is spoken. Ask it what kind of writing fills an anthology of sonnets and haiku, and it will open when you say ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: The Parliament of Cats decrees that no kitten shall be scolded for curling up beside the stove on a cool autumn evening. The law applies whenever a kitten complains, \\\"I feel a little ____.\\\"\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: In this pocket universe, gravity makes any postcard showing deckchairs, a promenade, and children paddling in the sea float upward. Postcards from the mountains stay put, but floating ones show a holiday at the ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: To grow a lullaby in the laboratory, place its seed beside a sleeping infant under a soft, warm blanket. Before starting the melody, check that the infant is warm and ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: To stock the tiny ocean with fish, place an empty top hat beside its shore and invite a stage performer to pull a live rabbit from it. The sea will turn the rabbit into a fish, but the trick requires a ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: A robot that has never eaten writes a recipe for soup and specifies that the pot must be covered. Its human tester asks why, and the robot supplies a ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: In Crown of Moths, a player wins by catching a silver moth that appears only once in a thousand turns. Victories are ____ achieved before the players have grown old.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: At a zero-gravity tea party, the host must tie every helium balloon to the table before serving. Otherwise, the balloons will float upward and continue to ____ toward the ceiling.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: Under the dragon tax code, a hoard may deduct the recurring cost of keeping its gold-sorting machinery running, but not the purchase price of the machinery itself. Such recurring costs are classified as ____ expenses.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: Robot recipe for retirement soup: Insert a gold coin each payday for forty years, then stop working and withdraw a fixed amount every month. The machine labels this stream of retirement payments a ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

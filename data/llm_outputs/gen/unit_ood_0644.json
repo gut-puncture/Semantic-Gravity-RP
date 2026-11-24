@@ -1,0 +1,27 @@
+{
+  "target_word": "stricken",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Travellers carrying forbidden memories must have their names crossed out on the passenger list before entering another dream. If your name has been removed in this way, it has been ____ from the list."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum placard, year 4000: This mechanical mourner was built to weep whenever its owner vanished. When the owner disappeared, the machine was so overcome with grief that its maker described it as grief-____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Teapot Weather Service: The eastern tea leaves have had no rain for seven imaginary years. With the soil completely dry and crops failing, the region is now officially described as drought-____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has decreed that any mouse falsely accused of stealing cheese shall be cleared, and the accusation crossed out from the court record. Once removed in this way, the accusation has been ____ from the record."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the Sun must send a physician if the Night falls gravely ill. Yesterday the Night collapsed with a fever, and the physician reported that she had been ____ with a serious illness."
+    }
+  ]
+}

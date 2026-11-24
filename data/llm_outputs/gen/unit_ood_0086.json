@@ -1,0 +1,27 @@
+{
+  "target_word": "brace",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "When the bell summons the monastery's annual earthquake, kneel before the altar and press both palms firmly against its legs to ____ it against the shaking."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To prepare thunder soup, first close the oven door and stand clear. When the cloud swells and the timer strikes, the recipe advises the cook to ____ for impact."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "The spell that turns a pebble into a mountain takes effect without warning. Before speaking the final syllable, plant your feet and ____ yourself for the shock."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Growing a bass note makes the glass chamber vibrate violently. Fit a diagonal steel support across the frame to ____ it against the vibration."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court found the shadow innocent of frightening the moon. Nevertheless, the judge warned that the moon might still file an appeal, so the shadow should ____ for the worst."
+    }
+  ]
+}

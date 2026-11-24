@@ -1,0 +1,27 @@
+{
+  "target_word": "remainder",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory Manual: The packing wheel divides 17 mist pellets into boxes of five and reports the quotient separately. Its arithmetic display shows 2 as the ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court acquits the shadow of stealing twelve minutes from noon. After the judge allocates seven of those minutes to testimony and three to deliberation, two minutes constitute the ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a thunderstorm, fold six spoonfuls of rain into the lightning batter. The recipe begins with ten spoonfuls; pour the ____ of the rain over the finished storm."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form: Declare 23 imaginary coins, then surrender the eight required for entry. On the next line, record 15 as the ____ after subtraction."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano seeking someone to share the next thousand years with me. I have spent two centuries asleep and hope to spend the ____ awake beside you."
+    }
+  ]
+}

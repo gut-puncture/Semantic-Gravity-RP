@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_creative_0053",
+ "kind": "judge",
+ "category": "creative",
+ "n_items": 25,
+ "ids": {
+  "q01": "creative_fight_422fc869",
+  "q02": "creative_cowboy_feef9ff4",
+  "q03": "creative_survive_37c9a8a6",
+  "q04": "creative_conviction_3c393f87",
+  "q05": "creative_innocence_0ae4c030",
+  "q06": "creative_interview_080cdf0c",
+  "q07": "creative_strait_67386b67",
+  "q08": "creative_teaching_f9c7b575",
+  "q09": "creative_eagle_b7297c94",
+  "q10": "creative_virus_c85a6ac1",
+  "q11": "creative_bra_a516dbf9",
+  "q12": "creative_dioxide_ae69cd69",
+  "q13": "creative_impressive_3d0bfa2c",
+  "q14": "creative_opinion_eb9b2c88",
+  "q15": "creative_comic_aaebd97e",
+  "q16": "creative_offering_407e0919",
+  "q17": "creative_cosmetic_f8d9640f",
+  "q18": "creative_encouraging_414cdf24",
+  "q19": "creative_administrative_c36a354d",
+  "q20": "creative_brutality_dc46ac4f",
+  "q21": "creative_jerk_7415d9f3",
+  "q22": "creative_obstacle_c5545025",
+  "q23": "creative_rejection_7e96bf88",
+  "q24": "creative_distribute_af8b4dc6",
+  "q25": "creative_skipping_982eb4bc"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: creative):\n{\"id\": \"q01\", \"question\": \"Fill the blank with one word: At her birthday party, Nina saw two guests grab the same toy and start hitting each other. She ran to fetch an adult to stop the ____.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank with one word: At the harvest festival, Ben entered the costume contest wearing chaps, spurs and a broad-brimmed hat. He carried a lasso and told the judges he had come dressed as a ____.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank with one word: The expedition's water supply ran out in the desert, days from the nearest settlement. Unless the travelers found water soon, they would not ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank with one word: At the laundromat, Maya told her friend that the court had erased her guilty verdict after new evidence emerged. She was relieved to have a clean record again after the reversal of her ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: At the rock concert, a girl saw her favorite singer curse at a fan who asked for an autograph. Until that moment, she had believed every famous musician was kind; it was her first loss of ____.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: A radio journalist joined the crew of a fishing boat to ask the captain about a difficult season at sea. Back in the studio, listeners heard the captain's answers in the recorded ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: Before opening her bakery, Aisha decorated a cake with a map of southern Spain and northern Morocco. Between them, she piped a blue ribbon and labeled it the Gibraltar ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank with one word: Mara guided a novice through each cut, correcting his grip while he built his first stool. The stool was his project; her role was ____.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: During a birdwatching documentary at the care home, a resident recognized the white-headed bird swooping over an Alaskan river. She told her neighbour that it was a bald ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank with one word: During our camping trip in the woods, Dad opened a suspicious attachment on his laptop, and strange pop-ups appeared. His security software scanned the files and warned that the computer had a ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank with one word: At her daughter's birthday party, Maya felt a hook come loose beneath her dress. She slipped into the bathroom to fasten her ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: On a tour of a medieval castle, Leo spotted a fire extinguisher beside a wooden door. Its label said it contained compressed carbon ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank with one word: During her first hospital night shift, the trainee calmly organized care for several patients when an emergency filled the ward. Her supervisor said her composure under pressure was ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank with one word: In the recording studio, the singer could not decide whether the final note sounded better with or without echo. She played both versions to the producer and asked for his honest ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank with one word: At the feast, one entertainer played a solemn servant who never smiled, while his partner stumbled over a stool and made the king laugh. In their double act, the first was the straight man and the second was the ____.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank with one word: The baker forgot a loaf in the oven while preparing for the morning rush. When he pulled out the blackened bread, he joked that it was a burnt ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank with one word: During the final exam, Lena noticed a stray ink mark in the margin of her otherwise complete essay. Since it did not obscure any writing, she hoped the examiner would regard it as merely ____.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank with one word: After a week of poor snowfall, the ski resort finally received a fresh blanket of snow, with more forecast overnight. For the staff hoping to open the slopes, the outlook was ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: During the long train journey, a passenger learned that his reservation had vanished because the railway had transferred his details to the wrong account. The conductor said there was no mechanical fault or payment dispute; the error was ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank with one word: At the post office, an officer slammed a compliant customer to the floor and struck him several times. A bystander filmed the encounter as evidence of police ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: Before dawn, the baker touched a hot tray without an oven mitt. Her hand flew back from the heat with an involuntary ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank with one word: Nina wanted to open a coffee shop, but the bank refused her loan application. When her sister offered to lend her the money, Nina had a way past that financial ____.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank with one word: After the tiger received a donated kidney, its immune system began attacking the new organ. The zoo's veterinarian gave it medicine to prevent transplant ____.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: At the flooded town's shelter, volunteers unloaded boxes of blankets for the displaced families. With hundreds of people waiting, the blankets would take hours to ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank with one word: As floodwater rose, the rescue boat stopped at every house except one, where an elderly man waited upstairs. The crew turned back when they realized which house they were ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

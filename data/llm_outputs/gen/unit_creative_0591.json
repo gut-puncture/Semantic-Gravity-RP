@@ -1,0 +1,27 @@
+{
+  "target_word": "satisfy",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a pet shop",
+      "text": "A customer examined ten dog beds, finding a different fault with each one. The shopkeeper sighed and said she was impossible to ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "The hikers reached a fork where each path had a different sign. They needed a route that was both short and shaded, but neither trail could meet both conditions; only the path back would ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow fell outside as Maya rummaged through the kitchen, craving chocolate. A slice of cheese was all she found, and she knew it would not ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "The detective had a suspect but no evidence placing him at the scene. The client demanded proof, and a hunch alone would not ____."
+    },
+    {
+      "setting": "a beach holiday",
+      "text": "After a week at the seaside, Leo had tried swimming, surfing and sailing, yet he still wanted more adventure. His sister laughed that even a trip around the world might not ____."
+    }
+  ]
+}

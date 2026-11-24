@@ -1,0 +1,27 @@
+{
+  "target_word": "attic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a violin melody, place its seed among dusty trunks beneath the sloping roof of an old house. The pull-down ladder from the top-floor ceiling gives access to this space, called the ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun and the night agree to store their spare hours in the old house. Their contract specifies the unfinished space directly under its pitched roof, reached by a hatch in the top-floor ceiling: the ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "When visiting a human house, a sentient cloud must leave its raincoat with the family's forgotten toys and old trunks. These are kept above the bedrooms, directly beneath the roof, in the ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow hid above the highest bedroom, behind the ceiling hatch and under the rafters. It orders the bailiff to retrieve the shadow from the ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The seer's spreadsheet contains the prophecy =IF(DRAGON_WAKES,SEARCH_HOUSE,WAIT). When the dragon wakes, search the dusty space beneath the pitched roof, accessible through the top-floor ceiling hatch: the ____."
+    }
+  ]
+}

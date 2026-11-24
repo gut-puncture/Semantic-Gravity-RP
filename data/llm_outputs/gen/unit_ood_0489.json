@@ -1,0 +1,27 @@
+{
+  "target_word": "presidential",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the cloud planet, visiting heads of state are greeted with a swirl shaped like their official seal. When the visitor is the elected head of a republic, the hosts call the salute ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The synesthetic alchemists' conversion table pairs royal blue with the smell of a crown's velvet cushion and election-night purple with the smell of the Oval Office. They label the latter scent ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Descend into the moon's basement to tour an exact replica of the White House suite reserved for the American head of state. Your ticket includes a visit to the ____ bedroom."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: Declare any veto carried across the border. If it was issued by the elected head of a republic rather than by its legislature, tick the box marked ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.1 fixes the time machine's habit of sending the elected head of the United States to a royal coronation instead of an inauguration. The corrected destination is now listed as a ____ inauguration."
+    }
+  ]
+}

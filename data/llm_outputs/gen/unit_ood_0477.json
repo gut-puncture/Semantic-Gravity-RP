@@ -1,0 +1,27 @@
+{
+  "target_word": "postal",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Assembly instructions for your pocket-sized ocean: attach the miniature lighthouse, then place a stamped envelope in the floating mailbox. To have the tiny government service collect and deliver it, raise the flag for the ____ carrier."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, occupation section: count the cloud person who collects stamped letters from mailboxes and delivers them to houses. Enter that inhabitant as a ____ worker."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after you solve its riddle: What code do you add to a street address so the mail service can sort a letter by destination? Speak the missing adjective in ____ code."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has decreed that every kitten must send a stamped birthday card to the Moon. To prevent it from wandering forever, each envelope must bear the recipient's address and ____ code."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before starting the time machine, secure all loose letters so they cannot scatter across centuries. Any stamped envelope found in the cabin must be handed to a ____ worker for delivery."
+    }
+  ]
+}

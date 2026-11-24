@@ -1,0 +1,27 @@
+{
+  "target_word": "inferior",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "When assembling your pocket-sized ocean, compare the two pearl pumps: one leaks salt water and stops after a minute, while the other runs flawlessly for years. Install the superior pump and discard the ____ one."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Year 4000, Museum of Lost Clouds: These two artificial rainbows were entered in the Great Sky Exhibition. Judges awarded one the superior prize; the faded, crooked example received the prize for an ____ work."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Scent Prism conversion table, blue represents a better aroma than red. If blue is assigned to the superior smell in a pair, red is assigned to the ____ smell."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Tour the basement of the moon and watch the annual cheese competition. The judges declare one wheel superior to all the others; every other wheel is therefore ____ to the winner."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a thunderstorm, whip two batches of clouds and taste their rain. If one batch tastes muddy while the other tastes delicious, serve the better batch and label the muddy one ____."
+    }
+  ]
+}

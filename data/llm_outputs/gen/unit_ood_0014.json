@@ -1,0 +1,27 @@
+{
+  "target_word": "agricultural",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.2: The cloud-folding engine now assigns each floating tractor, plow, and combine to the same category used for farm machinery. On the maintenance screen, this equipment is labeled ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The shadow was accused of stealing a field, but the court found that it merely covered the wheat at sunset. Because the disputed land is used to grow crops for food, the judge classified it as ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To make a miniature kingdom inside a pumpkin, enchant its seeds to grow grain and vegetables for the inhabitants. The spellbook files this charm alongside other spells for farming, under ____ magic."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts what sort of revolution will follow the invention of a plow that works by itself. Its formula reads: IF(the new plow transforms how food is grown on farms, the revolution will be ____, otherwise the future stays blank)."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a field used to grow wheat is taxed at the same rate as other farmland. The assessor must record its land use as ____."
+    }
+  ]
+}

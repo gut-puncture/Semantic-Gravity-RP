@@ -1,0 +1,27 @@
+{
+  "target_word": "proportional",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The chairs agreed to give the table one cushion for each of its legs, whether it had three legs or twenty. The number of cushions will therefore be directly ____ to the number of legs."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.1 fixes the cloud-folding machine's power control: doubling the requested folds now doubles the energy used, and halving them halves it. Energy consumption is directly ____ to the requested number of folds."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the Moon's basement, where your shadow grows three inches for every bell you ring, starting from zero inches at silence. The length of your shadow is directly ____ to the number of rings."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the Dragon Kingdom's tax code, every dragon pays exactly two rubies for each egg in its hoard; a dragon with no eggs pays nothing. The tax is directly ____ to the number of eggs."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has banned flat fines for stolen naps: a thief who takes twice as many minutes must pay twice as many sardines. Each penalty must be directly ____ to the time stolen."
+    }
+  ]
+}

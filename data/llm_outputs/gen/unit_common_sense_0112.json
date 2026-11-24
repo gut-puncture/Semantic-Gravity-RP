@@ -1,0 +1,27 @@
+{
+  "target_word": "captain",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a construction site",
+      "text": "At the construction site, workers watched a ship arrive with steel beams. The person in command of the ship was its ____."
+    },
+    {
+      "setting": "a police station",
+      "text": "At this police station, a lieutenant was promoted to the rank directly above lieutenant and directly below major: ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "In the laboratory, a researcher labeled a seawater sample with the name of the person who commanded the research vessel: the ship's ____."
+    },
+    {
+      "setting": "a job interview",
+      "text": "During her airline job interview, the pilot explained that she wanted to become the pilot in command of an airliner, known as the ____."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "In the busy kitchen, a cook prepared a birthday cake for the soccer team's leader. The icing read, \"Happy Birthday to our team ____!\""
+    }
+  ]
+}

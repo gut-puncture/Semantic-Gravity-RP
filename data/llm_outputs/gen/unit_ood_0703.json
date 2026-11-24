@@ -1,0 +1,27 @@
+{
+  "target_word": "tunnel",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The colour-to-smell table assigns black the scent of soot and damp stone. The railway spirits recognize it as the smell inside a train's long, enclosed passage through a mountain: a ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To make a draft for wind soup, place a mountain of salt dough between two miniature railway stations. Push a train straight through the mountain, leaving an enclosed passage called a ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When a toy train carrying sleeping crabs disappears into the seaside cliff, follow its tracks below the rock. The train will emerge from the other end of the railway ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the dream customs form, declare how you passed through the mountain between the two sleeping cities. If you rode a train through an enclosed passage bored into the rock, tick ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To give a cloud its rainy-day echo, send a miniature train through the factory's solid artificial mountain. The enclosed railway passage through the mountain is labeled ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "edible",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Order of the Hollow Bell makes its communion candles from honey and flour, then bakes them before lighting their wicks. After the flames are put out, the monks eat the candles because they are ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In the pocket universe of Crumb, every stone turns into a fresh loaf of bread whenever gravity reverses. Explorers can then eat the stones, because the reversal makes them ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of a shadow accused of stealing a painted pear, the court found that the pear was made of solid sugar. The judge ruled that, unlike the shadow's pear-shaped silhouette, the stolen object was ____."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Visit the basement of the moon, where gardeners grow two kinds of flowers: glass replicas for display and marzipan roses for dessert. Help yourself to a marzipan rose; it is entirely ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "In the Seer's spreadsheet, IF the comet appears, THEN the wax fruit at the royal banquet will become real apples; ELSE it will remain wax. The comet has appeared, so the prophecy says the fruit is now ____."
+    }
+  ]
+}

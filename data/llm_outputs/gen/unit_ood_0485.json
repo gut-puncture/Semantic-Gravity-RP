@@ -1,0 +1,27 @@
+{
+  "target_word": "pregnant",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "Under the zero-gravity tea party rules, a guest carrying a developing baby in her womb gets the tethered armchair. When the hostess learned that Maya was expecting a baby, she offered her the chair reserved for guests who are ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before entering the time machine, check the medical panel: its scanner shows a developing fetus inside your uterus. Do not travel if you are ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: the kettle reported that its owner had taken a home test, received a positive result, and had the result confirmed by her doctor. The crib requested assembly because she was ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, visitors should not ask a human about a baby's due date unless she has shared the news herself. Even a cloud with excellent eyesight cannot tell whether a human is ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: If you are carrying a developing baby in your womb, request a gentle landing in the next dream. Tick this box if you are ____."
+    }
+  ]
+}

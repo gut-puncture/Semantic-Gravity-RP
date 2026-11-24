@@ -1,0 +1,27 @@
+{
+  "target_word": "fuller",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory operating manual: The rain tank begins half full. Add water until it is three-quarters full; the tank is now ____ than it was before."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "In the Order of the Sleeping Bells, each monk pours tea into the abbot's cup until it reaches the brim. After the pouring, the cup is ____ than it was when it was empty."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle entered this prophecy into a spreadsheet: IF the moon changes from a crescent to a disk, THEN it will look ____ than before. The cell displaying the result reads ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spellbook entry: Cast the Feast Charm on a bowl containing one apple, and it fills the remaining space with apples. Afterward, the bowl is ____ than it was before the spell."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: A rescue float works best when inflated. If it is half full of air, pump in more until it is nearly at capacity; it will then be ____ than before."
+    }
+  ]
+}

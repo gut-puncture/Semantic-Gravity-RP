@@ -1,0 +1,27 @@
+{
+  "target_word": "stain",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR LOG: I dreamed that a jar of beet juice tipped over inside me. After I wiped up the liquid, the white shelf still bore a stubborn purple ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To prepare a thunderstorm, simmer a cloud in red wine until it turns purple, then lift it out with a white cloth. Wash the cloth immediately or the wine may leave a permanent ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The sofa reported that the carpet had spilled coffee on itself. The carpet asked the sponge to remove the brown ____ before it dried."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware release 8.4: The Time-Reversal Toaster can now undo breakfast accidents. When it runs backward over a shirt marked by spilled tomato sauce, the sauce returns to the plate and the fabric loses its red ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training: If an injured swimmer drops a berry smoothie on the rescue boat's white cushion, rinse it with fresh water promptly. Otherwise, the purple liquid may leave a lasting ____."
+    }
+  ]
+}

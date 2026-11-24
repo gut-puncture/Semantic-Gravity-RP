@@ -1,0 +1,27 @@
+{
+  "target_word": "period",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a recording studio",
+      "text": "The singer checks her calendar and realizes her monthly menstrual bleeding is due. She packs supplies for her ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "A crew member types a message home and ends a statement with a ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "A student measures the time a pendulum takes to complete one full swing. That duration is its ____."
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "The tailor circles a dot missing from the end of a sentence on a sign. She adds the missing ____."
+    },
+    {
+      "setting": "a flood evacuation",
+      "text": "During the flood evacuation, a woman takes menstrual pads with her because she has her ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "deployment",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Moonfront, each player first recruits an army of glass snails, then places those troops in their starting positions on the battlefield. The rulebook calls this second phase troop ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Recipe from a robot with no mouth: arrange the copper peas on a baking tray, then install the finished cooking software on every oven in the kitchen. The final step is software ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The shadow was accused of sending thousands of soldiers abroad without authorization. The court ruled that only the crown could order such a military ____."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "In the Prism Bureau's conversion table, violet smells of burnt sugar, while green smells of freshly cut grass. The table goes live for public use only after the production server's scheduled software ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This policy covers a ghost's parachute if it fails to open after the ghost leaps from a cloud. A claim is payable only when the parachute's automatic ____ has failed."
+    }
+  ]
+}

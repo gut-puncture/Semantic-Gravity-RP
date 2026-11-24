@@ -1,0 +1,27 @@
+{
+  "target_word": "admiral",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "The Ghost Fleet Insurance Policy pays for a lost haunting only if the claimant once commanded the entire navy as its highest-ranking officer. The ghost must have held the naval rank of ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To summon a fleet of paper ships, place a captain's hat in the cauldron and promote its wearer above every captain and commodore. The spell transforms that captain into an ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano who loves long eruptions and quiet evenings under ash. My ideal match wears a naval uniform, outranks every captain and commodore, and commands a fleet as an ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court acquits the shadow of impersonating a captain: its owner commands the whole fleet and holds the naval rank above vice admiral. The shadow belongs to an ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.1 lets the machine turn oceans upside down while preserving naval ranks. When its rank selector advances one step above vice admiral, the display now shows ____."
+    }
+  ]
+}

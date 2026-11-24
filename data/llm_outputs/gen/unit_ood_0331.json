@@ -1,0 +1,27 @@
+{
+  "target_word": "interpreted",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "The dragon tax code says a hoard owner owes no gold when the phrase 'personal flame' means breath rather than a pet fire. In the disputed return, the royal court ruled that the phrase should be ____ as referring to breath."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, gravity changes direction whenever a spoken command is misunderstood. A falling stone rose toward the ceiling because the command 'down' was ____ as meaning 'up'."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent for a silence-powered machine: the device reads a row of symbols, deciding whether each calls for a pause or a movement. In the successful trial, the symbols were correctly ____ as instructions to pause."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, turning pink can signal either delight or embarrassment. A courteous host asks which feeling was meant before saying how the color was ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum placard, year 4000: A newly discovered diary explains this ancient painting. Where earlier scholars saw a funeral, the artist described a wedding; the scene had long been ____ as a funeral."
+    }
+  ]
+}

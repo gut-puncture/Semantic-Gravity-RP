@@ -1,0 +1,27 @@
+{
+  "target_word": "constable",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a vineyard",
+      "text": "A theft among the vines brought the head of the local British police force to the vineyard. The owner greeted her by her official title, Chief ____."
+    },
+    {
+      "setting": "a beach holiday",
+      "text": "On holiday by the sea, a retired British police officer told his grandchildren about his first day on the job. Before any promotions, his rank had been police ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "A volunteer in a British police uniform helped a lost hiker down the mountain trail. Although unpaid, she had full police powers as a special ____."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "The children asked the visiting British officer why his badge showed no stripes. He explained that he had just joined the force and held the rank below sergeant, police ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, a farmer reported that sheep had escaped onto the road, and an officer arrived to help. His warrant card identified him as a detective in the British police with the rank of detective ____."
+    }
+  ]
+}

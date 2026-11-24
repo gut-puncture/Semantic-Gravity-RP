@@ -1,0 +1,27 @@
+{
+  "target_word": "impairment",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, light slows whenever anyone drinks the blue rain. A driver who drinks it has slower reactions and cannot judge distance reliably; the traffic law calls this alcohol-like effect on driving ability ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano seeking someone who enjoys quiet evenings beneath my ash cloud. My last date could no longer smell my sulfur after breathing the ash, so please be prepared for possible olfactory ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the dream customs form, declare any change caused by crossing the border. If a traveler could see clearly before crossing but now has reduced vision, the officer records a visual ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Lost Sounds, year 4000: This silver bell once rang so loudly that its keeper could no longer hear whispers. The keeper's records describe the resulting loss of hearing as an auditory ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Cast the Fog of Forgetting on a teacup to make its owner struggle to recall recent events while the spell lasts. The healer's chart records this difficulty remembering as memory ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "cavalry",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a 1940s detective's office",
+      "text": "In his smoky office, the detective listened as a retired colonel described a charge across the desert. The colonel had commanded soldiers who fought on horseback, a branch of the army known as the ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow fell outside as Maya watched a western with her grandfather. When uniformed soldiers on horseback rode over the ridge to rescue the settlers, he cheered, \"Here comes the ____.\""
+    },
+    {
+      "setting": "a football match",
+      "text": "With his team trailing late in the football match, the coach sent three fresh strikers onto the pitch. The commentator joked that the reinforcements were riding to the rescue: \"Here comes the ____.\""
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "During a history lesson, the teacher showed the class a painting of mounted soldiers carrying sabres into battle. She explained that armies once divided their fighting forces into infantry, artillery and ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "At the chess tournament, a young player moved her knight and announced that her horse was charging to the rescue. Her opponent smiled and said, \"Watch out, here comes the ____.\""
+    }
+  ]
+}

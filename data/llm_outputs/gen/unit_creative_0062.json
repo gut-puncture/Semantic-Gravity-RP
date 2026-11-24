@@ -1,0 +1,27 @@
+{
+  "target_word": "blaze",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a final exam",
+      "text": "During the final exam, sunlight poured through the windows and made the room unbearably hot. Even after the students pulled down the blinds, the afternoon sun continued to ____."
+    },
+    {
+      "setting": "a police station",
+      "text": "Someone had set fire to the bins behind the police station, and the flames quickly spread to a parked car. Officers evacuated the building while firefighters tackled the raging ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "The cashier spotted a small flame in the wiring beneath the checkout and pressed the emergency alarm. By the time everyone reached the car park, the little fire had become a ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "Maya's opponent knocked her king off the board before she had finished her move. She picked it up without a word, but her eyes began to ____."
+    },
+    {
+      "setting": "a camping trip in the woods",
+      "text": "On their camping trip, the group found that no marked path led to the lake. Their guide offered to cut through the undergrowth and let them follow the trail she would ____."
+    }
+  ]
+}

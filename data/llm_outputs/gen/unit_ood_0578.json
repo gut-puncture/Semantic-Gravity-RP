@@ -1,0 +1,27 @@
+{
+  "target_word": "seldom",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In the pocket universe, gravity reverses for one second only once every thousand years. Its inhabitants can spend many lifetimes under the same downward pull; the reversal happens ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "I am a volcano seeking someone patient enough to enjoy a few centuries of quiet together. I erupt ____, but when I do, our date may need to move indoors."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "Tea may be served only when a passing comet casts a shadow across the station, an event witnessed by just three hosts in ten thousand years. Consequently, zero-gravity tea parties are ____ held."
+    },
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The Bureau of Sensory Exchange converts blue into the smell of rain on almost every application; on one application in a million it produces cinnamon instead. Blue is ____ translated into the smell of cinnamon."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Crown of Moths, a player wins by catching a silver moth that appears only once in a thousand turns. Victories are ____ achieved before the players have grown old."
+    }
+  ]
+}

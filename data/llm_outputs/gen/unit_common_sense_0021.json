@@ -1,0 +1,27 @@
+{
+  "target_word": "artist",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a garden in spring",
+      "text": "In the spring garden, a visitor sketches the flowers and paints sculptures. She works professionally as a visual ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before the bakery opens, a local ____ hangs her paintings on the walls for customers to view."
+    },
+    {
+      "setting": "a primary school classroom",
+      "text": "The class looks at a painting and asks who created it. Their teacher says the person who made it was an ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, a farmer lets a visiting ____ set up an easel to paint the fields."
+    },
+    {
+      "setting": "an airport departure gate",
+      "text": "At the departure gate, a sculptor carefully guards her portfolio. A label on her bag identifies her profession as visual ____."
+    }
+  ]
+}

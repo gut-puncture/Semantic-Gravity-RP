@@ -1,0 +1,27 @@
+{
+  "target_word": "occurrence",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.2 teaches the machine that folds yesterday into a cube to scan its error log from the beginning. If the same fault appears several times, the display now highlights its first ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The monks of the Order of the Hollow Bell must record every sunrise that arrives blue. Most centuries pass without one, so the abbot calls a blue sunrise a rare ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "After fitting the tides inside the glass shell, check for leaks: a single drop may escape while the seals settle. If no more drops appear, record it as an isolated ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before opening the time machine's door, check whether your future self is already standing outside. This happens on almost every trip, so the safety manual describes it as a common ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "The robot's recipe asks you to read its list of ingredients backward while a saucepan orbits your head. If salt appears more than once in the list, use only the final ____."
+    }
+  ]
+}

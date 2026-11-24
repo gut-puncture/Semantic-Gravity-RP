@@ -1,0 +1,27 @@
+{
+  "target_word": "entrance",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow piled up outside the house, so Dad cleared a path to the front ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "The laboratory has separate doors for going in and coming out. The one for going in is marked ____."
+    },
+    {
+      "setting": "a construction site",
+      "text": "A truck driver arriving at the construction site followed the sign for the vehicle ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "At rush hour, commuters streamed into the station through the ____ while others left through the exit."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "After paying, Nina realized she had left her umbrella by the place where shoppers first come in: the supermarket ____."
+    }
+  ]
+}

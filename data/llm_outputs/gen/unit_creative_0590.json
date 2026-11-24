@@ -1,0 +1,27 @@
+{
+  "target_word": "satisfaction",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a village market",
+      "text": "The village market vendors asked shoppers to rate their experience from very poor to excellent. They used the responses to measure customer ____."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "After months of careful work, the painter added the final stroke and stepped back from her canvas. Seeing it turn out just as she had hoped gave her a deep sense of ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening, the baker arranged warm loaves in the window and checked that every order was ready. She loved her work, and that feeling made up a large part of her job ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "The submarine crew had struggled for hours to repair a faulty pump. When it finally ran smoothly, the engineer watched the pressure gauge with quiet ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "The ski resort promised to refund any guest who was unhappy with a lesson. Its brochure summed up that promise as guaranteed ____."
+    }
+  ]
+}

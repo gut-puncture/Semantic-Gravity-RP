@@ -1,0 +1,27 @@
+{
+  "target_word": "fry",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "moving day",
+      "text": "On moving day, Lena found a carton of eggs and a skillet before she had unpacked any other kitchen supplies. She poured oil into the skillet, cracked in an egg, and watched it ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "In his smoke-filled office, the detective pinned photographs of the gang's leaders above those of its minor accomplices. He called the bosses big fish and dismissed the accomplices as small ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "Deep in the enchanted forest, a hungry princess found mushrooms and built a small fire. She put the mushrooms in a pan with hot butter and began to ____."
+    },
+    {
+      "setting": "a desert expedition",
+      "text": "During the desert expedition, Omar left his radio on a rock in the blazing sun. His guide warned that if it got much hotter, its delicate circuits could ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow fell outside as the family gathered around the aquarium at home. The children watched the newly hatched fish dart among the plants and counted twelve tiny ____."
+    }
+  ]
+}

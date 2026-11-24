@@ -1,0 +1,27 @@
+{
+  "target_word": "identity",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory Manual: Before releasing a thundercloud, scan the foreman's badge to confirm that he is the person named on it. The scanner verifies his ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth Encyclopedia, entry on fraud: Some humans steal personal information to impersonate another person and open accounts in that person's name. Earthlings call this crime ____ theft."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Dating profile: I am a volcano who loves long eruptions and quiet evenings beneath the stars. Before we meet, I will show you my passport so you can verify my ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1 for the machine that folds shadows into doors: The login screen now requires a password and a one-time code before accepting a user's claim to be that account holder. These two steps verify the user's ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form: If your passport photo changes into a fish while you sleep, present your fingerprints instead. An officer will compare them with your registered prints to confirm your ____."
+    }
+  ]
+}

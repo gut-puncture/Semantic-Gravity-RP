@@ -1,0 +1,27 @@
+{
+  "target_word": "exclude",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The chairs voted to admit every lamp to their moonlight picnic except the one that had stolen their cushions. The motion was to ____ that lamp from the guest list."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, pour in the enclosed salt and add three drops of water. The tiny fish cannot survive in chlorine, so ____ chlorine from the water you use."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only when a riddle offers three possible answers, precisely one of which is correct. To solve the riddle, first ____ the two wrong answers, leaving only the right one."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before starting the time machine, set the destination selector to accept any year from 1800 through 2200, apart from 1942. To prevent a paradox, program it to ____ 1942 from the available destinations."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "In the trial of the shadow, the judge found that the sundial's testimony had been obtained under threat of permanent darkness. The court ruled that the jury must ____ that testimony from its deliberations."
+    }
+  ]
+}

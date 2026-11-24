@@ -1,0 +1,27 @@
+{
+  "target_word": "maker",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has passed a law requiring every disputed tuna ration to be settled by one official. The cat empowered to choose is the final decision ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a warm front will bring clouds of steam by noon. The forecast warns that the neighboring coffee ____ may also experience heavy condensation while it brews."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To prepare a hailstorm for dessert, churn the frozen clouds with sugar and cream until smooth. For the best texture, use an electric ice cream ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet displays =IF(A1=\"broken violin\",\"seek its ____\",\"wait\"). Its accompanying vision shows the craftsperson who built that very instrument repairing it before the eclipse."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before traveling to the beginning of creation, resolve all earthly disputes and prepare for the afterlife. The machine's warning panel says you may soon meet your ____."
+    }
+  ]
+}

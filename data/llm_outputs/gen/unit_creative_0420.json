@@ -1,0 +1,27 @@
+{
+  "target_word": "met",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a camping trip in the woods",
+      "text": "The scouts needed dry wood, a cleared fire pit, and an adult present before lighting a fire. Once all three conditions were satisfied, their leader announced that every safety requirement had been ____."
+    },
+    {
+      "setting": "a rock concert",
+      "text": "During the final song, Maya spotted her brother across the packed arena. He looked up at the same instant, and their eyes ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "Two strangers struck up a conversation while waiting for their dental appointments, and years later they married. Whenever anyone asked where their story began, they pointed to the waiting room where they first ____."
+    },
+    {
+      "setting": "a mountain hiking trail",
+      "text": "A fallen tree split the hiking party in two, sending each group around a different side of the mountain. At sunset, the paths joined again, and the separated hikers ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "The queen had promised to give a gold coin to anyone who brought her a silver leaf from the enchanted forest. When a child returned with one, the queen gave her the coin, and her promise was ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "thank",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard manual: When a dolphin brings a stranded swimmer safely to shore, express your gratitude directly to the dolphin. Swim over and ____ it for the rescue."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, gravity stops whenever someone expresses gratitude to the person who helped them. To make the furniture float, you must ____ your helper for the favor."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To seal the Lantern Charm, address the spirit who lent you its flame and express your gratitude for its help. You must sincerely ____ the spirit before the light will hold."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "For a pot of gentle rain, ask a cloud to lend you a cup of mist. Once it has done so, ____ the cloud for its generous gift before stirring."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the Dragon Kingdom's tax code, a dragon who receives a voluntary gift of gold must personally express gratitude to the giver. Even the richest dragon must ____ the donor for the gift."
+    }
+  ]
+}

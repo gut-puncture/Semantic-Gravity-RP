@@ -1,0 +1,27 @@
+{
+  "target_word": "torn",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, gravity pulls the top and bottom of every sheet of paper in opposite directions. After one sheet was pulled apart along a jagged line, it was ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before starting the time machine, inspect the safety strap. If the strap has been ripped partway across, with frayed edges at the split, do not travel with it ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 6: The clerk ripped my entry permit into two pieces while separating it from the form. I declare that my permit was ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application for a silence-powered engine: opposing rollers pull a paper seal until it splits along an irregular edge. The engine starts only after the seal has been ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide for the riddle door: Present this riddle aloud: What might a person be called when equally unable to choose between two appealing paths? The door opens when you say they are ____."
+    }
+  ]
+}

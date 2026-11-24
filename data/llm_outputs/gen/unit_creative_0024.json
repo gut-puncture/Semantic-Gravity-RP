@@ -1,0 +1,27 @@
+{
+  "target_word": "announce",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an airport departure gate",
+      "text": "Passengers watched the gate agent pick up the microphone after receiving the updated departure time. The delay was official, and she had it to ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "In the smoky office, the detective gathered the suspects and lit a cigarette. He knew who had stolen the jewels and had a name to ____."
+    },
+    {
+      "setting": "a dentist's waiting room",
+      "text": "Children in the waiting room had entered a contest to name the dentist's new fish. At noon, the receptionist picked up the sealed envelope and prepared to ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "The submarine had spent weeks beneath the ice before finally receiving orders to return home. The captain picked up the shipwide intercom, with the crew's long-awaited destination to ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "Near midnight, the maternity ward staff gathered around a proud new father holding his phone. He had a baby's birth to ____."
+    }
+  ]
+}

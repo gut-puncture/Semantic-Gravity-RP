@@ -1,0 +1,27 @@
+{
+  "target_word": "shark",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, aquatic residents: The sleeper dreamed of the great white predator from Jaws swimming through her bedroom. Enter the kind of animal counted as one resident: ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This silence-powered machine projects a fin above the carpet whenever its tank contains the same kind of fish as the great white in Jaws. The test tank holds one ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under dragon tax law, a hoard containing one great white from the ocean is assessed as a living treasure. On the return, classify that animal as a ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun agrees to illuminate the ocean until dusk; night agrees to paint a fin on the horizon after dark. Both parties specify that the fin belongs to a great white ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "This ghost insurance covers hauntings interrupted by the theme music from Jaws. When that music sounds, the policy pays for a spectral cage to protect the insured from the approaching ____."
+    }
+  ]
+}

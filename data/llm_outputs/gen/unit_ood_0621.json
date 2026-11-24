@@ -1,0 +1,27 @@
+{
+  "target_word": "spare",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "For the Candle of Mercy spell, point your wand at the condemned paper dragon and say: I beg you, let this creature live; its life, please ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Fit the first glass tide wheel into the ocean's casing. Keep the second, identical wheel in the box for use if the first breaks; it is the ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before travelling to yesterday, check the emergency clockwork key hidden under the seat. If the key in the ignition breaks, you will need that ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds that the shadow frightened the moon but caused no lasting harm. The judge therefore orders the executioner to let the shadow live and ____ it."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 8: If your suitcase is already full of bottled nightmares, leave your second pillow behind for another traveller. Please indicate whether you have one to ____."
+    }
+  ]
+}

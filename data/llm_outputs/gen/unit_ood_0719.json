@@ -1,0 +1,27 @@
+{
+  "target_word": "vest",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 corrects the Time Tailor's three-piece suit routine: it now places the waistcoat between the shirt and jacket, even when yesterday is missing. For American customers, the display calls that garment a ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Recipe for the formal dinner, by a robot that has never eaten: steam one bow tie and fold one napkin. To complete the three-piece suit made from edible cloth, place the waistcoat between the shirt and jacket; in American English, call it a ____."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To conceal a pocket watch from the Moon, enchant a three-piece suit so that only its middle garment remains visible. In American English, the spell reveals a ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth entry 41: Some humans wear a three-piece suit consisting of trousers, a jacket, and a waistcoat. In the United States, that waistcoat is called a ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before the Order of the Backward Bell rings tomorrow into yesterday, each monk puts on a three-piece suit and hangs the jacket on a peg. American novices then attach their watch chains to a pocket of the remaining formal garment, the ____."
+    }
+  ]
+}

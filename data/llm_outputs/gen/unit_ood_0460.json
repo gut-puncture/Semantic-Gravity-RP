@@ -1,0 +1,27 @@
+{
+  "target_word": "persecution",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.1 for the machine that reverses history adds an asylum detector. When a family flees repeated arrests and threats because of its religion, the display reports that its members are escaping religious ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, guests who have fled their home planets may anchor their cups beside a floating placard. Someone who escaped systematic punishment for their faith may choose the placard marked 'refuge from religious ____.'"
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Paper Kingdoms, your token represents a journalist who has been repeatedly jailed for her political beliefs. To win, guide her across the border and claim asylum on the grounds of political ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "When welcoming a cloud who has fled a sky where her kind was systematically hunted because of its religion, offer shelter before asking questions. Never tell her that she should simply return home and endure religious ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "Recipe for sanctuary soup, by a robot that has never eaten: stir imaginary broth once for each family sheltered after fleeing their homeland. Add a paper umbrella for those driven out by systematic attacks on their faith, and label that garnish 'protection from religious ____.'"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "increasing",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a construction site",
+      "text": "Each morning, the foreman counted more cracks in the wall than he had found the day before. He warned the crew that the number of cracks was ____."
+    },
+    {
+      "setting": "a car repair garage",
+      "text": "The mechanic watched the temperature gauge climb steadily as the engine idled. She told the driver that the engine temperature was ____."
+    },
+    {
+      "setting": "a courtroom",
+      "text": "The judge noted that the defendant had missed three hearings, then four, then five. She said the number of missed hearings was ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "Maya measured the snow on the cabin roof every hour, recording 20, then 25, then 30 centimeters. She reported that the snow depth was ____."
+    },
+    {
+      "setting": "a sailing race",
+      "text": "At each buoy, Leo checked the gap between his boat and the one ahead: ten meters, then twenty, then thirty. His teammate sighed as their distance from the leader kept ____."
+    }
+  ]
+}

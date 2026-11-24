@@ -1,0 +1,27 @@
+{
+  "target_word": "covert",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a ski resort",
+      "text": "At the ski resort, the security team wore disguises to watch for thieves among the crowds. Their patrols were not overt but ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "A vineyard owner suspected someone was stealing grapes at night, so she hid a camera among the vines. Unlike the obvious cameras by the gate, this one was ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, the mayor praised the prize judges in public while privately arranging to influence their decision. His interference was carefully kept ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "The pet shop manager saw an employee slip unpaid cash into his pocket while pretending to tidy the register. The employee had made sure his theft was ____."
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "In the artist's studio, a collector quietly photographed an unfinished painting despite being told not to. She waited until the artist turned away, keeping her action ____."
+    }
+  ]
+}

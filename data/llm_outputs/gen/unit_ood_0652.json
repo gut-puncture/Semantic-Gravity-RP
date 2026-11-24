@@ -1,0 +1,27 @@
+{
+  "target_word": "sunset",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.4 for the Horizon Reverser fixes a timing fault: the machine now photographs the western sky just as the sun disappears below the horizon in the evening. Its display labels the resulting image '____'."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "To make the factory's evening postcards, spread the clouds across the western sky while the descending sun turns them orange and pink. Sell each finished picture as a painting of the ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 6: You crossed from a dream of noon into one where the sun had just dipped below the western horizon. Declare the time of your arrival as ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 47: My door-mounted camera faced west and captured the sun sinking below the horizon at the end of the day, but my image catalog filed the scene under sunrise. Correct category: ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Order of the Glass Bell gathers twice daily: at sunrise its monks face east, and at day's end they face west as the sun drops out of sight. Ring the evening bell at ____."
+    }
+  ]
+}

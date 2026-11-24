@@ -1,0 +1,27 @@
+{
+  "target_word": "trim",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a newspaper office",
+      "text": "The editor liked the article but needed it shorter to fit the available space. She returned it to the reporter with a note asking for a quick ____."
+    },
+    {
+      "setting": "a final exam",
+      "text": "Maya was about to start her final exam when she noticed her pencil had a loose label hanging from it. With a tiny pair of scissors, she gave the label a ____."
+    },
+    {
+      "setting": "a city subway at rush hour",
+      "text": "A passenger admired the narrow gold braid sewn around the collar and cuffs of another rider's jacket. As the crowded train lurched forward, she asked where he had bought the decorative ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "Before the tournament, Leon stopped at a barber shop and asked to keep almost all his hair. He told the barber he wanted just a ____."
+    },
+    {
+      "setting": "a vineyard",
+      "text": "The vines had grown long shoots that tangled across the path between the rows. The grower fetched her shears and gave them a ____."
+    }
+  ]
+}

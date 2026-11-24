@@ -1,0 +1,27 @@
+{
+  "target_word": "sync",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a rock concert",
+      "text": "The singer held the microphone away from her mouth, but her recorded vocals continued through the speakers. Several fans realized she was doing a lip ____."
+    },
+    {
+      "setting": "a theatre rehearsal",
+      "text": "The dancers were supposed to stamp their feet on the same beat, but one kept landing early. The director stopped the music and said they were out of ____."
+    },
+    {
+      "setting": "a submarine",
+      "text": "Before the submarine departed, the captain compared his watch with the navigator's. Both showed the exact same time, so he declared them in ____."
+    },
+    {
+      "setting": "a 1940s detective's office",
+      "text": "A witness said the robbery began when the office clock struck three, but the detective's watch showed five past. He checked both against the radio time signal and found they were out of ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "A nurse noticed that the patient's recorded heartbeat sounded a moment after each spike appeared on the screen. She adjusted the playback until the sound and picture were back in ____."
+    }
+  ]
+}

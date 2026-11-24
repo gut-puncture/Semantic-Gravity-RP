@@ -1,0 +1,27 @@
+{
+  "target_word": "orbit",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a care home",
+      "text": "At the care home, residents watched astronauts on TV enter a spacecraft designed to circle Earth in ____."
+    },
+    {
+      "setting": "a sailing race",
+      "text": "During the sailing race, a GPS device received signals from satellites that ____ Earth."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "At the ski resort, a child saw the moon and asked how long it takes to complete one ____ around Earth."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "In the busy restaurant kitchen, the radio reported that a rocket had placed a new satellite into ____ around Earth."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "A pet shop calendar showed a diagram of Earth's path around the sun. The path traced one complete ____."
+    }
+  ]
+}

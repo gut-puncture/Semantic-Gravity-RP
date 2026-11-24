@@ -1,0 +1,27 @@
+{
+  "target_word": "fragrance",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has banned scented laundry products from its velvet benches. Under the new law, every detergent used there must be free of dyes and added ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "In their contract, the sun promises to warm the jasmine while the night agrees to carry its perfume through the sleeping city. Their joint creation will be sold in a crystal bottle as a new designer ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide: This door opens only after hearing a riddle, even when its hinges need oil. To solve its first riddle, name what a perfumer creates by blending top, middle, and base notes into a signature ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking companion for long walks along my crater rim. I have commissioned a personal perfume with notes of cedar and amber; on our first date, you will recognize me by my signature ____."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Inside the teapot, a warm front is passing over the jasmine blossoms, with steam rising toward the lid. Forecasters expect the room to fill with the tea's delicate floral ____."
+    }
+  ]
+}

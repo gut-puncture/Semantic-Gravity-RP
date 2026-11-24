@@ -1,0 +1,27 @@
+{
+  "target_word": "ware",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the game of Clockwork Kilns, a player who lands on the Dutch tile wins a miniature blue-and-white pottery collection. The prize card calls it Delft ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts gifts from the sea: =IF(TIDE=\"HIGH\", \"a blue ceramic vase with white relief figures\", \"nothing\"). At high tide, the vase appears in the style known as Wedgwood jasper ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before visiting eighteenth-century England, cushion every cream-colored Wedgwood plate in the cargo hold. The vibration setting for this type of pottery is marked Queen's ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, household possessions: a sleeping collector owns blue-and-white tin-glazed pottery made in the Dutch city of Delft. Enter its customary name, Delft ____, in the space provided."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When rescuing cargo from a submerged pottery shop, mermaid lifeguards must keep the fragile pale blue Wedgwood pieces with white relief decorations together. Label that group jasper ____."
+    }
+  ]
+}

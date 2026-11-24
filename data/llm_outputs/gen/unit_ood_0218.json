@@ -1,0 +1,27 @@
+{
+  "target_word": "dude",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The Chromatic Nose converts orange into the smell of popcorn and violet into the smell of a movie theater. For a midnight screening of The Big Lebowski, its green setting adds the scent of the White Russian favored by the protagonist, who insists on being called the ____."
+    },
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "A shadow was tried for stealing a vacation from a cowboy. The judge ruled that the stolen trip was actually a stay at a guest ranch for city visitors, commonly called a ____ ranch."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "On the customs form for a dream about a missing automobile, travelers must identify the 2000 comedy starring Ashton Kutcher and Seann William Scott. Its title ends with Where's My Car?, and its opening exclamation is ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "A ghost's policy covers damage to spectral guitars during performances of Aerosmith's song about mistaking a man for a woman. The insurer lists the covered song as ____ (Looks Like a Lady)."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has decreed that its pizza delivery turtles must greet one another like Michelangelo in the Teenage Mutant Ninja Turtles cartoons. After shouting Cowabunga, each turtle must address his companion as ____."
+    }
+  ]
+}

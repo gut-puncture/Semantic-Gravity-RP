@@ -1,0 +1,27 @@
+{
+  "target_word": "staging",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Time machine safety notice: Before departure, assemble all travelers and their luggage in the marked holding zone beside the launch chamber. Never enter the machine until everyone has reached the ____ area."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "To enchant an audience, conjure a revolving set, floating costumes and moonlit effects for your production of Hamlet. Critics will praise the spectacle as an imaginative ____ of the play."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed silent petitions; dissenters must gather outside the royal kitchen holding signs and chanting for more tuna. The cats outside are ____ a protest."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Before releasing a grown melody to listeners, test it in a separate environment that copies production but cannot affect the live service. Deploy the new melody to the ____ environment first."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguards train by arranging practice emergencies for recruits: position a volunteer swimmer, set the conditions and prepare the rescue equipment. This drill involves ____ a mock drowning."
+    }
+  ]
+}

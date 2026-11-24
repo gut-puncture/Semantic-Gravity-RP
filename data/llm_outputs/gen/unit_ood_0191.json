@@ -1,0 +1,27 @@
+{
+  "target_word": "desktop",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory Manual: Before releasing a thunderstorm, minimize every open window on the control computer. The lightning-shaped file icon must be visible on the ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "Error log: I tried to chill my owner's new computer, but its tower and separate monitor would not fit between the shelves. Next time I will check whether the machine is a laptop or a ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "The sun and the night agree to take turns illuminating a clerk's office. Under their contract, neither may disturb the papers and lamp resting on the flat upper surface of the clerk's desk, known to both parties as the ____."
+    },
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "At a zero-gravity tea party, guests must save their invitations as files, then close all windows before the first sip. The host awards a saucer to whoever can still see an invitation icon on the computer's ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "User guide: This door opens only after its computer displays the solution to its riddle. To begin, double-click the shortcut icon visible behind all open windows, on the ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "robbed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a lighthouse in a storm",
+      "text": "During the storm, an armed intruder cornered the lighthouse keeper and took his wallet at gunpoint. When the police arrived, the shaken keeper told them he had been ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "A masked gang threatened the museum guards and escaped with the jewels from the royal collection. The next morning, the newspaper headline announced that the museum had been ____."
+    },
+    {
+      "setting": "a sailing race",
+      "text": "Maya crossed the finish line first, but a judge wrongly awarded the trophy to another sailor. Furious spectators said that Maya had been ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "Men with knives entered the refugee camp kitchen and forced the cooks to hand over their day's food supplies. The cooks told the aid workers that they had been ____."
+    },
+    {
+      "setting": "a fairy-tale forest",
+      "text": "A wicked spell stole the princess's voice, leaving her unable to sing or speak. The forest fairies mourned the gift of which she had been ____."
+    }
+  ]
+}

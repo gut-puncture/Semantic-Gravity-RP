@@ -1,0 +1,27 @@
+{
+  "target_word": "needed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game of Walking Castles, a player wins by collecting exactly three moonstones. Mira already had two, so one more was all she ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent application for a silence-powered clock: the inventor found that a single cough stopped its gears for an hour. The workshop was too noisy, so a quieter room was ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training manual: a sailor is sinking, cannot swim, and has no boat or floating object nearby. The mermaid who pulled him to the surface arrived just when help was most ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The monks' ritual for waking a stone bell calls for a candle, a feather, and nothing else. Brother Ash brought both objects; he had everything he ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a dragon with an empty hoard pays nothing that year. Since Ember had no treasure at all, no payment was ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "divine",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes of the household objects' meeting: The toaster reported that an oracle had visited the kitchen and correctly predicted next week's weather by reading tea leaves. The kettle moved that, at the next meeting, the oracle be asked to ____ the future again."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the sun supplies daylight and the night supplies darkness; neither may claim credit for the creation of the universe. That achievement belongs exclusively to the gods and is therefore an act of ____ creation."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "Lab protocol for growing music: Plant the score in a tray of silence, then expose the sprouts to the hymn that opens a church service. The resulting chord must sound as if it comes from heaven, inspiring the listener to call it ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On the planet of sentient clouds, never call a host's rain merely pleasant. At a particularly splendid cloud banquet, the customary compliment is the familiar phrase: 'The food was simply ____.'"
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, buried water cannot be detected by instruments, but a forked stick bends toward it when held by a trained dowser. Prospectors hire that dowser to ____ the location of underground water."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "locate",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "Today's forecast inside the teapot calls for dense steam and a chance of hail around the spout. The miniature rescue crew cannot see the stranded sugar cube, so it will use a thermal camera to ____ it."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream Census, Section 4: Each resident must report the street and house number where their recurring nightmare lives. If you do not know its address, use the enclosed map to ____ it before completing this form."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano seeking a partner who enjoys warm evenings and does not mind the occasional eruption. My island is missing from most maps, so please use the coordinates in my profile to ____ me."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Year 4000 exhibit: This ancient pocket device guided its owner through unfamiliar cities. When a traveler entered a restaurant's name, the device used a map to ____ it."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent claim: A machine powered by silence shall release a gentle bell into a room. Its sensors then measure the direction of the ringing to ____ the bell, without moving or touching it."
+    }
+  ]
+}

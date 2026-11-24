@@ -1,0 +1,27 @@
+{
+  "target_word": "long",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a dentist's waiting room",
+      "text": "Maya arrived at the dentist's office at nine and was still waiting to be called at noon. She sighed and said, 'This wait is really ____.'"
+    },
+    {
+      "setting": "a tailor's shop",
+      "text": "The tailor pinned up the hem of Amir's new trousers so they would no longer drag on the floor. Before the alteration, both legs had been too ____."
+    },
+    {
+      "setting": "a supermarket checkout",
+      "text": "Nina saw that only one checkout was open and counted twenty customers standing ahead of her. She put down her basket because the queue was too ____."
+    },
+    {
+      "setting": "a zoo",
+      "text": "At the zoo, a giraffe reached leaves high above the heads of the other animals. A child pointed up and said, 'Its neck is so ____.'"
+    },
+    {
+      "setting": "a space station",
+      "text": "On the space station, each astronaut held one end of a measuring tape across the exercise room. The display showed that the room was five metres ____."
+    }
+  ]
+}

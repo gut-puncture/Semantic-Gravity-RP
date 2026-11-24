@@ -1,0 +1,27 @@
+{
+  "target_word": "actress",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an artist's studio",
+      "text": "In her studio, the painter unveiled a portrait of Meryl Streep surrounded by scenes from her films. The label beneath it read: Portrait of an ____."
+    },
+    {
+      "setting": "a gym",
+      "text": "At the gym, Maya practiced sword fighting to prepare for playing a queen in a historical film. Her trainer said she was his first Oscar-winning ____."
+    },
+    {
+      "setting": "a hospital night shift",
+      "text": "During the hospital night shift, a famous woman arrived with a sprained ankle after filming a movie scene. The nurse recognized her as the film's leading ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "Far out at sea, the crew of a fishing boat spotted a film crew aboard another vessel. They waved to the woman playing the captain in the movie, their favorite ____."
+    },
+    {
+      "setting": "a lighthouse in a storm",
+      "text": "As the storm shook the lighthouse, a woman rehearsed her lines for the film being shot there. When the director called for the leading lady, she stepped forward as the principal ____."
+    }
+  ]
+}

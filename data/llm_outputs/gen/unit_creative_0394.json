@@ -1,0 +1,27 @@
+{
+  "target_word": "loosely",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a harvest festival",
+      "text": "At the harvest festival, Maya tied ribbons around bundles of wheat, leaving enough room to slide a finger underneath. When her brother asked how tightly to tie his, she said to tie them ____."
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "The young knight's helmet kept sliding over his eyes whenever he bowed to the king. His father adjusted the strap and explained that it had been fastened too ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "In the refugee camp kitchen, Amina covered the warm bread with foil but left gaps for steam to escape. She warned her helper not to seal the foil tightly, but to wrap it ____."
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, an editor noticed that the film reviewer's summary changed several details of the plot. She added a note saying the article described the story only ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "At the pet shop, a puppy wriggled as the owner fitted its new collar. She left enough space for two fingers between the collar and its neck, making sure it fit ____."
+    }
+  ]
+}

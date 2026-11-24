@@ -1,0 +1,27 @@
+{
+  "target_word": "variable",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a theatre rehearsal",
+      "text": "At rehearsal, the director kept the lighting and music identical while testing different curtain speeds. The speed was the experiment's only independent ____."
+    },
+    {
+      "setting": "a jazz club",
+      "text": "The club owner tried to predict ticket sales from the number of musicians onstage. In her equation, x represented that number and served as the explanatory ____."
+    },
+    {
+      "setting": "a pet shop",
+      "text": "A pet shop owner wrote a computer program to total the cost of birdseed. She stored the current price in a named ____."
+    },
+    {
+      "setting": "a harvest festival",
+      "text": "At the festival, Mara measured pumpkins in kilograms and entered each result in a spreadsheet. She classified weight as a continuous numerical ____."
+    },
+    {
+      "setting": "a flood evacuation",
+      "text": "As families evacuated, a researcher counted the people in each shelter and recorded whether it had electricity. For her analysis, electricity status was a binary ____."
+    }
+  ]
+}

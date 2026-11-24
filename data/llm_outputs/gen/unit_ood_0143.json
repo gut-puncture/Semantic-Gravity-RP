@@ -1,0 +1,27 @@
+{
+  "target_word": "comprehensive",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard manual: At the end of training, recruits face an examination covering every rescue technique taught throughout the course, rather than a single lesson. The instructor calls this final assessment a ____ exam."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware release notes for the machine that folds yesterday into tomorrow: Version 8 replaces the brief fault summary with a report covering every component, every error and every repair attempt. Administrators can now generate a ____ report."
+    },
+    {
+      "setting": "rulebook of an invented board game",
+      "text": "In the board game of Borrowed Shadows, a player wins a survey token by mapping every tunnel, tower and trap on the board. A map that leaves nothing out earns the token for a ____ survey."
+    },
+    {
+      "setting": "weather report for the inside of a teapot",
+      "text": "Inside the teapot, a storm is brewing over the sugar crystals. Our forecast covers the lid, spout, handle and every other region, including temperature, wind and rainfall; listeners can expect a ____ weather report."
+    },
+    {
+      "setting": "census form for the inhabitants of a dream",
+      "text": "On the dream census form, record every inhabitant, from the giant at the gate to the tiny singer under the bed. The Moon Bureau requires a complete count and detailed information about each resident, so submit a ____ census."
+    }
+  ]
+}

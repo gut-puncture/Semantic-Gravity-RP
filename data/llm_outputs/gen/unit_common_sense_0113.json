@@ -1,0 +1,27 @@
+{
+  "target_word": "car",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a garden in spring",
+      "text": "From the spring garden, Lena saw her neighbor reverse a sedan out of the driveway. Exhaust came from the ____."
+    },
+    {
+      "setting": "a bakery before opening",
+      "text": "Before opening the bakery, Sam drove his sedan to work and parked the ____ outside."
+    },
+    {
+      "setting": "a museum",
+      "text": "At the museum, an old Ford Model T stood on four wheels. Visitors could look inside the ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn on the farm, Jo found a flat tire on her sedan. She could not drive the ____ to town."
+    },
+    {
+      "setting": "a desert expedition",
+      "text": "On the desert expedition, the sedan ran out of fuel. The driver stopped and refueled the ____."
+    }
+  ]
+}

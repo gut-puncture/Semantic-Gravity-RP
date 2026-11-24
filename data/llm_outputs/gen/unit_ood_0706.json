@@ -1,0 +1,27 @@
+{
+  "target_word": "twilight",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court acquitted the shadow of stealing daylight: witnesses saw the sun sink below the horizon while the sky remained faintly lit. The judge ruled that the alleged theft occurred during the evening ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon tax code, gold must be counted after sunset but before darkness has fully settled. The counting period is called evening ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "To open the riddle door, describe the sky after the sun has set but while its fading light still lingers. Say only: evening ____."
+    },
+    {
+      "setting": "safety instructions for a time machine",
+      "text": "Before landing the time machine, set the sky dial to the dim interval after sunset, when it is neither full daylight nor fully dark. The safety display should read: evening ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Minutes: The lamp asked when it should turn itself on; the curtains proposed the faintly lit interval following sunset, before night becomes fully dark. The motion passed: switch on at evening ____."
+    }
+  ]
+}

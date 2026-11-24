@@ -1,0 +1,27 @@
+{
+  "target_word": "operational",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of zero-gravity tea parties",
+      "text": "The zero-gravity tea party rulebook divides costs into capital expenses, such as buying a levitating teapot, and recurring expenses, such as refilling its fuel. Charge each fuel refill to the party's ____ budget."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a thunderstorm, first assemble the cloud oven from the diagrams. Once it has passed its safety checks and is ready to bake, the oven is fully ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Release 8.2 repairs the machine that folds tomorrow into yesterday. After a failed self-test, it reports its status as nonfunctional; after all tests pass and the machine is ready for use, it reports its status as ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon tax code, a hoard may deduct the recurring cost of keeping its gold-sorting machinery running, but not the purchase price of the machinery itself. Such recurring costs are classified as ____ expenses."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Before the ceremony of floating bells, the monks inspect their levitation device. If it fails, they hang the bells by hand; if it passes and is ready to use, the chief monk announces that the device is ____."
+    }
+  ]
+}

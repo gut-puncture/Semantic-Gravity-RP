@@ -1,0 +1,27 @@
+{
+  "target_word": "worth",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory manual: the moonlit repair takes three hours, but it prevents a week of leaking rain. The work is difficult, yet the time spent on it is ____ it."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "The oracle's spreadsheet predicts a journey with the formula =IF(REWARD>EFFORT,\"GO\",\"STAY\"). When the reward exceeds the effort, the journey will be ____ taking."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Nimbus, a guest who arrives in a thunderstorm apologizes for the trouble, while the host insists that seeing the guest justified it. The customary reply is, \"You were ____ all the trouble.\""
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To make a sunrise stew, simmer pink mist for seven hours until the whole sky glows. The recipe promises that, however long it takes, the result is ____ the wait."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "Under the dragon kingdom's tax code, a merchant pays one gold coin for every ten gold coins that a gem would fetch at market. A gem that would sell for fifty coins is ____ fifty coins and incurs a tax of five."
+    }
+  ]
+}

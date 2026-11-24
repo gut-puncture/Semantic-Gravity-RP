@@ -1,0 +1,27 @@
+{
+  "target_word": "missed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Clockwork Orchard, a player gets one turn to roll a marble through the golden gate. If the marble rolls past the gate without going through it, the player has ____ the gate."
+    },
+    {
+      "setting": "a lab protocol for growing music",
+      "text": "To grow a melody, expose the seed crystal to six piano notes in order, then play the resulting recording back. If the fifth note is absent from the recording, the technician ____ a note."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "RECIPE FROM UNIT 7: Add one spoonful of each ingredient shown on the screen to the bowl. If you poured in the flour and sugar but forgot the salt entirely, you ____ an ingredient."
+    },
+    {
+      "setting": "a weather report for the inside of a teapot",
+      "text": "The teapot's spout will have heavy rain this afternoon, but the storm will pass completely to the left of the handle. Forecasters expect the handle to remain dry because the rain will have ____ it."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When a swimmer dives toward a lifeguard's outstretched hand and passes beside it without making contact, record the attempt in the rescue log. Write: The swimmer reached for my hand but ____ it."
+    }
+  ]
+}

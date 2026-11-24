@@ -1,0 +1,27 @@
+{
+  "target_word": "helpful",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 8.1 for the machine that folds tomorrow into yesterday adds a survey after each completed task. When the machine solves the user's problem, the screen asks, 'Was this ____?'"
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To cook a fog that guides lost travelers, simmer mist with a pinch of lighthouse light until paths appear beneath their feet. The finished fog is not merely pretty; people trying to find their way will find it ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Lost Customs, year 4000: This ancient service kiosk answered questions and gave directions to visitors made of smoke. Its satisfaction survey asked whether the advice was ____."
+    },
+    {
+      "setting": "a census form for the inhabitants of a dream",
+      "text": "Dream census, section 4: If you are a staircase that moves under sleepers' feet, describe your conduct. Those who carry lost sleepers safely to their destinations should mark themselves as ____."
+    },
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud factory manual: The complaint desk receives messages from farmers whose clouds have failed to rain. An attendant who listens, finds the missing clouds, and sends them to the right fields is being ____."
+    }
+  ]
+}

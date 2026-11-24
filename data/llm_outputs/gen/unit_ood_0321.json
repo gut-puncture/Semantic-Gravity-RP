@@ -1,0 +1,27 @@
+{
+  "target_word": "immature",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the operating manual of a cloud factory",
+      "text": "Cloud Factory Manual: Each cloud dragon must pass a behavioral inspection before it can supervise the rain valves. A dragon that sulks when corrected and throws tantrums when it loses a game is too ____ for the job."
+    },
+    {
+      "setting": "an entry in a wizard's spellbook",
+      "text": "Spellbook entry: The Age-Revealing Charm makes a person's behavior visible as a crown. When the apprentice mocked a classmate's mistake and refused to apologize, the crown showed that his behavior was ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "In the weather kitchen, thunderstorms grow on vines before they are harvested. Do not pick a storm while it is still developing and has not yet reached its full adult form; at that stage it is ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, time slows around a person who sticks out their tongue whenever they lose an argument. The more ____ their behavior, the slower the surrounding clocks run."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Assembly instructions: Place the coral seed in the glass basin and wait for it to grow into a reef. The coral will still be ____ if it has only begun to develop when you add the tiny fish."
+    }
+  ]
+}

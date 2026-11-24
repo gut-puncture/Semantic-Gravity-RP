@@ -1,0 +1,27 @@
+{
+  "target_word": "truly",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "When a novice sends a request to the Abbot of Echoes, the ritual requires the traditional formal closing used before a signature: 'Yours ____, Brother Moss.'"
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Version 8.4 repairs the machine that turns mistakes into drifting islands. When an island can no longer be retrieved, the status display uses the familiar phrase 'well and ____ lost.'"
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth music archive: One famous 1990s Savage Garden song expresses love with three adverbs, in this order: ____, madly, deeply."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "If you rain on another cloud's parade, an apology must express sincere regret. Begin with the familiar phrase 'I am ____ sorry,' then offer to dry the banners."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Fit the miniature horizon into its case and watch the tides begin. If no other ocean has ever fit in a pocket, the finished creation is ____ one of a kind."
+    }
+  ]
+}

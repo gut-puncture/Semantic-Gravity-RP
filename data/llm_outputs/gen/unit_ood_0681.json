@@ -1,0 +1,27 @@
+{
+  "target_word": "title",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "To assemble your pocket-sized ocean, pour in the enclosed water and unfold the miniature waves. The instruction booklet has a picture on its cover; above it, the words \"Build Your Own Ocean\" form the booklet's ____."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "Each dawn, the monks of the Order of the Hollow Bell write a new poem for the sunrise. Before reciting its first line, the chosen monk announces its ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This machine converts silence into a steady rotation of its glass wheel. On the patent application's first page, enter \"Silence-Powered Rotary Engine\" as the invention's ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream customs requires each traveler to declare one book carried across the border. On the form, enter its author's name in the first box and the name printed on its front cover in the box marked Book ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The Parliament of Cats has passed a law making the winner of its annual mouse-shaped kite contest Champion of the Whiskered Realm. The winning cat holds this official ____ until the next contest."
+    }
+  ]
+}

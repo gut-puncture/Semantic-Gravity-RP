@@ -1,0 +1,27 @@
+{
+  "target_word": "button",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a recording studio",
+      "text": "The singer was ready for another take, and the engineer sat at the mixing desk. To start capturing her voice, he pressed the red record ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "Maya moved her rook and lifted her hand from the piece. To stop her own clock and start her opponent's, she pressed the ____."
+    },
+    {
+      "setting": "a snowy evening at home",
+      "text": "Snow fell outside as Dad helped Leo put on his pajamas. A round plastic fastener had come loose, so Dad sewed on a new ____."
+    },
+    {
+      "setting": "a museum",
+      "text": "At the museum, visitors gathered around a model of an erupting volcano. To make the model light up and rumble, a child pressed the ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "At halftime, a spectator noticed that his team jersey was coming open at the collar. He slipped the loose round fastener back through its hole and secured the ____."
+    }
+  ]
+}

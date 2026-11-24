@@ -1,0 +1,27 @@
+{
+  "target_word": "phenomenon",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In a pocket universe, gravity reverses whenever a bell rings, so stones rise until the sound fades. Its physicists call this repeatable effect a natural ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "Simmer moonlight with sea salt until a ribbon of colored light appears in the sky. The recipe serves one aurora, a spectacular natural ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When the tide suddenly pulls back from the shore without a wave, warn swimmers and report what you saw. Until its cause is known, record it as an unexplained ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has banned the moon from producing two full moons in a single night. Astronomers must nevertheless document each occurrence of this rare celestial ____."
+    },
+    {
+      "setting": "firmware release notes for an impossible machine",
+      "text": "Firmware 4.0 lets the machine turn a crowd's shared yawn into a visible cloud. The display now labels contagious yawning as a social ____."
+    }
+  ]
+}

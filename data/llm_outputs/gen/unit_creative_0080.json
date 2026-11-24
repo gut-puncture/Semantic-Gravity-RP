@@ -1,0 +1,27 @@
+{
+  "target_word": "brutality",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a submarine",
+      "text": "On the submarine, the captain ordered sailors to beat a restrained prisoner who had already surrendered. The crew reported him for an act of needless ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "After the whistle, a player repeatedly kicked an opponent who was lying helpless on the pitch. The referee sent him off for sheer ____."
+    },
+    {
+      "setting": "a rock concert",
+      "text": "At the rock concert, guards struck fans who were already pinned against a barrier. Witnesses called the guards' unnecessary use of force an example of security ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "At the post office, an officer slammed a compliant customer to the floor and struck him several times. A bystander filmed the encounter as evidence of police ____."
+    },
+    {
+      "setting": "a rainy afternoon in an old apartment",
+      "text": "Rain tapped against the old apartment's windows as Maya watched a documentary about a prison camp. Former inmates described being beaten even after obeying orders, and she was shaken by the guards' ____."
+    }
+  ]
+}

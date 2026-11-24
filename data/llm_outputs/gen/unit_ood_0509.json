@@ -1,0 +1,27 @@
+{
+  "target_word": "proxy",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a conversion table between colours and smells",
+      "text": "The rainbow laboratory's conversion table calls a violet glow a reliable indicator of the smell of burned toast. Researchers who cannot measure the smell directly use the glow as a ____."
+    },
+    {
+      "setting": "an entry in an alien encyclopedia of Earth",
+      "text": "Earth Encyclopedia, entry on human elections: A voter who cannot attend may authorize another person to cast a ballot on their behalf. The absent voter is then said to vote by ____."
+    },
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "Under the Spectral Mutual policy, a ghost who cannot attend the shareholders' meeting may authorize a living person to vote on its behalf. To exercise this right, the ghost must appoint a ____."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In Crown of Comets, a player trapped inside the board's miniature black hole cannot attend the vote on its release. The trapped player may appoint another player to cast its vote by ____."
+    },
+    {
+      "setting": "a museum placard from the year 4000",
+      "text": "Museum of Ancient Networks, year 4000: This glass cabinet contains a server that stood between users and the wider internet, forwarding their requests. Its label identifies it as a ____ server."
+    }
+  ]
+}

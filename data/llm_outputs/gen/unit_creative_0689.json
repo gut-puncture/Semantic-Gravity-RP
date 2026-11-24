@@ -1,0 +1,27 @@
+{
+  "target_word": "tragic",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a post office",
+      "text": "At the post office, a woman mailed a birthday card, unaware that her son had died that morning. When the unopened card came back weeks later, the timing seemed unbearably ____."
+    },
+    {
+      "setting": "a fishing boat at sea",
+      "text": "A fishing boat spotted a flare and raced toward it, but the crew arrived too late to save anyone from the sinking vessel. The captain called the loss of every person aboard ____."
+    },
+    {
+      "setting": "a construction site",
+      "text": "The crew cheered when the last worker trapped beneath the collapsed scaffold was pulled out alive. They learned that a passerby had been killed by falling debris, making the day's outcome deeply ____."
+    },
+    {
+      "setting": "a desert expedition",
+      "text": "The desert expedition found the missing child beside a dry well just as their water ran out. She was alive, but their radio was broken, and losing her before help arrived would be ____."
+    },
+    {
+      "setting": "a chess tournament",
+      "text": "At the chess tournament, a young finalist learned that her father had died on his way to watch her play. She withdrew, and the crowd fell silent as the announcer called the news ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "fruit",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an insurance policy for ghosts",
+      "text": "The ghost insurance policy covers damage to offerings left at a grave. If an apple, a pear, and a banana are stolen, the claim must list them collectively as ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "This patented machine runs on silence and emits a picture of an apple whenever its chamber is empty. A basket of apples, oranges, and grapes appears instead when the operator selects the setting labeled ____."
+    },
+    {
+      "setting": "a law passed by a parliament of cats",
+      "text": "The parliament of cats has outlawed juggling apples, pears, and peaches in its chambers. The cats call this statute the ban on juggling ____."
+    },
+    {
+      "setting": "a recipe written by a robot that has never eaten",
+      "text": "A robot that has never eaten writes: Dice an apple, a pear, and a mango, then toss the pieces together in a bowl. My sensors identify the result as a salad made entirely of ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On a planet of sentient clouds, guests bring apples and oranges to a host who has invited them to brunch. Etiquette requires the host to thank them for bringing fresh ____."
+    }
+  ]
+}

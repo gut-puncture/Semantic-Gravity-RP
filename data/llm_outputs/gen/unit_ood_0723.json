@@ -1,0 +1,27 @@
+{
+  "target_word": "villain",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent claim 8 describes an engine powered by silence that projects melodramas onto the ceiling. In each projection, the hero rescues a captive from the scheming, black-caped ____."
+    },
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the sun and the night must stage a puppet show before exchanging the sky. The sun plays the hero who saves the kingdom, while the night plays the mustache-twirling ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "Mermaid lifeguard training requires a rescue drill based on a fairy tale. One trainee plays the hero who frees the trapped swimmers; another plays the wicked sorcerer who trapped them, also known as the ____."
+    },
+    {
+      "setting": "the tax code of a kingdom of dragons",
+      "text": "The dragon tax code grants a deduction for staging a play in which a hero defeats an evil mastermind. The dragon playing that wicked antagonist may claim the costume expense as the ____."
+    },
+    {
+      "setting": "a prophecy written as a spreadsheet formula",
+      "text": "An oracle inscribed her prophecy as a spreadsheet formula: IF(the masked figure saves the city, \"hero\", IF(he plots its destruction and is stopped by the hero, ____)). The second result names his role in the story."
+    }
+  ]
+}

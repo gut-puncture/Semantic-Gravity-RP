@@ -1,0 +1,27 @@
+{
+  "target_word": "loser",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "an airport departure gate",
+      "text": "After a card game at the gate, Ben sulked and accused everyone of cheating. He was a sore ____."
+    },
+    {
+      "setting": "a small-town library",
+      "text": "At the library chess tournament, the winner shook hands with the ____."
+    },
+    {
+      "setting": "a courtroom",
+      "text": "After the verdict, the reporter asked which side had won the case and which was the ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "At the post office, two friends scratched their lottery tickets. One was a winner; the other was a ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, two farmhands raced to the barn. The winner finished first, and the ____ finished second."
+    }
+  ]
+}

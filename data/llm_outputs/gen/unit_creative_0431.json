@@ -1,0 +1,27 @@
+{
+  "target_word": "mold",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a medieval castle",
+      "text": "The castle cook sliced a loaf that had been left for weeks in a damp cellar. She threw it away when she saw its fuzzy green ____."
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn, the farmer opened a bale that had been stored wet. Its musty smell and patches of fuzzy white growth told her it was covered in ____."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "After a leak, the sound engineer noticed fuzzy black patches spreading across the damp studio wall. An inspector confirmed that the patches were ____."
+    },
+    {
+      "setting": "a football match",
+      "text": "At halftime, a player opened the lunchbox he had forgotten in his locker for a month. His sandwich was covered in fuzzy green ____."
+    },
+    {
+      "setting": "a bank",
+      "text": "A burst pipe soaked a stack of old papers in the bank's basement. Weeks later, the papers smelled musty and were speckled with fuzzy ____."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "livestock",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a contract between the sun and the night",
+      "text": "Under their contract, the Sun warms the barns while Night counts the sheep, cattle and pigs sleeping inside. Neither party is responsible for crops or machinery; their shared duty is to protect the farmer's ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To prepare a gentle spring, simmer a rain cloud until it smells of wet hay, then pour it over the fields. The recipe says this mild weather keeps farm animals healthy; a violent hailstorm, by contrast, could injure the ____."
+    },
+    {
+      "setting": "assembly instructions for a pocket-sized ocean",
+      "text": "Before sealing the miniature ocean, install the floating farm and populate its pens with cattle, sheep and pigs. When the tiny tide rises, close the barn doors to keep the seawater away from the ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Border Form 8 asks travellers to declare any farm animals they bring across, including cattle, goats and sheep. Enter their combined value under the heading 'Value of ____'."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "The riddle door opens when its visitor names what a farmer insures against disease after buying a herd of cattle and a flock of sheep. The guide gives this example: 'The farmer bought insurance for the ____.'"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "target_word": "lodge",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a court ruling in the trial of a shadow",
+      "text": "The court finds the shadow guilty of impersonating a sundial. If it contests the verdict, its advocate has thirty days to ____ an appeal."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "This door opens only after hearing a riddle, and it asks one in return: What building at a ski resort offers guests rooms, meals, and shelter after a day on the slopes? Say ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "To make a hailstorm, freeze the rain until it forms tiny hard pellets. If you breathe one in, it may get stuck in your throat, so cover your mouth: the pellet could ____ there."
+    },
+    {
+      "setting": "the rulebook of an invented board game",
+      "text": "In the board game Moon Tribunal, a player who suspects a rival of moving a piece twice must formally file a complaint with the referee. To trigger an investigation, ____ a complaint before the next turn."
+    },
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "At dusk, the monks visit the beavers who have dammed the river of dreams. Leave an apple beside the domed home the animals built from sticks and mud; do not enter their ____."
+    }
+  ]
+}

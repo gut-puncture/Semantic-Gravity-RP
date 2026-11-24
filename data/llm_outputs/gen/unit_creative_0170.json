@@ -1,0 +1,27 @@
+{
+  "target_word": "culture",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a long train journey",
+      "text": "On the long train journey, Maya crossed several borders and watched the language, food and customs change outside her window. At the final stop, she felt the shock of entering an unfamiliar ____."
+    },
+    {
+      "setting": "a post office",
+      "text": "At the post office, Leo bought a stamp featuring a famous superhero from a comic book. The clerk said the series also celebrated movies, television and other icons of popular ____."
+    },
+    {
+      "setting": "a busy restaurant kitchen",
+      "text": "In the busy restaurant kitchen, the head chef stopped shouting at new cooks and encouraged everyone to ask for help. Within weeks, the staff began to trust one another, and the owner praised the healthier workplace ____."
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "At the medieval castle, visiting nobles listened to songs of chivalry and watched knights compete for a lady's favor. The queen encouraged these elaborate customs as part of the royal court's ____."
+    },
+    {
+      "setting": "a science laboratory",
+      "text": "In the science laboratory, Priya placed bacteria from a water sample in a dish of nutrient jelly. By morning, the microbes had multiplied into a visible bacterial ____."
+    }
+  ]
+}

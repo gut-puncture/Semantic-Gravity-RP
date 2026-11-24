@@ -1,0 +1,27 @@
+{
+  "target_word": "grandpa",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "In the refugee camp kitchen, Grandma stirred lentils while her husband set out bowls for their grandchildren. When the youngest spotted him, she ran over and cried, \"There's Grandma and there's ____.\""
+    },
+    {
+      "setting": "a newspaper office",
+      "text": "At the newspaper office, Maya showed her editor a photo of her mother's parents celebrating fifty years of marriage. Pointing to each in turn, she said, \"That's my grandma, and that's my ____.\""
+    },
+    {
+      "setting": "an artist's studio",
+      "text": "Leo painted his father's parents sitting together in the artist's studio, with her knitting and him holding a newspaper. He gave the picture a title: \"Grandma and ____.\""
+    },
+    {
+      "setting": "a construction site",
+      "text": "At the construction site, a little girl waved to her father's father as he climbed down from his excavator. Her father smiled and said, \"Go give your grandma's husband a hug; there's ____.\""
+    },
+    {
+      "setting": "a farm at dawn",
+      "text": "At dawn on the farm, Grandma sent her grandson to find her husband in the barn. The boy heard the old man calling and shouted back, \"I'm coming, ____.\""
+    }
+  ]
+}

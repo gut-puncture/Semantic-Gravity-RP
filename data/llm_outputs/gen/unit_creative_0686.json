@@ -1,0 +1,27 @@
+{
+  "target_word": "tire",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a bank",
+      "text": "Maya parked outside the bank and heard air hissing from her car. A nail had punctured the rubber tread of one ____."
+    },
+    {
+      "setting": "a ski resort",
+      "text": "Snow covered the road leading to the ski resort. Before driving home, Ben wrapped a traction chain around each ____."
+    },
+    {
+      "setting": "a gym",
+      "text": "The coach rolled a huge rubber ring onto the gym floor. For the next exercise, Lena had to flip the heavy tractor ____."
+    },
+    {
+      "setting": "a laundromat",
+      "text": "On his way to the laundromat, Luis rode over a sharp piece of glass. He arrived on foot, pushing his bicycle with its flat rear ____."
+    },
+    {
+      "setting": "a refugee camp kitchen",
+      "text": "Workers were bringing sacks of rice to the refugee camp kitchen when their handcart suddenly sagged to one side. They found a hole in its inflatable rubber ____."
+    }
+  ]
+}

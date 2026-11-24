@@ -1,0 +1,27 @@
+{
+  "target_word": "paperback",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "the ritual manual of an imaginary order of monks",
+      "text": "The Order of the Folding Bell must read its dawn prayer from a book whose flexible cover bends without breaking. Leave the hardback on the altar and bring the ____."
+    },
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When rescuing a reader from the tide, retrieve the book only after the swimmer is safe. If its cover is flexible card rather than rigid boards, log the recovered item as one ____."
+    },
+    {
+      "setting": "the laws of physics in a pocket universe",
+      "text": "In this pocket universe, shrinking rays turn every hardback novel into the same novel with a flexible card cover. When the ray strikes a hardback, it produces a ____."
+    },
+    {
+      "setting": "the minutes of a meeting of household objects",
+      "text": "Meeting minutes: The sofa reported that a novel had slipped between its cushions, where its flexible cover had bent around the remote. The bookshelf confirmed that the missing volume was a ____."
+    },
+    {
+      "setting": "a dating profile written by a volcano",
+      "text": "Volcano, 3,000 years young, seeks a patient reader for quiet evenings outside my crater. Bring a novel with a flexible card cover; my lava rocks keep denting the rigid covers of hardbacks, so I prefer a ____."
+    }
+  ]
+}

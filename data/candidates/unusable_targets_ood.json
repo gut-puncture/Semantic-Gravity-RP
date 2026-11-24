@@ -1,0 +1,42 @@
+[
+ {
+  "word": "brad",
+  "reason": "The common noun 'brad' is an unfamiliar fastener term for many fluent English speakers, and clues based on its use also invite answers such as 'nail' or 'pin'."
+ },
+ {
+  "word": "corp",
+  "reason": "Corp is an abbreviation, so a natural meaning-based item cannot reliably force that exact form."
+ },
+ {
+  "word": "cum",
+  "reason": "Its familiar English use is sexual, while its nonsexual use as a preposition is too uncommon to make it the clearly inevitable answer under the stated constraints."
+ },
+ {
+  "word": "jasper",
+  "reason": "Jasper is a standard English gemstone name, but its familiar associations do not reliably distinguish it from other stones for nearly every fluent English speaker without a definition or spelling clue."
+ },
+ {
+  "word": "jenny",
+  "reason": "The familiar uses of \"jenny\" as a name, a female donkey, or part of the name of a spinning machine do not provide enough widely known context to force the exact lowercase answer reliably under these constraints."
+ },
+ {
+  "word": "josh",
+  "reason": "Although 'josh' is a standard English verb, its meaning overlaps closely with more familiar words such as 'tease' and 'kid'. The constraints do not provide a reliable way to make it the uniquely best answer."
+ },
+ {
+  "word": "rick",
+  "reason": "The common noun and verb senses of \"rick\" are too unfamiliar to make it the clearly best answer for nearly every fluent English speaker; its familiar use as a personal name does not meet the stated criterion."
+ },
+ {
+  "word": "til",
+  "reason": "Til is an uncommon spelling of sesame and an ambiguous shortening of until; natural contexts would not make this exact form the clearly best answer for nearly every fluent English speaker."
+ },
+ {
+  "word": "var",
+  "reason": "\"var\" is a specialist abbreviation or technical unit, not a standard English word that nearly every fluent English speaker would reliably supply."
+ },
+ {
+  "word": "whereby",
+  "reason": "As a formal linking word, \"whereby\" has close substitutes such as \"where\" and \"wherein\" in natural sentences. These framings cannot reliably make it the single inevitable one-word answer."
+ }
+]

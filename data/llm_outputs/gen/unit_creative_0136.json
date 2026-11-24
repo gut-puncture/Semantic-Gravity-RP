@@ -1,0 +1,27 @@
+{
+  "target_word": "completed",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a hospital night shift",
+      "text": "During the night shift, a nurse checked that every prescribed dose had been given and recorded. She then changed the medication round's status from 'in progress' to ____."
+    },
+    {
+      "setting": "a pirate ship",
+      "text": "The pirate crew found the buried chest and hauled it aboard, fulfilling every step of their captain's plan. With nothing left to do, they marked their mission ____."
+    },
+    {
+      "setting": "a recording studio",
+      "text": "The singer recorded the final verse, and the engineer added it to the other tracks. After checking that no verses were missing, she filed the album as ____."
+    },
+    {
+      "setting": "a wedding reception",
+      "text": "At the reception, every guest signed the couple's keepsake puzzle, filling the last empty space. The bride held up the fully assembled and signed puzzle and declared it ____."
+    },
+    {
+      "setting": "a medieval castle",
+      "text": "The mason laid the final stone in the castle wall before sunset. At dawn, the steward reported to the lord that the wall had been ____."
+    }
+  ]
+}

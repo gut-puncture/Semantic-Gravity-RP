@@ -1,0 +1,27 @@
+{
+  "target_word": "physician",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a training manual for mermaid lifeguards",
+      "text": "When a rescued swimmer needs ongoing medical care, do not hand the case to a passing dolphin. Send the patient's records to the primary care ____."
+    },
+    {
+      "setting": "the user guide for a door that only opens to riddles",
+      "text": "The riddle door has caught a cold, and its own medical training has proved useless. Complete the old saying to open it: ____, heal thyself."
+    },
+    {
+      "setting": "a tourist brochure for the basement of the moon",
+      "text": "Tour the lunar basement's upside-down hospital, where beds cling to the ceiling. Each patient's care is supervised by a senior doctor listed on the chart as the attending ____."
+    },
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 7: If your sleeping body requires a prescription while you cross the border, enter the name of the doctor who wrote it under 'Prescribing ____'."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Cirrus Prime, a cloud with a persistent cough may invite a medical specialist to advise its regular doctor. Address that visiting specialist as the consulting ____."
+    }
+  ]
+}

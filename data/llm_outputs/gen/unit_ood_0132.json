@@ -1,0 +1,27 @@
+{
+  "target_word": "collar",
+  "target_usable": true,
+  "unusable_reason": "",
+  "items": [
+    {
+      "setting": "a customs form for travellers between dreams",
+      "text": "Dream Customs Form 12: Declare any animal accompanying you across the sleep border. For a dog, attach its identity tag to the band fastened around its neck; enter the name of that band: ____."
+    },
+    {
+      "setting": "a cookbook for cooking weather",
+      "text": "Before serving thunder soup, dress the raincloud waiter in a white shirt and bow tie. Button the shirt at the neck, then fold down its pointed ____."
+    },
+    {
+      "setting": "an etiquette guide for a planet of sentient clouds",
+      "text": "On Cirrus Prime, a guest who becomes a dog during dinner must still observe the leash rule. The host clips the leash to the band around the dog's neck, known as its ____."
+    },
+    {
+      "setting": "a patent for a machine that runs on silence",
+      "text": "Patent for a silence-powered laundry engine: the engine presses one shirt at a time. Its neck-buttoning arm closes the top button, then its folding arm turns down the shirt's ____."
+    },
+    {
+      "setting": "an error log from a sentient refrigerator",
+      "text": "ERROR 47: I mistook the visiting detective for a bottle of milk. After releasing him, I apologized and returned his badge, which he clipped back onto the turned-up ____ of his coat."
+    }
+  ]
+}
