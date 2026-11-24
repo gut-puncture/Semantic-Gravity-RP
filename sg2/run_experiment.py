@@ -127,10 +127,11 @@ def measure_chunk(lm: core.LM, rows: list[dict], args) -> pd.DataFrame:
     # model's preferred spelling of X across both conditions; the negative prompt often
     # shifts case, e.g. "rain" -> "Rain"). Target set: distinct first tokens of all
     # variants, t* first; its probability is the next-token analogue of P0/P1.
-    tstar, tset = [], []
+    tstar, tset, single = [], [], []
     for (_, pb, vs, vids), (_, pn, _, _) in zip(sc_base, sc_neg):
         best = int(np.argmax(np.add(pb, pn)))
         t = vids[best][0]
+        single.append(len(vids[best]) == 1)
         rest = []
         for v in vids:
             if v[0] != t and v[0] not in rest:
@@ -187,6 +188,7 @@ def measure_chunk(lm: core.LM, rows: list[dict], args) -> pd.DataFrame:
             "prompt_id": r["prompt_id"], "category": r["category"], "question": r["question"],
             "target": X, "variants": sc_base[i][2],
             "variant_ntok": [len(v) for v in sc_base[i][3]],
+            "target_single_token": single[i],
             "variant_p_base": sc_base[i][1], "variant_p_neg": sc_neg[i][1],
             "p0": sc_base[i][0], "p1": sc_neg[i][0], "p0_bin": core.p0_bin(sc_base[i][0]),
             "t_star": tstar[i], "t_star_str": tok.decode([tstar[i]]), "tset": tset[i],

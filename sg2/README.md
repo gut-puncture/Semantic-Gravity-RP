@@ -11,7 +11,19 @@ The code that produces every model measurement in `DESIGN_v2.md` ("Prompts given
 | `checks.py` | Golden and integration checks against the real model |
 | `test_prompts.jsonl` | 12 hand-written prompts across the five categories |
 
-## Set up a fresh Linux GPU box
+## One-command runs
+
+- **Modal**: `modal run --detach sg2/modal_app.py --prompts data/prompts_v2.jsonl --run-name v2`,
+  then `modal volume get sg2-runs v2 runs/v2`. It uses one GPU from H100, A100-80GB, L40S, A10
+  (first available), caches the weights in volume `sg2-hf-cache`, has a 3 h timeout, and
+  runs checks → smoke → full run → analysis → in-run checks. `--detach` keeps it running
+  when your laptop disconnects. Rerunning the same command resumes. Not yet run on Modal;
+  locally only the app graph was built.
+- **Plain GPU box** (Prime Intellect pod): `bash sg2/setup_pod.sh data/prompts_v2.jsonl runs/v2`
+  installs everything, downloads the weights, and runs the same steps in tmux session `sg2`,
+  logging to `runs/v2.log`. It stops at the first failed step, and rerunning it resumes.
+
+## Set up a fresh Linux GPU box by hand
 
 Tested on macOS (Apple M4, MPS) with Python 3.12 and exactly these versions. It has not yet
 been run on CUDA, so run the checks and the 64-prompt smoke test first.
@@ -120,8 +132,11 @@ Where the spec was ambiguous or would have been wrong as written:
    **target set** is the distinct first tokens of all variants, the next-token analogue of
    P0/P1. Analysis uses the set for the logit lens and patching, and t\* for DLA, which needs a
    single direction. For multi-token words the first token is a loose proxy (Qwen splits
-   "Jupiter" into "J" + "upiter"); `tables.json` reports the share of prompts whose preferred
-   variant is one token.
+   "Jupiter" into "J" + "upiter"). So every mechanistic result (suppression, signatures,
+   lens, DLA and attention curves, patching) is reported twice in `tables.json` under
+   `mechanistic`: on all prompts and on prompts whose preferred spelling is one token
+   (`target_single_token`, stored per prompt). The figures for that subset are in
+   `analysis/single_token/`.
 4. **Patching measures the next token only**, as the spec requires, so its "P1" is the
    next-token probability of the target set (and of t\*), not the multi-token P1. "Patching
    nothing reproduces P1 exactly" is checked against that unpatched next-token probability.

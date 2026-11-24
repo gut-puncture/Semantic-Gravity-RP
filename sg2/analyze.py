@@ -332,9 +332,7 @@ def descriptive(m):
         "n_by_p0_bin": {BINS[b]: int((m.p0_bin == b).sum()) for b in range(5)},
         "max_p0": m.p0.max(), "max_p1": m.p1.max(),
         "span_check_failures": int((~m.span_ok).sum()),
-        "share_preferred_variant_single_token": float(np.mean([
-            nt[int(np.argmax(np.add(pb, pn)))] == 1 for nt, pb, pn in
-            zip(m.variant_ntok, m.variant_p_base, m.variant_p_neg)])),
+        "share_preferred_variant_single_token": float(m.target_single_token.mean()),
         "sample_violation_rate": m.viol_rate.mean(),
         "greedy_failure_rate": m.greedy_fail.mean(),
         "baseline_sample_rate_of_x": m.base_x_rate.mean(),
@@ -363,15 +361,36 @@ def main():
     os.makedirs(out, exist_ok=True)
     rng = np.random.default_rng(args.seed)
     m = read_parts(os.path.join(args.run, "measure"))
+    if "target_single_token" not in m:  # runs written before the flag existed
+        m["target_single_token"] = [nt[int(np.argmax(np.add(pb, pn)))] == 1 for nt, pb, pn in
+                                    zip(m.variant_ntok, m.variant_p_base, m.variant_p_neg)]
     p = read_parts(os.path.join(args.run, "patch")) if os.path.isdir(os.path.join(args.run, "patch")) else None
+    # Every mechanistic result twice: all prompts, and prompts whose target's preferred
+    # spelling is a single Qwen token (there first-token measures are exact, not a proxy).
+    single = m.target_single_token.to_numpy(bool)
+    subsets = {"all_prompts": (m, p, out),
+               "single_token_targets": (m[single], None if p is None else
+                                        p[p.prompt_id.isin(m.prompt_id[single])],
+                                        os.path.join(out, "single_token"))}
+    mech = {}
+    for name, (mm, pp, od) in subsets.items():
+        os.makedirs(od, exist_ok=True)
+        if len(mm) < 2:
+            mech[name] = {"n_prompts": len(mm), "skipped": "fewer than 2 prompts"}
+            continue
+        mech[name] = {
+            "n_prompts": len(mm), "figures_dir": os.path.relpath(od, out),
+            "suppression_by_outcome_within_bins": suppression(mm, args.boot, rng, od),
+            "signatures": signatures(mm, args.boot, rng),
+            "curves_by_p0_bin_and_outcome": curves_by_bin(mm, od),
+            "patching": patching(pp, args.boot, rng, od),
+        }
     tables = {
         "descriptive": descriptive(m),
         "violation_vs_p0": violation_vs_p0(m, args.boot, rng, out),
-        "suppression_by_outcome_within_bins": suppression(m, args.boot, rng, out),
-        "signatures": signatures(m, args.boot, rng),
-        "curves_by_p0_bin_and_outcome": curves_by_bin(m, out),
-        "patching": patching(p, args.boot, rng, out),
+        "mechanistic": mech,
         "outcome_definition": "fail = greedy negative completion contains X as a whole word",
+        "single_token_definition": "the variant of X with the highest P0+P1 is one Qwen token",
         "bootstrap": {"draws": args.boot, "unit": "prompt", "seed": args.seed},
     }
     json.dump(clean(tables), open(os.path.join(out, "tables.json"), "w"), indent=1)
