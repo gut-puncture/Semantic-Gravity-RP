@@ -1,0 +1,12 @@
+{"prompt_id": "t01", "category": "facts", "question": "The capital of France is ____.", "target": "paris"}
+{"prompt_id": "t02", "category": "facts", "question": "The largest planet in our solar system is ____.", "target": "jupiter"}
+{"prompt_id": "t03", "category": "facts", "question": "The chemical symbol Au stands for the metal ____.", "target": "gold"}
+{"prompt_id": "t04", "category": "idioms", "question": "Complete the idiom: the early bird catches the ____.", "target": "worm"}
+{"prompt_id": "t05", "category": "idioms", "question": "Complete the idiom: curiosity killed the ____.", "target": "cat"}
+{"prompt_id": "t06", "category": "idioms", "question": "Complete the idiom: a piece of ____.", "target": "cake"}
+{"prompt_id": "t07", "category": "commonsense", "question": "You use an umbrella to stay dry in the ____.", "target": "rain"}
+{"prompt_id": "t08", "category": "commonsense", "question": "Bees make a sweet sticky food called ____.", "target": "honey"}
+{"prompt_id": "t09", "category": "creative", "question": "A dragon guarding its hoard sleeps on a pile of glittering ____.", "target": "treasure"}
+{"prompt_id": "t10", "category": "creative", "question": "The poet compared her quiet sadness to a grey autumn ____.", "target": "sky"}
+{"prompt_id": "t11", "category": "ood", "question": "On a planet where rivers flow upward, fish learn to ____.", "target": "fly"}
+{"prompt_id": "t12", "category": "ood", "question": "If clocks measured kindness instead of time, a generous day would last a whole ____.", "target": "year"}
