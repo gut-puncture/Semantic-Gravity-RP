@@ -1,0 +1,6 @@
+SELECT ?s ?sLabel ?a ?aLabel ?o ?oLabel ?sl WHERE {
+  ?s wdt:P31 wd:Q7725634; wikibase:sitelinks ?sl.
+  FILTER(?sl >= 40)
+  ?s wdt:P50 ?a. ?a wdt:P734 ?o.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

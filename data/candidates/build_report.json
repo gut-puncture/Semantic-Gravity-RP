@@ -1,0 +1,141 @@
+{
+  "seed": 42,
+  "idioms": {
+    "baiango_rows": 1024,
+    "baiango_parsed": 832,
+    "baiango_after_filters": 740,
+    "wiktionary_titles": 10757,
+    "wiktionary_pass_prefilter": 3893,
+    "wiktionary_after_filters": 2563,
+    "wiktionary_used": 760,
+    "candidates": 1500,
+    "rejections": {
+      "function_word_target": 64,
+      "malformed_or_short": 154,
+      "duplicate_idiom": 209,
+      "leak": 75,
+      "duplicate": 14,
+      "target_not_alpha": 5
+    },
+    "written": 1500
+  },
+  "facts": {
+    "relations": {
+      "country_capital": {
+        "subjects": 197,
+        "usable": 144,
+        "used": 144
+      },
+      "region_capital": {
+        "subjects": 138,
+        "usable": 75,
+        "used": 75
+      },
+      "country_currency": {
+        "subjects": 197,
+        "usable": 105,
+        "used": 105
+      },
+      "country_language": {
+        "subjects": 196,
+        "usable": 72,
+        "used": 72
+      },
+      "country_continent": {
+        "subjects": 197,
+        "usable": 20,
+        "used": 20
+      },
+      "country_highest_point": {
+        "subjects": 196,
+        "usable": 80,
+        "used": 80
+      },
+      "person_occupation": {
+        "subjects": 771,
+        "usable": 58,
+        "used": 58
+      },
+      "country_demonym": {
+        "subjects": 193,
+        "usable": 117,
+        "used": 117
+      },
+      "book_author": {
+        "subjects": 316,
+        "usable": 226,
+        "used": 226
+      },
+      "painting_painter": {
+        "subjects": 174,
+        "usable": 92,
+        "used": 92
+      },
+      "film_director": {
+        "subjects": 169,
+        "usable": 37,
+        "used": 37
+      },
+      "element_symbol": {
+        "subjects": 174,
+        "usable": 56,
+        "used": 56
+      }
+    },
+    "candidates": 1080,
+    "ceiling_before_caps": 1082,
+    "rejections": {
+      "not_single_answer": 1039,
+      "leak": 38,
+      "bad_subject": 179,
+      "region_name_is_country": 1
+    },
+    "written": 1079
+  },
+  "common_sense": {
+    "pool_per_relation_after_filters": {
+      "AtLocation": 1186,
+      "CapableOf": 201,
+      "HasPrerequisite": 40,
+      "HasProperty": 460,
+      "MadeOf": 150,
+      "UsedFor": 353
+    },
+    "ceiling_before_caps": 2390,
+    "used_per_relation": {
+      "AtLocation": 563,
+      "CapableOf": 168,
+      "HasPrerequisite": 39,
+      "HasProperty": 313,
+      "MadeOf": 116,
+      "UsedFor": 261
+    },
+    "candidates": 1460,
+    "rejections": {
+      "subject_not_singular_dictionary_word": 3045,
+      "no_common_one_word_answer": 3197,
+      "no_clear_top_answer": 872,
+      "subject_form": 548,
+      "weak_top_answer": 12,
+      "blocked_term": 17,
+      "subject_not_dictionary_activity": 2,
+      "leak": 31
+    },
+    "rules": {
+      "min_top_weight": 1.0,
+      "margin_over_runner_up": 1.5,
+      "subject_max_uses": 2,
+      "per_target_cap": 3
+    },
+    "written": 1458
+  },
+  "two_category_rule_dropped": {
+    "common_sense": 2,
+    "facts": 1
+  },
+  "generated_targets": {
+    "eligible_pool": 7801,
+    "per_category": 750,
+    "rule": "wordfreq 'en' Zipf 3.5-6.0, [a-z]+, len>=3, not a function word, lowercase base entry in Hunspell en_US, in <2 source categories; seeded shuffle, disjoint creative/ood"
+  }
+}

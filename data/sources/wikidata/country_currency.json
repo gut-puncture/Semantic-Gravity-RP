@@ -1,0 +1,5336 @@
+{
+  "head" : {
+    "vars" : [ "s", "sLabel", "o", "oLabel", "sl" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1104069"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "398"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Canada"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Canadian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8146"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "419"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Japan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "yen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q132643"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "394"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norway"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norwegian krone"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "343"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ireland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47190"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "359"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hungary"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "forint"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "397"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spain"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "427"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "385"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belgium"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q32"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luxembourg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "403"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Finland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q122922"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "370"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sweden"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Swedish krona"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q123213"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "391"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Poland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "złoty"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "352"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lithuania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "409"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Italy"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25344"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "387"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Switzerland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Swiss franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "372"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Austria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "378"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Greece"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172872"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "430"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkey"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkish lira"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "372"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Portugal"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q77"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q209272"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "325"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uruguay"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uruguayan peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199462"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "392"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Egypt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Egyptian pound"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q96"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4730"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "402"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mexico"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202882"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "338"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kenya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kenyan shilling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q206243"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "348"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ethiopia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "bir"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q117"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183530"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "326"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ghana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ghana cedi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q142"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "428"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "France"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q142"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214393"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "428"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "France"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "CFP Franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q145"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25224"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "396"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Kingdom"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "pound sterling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39099"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "401"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "People's Republic of China"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "renminbi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q155"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q173117"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "387"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brazil"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brazilian real"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41044"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "421"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russian ruble"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "405"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Germany"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21531507"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "360"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belarus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belarusian ruble"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131473"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iceland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Icelandic króna"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "354"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Estonia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q211"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "336"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Latvia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q81893"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "390"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ukraine"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "hryvnia"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q213"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131016"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "355"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Czech Republic"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Czech koruna"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "341"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Slovakia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q215"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "332"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Slovenia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q217"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181129"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "331"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moldova"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moldovan leu"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q218"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131645"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "349"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Romania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Romanian leu"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "361"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bulgaria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q221"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q177875"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "327"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Macedonia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Macedonian denar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q222"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q125999"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "387"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Albania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Albanian lek"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q224"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Croatia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q225"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q179620"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "342"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosnia and Herzegovina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "convertible mark"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q225"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2538687"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "342"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosnia and Herzegovina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosnia and Herzegovina dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q227"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483725"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "364"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azerbaijan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azerbaijani manat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q228"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "333"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andorra"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q229"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "327"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cyprus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q230"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4608"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "351"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgian lari"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q232"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q173751"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "350"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazakhstan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazakhstani tenge"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q233"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "327"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malta"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q235"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "322"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monaco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q236"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "323"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montenegro"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q237"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "343"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vatican City"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q238"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Marino"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q241"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201505"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuba"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuban peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q275112"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belize"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belize dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q953"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q73408"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zambia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zambian Kwacha"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q958"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q244366"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "283"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Sudan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Sudanese pound"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q962"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "308"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Benin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q963"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q186794"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "315"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botswana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botswana pula"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q965"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burkina Faso"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q967"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q238007"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "304"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burundi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burundian franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q970"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q267264"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "284"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Comoros"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Comorian franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q971"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q847739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Republic of the Congo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q974"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4734"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Democratic Republic of the Congo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Congolese franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q977"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4594"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Djibouti"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Djiboutian franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q983"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q847739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "285"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Equatorial Guinea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q986"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q171503"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eritrea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nakfa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1000"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q847739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "296"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gabon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1005"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202885"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "301"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Gambia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "dalasi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1006"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q213311"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "301"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinean franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1007"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinea-Bissau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1008"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivory Coast"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1009"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q847739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameroon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1011"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4591"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cape Verde"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cape Verdean escudo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1013"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181907"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lesotho"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "rand"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1013"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q208039"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lesotho"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "loti"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1014"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242988"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liberia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liberian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1016"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190699"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "334"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Libya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Libyan dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1019"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4584"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "321"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madagascar"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "ariary"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1020"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q211694"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "298"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malawi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malawian kwacha"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1025"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207024"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "306"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritanian ouguiya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1027"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212967"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "285"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritius"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritian rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1028"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200192"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morocco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moroccan dirham"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1029"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200753"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "303"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mozambique"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mozambican metical"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1030"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181907"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Namibia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "rand"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1030"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202462"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Namibia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Namibian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1032"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Niger"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1033"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q203567"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "349"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nigeria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "naira"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1036"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4598"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uganda"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ugandan shilling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1037"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4741"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "303"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rwanda"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rwandan franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1039"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q193712"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "274"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Tomé and Príncipe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Tomé and Príncipe dobra"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1041"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Senegal"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1042"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4595"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "278"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seychelles"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seychellois rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1044"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4587"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "294"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sierra Leone"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "leone"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1045"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4603"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "326"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Somalia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Somali shilling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q244"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q194351"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "277"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbados"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbadian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q252"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41588"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "366"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indonesia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "rupiah"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8146"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "yen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25224"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "pound sterling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39099"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "renminbi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80524"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indian rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181907"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "rand"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q182803"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q259502"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q125352135"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe ZiG"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219060"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131309"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "226"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palestine"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "new shekel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q756617"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25417"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "56"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of Denmark"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Danish krone"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q756617"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q191068"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "56"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of Denmark"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Faroese króna"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1049"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q271206"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sudan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sudanese pound"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1050"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4823"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "287"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eswatini"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "lilangeni"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1246"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "285"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kosovo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29999"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of the Netherlands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29999"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of the Netherlands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29999"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q232270"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of the Netherlands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aruban florin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29999"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q737779"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of the Netherlands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caribbean guilder"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4916"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "euro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q258"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181907"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "368"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "rand"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q262"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199674"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "374"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Algeria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Algerian dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q265"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q487888"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "310"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uzbekistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uzbek som"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q298"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200050"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "384"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chile"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chilean peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q334"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190951"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "333"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Singapore"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Singapore dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q347"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25344"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "316"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liechtenstein"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Swiss franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q398"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201871"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "307"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bahrain"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bahraini dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q399"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Armenia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Armenian dram"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q403"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172524"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "352"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Serbia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Serbian dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q408"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q259502"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "400"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q414"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199578"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "372"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Argentina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Argentine convertible peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q419"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q204656"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "333"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peru"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nuevo sol"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q423"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106720"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "313"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Korea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Korean won"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q424"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q204737"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "332"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cambodia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "riel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Timor-Leste"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q572213"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Timor-Leste"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "East Timor centavo coins"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q657"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q847739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "319"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chad"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q664"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1472704"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "352"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Zealand"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Zealand dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q668"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80524"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "404"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "India"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indian rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q672"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4406"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "255"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tuvalu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tuvaluan dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q672"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q259502"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "255"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tuvalu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q678"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4613"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "263"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tonga"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tongan paʻanga"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q683"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4588"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "263"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Samoa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Samoan tālā"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q685"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4597"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "245"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Solomon Islands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Solomon Islands dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q686"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207523"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "266"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vanuatu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vanuatu vatus"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q691"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200759"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "289"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Papua New Guinea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "kina"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q695"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "259"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q697"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q259502"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "266"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nauru"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q702"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "225"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Federated States of Micronesia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q709"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "238"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Marshall Islands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q709"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q96051466"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "238"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Marshall Islands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "SOV"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q710"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q259502"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "251"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiribati"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q710"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1049963"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "251"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiribati"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiribati dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q711"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183435"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "323"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mongolia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mongolian tögrög"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q712"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4592"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fiji"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fijian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q717"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56349362"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "347"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Venezuela"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "sovereign bolivar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q730"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202036"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "288"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Suriname"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Surinamese dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q733"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207514"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paraguay"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paraguayan guaraní"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q734"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q213005"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "287"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guyana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guyanese dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ecuador"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q739"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q244819"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "367"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colombia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colombian peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q750"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200737"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bolivia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "boliviano"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q754"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242890"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "251"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Trinidad and Tobago"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Trinidad and Tobago dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q757"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "238"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Vincent and the Grenadines"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastern Caribbean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q760"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "236"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Lucia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastern Caribbean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q763"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "239"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Kitts and Nevis"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastern Caribbean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q766"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q209792"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "283"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jamaica"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jamaican dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q769"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "253"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Grenada"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastern Caribbean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q774"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207396"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "283"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guatemala"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "quetzal"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q778"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q194339"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "281"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Bahamas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bahamian dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q781"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "266"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Antigua and Barbuda"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastern Caribbean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q783"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4719"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "301"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honduras"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honduran lempira"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q784"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "268"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominica"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastern Caribbean dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q786"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242922"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominican Republic"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominican peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q790"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q203955"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "294"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Haiti"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "gourde"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q792"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "289"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "El Salvador"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q792"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131723"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "289"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "El Salvador"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bitcoin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q794"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188608"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "377"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iran"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iranian rial"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q796"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q193094"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "350"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iraq"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iraqi dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q800"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242915"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Costa Rica"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Costa Rican colón"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q801"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131309"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "380"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Israel"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "new shekel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q804"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "304"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panama"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q804"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q210472"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "304"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panama"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panamanian balboa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q805"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q240512"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "315"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemeni rial"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q805"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q240512"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "318"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemeni rial"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q810"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q203722"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jordan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jordanian dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q811"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207312"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "284"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nicaragua"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nicaraguan córdoba"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q813"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35881"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "321"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kyrgyzstan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kyrgyz som"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q817"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q193098"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "306"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuwait"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuwaiti dinar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q819"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200055"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Laos"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lao kip"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q822"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201880"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "330"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lebanon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lebanese pound"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q826"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q206600"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "291"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maldives"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maldivian rufiyaa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q833"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163712"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "342"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malaysia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malaysian ringgit"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q836"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201875"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "318"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Myanmar"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "kyat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q837"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202895"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "325"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nepal"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nepalese rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q272290"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "298"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oman"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Omani rial"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188289"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "357"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pakistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pakistani rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q846"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q206386"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "291"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qatar"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qatari riyal"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q851"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199857"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "351"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saudi Arabia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saudi riyal"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q854"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4596"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "311"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Lanka"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Lankan rupee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q858"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q240468"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "338"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Syria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Syrian pound"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q863"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199886"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "308"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tajikistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tajikistani somoni"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q865"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q208526"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "316"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taiwan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Taiwan dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q869"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q177882"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thailand"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "baht"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q874"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q486637"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "299"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkmenistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkmenistan new manat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q878"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200294"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Arab Emirates"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Arab Emirates dirham"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q881"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q192090"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "370"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vietnam"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vietnamese đồng"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q884"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202040"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Korea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "won"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q884"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3867091"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Korea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Korean mun"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q889"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199471"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "364"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Afghanistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "afghani"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q902"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q194453"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "349"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangladesh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangladeshi taka"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q912"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mali"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q916"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200337"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "324"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Angola"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "kwanza"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q917"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201799"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "306"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhutan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "ngultrum"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q921"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q206319"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "298"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brunei"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brunei dollar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q924"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4589"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "321"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tanzania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tanzanian shilling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q928"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17193"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Philippines"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Philippine peso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q929"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q847739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African Republic"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q945"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q861690"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Togo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West African CFA franc"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q948"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4602"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "329"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tunisia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tunisian dinar"
+      }
+    } ]
+  }
+}

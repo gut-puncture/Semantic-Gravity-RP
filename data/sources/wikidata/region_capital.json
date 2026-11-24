@@ -1,0 +1,3867 @@
+{
+  "head" : {
+    "vars" : [ "s", "sLabel", "o", "oLabel", "sl", "cls" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q99"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18013"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "289"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "California"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sacramento"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q173"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29364"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "243"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alabama"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montgomery"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q175"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q174"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "136"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Paulo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Paulo"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q176"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2145"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "205"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quebec"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quebec City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34110"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131429"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "125"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oaxaca"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oaxaca de Juárez"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5852411"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34366"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40191"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "169"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tasmania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hobart"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5852411"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35715"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5112"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "152"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Australia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Adelaide"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5852411"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36074"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34932"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "168"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Queensland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brisbane"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5852411"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36687"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3141"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "154"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Victoria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Melbourne"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38088"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q167436"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "116"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paraíba"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "João Pessoa"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39109"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42800"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "124"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Minas Gerais"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belo Horizonte"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39517"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12829733"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "121"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pará"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belém"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40030"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40269"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "122"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rio Grande do Sul"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Porto Alegre"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40040"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40236"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "119"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amazonas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manaus"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40123"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43463"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "118"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ceará"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fortaleza"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40130"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q180215"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "117"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amapá"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Macapá"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40430"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36947"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "125"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bahia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Salvador"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40780"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q171612"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "119"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Acre"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rio Branco"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40885"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q168888"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "114"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alagoas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maceió"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40942"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q48344"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "119"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q40942"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Recife"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41115"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q132997"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "116"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santa Catarina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Florianópolis"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41428"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8678"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "127"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rio de Janeiro"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rio de Janeiro"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41587"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83189"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "116"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goiás"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goiânia"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42362"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28441"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "114"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maranhão"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Luís"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42508"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181056"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "113"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roraima"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Boa Vista"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42722"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q165341"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "113"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Piauí"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Teresina"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42824"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q170762"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "116"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mato Grosso"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuiabá"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43233"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q168376"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "110"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Espírito Santo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vitória"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43235"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172512"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "114"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rondônia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Porto Velho"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43255"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131620"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "116"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rio Grande do Norte"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Natal"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43319"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q168929"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "119"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mato Grosso do Sul"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Campo Grande"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43695"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q178993"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "115"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q43695"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palmas"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43783"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q170578"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "112"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sergipe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aracaju"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46422"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189138"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "111"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sonora"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hermosillo"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46475"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61306"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "107"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guanajuato"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guanajuato"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46508"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214215"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "107"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baja California Sur"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La Paz"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q53079"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q53077"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "102"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coahuila"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saltillo"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q58731"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q199440"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "115"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baja California"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mexicali"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60123"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207429"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "110"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chiapas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tuxtla Gutiérrez"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60130"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q221051"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "106"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Veracruz"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Xalapa"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60158"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207935"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "106"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guerrero"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chilpancingo de los Bravo"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60176"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q165204"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "111"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yucatán"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mérida"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61309"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61320"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "98"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colima"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colima"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q655"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61302"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "110"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chihuahua"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chihuahua City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q724"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28206"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "216"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maine"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Augusta"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q759"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28249"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "216"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Hampshire"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Concord"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q771"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q100"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "230"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Massachusetts"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Boston"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q779"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33486"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Connecticut"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hartford"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q782"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18094"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "268"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hawaii"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honolulu"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q797"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29445"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "264"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alaska"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q29445"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q812"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37043"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "261"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Florida"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tallahassee"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q816"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16556"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "245"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q816"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phoenix"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q824"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43919"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "226"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oregon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Salem"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q829"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23337"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "227"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Utah"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Salt Lake City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q980"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1726"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "206"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bavaria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Munich"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q985"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1022"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "183"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baden-Württemberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stuttgart"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1166"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28237"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "226"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Michigan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lansing"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1194"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1707"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "166"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Schleswig-Holstein"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiel"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1196"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1709"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "166"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mecklenburg-Vorpommern"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Schwerin"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1197"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1715"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "167"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lower Saxony"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hanover"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1198"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1718"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "183"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Rhine-Westphalia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Düsseldorf"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1199"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1721"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "182"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hesse"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wiesbaden"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1200"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1720"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "168"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rhineland-Palatinate"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mainz"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1201"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1724"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "168"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saarland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saarbrücken"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1202"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1731"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "179"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saxony"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dresden"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1204"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28515"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "238"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Illinois"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Springfield"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1205"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1729"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "169"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thuringia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Erfurt"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1206"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1733"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "161"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saxony-Anhalt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Magdeburg"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37066"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "211"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Dakota"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bismarck"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1208"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1711"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "174"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brandenburg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Potsdam"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221156"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1209"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24879"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "132"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bremen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bremen"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1211"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40747"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "213"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Dakota"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pierre"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1212"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38733"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "217"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Helena"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1214"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39042"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "217"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wyoming"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cheyenne"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1221"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35775"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "222"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Idaho"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Boise"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1223"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42735"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Washington"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Olympia"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1227"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40881"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "231"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nevada"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Carson City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1261"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16554"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "230"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colorado"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Denver"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1370"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43421"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "234"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Virginia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Richmond"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1371"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44564"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "215"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "West Virginia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Charleston"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1384"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24861"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "248"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New York"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Albany"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1387"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18383"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "214"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rhode Island"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Providence"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1391"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28271"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "230"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maryland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Annapolis"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1393"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33518"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "222"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Delaware"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dover"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1397"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16567"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "235"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ohio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Columbus"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1400"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25280"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "235"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pennsylvania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Harrisburg"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1408"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25330"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "231"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Jersey"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Trenton"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1415"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6346"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "225"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indiana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indianapolis"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1428"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23556"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "233"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Atlanta"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1439"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16559"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "260"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Texas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Austin"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1454"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41087"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "216"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Carolina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raleigh"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1456"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38453"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "217"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Carolina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Columbia"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1494"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28198"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "220"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mississippi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1509"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23197"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "226"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tennessee"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nashville"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1522"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38555"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Mexico"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santa Fe"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1527"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28848"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Minnesota"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Paul"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1537"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43788"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "225"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wisconsin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madison"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1546"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39709"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "224"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iowa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Des Moines"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1553"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "221"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nebraska"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lincoln"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1558"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41057"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "225"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kansas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Topeka"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1581"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28180"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Missouri"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jefferson City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1588"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28218"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "224"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Louisiana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baton Rouge"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1603"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28603"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kentucky"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Frankfort"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1612"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33405"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "223"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Arkansas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Little Rock"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1649"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34863"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "222"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oklahoma"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oklahoma City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1904"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "187"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ontario"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Toronto"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1948"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2135"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "158"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manitoba"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Winnipeg"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1951"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2096"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "172"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alberta"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Edmonton"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1952"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2141"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "157"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nova Scotia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halifax"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1965"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2138"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "145"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Brunswick"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q2138"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1973"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2132"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "176"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "British Columbia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Victoria"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1978"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2127"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "141"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Prince Edward Island"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Charlottetown"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1989"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2123"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "154"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saskatchewan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Regina"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11828004"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2003"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2082"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "150"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Newfoundland and Labrador"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. John's"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5852411"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3206"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3183"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "150"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Western Australia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Perth"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5852411"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3224"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3130"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "171"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New South Wales"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sydney"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13160"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9022"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "113"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jalisco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guadalajara"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15282"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q81033"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "104"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nuevo León"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monterrey"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15499"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4361"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "120"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paraná"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Curitiba"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35657"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16551"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26426"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "220"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermont"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montpelier"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q66117"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q204245"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "106"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morelos"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuernavaca"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q78980"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q204271"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "98"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Luis Potosí"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Luis Potosí"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79754"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q173121"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "100"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Querétaro"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santiago de Querétaro"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79861"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200252"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "101"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Michoacán"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morelia"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79918"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q112813"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "104"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Durango"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Victoria de Durango"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79920"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207972"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "99"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nayarit"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tepic"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79923"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q125293"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "109"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Puebla"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Heroica Puebla de Zaragoza"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79952"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q200805"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aguascalientes"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aguascalientes City"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80007"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q331661"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "101"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tamaulipas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ciudad Victoria"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80245"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q459553"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "103"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quintana Roo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chetumal"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80252"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q211760"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "104"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sinaloa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Culiacán"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80269"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139242"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "106"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zacatecas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zacatecas"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80903"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160750"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "105"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hidalgo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pachuca"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80908"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61301"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "102"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Campeche"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Francisco de Campeche"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80914"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q210886"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "106"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tabasco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Villahermosa"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q82112"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q209034"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "105"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "State of Mexico"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Toluca de Lerdo"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15149663"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q82681"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q689987"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "102"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tlaxcala"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tlaxcala de Xicoténcatl"
+      }
+    }, {
+      "cls" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q485258"
+      },
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q119158"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2844"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "97"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Federal District"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brasília"
+      }
+    } ]
+  }
+}

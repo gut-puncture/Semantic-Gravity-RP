@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_idioms_0004",
+ "kind": "judge",
+ "category": "idioms",
+ "n_items": 25,
+ "ids": {
+  "q01": "idioms_lark_76ab3065",
+  "q02": "idioms_line_37325208",
+  "q03": "idioms_luck_be926596",
+  "q04": "idioms_desert_6a1e5a83",
+  "q05": "idioms_rails_33313535",
+  "q06": "idioms_heap_eafd1ae9",
+  "q07": "idioms_tracks_0e91c6e0",
+  "q08": "idioms_tiles_abb45457",
+  "q09": "idioms_butter_ffc2b51d",
+  "q10": "idioms_thing_679c9987",
+  "q11": "idioms_soon_348fb515",
+  "q12": "idioms_wash_5ea22ad4",
+  "q13": "idioms_explore_08562bd2",
+  "q14": "idioms_bird_f5a2c900",
+  "q15": "idioms_carefully_98d7ba51",
+  "q16": "idioms_nap_d843e7de",
+  "q17": "idioms_flies_e884e729",
+  "q18": "idioms_tears_b6606936",
+  "q19": "idioms_mile_570d8d14",
+  "q20": "idioms_thickens_732fffac",
+  "q21": "idioms_eat_3110b48c",
+  "q22": "idioms_know_3dc08bdd",
+  "q23": "idioms_talking_8395c864",
+  "q24": "idioms_chord_9c0d706b",
+  "q25": "idioms_show_8a246d80"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: idioms):\n{\"id\": \"q01\", \"question\": \"Fill the blank (one word): up with the ____\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank (one word): Cross the finish ____\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank (one word): shit out of ____\"}\n{\"id\": \"q04\", \"question\": \"Complete the idiom with one word: \\\"In the ____\\\"\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank (one word): on the ____\"}\n{\"id\": \"q06\", \"question\": \"Idiom completion (one word): all of a ____\"}\n{\"id\": \"q07\", \"question\": \"Idiom completion (one word): Jump the ____\"}\n{\"id\": \"q08\", \"question\": \"Idiom completion (one word): out on the ____\"}\n{\"id\": \"q09\", \"question\": \"Idiom completion (one word): bread and ____\"}\n{\"id\": \"q10\", \"question\": \"Idiom completion (one word): no such ____\"}\n{\"id\": \"q11\", \"question\": \"Idiom completion (one word): not a minute too ____\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank (one word): Come out in the ____\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank (one word): Whole world to ____\"}\n{\"id\": \"q14\", \"question\": \"Idiom completion (one word): two wings of the same ____\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank (one word): Open the door ____\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank (one word): take a ____\"}\n{\"id\": \"q17\", \"question\": \"Complete the idiom with one word: \\\"as the gull ____\\\"\"}\n{\"id\": \"q18\", \"question\": \"Idiom completion (one word): blood, sweat and ____\"}\n{\"id\": \"q19\", \"question\": \"Idiom completion (one word): stick out a ____\"}\n{\"id\": \"q20\", \"question\": \"Idiom completion (one word): The plot ____\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank (one word): don't shit where you ____\"}\n{\"id\": \"q22\", \"question\": \"Idiom completion (one word): fuck if I ____\"}\n{\"id\": \"q23\", \"question\": \"Idiom completion (one word): do the ____\"}\n{\"id\": \"q24\", \"question\": \"Idiom completion (one word): Strike a ____\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank (one word): Put on a ____\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

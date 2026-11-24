@@ -1,0 +1,7 @@
+{
+  "checked_at": "2026-11-24T19:31:56+00:00",
+  "api_url": "https://api.conceptnet.io/query?start=/c/en/scissors&rel=/r/UsedFor&limit=5",
+  "api_status": 502,
+  "api_usable": false,
+  "decision": "Use the official ConceptNet 5.7.0 assertions dump (S3) in all cases: it is the same data the API serves, is a fixed versioned file, and makes the build reproducible."
+}

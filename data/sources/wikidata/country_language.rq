@@ -1,0 +1,5 @@
+SELECT ?s ?sLabel ?o ?oLabel ?sl WHERE {
+  ?s wdt:P31 wd:Q3624078; wdt:P37 ?o; wikibase:sitelinks ?sl.
+  FILTER NOT EXISTS { ?s wdt:P576 [] }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

@@ -1,0 +1,6 @@
+SELECT ?s ?sLabel ?o ?oLabel ?sl ?cls WHERE {
+  VALUES ?cls { wd:Q35657 wd:Q13390680 wd:Q5852411 wd:Q11828004 wd:Q485258 wd:Q1221156 wd:Q15149663 }
+  ?s wdt:P31 ?cls; wdt:P36 ?o; wikibase:sitelinks ?sl.
+  FILTER NOT EXISTS { ?s wdt:P576 [] }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}

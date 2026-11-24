@@ -1,0 +1,6242 @@
+{
+  "head" : {
+    "vars" : [ "s", "sLabel", "a", "aLabel", "o", "oLabel", "sl" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q208758"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q297"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1654058"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "57"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Las Meninas"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Diego Velázquez"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rodríguez"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q877191"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8459"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109616117"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Three Philosophers"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Giorgione"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbarella"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12418"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "146"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mona Lisa"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25729"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5577"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37534724"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "48"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Persistence of Memory"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Salvador Dalí"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dali"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29530"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33477"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21502167"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "67"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liberty Leading the People"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eugène Delacroix"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Delacroix"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45130"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Geographer"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45585"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "77"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Starry Night"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83872"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q203401"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21501617"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nighthawks"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Edward Hopper"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hopper"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q94802"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q301"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q98446489"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Burial of the Count of Orgaz"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "El Greco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Theotokópoulos"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q151047"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5669"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37531515"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "57"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Birth of Venus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sandro Botticelli"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botticelli"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q152509"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40599"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55197528"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "45"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luncheon on the Grass"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Édouard Manet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q152867"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5432"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12655766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "45"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La maja desnuda"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francisco Goya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q153441"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37035749"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La fornarina"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Urbino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q153441"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104067365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La fornarina"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanzio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q154469"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "53"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Potato Eaters"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q166937"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Woman in Blue Reading a Letter"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q167605"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "44"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Milkmaid"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q175036"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5593"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21431120"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guernica"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pablo Picasso"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Picasso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q175628"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172911"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800107"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "36"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barge Haulers on the Volga"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ilya Repin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Repin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q185255"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9440"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37575379"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "32"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Wedding at Cana"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paolo Veronese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Veronese"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q185255"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9440"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q75134961"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "32"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Wedding at Cana"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paolo Veronese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caliari"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q185372"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Girl with a Pearl Earring"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q194137"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104884"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14038466"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Sea of Ice"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caspar David Friedrich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Friedrich"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q471289"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q263080"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21510791"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Wounded Angel"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hugo Simberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Simberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q474024"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amor Vincit Omnia"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q474338"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "50"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lady with an Ermine"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q476458"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83155"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12652673"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "42"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Oath of the Horatii"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jacques-Louis David"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q478271"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172911"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800107"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "46"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Reply of the Zaporozhian Cossacks"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ilya Repin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Repin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q488825"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5669"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37531515"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Adoration of the Magi"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sandro Botticelli"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botticelli"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q500554"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "At Eternity's Gate"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q500812"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8459"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109616117"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sleeping Venus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Giorgione"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbarella"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q500812"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47551"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56246399"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sleeping Venus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Titian"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vecellio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q500951"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37693"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47240376"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "32"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Yellow Christ"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paul Gauguin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gauguin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q500985"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43270"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29946627"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "39"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Hunters in the Snow"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pieter Bruegel the Elder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brueghel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q512755"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Return of the Prodigal Son"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q523974"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "40"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "View of Delft"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q533619"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43270"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29946627"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Netherlandish Proverbs"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pieter Bruegel the Elder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brueghel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q540488"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34618"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19611235"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "34"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "A Burial at Ornans"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gustave Courbet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Courbet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q544315"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Astronomer"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q546297"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5681"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37104681"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "32"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lamentation of Christ"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andrea Mantegna"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mantegna"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q549847"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5669"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37531515"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "42"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Primavera"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sandro Botticelli"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botticelli"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q563727"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "39"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Virgin and Child with Saint Anne"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q568847"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q68631"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83385333"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Descent from the Cross"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rogier van der Weyden"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Weyden"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q586035"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Little Street"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q588695"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Art of Painting"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q597114"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Death of the Virgin"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q603751"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43270"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29946627"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Peasant Wedding"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pieter Bruegel the Elder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brueghel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q604761"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q192720"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q99909031"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "39"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Blue Boy"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thomas Gainsborough"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q99909031"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q634122"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "43"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wheatfield with Crows"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q636537"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83155"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12652673"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "40"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Death of Marat"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jacques-Louis David"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q644856"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43270"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29946627"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Triumph of Death"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pieter Bruegel the Elder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brueghel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q656434"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "36"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La Belle Ferronnière"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q661378"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "45"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Anatomy Lesson of Dr. Nicolaes Tulp"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q663133"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Cardsharps"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q674846"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Night Café"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q683274"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39931"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21513087"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "44"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bal du moulin de la Galette"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pierre-Auguste Renoir"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Renoir"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q685916"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Crucifixion of Saint Peter"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q687182"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q203643"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4275864"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Whistler's Mother"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James McNeill Whistler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "McNeill"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q687182"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q203643"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16937984"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Whistler's Mother"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James McNeill Whistler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Whistler"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q698015"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madonna of the Carnation"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q698487"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34661"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47517665"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "51"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Kiss"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gustav Klimt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Klimt"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q700251"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Girl Reading a Letter at an Open Window"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q210277"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40599"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55197528"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Music in the Tuileries"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Édouard Manet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212616"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184212"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q98219767"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "47"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Raft of the Medusa"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Théodore Géricault"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Géricault"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219831"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "59"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Night Watch"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q220859"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102272"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q65947892"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "43"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Arnolfini Portrait"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jan van Eyck"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Eyck"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q275349"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q297"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1654058"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rokeby Venus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Diego Velázquez"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rodríguez"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q311243"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104884"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14038466"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "48"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wanderer above the Sea younes non non non ci je ne le connais plus je t envoie moi"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caspar David Friedrich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Friedrich"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q318947"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Supper at Emmaus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q321303"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130531"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15789461"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "49"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Garden of Earthly Delights"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hieronymus Bosch"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosch"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q326503"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34618"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19611235"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Sleepers"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gustave Courbet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Courbet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q328079"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37035749"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sistine Madonna"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Urbino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q328079"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104067365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sistine Madonna"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanzio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q328523"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q296"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24698278"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "52"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Impression, Sunrise"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Claude Monet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q334138"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34618"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19611235"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "51"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "L'Origine du monde"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gustave Courbet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Courbet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q334360"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104884"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14038466"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Abbey in the Oakwood"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caspar David Friedrich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Friedrich"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q354396"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34661"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47517665"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "35"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Portrait of Adele Bloch-Bauer I"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gustav Klimt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Klimt"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q405814"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130531"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15789461"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ship of Fools"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hieronymus Bosch"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosch"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q432253"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q296"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24698278"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Garden at Sainte-Adresse"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Claude Monet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q464782"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q217434"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1158452"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "45"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "American Gothic"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Grant Wood"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wood"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q727875"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47551"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56246399"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "40"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Venus of Urbino"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Titian"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vecellio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q734834"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102272"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q65947892"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "39"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ghent Altarpiece"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jan van Eyck"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Eyck"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q734834"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q364350"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21491677"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "39"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ghent Altarpiece"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hubert van Eyck"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Eyck"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q737062"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40599"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55197528"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "43"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Olympia"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Édouard Manet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q766782"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Jewish Bride"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q775407"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40599"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55197528"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Balcony"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Édouard Manet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q783215"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "35"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint John the Baptist"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q794077"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47551"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56246399"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sacred and Profane Love"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Titian"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vecellio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2666439"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q958052"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55313389"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morning in a Pine Forest"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Konstantin Savitsky"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Savitsky"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2627056"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David with the Head of Goliath"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2629423"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q127171"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "A Young Girl Reading"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-Honoré Fragonard"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fragonard"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2629559"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q127171"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "34"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Swing"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-Honoré Fragonard"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fragonard"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2664039"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q155626"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28153223"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madame X"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q155626"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sargent"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2666439"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q193064"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q49556196"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morning in a Pine Forest"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivan Shishkin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shishkin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2697937"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5603"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7969411"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Campbell's Soup Cans"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andy Warhol"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Warhola"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2697937"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5603"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37327648"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Campbell's Soup Cans"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andy Warhol"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Warhol"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2727560"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Beheading of Saint John the Baptist"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2735507"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5432"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12655766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Clothed Maja"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francisco Goya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q883994"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q301"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q98446489"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "View of Toledo"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "El Greco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Theotokópoulos"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q890678"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37693"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47240376"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Where Do We Come From? What Are We? Where Are We Going?"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paul Gauguin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gauguin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q910199"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5593"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21431120"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Les Demoiselles d'Avignon"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pablo Picasso"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Picasso"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q920030"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5432"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12655766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Charles IV of Spain and His Family"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francisco Goya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q930137"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8459"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109616117"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "35"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Tempest"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Giorgione"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbarella"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q948034"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37035749"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La velata"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Urbino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q948034"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104067365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La velata"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanzio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q969367"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Woman Holding a Balance"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q969377"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Calling of Saint Matthew"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q984058"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q297"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1654058"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Las Hilanderas"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Diego Velázquez"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rodríguez"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1025704"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "40"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Café Terrace at Night"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1044742"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34013"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56653735"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "36"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "A Sunday Afternoon on the Island of La Grande Jatte"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georges Seurat"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seurat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1059211"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Baptism of Christ"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1059211"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183458"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42864939"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Baptism of Christ"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andrea del Verrocchio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cione"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1061035"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7836"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43766790"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "32"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Treachery of Images"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "René Magritte"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Magritte"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1065493"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159606"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52157755"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ophelia"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "John Everett Millais"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Millais"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1070896"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181568"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52157763"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Ninth Wave"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivan Aivazovsky"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aivazovsky"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1091086"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5432"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12655766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "45"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Third of May 1808"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francisco Goya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1122842"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43270"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29946627"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Magpie on the Gallows"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pieter Bruegel the Elder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brueghel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2983399"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5432"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12655766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Second of May 1808"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francisco Goya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1133420"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q297"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1654058"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Surrender of Breda"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Diego Velázquez"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rodríguez"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1133821"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33477"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21502167"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Death of Sardanapalus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eugène Delacroix"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Delacroix"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1142058"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Benois Madonna"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1150997"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5432"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12655766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saturn Devouring His Son"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francisco Goya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Goya"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1167178"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34618"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19611235"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Painter's Studio"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gustave Courbet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Courbet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1167796"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214062"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2594455"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "An Experiment on a Bird in the Air Pump"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joseph Wright of Derby"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wright"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1167907"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39931"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21513087"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luncheon of the Boating Party"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pierre-Auguste Renoir"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Renoir"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1167932"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belshazzar's Feast"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1169395"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Concert"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1170315"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130777"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37441705"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Black Square (1915)"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazimir Malevich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malewicz"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1170315"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130777"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q110713133"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Black Square (1915)"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazimir Malevich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malevich"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1192570"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43270"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29946627"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Blind Leading the Blind"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pieter Bruegel the Elder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brueghel"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1195035"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q223725"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52151685"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Kiss"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francesco Hayez"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hayez"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1212937"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q48319"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25927133"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "34"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Ambassadors"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hans Holbein the Younger"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Holbein"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1213917"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Church at Auvers"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1215604"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23380"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42856227"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Source"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-Auguste-Dominique Ingres"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ingres"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1215604"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3370554"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83340453"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Source"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paul Balze"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Balze"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1217003"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q207758"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q10000189"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Portrait of an Unknown Woman"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivan Kramskoi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kramskoy"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1217213"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Annunciation"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1219263"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q156386"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16036532"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Sleeping Gypsy"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Henri Rousseau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rousseau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1231009"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83155"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12652673"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Coronation of Napoleon"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jacques-Louis David"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1239950"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46373"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46842113"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "L'Absinthe"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Edgar Degas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Degas"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1245354"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40599"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55197528"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "39"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "A Bar at the Folies-Bergère"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Édouard Manet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1267893"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "40"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ginevra de' Benci"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1283024"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483992"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q72811287"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "33"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Birth of Venus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "William-Adolphe Bouguereau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bouguereau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1327676"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madonna Litta"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1368055"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q148458"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16877024"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Gleaners"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-François Millet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Millet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3869871"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37693"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47240376"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "When Will You Marry?"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paul Gauguin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gauguin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1464531"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "38"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Starry Night Over the Rhône"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1473546"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5592"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21507056"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Doni Tondo"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Michelangelo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Buonarroti"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1516449"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102272"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q65947892"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madonna of Chancellor Rolin"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jan van Eyck"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Eyck"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1638622"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "34"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Adoration of the Magi"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1651874"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214062"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2594455"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "A Philosopher Lecturing on the Orrery"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joseph Wright of Derby"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wright"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1652023"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214062"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2594455"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Alchemist Discovering Phosphorus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joseph Wright of Derby"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wright"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1752990"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83155"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12652673"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "52"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Death of Socrates"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jacques-Louis David"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1892745"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "50"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Salvator Mundi"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1899740"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47551"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56246399"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Assumption of the Virgin"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Titian"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vecellio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1926628"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Red Vineyard"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1978815"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23380"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42856227"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "34"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Grande Odalisque"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-Auguste-Dominique Ingres"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ingres"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2011510"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bacchus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2027662"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23380"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42856227"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Turkish Bath"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-Auguste-Dominique Ingres"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ingres"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2030685"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37035749"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Marriage of the Virgin"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Urbino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2030685"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104067365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Marriage of the Virgin"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanzio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2045726"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Battle of Anghiari"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2200610"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "37"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Yellow House"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5930190"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Road with Cypress and Star"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2246489"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "32"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Storm on the Sea of Galilee"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2247406"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212657"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56246426"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Judith Slaying Holofernes"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Artemisia Gentileschi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gentileschi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2282256"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "43"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Irises"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2290433"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33477"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21502167"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Massacre at Chios"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eugène Delacroix"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Delacroix"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2293905"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Medusa"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2293936"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Self-Portrait as Bacchus"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2293953"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5669"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37531515"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Venus and Mars"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sandro Botticelli"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botticelli"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2294441"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21452663"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Danaë"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rembrandt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Rijn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2336984"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41264"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19912259"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Music Lesson"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johannes Vermeer"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vermeer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2338404"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106449498"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "28"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Portrait of a Musician"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leonardo da Vinci"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "da Vinci"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2339059"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159758"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12804512"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rain, Steam and Speed – The Great Western Railway"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "J. M. W. Turner"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turner"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2344505"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37035749"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madonna of the Goldfinch"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Urbino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2344505"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104067365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madonna of the Goldfinch"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanzio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2354251"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33477"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21502167"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Barque of Dante"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eugène Delacroix"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Delacroix"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2360329"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37035749"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Three Graces"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Urbino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2360329"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5597"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104067365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Three Graces"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raphael"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanzio"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2366825"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159297"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20726765"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "30"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Hay Wain"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "John Constable"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Constable"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2395218"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q296"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24698278"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Woman with a Parasol – Madame Monet and Her Son"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Claude Monet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2610675"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "26"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Fortune Teller"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4195595"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172911"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800107"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "34"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivan the Terrible and his son Ivan on November 16, 1581"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ilya Repin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Repin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2470123"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42207"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865232"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Judith Beheading Holofernes"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caravaggio"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Merisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2521909"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4768"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q107145088"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "27"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Last Day of Pompeii"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Karl Bryullov"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bryullov"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2546309"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5580"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q22809469"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "29"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Self-Portrait with Fur-Trimmed Robe"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q5580"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dürer"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7536969"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "25"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Skull of a Skeleton with Burning Cigarette"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14866847"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5582"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42865365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "31"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sunset at Montmajour"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vincent van Gogh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "van Gogh"
+      }
+    } ]
+  }
+}

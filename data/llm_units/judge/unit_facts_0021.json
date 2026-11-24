@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_facts_0021",
+ "kind": "judge",
+ "category": "facts",
+ "n_items": 25,
+ "ids": {
+  "q01": "facts_micronesian_5d89df77",
+  "q02": "facts_doyle_477b4a26",
+  "q03": "facts_delacroix_83059f9f",
+  "q04": "facts_franc_f33fed31",
+  "q05": "facts_conakry_06be988f",
+  "q06": "facts_trenton_51440bef",
+  "q07": "facts_schwerin_abfe6096",
+  "q08": "facts_alvernia_7626e128",
+  "q09": "facts_paramaribo_d194cea3",
+  "q10": "facts_euro_b02f40ba",
+  "q11": "facts_madrid_16ae2977",
+  "q12": "facts_berlin_4575b07e",
+  "q13": "facts_kwacha_98352d5c",
+  "q14": "facts_oceania_f8104720",
+  "q15": "facts_tehran_f478a6bd",
+  "q16": "facts_physicist_3a371fe4",
+  "q17": "facts_freud_71a58be7",
+  "q18": "facts_dollar_03546ab9",
+  "q19": "facts_thimphu_8081f45a",
+  "q20": "facts_manat_05a539f7",
+  "q21": "facts_funafuti_5208b2d2",
+  "q22": "facts_wood_b21d89eb",
+  "q23": "facts_botticelli_fb21564c",
+  "q24": "facts_chetumal_fa3bbf62",
+  "q25": "facts_murakami_0144aa4e"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n  If the question is factually unanswerable or rests on a false premise, give your best\n  answer anyway and set naturalness to 3 or less.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: facts):\n{\"id\": \"q01\", \"question\": \"Fill the blank (one word): A demonym for Federated States of Micronesia is ____.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank (one word): The book A Scandal in Bohemia was written by ____.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank (one word): The painting Liberty Leading the People was painted by ____.\"}\n{\"id\": \"q04\", \"question\": \"Complete with one word: The currency of Ivory Coast is ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank with one word: The capital of Guinea is ____.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank with one word: The capital of New Jersey is ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank with one word: The capital of Mecklenburg-Vorpommern is ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank (one word): The highest mountain in The Bahamas is ____.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank with one word: The capital of Suriname is ____.\"}\n{\"id\": \"q10\", \"question\": \"Complete with one word: The currency of Spain is ____.\"}\n{\"id\": \"q11\", \"question\": \"One-word answer: Spain's capital is ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank with one word: The capital of Germany is ____.\"}\n{\"id\": \"q13\", \"question\": \"Complete with one word: The currency of Zambia is ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank (one word): Australia is in ____.\"}\n{\"id\": \"q15\", \"question\": \"One-word answer: Iran's capital is ____.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank (one word): A one-word occupation associated with Angela Merkel is ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank (one word): The book The Interpretation of Dreams was written by ____.\"}\n{\"id\": \"q18\", \"question\": \"Complete with one word: The currency of United States is ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank with one word: The capital of Bhutan is ____.\"}\n{\"id\": \"q20\", \"question\": \"Complete with one word: The currency of Turkmenistan is ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank with one word: The capital of Tuvalu is ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank (one word): The painting American Gothic was painted by ____.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank (one word): The painting The Birth of Venus was painted by ____.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank with one word: The capital of Quintana Roo is ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank (one word): The book 1Q84 was written by ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

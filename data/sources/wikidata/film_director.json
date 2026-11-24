@@ -1,0 +1,6200 @@
+{
+  "head" : {
+    "vars" : [ "s", "sLabel", "a", "aLabel", "o", "oLabel", "sl" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19355"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23301"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47498891"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "80"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Life Is Beautiful"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roberto Benigni"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Benigni"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20456"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11930"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21484844"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q20456"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kevin Costner"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Costner"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2345"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51559"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q93133285"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q2345"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sidney Lumet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lumet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2875"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56014"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q93023637"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "97"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q2875"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "George Cukor"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cukor"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2875"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q62503"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1427982"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "97"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q2875"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Victor Fleming"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fleming"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2875"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q457269"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1158452"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "97"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q2875"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sam Wood"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wood"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4941"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q223233"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31212549"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q4941"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sam Mendes"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mendes"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5890"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q456008"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6802722"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "98"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "V for Vendetta"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James McTeigue"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "McTeigue"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6074"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188137"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7155884"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q6074"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "J. J. Abrams"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Abrams"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17738"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38222"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1873014"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "96"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q17738"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "George Lucas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lucas"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24815"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24829"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17142656"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "84"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q24815"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Orson Welles"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Welles"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24871"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2665316"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "122"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q24871"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James Cameron"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameron"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25139"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q223233"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31212549"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "80"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q25139"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sam Mendes"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mendes"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25188"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "97"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Inception"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q165817"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "87"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saving Private Ryan"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q166262"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "85"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q166262"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q167726"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "99"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q167726"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q170564"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2665316"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "92"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q170564"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James Cameron"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameron"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q171669"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51525"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12016761"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q171669"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Miloš Forman"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Forman"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q171861"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28556"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56538649"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q171861"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Michel Hazanavicius"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q56538649"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172241"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295445"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q95000320"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "107"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q172241"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Frank Darabont"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Darabont"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q172975"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21493618"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "81"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q172975"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Martin Scorsese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scorsese"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q80379"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4465"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q80379"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q72962"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3772"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21487819"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q72962"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quentin Tarantino"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tarantino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201293"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51495"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21450870"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roman Holiday"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "William Wyler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Weiller"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q201293"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51495"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30430312"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roman Holiday"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "William Wyler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wyler"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202326"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56094"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7704509"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q202326"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francis Ford Coppola"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coppola"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q202508"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q363402"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13422008"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q202508"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stephen Sommers"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sommers"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q204191"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51492"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12786688"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "It's a Wonderful Life"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Frank Capra"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Capra"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q205028"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295964"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21509806"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iron Man 2"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jon Favreau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Favreau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41483"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q164562"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17372425"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "95"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Good, the Bad and the Ugly"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sergio Leone"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Leone"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42047"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21493618"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q42047"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Martin Scorsese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scorsese"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42051"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38222"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1873014"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "86"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Star Wars: Episode III – Revenge of the Sith"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "George Lucas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lucas"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44578"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2665316"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "138"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q44578"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James Cameron"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameron"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q127367"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4465"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "97"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q127367"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60072"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q59821"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17114963"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Sound of Music"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Robert Wise"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wise"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q63026"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188726"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56539884"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q63026"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Anthony Minghella"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Minghella"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109116"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q882"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5073230"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "81"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Great Dictator"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Charlie Chaplin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chaplin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181069"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38222"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1873014"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "82"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Star Wars: Episode II – Attack of the Clones"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "George Lucas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lucas"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181086"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2001"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18375239"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q181086"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stanley Kubrick"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kubrick"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181795"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q119348"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6394740"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "84"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q181795"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Irvin Kershner"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kershner"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q181803"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q471402"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28083289"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "83"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q181803"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Richard Marquand"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Marquand"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q182218"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q298025"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21491563"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "96"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q182218"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joss Whedon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Whedon"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q182692"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56094"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7704509"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "85"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q182692"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francis Ford Coppola"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coppola"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q182944"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51516"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27897089"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q182944"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "John Madden"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madden"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183081"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13595311"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37444597"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "79"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q183081"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joel Coen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183081"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13595531"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37444597"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "79"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q183081"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ethan Coen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183555"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q353501"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12795967"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q183555"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rob Marshall"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Marshall"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184255"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43203"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16869756"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q184255"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Clint Eastwood"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eastwood"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184605"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60100"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16275681"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q184605"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roland Emmerich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Emmerich"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184768"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56094"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7704509"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "86"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q184768"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francis Ford Coppola"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coppola"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184843"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56005"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800811"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "85"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Blade Runner"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ridley Scott"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scott"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q185888"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184903"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37094711"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Social Network"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Fincher"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fincher"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q186341"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2001"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18375239"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q186341"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stanley Kubrick"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kubrick"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q186587"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q65321"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27094683"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q186587"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wolfgang Petersen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Petersen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q128518"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56005"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800811"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q128518"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ridley Scott"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scott"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131074"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4465"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "93"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q131074"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131390"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139890"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16883494"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "83"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zack Snyder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Snyder"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q132689"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51491"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21448506"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "107"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Casablanca"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Michael Curtiz"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kertész"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46551"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q46551"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q46717"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295463"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q94973102"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q46717"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gore Verbinski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Verbinski"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47075"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189526"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56546737"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scarface"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brian De Palma"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "De Palma"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47221"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21493618"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "79"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q47221"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Martin Scorsese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scorsese"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47703"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56094"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7704509"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "133"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q47703"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Francis Ford Coppola"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coppola"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q54274"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295463"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q94973102"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "85"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q54274"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gore Verbinski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Verbinski"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83495"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9544977"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21500865"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "114"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q83495"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lilly Wachowski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wachowski"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83495"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9545711"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21500865"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "114"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q83495"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lana Wachowski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wachowski"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q91540"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q187364"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52814646"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "103"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q91540"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Robert Zemeckis"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zemeckis"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102225"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q312088"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16878034"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q102225"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mike Newell"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Newell"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102235"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q312988"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11927467"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "89"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q102235"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Yates"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yates"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102244"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q75079"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12899408"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "94"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q102244"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chris Columbus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Columbus"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102438"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q75079"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12899408"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "99"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q102438"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chris Columbus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Columbus"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102448"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28028"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55231479"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q102448"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alfonso Cuarón"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuarón"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q102754"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q314882"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12678727"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dr. No"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Terence Young"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Young"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q103474"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2001"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18375239"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q103474"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stanley Kubrick"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kubrick"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q103569"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56005"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800811"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "83"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q103569"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ridley Scott"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scott"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q104123"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3772"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21487819"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "107"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q104123"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quentin Tarantino"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tarantino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q105031"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q75079"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12899408"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "82"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q105031"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chris Columbus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Columbus"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q105387"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60100"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16275681"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q105387"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roland Emmerich"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Emmerich"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q105598"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q270639"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16866278"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q105598"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q270639"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "McTiernan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q105702"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2001"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18375239"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q105702"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stanley Kubrick"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kubrick"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106316"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55424"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17122937"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "86"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q106316"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Weir"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Weir"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109331"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q187364"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52814646"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q109331"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Robert Zemeckis"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zemeckis"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q270470"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q579241"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q65104892"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q270470"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Clyde Geronimi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Geronimi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q270470"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q926614"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29054147"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q270470"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hamilton Luske"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luske"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q270470"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1385379"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q270470"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wilfred Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q275120"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q352948"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1565753"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "79"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q275120"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joe Johnston"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Johnston"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q162255"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2665316"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "100"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q162255"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James Cameron"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameron"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q162729"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42229"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2700390"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "92"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q162729"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mel Gibson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gibson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163038"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7374"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16870804"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Psycho"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alfred Hitchcock"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hitchcock"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163872"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "107"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q163872"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q164103"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q103646"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q908051"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "87"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q164103"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ron Howard"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Howard"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q164963"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4465"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "88"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q164963"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q165713"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38222"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1873014"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "91"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Star Wars: Episode I – The Phantom Menace"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "George Lucas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lucas"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133654"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q48987"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29577217"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "103"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Silence of the Lambs"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jonathan Demme"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Demme"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q134773"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q187364"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q52814646"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "138"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q134773"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Robert Zemeckis"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zemeckis"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212965"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q598675"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q908629"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q212965"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gary Ross"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ross"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214801"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55424"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17122937"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q214801"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Weir"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Weir"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q217020"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55294"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37027633"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q217020"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kenneth Branagh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Branagh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q125076"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q134867"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15789581"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q125076"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Danny Boyle"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Boyle"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q174284"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "80"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raiders of the Lost Ark"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q174385"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56008"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1259568"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q174385"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tim Burton"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burton"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q179215"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indiana Jones and the Temple of Doom"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q180098"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51495"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21450870"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q180098"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "William Wyler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Weiller"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q180098"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51495"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30430312"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q180098"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "William Wyler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wyler"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q180214"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q192762"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83819959"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Black Swan"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Darren Aronofsky"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aronofsky"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q208108"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q208108"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q208263"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295445"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q95000320"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "79"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q208263"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Frank Darabont"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Darabont"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q209538"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q726126"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2662465"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iron Man 3"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shane Black"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Black"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q210364"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21493618"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Shutter Island"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Martin Scorsese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scorsese"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188718"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55260"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31205846"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Bridge on the River Kwai"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Lean"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lean"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189330"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q189330"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189505"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jaws"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189540"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8006"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26448025"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seven Samurai"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Akira Kurosawa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kurosawa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190050"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184903"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37094711"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "102"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q190050"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Fincher"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fincher"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190086"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51547"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21501738"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "81"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q190086"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Billy Wilder"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wilder"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190525"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q190525"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190908"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184903"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37094711"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q190908"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Fincher"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fincher"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190956"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51525"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12016761"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q190956"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Miloš Forman"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Forman"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q193835"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25186"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q94572571"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q193835"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gus Van Sant"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Van Sant"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q150804"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51552"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21493296"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Pianist"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roman Polanski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Polanski"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q150804"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51552"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27941195"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Pianist"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roman Polanski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Polański"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q150804"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q51552"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36876751"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Pianist"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roman Polanski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liebling"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q151904"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q282033"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2665383"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Casino Royale"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Martin Campbell"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Campbell"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188652"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q260125"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30337333"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q188652"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "John G. Avildsen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Avildsen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188845"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q269692"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28796983"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q188845"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barry Levinson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Levinson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q190145"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q275402"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21507747"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spider-Man 2"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sam Raimi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raimi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q192724"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295964"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21509806"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "84"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q192724"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jon Favreau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Favreau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q152780"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160726"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q686223"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q152780"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ang Lee"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Li"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q152780"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160726"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12794688"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q152780"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ang Lee"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160060"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295912"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16870871"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "79"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q160060"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tom Hooper"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hooper"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160071"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q229598"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16870511"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Twilight"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Catherine Hardwicke"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hardwicke"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160560"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q103646"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q908051"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q160560"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ron Howard"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Howard"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160618"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160726"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q686223"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "85"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brokeback Mountain"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ang Lee"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Li"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160618"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q160726"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12794688"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "85"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brokeback Mountain"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ang Lee"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lee"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q161087"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q295463"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q94973102"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "84"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q161087"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gore Verbinski"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Verbinski"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q161678"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q312988"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11927467"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "83"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q161678"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Yates"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yates"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q161687"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q312988"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11927467"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "89"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q161687"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Yates"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yates"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q152350"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8003"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16834815"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Battleship Potemkin"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sergei Eisenstein"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eisenstein"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q153723"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3772"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21487819"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "80"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q153723"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quentin Tarantino"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tarantino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483941"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8877"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16782614"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "102"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Schindler's List"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steven Spielberg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spielberg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q232009"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q312988"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11927467"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "81"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q232009"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Yates"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yates"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q484048"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q217324"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q105310479"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amélie"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jean-Pierre Jeunet"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jeunet"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q484442"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q275402"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21507747"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "84"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spider-Man"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sam Raimi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Raimi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q484675"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q484779"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12785826"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Léon: The Professional"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luc Besson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Besson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q228186"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55260"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31205846"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lawrence of Arabia"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "David Lean"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lean"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q571032"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3772"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21487819"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Django Unchained"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quentin Tarantino"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tarantino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q719915"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4465"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q719915"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842306"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q926614"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29054147"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saludos Amigos"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hamilton Luske"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luske"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842306"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1385379"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2732758"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saludos Amigos"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wilfred Jackson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jackson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842306"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2903332"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1646493"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saludos Amigos"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Roberts"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roberts"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842306"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3157236"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36970418"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saludos Amigos"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jack Kinney"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q36970418"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736731"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q280187"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2694490"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Three Caballeros"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norm Ferguson"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ferguson"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736731"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q579241"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q65104892"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Three Caballeros"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Clyde Geronimi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Geronimi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736731"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2903332"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1646493"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Three Caballeros"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bill Roberts"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roberts"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736731"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3127658"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12678727"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Three Caballeros"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Harold Young"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Young"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736731"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3157236"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36970418"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Three Caballeros"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jack Kinney"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q36970418"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1392744"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21493618"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q1392744"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Martin Scorsese"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scorsese"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1765358"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18018415"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q1765358"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Anthony Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1765358"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20675767"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q1765358"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joe Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2579784"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28028"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55231479"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "76"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q2579784"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alfonso Cuarón"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuarón"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3023357"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q706475"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16876721"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "78"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q3023357"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Steve McQueen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "McQueen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3604746"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2665316"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q3604746"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James Cameron"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameron"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5887360"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q717015"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16870357"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q5887360"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "James Gunn"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gunn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13255497"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55215"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5576697"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "74"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q13255497"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alejandro González Iñárritu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "González"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14171368"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q298025"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21491563"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "82"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q14171368"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joss Whedon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Whedon"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13417189"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "98"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Interstellar"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18002795"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55215"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5576697"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q18002795"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Alejandro González Iñárritu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "González"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18547944"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56005"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12800811"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q18547944"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ridley Scott"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scott"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18602670"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q223233"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31212549"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spectre"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sam Mendes"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mendes"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18406872"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q558806"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37525449"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "73"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q18406872"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Scott Derrickson"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q37525449"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18407657"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18018415"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q18407657"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Anthony Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18407657"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20675767"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q18407657"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joe Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19347291"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19561563"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1605060"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "72"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Deadpool"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tim Miller"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Miller"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20502242"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q456910"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q170455"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q20502242"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Patty Jenkins"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q170455"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20856802"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18350026"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38704906"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q20856802"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Damien Chazelle"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chazelle"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q22665878"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2388576"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16864278"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q22665878"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taika Waititi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Waititi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23010088"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18519749"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17144855"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "75"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q23010088"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jon Watts"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Watts"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23780734"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7383978"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37236814"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "77"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q23780734"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ryan Coogler"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Coogler"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23780914"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18018415"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "86"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q23780914"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Anthony Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23780914"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20675767"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "86"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q23780914"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joe Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23781155"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18018415"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Avengers: Endgame"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Anthony Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23781155"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20675767"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2177260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "90"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Avengers: Endgame"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joe Russo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26698156"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219124"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14324808"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q26698156"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guillermo del Toro"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "del Toro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27985819"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18519749"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17144855"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q27985819"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jon Watts"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Watts"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42759035"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q362824"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2793828"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "77"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Joker"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Todd Phillips"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phillips"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q48673898"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1368300"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q54871240"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q48673898"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peter Farrelly"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Farrelly"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55436290"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q271967"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37568900"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbie"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Greta Gerwig"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gerwig"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q60834962"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q548823"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25677747"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "71"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q60834962"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Denis Villeneuve"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Villeneuve"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61448040"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q495980"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12598567"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "82"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Parasite"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bong Joon-ho"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bong"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q68934496"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18519749"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17144855"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "70"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q68934496"
+      },
+      "aLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jon Watts"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Watts"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q108839994"
+      },
+      "a" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20900701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "81"
+      },
+      "sLabel" : {
+        "type" : "literal",
+        "value" : "Q108839994"
+      },
+      "aLabel" : {
+        "type" : "literal",
+        "value" : "Q25191"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nolan"
+      }
+    } ]
+  }
+}

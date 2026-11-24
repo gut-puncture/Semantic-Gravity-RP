@@ -1,0 +1,4902 @@
+{
+  "head" : {
+    "vars" : [ "s", "sLabel", "o", "oLabel", "sl" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1930"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "398"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Canada"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ottawa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1490"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "419"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Japan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tokyo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q585"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "394"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Norway"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q585"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1761"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "343"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ireland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dublin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1781"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "359"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hungary"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Budapest"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2807"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "397"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Spain"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madrid"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "427"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United States"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Washington, D.C."
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q239"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "385"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belgium"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brussels"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q32"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1842"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luxembourg"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luxembourg"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1757"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "403"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Finland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Helsinki"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1754"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "370"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sweden"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Stockholm"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q270"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "391"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Poland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Warsaw"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q216"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "352"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lithuania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vilnius"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q220"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "409"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Italy"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rome"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q70"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "387"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Switzerland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bern"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1741"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "372"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Austria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vienna"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1524"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "378"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Greece"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Athens"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3640"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "430"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkey"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ankara"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q45"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q597"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "372"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Portugal"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lisbon"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q77"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1335"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "325"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uruguay"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montevideo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q79"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q85"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "392"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Egypt"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cairo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q96"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1489"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "402"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mexico"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mexico City"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q114"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3870"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "338"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kenya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nairobi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3624"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "348"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ethiopia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Addis Ababa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q117"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3761"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "326"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ghana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Accra"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q142"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q90"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "428"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "France"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paris"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q145"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q84"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "396"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Kingdom"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "London"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q148"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q956"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "401"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "People's Republic of China"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beijing"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q155"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2844"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "387"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brazil"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brasília"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q649"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "421"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Russia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moscow"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q183"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "405"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Germany"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Berlin"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q184"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2280"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "360"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belarus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Minsk"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1764"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iceland"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Reykjavík"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q191"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1770"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "354"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Estonia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tallinn"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q211"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1773"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "336"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Latvia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Riga"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1899"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "390"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ukraine"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kyiv"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q213"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1085"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "355"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Czech Republic"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Prague"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q214"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1780"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "341"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Slovakia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bratislava"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q215"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q437"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "332"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Slovenia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ljubljana"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q217"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q21197"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "331"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moldova"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chișinău"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q218"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19660"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "349"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Romania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bucharest"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q472"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "361"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bulgaria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sofia"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q221"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q384"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "327"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Macedonia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Skopje"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q222"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19689"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "387"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Albania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tirana"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q224"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1435"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Croatia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zagreb"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q225"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11194"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "342"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bosnia and Herzegovina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sarajevo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q227"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9248"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "364"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Azerbaijan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baku"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q228"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1863"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "333"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andorra"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Andorra la Vella"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q229"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3856"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "327"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cyprus"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nicosia"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q230"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q994"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "351"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tbilisi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q232"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1520"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "350"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kazakhstan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Astana"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q233"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23800"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "327"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malta"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Valletta"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q235"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q235"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "322"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monaco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monaco"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q236"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23564"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "323"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Montenegro"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Podgorica"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q237"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q237"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "343"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vatican City"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vatican City"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q238"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1848"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Marino"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Marino"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q241"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1563"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cuba"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Havana"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q242"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3043"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belize"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belmopan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q953"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3881"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zambia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lusaka"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q958"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1947"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "283"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Sudan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Juba"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q962"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3799"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "308"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Benin"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Porto-Novo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q963"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3919"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "315"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Botswana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gaborone"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q965"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3777"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burkina Faso"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ouagadougou"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q967"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q167551"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "304"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Burundi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gitega"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q970"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3901"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "284"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Comoros"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Moroni"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q971"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3844"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Republic of the Congo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brazzaville"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q974"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3838"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Democratic Republic of the Congo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kinshasa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q977"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3604"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Djibouti"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Djibouti"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q983"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1140136"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "285"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Equatorial Guinea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ciudad de la Paz"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q986"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3642"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eritrea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Asmara"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1000"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3825"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "296"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Gabon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Libreville"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1005"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3726"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "301"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Gambia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Banjul"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1006"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3733"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "301"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Conakry"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1007"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3739"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "300"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guinea-Bissau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bissau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1008"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3768"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ivory Coast"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yamoussoukro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1009"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3808"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cameroon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yaoundé"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1011"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3751"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cape Verde"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Praia"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1013"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3909"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lesotho"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maseru"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1014"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3748"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liberia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Monrovia"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1016"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3579"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "334"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Libya"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tripoli"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1019"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3915"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "321"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Madagascar"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Antananarivo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1020"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3876"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "298"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malawi"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lilongwe"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1025"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3688"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "306"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nouakchott"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1027"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3929"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "285"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mauritius"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port Louis"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1028"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3551"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Morocco"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rabat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1029"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3889"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "303"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mozambique"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maputo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1030"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3935"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Namibia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Windhoek"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1032"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3674"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Niger"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Niamey"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1033"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3787"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "349"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nigeria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Abuja"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1036"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3894"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uganda"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kampala"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1037"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3859"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "303"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Rwanda"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kigali"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1039"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3932"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "274"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Tomé and Príncipe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "São Tomé"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1041"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3718"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "309"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Senegal"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dakar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1042"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3940"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "278"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seychelles"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Victoria"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1044"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3780"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "294"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sierra Leone"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Freetown"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1045"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2449"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "326"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Somalia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mogadishu"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1049"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1963"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sudan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Khartoum"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1050"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3904"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "287"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eswatini"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mbabane"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1050"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q101418"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "287"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Eswatini"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lobamba"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1246"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25270"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "285"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kosovo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pristina"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q244"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36168"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "277"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Barbados"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bridgetown"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q252"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3630"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "366"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indonesia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jakarta"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29999"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q727"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "108"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of the Netherlands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amsterdam"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q756617"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1748"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "56"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingdom of Denmark"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Copenhagen"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q258"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3926"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "368"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pretoria"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q258"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5465"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "368"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cape Town"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q258"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37701"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "368"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Africa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bloemfontein"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q262"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3561"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "374"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Algeria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Algiers"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q265"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q269"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "310"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Uzbekistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tashkent"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q298"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2887"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "384"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chile"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santiago"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q334"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q334"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "333"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Singapore"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Singapore"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q347"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1844"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "316"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Liechtenstein"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vaduz"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q398"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3882"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "307"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bahrain"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manama"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q399"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1953"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Armenia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yerevan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q403"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3711"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "352"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Serbia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belgrade"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q408"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3114"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "400"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Australia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Canberra"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q414"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1486"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "372"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Argentina"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Buenos Aires"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q419"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2868"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "333"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Peru"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lima"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q423"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18808"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "313"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "North Korea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pyongyang"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q424"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1850"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "332"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cambodia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Phnom Penh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q574"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9310"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "292"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Timor-Leste"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dili"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q657"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3659"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "319"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Chad"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "N'Djamena"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q664"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23661"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "352"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Zealand"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wellington"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q668"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q987"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "404"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "India"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New Delhi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q672"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34126"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "255"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tuvalu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Funafuti"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q678"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38834"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "263"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tonga"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nukuʻalofa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q683"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36260"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "263"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Samoa"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Apia"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q685"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q40921"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "245"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Solomon Islands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honiara"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q686"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37806"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "266"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vanuatu"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port Vila"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q691"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36526"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "289"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Papua New Guinea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port Moresby"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q695"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q515229"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "259"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palau"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ngerulmud"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q697"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31026"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "266"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nauru"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yaren District"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q702"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q42751"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "225"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Federated States of Micronesia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palikir"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q709"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12919"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "238"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Marshall Islands"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Majuro"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q710"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131233"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "251"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kiribati"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Tarawa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q711"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23430"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "323"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mongolia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulaanbaatar"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q712"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q38807"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Fiji"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Suva"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q717"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1533"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "347"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Venezuela"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Caracas"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q730"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3001"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "288"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Suriname"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paramaribo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q733"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2933"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Paraguay"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Asunción"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q734"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q10717"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "287"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guyana"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Georgetown"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q736"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2900"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ecuador"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Quito"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q739"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2841"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "367"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colombia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bogotá"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q750"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1491"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bolivia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "La Paz"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q750"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2907"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bolivia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sucre"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q754"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39178"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "251"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Trinidad and Tobago"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port of Spain"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q757"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41474"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "238"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Vincent and the Grenadines"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingstown"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q760"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41699"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "236"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Lucia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Castries"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q763"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41295"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "239"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saint Kitts and Nevis"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Basseterre"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q766"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34692"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "283"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jamaica"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kingston"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q769"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41547"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "253"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Grenada"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. George's"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q774"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1555"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "283"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guatemala"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Guatemala City"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q778"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2467"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "281"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Bahamas"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nassau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q781"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36262"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "266"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Antigua and Barbuda"
+      },
+      "oLabel" : {
+        "type" : "literal",
+        "value" : "Q36262"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q783"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3238"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "301"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Honduras"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tegucigalpa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q784"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q36281"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "268"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominica"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Roseau"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q786"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34820"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "282"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dominican Republic"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Santo Domingo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q790"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34261"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "294"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Haiti"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Port-au-Prince"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q792"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3110"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "289"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "El Salvador"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San Salvador"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q794"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3616"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "377"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iran"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tehran"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q796"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1530"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "350"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Iraq"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baghdad"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q800"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3070"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Costa Rica"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "San José"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q801"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1218"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "380"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Israel"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jerusalem"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q804"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3306"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "304"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panama"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Panama City"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q805"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2471"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "318"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sanaa"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q805"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131694"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "318"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Yemen"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Aden"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q810"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3805"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "314"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jordan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Amman"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q811"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131546626"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "284"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nicaragua"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Managua"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q813"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9361"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "321"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kyrgyzstan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bishkek"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q817"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35178"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "306"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuwait"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuwait City"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q819"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9326"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "317"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Laos"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vientiane"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q822"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3820"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "330"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lebanon"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Beirut"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q826"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9347"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "291"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Maldives"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malé"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q833"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1865"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "342"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Malaysia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kuala Lumpur"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q836"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q37400"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "318"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Myanmar"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Naypyidaw"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q837"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3037"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "325"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Nepal"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kathmandu"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3826"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "298"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Oman"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Muscat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q843"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1362"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "357"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Pakistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Islamabad"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q846"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3861"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "291"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Qatar"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Doha"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q851"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3692"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "351"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Saudi Arabia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Riyadh"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q854"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q35381"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "311"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Lanka"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Colombo"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q854"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q41963"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "311"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Lanka"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sri Jayawardenepura Kotte"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q858"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3766"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "338"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Syria"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Damascus"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q863"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9365"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "308"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tajikistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dushanbe"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q865"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1867"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "316"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taiwan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Taipei"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q869"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1861"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thailand"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangkok"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q874"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23438"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "299"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Turkmenistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ashgabat"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q878"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1519"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "United Arab Emirates"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Abu Dhabi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q881"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1858"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "370"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vietnam"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hanoi"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q884"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8684"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "356"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "South Korea"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Seoul"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q889"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5838"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "364"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Afghanistan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kabul"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q902"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1354"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "349"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangladesh"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dhaka"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q912"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3703"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "312"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mali"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bamako"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q916"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3897"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "324"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Angola"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Luanda"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q917"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9270"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "306"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bhutan"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Thimphu"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q921"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9279"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "298"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brunei"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bandar Seri Begawan"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q924"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3866"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "321"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tanzania"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dodoma"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q928"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1461"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "335"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Philippines"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Manila"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q929"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3832"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central African Republic"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangui"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q945"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3792"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "302"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Togo"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lomé"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q948"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3572"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "329"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tunisia"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Tunis"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q954"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3921"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "320"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Zimbabwe"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Harare"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219060"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q158119"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "226"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palestine"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ramallah"
+      }
+    }, {
+      "s" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q219060"
+      },
+      "o" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q212938"
+      },
+      "sl" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "226"
+      },
+      "sLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Palestine"
+      },
+      "oLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "East Jerusalem"
+      }
+    } ]
+  }
+}

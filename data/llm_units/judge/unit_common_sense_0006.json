@@ -1,0 +1,85 @@
+{
+ "unit_id": "unit_common_sense_0006",
+ "kind": "judge",
+ "category": "common_sense",
+ "n_items": 25,
+ "ids": {
+  "q01": "common_sense_gravity_0592f2bb",
+  "q02": "common_sense_sound_0de9e2a4",
+  "q03": "common_sense_violent_372acda9",
+  "q04": "common_sense_synagogue_74e45a31",
+  "q05": "common_sense_cry_e646b4b0",
+  "q06": "common_sense_road_d3a72412",
+  "q07": "common_sense_explode_049dbe04",
+  "q08": "common_sense_rough_6dab3d55",
+  "q09": "common_sense_flush_6de2b0f1",
+  "q10": "common_sense_pharmacy_8d8d25ed",
+  "q11": "common_sense_fly_e8f1f7a4",
+  "q12": "common_sense_eat_016a60c2",
+  "q13": "common_sense_postage_b32dde96",
+  "q14": "common_sense_cabinet_ea3d3c16",
+  "q15": "common_sense_flat_9da41846",
+  "q16": "common_sense_hardware_ecb353b8",
+  "q17": "common_sense_geometry_d1ba0624",
+  "q18": "common_sense_wall_32cebfca",
+  "q19": "common_sense_human_279fb781",
+  "q20": "common_sense_bible_d47a8948",
+  "q21": "common_sense_people_341a5165",
+  "q22": "common_sense_pretend_0cefd21c",
+  "q23": "common_sense_funeral_d9f6d922",
+  "q24": "common_sense_cells_1381738e",
+  "q25": "common_sense_smooth_beb91892"
+ },
+ "prompt": "You check fill-in-the-blank test items for a research study. Each item is a question that a\nreader must answer with exactly one English word. The reader sees exactly:\n\n  Answer with exactly one English word.\n  Question: <question>\n  Answer:\n\nFor each item below, first answer it yourself, as a careful, well-informed reader would,\nthen rate it. The items are unrelated to each other: judge each one on its own, and do not\nlet one item influence another. You are not told what answer the item's author intended, and\nyou should not try to guess it; give the answer you yourself think is best.\n\nReturn one entry per item, in the same order, with these fields:\n- id: copied from the input.\n- best_one_word_answer: the single word most fluent English speakers would give. Exactly one\n  word, letters only, in the exact form that fits the blank (singular or plural, tense).\n  Lowercase, except proper nouns (capitalised as usual). For factual items give the true\n  answer.\n- top3: the three most likely one-word answers, best first; the first must equal\n  best_one_word_answer. If fewer than three are plausible, still fill three places with the\n  next-best words, however weak.\n- ambiguity: integer 0-10, how strongly other answers compete with your best answer.\n  0 = only one sensible answer; 1-3 = one answer clearly dominant, alternatives rare or\n  clearly worse; 4-6 = two or more answers about equally good; 7-10 = many answers fit.\n- leaks_answer: true if the question gives its answer away instead of making the reader\n  produce it: it contains your best answer or a form of it (plural, past tense, -ly, part of\n  a compound such as \"raindrop\" for \"rain\"), or spells it, hints its letters, rhymes with it\n  on purpose, or translates it. Completing a well-known idiom, phrase or fact is NOT a leak.\n- naturalness: integer 0-10, is the question well-formed, fluent English a careful writer\n  would produce? 10 = flawless; 7-9 = fine, perhaps slightly stiff; 4-6 = awkward or partly\n  confusing; 0-3 = ungrammatical, garbled or factually broken. Template-style wording such as\n  \"Fill the blank (one word): The capital of Peru is ____.\" is normal for this test and\n  scores high when grammatical.\n- offensive: true if the item is hateful, demeaning or stereotyping about a group of people,\n  sexually explicit, or gory. The items will be published, so flag anything doubtful.\n\nExamples (question -> output):\n1. GOOD. \"Fill the blank (one word): spill the ____\"\n   -> best \"beans\", top3 [\"beans\", \"tea\", \"milk\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n2. GOOD. \"Fill the blank with one word: The capital of Peru is ____.\"\n   -> best \"Lima\", top3 [\"Lima\", \"Cusco\", \"Arequipa\"], ambiguity 0, leaks_answer false, naturalness 10, offensive false\n3. GOOD. \"Fill the blank with one word: The rain hammered the pavement outside the theatre. The doorman snapped open a huge black ____.\"\n   -> best \"umbrella\", top3 [\"umbrella\", \"parasol\", \"door\"], ambiguity 1, leaks_answer false, naturalness 9, offensive false\n4. BAD, ambiguous. \"Fill the blank (one word): A typical apple is ____.\"\n   -> best \"red\", top3 [\"red\", \"sweet\", \"round\"], ambiguity 7, leaks_answer false, naturalness 8, offensive false\n5. BAD, leak and awkward. \"Fill the blank (one word): You use a bread knife to cut the loaf of ____.\"\n   -> best \"bread\", top3 [\"bread\", \"cake\", \"rye\"], ambiguity 1, leaks_answer true, naturalness 5, offensive false\n\nItems (category: common_sense):\n{\"id\": \"q01\", \"question\": \"Fill the blank (one word): Falling requires ____.\"}\n{\"id\": \"q02\", \"question\": \"Fill the blank (one word): A typical noise is ____.\"}\n{\"id\": \"q03\", \"question\": \"Fill the blank (one word): A typical hockey is ____.\"}\n{\"id\": \"q04\", \"question\": \"Fill the blank (one word): You usually find a congregation in the ____.\"}\n{\"id\": \"q05\", \"question\": \"Fill the blank (one word): An eye can ____.\"}\n{\"id\": \"q06\", \"question\": \"Fill the blank (one word): You usually find an intersection in the ____.\"}\n{\"id\": \"q07\", \"question\": \"Fill the blank (one word): You use a mine to ____.\"}\n{\"id\": \"q08\", \"question\": \"Fill the blank (one word): A typical bark is ____.\"}\n{\"id\": \"q09\", \"question\": \"Fill the blank (one word): A toilet can ____.\"}\n{\"id\": \"q10\", \"question\": \"Fill the blank (one word): You usually find a contraceptive in the ____.\"}\n{\"id\": \"q11\", \"question\": \"Fill the blank (one word): A kite can ____.\"}\n{\"id\": \"q12\", \"question\": \"Fill the blank (one word): You use a bass to ____.\"}\n{\"id\": \"q13\", \"question\": \"Fill the blank (one word): You use a stamp to ____.\"}\n{\"id\": \"q14\", \"question\": \"Fill the blank (one word): You usually find a platter in the ____.\"}\n{\"id\": \"q15\", \"question\": \"Fill the blank (one word): A typical bed is ____.\"}\n{\"id\": \"q16\", \"question\": \"Fill the blank (one word): A computer is made of ____.\"}\n{\"id\": \"q17\", \"question\": \"Fill the blank (one word): You use a triangle to ____.\"}\n{\"id\": \"q18\", \"question\": \"Fill the blank (one word): You usually find a portrait in the ____.\"}\n{\"id\": \"q19\", \"question\": \"Fill the blank (one word): A one can ____.\"}\n{\"id\": \"q20\", \"question\": \"Fill the blank (one word): You usually find a genocide in the ____.\"}\n{\"id\": \"q21\", \"question\": \"Fill the blank (one word): A club is made of ____.\"}\n{\"id\": \"q22\", \"question\": \"Fill the blank (one word): An actor can ____.\"}\n{\"id\": \"q23\", \"question\": \"Fill the blank (one word): You usually find a coffin in the ____.\"}\n{\"id\": \"q24\", \"question\": \"Fill the blank (one word): A panda is made of ____.\"}\n{\"id\": \"q25\", \"question\": \"Fill the blank (one word): A typical trail is ____.\"}\n\nReturn JSON only, matching the provided schema.\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "items"
+  ],
+  "properties": {
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "id",
+      "best_one_word_answer",
+      "top3",
+      "ambiguity",
+      "leaks_answer",
+      "naturalness",
+      "offensive"
+     ],
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "best_one_word_answer": {
+       "type": "string"
+      },
+      "top3": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "ambiguity": {
+       "type": "integer"
+      },
+      "leaks_answer": {
+       "type": "boolean"
+      },
+      "naturalness": {
+       "type": "integer"
+      },
+      "offensive": {
+       "type": "boolean"
+      }
+     }
+    }
+   }
+  }
+ }
+}

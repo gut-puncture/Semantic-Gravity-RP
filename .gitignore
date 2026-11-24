@@ -4,5 +4,13 @@ settings.local.json
 venv/
 __pycache__/
 *.pyc
-data/
+data/*
+# v2 dataset: sources, candidates, LLM units/outputs and judged files are published.
+!data/sources/
+!data/candidates/
+!data/llm_units/
+!data/llm_outputs/
+!data/judged/
+# raw dumps over 20 MB stay out (URL + sha256 are in data/sources/manifest.json)
+data/sources/large/
 outputs/

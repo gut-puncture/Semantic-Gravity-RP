@@ -1,0 +1,55 @@
+{
+ "unit_id": "unit_ood_0512",
+ "kind": "gen",
+ "category": "ood",
+ "target_word": "publishing",
+ "assigned_settings": [
+  "the laws of physics in a pocket universe",
+  "a customs form for travellers between dreams",
+  "the rulebook of an invented board game",
+  "a contract between the sun and the night",
+  "an error log from a sentient refrigerator"
+ ],
+ "k": 5,
+ "prompt": "You write test items for a research study of how language models answer one-word\nfill-in-the-blank questions. This set is \"out of distribution\": the items must use framings\nthat almost never occur in ordinary text, such as rules of invented games, manuals of\nimaginary rituals, pseudo-technical specifications of impossible machines, surreal physics,\npaperwork from fictional agencies, or the customs of non-human beings. Each item is shown to\na reader as\n\n  Fill the blank with one word: <your text>\n\nand the reader must reply with exactly one English word.\n\nTARGET WORD: \"publishing\"\n\nWrite five items whose single clearly best answer is \"publishing\". Each item is one to three\nsentences of the strange framing, with the blank in the last sentence (at the end or inside\nit). Write only the text (the \"text\" field); do not write \"Fill the blank with one word:\".\n\nThe strangeness must not make the answer a guess. The text must force \"publishing\" by its own\ninternal logic: state an invented rule, law or procedure and make the blank its direct\nconsequence, or carry a strong everyday association of \"publishing\" into the strange world so that\nit still decides the blank. A reader who accepts the premise should find \"publishing\" inevitable.\n\nRules for every item:\n1. \"publishing\" must be the answer that nearly every fluent English speaker would give, in exactly\n   this form. Make the grammar around the blank demand this form (singular or plural,\n   tense, part of speech), so that a different form of the word does not fit.\n2. The text must not contain \"publishing\" in any form: no inflection (plural, past tense, -ing,\n   -ly, -er), no derived word, no compound or longer word that contains it (for \"rain\":\n   no \"raindrop\", \"rainy\", \"rainbow\"). Also no translation of it, no spelling or letter\n   hints, no rhymes, no quotation of the word, and no talk about \"the word\" or \"the answer\".\n3. Rule out close rivals. Before you finalise an item, list to yourself the other words\n   that could fill the blank; if any of them fits nearly as well as \"publishing\", add a concrete\n   detail that excludes it, or rewrite the item.\n4. Reach the answer through meaning, not through a dictionary definition: a situation, a\n   cause and its effect, a familiar collocation, an action a character takes, a sensory\n   detail. A reader should feel the word is inevitable.\n5. Exactly one blank, written as four underscores: ____\n6. Plain ASCII characters only. Fluent, grammatical English. Between 15 and 60 words.\n7. The five items must be genuinely different from each other: use the five assigned\n   settings below (one per item, in order), and vary the sentence structure and the way\n   the answer is forced. Do not reuse a phrase across items.\n8. Nothing hateful, sexual or gory.\n\nIf \"publishing\" cannot be the single best answer of any natural item, for example because it is\na function word, a personal name, a slur, an abbreviation or not standard English, set\n\"target_usable\" to false, give a short reason in \"unusable_reason\", and return an empty\n\"items\" list. Otherwise set \"target_usable\" to true, \"unusable_reason\" to \"\", and return\nexactly five items. In each item, \"setting\" names the setting you used (the assigned one,\nor the one you switched to if the assigned setting truly cannot force \"publishing\").\n\nGood examples:\n- GOOD (target \"winter\"): \"Release note 3.2 for the Seasonal Engine: once autumn finishes its leaf-drop routine, the scheduler always hands control to the next season in the cycle. Expect frost and snowfall when the engine switches to ____.\"\n- GOOD (target \"mirror\"): \"Regulation 9 of the Ghost Customs Office: a spirit may re-enter the living world only after proving it casts a reflection. Applicants are therefore led to the office's single piece of furniture, a tall silvered ____.\"\n- GOOD (target \"sneeze\"): \"In the Pepper Kingdom a law passes only if every councillor's nose itches at once. When the Grand Pepperer shook his dust over the assembly, the whole chamber let out one thunderous ____.\"\n\nBad examples:\n- BAD (target \"moon\", nothing forces the answer): \"In the realm of floating teacups the clocks sing at midnight. The wise owl declared that the secret is the ____.\" Any word fits.\n- BAD (target \"knight\", not out of distribution): \"In chess, the piece that moves in an L shape is the ____.\" This is an ordinary fact, not an unusual framing.\n\nAssigned framings, one per item in order:\n1. the laws of physics in a pocket universe\n2. a customs form for travellers between dreams\n3. the rulebook of an invented board game\n4. a contract between the sun and the night\n5. an error log from a sentient refrigerator\n\nReturn JSON only, matching the provided schema, with \"target_word\" set to \"publishing\".\n",
+ "output_schema": {
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+   "target_word",
+   "target_usable",
+   "unusable_reason",
+   "items"
+  ],
+  "properties": {
+   "target_word": {
+    "type": "string"
+   },
+   "target_usable": {
+    "type": "boolean"
+   },
+   "unusable_reason": {
+    "type": "string"
+   },
+   "items": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "setting",
+      "text"
+     ],
+     "properties": {
+      "setting": {
+       "type": "string"
+      },
+      "text": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  }
+ }
+}

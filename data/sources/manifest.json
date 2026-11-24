@@ -1,0 +1,189 @@
+{
+  "files": {
+    "conceptnet/conceptnet_5.7.0_en_subset.tsv.gz": {
+      "bytes": 2375426,
+      "derived_from": "large/conceptnet-assertions-5.7.0.csv.gz",
+      "filter": "relation in ['AtLocation', 'CapableOf', 'HasPart', 'HasPrerequisite', 'HasProperty', 'MadeOf', 'PartOf', 'UsedFor']; both ends /c/en/",
+      "license": "CC BY-SA 4.0",
+      "retrieved_at": "2026-11-24T19:07:25+00:00",
+      "rows": 135029,
+      "sha256": "ce855a34d6fba77a1405a51117be78a97d1db3b2b96fe8b4cd6eb7333a7d56d1",
+      "url": "https://s3.amazonaws.com/conceptnet/downloads/2019/edges/conceptnet-assertions-5.7.0.csv.gz"
+    },
+    "idioms/baiango_LICENSE.md": {
+      "bytes": 1212,
+      "commit": "d47bfb40a3f76d0f08ba1867016c383d3c21c596",
+      "github_repo": "baiango/english_idioms",
+      "license": null,
+      "retrieved_at": "2026-11-24T19:10:17+00:00",
+      "sha256": "b5065838cbac452dfc855ba6e6e031481ad2c68406f70d21ead9321374653e6c",
+      "url": "https://raw.githubusercontent.com/baiango/english_idioms/d47bfb40a3f76d0f08ba1867016c383d3c21c596/LICENSE.md"
+    },
+    "idioms/baiango_README.md": {
+      "bytes": 2600,
+      "commit": "d47bfb40a3f76d0f08ba1867016c383d3c21c596",
+      "github_repo": "baiango/english_idioms",
+      "license": null,
+      "retrieved_at": "2026-11-24T19:10:17+00:00",
+      "sha256": "c005e454df1837380a7eecdc1c4c3a08d080c10a72319e19c21f55cb9281423b",
+      "url": "https://raw.githubusercontent.com/baiango/english_idioms/d47bfb40a3f76d0f08ba1867016c383d3c21c596/README.md"
+    },
+    "idioms/baiango_idioms.csv": {
+      "bytes": 49818,
+      "commit": "d47bfb40a3f76d0f08ba1867016c383d3c21c596",
+      "github_repo": "baiango/english_idioms",
+      "license": "Unlicense",
+      "retrieved_at": "2026-11-24T19:10:16+00:00",
+      "sha256": "634eab318172901300bfe15eb7f309d5e6e11fb701888f703d67b089b9b355e0",
+      "url": "https://raw.githubusercontent.com/baiango/english_idioms/d47bfb40a3f76d0f08ba1867016c383d3c21c596/idioms.csv"
+    },
+    "idioms/wiktionary_category_english_idioms.json": {
+      "api_pages": 22,
+      "bytes": 207892,
+      "license": "CC BY-SA 4.0",
+      "retrieved_at": "2026-11-24T19:11:13+00:00",
+      "sha256": "84b970db4722fc0f04359decaaaaeb62ed3e43053ea9bce51044fb39a77483aa",
+      "url": "https://en.wiktionary.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:English_idioms"
+    },
+    "large/conceptnet-assertions-5.7.0.csv.gz": {
+      "bytes": 497963447,
+      "committed": false,
+      "license": "CC BY-SA 4.0",
+      "note": "Raw dump kept out of git (over 20 MB); the filtered subset below is committed.",
+      "retrieved_at": "2026-11-24T19:07:25+00:00",
+      "sha256": "accd65fe94038584295574ddc26e1500c1919c8c4532bf771811cafd0948af7e",
+      "url": "https://s3.amazonaws.com/conceptnet/downloads/2019/edges/conceptnet-assertions-5.7.0.csv.gz"
+    },
+    "wikidata/book_author.json": {
+      "bytes": 310863,
+      "license": "CC0",
+      "query_file": "wikidata/book_author.rq",
+      "retrieved_at": "2026-11-24T19:20:43+00:00",
+      "rows": 380,
+      "sha256": "ed3ec433aacce8fdc000305cea7721be94631e189f9011e3f3130b6e731a94ac",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/country_capital.json": {
+      "bytes": 118604,
+      "license": "CC0",
+      "query_file": "wikidata/country_capital.rq",
+      "retrieved_at": "2026-11-24T19:24:46+00:00",
+      "rows": 204,
+      "sha256": "7cd6d4627350da32739ccc998f3531b6f68bfb1e756079423902b134ec4e69dd",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/country_continent.json": {
+      "bytes": 119226,
+      "license": "CC0",
+      "query_file": "wikidata/country_continent.rq",
+      "retrieved_at": "2026-11-24T19:24:56+00:00",
+      "rows": 206,
+      "sha256": "6dc6645828597ada1639b89b00f6213a70bda3b3436090313f6f353fd8980b62",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/country_currency.json": {
+      "bytes": 130622,
+      "license": "CC0",
+      "query_file": "wikidata/country_currency.rq",
+      "retrieved_at": "2026-11-24T19:24:51+00:00",
+      "rows": 222,
+      "sha256": "5c3e71ac96974013bb544146c24bdbcb2b6e8b8a9e049e027391b55ddcb53f32",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/country_demonym.json": {
+      "bytes": 131254,
+      "license": "CC0",
+      "query_file": "wikidata/country_demonym.rq",
+      "retrieved_at": "2026-11-24T19:24:58+00:00",
+      "rows": 277,
+      "sha256": "12e0966faa8210df78ab98f140ed13911c42094188b719e5e12b0fa127e2d627",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/country_highest_point.json": {
+      "bytes": 116994,
+      "license": "CC0",
+      "query_file": "wikidata/country_highest_point.rq",
+      "retrieved_at": "2026-11-24T19:25:00+00:00",
+      "rows": 199,
+      "sha256": "d179547614d2d59510df57cfcd78b00c0fdb2ded811d03a2f91ddc8d8e4a50b7",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/country_language.json": {
+      "bytes": 220392,
+      "license": "CC0",
+      "query_file": "wikidata/country_language.rq",
+      "retrieved_at": "2026-11-24T19:24:54+00:00",
+      "rows": 379,
+      "sha256": "a5e49ab48dfc555fe6097f2dda5b13c9a76883a3fd79599f6813c45f1f46c4e8",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/element_symbol.json": {
+      "bytes": 77061,
+      "license": "CC0",
+      "query_file": "wikidata/element_symbol.rq",
+      "retrieved_at": "2026-11-24T19:21:56+00:00",
+      "rows": 174,
+      "sha256": "7d2d868c0ba52e6f70f1099c0bd455bf09d3117fdd5b59a52d276269bdadbfdd",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/film_director.json": {
+      "bytes": 151586,
+      "license": "CC0",
+      "query_file": "wikidata/film_director.rq",
+      "retrieved_at": "2026-11-24T19:21:52+00:00",
+      "rows": 192,
+      "sha256": "1ecf74b013bce30ab31251434e2b694ca60c13f1de2f51d18613ac7a5c699fc9",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/painting_painter.json": {
+      "bytes": 155358,
+      "license": "CC0",
+      "query_file": "wikidata/painting_painter.rq",
+      "retrieved_at": "2026-11-24T19:21:06+00:00",
+      "rows": 189,
+      "sha256": "89d7a8fe044e9534c1db001dc90be97aa5126da4ecbbf37d11c09c5e286aa5f8",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/person_occupation.json": {
+      "bytes": 765177,
+      "license": "CC0",
+      "query_file": "wikidata/person_occupation.rq",
+      "retrieved_at": "2026-11-24T19:28:47+00:00",
+      "rows": 1299,
+      "sha256": "43a96d17b1ae4bf833b734a09258864eb3704ba9bed56f44d3dc8bd009e5f588",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wikidata/region_capital.json": {
+      "bytes": 95728,
+      "license": "CC0",
+      "query_file": "wikidata/region_capital.rq",
+      "retrieved_at": "2026-11-24T19:25:04+00:00",
+      "rows": 138,
+      "sha256": "6d77d2ccb1ac705771d7e2b800a7e251361655b28b059e7d4790afe2f2ad8f2b",
+      "url": "https://query.wikidata.org/sparql"
+    },
+    "wordlists/hunspell_README_en_US.txt": {
+      "bytes": 15732,
+      "commit": "79195b017e6d70151337856c59e7d13d311d6630",
+      "github_repo": "LibreOffice/dictionaries",
+      "license": "SCOWL/BSD-style, see README_en_US.txt",
+      "retrieved_at": "2026-11-24T19:29:34+00:00",
+      "sha256": "168b4c01cb841f766a72f310b065c04d09cff46376c37a81d799593ce751c371",
+      "url": "https://raw.githubusercontent.com/LibreOffice/dictionaries/79195b017e6d70151337856c59e7d13d311d6630/en/README_en_US.txt"
+    },
+    "wordlists/hunspell_en_US.dic": {
+      "bytes": 551762,
+      "commit": "79195b017e6d70151337856c59e7d13d311d6630",
+      "github_repo": "LibreOffice/dictionaries",
+      "license": "SCOWL/BSD-style, see README_en_US.txt",
+      "retrieved_at": "2026-11-24T19:29:33+00:00",
+      "sha256": "f0b1a234bd178bdd01875b2a392a9647f888b8fe879f79c52aae62c2759b3647",
+      "url": "https://raw.githubusercontent.com/LibreOffice/dictionaries/79195b017e6d70151337856c59e7d13d311d6630/en/en_US.dic"
+    }
+  },
+  "note": "Snapshots of every external source used by sg2data. Paths are relative to data/sources/.",
+  "packages": {
+    "note": "wordfreq ships its frequency data inside the package; the version pins it.",
+    "wordfreq": "3.1.1"
+  }
+}

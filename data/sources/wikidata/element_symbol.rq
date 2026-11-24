@@ -1,0 +1,4 @@
+SELECT ?s ?sLabel ?sym ?sl WHERE {
+  ?s wdt:P31 wd:Q11344; wdt:P246 ?sym; wikibase:sitelinks ?sl.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
