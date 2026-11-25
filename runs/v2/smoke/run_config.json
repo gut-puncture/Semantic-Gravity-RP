@@ -1,0 +1,41 @@
+{
+  "invariants": {
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "dtype": "torch.bfloat16",
+    "baseline_template": "Answer with exactly one English word.\nQuestion: {question}\nAnswer:",
+    "negative_template": "Answer with exactly one English word.\nDo not use the word \"{X}\" anywhere in your answer.\nQuestion: {question}\nAnswer:",
+    "n_samples": 16,
+    "temperature": 1.0,
+    "top_p": 0.9,
+    "greedy_max_new": 8,
+    "sample_max_new": 10,
+    "seed": 42
+  },
+  "starts": [
+    {
+      "time": "2026-11-25T07:50:30.691749+00:00",
+      "argv": [
+        "/root/sg2/run_experiment.py",
+        "--prompts",
+        "/runs/v2/prompts_v2.jsonl",
+        "--out",
+        "/runs/v2/smoke",
+        "--model",
+        "Qwen/Qwen2.5-7B-Instruct",
+        "--limit",
+        "64",
+        "--skip-patching",
+        "--gen-batch",
+        "2048",
+        "--score-batch",
+        "1024",
+        "--patch-batch",
+        "512"
+      ],
+      "git_commit": "unknown",
+      "device": "cuda",
+      "torch": "2.15.0+cu132",
+      "transformers": "5.24.1"
+    }
+  ]
+}

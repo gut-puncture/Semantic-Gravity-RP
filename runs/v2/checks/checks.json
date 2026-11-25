@@ -1,0 +1,39 @@
+{
+  "a_logit_lens_last_layer": {
+    "pass": true,
+    "max_abs_diff_same_pass": 0.0,
+    "max_abs_diff_vs_plain_unbatched": 1.2218952178955078e-05,
+    "tol": 0.001,
+    "n_dists": 24
+  },
+  "f_dla_sums_to_logit": {
+    "pass": true,
+    "max_rel_diff": 2.529473249524017e-06
+  },
+  "d_token_spans": {
+    "pass": true,
+    "n_prompts": 12,
+    "n_bad": 0,
+    "example": "{\"tmf\": \"paris\", \"nf\": \"Do not\", \"q\": \" The capital of France is ____.\\n\"}",
+    "attn_nan": 0
+  },
+  "c_patching": {
+    "pass": true,
+    "none_patch_max_abs_diff": 0.0,
+    "Rlast_vs_baseline_max_abs_diff": 0.0,
+    "A0_patch_effect": 0.004130840301513672,
+    "tol": 1e-05
+  },
+  "b_p0_bounded_and_brute_force": {
+    "pass": true,
+    "max_P": 0.9999479795224753,
+    "max_abs_z": 0.6718408275042564,
+    "prompts": "[{\"prompt_id\": \"t10\", \"P0\": 0.09824884078295781, \"freq_canonical\": 0.09533333333333334, \"freq_any_tokenisation\": 0.09533333333333334, \"z\": -0.5364975100689167, \"n\": 3000}, {\"prompt_id\": \"t11\", \"P0\": 0.015485466189809475, \"freq_canonical\": 0.017, \"freq_any_tokenisation\": 0.017, \"z\": 0.6718408275042564, \"n\": 3000}, {\"prompt_id\": \"t09\", \"P0\": 0.01446232275806416, \"freq_canonical\": 0.015666666666666666, \"freq_any_tokenisation\": 0.015666666666666666, \"z\": 0.5525295465972155, \"n\": 3000}]"
+  },
+  "e_left_padding_greedy": {
+    "pass": true,
+    "n": 24,
+    "n_mismatch": 0,
+    "prompt_len_range": "47-70"
+  }
+}

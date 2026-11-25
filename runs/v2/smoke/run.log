@@ -1,0 +1,4 @@
+[07:50:30] loaded Qwen/Qwen2.5-7B-Instruct on cuda (28 layers) in 7s
+[07:50:30] stage 1: 64 prompts, 0 already done, 64 to do
+[07:50:41] stage 1: 64/64 | chunk 64 in 11.0s (score=3.1s hooked=0.4s greedy=2.3s sample=5.2s) | 5.80 prompts/s | ETA 0.0 min | part-00000.parquet
+[07:50:41] done

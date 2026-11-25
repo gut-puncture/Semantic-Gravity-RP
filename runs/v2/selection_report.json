@@ -1,0 +1,103 @@
+{
+ "idioms": {
+  "available_per_bin": {
+   "0": 213,
+   "1": 41,
+   "2": 35,
+   "3": 65,
+   "4": 593
+  },
+  "selected_per_bin": {
+   "0": 213,
+   "1": 41,
+   "2": 35,
+   "3": 65,
+   "4": 146
+  },
+  "selected": 500,
+  "shortfall": 0
+ },
+ "facts": {
+  "available_per_bin": {
+   "0": 267,
+   "1": 22,
+   "2": 22,
+   "3": 45,
+   "4": 529
+  },
+  "selected_per_bin": {
+   "0": 256,
+   "1": 22,
+   "2": 22,
+   "3": 45,
+   "4": 155
+  },
+  "selected": 500,
+  "shortfall": 0
+ },
+ "common_sense": {
+  "available_per_bin": {
+   "0": 158,
+   "1": 33,
+   "2": 28,
+   "3": 52,
+   "4": 451
+  },
+  "selected_per_bin": {
+   "0": 158,
+   "1": 33,
+   "2": 28,
+   "3": 52,
+   "4": 229
+  },
+  "selected": 500,
+  "shortfall": 0
+ },
+ "creative": {
+  "available_per_bin": {
+   "0": 163,
+   "1": 32,
+   "2": 25,
+   "3": 48,
+   "4": 364
+  },
+  "selected_per_bin": {
+   "0": 163,
+   "1": 32,
+   "2": 25,
+   "3": 48,
+   "4": 232
+  },
+  "selected": 500,
+  "shortfall": 0
+ },
+ "ood": {
+  "available_per_bin": {
+   "0": 214,
+   "1": 37,
+   "2": 36,
+   "3": 72,
+   "4": 301
+  },
+  "selected_per_bin": {
+   "0": 214,
+   "1": 37,
+   "2": 36,
+   "3": 72,
+   "4": 141
+  },
+  "selected": 500,
+  "shortfall": 0
+ },
+ "totals": {
+  "selected": 2500,
+  "requested": 2500,
+  "selected_per_category": {
+   "idioms": 500,
+   "facts": 500,
+   "common_sense": 500,
+   "creative": 500,
+   "ood": 500
+  }
+ }
+}

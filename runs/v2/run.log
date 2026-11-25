@@ -1,0 +1,69 @@
+[07:50:56] loaded Qwen/Qwen2.5-7B-Instruct on cuda (28 layers) in 7s
+[07:50:56] stage 1: 2500 prompts, 0 already done, 2500 to do
+[07:51:04] stage 1: 64/2500 | chunk 64 in 8.2s (score=2.0s hooked=0.4s greedy=0.6s sample=5.2s) | 7.80 prompts/s | ETA 5.2 min | part-00000.parquet
+[07:51:11] stage 1: 128/2500 | chunk 64 in 7.2s (score=1.6s hooked=0.3s greedy=0.4s sample=4.9s) | 8.32 prompts/s | ETA 4.7 min | part-00001.parquet
+[07:51:18] stage 1: 192/2500 | chunk 64 in 7.1s (score=1.6s hooked=0.3s greedy=0.4s sample=4.8s) | 8.55 prompts/s | ETA 4.5 min | part-00002.parquet
+[07:51:26] stage 1: 256/2500 | chunk 64 in 7.4s (score=1.5s hooked=0.3s greedy=0.5s sample=5.0s) | 8.58 prompts/s | ETA 4.4 min | part-00003.parquet
+[07:51:33] stage 1: 320/2500 | chunk 64 in 6.9s (score=1.5s hooked=0.3s greedy=0.4s sample=4.7s) | 8.70 prompts/s | ETA 4.2 min | part-00004.parquet
+[07:51:40] stage 1: 384/2500 | chunk 64 in 7.1s (score=1.5s hooked=0.3s greedy=0.4s sample=4.8s) | 8.75 prompts/s | ETA 4.0 min | part-00005.parquet
+[07:51:47] stage 1: 448/2500 | chunk 64 in 7.0s (score=1.5s hooked=0.3s greedy=0.4s sample=4.8s) | 8.80 prompts/s | ETA 3.9 min | part-00006.parquet
+[07:51:55] stage 1: 512/2500 | chunk 64 in 7.7s (score=1.7s hooked=0.3s greedy=0.5s sample=5.2s) | 8.73 prompts/s | ETA 3.8 min | part-00007.parquet
+[07:52:02] stage 1: 576/2500 | chunk 64 in 7.9s (score=1.7s hooked=0.3s greedy=0.6s sample=5.3s) | 8.66 prompts/s | ETA 3.7 min | part-00008.parquet
+[07:52:10] stage 1: 640/2500 | chunk 64 in 7.5s (score=1.6s hooked=0.3s greedy=0.4s sample=5.1s) | 8.64 prompts/s | ETA 3.6 min | part-00009.parquet
+[07:52:18] stage 1: 704/2500 | chunk 64 in 7.6s (score=1.7s hooked=0.3s greedy=0.4s sample=5.1s) | 8.62 prompts/s | ETA 3.5 min | part-00010.parquet
+[07:52:26] stage 1: 768/2500 | chunk 64 in 7.9s (score=1.8s hooked=0.3s greedy=0.5s sample=5.3s) | 8.57 prompts/s | ETA 3.4 min | part-00011.parquet
+[07:52:35] stage 1: 832/2500 | chunk 64 in 9.1s (score=1.8s hooked=0.4s greedy=0.8s sample=6.1s) | 8.43 prompts/s | ETA 3.3 min | part-00012.parquet
+[07:52:42] stage 1: 896/2500 | chunk 64 in 7.4s (score=1.6s hooked=0.3s greedy=0.5s sample=4.9s) | 8.44 prompts/s | ETA 3.2 min | part-00013.parquet
+[07:52:50] stage 1: 960/2500 | chunk 64 in 7.7s (score=1.7s hooked=0.3s greedy=0.4s sample=5.2s) | 8.43 prompts/s | ETA 3.0 min | part-00014.parquet
+[07:52:59] stage 1: 1024/2500 | chunk 64 in 9.2s (score=2.0s hooked=0.4s greedy=0.7s sample=6.1s) | 8.33 prompts/s | ETA 3.0 min | part-00015.parquet
+[07:53:08] stage 1: 1088/2500 | chunk 64 in 9.5s (score=2.1s hooked=0.4s greedy=0.5s sample=6.5s) | 8.21 prompts/s | ETA 2.9 min | part-00016.parquet
+[07:53:17] stage 1: 1152/2500 | chunk 64 in 8.5s (score=1.9s hooked=0.4s greedy=0.4s sample=5.8s) | 8.17 prompts/s | ETA 2.8 min | part-00017.parquet
+[07:53:26] stage 1: 1216/2500 | chunk 64 in 9.1s (score=2.0s hooked=0.4s greedy=0.5s sample=6.1s) | 8.10 prompts/s | ETA 2.6 min | part-00018.parquet
+[07:53:35] stage 1: 1280/2500 | chunk 64 in 8.8s (score=2.0s hooked=0.4s greedy=0.4s sample=6.0s) | 8.06 prompts/s | ETA 2.5 min | part-00019.parquet
+[07:53:43] stage 1: 1344/2500 | chunk 64 in 8.3s (score=2.0s hooked=0.4s greedy=0.4s sample=5.5s) | 8.04 prompts/s | ETA 2.4 min | part-00020.parquet
+[07:53:51] stage 1: 1408/2500 | chunk 64 in 8.1s (score=1.9s hooked=0.4s greedy=0.4s sample=5.3s) | 8.03 prompts/s | ETA 2.3 min | part-00021.parquet
+[07:54:00] stage 1: 1472/2500 | chunk 64 in 8.7s (score=2.0s hooked=0.4s greedy=0.4s sample=6.0s) | 8.00 prompts/s | ETA 2.1 min | part-00022.parquet
+[07:54:10] stage 1: 1536/2500 | chunk 64 in 10.3s (score=2.3s hooked=0.4s greedy=0.6s sample=7.0s) | 7.90 prompts/s | ETA 2.0 min | part-00023.parquet
+[07:54:21] stage 1: 1600/2500 | chunk 64 in 10.9s (score=2.5s hooked=0.5s greedy=0.7s sample=7.2s) | 7.80 prompts/s | ETA 1.9 min | part-00024.parquet
+[07:54:32] stage 1: 1664/2500 | chunk 64 in 10.6s (score=2.4s hooked=0.4s greedy=0.6s sample=7.1s) | 7.71 prompts/s | ETA 1.8 min | part-00025.parquet
+[07:54:41] stage 1: 1728/2500 | chunk 64 in 9.7s (score=2.3s hooked=0.6s greedy=0.5s sample=6.3s) | 7.66 prompts/s | ETA 1.7 min | part-00026.parquet
+[07:54:52] stage 1: 1792/2500 | chunk 64 in 10.4s (score=2.4s hooked=0.4s greedy=0.5s sample=7.0s) | 7.60 prompts/s | ETA 1.6 min | part-00027.parquet
+[07:55:02] stage 1: 1856/2500 | chunk 64 in 9.8s (score=2.3s hooked=0.4s greedy=0.4s sample=6.7s) | 7.56 prompts/s | ETA 1.4 min | part-00028.parquet
+[07:55:12] stage 1: 1920/2500 | chunk 64 in 10.1s (score=2.4s hooked=0.4s greedy=0.6s sample=6.6s) | 7.51 prompts/s | ETA 1.3 min | part-00029.parquet
+[07:55:21] stage 1: 1984/2500 | chunk 64 in 9.6s (score=2.3s hooked=0.4s greedy=0.5s sample=6.3s) | 7.48 prompts/s | ETA 1.1 min | part-00030.parquet
+[07:55:32] stage 1: 2048/2500 | chunk 64 in 10.7s (score=2.4s hooked=0.4s greedy=0.5s sample=7.3s) | 7.42 prompts/s | ETA 1.0 min | part-00031.parquet
+[07:55:44] stage 1: 2112/2500 | chunk 64 in 11.6s (score=2.5s hooked=0.4s greedy=0.6s sample=8.0s) | 7.34 prompts/s | ETA 0.9 min | part-00032.parquet
+[07:55:54] stage 1: 2176/2500 | chunk 64 in 10.1s (score=2.3s hooked=0.4s greedy=0.5s sample=6.8s) | 7.31 prompts/s | ETA 0.7 min | part-00033.parquet
+[07:56:04] stage 1: 2240/2500 | chunk 64 in 10.0s (score=2.3s hooked=0.4s greedy=0.5s sample=6.8s) | 7.28 prompts/s | ETA 0.6 min | part-00034.parquet
+[07:56:14] stage 1: 2304/2500 | chunk 64 in 10.4s (score=2.4s hooked=0.4s greedy=0.5s sample=7.0s) | 7.24 prompts/s | ETA 0.5 min | part-00035.parquet
+[07:56:24] stage 1: 2368/2500 | chunk 64 in 9.8s (score=2.4s hooked=0.4s greedy=0.4s sample=6.5s) | 7.22 prompts/s | ETA 0.3 min | part-00036.parquet
+[07:56:34] stage 1: 2432/2500 | chunk 64 in 9.8s (score=2.4s hooked=0.4s greedy=0.4s sample=6.5s) | 7.20 prompts/s | ETA 0.2 min | part-00037.parquet
+[07:56:44] stage 1: 2496/2500 | chunk 64 in 10.1s (score=2.3s hooked=0.4s greedy=0.5s sample=6.8s) | 7.17 prompts/s | ETA 0.0 min | part-00038.parquet
+[07:56:45] stage 1: 2500/2500 | chunk 4 in 1.2s (score=0.2s hooked=0.1s greedy=0.4s sample=0.5s) | 7.16 prompts/s | ETA 0.0 min | part-00039.parquet
+[07:56:46] stage 2: 250 prompts (by bin, greedy_fail: {(0, False): 25, (0, True): 25, (1, False): 25, (1, True): 25, (2, False): 25, (2, True): 25, (3, False): 25, (3, True): 25, (4, False): 25, (4, True): 25}); 0 done, 250 to do
+[07:56:47] stage 2: 10/250 | 6.20 prompts/s | ETA 0.6 min | max none-vs-P1 diff 1.23e-01 | max R-last diff 0.00e+00
+[07:56:49] stage 2: 20/250 | 6.01 prompts/s | ETA 0.6 min | max none-vs-P1 diff 8.83e-02 | max R-last diff 0.00e+00
+[07:56:51] stage 2: 30/250 | 5.96 prompts/s | ETA 0.6 min | max none-vs-P1 diff 1.62e-02 | max R-last diff 0.00e+00
+[07:56:52] stage 2: 40/250 | 6.01 prompts/s | ETA 0.6 min | max none-vs-P1 diff 2.87e-02 | max R-last diff 0.00e+00
+[07:56:54] stage 2: 50/250 | 6.01 prompts/s | ETA 0.6 min | max none-vs-P1 diff 1.23e-01 | max R-last diff 0.00e+00
+[07:56:56] stage 2: 60/250 | 6.00 prompts/s | ETA 0.5 min | max none-vs-P1 diff 1.21e-01 | max R-last diff 0.00e+00
+[07:56:57] stage 2: 70/250 | 5.99 prompts/s | ETA 0.5 min | max none-vs-P1 diff 1.76e-01 | max R-last diff 0.00e+00
+[07:56:59] stage 2: 80/250 | 5.93 prompts/s | ETA 0.5 min | max none-vs-P1 diff 3.09e-02 | max R-last diff 0.00e+00
+[07:57:01] stage 2: 90/250 | 5.95 prompts/s | ETA 0.4 min | max none-vs-P1 diff 1.06e-02 | max R-last diff 0.00e+00
+[07:57:02] stage 2: 100/250 | 5.98 prompts/s | ETA 0.4 min | max none-vs-P1 diff 5.46e-02 | max R-last diff 0.00e+00
+[07:57:04] stage 2: 110/250 | 5.99 prompts/s | ETA 0.4 min | max none-vs-P1 diff 8.78e-02 | max R-last diff 0.00e+00
+[07:57:06] stage 2: 120/250 | 5.99 prompts/s | ETA 0.4 min | max none-vs-P1 diff 5.70e-02 | max R-last diff 0.00e+00
+[07:57:07] stage 2: 130/250 | 5.94 prompts/s | ETA 0.3 min | max none-vs-P1 diff 1.30e-02 | max R-last diff 0.00e+00
+[07:57:09] stage 2: 140/250 | 5.93 prompts/s | ETA 0.3 min | max none-vs-P1 diff 2.17e-02 | max R-last diff 0.00e+00
+[07:57:11] stage 2: 150/250 | 5.93 prompts/s | ETA 0.3 min | max none-vs-P1 diff 2.52e-02 | max R-last diff 0.00e+00
+[07:57:12] stage 2: 160/250 | 5.96 prompts/s | ETA 0.3 min | max none-vs-P1 diff 6.76e-02 | max R-last diff 0.00e+00
+[07:57:14] stage 2: 170/250 | 5.98 prompts/s | ETA 0.2 min | max none-vs-P1 diff 1.23e-01 | max R-last diff 0.00e+00
+[07:57:16] stage 2: 180/250 | 5.95 prompts/s | ETA 0.2 min | max none-vs-P1 diff 2.87e-02 | max R-last diff 0.00e+00
+[07:57:18] stage 2: 190/250 | 5.94 prompts/s | ETA 0.2 min | max none-vs-P1 diff 1.12e-01 | max R-last diff 0.00e+00
+[07:57:19] stage 2: 200/250 | 5.94 prompts/s | ETA 0.1 min | max none-vs-P1 diff 6.80e-02 | max R-last diff 0.00e+00
+[07:57:21] stage 2: 210/250 | 5.95 prompts/s | ETA 0.1 min | max none-vs-P1 diff 4.29e-02 | max R-last diff 0.00e+00
+[07:57:23] stage 2: 220/250 | 5.94 prompts/s | ETA 0.1 min | max none-vs-P1 diff 5.72e-02 | max R-last diff 0.00e+00
+[07:57:24] stage 2: 230/250 | 5.96 prompts/s | ETA 0.1 min | max none-vs-P1 diff 1.45e-01 | max R-last diff 0.00e+00
+[07:57:26] stage 2: 240/250 | 5.96 prompts/s | ETA 0.0 min | max none-vs-P1 diff 6.82e-02 | max R-last diff 0.00e+00
+[07:57:28] stage 2: 250/250 | 5.95 prompts/s | ETA 0.0 min | max none-vs-P1 diff 3.49e-02 | max R-last diff 0.00e+00
+[07:57:28] done
