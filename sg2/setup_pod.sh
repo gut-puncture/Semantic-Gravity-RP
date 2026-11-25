@@ -46,9 +46,10 @@ if ! command -v uv >/dev/null; then
 fi
 [[ -n "${SG2_CPU_TEST:-}" ]] || nvidia-smi   # SG2_CPU_TEST=1: rehearse the job on a CPU machine
 
+unset UV_SYSTEM_PYTHON   # Colab sets it, which sends installs to the system Python
 if [[ ! -x .venv/bin/python ]]; then uv venv --python 3.12 .venv; fi
 source .venv/bin/activate
-uv pip install torch==2.15.0 transformers==5.24.1 huggingface_hub==2.4.0 tokenizers==0.23.3 \
+uv pip install --python .venv/bin/python torch==2.15.0 transformers==5.24.1 huggingface_hub==2.4.0 tokenizers==0.23.3 \
   safetensors==0.8.0 numpy==2.5.5 pandas==3.1.1 pyarrow==26.0.1 scipy==1.18.1 matplotlib==3.11.2
 
 cuda_ok() { [[ -n "${SG2_CPU_TEST:-}" ]] && return 0; python -c "import torch; assert torch.cuda.is_available(); torch.ones(1).cuda()" 2>/dev/null; }
@@ -56,7 +57,7 @@ if ! cuda_ok; then
   # The default wheel's CUDA build needs a newer driver than this box has: try older builds.
   for cu in cu128 cu126; do
     echo "CUDA not usable with the default torch wheel; trying $cu"
-    uv pip install --reinstall torch==2.15.0 --index-url "https://download.pytorch.org/whl/$cu" && cuda_ok && break
+    uv pip install --python .venv/bin/python --reinstall torch==2.15.0 --index-url "https://download.pytorch.org/whl/$cu" && cuda_ok && break
   done
 fi
 cuda_ok || { echo "STOPPED: torch cannot use the GPU (driver too old for torch 2.15.0?)."; exit 1; }
