@@ -1,0 +1,90 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{ouyang2022training,wei2022finetuned}
+\citation{kassner2020negated}
+\citation{hossain2022analysis}
+\citation{nostalgebraist2020logitlens}
+\citation{geva2022transformer}
+\citation{meng2022locating,wang2023interpretability}
+\citation{zhao2021calibrate,lu2022fantastically}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Behavioral Characterization}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Experimental Design}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Semantic Pressure}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:pressure}{{3.2}{3}{Semantic Pressure}{subsection.3.2}{}}
+\newlabel{def:semantic-pressure}{{1}{3}{Semantic Pressure}{definition.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Violation rate increases with semantic pressure.} Gray points: violation rate of each prompt (16 samples). Red points: mean violation rate within each pressure bin, plotted at the bin's mean $P_0$ (vertical bars: prompt-bootstrap 95\% CI). Blue curve: logistic fit with its 95\% band. Violations rise from 5\% of samples at $P_0 < 0.2$ to 44\% at $P_0 \geq 0.8$.\relax }}{4}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:violation}{{1}{4}{\textbf {Violation rate increases with semantic pressure.} Gray points: violation rate of each prompt (16 samples). Red points: mean violation rate within each pressure bin, plotted at the bin's mean $P_0$ (vertical bars: prompt-bootstrap 95\% CI). Blue curve: logistic fit with its 95\% band. Violations rise from 5\% of samples at $P_0 < 0.2$ to 44\% at $P_0 \geq 0.8$.\relax }{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Pressure Predicts Violation Rate}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Suppression is much weaker in failures at every pressure level.} Mean suppression magnitude $\Delta P = P_0 - P_1$ by pressure bin and outcome (failure: greedy answer under the negative instruction contains $X$). Error bars: standard error. Negative values mean the instruction raised the target's probability.\relax }}{4}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:suppression}{{2}{4}{\textbf {Suppression is much weaker in failures at every pressure level.} Mean suppression magnitude $\Delta P = P_0 - P_1$ by pressure bin and outcome (failure: greedy answer under the negative instruction contains $X$). Error bars: standard error. Negative values mean the instruction raised the target's probability.\relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Mechanistic Analysis}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Suppression Asymmetry}{4}{subsection.4.1}\protected@file@percent }
+\citation{elhage2021mathematical}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Attention Patterns}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Logit Lens Analysis}{5}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Component Decomposition}{5}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Attention to the instruction barely differs between failures and successes.} Attention mass at the decision position by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: target mention (TMF), ``Do not'' (NF), question (QA). Shaded bands: $\pm 1$ standard error.\relax }}{6}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:attention}{{3}{6}{\textbf {Attention to the instruction barely differs between failures and successes.} Attention mass at the decision position by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: target mention (TMF), ``Do not'' (NF), question (QA). Shaded bands: $\pm 1$ standard error.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Causal Validation}{6}{section.5}\protected@file@percent }
+\newlabel{sec:patching}{{5}{6}{Causal Validation}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Patching Method}{6}{subsection.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Target probability emerges in late layers, where failures diverge from successes.} Logit lens probability of the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Top row: baseline condition. Bottom row: negative instruction. Shaded bands: $\pm 1$ standard error.\relax }}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:logit_lens}{{4}{7}{\textbf {Target probability emerges in late layers, where failures diverge from successes.} Logit lens probability of the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Top row: baseline condition. Bottom row: negative instruction. Shaded bands: $\pm 1$ standard error.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Patching Results}{7}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}A Taxonomy of Failure Modes}{7}{section.6}\protected@file@percent }
+\newlabel{sec:taxonomy}{{6}{7}{A Taxonomy of Failure Modes}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Priming Failure (27.2\%, $n = 170$)}{7}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textbf  {Late FFNs promote the target more, and late attention suppresses it less, in failures.} Direct logit attribution to the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: attention and FFN contributions under the negative instruction, then under the baseline. Units: logits. Shaded bands: $\pm 1$ standard error.\relax }}{8}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:decomp}{{5}{8}{\textbf {Late FFNs promote the target more, and late attention suppresses it less, in failures.} Direct logit attribution to the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: attention and FFN contributions under the negative instruction, then under the baseline. Units: logits. Shaded bands: $\pm 1$ standard error.\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Override Failure (39.9\%, $n = 249$)}{8}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Implications of the Taxonomy}{8}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{8}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Summary}{8}{subsection.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textbf  {Patching shows that the late-layer residual stream carries the instruction's effect.} Change in the next-token target probability when the residual stream (left, type R) or the attention output (right, type A) of one layer at the decision position is replaced with its value from the baseline run. Red: failures; blue: successes ($n=125$ each). Shaded bands: prompt-bootstrap 95\% CI.\relax }}{9}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:patching}{{6}{9}{\textbf {Patching shows that the late-layer residual stream carries the instruction's effect.} Change in the next-token target probability when the residual stream (left, type R) or the attention output (right, type A) of one layer at the decision position is replaced with its value from the baseline run. Red: failures; blue: successes ($n=125$ each). Shaded bands: prompt-bootstrap 95\% CI.\relax }{figure.caption.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Rates of candidate failure signatures among failures ($n=624$) and successes ($n=1{,}876$). CI: prompt bootstrap; $p$: Fisher's exact test.\relax }}{9}{table.caption.7}\protected@file@percent }
+\newlabel{tab:signatures}{{1}{9}{Rates of candidate failure signatures among failures ($n=624$) and successes ($n=1{,}876$). CI: prompt bootstrap; $p$: Fisher's exact test.\relax }{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Implications for Practitioners}{9}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Limitations}{9}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Future Directions}{10}{subsection.7.4}\protected@file@percent }
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{elhage2021mathematical}{{1}{2021}{{Elhage et~al.}}{{Elhage, Nanda, Olsson, Henighan, Joseph, Mann, Askell, Bai, Chen, Conerly, DasSarma, Drain, Ganguli, Hatfield-Dodds, Hernandez, Jones, Kernion, Lovitt, Ndousse, Amodei, Brown, Clark, Kaplan, McCandlish, and Olah}}}
+\bibcite{geva2022transformer}{{2}{2022}{{Geva et~al.}}{{Geva, Caciularu, Wang, and Goldberg}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Dataset Construction Details}{11}{appendix.A}\protected@file@percent }
+\newlabel{app:dataset}{{A}{11}{Dataset Construction Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Semantic Pressure Computation}{11}{appendix.B}\protected@file@percent }
+\newlabel{app:pressure}{{B}{11}{Semantic Pressure Computation}{appendix.B}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Extended Results Tables}{11}{appendix.C}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Violation rate by pressure bin ($n=40{,}000$ samples; $n$ = prompts; CI: prompt bootstrap).\relax }}{11}{table.caption.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces FFN and attention contributions at layer 27 (direct logit attribution, logits; negative instruction condition, $P_0 \geq 0.8$).\relax }}{11}{table.caption.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Residual-stream patching effects by layer (type R; 250 prompts, 50 per pressure bin).\relax }}{11}{table.caption.10}\protected@file@percent }
+\bibcite{hossain2022analysis}{{3}{2022}{{Hossain et~al.}}{{Hossain, Blanco, and Kautz}}}
+\bibcite{kassner2020negated}{{4}{2020}{{Kassner and Sch{\"u}tze}}{{}}}
+\bibcite{lu2022fantastically}{{5}{2022}{{Lu et~al.}}{{Lu, Bartolo, Moore, Riedel, and Stenetorp}}}
+\bibcite{meng2022locating}{{6}{2022}{{Meng et~al.}}{{Meng, Bau, Andonian, and Belinkov}}}
+\bibcite{nostalgebraist2020logitlens}{{7}{2020}{{nostalgebraist}}{{}}}
+\bibcite{ouyang2022training}{{8}{2022}{{Ouyang et~al.}}{{Ouyang, Wu, Jiang, Almeida, Wainwright, Mishkin, Zhang, Agarwal, Slama, Ray, Schulman, Hilton, Kelton, Miller, Simens, Askell, Welinder, Christiano, Leike, and Lowe}}}
+\bibcite{wang2023interpretability}{{9}{2023}{{Wang et~al.}}{{Wang, Variengien, Conmy, Shlegeris, and Steinhardt}}}
+\bibcite{wei2022finetuned}{{10}{2022}{{Wei et~al.}}{{Wei, Bosma, Zhao, Guu, Yu, Lester, Du, Dai, and Le}}}
+\bibcite{zhao2021calibrate}{{11}{2021}{{Zhao et~al.}}{{Zhao, Wallace, Feng, Klein, and Singh}}}
+\gdef \@abspage@last{12}
