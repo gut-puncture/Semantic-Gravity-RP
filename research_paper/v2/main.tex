@@ -39,9 +39,10 @@
 
 \begin{document}
 \raggedbottom
+\setlength{\emergencystretch}{1.5em}
 
 \begin{abstract}
-Negative constraints (instructions of the form ``do not use word X'') represent a fundamental test of instruction-following capability in large language models. Despite their apparent simplicity, these constraints fail with striking regularity, and the conditions governing failure have remained poorly understood. This paper presents the first comprehensive mechanistic investigation of negative instruction failure. We introduce \emph{semantic pressure}, a quantitative measure of the model's intrinsic probability of generating the forbidden token, and demonstrate that violation probability follows a tight logistic relationship with pressure ($p = \sigma(-2.40 + 2.27 \cdot P_0)$; $n=40{,}000$ samples; bootstrap 95\% CI for slope: $[2.21, 2.33]$). Through layer-wise analysis using the logit lens technique, we establish that the suppression signal induced by negative instructions is present but systematically weaker in failures: the instruction reduces target probability by only 5.2 percentage points in failures versus 22.8 points in successes---a $4.4\times$ asymmetry. We trace this asymmetry to two mechanistically distinct failure modes. In \emph{priming failure} (87.5\% of violations), the instruction's explicit mention of the forbidden word paradoxically activates rather than suppresses the target representation. In \emph{override failure} (12.5\%), late-layer feed-forward networks generate contributions of +0.39 toward the target probability---nearly $4\times$ larger than in successes---overwhelming earlier suppression signals. Activation patching confirms that layers 23--27 are causally responsible: replacing these layers' activations flips the sign of constraint effects. These findings reveal a fundamental tension in negative constraint design: the very act of naming a forbidden word primes the model to produce it.
+Negative constraints (instructions of the form ``do not use word X'') represent a fundamental test of instruction-following capability in large language models. Despite their apparent simplicity, these constraints fail with striking regularity, and the conditions governing failure have remained poorly understood. This paper presents a mechanistic investigation of negative instruction failure in Qwen2.5-7B-Instruct. We introduce \emph{semantic pressure}, a quantitative measure of the model's intrinsic probability of generating the forbidden word, and show that violation probability rises with pressure ($p = \sigma(-2.95 + 2.76 \cdot P_0)$; $n=40{,}000$ samples from 2,500 prompts; prompt-bootstrap 95\% CI for slope: $[2.53, 3.01]$), from 5\% of samples at low pressure to 44\% at high pressure. Comparing prompts of equal pressure, we find that the suppression induced by negative instructions is far weaker in failures: within pressure bins, the instruction lowers target probability by 0.63 less in failures than in successes (95\% CI $[0.61, 0.65]$), and at low pressure it \emph{raises} the target's probability in failures. The logit lens and direct logit attribution locate the divergence in layers 22--27, where feed-forward networks push toward the target more strongly in failures and attention pushes against it less. Activation patching shows that these late layers carry the instruction's effect in both directions. An attention-based ``priming'' signature proposed in an earlier version of this work does not distinguish failures from successes once its base rate is measured (90\% vs.\ 93\%); a probability-based one does (instruction raises target probability in 27\% of failures vs.\ 13\% of successes). Naming a forbidden word can prime the model to produce it, but most failures are better described as suppression that never takes hold in the final layers.
 \end{abstract}
 
 \maketitle
@@ -68,22 +69,22 @@ This paper offers a different answer, grounded in mechanistic analysis rather th
 The central finding of this paper is that these pressures compete, and semantic pressure frequently wins. More precisely, we demonstrate:
 
 \begin{enumerate}
-    \item \textbf{Predictable failure.} Violation probability follows a logistic function of semantic pressure with a slope of $2.27$ (95\% CI: $[2.21, 2.33]$). At low pressure ($P_0 = 0.1$), only 9\% of samples violate the constraint; at high pressure ($P_0 = 0.9$), violations exceed 46\%. This relationship is so tight that we can predict failure rates from baseline behavior alone.
-    
-    \item \textbf{Asymmetric suppression.} Negative instructions do suppress target probability---but this suppression is $4.4\times$ weaker in cases that ultimately fail. In successes, the instruction reduces target probability by 22.8 percentage points on average; in failures, the reduction is only 5.2 points.
-    
-    \item \textbf{Priming dominates.} Using attention analysis, we find that 87.5\% of failures exhibit a ``priming signature'': the model attends more strongly to where the forbidden word appears in the instruction than to the negation cue (``do not''). The instruction intended to suppress the target instead activates it.
-    
-    \item \textbf{Late-layer override.} Feed-forward networks in layers 23--27 generate strong positive contributions toward the forbidden token---$+0.39$ in failures versus $+0.10$ in successes at layer 27 alone. These contributions can overwhelm earlier suppression even when it exists.
-    
-    \item \textbf{Causal confirmation.} Activation patching demonstrates that replacing late-layer activations (layers 23--27) from baseline runs into negative-instruction runs increases target probability, confirming these layers' causal role in driving violation.
+    \item \textbf{Predictable failure.} Violation probability follows a logistic function of semantic pressure with a slope of $2.76$ (95\% CI: $[2.53, 3.01]$). At low pressure ($P_0 < 0.2$), only 5\% of samples violate the constraint; at high pressure ($P_0 \geq 0.8$), 44\% do. Pressure explains the trend in average violation rates, though individual prompts vary widely around it.
+
+    \item \textbf{Asymmetric suppression.} Negative instructions do suppress target probability in successes, but much less, or not at all, in cases that fail. Comparing prompts of equal pressure, suppression is 0.63 lower in failures; at high pressure ($P_0 \geq 0.8$), the instruction reduces target probability by 0.90 in successes but only 0.19 in failures.
+
+    \item \textbf{Priming is real but not the rule.} In 27\% of failures, the instruction \emph{raises} the target's probability (versus 13\% of successes), most often at low pressure. An attention signature---more attention to the forbidden word than to ``Do not''---occurs in 90\% of failures but also in 93\% of successes, so it does not identify failure.
+
+    \item \textbf{Late-layer divergence.} The target emerges only in layers 22--27. There, feed-forward networks push harder toward the forbidden token in failures ($+12.4$ vs.\ $+9.7$ logits at layer 27 for high-pressure prompts) and attention pushes against it less ($-0.8$ vs.\ $-1.2$).
+
+    \item \textbf{Causal confirmation.} Activation patching shows that the late-layer residual stream carries the instruction's effect: restoring baseline activations at layers 20--27 raises target probability in successes (up to $+0.38$) and lowers it in failures (down to $-0.15$), while early layers have no effect.
 \end{enumerate}
 
-These findings have immediate practical implications. The dominant failure mode (priming) suggests that explicitly naming a forbidden word may be counterproductive---alternative phrasings that avoid mentioning the target could prove more effective. The override mechanism suggests that high-pressure cases may require post-generation filtering rather than generation-time constraints alone.
+These findings have immediate practical implications. That the instruction sometimes raises the target's probability suggests that explicitly naming a forbidden word can be counterproductive---alternative phrasings that avoid mentioning the target could prove more effective. The late-layer divergence suggests that high-pressure cases may require post-generation filtering rather than generation-time constraints alone.
 
-Beyond practical applications, this work contributes to the broader project of mechanistic interpretability. By tracing a specific behavioral failure to its computational origins---from attention patterns to component contributions to causal interventions---we demonstrate how interpretability techniques can move beyond description toward explanation. The failure of negative constraints is not merely documented; it is understood.
+Beyond practical applications, this work contributes to the broader project of mechanistic interpretability. By tracing a specific behavioral failure through attention patterns, component contributions and causal interventions, and by measuring each proposed signature in successes as well as failures, we show how interpretability techniques can move beyond description toward explanation, and where they stop.
 
-\textbf{Contributions.} This work makes four concrete contributions. First, it introduces a controlled dataset of 2,500 single-word prompts with validation designed to isolate negative-constraint compliance. Second, it defines semantic pressure and shows a tight quantitative relationship between pressure and violation probability across 40,000 stochastic generations. Third, it identifies and characterizes a large suppression asymmetry between successes and failures using layer-wise analysis. Fourth, it distinguishes two mechanistically different failure modes and causally localizes the responsible layers using activation patching.
+\textbf{Contributions.} This work makes four concrete contributions. First, it introduces a controlled dataset of 2,500 single-word prompts with blind validation designed to isolate negative-constraint compliance. Second, it defines semantic pressure and shows a clear quantitative relationship between pressure and violation probability across 40,000 stochastic generations. Third, it identifies and characterizes a large suppression asymmetry between successes and failures at equal pressure. Fourth, it localizes the divergence to late layers with direct logit attribution and activation patching, and tests proposed failure signatures against their base rates.
 
 %==============================================================================
 \section{Related Work}
@@ -105,7 +106,7 @@ Before diving into mechanisms, we establish the behavioral regularities that any
 
 \subsection{Experimental Design}
 
-\textbf{Model.} We conduct all experiments on Qwen2.5-7B-Instruct, a 7-billion parameter instruction-tuned model with 28 transformer layers. We select this model for three reasons: (1) open weights enable full internal state access, (2) strong performance on standard instruction-following benchmarks indicates state-of-the-art capabilities, and (3) sufficient scale to exhibit the phenomena of interest while remaining tractable for detailed mechanistic analysis. All experiments run on a single NVIDIA A100-80GB GPU.
+\textbf{Model.} We conduct all experiments on Qwen2.5-7B-Instruct, a 7-billion parameter instruction-tuned model with 28 transformer layers. We select this model for three reasons: (1) open weights enable full internal state access, (2) strong performance on standard instruction-following benchmarks indicates state-of-the-art capabilities, and (3) sufficient scale to exhibit the phenomena of interest while remaining tractable for detailed mechanistic analysis. All experiments run on a single NVIDIA H100-80GB GPU in bfloat16; the golden checks (Reproducibility) run in float32.
 
 \textbf{Dataset.} We construct a dataset of 2,500 prompts designed to elicit single-word completions with unambiguous ``correct'' answers. Each prompt has a target word $X$ that represents the natural, expected completion. Prompts span five semantic categories:
 
@@ -127,7 +128,7 @@ Each candidate prompt is validated by an LLM judge (GPT-6-luna) that never sees 
 
 \emph{Baseline}: ``Answer with exactly one English word. Question: [prompt] Answer:''
 
-\emph{Negative instruction}: ``Answer with exactly one English word. Do not use the word "[X]" anywhere in your answer. Question: [prompt] Answer:''
+\emph{Negative instruction}: ``Answer with exactly one English word. Do not use the word ``[X]'' anywhere in your answer. Question: [prompt] Answer:''
 
 \textbf{Sampling.} For behavioral evaluation, we generate 16 stochastic samples per prompt under each condition (temperature 1.0, top-$p$ 0.9, no top-$k$ or repetition penalty, seeded), yielding 40,000 samples under the negative instruction, plus one greedy completion per condition. Batched generation uses left padding. Confidence intervals resample prompts, not samples (1,000 bootstrap draws), because the 16 samples of one prompt are not independent.
 
@@ -140,12 +141,12 @@ We need a principled measure of how strongly the model is inclined toward the fo
 \label{def:semantic-pressure}
 For a target word $X$, let $V(X)$ be its distinct surface variants: $X$ in its given, lower, capitalized and upper case, each with and without a leading space. The \textbf{semantic pressure} of $X$ given a context is the probability that the answer's first word is $X$:
 \begin{equation}
-P_0 = \sum_{v \in V(X)} P(t(v) \mid \text{context}) \cdot P(\text{next token does not start with a letter or digit} \mid \text{context}, t(v))
+P_0 = \sum_{v \in V(X)} P(t(v) \mid \text{context}) \cdot P(\text{end} \mid \text{context}, t(v))
 \end{equation}
 where
 \begin{itemize}
     \item $t(v)$ is the canonical token sequence of variant $v$, and $P(t(v) \mid \text{context})$ is the product of its token probabilities;
-    \item the second factor requires the word to end there, so ``Paris'' counts but ``Parisian'' does not;
+    \item $P(\text{end} \mid \cdot)$ is the probability that the next token does not start with a letter or digit, so the word ends there: ``Paris'' counts but ``Parisian'' does not;
     \item $P_0$ is computed under the \emph{baseline} condition (without any negative constraint).
 \end{itemize}
 Each variant is a distinct complete first word, so the terms are disjoint events and $P_0$ is a probability without clipping.
@@ -163,20 +164,20 @@ Figure~\ref{fig:violation} presents our central behavioral finding. We bin promp
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\linewidth]{fig1_violation_rate.pdf}
-\caption{\textbf{Violation rate increases monotonically with semantic pressure.} Each point shows the observed violation rate within a pressure bin (horizontal bars: bin width; vertical bars: bootstrap 95\% CI). The gray curve shows the logistic fit. The relationship is striking in its regularity: at $P_0 = 0.1$, only 9\% of samples violate; at $P_0 = 0.9$, violations exceed 46\%. The logistic model explains 78\% of variance ($R^2 = 0.78$).}
+\includegraphics[width=\linewidth]{fig1_violation_rate.png}
+\caption{\textbf{Violation rate increases with semantic pressure.} Gray points: violation rate of each prompt (16 samples). Red points: mean violation rate within each pressure bin, plotted at the bin's mean $P_0$ (vertical bars: prompt-bootstrap 95\% CI). Blue curve: logistic fit with its 95\% band. Violations rise from 5\% of samples at $P_0 < 0.2$ to 44\% at $P_0 \geq 0.8$.}
 \label{fig:violation}
 \end{figure}
 
-The relationship is monotonic and remarkably tight. Fitting a logistic regression:
+The relationship is clear and nearly monotonic. Fitting a logistic regression on all 40,000 samples:
 \begin{equation}
 p(\text{violation}) = \sigma(\beta_0 + \beta_1 \cdot P_0)
 \end{equation}
-yields $\beta_0 = -2.40$ (95\% CI: $[-2.44, -2.35]$) and $\beta_1 = +2.27$ (95\% CI: $[2.21, 2.33]$).
+yields $\beta_0 = -2.95$ (95\% CI: $[-3.15, -2.77]$) and $\beta_1 = +2.76$ (95\% CI: $[2.53, 3.01]$), with intervals from resampling prompts.
 
-The confidence intervals for the slope exclude zero by a wide margin, confirming that higher pressure \emph{causes} more violations. The model explains 78\% of variance in violation rates---an extraordinary fit for a single-parameter predictor.
+The confidence interval for the slope excludes zero by a wide margin: higher pressure goes with more violations. At the level of single samples, McFadden's pseudo-$R^2$ is 0.165 (95\% CI $[0.14, 0.19]$); the fit to the five bin means has $R^2 = 0.93$. Pressure therefore predicts the average violation rate well but leaves much of the prompt-to-prompt variation unexplained (gray points in Figure~\ref{fig:violation}). The middle bins hold fewer prompts (146--282) than the outer bins (903--1,004), because the model's baseline probability is rarely intermediate.
 
-\textbf{Interpretation.} This result transforms our understanding of negative instruction failure. Violations are not random errors; they are lawful consequences of underlying semantic pressure. A system that can measure $P_0$ can predict failure rates with precision. This predictability is both reassuring (failures are not arbitrary) and concerning (they may be difficult to eliminate for high-pressure cases).
+\textbf{Interpretation.} Violations are not random errors; they follow underlying semantic pressure. A system that can measure $P_0$ can estimate failure rates for a class of prompts. This predictability is both reassuring (failures are not arbitrary) and concerning (they may be difficult to eliminate for high-pressure cases).
 
 %==============================================================================
 \section{Mechanistic Analysis}
@@ -188,52 +189,53 @@ Behavioral characterization tells us \emph{when} failure occurs; mechanistic ana
 
 Our first mechanistic question: Does the negative instruction actually reduce target probability, or do failures reflect complete constraint ignorance?
 
-We compute the \emph{suppression magnitude} $\Delta P = P_0 - P_1$ at the decision step---the token position immediately before the target would be emitted. Figure~\ref{fig:suppression} shows the results stratified by outcome.
+We compute the \emph{suppression magnitude} $\Delta P = P_0 - P_1$ at the decision step---the first token of the answer. Because failures are concentrated at high pressure (mean $P_0$ 0.80 in failures vs.\ 0.39 in successes), we compare outcomes within pressure bins. Figure~\ref{fig:suppression} shows the results.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.85\linewidth]{fig2_suppression.pdf}
-\caption{\textbf{Suppression is real but $4.4\times$ weaker in failures.} Mean suppression magnitude $\Delta P = P_0 - P_1$ at the decision step. Both successes and failures show positive $\Delta P$, confirming the instruction has \emph{some} effect. However, the magnitude differs dramatically: 22.8 percentage points in successes versus only 5.2 points in failures. Error bars show bootstrap 95\% CI; intervals are non-overlapping.}
+\includegraphics[width=\linewidth]{fig2_suppression.png}
+\caption{\textbf{Suppression is much weaker in failures at every pressure level.} Mean suppression magnitude $\Delta P = P_0 - P_1$ by pressure bin and outcome (failure: greedy answer under the negative instruction contains $X$). Error bars: standard error. Negative values mean the instruction raised the target's probability.}
 \label{fig:suppression}
 \end{figure}
 
-The key insight: suppression is positive in both outcomes. Even when the constraint fails, the negative instruction does reduce target probability---just not enough to prevent violation. This rules out the ``complete ignorance'' hypothesis. The model partially complies; it simply cannot comply completely.
+The key insight: suppression is large in successes and small or negative in failures, at every pressure level. At high pressure ($P_0 \geq 0.8$), failures still show some suppression; the model partially complies but not enough. At low pressure, the instruction \emph{raises} the target's probability in failures---the outcome the priming hypothesis predicts.
 
 The magnitude asymmetry is striking:
 \begin{itemize}
-    \item \textbf{Successes:} $\Delta P = 0.228$ (95\% CI: $[0.211, 0.245]$)
-    \item \textbf{Failures:} $\Delta P = 0.052$ (95\% CI: $[0.041, 0.063]$)
+    \item \textbf{High pressure ($P_0 \geq 0.8$):} $\Delta P = 0.90$ in successes ($n=465$) vs.\ $0.19$ in failures ($n=438$)
+    \item \textbf{Low pressure ($P_0 < 0.2$):} $\Delta P = 0.02$ in successes ($n=942$) vs.\ $-0.41$ in failures ($n=62$)
+    \item \textbf{All bins, pooled within bin:} failures minus successes $= -0.63$ (95\% CI: $[-0.65, -0.61]$)
 \end{itemize}
 
-The $4.4\times$ difference is robust (non-overlapping confidence intervals). Something distinguishes the cases---and this points toward our next investigation: attention patterns.
+The difference is large in every bin (Mann--Whitney $p < 10^{-9}$ in each). Part of it is built in: failure is defined by the target appearing, which requires a high $P_1$. The size of the gap and its sign change at low pressure are not. Something distinguishes the cases---and this points toward our next investigation: attention patterns.
 
 \subsection{Attention Patterns}
 
 If the model receives the same instruction in both cases, why does suppression differ so dramatically? We hypothesize that the model may be \emph{processing} the instruction differently---specifically, attending to different parts of it.
 
-We define attention metrics at the decision step:
+We define attention metrics at the decision step, averaged over heads, in the negative-instruction condition; token spans are located by character offsets and checked by decoding them back to text:
 \begin{itemize}
-    \item \textbf{Instruction Attention Ratio (IAR):} Fraction of attention to instruction tokens (vs. question tokens)
-    \item \textbf{Negation Focus (NF):} Within instruction, attention to ``do not''
-    \item \textbf{Target-Mention Focus (TMF):} Within instruction, attention to where $X$ appears
-    \item \textbf{Priming Index (PI):} $\text{TMF} - \text{NF}$---positive values indicate more attention to the target mention than to the negation
+    \item \textbf{Question Attention (QA):} Attention mass on the question tokens
+    \item \textbf{Negation Focus (NF):} Attention mass on ``Do not''
+    \item \textbf{Target-Mention Focus (TMF):} Attention mass on the tokens of $X$ inside the instruction
+    \item \textbf{Priming Index (PI):} $\text{TMF} - \text{NF}$, averaged over layers---positive values indicate more attention to the target mention than to the negation
 \end{itemize}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{fig3_attention.pdf}
-\caption{\textbf{Failures attend to the target mention more than the negation.} Attention metrics by pressure bin and outcome. Left: Instruction Attention Ratio. Center: Negation Focus. Right: Target-Mention Focus. At high pressure ($P_0 > 0.8$), failures show elevated TMF (0.205 vs. 0.200) and reduced NF (0.141 vs. 0.142). The pattern suggests that failures process the instruction's mention of X as a \emph{cue} rather than a prohibition.}
+\includegraphics[width=\textwidth]{fig3_attention.png}
+\caption{\textbf{Attention to the instruction barely differs between failures and successes.} Attention mass at the decision position by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: target mention (TMF), ``Do not'' (NF), question (QA). Shaded bands: 95\% CI.}
 \label{fig:attention}
-\end{figure}
+\end{figure*}
 
-Figure~\ref{fig:attention} reveals a consistent pattern across pressure bins. At high pressure ($P_0 > 0.8$), where most failures occur, we observe:
+Figure~\ref{fig:attention} shows that attention patterns are nearly identical across outcomes. At high pressure ($P_0 \geq 0.8$), where most failures occur, we observe (layer means):
 \begin{itemize}
-    \item Higher TMF in failures (0.205 vs. 0.200)
-    \item Slightly Lower NF in failures (0.141 vs. 0.142)
-    \item Overall higher IAR in failures (0.282 vs. 0.272)
+    \item TMF: 0.011 in failures vs.\ 0.012 in successes
+    \item NF: 0.006 in both
+    \item QA: 0.211 in failures vs.\ 0.213 in successes
 \end{itemize}
 
-The pattern is subtle but robust: failures attend more to the instruction overall, but focus on the wrong component. The target mention attracts attention that should go to the negation.
+The target mention does receive more attention than the negation (positive Priming Index), but it does so in successes as often as in failures (Section~\ref{sec:taxonomy}). In the middle bins, successes attend slightly \emph{more} to the target mention in layers 20--24. Attention routing at the decision position does not separate the outcomes.
 
 We emphasize an important caveat: attention weights are a \emph{routing} signal, not a direct indicator of information use. These metrics describe where information flows; they do not establish causation. We address causality in Section~\ref{sec:patching}.
 
@@ -247,22 +249,22 @@ At the last layer this reproduces the model's actual output distribution exactly
 
 This estimates what probability the model would assign to $X$ if forced to decode at layer $\ell$. Figure~\ref{fig:logit_lens} traces these probabilities across all 28 layers.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{fig4_logit_lens.pdf}
-\caption{\textbf{Target probability emerges dramatically in late layers, and failures diverge from successes.} Logit lens probabilities by layer for baseline (solid) and negative instruction (dashed) conditions, stratified by outcome (blue: success; red: failure). Three regimes are visible: (1) \emph{Early layers} (0--20): all conditions show $P(X) < 10^{-4}$, no differentiation. (2) \emph{Critical layers} (21--27): explosive divergence; failures surge while successes remain suppressed. (3) \emph{Final layer}: baseline/failure reaches 0.71; negative/success stays at 0.08.}
+\includegraphics[width=\textwidth]{fig4_logit_lens.png}
+\caption{\textbf{Target probability emerges in late layers, where failures diverge from successes.} Logit lens probability of the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Top row: baseline condition. Bottom row: negative instruction. Shaded bands: 95\% CI.}
 \label{fig:logit_lens}
-\end{figure}
+\end{figure*}
 
 Three distinct regimes emerge:
 
-\textbf{Early layers (0--20):} All four curves overlap at near-zero probability. The model has not yet ``decided'' on any particular token; the target is not yet activated. There is no meaningful difference between conditions or outcomes.
+\textbf{Early layers (0--21):} All curves overlap at near-zero probability. The model has not yet ``decided'' on any particular token; the target is not yet activated. There is no meaningful difference between conditions or outcomes.
 
-\textbf{Critical layers (21--27):} Explosive differentiation. The red curves (failures) shoot upward; the blue curves (successes) rise more gently. The gap between baseline and negative instruction is visible in successes (the instruction suppresses) but minimal in failures.
+\textbf{Critical layers (22--27):} Sharp differentiation. Under the baseline, failures and successes of the same pressure rise almost identically. Under the negative instruction, successes peak around layer 25 and then fall, while failures keep rising.
 
-\textbf{Final layer (27):} The endpoints tell the story. Baseline run with failure-prone prompts: $P(X) = 0.71$. Negative instruction with same prompts: $P(X) = 0.66$---barely lower. The constraint achieves almost nothing. In contrast, for success-prone prompts: baseline reaches 0.30, negative instruction suppresses to 0.08---a 22-point reduction.
+\textbf{Final layer (27):} The endpoints tell the story. For high-pressure failures, the baseline reaches $P(X) = 0.94$ and the negative instruction $0.86$---barely lower. For high-pressure successes, the baseline reaches $0.93$ and the negative instruction suppresses it to $0.22$. The two groups are indistinguishable without the instruction and diverge only in the last layers with it.
 
-These dynamics suggest that something in layers 21--27 is driving failure. The next analysis pinpoints what.
+These dynamics suggest that the instruction's effect is applied, or fails to be applied, in layers 22--27. The next analysis asks which components carry it.
 
 \subsection{Component Decomposition}
 
@@ -280,28 +282,26 @@ where
 \end{itemize}
 Contributions are in logit units and add up, over all layers and the embedding, to the target's final logit.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{fig5_decomposition.pdf}
-\caption{\textbf{Attention suppresses; FFN promotes---and FFN wins in failures.} Layer-wise decomposition of contributions to target probability (layers 18--27). Attention contributions (green) are frequently negative, indicating suppression. FFN contributions (orange) are consistently positive. Critical finding: at layer 27, FFN contribution in failures (+0.39) is nearly $4\times$ larger than in successes (+0.10). The FFN override overwhelms attention's suppression signal.}
+\includegraphics[width=0.8\textwidth]{fig5_decomposition.png}
+\caption{\textbf{Late FFNs promote the target more, and late attention suppresses it less, in failures.} Direct logit attribution to the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: attention and FFN contributions under the negative instruction, then under the baseline. Units: logits. Shaded bands: 95\% CI.}
 \label{fig:decomp}
-\end{figure}
+\end{figure*}
 
-Figure~\ref{fig:decomp} reveals a striking pattern in late layers (18--27):
+Figure~\ref{fig:decomp} reveals a consistent pattern in late layers (22--27):
 
-\textbf{Attention contributions are often \emph{negative}.} The attention mechanism frequently suppresses target probability---it is doing its job, pushing away from the forbidden word. This is especially true in layers 24--27.
+\textbf{Attention contributions turn \emph{negative} in the last layers.} Under the negative instruction, attention at layers 25--27 pushes away from the forbidden word, more strongly than under the baseline. This is especially true at layer 27.
 
-\textbf{FFN contributions are consistently \emph{positive}.} The feed-forward networks push toward the target at every late layer, in both outcomes.
+\textbf{FFN contributions are consistently \emph{positive}.} The feed-forward networks push toward the target at every late layer, in both outcomes and both conditions, growing sharply toward layer 27.
 
-\textbf{The difference lies in magnitude.} At layer 27:
+\textbf{The difference lies in magnitude.} At layer 27, for high-pressure prompts ($P_0 \geq 0.8$) under the negative instruction:
 \begin{itemize}
-    \item Successes: FFN $= +0.10$, Attention $= -0.05$
-    \item Failures: FFN $= +0.39$, Attention $= -0.13$
+    \item Successes: FFN $= +9.7$, Attention $= -1.2$
+    \item Failures: FFN $= +12.4$, Attention $= -0.8$
 \end{itemize}
 
-In successes, the FFN push is modest and attention's suppression can compete. In failures, the FFN push is massive---nearly 4× larger---and overwhelms the attention signal despite attention's best efforts.
-
-This explains the asymmetric suppression we observed earlier. The suppression signal (attention) is actually \emph{stronger} in failures (more negative). But it loses to an even stronger FFN push.
+Under the baseline, the two outcomes have nearly identical contributions. With the instruction, successes show a smaller FFN push and a larger attention push against the target; failures show the reverse. Both components contribute to the asymmetric suppression we observed earlier, and the FFN difference is the larger in logit units.
 
 %==============================================================================
 \section{Causal Validation}
@@ -326,71 +326,62 @@ If patching baseline activations into the negative-instruction run \emph{increas
 
 \subsection{Patching Results}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\linewidth]{fig6_patching.pdf}
-\caption{\textbf{Patching reveals a causal crossover.} Effect of replacing negative-instruction activations with baseline activations at each layer. Blue bars (negative $\Delta P$): patching \emph{reduces} target probability---baseline activations support suppression. Red bars (positive $\Delta P$): patching \emph{increases} target probability---baseline activations push toward the target. The crossover occurs at layer 23, precisely where the logit lens showed probability explosion. Layers 23--27 are causally responsible for driving violation.}
+\includegraphics[width=0.8\textwidth]{fig6_patching.png}
+\caption{\textbf{Patching shows that the late-layer residual stream carries the instruction's effect.} Change in the next-token target probability when the residual stream (left, type R) or the attention output (right, type A) of one layer at the decision position is replaced with its value from the baseline run. Red: failures; blue: successes ($n=125$ each). Shaded bands: prompt-bootstrap 95\% CI.}
 \label{fig:patching}
-\end{figure}
+\end{figure*}
 
-Figure~\ref{fig:patching} shows a dramatic pattern:
+Figure~\ref{fig:patching} shows a clear pattern:
 
-\textbf{Layers 0--22:} Patching \emph{decreases} target probability (negative $\Delta P$ ranging from $-0.10$ to $-0.21$). When we transplant baseline activations into these layers, the model becomes \emph{less} likely to say the target. This means the baseline activations at these layers carry information that, when processed by downstream layers, supports suppression.
+\textbf{Layers 0--17:} Patching has no effect (all $|\Delta P| < 0.01$). A single position's early residual stream does not carry the instruction's effect; later layers can still read the instruction from other positions.
 
-\textbf{Layer 23:} The crossover. Patching effect crosses zero (effect $\approx +0.0004$).
+\textbf{Layers 18--27, successes:} Restoring the baseline residual stream \emph{increases} target probability, slightly at first and sharply at the last layers ($+0.24$ at layer 26, $+0.38$ at layer 27). In successes, the instruction's suppression is held in the late residual stream, and removing it undoes the suppression.
 
-\textbf{Layers 24--27:} Patching \emph{increases} target probability (positive $\Delta P$ up to $+0.07$). Baseline activations at these late layers push toward the target, overriding the negative instruction's effect.
+\textbf{Layers 20--27, failures:} Restoring the baseline residual stream \emph{decreases} target probability (down to $-0.15$ at layer 24). In failures, the late residual stream under the instruction holds \emph{more} of the target than under the baseline, consistent with the instruction having primed it.
 
-This pattern provides direct causal evidence. Layers 23--27 are causally responsible for the ``override'' that converts potential successes into failures. Their computations---specifically, the large FFN contributions we documented---are what push high-pressure prompts over the edge.
+Patching only the attention output (type A) has much smaller effects ($|\Delta P| \leq 0.10$), so the effect is not carried by any single layer's attention output at this position. This pattern provides direct causal evidence that layers 20--27 carry the difference between compliance and violation, in opposite directions for the two outcomes.
 
 %==============================================================================
 \section{A Taxonomy of Failure Modes}
+\label{sec:taxonomy}
 %==============================================================================
 
-The mechanistic evidence suggests that not all failures are alike. We identify two distinct modes with quantifiable signatures.
+The mechanistic evidence suggests that not all failures are alike. We test two candidate modes with quantifiable signatures, and for each we measure how often the signature also appears in successes. A signature that is as common in successes as in failures does not explain failure.
 
-\subsection{Priming Failure (87.5\%, $n = 441$)}
+\subsection{Priming Failure (27.2\%, $n = 170$)}
 
 \textbf{Definition.} The instruction's explicit mention of $X$ activates rather than suppresses the target. The word ``Paris'' in ``do not say Paris'' acts as a cue.
 
-\textbf{Signature.} Priming Index $> 0$ (more attention to target mention than negation) OR $\Delta P < 0$ (the instruction actually \emph{increased} target probability).
+\textbf{Signature.} $P_1 > P_0$: the instruction \emph{increased} the target's probability. We also test the attention signature $\text{TMF} > \text{NF}$ (more attention to the target mention than to the negation, averaged over layers), and the combination of the two.
 
-\textbf{Example.}
-\begin{quote}
-\emph{Prompt:} ``Complete the idiom: By the \_\_\_\_'' \\
-\emph{Target:} book \\
-\emph{Instruction:} ``Do not use the word `book' in your answer.'' \\
-\emph{Output:} ``book'' \\
-\emph{Metrics:} TMF = 0.30, NF = 0.11, PI = +0.19 \\
-The model attended 3$\times$ more to ``book'' in the instruction than to ``do not.''
-\end{quote}
+\textbf{Base rates.} Table~\ref{tab:signatures} gives each signature's rate among failures and successes. The probability signature is twice as common in failures (27.2\% vs.\ 12.8\%; difference $+14.4$ points, 95\% CI $[10.9, 18.0]$). The attention signature is \emph{less} common in failures than in successes (89.6\% vs.\ 92.6\%). It therefore cannot be a mechanism of failure, and neither can the combination, which is dominated by it.
 
-\subsection{Override Failure (12.5\%, $n = 63$)}
+\subsection{Override Failure (39.9\%, $n = 249$)}
 
-\textbf{Definition.} Suppression exists ($\Delta P > 0$) but is insufficient. Late-layer FFN contributions overwhelm the suppression signal.
+\textbf{Definition.} Suppression exists ($\Delta P > 0.1$) but is insufficient: the late-layer FFN push toward the target (Section~4.4) outweighs it.
 
-\textbf{Signature.} Positive suppression magnitude ($\Delta P > 0.1$) combined with large FFN contributions at layers 23--27.
+\textbf{Signature.} Positive suppression magnitude ($\Delta P > 0.1$) together with a violating greedy answer. This holds for 39.9\% of failures; the remaining 32.9\% show little change ($0 \leq \Delta P \leq 0.1$). Among successes, 54.1\% show $\Delta P > 0.1$, as expected when suppression works.
 
-\textbf{Example.}
-\begin{quote}
-\emph{Prompt:} ``The official currency of Brazil is \_\_\_\_'' \\
-\emph{Target:} Real \\
-\emph{Suppression:} $\Delta P = 0.92$ (strong suppression!) \\
-\emph{Final probability:} $P(X) = 0.82$ \\
-\emph{FFN at layer 27:} $+0.34$ \\
-Despite massive suppression, the FFN override pushed the target over threshold.
-\end{quote}
-
-\begin{figure}[t]
+\begin{table*}[t]
 \centering
-\includegraphics[width=0.7\linewidth]{fig8_taxonomy.pdf}
-\caption{\textbf{Two failure modes with distinct mechanisms.} Priming (87.5\%) occurs when the instruction's mention of X activates rather than suppresses. Override (12.5\%) occurs when FFN contributions overwhelm valid suppression signals. The dominance of priming suggests that avoiding explicit target naming is the most impactful intervention.}
-\label{fig:taxonomy}
-\end{figure}
+\caption{Rates of candidate failure signatures among failures ($n=624$) and successes ($n=1{,}876$). CI: prompt bootstrap; $p$: Fisher's exact test.}
+\label{tab:signatures}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Signature & Failures & Successes & Difference (95\% CI) & $p$ \\
+\midrule
+$P_1 > P_0$ & 27.2\% & 12.8\% & $+14.4$ $[10.9, 18.0]$ & $<10^{-15}$ \\
+$\text{TMF} > \text{NF}$ & 89.6\% & 92.6\% & $-3.0$ $[-5.7, -0.5]$ & 0.02 \\
+Either (priming, v1 rule) & 94.1\% & 94.4\% & $-0.3$ $[-2.5, 1.7]$ & 0.76 \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 \subsection{Implications of the Taxonomy}
 
-The dominance of priming failures (87.5\%) has a clear implication: \textbf{explicitly naming the forbidden word is the primary risk factor.} If most failures occur because the instruction primes the target, then not naming the target should reduce failures substantially.
+The probability signature has a clear implication: \textbf{explicitly naming the forbidden word is a risk factor.} In just over a quarter of failures, naming the target raised its probability; at low pressure, where failures are rare, this is the typical failure. Not naming the target should reduce these failures.
 
 Alternative formulations might include:
 \begin{itemize}
@@ -399,7 +390,7 @@ Alternative formulations might include:
     \item Circumlocution: ``Avoid the word that rhymes with `ferris'\,''
 \end{itemize}
 
-We leave systematic evaluation of alternative phrasings to future work, but our mechanistic analysis provides a principled basis for expecting their superior performance.
+We leave systematic evaluation of alternative phrasings to future work, but our analysis provides a principled basis for expecting them to help with priming failures, though not with override failures.
 
 %==============================================================================
 \section{Discussion}
@@ -410,30 +401,30 @@ We leave systematic evaluation of alternative phrasings to future work, but our 
 We have traced negative instruction failure from behavioral regularity to computational mechanism:
 
 \begin{enumerate}
-    \item \textbf{Behavioral level:} Semantic pressure (baseline probability) predicts violation probability via a tight logistic relationship explaining 78\% of variance.
+    \item \textbf{Behavioral level:} Semantic pressure (baseline probability) predicts the average violation rate via a logistic relationship (slope 2.76), though single prompts vary widely around it.
     
-    \item \textbf{Suppression level:} Negative instructions induce real but asymmetric suppression---$4.4\times$ weaker in failures than successes.
+    \item \textbf{Suppression level:} At equal pressure, negative instructions suppress the target far less in failures than in successes, and at low pressure they raise it in failures.
     
-    \item \textbf{Attention level:} Failures attend more to target mentions than negation cues, consistent with priming.
+    \item \textbf{Attention level:} Attention to the target mention versus the negation does not distinguish failures from successes.
     
-    \item \textbf{Component level:} In late layers (21--27), attention suppresses while FFN promotes the target. FFN contributions in failures are $4\times$ larger.
+    \item \textbf{Component level:} In late layers (22--27), attention suppresses while FFN promotes the target. In failures, the FFN push is larger and the attention push against the target smaller.
     
-    \item \textbf{Causal level:} Activation patching confirms layers 23--27 drive the override that converts potential successes to failures.
+    \item \textbf{Causal level:} Activation patching shows the late-layer residual stream (layers 20--27) carries the instruction's effect, in opposite directions for successes and failures.
     
-    \item \textbf{Taxonomic level:} Two distinct modes---priming (87.5\%) and override (12.5\%)---account for all failures.
+    \item \textbf{Taxonomic level:} Priming ($P_1 > P_0$) accounts for 27\% of failures and is twice as common as in successes; failures with real but insufficient suppression account for 40\%.
 \end{enumerate}
 
-This constitutes the first complete mechanistic account of instruction-following failure in large language models.
+This gives a mechanistic account of one instruction-following failure in one model, with each proposed signature tested against its base rate.
 
 \subsection{Implications for Practitioners}
 
-\textbf{Avoid explicit target naming.} Our strongest finding: priming failures dominate. Mentioning the forbidden word activates rather than suppresses it. Alternative phrasings that avoid naming the target directly may prove more effective.
+\textbf{Avoid explicit target naming.} In over a quarter of failures, mentioning the forbidden word raised its probability. Alternative phrasings that avoid naming the target directly may prove more effective.
 
 \textbf{Anticipate difficulty for natural completions.} Constraints against the most natural answer are inherently hardest. Systems should estimate semantic pressure before deployment and apply additional safeguards for high-pressure cases.
 
 \textbf{Post-generation filtering for critical applications.} Generation-time constraints alone may be insufficient. For safety-critical applications, combine generation constraints with output filtering.
 
-\textbf{Monitor attention patterns as diagnostics.} Elevated Priming Index correlates with failure risk. Real-time monitoring of attention routing could enable early detection of constraint failures.
+\textbf{Monitor probabilities, not attention.} The attention-based Priming Index does not predict failure. Comparing the target's probability with and without the constraint ($P_1$ vs.\ $P_0$) does, and is cheap to compute.
 
 \subsection{Limitations}
 
@@ -446,13 +437,17 @@ We acknowledge limitations that qualify our conclusions:
     \item Different training procedures (RLHF variants, Constitutional AI)
 \end{itemize}
 
-\textbf{Single-token focus.} We analyze the first token of multi-token targets. Multi-token dynamics may differ, especially for targets requiring sequential commitment.
+\textbf{Single-token focus.} We analyze the first token of multi-token targets. Multi-token dynamics may differ, especially for targets requiring sequential commitment. On the 1,071 prompts whose preferred spelling is a single token, the main mechanistic results hold: the pooled suppression gap is $-0.67$ (95\% CI $[-0.70, -0.64]$), and $P_1 > P_0$ occurs in 30\% of failures vs.\ 12\% of successes.
+
+\textbf{Numerical precision.} The main run uses bfloat16. The same prompt evaluated in different batches gives next-token probabilities that differ by a median of 0.003 (90th percentile 0.04, maximum 0.18 over 250 prompts). This noise can move prompts near a bin edge or the success boundary; it is small relative to the effects reported.
 
 \textbf{Controlled task setting.} Our experiments use one-word completions with unambiguous targets. Naturalistic settings (longer outputs, ambiguous constraints) may exhibit different patterns.
 
 \textbf{Attention interpretability.} Attention weights are routing signals, not direct indicators of information use. The causal role of attention patterns requires targeted knockout experiments beyond our scope.
 
-\textbf{Patching resolution.} We patch full residual streams. Finer-grained patching (individual heads, FFN neurons) could localize responsibility more precisely.
+\textbf{Patching resolution.} We patch the residual stream and the attention output at one position. Finer-grained patching (individual heads, FFN neurons, other positions) could localize responsibility more precisely.
+
+\textbf{Outcome-defined comparisons.} Failure is defined by the target appearing, which requires a high $P_1$, so part of the suppression gap between outcomes follows from the definition. Comparing within pressure bins removes the confound with $P_0$ but not this one.
 
 \subsection{Future Directions}
 
@@ -468,9 +463,9 @@ We acknowledge limitations that qualify our conclusions:
 \section*{Conclusion}
 %==============================================================================
 
-We have shown that negative instruction failure is neither random nor mysterious. It is the predictable consequence of a computational tension: semantic pressure pulling toward a natural completion versus constraint pressure pushing away. When the former exceeds the latter---especially when the constraint perversely \emph{primes} the target it intends to suppress---failure follows.
+We have shown that negative instruction failure is neither random nor mysterious. It follows a computational tension: semantic pressure pulling toward a natural completion versus constraint pressure pushing away. When the former exceeds the latter---and sometimes because the constraint \emph{primes} the target it intends to suppress---failure follows.
 
-This understanding opens paths toward more robust constraint design. If priming is the dominant failure mode, avoid priming. If late-layer FFNs drive override, target interventions there. The black box, opened, reveals not chaos but mechanism---and mechanism suggests remedy.
+This understanding opens paths toward more robust constraint design. Where naming the target primes it, avoid naming it. Where late layers fail to complete the suppression, target interventions there. The black box, opened, reveals not chaos but mechanism---and mechanism suggests remedy.
 
 \section*{Reproducibility}
 
@@ -514,43 +509,45 @@ Each variant is tokenized canonically, and its probability is computed by a teac
 
 \begin{table}[H]
 \centering
-\caption{Violation rate by pressure bin ($n=40{,}000$).}
+\caption{Violation rate by pressure bin ($n=40{,}000$ samples; $n$ = prompts; CI: prompt bootstrap).}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
 Pressure Bin & Mean & CI Low & CI High & $n$ \\
 \midrule
-$[0.0, 0.2)$ & 0.091 & 0.078 & 0.102 & 1,193 \\
-$[0.2, 0.4)$ & 0.201 & 0.154 & 0.250 & 162 \\
-$[0.4, 0.6)$ & 0.204 & 0.149 & 0.269 & 103 \\
-$[0.6, 0.8)$ & 0.208 & 0.156 & 0.255 & 126 \\
-$[0.8, 1.0]$ & 0.463 & 0.435 & 0.491 & 916 \\
+$[0.0, 0.2)$ & 0.054 & 0.044 & 0.066 & 1,004 \\
+$[0.2, 0.4)$ & 0.141 & 0.098 & 0.183 & 165 \\
+$[0.4, 0.6)$ & 0.214 & 0.165 & 0.266 & 146 \\
+$[0.6, 0.8)$ & 0.219 & 0.183 & 0.259 & 282 \\
+$[0.8, 1.0]$ & 0.439 & 0.413 & 0.467 & 903 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{FFN and Attention contributions at layer 27 (negative instruction condition).}
+\caption{FFN and attention contributions at layer 27 (direct logit attribution, logits; negative instruction condition, $P_0 \geq 0.8$).}
 \begin{tabular}{@{}lrr@{}}
 \toprule
 Outcome & Attn Contrib & FFN Contrib \\
 \midrule
-Success & $-0.048$ & $+0.097$ \\
-Failure & $-0.132$ & $+0.386$ \\
+Success ($n=465$) & $-1.18$ & $+9.66$ \\
+Failure ($n=438$) & $-0.78$ & $+12.43$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Patching effects by layer (high-pressure, $P_0 \geq 0.8$).}
-\begin{tabular}{@{}lr|lr@{}}
+\caption{Residual-stream patching effects by layer (type R; 250 prompts, 50 per pressure bin).}
+\begin{tabular}{@{}lrr@{}}
 \toprule
-Layers & $\Delta P$ & Layers & $\Delta P$ \\
+Layers & Successes & Failures \\
 \midrule
-0--5 & $-0.10$ to $-0.22$ & 18--22 & $-0.01$ to $-0.10$ \\
-6--12 & $-0.21$ (stable) & 23 & $+0.0004$ \\
-13--17 & $-0.13$ to $-0.20$ & 24--27 & $+0.03$ to $+0.07$ \\
+0--17 & $|\Delta P| < 0.01$ & $|\Delta P| < 0.01$ \\
+18--19 & $+0.01$ to $+0.03$ & $-0.01$ to $0.00$ \\
+20--23 & $+0.01$ to $+0.06$ & $-0.05$ to $-0.14$ \\
+24--25 & $+0.02$ to $+0.07$ & $-0.14$ to $-0.15$ \\
+26--27 & $+0.24$ to $+0.38$ & $-0.11$ to $-0.14$ \\
 \bottomrule
 \end{tabular}
 \end{table}
