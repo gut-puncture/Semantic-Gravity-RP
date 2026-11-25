@@ -67,7 +67,7 @@ def main():
     with torch.no_grad():
         for s in seqs:
             ids = torch.tensor([s], device=lm.device)
-            plain.append(torch.softmax(lm.model(input_ids=ids).logits[0, -1].float(), -1))
+            plain.append(torch.softmax(lm.model(input_ids=ids, use_cache=False).logits[0, -1].float(), -1))
     indep = (lens_last - torch.stack(plain)).abs().max().item()
     tol_a = 1e-3 if fp32 else 2e-2
     report("a_logit_lens_last_layer", same_pass < 1e-6 and indep < tol_a,
@@ -114,12 +114,35 @@ def main():
     report("c_patching", none_diff == 0.0 and r_diff < tol_c and a_change > 1e-4,
            none_patch_max_abs_diff=none_diff, Rlast_vs_baseline_max_abs_diff=r_diff,
            A0_patch_effect=a_change, tol=tol_c)
-    if args.run_dir and os.path.isdir(os.path.join(args.run_dir, "patch")):
-        pr = read_parts(os.path.join(args.run_dir, "patch"))
-        report("c_patching_in_run", pr.check_none_vs_stage1.max() < (1e-4 if fp32 else 2e-2)
-               and pr.check_Rlast_maxdiff.max() < (1e-4 if fp32 else 2e-2),
-               n_prompts=len(pr), max_none_vs_P1_tok=float(pr.check_none_vs_stage1.max()),
-               max_Rlast_vs_base=float(pr.check_Rlast_maxdiff.max()))
+    if args.run_dir:
+        # The run's own patching output: it must exist, cover exactly the ids in
+        # patch_subset.json (each once), hold finite values on every row, and its unpatched
+        # target-set probability must agree with stage 1's final-layer value (negative prompt).
+        pdir = os.path.join(args.run_dir, "patch")
+        subset_path = os.path.join(args.run_dir, "patch_subset.json")
+        if not (os.path.isdir(pdir) and os.path.exists(subset_path)):
+            report("c_patching_in_run", False, error="no patch folder or patch_subset.json in the run")
+        else:
+            pr = read_parts(pdir)
+            want = json.load(open(subset_path))
+            got = list(pr.prompt_id)
+            ids_ok = len(got) == len(set(got)) and set(got) == set(want) and len(want) == len(set(want))
+            ms = read_parts(os.path.join(args.run_dir, "measure"), ["prompt_id", "lens_set_neg"])
+            s1 = {p: float(v[-1]) for p, v in zip(ms.prompt_id, ms.lens_set_neg)}
+            set_diff = np.array([abs(a - s1.get(p, np.nan)) for p, a in zip(pr.prompt_id, pr.p_none_set)])
+            vals = np.concatenate([pr.check_none_vs_stage1.to_numpy(float),
+                                   pr.check_Rlast_maxdiff.to_numpy(float), set_diff,
+                                   *[np.asarray(v, float) for c in ("pR_tok", "pA_tok", "pR_set", "pA_set")
+                                     for v in pr[c]]])
+            finite = bool(np.isfinite(vals).all())
+            tol_r = 1e-4 if fp32 else 2e-2
+            report("c_patching_in_run", ids_ok and finite and len(pr) > 0
+                   and pr.check_none_vs_stage1.max() < tol_r and pr.check_Rlast_maxdiff.max() < tol_r
+                   and set_diff.max() < tol_r,
+                   n_prompts=len(pr), n_expected=len(want), ids_match=ids_ok, all_finite=finite,
+                   max_none_vs_P1_tok=float(pr.check_none_vs_stage1.max()),
+                   max_none_set_vs_stage1_set=float(set_diff.max()) if len(set_diff) else float("nan"),
+                   max_Rlast_vs_base=float(pr.check_Rlast_maxdiff.max()))
     core.set_attn(lm, "sdpa")
 
     # (b) P0 <= 1 for every prompt and condition; brute-force check on the 3 prompts with
@@ -128,8 +151,24 @@ def main():
     pmax = max(s[0] for s in sc)
     order = sorted(range(len(rows)), key=lambda i: abs(sc[i][0] - 0.5))[:3]
     zs, details = [], []
+    # Draws per generate call: capped by GPU memory (256 is the production cap below 40 GB),
+    # and halved on out-of-memory. The number of draws is unchanged.
+    k_cap = 500
+    if lm.device.type == "cuda" and torch.cuda.get_device_properties(lm.device).total_memory < 40 * 2**30:
+        k_cap = 256
     for i in order:
-        p0, _, vs, vids = sc[i]
+        p0 = sc[i][0]
+        # The reference is built here from the design text, not taken from the scorer under
+        # test: {X, x, X.capitalize(), X.upper()} deduplicated, each with and without a leading
+        # space; the boundary rule is applied to the decoded text of each sampled next token.
+        X = rows[i]["target"]
+        forms = []
+        for f in (X, X.lower(), X[:1].upper() + X[1:].lower(), X.upper()):
+            if f not in forms:
+                forms.append(f)
+        vs = forms + [" " + f for f in forms]
+        vids = [tok.encode(v, add_special_tokens=False) for v in vs]
+        starts_word_char = {}
         maxlen = max(len(v) for v in vids) + 1
         cfg = GenerationConfig(do_sample=True, temperature=1.0, top_p=1.0, top_k=0,
                                repetition_penalty=1.0, max_new_tokens=maxlen,
@@ -138,14 +177,27 @@ def main():
         hits, text_hits, n = 0, 0, 0
         with torch.no_grad():
             while n < args.n_brute:
-                k = min(500, args.n_brute - n)
-                out = lm.model.generate(input_ids=ids, attention_mask=torch.ones_like(ids),
-                                        generation_config=cfg, num_return_sequences=k)
+                k = min(k_cap, args.n_brute - n)
+                try:
+                    out = lm.model.generate(input_ids=ids, attention_mask=torch.ones_like(ids),
+                                            generation_config=cfg, num_return_sequences=k)
+                except Exception as e:  # noqa: BLE001
+                    if not core._is_oom(e) or k_cap == 1:
+                        raise
+                    if torch.cuda.is_available():
+                        torch.cuda.empty_cache()
+                    k_cap = max(1, k_cap // 2)
+                    print(f"[oom] brute-force batch reduced to {k_cap}", flush=True)
+                    continue
                 for g in out[:, ids.shape[1]:].tolist():
                     for v in vids:
-                        if g[: len(v)] == v and len(g) > len(v) and not lm.starts_alnum[g[len(v)]]:
-                            hits += 1
-                            break
+                        if g[: len(v)] == v and len(g) > len(v):
+                            t_next = g[len(v)]
+                            if t_next not in starts_word_char:
+                                starts_word_char[t_next] = tok.decode([t_next])[:1].isalnum()
+                            if not starts_word_char[t_next]:
+                                hits += 1
+                                break
                     text = tok.decode(g, skip_special_tokens=True)
                     text_hits += any(text == v or (text.startswith(v) and not text[len(v)].isalnum())
                                      for v in vs)

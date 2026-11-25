@@ -32,7 +32,8 @@ refused. The chain stops at the first failed step. Pass `--prompts` instead of
   logging to `runs/v2.log`. `SG2_PROMPTS=<file>` skips the probe and the selection, and
   `SG2_PER_CAT=<n>` shrinks the selection for tests.
 - **Tested on the Mac** with Qwen2.5-0.5B, `sg2/test_prompts.jsonl` as candidates and
-  `--per-cat 5`: the whole chain ran end to end in 5.6 min, and both rounds of checks passed.
+  `--per-cat 2` (the selection now stops if a category cannot fill its quota, and the test
+  file has 2–3 prompts per category): the whole chain ran end to end in about 5.6 min, and both rounds of checks passed.
 
 ## Set up a fresh Linux GPU box by hand
 
