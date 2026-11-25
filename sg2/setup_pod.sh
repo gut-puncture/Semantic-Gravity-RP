@@ -61,6 +61,7 @@ python -c "import torch; print('torch', torch.__version__, 'CUDA', torch.version
 python -c "from huggingface_hub import snapshot_download as s; print(s('$MODEL', allow_patterns=['*.json','*.safetensors','*.txt']))"
 df -h "$REPO" | tail -1
 
+[[ -n "${SG2_SETUP_ONLY:-}" ]] && { echo "setup only: done"; exit 0; }
 tmux kill-session -t sg2 2>/dev/null || true
 tmux new-session -d -s sg2 "SG2_PIPELINE=1 SG2_MODEL='$MODEL' SG2_PROMPTS='${SG2_PROMPTS:-}' SG2_PER_CAT='${SG2_PER_CAT:-}' bash '$REPO/sg2/setup_pod.sh' '$CANDIDATES' '$RUN' 2>&1 | tee -a '$LOG'; echo '[pipeline exited; press Enter]'; read"
 echo "Started in tmux session 'sg2'. Watch: tmux attach -t sg2   or   tail -f $LOG"
