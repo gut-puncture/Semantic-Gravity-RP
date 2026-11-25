@@ -116,8 +116,10 @@ def violation_vs_p0(m, boot, rng, out_dir):
     ax.set_xlabel("P0 (baseline probability that the first word is X)")
     ax.set_ylabel("violation rate under the negative instruction")
     ax.set_xlim(0, 1); ax.set_ylim(-0.02, 1.02)
-    ax.legend(fontsize=7, loc="upper left", frameon=False)
-    fig.tight_layout(); fig.savefig(os.path.join(out_dir, "fig1_violation_vs_p0.png"), dpi=200)
+    # Legend below the axes so it never covers data.
+    ax.legend(fontsize=8, frameon=False, loc="upper center", bbox_to_anchor=(0.5, -0.16), ncol=2)
+    fig.tight_layout()
+    fig.savefig(os.path.join(out_dir, "fig1_violation_vs_p0.png"), dpi=200, bbox_inches="tight")
     plt.close(fig)
 
     return {
@@ -261,7 +263,7 @@ def curves_by_bin(m, out_dir):
             "fig4_dla_by_bin.png": ["dla_attn_neg", "dla_mlp_neg", "dla_attn_base", "dla_mlp_base"],
             "fig5_attention_by_bin.png": ["attn_tmf_neg", "attn_nf_neg", "attn_q_neg"]}
     for fname, keys in figs.items():
-        fig, axes = plt.subplots(len(keys), 5, figsize=(15, 2.6 * len(keys)), sharex=True,
+        fig, axes = plt.subplots(len(keys), 5, figsize=(11, 2.1 * len(keys)), sharex=True,
                                  sharey="row", squeeze=False)
         for r, key in enumerate(keys):
             for b in range(5):
@@ -275,14 +277,20 @@ def curves_by_bin(m, out_dir):
                     ax.fill_between(xs, st["mean"] - st["se"], st["mean"] + st["se"],
                                     color=COLORS[o], alpha=0.2)
                 if r == 0:
-                    ax.set_title(f"P0 bin {BINS[b]}", fontsize=9)
+                    nf_, ns_ = (tables[key][BINS[b]][o]["n"] if tables[key][BINS[b]][o] else 0
+                                for o in OUTCOMES)
+                    ax.set_title(f"P0 bin {BINS[b]}\n{nf_} fail, {ns_} success", fontsize=9)
                 if b == 0:
                     ax.set_ylabel(metrics[key], fontsize=8)
                 if r == len(keys) - 1:
-                    ax.set_xlabel("layer")
-                if ax.get_legend_handles_labels()[0]:
-                    ax.legend(fontsize=6, frameon=False)
-        fig.tight_layout(); fig.savefig(os.path.join(out_dir, fname), dpi=150)
+                    ax.set_xlabel("layer", fontsize=9)
+                ax.tick_params(labelsize=8)
+        # One legend above the panels, so no legend sits on a curve.
+        hs = [plt.Line2D([], [], color=COLORS[o]) for o in OUTCOMES]
+        fig.legend(hs, list(OUTCOMES), loc="upper center", ncol=2, frameon=False, fontsize=9,
+                   bbox_to_anchor=(0.5, 1.0))
+        fig.tight_layout(rect=(0, 0, 1, 1 - 0.25 / (2.1 * len(keys))))
+        fig.savefig(os.path.join(out_dir, fname), dpi=200)
         plt.close(fig)
     return tables
 
@@ -295,7 +303,7 @@ def patching(p, boot, rng, out_dir):
            "n_prompts": len(p), "checks": {
                "max_abs_none_vs_stage1_p_tstar": float(p.check_none_vs_stage1.max()),
                "max_abs_Rlast_vs_baseline_distribution": float(p.check_Rlast_maxdiff.max())}}
-    fig, axes = plt.subplots(1, 2, figsize=(11, 3.8), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(10, 3.8), sharey=True)
     for j, typ in enumerate(["R", "A"]):
         res[typ] = {}
         for o, v in OUTCOMES.items():
@@ -319,9 +327,10 @@ def patching(p, boot, rng, out_dir):
         axes[j].set_title({"R": "residual stream patched (type R)",
                            "A": "attention output patched (type A)"}[typ], fontsize=10)
         axes[j].set_xlabel("layer patched (baseline → negative, decision position)")
-        axes[j].legend(fontsize=8, frameon=False)
     axes[0].set_ylabel("change in P(target set)\n(mean, 95% prompt-bootstrap CI)")
-    fig.tight_layout(); fig.savefig(os.path.join(out_dir, "fig6_patching.png"), dpi=200)
+    hs, ls = axes[0].get_legend_handles_labels()
+    fig.legend(hs, ls, loc="upper center", ncol=2, frameon=False, fontsize=9, bbox_to_anchor=(0.5, 1.0))
+    fig.tight_layout(rect=(0, 0, 1, 0.92)); fig.savefig(os.path.join(out_dir, "fig6_patching.png"), dpi=200)
     plt.close(fig)
     return res
 

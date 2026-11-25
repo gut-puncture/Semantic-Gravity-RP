@@ -224,7 +224,7 @@ We define attention metrics at the decision step, averaged over heads, in the ne
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{fig3_attention.png}
-\caption{\textbf{Attention to the instruction barely differs between failures and successes.} Attention mass at the decision position by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: target mention (TMF), ``Do not'' (NF), question (QA). Shaded bands: 95\% CI.}
+\caption{\textbf{Attention to the instruction barely differs between failures and successes.} Attention mass at the decision position by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: target mention (TMF), ``Do not'' (NF), question (QA). Shaded bands: $\pm 1$ standard error.}
 \label{fig:attention}
 \end{figure*}
 
@@ -252,7 +252,7 @@ This estimates what probability the model would assign to $X$ if forced to decod
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{fig4_logit_lens.png}
-\caption{\textbf{Target probability emerges in late layers, where failures diverge from successes.} Logit lens probability of the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Top row: baseline condition. Bottom row: negative instruction. Shaded bands: 95\% CI.}
+\caption{\textbf{Target probability emerges in late layers, where failures diverge from successes.} Logit lens probability of the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Top row: baseline condition. Bottom row: negative instruction. Shaded bands: $\pm 1$ standard error.}
 \label{fig:logit_lens}
 \end{figure*}
 
@@ -285,7 +285,7 @@ Contributions are in logit units and add up, over all layers and the embedding, 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{fig5_decomposition.png}
-\caption{\textbf{Late FFNs promote the target more, and late attention suppresses it less, in failures.} Direct logit attribution to the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: attention and FFN contributions under the negative instruction, then under the baseline. Units: logits. Shaded bands: 95\% CI.}
+\caption{\textbf{Late FFNs promote the target more, and late attention suppresses it less, in failures.} Direct logit attribution to the target's first token by layer, for each pressure bin (columns) and outcome (red: failure; blue: success). Rows: attention and FFN contributions under the negative instruction, then under the baseline. Units: logits. Shaded bands: $\pm 1$ standard error.}
 \label{fig:decomp}
 \end{figure*}
 
