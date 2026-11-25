@@ -198,7 +198,7 @@ def setup():
     say("setup starting (packages, model download)")
     limit = min(T0 + SETUP_LIMIT_MIN * 60, DEADLINE)
     with open(SETUP_LOG, "w") as fh:
-        p = subprocess.Popen(["bash", "sg2/setup_pod.sh", "data/accepted_candidates.jsonl",
+        p = subprocess.Popen(["bash", "sg2/setup_pod.sh", os.environ.get("SG2_CANDIDATES", "data/accepted_candidates.jsonl"),
                               f"runs/{RUN_NAME}"], cwd=WORK, stdout=fh, stderr=subprocess.STDOUT,
                              start_new_session=True)
         while p.poll() is None:

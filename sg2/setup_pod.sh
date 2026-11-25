@@ -44,14 +44,14 @@ if ! command -v uv >/dev/null; then
   curl -LsSf https://astral.sh/uv/install.sh | sh
   export PATH="$HOME/.local/bin:$PATH"
 fi
-nvidia-smi
+[[ -n "${SG2_CPU_TEST:-}" ]] || nvidia-smi   # SG2_CPU_TEST=1: rehearse the job on a CPU machine
 
 if [[ ! -x .venv/bin/python ]]; then uv venv --python 3.12 .venv; fi
 source .venv/bin/activate
 uv pip install torch==2.15.0 transformers==5.24.1 huggingface_hub==2.4.0 tokenizers==0.23.3 \
   safetensors==0.8.0 numpy==2.5.5 pandas==3.1.1 pyarrow==26.0.1 scipy==1.18.1 matplotlib==3.11.2
 
-cuda_ok() { python -c "import torch; assert torch.cuda.is_available(); torch.ones(1).cuda()" 2>/dev/null; }
+cuda_ok() { [[ -n "${SG2_CPU_TEST:-}" ]] && return 0; python -c "import torch; assert torch.cuda.is_available(); torch.ones(1).cuda()" 2>/dev/null; }
 if ! cuda_ok; then
   # The default wheel's CUDA build needs a newer driver than this box has: try older builds.
   for cu in cu128 cu126; do
@@ -60,7 +60,7 @@ if ! cuda_ok; then
   done
 fi
 cuda_ok || { echo "STOPPED: torch cannot use the GPU (driver too old for torch 2.15.0?)."; exit 1; }
-python -c "import torch; print('torch', torch.__version__, 'CUDA', torch.version.cuda, torch.cuda.get_device_name(0))"
+[[ -n "${SG2_CPU_TEST:-}" ]] || python -c "import torch; print('torch', torch.__version__, 'CUDA', torch.version.cuda, torch.cuda.get_device_name(0))"
 
 python -c "from huggingface_hub import snapshot_download as s; print(s('$MODEL', allow_patterns=['*.json','*.safetensors','*.txt']))"
 df -h "$REPO" | tail -1
