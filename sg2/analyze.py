@@ -202,6 +202,8 @@ def signatures(m, boot, rng):
     nf = np.array([np.mean(v) for v in m.attn_nf_neg])
     sigs = {"tmf_gt_nf (layer-mean attention on target mention > on 'Do not')": tmf > nf,
             "p1_gt_p0": (m.p1 > m.p0).to_numpy()}
+    # The design's combined priming signature: either component holds.
+    sigs["priming (tmf_gt_nf OR p1_gt_p0)"] = np.logical_or(*sigs.values())
     fail = m.greedy_fail.to_numpy()
     out = {}
     for name, s in sigs.items():
@@ -325,7 +327,9 @@ def patching(p, boot, rng, out_dir):
 
 
 def descriptive(m):
-    agree = pd.crosstab(m.greedy_fail, m.viol_rate >= 0.5)
+    # Strict majority of the samples; exactly half (8 of 16) is its own category.
+    maj = np.select([m.viol_rate > 0.5, m.viol_rate < 0.5], ["violation", "compliance"], "tie")
+    agree = pd.crosstab(m.greedy_fail.to_numpy(), maj)
     return {
         "n_prompts": len(m), "n_layers": len(m.lens_set_neg.iloc[0]),
         "n_by_category": m.category.value_counts().to_dict(),
@@ -345,8 +349,8 @@ def descriptive(m):
             c: {BINS[int(b)]: gg.viol_rate.mean() for b, gg in g.groupby("p0_bin")}
             for c, g in m.groupby("category")},
         "greedy_fail_vs_sample_majority_crosstab": {
-            f"greedy_fail={i}": {f"viol_rate>=0.5={j}": int(agree.loc[i, j])
-                                 for j in agree.columns} for i in agree.index},
+            f"greedy_fail={i}": {f"sample_majority={j}": int(agree.loc[i, j]) if j in agree.columns else 0
+                                 for j in ("violation", "tie", "compliance")} for i in agree.index},
     }
 
 
