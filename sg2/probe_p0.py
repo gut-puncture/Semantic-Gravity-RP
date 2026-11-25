@@ -22,7 +22,21 @@ def main():
     rows = [json.loads(l) for l in open(a.candidates) if l.strip()]
     done = set()
     if os.path.exists(a.out):
-        done = {json.loads(l)["prompt_id"] for l in open(a.out) if l.strip()}
+        # A write cut off by an interruption leaves text after the last newline: drop it.
+        # Anything unreadable before that is corruption and stops the resume.
+        raw = open(a.out, "rb").read()
+        keep = raw.rfind(b"\n") + 1
+        for n, l in enumerate(raw[:keep].split(b"\n"), 1):
+            if l.strip():
+                try:
+                    done.add(json.loads(l)["prompt_id"])
+                except Exception:  # noqa: BLE001
+                    raise SystemExit(f"STOPPED: {a.out} line {n} is not a valid record. "
+                                     "Delete the file to probe again from the start.")
+        if keep < len(raw):
+            print(f"dropping an incomplete last record ({len(raw) - keep} bytes) from {a.out}", flush=True)
+            with open(a.out, "r+b") as fh:
+                fh.truncate(keep)
     rows = [r for r in rows if r["prompt_id"] not in done]
     t0 = time.time()
     lm = core.load_lm(a.model, a.device, a.dtype)

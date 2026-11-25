@@ -225,7 +225,7 @@ def score_variants(lm: LM, prompt_ids: list[list[int]], targets: list[str], batc
 
     def fn(chunk):
         ids, mask = right_pad([j[2] for j in chunk], lm.pad_id, lm.device)
-        h = lm.model.model(input_ids=ids, attention_mask=mask).last_hidden_state
+        h = lm.model.model(input_ids=ids, attention_mask=mask, use_cache=False).last_hidden_state
         # Gather every position we need from the whole batch, one lm_head call.
         r_idx, p_idx, tgt, owner = [], [], [], []
         for r, (_, _, seq, n, v_ids) in enumerate(chunk):
@@ -313,7 +313,7 @@ def hooked_forward(lm: LM, seqs: list[list[int]], want_attn: bool, patch=None):
                   layer.mlp.register_forward_hook(mlp_hook),
                   layer.register_forward_hook(layer_hook)]
     try:
-        h = m(input_ids=ids, attention_mask=mask).last_hidden_state
+        h = m(input_ids=ids, attention_mask=mask, use_cache=False).last_hidden_state
     finally:
         for hk in hooks:
             hk.remove()

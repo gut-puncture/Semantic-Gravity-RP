@@ -46,7 +46,15 @@ def run_chain(run_dir, model=MODEL, candidates=None, prompts=None, per_cat=None,
     run = Path(run_dir)
     run.mkdir(parents=True, exist_ok=True)
     gb = _gpu_mem_gb()
-    batch = ["--gen-batch", "256", "--score-batch", "128"] if gb is not None and gb < 40 else []
+    # Batch sizes by GPU memory (they change speed only): below 40 GB (L4) smaller than the
+    # defaults; 40-70 GB (A100-40) the defaults (gen 1024, score 256, patch 128); 70 GB and up
+    # (A100-80, H100, G4) one generate call and one scoring pass per 64-prompt chunk.
+    batch, probe_batch = [], []
+    if gb is not None and gb < 40:
+        batch = ["--gen-batch", "256", "--score-batch", "128"]
+    elif gb is not None and gb >= 70:
+        batch = ["--gen-batch", "2048", "--score-batch", "1024", "--patch-batch", "512"]
+        probe_batch = ["--score-batch", "1024"]
     print(f"run folder {run}; model {model}; GPU memory "
           f"{'n/a' if gb is None else f'{gb:.0f} GB'}; extra batch args {batch}", flush=True)
 
@@ -62,7 +70,7 @@ def run_chain(run_dir, model=MODEL, candidates=None, prompts=None, per_cat=None,
                "--candidates", str(cand), "--out-dir", str(run)]
         steps += [
             ("probe", ["-m", "sg2.probe_p0", "--candidates", str(cand), "--out",
-                       str(run / "probe_p0.jsonl"), "--model", model]),
+                       str(run / "probe_p0.jsonl"), "--model", model, *probe_batch]),
             ("select", sel + (["--per-cat", str(per_cat)] if per_cat else [])),
         ]
     steps += [

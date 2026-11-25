@@ -54,6 +54,13 @@ def write_part(df: pd.DataFrame, folder: str) -> str:
     return path
 
 
+def write_json_atomic(path: str, obj, indent: int) -> None:
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(obj, f, indent=indent)
+    os.replace(tmp, path)
+
+
 def read_parts(folder: str, columns=None) -> pd.DataFrame:
     files = sorted(glob.glob(os.path.join(folder, "part-*.parquet")))
     if not files:
@@ -100,7 +107,7 @@ def check_invariants(out_dir: str, args, lm: core.LM) -> None:
         cfg["starts"].append(record)
     else:
         cfg = {"invariants": inv, "starts": [record]}
-    json.dump(cfg, open(path, "w"), indent=2)
+    write_json_atomic(path, cfg, indent=2)
 
 
 def chunk_seed(seed: int, first_id: str) -> int:
@@ -317,7 +324,8 @@ def run_stage2(lm, args):
         ids = json.load(open(subset_path))
     else:
         ids = select_patch_subset(m, args.patch_per_bin, args.seed)
-    json.dump(ids, open(subset_path, "w"), indent=0)
+    if not (os.path.exists(subset_path) and json.load(open(subset_path)) == ids):
+        write_json_atomic(subset_path, ids, indent=0)
     folder = os.path.join(args.out, "patch")
     done = set(read_parts(folder, ["prompt_id"])["prompt_id"]) if os.path.isdir(folder) else set()
     byid = {r["prompt_id"]: r for r in m.to_dict("records")}
