@@ -20,7 +20,7 @@ from pathlib import Path
 import modal
 
 MODEL = "Qwen/Qwen2.5-7B-Instruct"
-GPUS = ["H100", "A100-80GB", "L40S", "A10"]  # first available wins
+GPUS = ["H100", "A100-80GB", "A100-40GB", "L40S", "A10", "L4"]  # first available wins
 HERE = Path(__file__).resolve().parent
 
 image = (
