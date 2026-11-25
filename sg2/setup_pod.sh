@@ -27,9 +27,13 @@ EXTRA=()
 
 # ---------------------------------------------------------------- pipeline (runs in tmux)
 if [[ "${SG2_PIPELINE:-}" == "1" ]]; then
+  # Whatever ends this branch, record the real exit code in <run-dir>.exit (written atomically);
+  # sg2/colab_job.py reads it. The tmux pane's own text never reaches the log.
+  trap 'rc=$?; echo "$rc" > "$RUN.exit.tmp" && mv "$RUN.exit.tmp" "$RUN.exit"' EXIT
   source .venv/bin/activate
   nvidia-smi || true
-  exec python -u -m sg2.pipeline --run-dir "$RUN" --model "$MODEL" "${INPUT[@]}" ${EXTRA[@]+"${EXTRA[@]}"}
+  python -u -m sg2.pipeline --run-dir "$RUN" --model "$MODEL" "${INPUT[@]}" ${EXTRA[@]+"${EXTRA[@]}"}
+  exit $?
 fi
 
 # ---------------------------------------------------------------- setup (runs once)
@@ -63,5 +67,6 @@ df -h "$REPO" | tail -1
 
 [[ -n "${SG2_SETUP_ONLY:-}" ]] && { echo "setup only: done"; exit 0; }
 tmux kill-session -t sg2 2>/dev/null || true
+mkdir -p "$(dirname "$LOG")"; rm -f "$RUN.exit" "$RUN.exit.tmp"
 tmux new-session -d -s sg2 "SG2_PIPELINE=1 SG2_MODEL='$MODEL' SG2_PROMPTS='${SG2_PROMPTS:-}' SG2_PER_CAT='${SG2_PER_CAT:-}' bash '$REPO/sg2/setup_pod.sh' '$CANDIDATES' '$RUN' 2>&1 | tee -a '$LOG'; echo '[pipeline exited; press Enter]'; read"
 echo "Started in tmux session 'sg2'. Watch: tmux attach -t sg2   or   tail -f $LOG"
