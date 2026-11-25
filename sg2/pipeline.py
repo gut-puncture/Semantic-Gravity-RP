@@ -74,8 +74,11 @@ def run_chain(run_dir, model=MODEL, candidates=None, prompts=None, per_cat=None,
             ("select", sel + (["--per-cat", str(per_cat)] if per_cat else [])),
         ]
     steps += [
+        # Golden checks run in fp32 as DESIGN_v2.md specifies: in bf16, two passes with
+        # different batch shapes round differently, which the cross-pass checks would flag.
         ("checks", ["-m", "sg2.checks", "--model", model, "--out", str(run / "checks"),
-                    "--n-brute", str(n_brute)]),
+                    "--n-brute", str(n_brute),
+                    *(["--dtype", "float32"] if gb is None or gb >= 40 else [])]),
         ("smoke", ["-m", "sg2.run_experiment", "--prompts", str(prompt_file), "--out",
                    str(run / "smoke"), "--model", model, "--limit", "64", "--skip-patching", *batch]),
         ("full", ["-m", "sg2.run_experiment", "--prompts", str(prompt_file), "--out", str(run),
